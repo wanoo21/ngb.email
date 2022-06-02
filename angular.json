@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json",
+  "version": 2,
+  "projects": {
+    "api": "apps/api",
+    "api-interfaces": "libs/api-interfaces",
+    "email-builder": "libs/email-builder",
+    "ngx-abstract": "libs/ngx-abstract",
+    "wlocalhost": "apps/wlocalhost",
+    "wlocalhost-e2e": "apps/wlocalhost-e2e"
+  }
+}
