@@ -1,22 +1,25 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AIPEmailBuilderService } from '@wlocalhost/ngx-email-builder/core';
+import {
+  IIPEmailBuilderConfig,
+  withConfig,
+} from '@wlocalhost/ngx-email-builder/core';
 
 import { IpEmailBuilderComponent } from './ip-email-builder/ip-email-builder.component';
-import { IPEmailBuilderService } from './services/ipemail-builder.service';
 
 @NgModule({
   imports: [CommonModule],
   declarations: [IpEmailBuilderComponent],
   exports: [IpEmailBuilderComponent],
+  providers: [],
 })
 export class IPEmailBuilderModule {
-  static forRoot(): ModuleWithProviders<IPEmailBuilderModule> {
+  static forRoot(
+    config?: IIPEmailBuilderConfig
+  ): ModuleWithProviders<IPEmailBuilderModule> {
     return {
       ngModule: IPEmailBuilderModule,
-      providers: [
-        { provide: AIPEmailBuilderService, useClass: IPEmailBuilderService },
-      ],
+      providers: [...withConfig(config)],
     };
   }
 }

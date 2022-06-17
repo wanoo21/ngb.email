@@ -7,25 +7,23 @@ import {
 @Injectable({
   providedIn: 'root',
   useFactory: (factory: IPEmailBuilderConfig) => {
-    const [useExisting] = factory.providers || [];
+    const [, , , useExisting] = factory.providers || [];
     if (factory.isFreeVersion) {
       if (useExisting) {
         console.warn(
-          'It seems you try to rewrite AIPEmailBuilderService, but this is not allowed in free version.'
+          'It seems you try to rewrite AIPEmailBuilderRestService, but this is not allowed in free version.'
         );
       }
-      return new FreeIPEmailBuilderService();
+      return new FreeIPEmailBuilderRestService();
     } else if (!factory.isFreeVersion && useExisting) {
       return inject(useExisting);
     }
-    return new ProIPEmailBuilderService();
+    return new ProIPEmailBuilderRestService();
   },
   deps: [IP_EMAIL_BUILDER_CONFIG],
 })
-export abstract class AIPEmailBuilderService {
-  test = 3;
-}
+export abstract class AIPEmailBuilderRestService {}
 
-class ProIPEmailBuilderService extends AIPEmailBuilderService {}
+class ProIPEmailBuilderRestService extends AIPEmailBuilderRestService {}
 
-class FreeIPEmailBuilderService extends AIPEmailBuilderService {}
+class FreeIPEmailBuilderRestService extends AIPEmailBuilderRestService {}
