@@ -1,14 +1,13 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { IPEmailBuilderService } from '@wlocalhost/ngx-email-builder';
+import { Component, OnInit } from '@angular/core';
+import { AIPEmailBuilderService } from '@wlocalhost/ngx-email-builder/core';
 
 @Component({
   selector: 'wlocalhost-nx-welcome',
   template: ` <ip-email-builder></ip-email-builder> `,
   styles: [],
-  encapsulation: ViewEncapsulation.None,
 })
 export class NxWelcomeComponent implements OnInit {
-  constructor(readonly ngb: IPEmailBuilderService) {}
+  constructor(readonly ngb: AIPEmailBuilderService) {}
 
   ngOnInit(): void {
     console.log(this.ngb.test);

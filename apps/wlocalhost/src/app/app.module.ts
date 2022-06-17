@@ -11,7 +11,9 @@ import { NxWelcomeComponent } from './nx-welcome.component';
   imports: [
     BrowserModule,
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
-    IPEmailBuilderModule.forRoot(),
+    IPEmailBuilderModule.forRoot({
+      xApiKey: 'sss',
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
