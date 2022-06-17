@@ -23,14 +23,6 @@
       }
     }
   },
-  "targetDependencies": {
-    "build": [
-      {
-        "target": "build",
-        "projects": "dependencies"
-      }
-    ]
-  },
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",
@@ -46,6 +38,11 @@
       "style": "scss",
       "changeDetection": "OnPush",
       "displayBlock": true
+    }
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"]
     }
   }
 }
