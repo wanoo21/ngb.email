@@ -1,3 +1,8 @@
+:root {
+  --ip-email-builder-host-height: 100vh;
+}
+
 :host {
   display: block;
+  height: var(--ip-email-builder-host-height, 100vh);
 }

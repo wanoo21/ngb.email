@@ -4,6 +4,7 @@ import { AIPEmailBuilderService } from './services/email-builder-service/email-b
 import { AIPEmailBuilderStorageService } from './services/email-builder-storage-service/email-builder-storage.service';
 import { AIPEmailBuilderRestService } from './services/email-builder-rest-service/email-builder-rest.service';
 import { AIPEmailBuilderMiddlewareService } from './services/email-builder-middleware-service/email-builder-middleware.service';
+import { IP_EMAIL_BUILDER_BLOCKS } from './private-tokens';
 
 export abstract class AIPEmailBuilderComponent {
   readonly emailBuilderService = inject(AIPEmailBuilderService);
@@ -12,4 +13,6 @@ export abstract class AIPEmailBuilderComponent {
     AIPEmailBuilderMiddlewareService
   );
   readonly emailBuilderRestService = inject(AIPEmailBuilderRestService);
+
+  readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS);
 }

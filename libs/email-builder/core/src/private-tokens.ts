@@ -1,6 +1,7 @@
-import { InjectionToken } from '@angular/core';
+import { InjectionToken, Type } from '@angular/core';
 
 import { IIPEmailBuilderConfig } from './public-tokens';
+import { AIPEmailBuilderBlock } from './core/block';
 
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
@@ -33,3 +34,10 @@ export const IP_EMAIL_BUILDER_CONFIG = new InjectionToken<IPEmailBuilderConfig>(
     },
   }
 );
+
+export const IP_EMAIL_BUILDER_BLOCKS = new InjectionToken<
+  Type<AIPEmailBuilderBlock<any>>[]
+>('', {
+  providedIn: 'root',
+  factory: () => [],
+});

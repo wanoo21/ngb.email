@@ -1,7 +1,9 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  addNewBlock,
   IIPEmailBuilderConfig,
+  IPEmailBuilderBlockComponent,
   withConfig,
 } from '@wlocalhost/ngx-email-builder/core';
 
@@ -11,7 +13,7 @@ import { IpEmailBuilderComponent } from './ip-email-builder/ip-email-builder.com
   imports: [CommonModule],
   declarations: [IpEmailBuilderComponent],
   exports: [IpEmailBuilderComponent],
-  providers: [],
+  providers: [addNewBlock(IPEmailBuilderBlockComponent)],
 })
 export class IPEmailBuilderModule {
   static forRoot(

@@ -1,1 +1,6 @@
-<p>ip-email-builder works! {{ emailBuilderService.test }}</p>
+<div class="grid grid-cols-12 h-full">
+  <div class="col-span-9">
+    <ng-container [ngComponentOutlet]="blocks[0]"></ng-container>
+  </div>
+  <div class="col-span-3 bg-gray-200 p-2">{{ blocks.length }}</div>
+</div>
