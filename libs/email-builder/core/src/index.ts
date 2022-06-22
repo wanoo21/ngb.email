@@ -5,8 +5,10 @@ export * from './services/email-builder-storage-service/email-builder-storage.se
 export * from './services/email-builder-middleware-service/email-builder-middleware.service';
 export * from './services/email-builder-rest-service/email-builder-rest.service';
 
-export * from './components/ipemail-builder-block/ipemail-builder-block.component';
+export * from './components/text-block/text-block.component';
 
 export * from './public-tokens';
 export * from './tools/core';
 export * from './core/block';
+export * from './interfaces';
+export * from './pipes/ipemail-builder-block-data.pipe';

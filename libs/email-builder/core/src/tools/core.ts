@@ -6,6 +6,7 @@ import {
 
 import {
   IP_EMAIL_BUILDER_BLOCKS,
+  IP_EMAIL_BUILDER_BLOCKS_DATA,
   IP_EMAIL_BUILDER_CONFIG,
   IPEmailBuilderConfig,
 } from '../private-tokens';
@@ -19,6 +20,17 @@ export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
   ];
 }
 
-export function addNewBlock(block: Type<AIPEmailBuilderBlock<any>>): Provider {
-  return { provide: IP_EMAIL_BUILDER_BLOCKS, useValue: block, multi: true };
+export function addNewIPEmailBuilderBlock(
+  block: Type<AIPEmailBuilderBlock<Record<string, any>>>,
+  type: string,
+  icon: string
+): Provider[] {
+  return [
+    { provide: IP_EMAIL_BUILDER_BLOCKS, useValue: block, multi: true },
+    {
+      provide: IP_EMAIL_BUILDER_BLOCKS_DATA,
+      useValue: { block, type, icon },
+      multi: true,
+    },
+  ];
 }

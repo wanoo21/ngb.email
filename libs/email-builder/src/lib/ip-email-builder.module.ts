@@ -1,19 +1,28 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
-  addNewBlock,
+  addNewIPEmailBuilderBlock,
   IIPEmailBuilderConfig,
-  IPEmailBuilderBlockComponent,
+  IPEmailBuilderBlockDataPipe,
+  TextBlockComponent,
   withConfig,
 } from '@wlocalhost/ngx-email-builder/core';
+import { PortalModule } from '@angular/cdk/portal';
+import { FormsModule } from '@angular/forms';
 
 import { IpEmailBuilderComponent } from './ip-email-builder/ip-email-builder.component';
 
 @NgModule({
-  imports: [CommonModule],
-  declarations: [IpEmailBuilderComponent],
+  imports: [CommonModule, PortalModule, FormsModule],
+  declarations: [
+    IpEmailBuilderComponent,
+    TextBlockComponent,
+    IPEmailBuilderBlockDataPipe,
+  ],
   exports: [IpEmailBuilderComponent],
-  providers: [addNewBlock(IPEmailBuilderBlockComponent)],
+  providers: [
+    ...addNewIPEmailBuilderBlock(TextBlockComponent, 'text_format', 'text'),
+  ],
 })
 export class IPEmailBuilderModule {
   static forRoot(

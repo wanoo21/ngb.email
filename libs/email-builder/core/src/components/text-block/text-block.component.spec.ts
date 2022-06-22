@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IPEmailBuilderBlockComponent } from './ipemail-builder-block.component';
+import { TextBlockComponent } from './text-block.component';
 
 describe('IPEmailBuilderBlockComponent', () => {
-  let component: IPEmailBuilderBlockComponent;
-  let fixture: ComponentFixture<IPEmailBuilderBlockComponent>;
+  let component: TextBlockComponent;
+  let fixture: ComponentFixture<TextBlockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IPEmailBuilderBlockComponent],
+      declarations: [TextBlockComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(IPEmailBuilderBlockComponent);
+    fixture = TestBed.createComponent(TextBlockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

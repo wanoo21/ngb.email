@@ -1,6 +1,16 @@
 <div class="grid grid-cols-12 h-full">
   <div class="col-span-9">
     <ng-container [ngComponentOutlet]="blocks[0]"></ng-container>
+    <ng-container [ngComponentOutlet]="blocks[1]"></ng-container>
   </div>
-  <div class="col-span-3 bg-gray-200 p-2">{{ blocks.length }}</div>
+  <div class="col-span-3 bg-gray-200 p-2">
+    <ul>
+      <li *ngFor="let block of blocks">
+        {{ block | AIPEmailBuilderBlockData: 'icon' }}
+      </li>
+    </ul>
+    <div
+      [cdkPortalOutlet]="builderUiService.currentSettingsPortal$ | async"
+    ></div>
+  </div>
 </div>

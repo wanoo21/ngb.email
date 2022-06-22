@@ -41,3 +41,10 @@ export const IP_EMAIL_BUILDER_BLOCKS = new InjectionToken<
   providedIn: 'root',
   factory: () => [],
 });
+
+export const IP_EMAIL_BUILDER_BLOCKS_DATA = new InjectionToken<
+  { block: Type<AIPEmailBuilderBlock<any>>; icon: string; type: string }[]
+>('', {
+  providedIn: 'root',
+  factory: () => [],
+});

@@ -1,10 +1,10 @@
 import { async, TestBed } from '@angular/core/testing';
-import { IpEmailBuilderModule } from './i-p-email-builder.module';
+import { IPEmailBuilderModule } from './ip-email-builder.module';
 
 describe('EmailBuilderModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [IpEmailBuilderModule],
+      imports: [IPEmailBuilderModule],
     }).compileComponents();
   }));
 
@@ -13,6 +13,6 @@ describe('EmailBuilderModule', () => {
   // NB: This particular test does not do anything useful.
   //     It does NOT check for correct instantiation of the module.
   it('should have a module definition', () => {
-    expect(IpEmailBuilderModule).toBeDefined();
+    expect(IPEmailBuilderModule).toBeDefined();
   });
 });

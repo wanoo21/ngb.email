@@ -1,3 +1,15 @@
 import { Configurable } from './Configurable';
+import { Directive, HostListener } from '@angular/core';
 
-export abstract class AIPEmailBuilderBlock<T> extends Configurable<T> {}
+@Directive()
+export abstract class AIPEmailBuilderBlock<T> extends Configurable<T> {
+  get styles(): Record<string, string | number> {
+    return {
+      borderRadius: 0,
+    };
+  }
+
+  @HostListener('click') onClick() {
+    this.edit();
+  }
+}
