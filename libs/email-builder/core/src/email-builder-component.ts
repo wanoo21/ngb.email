@@ -18,4 +18,8 @@ export abstract class AIPEmailBuilderComponent {
   readonly builderUiService = inject(IPEmailBuilderUiService);
 
   readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS);
+
+  click(): void {
+    this.builderUiService.attachSettingsPortal(null);
+  }
 }

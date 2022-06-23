@@ -2,6 +2,10 @@
   <div class="col-span-9">
     <ng-container [ngComponentOutlet]="blocks[0]"></ng-container>
     <ng-container [ngComponentOutlet]="blocks[1]"></ng-container>
+
+    <button class="bg-blue-700 border-2 text-white rounded" (click)="click()">
+      Reset settings
+    </button>
   </div>
   <div class="col-span-3 bg-gray-200 p-2">
     <ul>

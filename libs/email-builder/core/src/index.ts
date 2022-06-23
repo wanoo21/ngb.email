@@ -1,4 +1,5 @@
 export * from './email-builder-component';
+export * from './email-builder-core.module';
 
 export * from './services/email-builder-service/email-builder.service';
 export * from './services/email-builder-storage-service/email-builder-storage.service';
@@ -11,4 +12,3 @@ export * from './public-tokens';
 export * from './tools/core';
 export * from './core/block';
 export * from './interfaces';
-export * from './pipes/ipemail-builder-block-data.pipe';
