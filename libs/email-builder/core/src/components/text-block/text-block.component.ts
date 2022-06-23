@@ -3,8 +3,6 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { PortalModule } from '@angular/cdk/portal';
 
 import { IFont, ILineHeight, IPadding } from '../../interfaces';
 import { AIPEmailBuilderBlock } from '../../core/block';
@@ -20,14 +18,13 @@ export interface ITextBlockOptions {
 }
 
 @Component({
+  selector: 'ip-text-block',
   template: `
     <p>ipemail-builder-block {{ innerText }}!</p>
     <ng-container *cdk-portal>
       <input type="text" [(ngModel)]="innerText" placeholder="Change me" />
     </ng-container>
   `,
-  // standalone: true,
-  // imports: [FormsModule, PortalModule],
   styles: [
     `
       :host {

@@ -23,7 +23,13 @@ import { MyHTMLBlockComponent } from './my-htmlblock/my-htmlblock.component';
       xApiKey: 'sss',
     }),
   ],
-  providers: [addNewIPEmailBuilderBlock(MyHTMLBlockComponent, 'html', 'html')],
+  providers: [
+    addNewIPEmailBuilderBlock(
+      MyHTMLBlockComponent,
+      'html',
+      $localize`:@@block:HTML`
+    ),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

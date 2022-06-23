@@ -37,14 +37,20 @@ export const IP_EMAIL_BUILDER_CONFIG = new InjectionToken<IPEmailBuilderConfig>(
 
 export const IP_EMAIL_BUILDER_BLOCKS = new InjectionToken<
   Type<AIPEmailBuilderBlock<any>>[]
->('', {
+>('Wlocalhost blocks map', {
   providedIn: 'root',
   factory: () => [],
 });
 
+export interface IIPEmailBuilderBlockData {
+  block: Type<AIPEmailBuilderBlock<any>>;
+  type: string;
+  title: string;
+}
+
 export const IP_EMAIL_BUILDER_BLOCKS_DATA = new InjectionToken<
-  { block: Type<AIPEmailBuilderBlock<any>>; icon: string; type: string }[]
->('', {
+  IIPEmailBuilderBlockData[]
+>("Wlocalhost blocks' info map", {
   providedIn: 'root',
   factory: () => [],
 });

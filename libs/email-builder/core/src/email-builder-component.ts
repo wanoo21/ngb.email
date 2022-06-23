@@ -4,7 +4,7 @@ import { AIPEmailBuilderService } from './services/email-builder-service/email-b
 import { AIPEmailBuilderStorageService } from './services/email-builder-storage-service/email-builder-storage.service';
 import { AIPEmailBuilderRestService } from './services/email-builder-rest-service/email-builder-rest.service';
 import { AIPEmailBuilderMiddlewareService } from './services/email-builder-middleware-service/email-builder-middleware.service';
-import { IP_EMAIL_BUILDER_BLOCKS } from './private-tokens';
+import { IP_EMAIL_BUILDER_BLOCKS_DATA } from './private-tokens';
 import { IPEmailBuilderUiService } from './services/email-builder-ui.service';
 
 @Directive()
@@ -17,7 +17,7 @@ export abstract class AIPEmailBuilderComponent {
   readonly emailBuilderRestService = inject(AIPEmailBuilderRestService);
   readonly builderUiService = inject(IPEmailBuilderUiService);
 
-  readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS);
+  readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
 
   click(): void {
     this.builderUiService.attachSettingsPortal(null);

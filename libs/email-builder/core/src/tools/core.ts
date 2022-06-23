@@ -23,13 +23,14 @@ export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
 export function addNewIPEmailBuilderBlock(
   block: Type<AIPEmailBuilderBlock<Record<string, any>>>,
   type: string,
-  icon: string
+  title: string
 ): Provider[] {
+  block.prototype.type = type;
   return [
     { provide: IP_EMAIL_BUILDER_BLOCKS, useValue: block, multi: true },
     {
       provide: IP_EMAIL_BUILDER_BLOCKS_DATA,
-      useValue: { block, type, icon },
+      useValue: { block, type, title },
       multi: true,
     },
   ];
