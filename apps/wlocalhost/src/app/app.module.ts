@@ -10,6 +10,7 @@ import { PortalModule } from '@angular/cdk/portal';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { MyHTMLBlockComponent } from './my-htmlblock/my-htmlblock.component';
+import { NgxAbstractModule } from '@ngcomma/ngx-abstract';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, MyHTMLBlockComponent],
@@ -21,6 +22,11 @@ import { MyHTMLBlockComponent } from './my-htmlblock/my-htmlblock.component';
     RouterModule.forRoot([], { initialNavigation: 'enabledBlocking' }),
     IPEmailBuilderModule.forRoot({
       xApiKey: 'sss',
+    }),
+    NgxAbstractModule.withConfig({
+      page: {
+        prefix: '{title} | Wlocalhost',
+      },
     }),
   ],
   providers: [

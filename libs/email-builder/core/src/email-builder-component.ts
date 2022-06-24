@@ -1,4 +1,5 @@
 import { Directive, inject } from '@angular/core';
+import { AbsComponent } from '@ngcomma/ngx-abstract';
 
 import { AIPEmailBuilderService } from './services/email-builder-service/email-builder.service';
 import { AIPEmailBuilderStorageService } from './services/email-builder-storage-service/email-builder-storage.service';
@@ -8,7 +9,7 @@ import { IP_EMAIL_BUILDER_BLOCKS_DATA } from './private-tokens';
 import { IPEmailBuilderUiService } from './services/email-builder-ui.service';
 
 @Directive()
-export abstract class AIPEmailBuilderComponent {
+export abstract class AIPEmailBuilderComponent extends AbsComponent {
   readonly emailBuilderService = inject(AIPEmailBuilderService);
   readonly emailBuilderStorageService = inject(AIPEmailBuilderStorageService);
   readonly emailBuilderMiddlewareService = inject(

@@ -1,4 +1,5 @@
-import { Directive, Inject, Input, ViewContainerRef } from '@angular/core';
+import { Directive, Inject, Input } from '@angular/core';
+import { AbsDirective } from '@ngcomma/ngx-abstract';
 
 import {
   IIPEmailBuilderBlockData,
@@ -13,12 +14,13 @@ interface IBlockData
 @Directive({
   selector: '[ipEmailBuilderDynamicBlockDirective]',
 })
-export class IPEmailBuilderDynamicDirective {
+export class IPEmailBuilderDynamicDirective extends AbsDirective {
   constructor(
-    readonly viewContainerRef: ViewContainerRef,
     @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
     readonly blocksData: IIPEmailBuilderBlockData[]
-  ) {}
+  ) {
+    super();
+  }
 
   @Input()
   set ipEmailBuilderDynamicBlockDirective(context: IBlockData) {
