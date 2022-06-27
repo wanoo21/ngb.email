@@ -24,11 +24,14 @@ export class IPEmailBuilderDynamicDirective extends AbsDirective {
 
   @Input()
   set ipEmailBuilderDynamicBlockDirective(context: IBlockData) {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const { block } = this.blocksData.find(
+    const foundBlock = this.blocksData.find(
       (block) => context.type === block.type
-    )!;
-    const component = this.viewContainerRef.createComponent(block);
-    Object.assign(component.instance, context);
+    );
+    if (foundBlock) {
+      const component = this.viewContainerRef.createComponent(foundBlock.block);
+      Object.assign(component.instance, context);
+    } else {
+      throw TypeError(`No such block found: ${context.type}`);
+    }
   }
 }

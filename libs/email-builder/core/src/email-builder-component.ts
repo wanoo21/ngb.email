@@ -18,7 +18,7 @@ export abstract class AIPEmailBuilderComponent extends AbsComponent {
   readonly emailBuilderRestService = inject(AIPEmailBuilderRestService);
   readonly builderUiService = inject(IPEmailBuilderUiService);
 
-  readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
+  readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA); //.sort((a, b) => a.state.order - b.state.order);
 
   click(): void {
     this.builderUiService.attachSettingsPortal(null);

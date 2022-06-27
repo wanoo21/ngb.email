@@ -1,15 +1,14 @@
 import { Provider, Type } from '@angular/core';
-import {
-  AIPEmailBuilderBlock,
-  IIPEmailBuilderConfig,
-} from '@wlocalhost/ngx-email-builder/core';
 
+import { IIPEmailBuilderConfig } from '../public-tokens';
 import {
   IP_EMAIL_BUILDER_BLOCKS,
   IP_EMAIL_BUILDER_BLOCKS_DATA,
   IP_EMAIL_BUILDER_CONFIG,
   IPEmailBuilderConfig,
 } from '../private-tokens';
+import { AIPEmailBuilderBlock } from '../core/block';
+import { IBlockState } from '../interfaces';
 
 export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
   return [
@@ -23,14 +22,25 @@ export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
 export function addNewIPEmailBuilderBlock(
   block: Type<AIPEmailBuilderBlock<Record<string, any>>>,
   type: string,
-  title: string
+  title: string,
+  state?: Partial<IBlockState>
 ): Provider[] {
   block.prototype.type = type;
   return [
     { provide: IP_EMAIL_BUILDER_BLOCKS, useValue: block, multi: true },
     {
       provide: IP_EMAIL_BUILDER_BLOCKS_DATA,
-      useValue: { block, type, title },
+      useValue: {
+        block,
+        type,
+        title,
+        state: {
+          disabled: false,
+          message: '',
+          order: 0,
+          ...state,
+        },
+      },
       multi: true,
     },
   ];

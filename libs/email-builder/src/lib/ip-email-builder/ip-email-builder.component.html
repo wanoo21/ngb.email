@@ -8,12 +8,14 @@
     ></ng-container>
     <ng-container
       *ipEmailBuilderDynamicBlockDirective="{
-        type: 'text_format',
-        innerText: 'changed 2'
+        type: 'image'
       }"
     ></ng-container>
     <ng-container
       *ipEmailBuilderDynamicBlockDirective="{ type: 'html' }"
+    ></ng-container>
+    <ng-container
+      *ipEmailBuilderDynamicBlockDirective="{ type: 'button' }"
     ></ng-container>
 
     <button
@@ -26,7 +28,7 @@
   <div class="col-span-3 bg-gray-200 p-2">
     <ul>
       <li *ngFor="let block of blocks">
-        {{ block.title }}
+        {{ block.title }} {{ block.state.disabled }}
       </li>
     </ul>
     <div

@@ -6,7 +6,7 @@
 // import { AIPEmailBuilderBlock } from "./core/Block";
 
 /**
- * Main builder configuration Interface. See also {@link IpEmailBuilderModule#withConfig}.
+ * Main builder configuration Interface. See also {@link IPEmailBuilderCoreModule#withConfig}.
  */
 export interface IForRootConf {
   /**
@@ -315,91 +315,10 @@ export interface IBlockState {
    * Show a message in case it's disabled.
    */
   message: string;
-}
-
-/**
- * Builder {@link ImageComponent} options interface.
- */
-export interface IImageBLockOptions {
-  border?: IBorder;
-  width?: IWidthHeight;
-  height?: IWidthHeight;
-  link?: ILink;
-  align?: TAlign;
-  title?: string;
-  padding?: IPadding;
-}
-
-/**
- * Builder {@link ButtonComponent} options interface.
- */
-export interface IButtonBlockOptions {
-  backgroundColor?: string;
-  border?: IBorder;
-  color?: string;
-  font?: IFont;
-  align?: TAlign;
-  fullWidth?: boolean;
-  lineHeight?: ILineHeight;
-  link?: ILink;
-  innerPadding?: IPadding;
-  padding?: IPadding;
-}
-
-/**
- * Builder {@link DividerComponent} options interface.
- */
-export interface IDividerBlockOptions {
-  border?: IBorder;
-  padding?: IPadding;
-}
-
-/**
- * Builder {@link SpacerComponent} options interface.
- */
-export interface ISpacerBlockOptions {
-  height?: IWidthHeight;
-  width?: IWidthHeight;
-}
-
-/**
- * Builder {@link SocialComponent} options interface.
- */
-export interface ISocialBlockOptions {
-  align?: TAlign;
-  mode?: 'vertical' | 'horizontal';
-  font?: IFont;
-  iconSize?: ILineHeight;
-  lineHeight?: ILineHeight;
-  color?: string;
-  innerPadding?: IPadding;
-  padding?: IPadding;
-}
-
-/**
- * Builder {@link SocialComponent} network options interface.
- */
-export interface ISocialNetwork {
-  href: string;
-  // target?: string;
-  label?: string;
-  name:
-    | 'github'
-    | 'instagram'
-    | 'web'
-    | 'snapchat'
-    | 'youtube'
-    | 'vimeo'
-    | 'medium'
-    | 'soundcloud'
-    | 'dribbble'
-    | 'facebook'
-    | 'twitter'
-    | 'pinterest'
-    | 'linkedin'
-    | 'tumblr'
-    | 'xing';
-  padding?: IPadding;
+  /**
+   * Change block order
+   */
+  // order: number;
 }
 
 /**

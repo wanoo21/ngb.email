@@ -2,6 +2,7 @@ import { InjectionToken, Type } from '@angular/core';
 
 import { IIPEmailBuilderConfig } from './public-tokens';
 import { AIPEmailBuilderBlock } from './core/block';
+import { IBlockState } from './interfaces';
 
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
@@ -46,6 +47,7 @@ export interface IIPEmailBuilderBlockData {
   block: Type<AIPEmailBuilderBlock<any>>;
   type: string;
   title: string;
+  state: IBlockState;
 }
 
 export const IP_EMAIL_BUILDER_BLOCKS_DATA = new InjectionToken<

@@ -11,10 +11,10 @@ import { AIPEmailBuilderBlock } from '../../core/block';
  * Builder {@link TextBlockComponent} options interface.
  */
 export interface ITextBlockOptions {
-  color?: string;
-  font?: IFont;
-  lineHeight?: ILineHeight;
-  padding?: IPadding;
+  color: string;
+  font: IFont;
+  lineHeight: ILineHeight;
+  padding: IPadding;
 }
 
 @Component({
@@ -58,7 +58,10 @@ export class TextBlockComponent extends AIPEmailBuilderBlock<ITextBlockOptions> 
     },
   };
 
-  override toObject(options?: ITextBlockOptions, innerText = this.innerText) {
+  override toObject(
+    options?: Partial<ITextBlockOptions>,
+    innerText = this.innerText
+  ) {
     return { ...super.toObject(options), innerText };
   }
 }

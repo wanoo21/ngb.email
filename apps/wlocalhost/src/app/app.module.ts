@@ -6,11 +6,11 @@ import { addNewIPEmailBuilderBlock } from '@wlocalhost/ngx-email-builder/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { PortalModule } from '@angular/cdk/portal';
+import { NgxAbstractModule } from '@ngcomma/ngx-abstract';
 
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { MyHTMLBlockComponent } from './my-htmlblock/my-htmlblock.component';
-import { NgxAbstractModule } from '@ngcomma/ngx-abstract';
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent, MyHTMLBlockComponent],
@@ -33,7 +33,8 @@ import { NgxAbstractModule } from '@ngcomma/ngx-abstract';
     addNewIPEmailBuilderBlock(
       MyHTMLBlockComponent,
       'html',
-      $localize`:@@block:HTML`
+      $localize`:@@block:HTML`,
+      { disabled: true }
     ),
   ],
   bootstrap: [AppComponent],
