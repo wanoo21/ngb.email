@@ -3,7 +3,8 @@
  * All rights reserved.
  */
 
-// import { AIPEmailBuilderBlock } from "./core/Block";
+import { IStructure } from './structure/structure';
+import { IIPEmail } from './body/body';
 
 /**
  * Main builder configuration Interface. See also {@link IPEmailBuilderCoreModule#withConfig}.
@@ -99,6 +100,8 @@ export type TStructureTypes =
   | 'cols_2'
   | 'cols_3'
   | 'cols_4'
+  | 'cols_5'
+  | 'cols_6'
   | 'cols_12'
   | 'cols_21';
 /**
@@ -253,57 +256,6 @@ export interface ILink {
 }
 
 /**
- * Builder structure columns' styles interface.
- */
-export interface IStructureColumnOptions {
-  background?: IBackground;
-  border?: IBorder;
-  verticalAlign?: TVerticalAlign;
-}
-
-/**
- * Builder structure styles interface.
- */
-export interface IStructureOptions {
-  border?: IBorder;
-  background?: IBackground;
-  padding?: IPadding;
-  margin?: IMargin;
-  /**
-   * Disable responsive for entire structure
-   */
-  disableResponsive?: boolean;
-  /**
-   * Mame section full width
-   */
-  fullWidth?: boolean;
-  /**
-   * Mind the GAPS! Gaps between structure's columns.
-   */
-  gaps?: [number, number];
-  columnsWidth?: number[];
-  columns?: IStructureColumnOptions[];
-}
-
-/**
- * Builder structure interface.
- */
-export interface IStructure {
-  readonly type: TStructureTypes;
-  // unique IDs for unique class attribute
-  readonly id: number;
-  /**
-   * If it's module, it can't be edited within email body.
-   * @default false
-   */
-  isModule?: boolean;
-  options: IStructureOptions;
-  // Structure columns.
-  // elements: Type<AIPEmailBuilderBlock<any>>[][];
-  readonly columns: number;
-}
-
-/**
  * Builder block state interface. If `disabled: true` it can't be dragged from left sidebar.
  */
 export interface IBlockState {
@@ -319,30 +271,6 @@ export interface IBlockState {
    * Change block order
    */
   // order: number;
-}
-
-/**
- * Builder {@link IIPEmail} general options interface.
- */
-export interface IGeneralOptions {
-  width?: IWidthHeight;
-  background?: IBackground;
-  padding?: IPadding;
-  direction?: TDirection;
-  name?: string;
-  previewText: string;
-  global?: {
-    fonts?: string[];
-    padding?: IPadding;
-  };
-}
-
-/**
- * Main builder Email Object interface.
- */
-export interface IIPEmail {
-  general?: IGeneralOptions;
-  structures?: IStructure[];
 }
 
 /**

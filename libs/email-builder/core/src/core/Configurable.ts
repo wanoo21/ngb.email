@@ -1,4 +1,10 @@
-import { Directive, DoCheck, inject, ViewChild } from '@angular/core';
+import {
+  Directive,
+  DoCheck,
+  HostBinding,
+  inject,
+  ViewChild,
+} from '@angular/core';
 import { CdkPortal } from '@angular/cdk/portal';
 import { AbsComponent } from '@ngcomma/ngx-abstract';
 
@@ -9,14 +15,19 @@ export abstract class Configurable<T> extends AbsComponent implements DoCheck {
   abstract options: T;
   readonly builderUiService = inject(IPEmailBuilderUiService);
   @ViewChild(CdkPortal, { static: true })
-  private readonly settingsPortal!: CdkPortal;
+  readonly settingsPortal!: CdkPortal;
 
+  @HostBinding('class.is-editing')
   get isCurrentlyEditing(): boolean {
     return !!this.settingsPortal?.isAttached;
   }
 
   edit(): void {
     this.builderUiService.attachSettingsPortal(this.settingsPortal);
+  }
+
+  markForCheck(): boolean {
+    return false;
   }
 
   toObject(
@@ -28,7 +39,7 @@ export abstract class Configurable<T> extends AbsComponent implements DoCheck {
   }
 
   ngDoCheck(): void {
-    if (this.isCurrentlyEditing) {
+    if (this.isCurrentlyEditing || this.markForCheck()) {
       this.changeDetectorRef.markForCheck();
     }
   }

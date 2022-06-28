@@ -7,16 +7,27 @@ export * from './services/email-builder-storage-service/email-builder-storage.se
 export * from './services/email-builder-middleware-service/email-builder-middleware.service';
 export * from './services/email-builder-rest-service/email-builder-rest.service';
 
-// Default blocks components
-export * from './components/text-block/text-block.component';
-export * from './components/image-block/image-block.component';
-export * from './components/button-block/button-block.component';
-export * from './components/divider-block/divider-block.component';
-export * from './components/social-block/social-block.component';
-export * from './components/spacer-block/spacer-block.component';
+// Default blocks blocks
+export * from './blocks/text-block/text-block.component';
+export * from './blocks/image-block/image-block.component';
+export * from './blocks/button-block/button-block.component';
+export * from './blocks/divider-block/divider-block.component';
+export * from './blocks/social-block/social-block.component';
+export * from './blocks/spacer-block/spacer-block.component';
 
 // Core services & classes
 export * from './public-tokens';
 export * from './tools/core';
 export * from './core/block';
 export * from './interfaces';
+
+// Email Body
+export * from './core/Aside';
+
+// Email Aside
+export * from './core/Body';
+export * from './body/body';
+
+// Structure
+export * from './structure/structure';
+export * from './core/Structure';

@@ -7,12 +7,12 @@ import { addNewIPEmailBuilderBlock } from './tools/core';
 import { IPEmailBuilderBlockDataPipe } from './pipes/ipemail-builder-block-data.pipe';
 import { IPEmailBuilderDynamicDirective } from './directives/email-builder-dynamic.directive';
 
-import { TextBlockComponent } from './components/text-block/text-block.component';
-import { ImageBlockComponent } from './components/image-block/image-block.component';
-import { ButtonBlockComponent } from './components/button-block/button-block.component';
-import { DividerBlockComponent } from './components/divider-block/divider-block.component';
-import { SocialBlockComponent } from './components/social-block/social-block.component';
-import { SpacerBlockComponent } from './components/spacer-block/spacer-block.component';
+import { TextBlockComponent } from './blocks/text-block/text-block.component';
+import { ImageBlockComponent } from './blocks/image-block/image-block.component';
+import { ButtonBlockComponent } from './blocks/button-block/button-block.component';
+import { DividerBlockComponent } from './blocks/divider-block/divider-block.component';
+import { SocialBlockComponent } from './blocks/social-block/social-block.component';
+import { SpacerBlockComponent } from './blocks/spacer-block/spacer-block.component';
 
 @NgModule({
   declarations: [
