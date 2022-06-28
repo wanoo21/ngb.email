@@ -7,10 +7,18 @@ import {
 } from '@wlocalhost/ngx-email-builder/core';
 
 import { IpEmailBuilderComponent } from './ip-email-builder/ip-email-builder.component';
+import { StructureComponent } from './structure/structure.component';
+import { EmailBodyComponent } from './email-body/email-body.component';
+import { EmailAsideComponent } from './email-aside/email-aside.component';
 
 @NgModule({
   imports: [CommonModule, IPEmailBuilderCoreModule],
-  declarations: [IpEmailBuilderComponent],
+  declarations: [
+    IpEmailBuilderComponent,
+    StructureComponent,
+    EmailBodyComponent,
+    EmailAsideComponent,
+  ],
   exports: [IpEmailBuilderComponent, IPEmailBuilderCoreModule],
 })
 export class IPEmailBuilderModule {

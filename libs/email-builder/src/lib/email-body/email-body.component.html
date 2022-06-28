@@ -1,0 +1,16 @@
+<ip-structure *ngFor="let structure of structures"></ip-structure>
+{{ text }}
+<ng-container
+  *ipEmailBuilderDynamicBlockDirective="{ type: 'text_format' }"
+></ng-container>
+<ng-container *cdk-portal>
+  Default settings
+  <input [(ngModel)]="text" />
+</ng-container>
+
+<button
+  class="bg-gray-500 text-white rounded border-0 outline-0 py-2 px-4"
+  (click)="edit()"
+>
+  Reset settings
+</button>

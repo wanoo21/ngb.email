@@ -1,0 +1,7 @@
+<ul>
+  <li *ngFor="let block of blocks">
+    {{ block.title }} {{ block.state.disabled }}
+  </li>
+</ul>
+
+<div [cdkPortalOutlet]="builderUiService.currentSettingsPortal$ | async"></div>

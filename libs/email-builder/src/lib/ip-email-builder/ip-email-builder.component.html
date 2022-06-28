@@ -1,38 +1,8 @@
 <div class="grid grid-cols-12 h-full">
-  <div class="col-span-9">
-    <ng-container
-      *ipEmailBuilderDynamicBlockDirective="{
-        type: 'text_format',
-        innerText: 'changed'
-      }"
-    ></ng-container>
-    <ng-container
-      *ipEmailBuilderDynamicBlockDirective="{
-        type: 'image'
-      }"
-    ></ng-container>
-    <ng-container
-      *ipEmailBuilderDynamicBlockDirective="{ type: 'html' }"
-    ></ng-container>
-    <ng-container
-      *ipEmailBuilderDynamicBlockDirective="{ type: 'button' }"
-    ></ng-container>
-
-    <button
-      class="bg-blue-700 border-2 text-white rounded p-2"
-      (click)="click()"
-    >
-      Reset settings
-    </button>
-  </div>
-  <div class="col-span-3 bg-gray-200 p-2">
-    <ul>
-      <li *ngFor="let block of blocks">
-        {{ block.title }} {{ block.state.disabled }}
-      </li>
-    </ul>
-    <div
-      [cdkPortalOutlet]="builderUiService.currentSettingsPortal$ | async"
-    ></div>
-  </div>
+  <ip-email-body
+    class="col-span-9"
+    [structures]="email.structures"
+    [options]="email.general"
+  ></ip-email-body>
+  <ip-email-aside class="col-span-3 bg-gray-200 p-2"></ip-email-aside>
 </div>
