@@ -1,6 +1,9 @@
-<ul>
-  <li *ngFor="let block of blocks">
-    {{ block.title }} {{ block.state.disabled }}
+<ul class="grid gap-2 grid-cols-2">
+  <li class="border rounded border-gray-200 bg-white text-base text-center p-4 cursor-pointer select-none" *ngFor="let block of blocks">
+    <ng-container [ngSwitch]="block.type">
+      <div *ngSwitchCase="'text_format'">Text</div>
+      <span>{{ block.title }}</span>
+    </ng-container>
   </li>
 </ul>
 
