@@ -34,7 +34,7 @@ export interface IButtonBlockOptions {
   selector: 'ip-button-block',
   template: `
     <p>button-block works! {{ innerText }}</p>
-    <ng-container *cdk-portal>
+    <ng-container *ipEmailBuilderSettings>
       <input type="text" [(ngModel)]="innerText" placeholder="Change me" />
     </ng-container>
   `,

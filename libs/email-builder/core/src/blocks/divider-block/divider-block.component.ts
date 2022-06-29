@@ -19,7 +19,7 @@ export interface IDividerBlockOptions {
   selector: 'ip-divider-block',
   template: `
     <p>divider-block works! {{ options.padding.top | number }}</p>
-    <ng-container *cdk-portal>
+    <ng-container *ipEmailBuilderSettings>
       <input
         type="number"
         [(ngModel)]="options.padding.top"

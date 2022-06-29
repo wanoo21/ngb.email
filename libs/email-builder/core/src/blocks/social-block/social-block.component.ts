@@ -51,7 +51,7 @@ export interface ISocialNetwork {
   selector: 'ip-social-block',
   template: `
     <p>social-block works! {{ options.padding.top }}</p>
-    <ng-container *cdk-portal>
+    <ng-container *ipEmailBuilderSettings>
       <input
         type="number"
         [(ngModel)]="options.padding.top"

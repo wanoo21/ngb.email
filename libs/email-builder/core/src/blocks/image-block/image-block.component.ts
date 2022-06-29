@@ -30,7 +30,7 @@ export interface IImageBlockOptions {
   selector: 'ip-image-block',
   template: `
     <p>image-block works! {{ options.title }}</p>
-    <ng-container *cdk-portal>
+    <ng-container *ipEmailBuilderSettings>
       <input type="text" [(ngModel)]="options.title" placeholder="Change me" />
     </ng-container>
   `,

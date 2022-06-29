@@ -1,23 +1,24 @@
 import { Injectable } from '@angular/core';
 import { CdkPortal, CdkPortalOutlet } from '@angular/cdk/portal';
 import { BehaviorSubject, map } from 'rxjs';
+import { IPEmailBuilderSettingsDirective } from '../directives/ipemail-builder-settings.directive';
 
 @Injectable({
   providedIn: 'root',
 })
 export class IPEmailBuilderUiService {
   #attachSettingsPortal$ = new BehaviorSubject<CdkPortal | null>(null);
-  #defaultSettingsPortal: CdkPortal | null | undefined;
+  #defaultSettingsPortal: IPEmailBuilderSettingsDirective | null | undefined;
   currentSettingsPortal$ = this.#attachSettingsPortal$.pipe(
     map((portal) => portal || this.#defaultSettingsPortal)
   );
   #settingsPortalOutlet: CdkPortalOutlet | undefined;
 
-  attachSettingsPortal(portal: CdkPortal | null): void {
+  attachSettingsPortal(portal: IPEmailBuilderSettingsDirective | null): void {
     this.#attachSettingsPortal$.next(portal);
   }
 
-  setDefaultSettingsPortal(portal: CdkPortal): void {
+  setDefaultSettingsPortal(portal: IPEmailBuilderSettingsDirective): void {
     this.#defaultSettingsPortal = portal;
   }
 

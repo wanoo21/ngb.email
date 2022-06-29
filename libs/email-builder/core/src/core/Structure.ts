@@ -1,22 +1,38 @@
-import { Directive, Input, QueryList, ViewChildren } from '@angular/core';
+import { Directive, HostBinding, Input, QueryList, ViewChildren } from "@angular/core";
 
-import { Configurable } from './Configurable';
-import { IStructureOptions, Structure } from '../structure/structure';
-import { IPEmailBuilderDynamicDirective } from '../directives/email-builder-dynamic.directive';
+import { Configurable } from "./Configurable";
+import { IStructureOptions, Structure } from "../structure/structure";
+import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
+import { IWidthHeight } from "../interfaces";
+import { createBackground, createBorder, createMargin, createPadding, createWidthHeight } from "../tools/utils";
 
 @Directive()
-export abstract class AIPStructure extends Configurable<IStructureOptions> {
-  @Input() structure = new Structure('cols_4');
-  @Input() index!: number;
-  @ViewChildren(IPEmailBuilderDynamicDirective, {
-    emitDistinctChangesOnly: true,
-  })
+export abstract class AIPStructure extends Configurable<Partial<IStructureOptions>> {
+  @Input() structure = new Structure();
+  @Input() bodyWidth!: IWidthHeight;
+  @ViewChildren(IPEmailBuilderDynamicDirective)
   readonly blocks!: QueryList<IPEmailBuilderDynamicDirective>;
-  options: IStructureOptions = {};
+  options: Partial<IStructureOptions> = {};
+
+  @HostBinding("style")
+  get bodyStyles(): Record<string, string | number> {
+    const { padding, background, border, margin, columnsWidth } = this.structure.options;
+    return {
+      display: "grid",
+      ...createPadding(padding),
+      background: createBackground(background),
+      ...createBorder(border),
+      ...createMargin(margin),
+      gridTemplateColumns: columnsWidth.map(fr => `${fr}fr`).join(" ")
+    };
+  }
+
+  @HostBinding("style.width")
+  get width(): string {
+    return this.structure.options.fullWidth ? "100%" : createWidthHeight(this.bodyWidth);
+  }
 
   override markForCheck(): boolean {
-    return this.blocks?.some(
-      ({ cmpInstance }) => !!cmpInstance?.isCurrentlyEditing
-    );
+    return this.blocks?.some(({ cmpInstance }) => !!cmpInstance?.isCurrentlyEditing);
   }
 }

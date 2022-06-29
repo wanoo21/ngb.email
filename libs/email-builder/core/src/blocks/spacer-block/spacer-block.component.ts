@@ -19,7 +19,7 @@ export interface ISpacerBlockOptions {
   selector: 'ip-spacer-block',
   template: `
     <p>spacer-block works!</p>
-    <ng-container *cdk-portal>
+    <ng-container *ipEmailBuilderSettings>
       <input
         type="number"
         [(ngModel)]="options.height.value"

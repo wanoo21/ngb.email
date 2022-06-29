@@ -21,7 +21,7 @@ export interface ITextBlockOptions {
   selector: 'ip-text-block',
   template: `
     <p>ipemail-builder-block {{ innerText }}!</p>
-    <ng-container *cdk-portal>
+    <ng-container *ipEmailBuilderSettings>
       <input type="text" [(ngModel)]="innerText" placeholder="Change me" />
     </ng-container>
   `,
@@ -58,10 +58,7 @@ export class TextBlockComponent extends AIPEmailBuilderBlock<ITextBlockOptions> 
     },
   };
 
-  override toObject(
-    options?: Partial<ITextBlockOptions>,
-    innerText = this.innerText
-  ) {
+  override toObject(options?: Partial<ITextBlockOptions>, innerText = this.innerText) {
     return { ...super.toObject(options), innerText };
   }
 }

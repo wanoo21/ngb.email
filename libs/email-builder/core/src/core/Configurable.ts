@@ -1,23 +1,22 @@
-import {
-  Directive,
-  DoCheck,
-  HostBinding,
-  inject,
-  ViewChild,
-} from '@angular/core';
-import { CdkPortal } from '@angular/cdk/portal';
-import { AbsComponent } from '@ngcomma/ngx-abstract';
+import { Directive, DoCheck, HostBinding, inject, ViewChild } from "@angular/core";
+import { AbsComponent } from "@ngcomma/ngx-abstract";
+import { defaultsDeep } from "@ngcomma/ngx-abstract/utils";
 
-import { IPEmailBuilderUiService } from '../services/email-builder-ui.service';
+import { IPEmailBuilderUiService } from "../services/email-builder-ui.service";
+import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
+
+export interface AIPEmailBuilderBlockExtendedOptions<T> extends Record<string, any> {
+  options: T;
+}
 
 @Directive()
 export abstract class Configurable<T> extends AbsComponent implements DoCheck {
   abstract options: T;
   readonly builderUiService = inject(IPEmailBuilderUiService);
-  @ViewChild(CdkPortal, { static: true })
-  readonly settingsPortal!: CdkPortal;
+  @ViewChild(IPEmailBuilderSettingsDirective, { static: true })
+  readonly settingsPortal!: IPEmailBuilderSettingsDirective;
 
-  @HostBinding('class.is-editing')
+  @HostBinding("class.is-editing")
   get isCurrentlyEditing(): boolean {
     return !!this.settingsPortal?.isAttached;
   }
@@ -30,12 +29,9 @@ export abstract class Configurable<T> extends AbsComponent implements DoCheck {
     return false;
   }
 
-  toObject(
-    options?: Partial<T>,
-    ...args: any[]
-  ): { options: T } & Record<string, any>;
-  toObject(options?: Partial<T>): { options: T } & Record<string, any> {
-    return { options: { ...this.options, ...options } };
+  toObject(options?: Partial<T>, ...args: any[]): AIPEmailBuilderBlockExtendedOptions<T>;
+  toObject(options?: Partial<T>): AIPEmailBuilderBlockExtendedOptions<T> {
+    return { options: defaultsDeep<T>((options || {}) as T, this.options) };
   }
 
   ngDoCheck(): void {

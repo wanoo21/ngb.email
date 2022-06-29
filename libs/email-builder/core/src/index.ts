@@ -18,6 +18,7 @@ export * from './blocks/spacer-block/spacer-block.component';
 // Core services & classes
 export * from './public-tokens';
 export * from './tools/core';
+export * from './tools/utils';
 export * from './core/block';
 export * from './interfaces';
 

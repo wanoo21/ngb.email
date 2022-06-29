@@ -1,17 +1,18 @@
-import { IBackground, IPadding, IWidthHeight, TDirection } from '../interfaces';
-import { IStructure } from '../structure/structure';
+import { IBackground, IPadding, IWidthHeight, TDirection } from "../interfaces";
+import { IStructure } from "../structure/structure";
+import { defaultsDeep } from "@ngcomma/ngx-abstract/utils";
 
 /**
  * Builder {@link IIPEmail} general options interface.
  */
 export interface IGeneralOptions {
-  width?: IWidthHeight;
-  background?: IBackground;
-  padding?: IPadding;
-  direction?: TDirection;
-  name?: string;
+  width: IWidthHeight;
+  background: IBackground;
+  padding: IPadding;
+  direction: TDirection;
+  name: string;
   previewText: string;
-  global?: {
+  global: {
     fonts?: string[];
     padding?: IPadding;
   };
@@ -21,39 +22,43 @@ export interface IGeneralOptions {
  * Main builder Email Object interface.
  */
 export interface IIPEmail {
-  general?: IGeneralOptions;
-  structures?: IStructure[];
+  general: IGeneralOptions;
+  structures: IStructure[];
 }
 
-abstract class IPEmailBody {
-  protected constructor(
+export class IPEmail {
+  general: IGeneralOptions;
+
+  constructor(
     public structures: IStructure[] = [],
-    public general: IGeneralOptions = {
-      name: '',
-      previewText: '',
+    general: Partial<IGeneralOptions> = {}
+  ) {
+    this.general = defaultsDeep(general, {
+      name: "",
+      previewText: "",
       width: {
         value: 600,
-        unit: 'px',
-        units: ['px'],
+        unit: "px",
+        units: ["px"]
       },
       background: {
         // url: '',
-        color: '#f1f1f1',
+        color: "#f1f1f1",
         // repeat: 'repeat',
         size: {
           value: 100,
-          unit: '%',
+          unit: "%",
           auto: true,
-          units: ['px', '%', 'cover', 'contain'],
-        },
+          units: ["px", "%", "cover", "contain"]
+        }
       },
       padding: {
         top: 16,
         right: 10,
         bottom: 10,
-        left: 10,
+        left: 10
       },
-      direction: 'ltr',
+      direction: "ltr",
       global: {
         // TODO Add more global configurations
         // fonts: [],
@@ -61,15 +66,15 @@ abstract class IPEmailBody {
           top: 0,
           right: 0,
           bottom: 0,
-          left: 0,
-        },
-      },
-    }
-  ) {}
-}
-
-export class IPEmail extends IPEmailBody {
-  constructor({ structures, general }: IIPEmail = {}) {
-    super(structures, general);
+          left: 0
+        }
+      }
+    }) as IGeneralOptions;
   }
 }
+
+// export class IPEmail extends IPEmailBody {
+//   constructor({ structures, general }: Partial<IIPEmail> = {}) {
+//     super(structures, general);
+//   }
+// }

@@ -1,17 +1,33 @@
-import { Directive, Input, OnInit } from '@angular/core';
+import { Directive, HostBinding, Input, OnInit } from "@angular/core";
 
-import { Configurable } from './Configurable';
-import { IIPEmail } from '../body/body';
+import { Configurable } from "./Configurable";
+import { IIPEmail } from "../body/body";
+import { createBackground, createPadding } from "../tools/utils";
 
 @Directive()
 export abstract class AIPEmailBody
-  extends Configurable<IIPEmail['general']>
-  implements OnInit
-{
-  @Input() options: IIPEmail['general'];
-  @Input() structures: IIPEmail['structures'];
+  extends Configurable<IIPEmail["general"]>
+  implements OnInit {
+  @Input() options!: IIPEmail["general"];
+  @Input() structures!: IIPEmail["structures"];
 
-  text = '';
+  @HostBinding("style")
+  get bodyStyles(): Record<string, string | number> {
+    const { padding, background } = this.options;
+    return {
+      ...createPadding(padding),
+      background: createBackground(background),
+      display: "flex",
+      justifyContent: "start",
+      alignItems: "center",
+      flexDirection: "column"
+    };
+  }
+
+  @HostBinding("attr.dir")
+  get dir(): string {
+    return this.options.direction;
+  }
 
   ngOnInit() {
     // Always show general settings if nothing is editing

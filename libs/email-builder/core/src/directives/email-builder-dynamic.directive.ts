@@ -1,21 +1,20 @@
-import { Directive, Inject, Input } from '@angular/core';
-import { AbsDirective } from '@ngcomma/ngx-abstract';
+import { Directive, Inject, Input } from "@angular/core";
+import { AbsDirective } from "@ngcomma/ngx-abstract";
 
-import {
-  IIPEmailBuilderBlockData,
-  IP_EMAIL_BUILDER_BLOCKS_DATA,
-} from '../private-tokens';
-import { AIPEmailBuilderBlock } from '../core/block';
+import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
+import { AIPEmailBuilderBlock } from "../core/block";
 
 interface IBlockData
-  extends Partial<Pick<AIPEmailBuilderBlock<never>, 'type' | 'options'>>,
-    Record<string, any> {}
+  extends Partial<Pick<AIPEmailBuilderBlock<never>, "type" | "options">>,
+    Record<string, any> {
+}
 
 @Directive({
-  selector: '[ipEmailBuilderDynamicBlockDirective]',
+  selector: "[ipEmailBuilderDynamicBlockDirective]"
 })
 export class IPEmailBuilderDynamicDirective extends AbsDirective {
   cmpInstance: AIPEmailBuilderBlock<any> | undefined;
+
   constructor(
     @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
     readonly blocksData: IIPEmailBuilderBlockData[]

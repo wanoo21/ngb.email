@@ -13,6 +13,7 @@ import { ButtonBlockComponent } from './blocks/button-block/button-block.compone
 import { DividerBlockComponent } from './blocks/divider-block/divider-block.component';
 import { SocialBlockComponent } from './blocks/social-block/social-block.component';
 import { SpacerBlockComponent } from './blocks/spacer-block/spacer-block.component';
+import { IPEmailBuilderSettingsDirective } from './directives/ipemail-builder-settings.directive';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { SpacerBlockComponent } from './blocks/spacer-block/spacer-block.compone
     SpacerBlockComponent,
     IPEmailBuilderBlockDataPipe,
     IPEmailBuilderDynamicDirective,
+    IPEmailBuilderSettingsDirective,
   ],
   imports: [CommonModule, PortalModule, FormsModule],
   exports: [
@@ -37,6 +39,7 @@ import { SpacerBlockComponent } from './blocks/spacer-block/spacer-block.compone
     IPEmailBuilderDynamicDirective,
     PortalModule,
     FormsModule,
+    IPEmailBuilderSettingsDirective,
   ],
   providers: [
     ...addNewIPEmailBuilderBlock(
