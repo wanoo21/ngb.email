@@ -10,7 +10,8 @@ interface IBlockData
 }
 
 @Directive({
-  selector: "[ipEmailBuilderDynamicBlockDirective]"
+  selector: "[ipEmailBuilderDynamicBlockDirective]",
+  exportAs: 'instance'
 })
 export class IPEmailBuilderDynamicDirective extends AbsDirective {
   cmpInstance: AIPEmailBuilderBlock<any> | undefined;
@@ -24,13 +25,9 @@ export class IPEmailBuilderDynamicDirective extends AbsDirective {
 
   @Input()
   set ipEmailBuilderDynamicBlockDirective(context: IBlockData) {
-    const foundBlock = this.blocksData.find(
-      (block) => context.type === block.type
-    );
+    const foundBlock = this.blocksData.find((block) => context.type === block.type);
     if (foundBlock) {
-      this.cmpInstance = this.viewContainerRef.createComponent(
-        foundBlock.block
-      ).instance;
+      this.cmpInstance = this.viewContainerRef.createComponent(foundBlock.block).instance;
       Object.assign(this.cmpInstance, context);
     } else {
       throw TypeError(`No such block found: ${context.type}`);

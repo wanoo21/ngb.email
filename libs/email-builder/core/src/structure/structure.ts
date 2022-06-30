@@ -7,9 +7,9 @@ import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../co
  * Builder structure columns' styles interface.
  */
 export interface IStructureColumnOptions {
-  background?: IBackground;
-  border?: IBorder;
-  verticalAlign?: TVerticalAlign;
+  background: IBackground;
+  border: IBorder;
+  verticalAlign: TVerticalAlign;
 }
 
 /**
@@ -54,7 +54,7 @@ export interface IStructure {
   // readonly columns: number;
 }
 
-const defaultColumnsOptions: IStructureColumnOptions = {
+export const defaultColumnsOptions: IStructureColumnOptions = {
   background: {
     color: "transparent"
   },
@@ -140,7 +140,7 @@ export class Structure implements IStructure {
         top: 0,
         bottom: 0
       },
-      gaps: [4, 4]
+      gaps: [8, 4]
     }, {
       columnsWidth, columns: Array.from({ length: columnsLength }, () => defaultColumnsOptions)
     }) as IStructureOptions;

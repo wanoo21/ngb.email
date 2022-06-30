@@ -14,7 +14,7 @@ import { TextBlockComponent } from "./blocks/text-block/text-block.component";
 @Directive()
 export abstract class AIPEmailBuilderComponent extends AbsComponent {
   @Input() email = new IPEmail([
-      new Structure("cols_6", [
+      new Structure("cols_2", [
         [new TextBlockComponent()]
       ]),
       new Structure("cols_6", [

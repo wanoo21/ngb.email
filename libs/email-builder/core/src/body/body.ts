@@ -60,16 +60,16 @@ export class IPEmail {
         left: 10
       },
       direction: "ltr",
-      global: {
-        // TODO Add more global configurations
-        // fonts: [],
-        padding: {
-          top: 0,
-          right: 0,
-          bottom: 0,
-          left: 0
-        }
-      }
+      // global: {
+      //   // TODO Add more global configurations
+      //   // fonts: [],
+      //   padding: {
+      //     top: 0,
+      //     right: 0,
+      //     bottom: 0,
+      //     left: 0
+      //   }
+      // }
     }) as IGeneralOptions;
   }
 }

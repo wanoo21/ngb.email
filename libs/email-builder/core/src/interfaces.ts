@@ -319,3 +319,6 @@ export enum ETemplatesStorage {
   LATEST_USED = 'NGB_LATEST_USED_TEMPLATES',
   STORAGE = 'NGB_TEMP_TEMPLATES_STORAGE',
 }
+
+
+export type TIPEmailBuilderStyles = Record<string, string | number | undefined>;
