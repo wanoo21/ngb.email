@@ -1,13 +1,11 @@
 import { Directive, HostBinding, Input, OnInit } from "@angular/core";
 
-import { Configurable } from "./Configurable";
+import { WithSettings } from "./WithSettings";
 import { IIPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
 
 @Directive()
-export abstract class AIPEmailBody
-  extends Configurable<IIPEmail["general"]>
-  implements OnInit {
+export abstract class AIPEmailBody extends WithSettings implements OnInit {
   @Input() options!: IIPEmail["general"];
   @Input() structures!: IIPEmail["structures"];
 

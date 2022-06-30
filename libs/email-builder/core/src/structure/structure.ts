@@ -1,8 +1,7 @@
 import { defaultsDeep, randomString } from "@ngcomma/ngx-abstract/utils";
 
 import { IBackground, IBorder, IMargin, IPadding, TStructureTypes, TVerticalAlign } from "../interfaces";
-import { AIPEmailBuilderBlockExtendedOptions } from "../core/Configurable";
-import { AIPEmailBuilderBlock } from "../core/block";
+import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/block";
 
 /**
  * Builder structure columns' styles interface.

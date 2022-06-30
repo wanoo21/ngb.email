@@ -1,18 +1,17 @@
 import { Directive, HostBinding, Input, QueryList, ViewChildren } from "@angular/core";
 
-import { Configurable } from "./Configurable";
-import { IStructureOptions, Structure } from "../structure/structure";
+import { WithSettings } from "./WithSettings";
+import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
 import { IWidthHeight } from "../interfaces";
 import { createBackground, createBorder, createMargin, createPadding, createWidthHeight } from "../tools/utils";
 
 @Directive()
-export abstract class AIPStructure extends Configurable<Partial<IStructureOptions>> {
+export abstract class AIPStructure extends WithSettings {
   @Input() structure = new Structure();
   @Input() bodyWidth!: IWidthHeight;
   @ViewChildren(IPEmailBuilderDynamicDirective)
   readonly blocks!: QueryList<IPEmailBuilderDynamicDirective>;
-  options: Partial<IStructureOptions> = {};
 
   @HostBinding("style")
   get bodyStyles(): Record<string, string | number> {
