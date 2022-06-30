@@ -6,3 +6,7 @@
   display: block;
   height: var(--ip-email-builder-host-height, 100vh);
 }
+
+::ng-deep .is-editing {
+  @apply ring-2 ring-pink-400 ring-offset-2;
+}
