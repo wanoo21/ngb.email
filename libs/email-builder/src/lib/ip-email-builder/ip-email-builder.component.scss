@@ -8,5 +8,5 @@
 }
 
 ::ng-deep .is-editing {
-  @apply ring-2 ring-pink-400 ring-offset-2;
+  @apply ring-2 ring-pink-400/50 ring-offset-2 z-10;
 }

@@ -27,6 +27,10 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit {
     return this.options.direction;
   }
 
+  @HostListener("click") onClick() {
+    this.edit();
+  }
+
   ngOnInit() {
     // Always show general settings if nothing is editing
     this.builderUiService.setDefaultSettingsPortal(this.settingsPortal);

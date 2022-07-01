@@ -2,16 +2,11 @@ import { Directive, Inject, Input } from "@angular/core";
 import { AbsDirective } from "@ngcomma/ngx-abstract";
 
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
-import { AIPEmailBuilderBlock } from "../core/block";
-
-interface IBlockData
-  extends Partial<Pick<AIPEmailBuilderBlock<never>, "type" | "options">>,
-    Record<string, any> {
-}
+import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/block";
 
 @Directive({
   selector: "[ipEmailBuilderDynamicBlockDirective]",
-  exportAs: 'instance'
+  exportAs: "instance"
 })
 export class IPEmailBuilderDynamicDirective extends AbsDirective {
   cmpInstance: AIPEmailBuilderBlock<any> | undefined;
@@ -24,7 +19,7 @@ export class IPEmailBuilderDynamicDirective extends AbsDirective {
   }
 
   @Input()
-  set ipEmailBuilderDynamicBlockDirective(context: IBlockData) {
+  set ipEmailBuilderDynamicBlockDirective(context: AIPEmailBuilderBlockExtendedOptions<any>) {
     const foundBlock = this.blocksData.find((block) => context.type === block.type);
     if (foundBlock) {
       this.cmpInstance = this.viewContainerRef.createComponent(foundBlock.block).instance;

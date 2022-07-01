@@ -1,4 +1,4 @@
-import { Directive, DoCheck, HostBinding, HostListener, inject, ViewChild } from "@angular/core";
+import { Directive, DoCheck, HostBinding, inject, ViewChild } from "@angular/core";
 import { AbsComponent } from "@ngcomma/ngx-abstract";
 
 import { IPEmailBuilderUiService } from "../services/email-builder-ui.service";
@@ -13,11 +13,6 @@ export abstract class WithSettings extends AbsComponent implements DoCheck {
   @HostBinding("class.is-editing")
   get isCurrentlyEditing(): boolean {
     return !!this.settingsPortal?.isAttached;
-  }
-
-  @HostListener("click", ["$event"]) onClick(ev: Event) {
-    ev.stopPropagation();
-    this.edit();
   }
 
   edit(): void {

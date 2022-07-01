@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CdkPortal, CdkPortalOutlet } from '@angular/cdk/portal';
 import { BehaviorSubject, map } from 'rxjs';
+
 import { IPEmailBuilderSettingsDirective } from '../directives/ipemail-builder-settings.directive';
 
 @Injectable({

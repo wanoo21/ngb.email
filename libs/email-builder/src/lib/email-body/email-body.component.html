@@ -1,4 +1,6 @@
-<ip-structure *ngFor="let structure of structures" [structure]="structure" [bodyWidth]="options.width"></ip-structure>
+<ip-structure
+  *ngFor="let structure of structures" [structure]="structure" [bodyWidth]="options.width"
+  class="group relative"></ip-structure>
 
 <ng-container *ipEmailBuilderSettings>
   <input type="number" [(ngModel)]="options.width.value">

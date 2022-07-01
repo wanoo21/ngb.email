@@ -1,4 +1,4 @@
-import { Directive, HostBinding, Input, QueryList, ViewChildren } from "@angular/core";
+import { Directive, HostBinding, HostListener, Input, QueryList, ViewChildren } from "@angular/core";
 
 import { WithSettings } from "./WithSettings";
 import { defaultColumnsOptions, Structure } from "../structure/structure";
@@ -33,6 +33,10 @@ export abstract class AIPStructure extends WithSettings {
   @HostBinding("style.width")
   get width(): string {
     return this.structure.options.fullWidth ? "100%" : createWidthHeight(this.bodyWidth);
+  }
+
+  @HostListener("click", ["$event"]) onClick(ev: Event) {
+    ev.stopPropagation();
   }
 
   columnStyles(columnKey: number): TIPEmailBuilderStyles {
