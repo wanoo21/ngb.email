@@ -1,26 +1,26 @@
-import { Provider, Type } from '@angular/core';
+import { Provider, Type } from "@angular/core";
 
-import { IIPEmailBuilderConfig } from '../public-tokens';
+import { IIPEmailBuilderConfig } from "../public-tokens";
 import {
   IP_EMAIL_BUILDER_BLOCKS,
   IP_EMAIL_BUILDER_BLOCKS_DATA,
   IP_EMAIL_BUILDER_CONFIG,
-  IPEmailBuilderConfig,
-} from '../private-tokens';
-import { AIPEmailBuilderBlock } from '../core/block';
-import { IBlockState } from '../interfaces';
+  IPEmailBuilderConfig
+} from "../private-tokens";
+import { AIPEmailBuilderBlock } from "../core/block";
+import { IBlockState } from "../interfaces";
 
 export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
   return [
     {
       provide: IP_EMAIL_BUILDER_CONFIG,
-      useValue: new IPEmailBuilderConfig(config),
-    },
+      useValue: new IPEmailBuilderConfig(config)
+    }
   ];
 }
 
 export function addNewIPEmailBuilderBlock(
-  block: Type<AIPEmailBuilderBlock<Record<string, any>>>,
+  block: Type<AIPEmailBuilderBlock>,
   type: string,
   title: string,
   state?: Partial<IBlockState>
@@ -36,12 +36,12 @@ export function addNewIPEmailBuilderBlock(
         title,
         state: {
           disabled: false,
-          message: '',
+          message: "",
           order: 0,
-          ...state,
-        },
+          ...state
+        }
       },
-      multi: true,
-    },
+      multi: true
+    }
   ];
 }

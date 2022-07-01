@@ -9,7 +9,7 @@ import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../co
   exportAs: "instance"
 })
 export class IPEmailBuilderDynamicDirective extends AbsDirective {
-  cmpInstance: AIPEmailBuilderBlock<any> | undefined;
+  cmpInstance: AIPEmailBuilderBlock | undefined;
 
   constructor(
     @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
@@ -19,7 +19,7 @@ export class IPEmailBuilderDynamicDirective extends AbsDirective {
   }
 
   @Input()
-  set ipEmailBuilderDynamicBlockDirective(context: AIPEmailBuilderBlockExtendedOptions<any>) {
+  set ipEmailBuilderDynamicBlockDirective(context: AIPEmailBuilderBlockExtendedOptions) {
     const foundBlock = this.blocksData.find((block) => context.type === block.type);
     if (foundBlock) {
       this.cmpInstance = this.viewContainerRef.createComponent(foundBlock.block).instance;

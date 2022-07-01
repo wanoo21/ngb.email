@@ -3,13 +3,13 @@ import { defaultsDeep } from "@ngcomma/ngx-abstract/utils";
 
 import { WithSettings } from "./WithSettings";
 
-export interface AIPEmailBuilderBlockExtendedOptions<T> extends Record<string, any> {
+export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> extends Record<string, any> {
   options: T;
   type: string;
 }
 
 @Directive()
-export abstract class AIPEmailBuilderBlock<T> extends WithSettings {
+export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends WithSettings {
   type!: string;
   abstract options: T;
 
