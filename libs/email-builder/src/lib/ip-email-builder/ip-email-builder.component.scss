@@ -7,6 +7,6 @@
   height: var(--ip-email-builder-host-height, 100vh);
 }
 
-::ng-deep .is-editing {
+::ng-deep .is-editing:not(ip-email-body) {
   @apply ring-2 ring-pink-400/50 ring-offset-2 z-10;
 }

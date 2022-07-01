@@ -1,7 +1,11 @@
 <ip-structure
   *ngFor="let structure of structures" [structure]="structure" [bodyWidth]="options.width"
-  class="group relative"></ip-structure>
+  class="group relative" cdkDropList></ip-structure>
 
 <ng-container *ipEmailBuilderSettings>
-  <input type="number" [(ngModel)]="options.width.value">
+  <input type="number" [(ngModel)]="options.width.value" ipInput placeholder="Body width">
+  <label>
+    <input type="checkbox" class="appearance-none checked:bg-blue-500" />
+    Full width
+  </label>
 </ng-container>

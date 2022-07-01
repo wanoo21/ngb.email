@@ -1,10 +1,28 @@
-<ul class="grid gap-2 grid-cols-2">
-  <li class="border rounded border-gray-200 bg-white text-base text-center p-4 cursor-pointer select-none" *ngFor="let block of blocks">
-    <ng-container [ngSwitch]="block.type">
-      <div *ngSwitchCase="'text_format'">Text</div>
-      <span>{{ block.title }}</span>
-    </ng-container>
-  </li>
-</ul>
+<ng-container cdkStepper #stepper="cdkStepper">
+  <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
+    <ul class="grid gap-2 grid-cols-2">
+      <li class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
+          *ngFor="let block of blocks" cdkDrag [cdkDragData]="block">
+        <ng-container [ngSwitch]="block.type">{{ block.title }}</ng-container>
+      </li>
+    </ul>
+  </cdk-step>
+  <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">1</cdk-step>
+  <cdk-step label="Settings" i18n-label="@@ip_aside_stepper:Settings">
+    <ng-container [cdkPortalOutlet]="currentSettings$ | async"></ng-container>
+  </cdk-step>
+</ng-container>
 
-<div [cdkPortalOutlet]="builderUiService.currentSettingsPortal$ | async"></div>
+<div class="stepper grid grid-cols-3 divide-x divide-gray-200" role="tablist">
+  <ng-container *ngFor="let step of stepper.steps">
+    <button (click)="step.select()"
+            class="step bg-white py-3 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
+            [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
+      {{step.label}}
+    </button>
+  </ng-container>
+</div>
+
+<div class="px-2 flex-1" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
+  <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
+</div>
