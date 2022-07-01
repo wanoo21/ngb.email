@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
 
 import { IFont, ILineHeight, IPadding } from "../../interfaces";
-import { AIPEmailBuilderBlock } from "../../core/block";
+import { AIPEmailBuilderBlock } from "../../core/Block";
 
 /**
  * Builder {@link TextBlockComponent} options interface.

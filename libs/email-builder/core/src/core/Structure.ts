@@ -25,6 +25,7 @@ export abstract class AIPStructure extends WithSettings {
       background: createBackground(background),
       ...createBorder(border),
       ...createMargin(margin),
+      maxWidth: "100%",
       gridTemplateColumns: columnsWidth.map(fr => `${fr}fr`).join(" "),
       gap: gaps.map(gap => `${gap}px`).join(" ")
     };

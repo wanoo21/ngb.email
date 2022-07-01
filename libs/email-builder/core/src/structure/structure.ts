@@ -1,7 +1,7 @@
 import { defaultsDeep, randomString } from "@ngcomma/ngx-abstract/utils";
 
 import { IBackground, IBorder, IMargin, IPadding, TStructureTypes, TVerticalAlign } from "../interfaces";
-import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/block";
+import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 
 /**
  * Builder structure columns' styles interface.
@@ -50,7 +50,7 @@ export interface IStructure {
   isModule?: boolean;
   options: IStructureOptions;
   // Structure columns.
-  elements: AIPEmailBuilderBlockExtendedOptions<any>[][];
+  elements: AIPEmailBuilderBlockExtendedOptions[][];
   // readonly columns: number;
 }
 
@@ -69,12 +69,12 @@ export const defaultColumnsOptions: IStructureColumnOptions = {
 
 export class Structure implements IStructure {
   readonly id = randomString();
-  elements: AIPEmailBuilderBlockExtendedOptions<any>[][] = [];
+  elements: AIPEmailBuilderBlockExtendedOptions[][] = [];
   options: IStructureOptions;
 
   constructor(
     readonly type: TStructureTypes = "cols_1",
-    elements: AIPEmailBuilderBlockExtendedOptions<any>[][] = [],
+    elements: (AIPEmailBuilderBlockExtendedOptions | AIPEmailBuilderBlock)[][] = [],
     options: Partial<IStructureOptions> = {}
   ) {
     let columnsLength = 1;

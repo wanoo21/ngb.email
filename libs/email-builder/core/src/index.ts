@@ -19,7 +19,7 @@ export * from './blocks/spacer-block/spacer-block.component';
 export * from './public-tokens';
 export * from './tools/core';
 export * from './tools/utils';
-export * from './core/block';
+export * from './core/Block';
 export * from './interfaces';
 
 // Email Body

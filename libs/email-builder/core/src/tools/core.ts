@@ -7,7 +7,7 @@ import {
   IP_EMAIL_BUILDER_CONFIG,
   IPEmailBuilderConfig
 } from "../private-tokens";
-import { AIPEmailBuilderBlock } from "../core/block";
+import { AIPEmailBuilderBlock } from "../core/Block";
 import { IBlockState } from "../interfaces";
 
 export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {

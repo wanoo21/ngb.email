@@ -2,7 +2,7 @@ import { Directive, Inject, Input } from "@angular/core";
 import { AbsDirective } from "@ngcomma/ngx-abstract";
 
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
-import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/block";
+import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 
 @Directive({
   selector: "[ipEmailBuilderDynamicBlockDirective]",

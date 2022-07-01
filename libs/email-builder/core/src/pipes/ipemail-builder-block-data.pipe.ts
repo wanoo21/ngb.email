@@ -4,7 +4,7 @@ import {
   IIPEmailBuilderBlockData,
   IP_EMAIL_BUILDER_BLOCKS_DATA,
 } from '../private-tokens';
-import { AIPEmailBuilderBlock } from '../core/block';
+import { AIPEmailBuilderBlock } from '../core/Block';
 import { IBlockState } from '../interfaces';
 
 @Pipe({

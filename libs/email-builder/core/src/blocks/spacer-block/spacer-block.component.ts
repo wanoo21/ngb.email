@@ -4,7 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 
-import { AIPEmailBuilderBlock } from '../../core/block';
+import { AIPEmailBuilderBlock } from '../../core/Block';
 import { IWidthHeight } from '../../interfaces';
 
 /**
