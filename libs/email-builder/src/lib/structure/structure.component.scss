@@ -1,0 +1,20 @@
+:host {
+  display: block;
+}
+
+.column.empty {
+  @apply grid place-content-center bg-gray-200 h-24 min-h-fit rounded border-2 border-gray-300 #{!important};
+}
+
+.tool-button {
+  @apply p-1 bg-gray-300 text-white hover:bg-gray-400 rounded-full transition-colors;
+}
+
+.overflow {
+  @apply shadow-sm absolute inset-0 bg-blue-100/50 flex flex-wrap items-center justify-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
+  row-gap: 0;
+}
+
+.menu-container {
+  @apply bg-white p-1 shadow-lg rounded border-[1px] grid gap-2;
+}

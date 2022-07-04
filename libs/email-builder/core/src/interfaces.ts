@@ -166,20 +166,20 @@ export type TBackgroundRepeat =
  */
 export interface IBorder {
   /* Border color */
-  color?: string;
+  color: string;
   /**
    * Border style.
    * @default solid
    */
-  style?: 'solid' | 'dotted' | 'dashed' | 'double' | 'groove';
+  style: 'solid' | 'dotted' | 'dashed' | 'double' | 'groove';
   /**
    * Border width
    */
-  width?: number;
+  width: number;
   /**
    * Border radius
    */
-  radius?: number;
+  radius: number;
 }
 
 /**
@@ -220,10 +220,10 @@ export interface IWidthHeight {
  * Builder background styles interface.
  */
 export interface IBackground {
-  color?: string;
-  url?: string;
-  repeat?: TBackgroundRepeat;
-  size?: IWidthHeight;
+  color: string;
+  url: string;
+  repeat: TBackgroundRepeat;
+  size: IWidthHeight;
 }
 
 /**

@@ -67,7 +67,7 @@ export function createLineHeight(lineHeight: ILineHeight): { lineHeight: string 
  * Create background styles based on {@link IBackground} object.
  * @param background Background object.
  */
-export function createBackground(background: IBackground): string {
+export function createBackground(background: Partial<IBackground>): string {
   const { url = '', color = 'white', repeat = 'no-repeat' } = background;
   return `${color} ${url && `url(${url})`} ${repeat} top center`;
 }

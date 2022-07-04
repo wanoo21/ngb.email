@@ -1,4 +1,4 @@
-import { defaultsDeep, randomString } from "@ngcomma/ngx-abstract/utils";
+import { cloneDeep, defaultsDeep, randomString } from "@ngcomma/ngx-abstract/utils";
 
 import { IBackground, IBorder, IMargin, IPadding, TStructureTypes, TVerticalAlign } from "../interfaces";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
@@ -7,7 +7,7 @@ import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../co
  * Builder structure columns' styles interface.
  */
 export interface IStructureColumnOptions {
-  background: IBackground;
+  background: Pick<IBackground, "color">;
   border: IBorder;
   verticalAlign: TVerticalAlign;
 }
@@ -142,7 +142,7 @@ export class Structure implements IStructure {
       },
       gaps: [8, 4]
     }, {
-      columnsWidth, columns: Array.from({ length: columnsLength }, () => defaultColumnsOptions)
+      columnsWidth, columns: Array.from({ length: columnsLength }, () => cloneDeep(defaultColumnsOptions))
     }) as IStructureOptions;
   }
 }

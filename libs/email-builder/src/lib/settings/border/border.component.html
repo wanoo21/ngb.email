@@ -1,0 +1,18 @@
+<ip-color [color]="border.color" *ngIf="hasOwn('color')"></ip-color>
+
+<div class="flex gap-2 mt-2">
+  <input type="number" ipInput [(ngModel)]="border.width" *ngIf="hasOwn('width')" placeholder="Width"
+         i18n-placeholder="@@border_width">
+  <input type="number" ipInput [(ngModel)]="border.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
+         i18n-placeholder="@@border_radius">
+</div>
+
+<ng-container *ngIf="border.width">
+  <h3 ipH3 i18n="@@border_style" class="pt-2">Border style</h3>
+  <div class="grid grid-cols-5 gap-2">
+    <button ipBtn size="xs" *ngFor="let style of styleLabels" [class.active]="border.style === style"
+            (click)="border.style = style">
+      {{getStyleLabel(style)}}
+    </button>
+  </div>
+</ng-container>

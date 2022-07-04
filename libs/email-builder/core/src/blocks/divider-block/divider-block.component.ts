@@ -11,7 +11,7 @@ import { IBorder, IPadding } from '../../interfaces';
  * Builder {@link DividerBlockComponent} options interface.
  */
 export interface IDividerBlockOptions {
-  border: IBorder;
+  border: Omit<IBorder, "radius">;
   padding: IPadding;
 }
 

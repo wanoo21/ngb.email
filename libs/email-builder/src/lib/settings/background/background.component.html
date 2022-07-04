@@ -1,0 +1,35 @@
+<ip-color [(color)]="background.color"></ip-color>
+<ip-image-upload class="pt-2" [(src)]="background.url"></ip-image-upload>
+<p ipHint variant="red" i18n="@@background_image_outlook_support">
+  Background image has limited support in some Outlook versions.
+</p>
+
+<ng-container *ngIf="background.url.length">
+  <h3 ipH3 i18n="@@background_image_repeat" class="pt-2">Background image repeat</h3>
+  <div class="grid grid-cols-4 gap-2">
+    <button *ngFor="let repeat of repeatKeys" ipBtn size="xs"
+            [class.active]="background.repeat === repeat"
+            (click)="background.repeat = repeat"
+    >
+      {{getRepeatLabel(repeat)}}
+    </button>
+  </div>
+  <h3 ipH3 i18n="@@background_image_size" class="pt-2">Background image size</h3>
+  <div class="grid grid-cols-5 gap-2">
+    <button ipBtn size="xs" [class.active]="background.size.auto"
+            (click)="background.size.auto = !background.size.auto" i18n="@@background_image_size_auto">
+      Auto
+    </button>
+    <button *ngFor="let unit of background.size.units" ipBtn size="xs"
+            [class.active]="background.size.unit === unit && !background.size.auto"
+            (click)="background.size.unit = unit"
+            [disabled]="background.size.auto"
+    >
+      {{getUnitLabel(unit)}}
+    </button>
+  </div>
+
+  <div class="mt-1" *ngIf="['%', 'px'].includes(background.size.unit) && !background.size.auto">
+    <input type="number" ipInput [(ngModel)]="background.size.value">
+  </div>
+</ng-container>

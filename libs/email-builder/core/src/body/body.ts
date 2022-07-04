@@ -8,7 +8,7 @@ import { IStructure } from "../structure/structure";
  */
 export interface IGeneralOptions {
   width: IWidthHeight;
-  background: IBackground;
+  background: Pick<IBackground, "color" | "size">;
   padding: IPadding;
   direction: TDirection;
   name: string;
@@ -59,7 +59,7 @@ export class IPEmail {
         bottom: 10,
         left: 10
       },
-      direction: "ltr",
+      direction: "ltr"
       // global: {
       //   // TODO Add more global configurations
       //   // fonts: [],
