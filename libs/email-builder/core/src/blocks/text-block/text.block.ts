@@ -1,10 +1,8 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
-
 import { IFont, ILineHeight, IPadding } from "../../interfaces";
 import { AIPEmailBuilderBlock } from "../../core/Block";
 
 /**
- * Builder {@link TextBlockComponent} options interface.
+ * Builder {@link TextBlock} options interface.
  */
 export interface ITextBlockOptions {
   color: string;
@@ -13,30 +11,8 @@ export interface ITextBlockOptions {
   padding: IPadding;
 }
 
-@Component({
-  selector: "ip-text-block",
-  template: `
-    <p>ipemail-builder-block {{ innerText }}!</p>
-    <ng-container *ipEmailBuilderSettings>
-      <input type="text" [(ngModel)]="innerText" placeholder="Change me" />
-    </ng-container>
-  `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-
-      p, ol, ul, pre, blockquote, h1, h2, h3, h4, h5, h6 {
-        margin: 0;
-        padding: 0;
-      }
-    `
-  ],
-  encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
-})
-export class TextBlockComponent extends AIPEmailBuilderBlock<ITextBlockOptions> {
+export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> {
+  override type = "text_format";
   innerText = "TEXT";
   options: ITextBlockOptions = {
     color: "#000000",

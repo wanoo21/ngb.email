@@ -19,9 +19,7 @@ import { AIPEmailBuilderBlock, IPadding } from "@wlocalhost/ngx-email-builder/co
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class MyHTMLBlockComponent extends AIPEmailBuilderBlock<{
-  padding: IPadding;
-}> {
+export class MyHTMLBlockComponent extends AIPEmailBuilderBlock<{ padding: IPadding; }> {
   innerText = "HTML";
   options = {
     padding: { top: 10 }

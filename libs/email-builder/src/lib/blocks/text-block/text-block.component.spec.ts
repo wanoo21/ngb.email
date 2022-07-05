@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TextBlockComponent } from './text-block.component';
 
-describe('IPEmailBuilderBlockComponent', () => {
+describe('TextBlockComponent', () => {
   let component: TextBlockComponent;
   let fixture: ComponentFixture<TextBlockComponent>;
 

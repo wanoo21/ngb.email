@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonBlockComponent } from './button-block.component';
+import { SpacerBlock } from './spacer.block';
 
-describe('ButtonBlockComponent', () => {
-  let component: ButtonBlockComponent;
-  let fixture: ComponentFixture<ButtonBlockComponent>;
+describe('SpacerBlockComponent', () => {
+  let component: SpacerBlock;
+  let fixture: ComponentFixture<SpacerBlock>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonBlockComponent],
+      declarations: [SpacerBlock],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ButtonBlockComponent);
+    fixture = TestBed.createComponent(SpacerBlock);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

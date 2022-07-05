@@ -84,13 +84,23 @@ export class FormHintDirective extends AddClassList {
   @Input() variant = "gray";
 
   get classList(): string {
-    return `text-xs text-${this.variant}-300 font-light mt-1`;
+    return `text-xs text-${this.variant}-400 font-light mt-1`;
+  };
+}
+
+@Directive({
+  selector: "[ipPanel]",
+  exportAs: "panel"
+})
+export class FormPanelDirective extends AddClassList {
+  get classList(): string {
+    return `p-2 rounded bg-white border`;
   };
 }
 
 @NgModule({
-  declarations: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive],
-  exports: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive]
+  declarations: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective],
+  exports: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective]
 })
 export class IpFormUIModule {
 }

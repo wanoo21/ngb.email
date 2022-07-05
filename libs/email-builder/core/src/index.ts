@@ -8,12 +8,12 @@ export * from "./services/email-builder-middleware-service/email-builder-middlew
 export * from "./services/email-builder-rest-service/email-builder-rest.service";
 
 // Default blocks blocks
-export * from "./blocks/text-block/text-block.component";
-export * from "./blocks/image-block/image-block.component";
-export * from "./blocks/button-block/button-block.component";
-export * from "./blocks/divider-block/divider-block.component";
-export * from "./blocks/social-block/social-block.component";
-export * from "./blocks/spacer-block/spacer-block.component";
+export * from "./blocks/text-block/text.block";
+export * from "./blocks/image-block/image.block";
+export * from "./blocks/button-block/button.block";
+export * from "./blocks/divider-block/divider.block";
+export * from "./blocks/social-block/social.block";
+export * from "./blocks/spacer-block/spacer.block";
 
 // Core services & classes
 export * from "./public-tokens";
