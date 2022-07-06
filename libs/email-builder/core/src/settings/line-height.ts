@@ -1,0 +1,20 @@
+import { Directive, Input } from "@angular/core";
+
+import { ILineHeight, TLineHeight } from "../interfaces";
+
+@Directive()
+export abstract class AIPLineHeight {
+  @Input() lineHeight!: ILineHeight;
+  @Input() units: TLineHeight[] = ["%", "px", "none"];
+
+  #unitsLabels: Map<string, string> = new Map<TLineHeight, string>([
+    ["%", $localize`:@@unit:Percent`],
+    ["px", $localize`:@@unit:Pixels`],
+    ["none", $localize`:@@unit:None`]
+  ]);
+
+  getUnitLabel(unit: TLineHeight): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.#unitsLabels.get(unit)!;
+  }
+}

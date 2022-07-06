@@ -1,0 +1,32 @@
+<div class="flex flex-col">
+  <label [ipLabel]="i">Custom Google Font</label>
+  <input ipInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
+  <p ipHint>Leave empty to use standard fonts.</p>
+</div>
+<div class="flex flex-col pt-2">
+  <label [ipLabel]="s" *ngIf="!googleFont">Standard Font</label>
+  <label [ipLabel]="s" *ngIf="googleFont">Fallback Font</label>
+  <select ipInput #s="input" [(ngModel)]="family" class="appearance-none">
+    <option *ngFor="let font of standardFonts" [value]="font">{{font}}</option>
+  </select>
+  <p ipHint *ngIf="googleFont">Fallback font is used in case custom font is not supported.</p>
+</div>
+
+<div class="grid grid-cols-3 gap-2 pt-2">
+  <div class="flex flex-col">
+    <label [ipLabel]="s">Size</label>
+    <input ipInput #s="input" [(ngModel)]="font.size" type="number" />
+  </div>
+  <div class="flex flex-col">
+    <label [ipLabel]="w">Weight</label>
+    <select ipInput #w="input" [(ngModel)]="weight" class="appearance-none">
+      <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
+    </select>
+  </div>
+  <div class="flex flex-col">
+    <label [ipLabel]="w">Style</label>
+    <select ipInput #w="input" [(ngModel)]="font.style" class="appearance-none">
+      <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
+    </select>
+  </div>
+</div>

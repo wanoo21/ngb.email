@@ -1,8 +1,11 @@
 import { Component } from "@angular/core";
 import {
   AIPEmailBuilderService,
+  ButtonBlock,
+  DividerBlock,
   ImageBlock,
   IPEmail,
+  SpacerBlock,
   Structure,
   TextBlock
 } from "@wlocalhost/ngx-email-builder/core";
@@ -19,8 +22,8 @@ export class NxWelcomeComponent extends AbsPage {
     new Structure("cols_2", [
       [new TextBlock(), new ImageBlock()], [new TextBlock()]
     ]),
-    new Structure("cols_6", [
-      [new TextBlock()]
+    new Structure("cols_3", [
+      [new DividerBlock()], [new SpacerBlock()], [new ButtonBlock()]
     ])
   ]);
 

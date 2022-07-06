@@ -3,7 +3,7 @@ import { IBorder } from "@wlocalhost/ngx-email-builder/core";
 
 @Directive()
 export abstract class AIPBorder {
-  @Input() border!: IBorder;
+  @Input() border!: Partial<IBorder>;
 
   readonly #styleLabels = new Map<IBorder["style"], string>([
     ["solid", $localize`:@@border_style:Solid`],

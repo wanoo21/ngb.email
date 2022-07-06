@@ -1,4 +1,30 @@
-<p>image-block works! {{ options.title }}</p>
+<img [src]="src" [title]="options.title" [alt]="options.title" [ngStyle]="imageStyles" />
+
 <ng-container *ipEmailBuilderSettings>
-  <input type="text" [(ngModel)]="options.title" placeholder="Change me" />
+  <h2 ipH2 i18n="@@image_block_image">Image</h2>
+  <div ipPanel>
+    <ip-image-upload [(src)]="src"></ip-image-upload>
+  </div>
+  <h2 ipH2 i18n="@@image_block_attributes">Attributes</h2>
+  <div ipPanel>
+    <div class="grid grid-cols-3 gap-2">
+      <div class="flex flex-col col-span-2">
+        <label [ipLabel]="a" i18n="@@image_block_alternative">Alternative text</label>
+        <input type="text" ipInput #a="input" [(ngModel)]="options.title">
+        <p ipHint i18n="@@image_block_alternative_description">Alternative text to show in case image was blocked.</p>
+      </div>
+      <ip-align [model]="options.align"></ip-align>
+    </div>
+    <ip-link class="pt-2" [link]="options.link"></ip-link>
+    <p ipHint i18n="@@image_block_link_description">Link to redirect to on click</p>
+  </div>
+  <h2 ipH2 i18n="@@image_block_sizes">Sizes</h2>
+  <h2 ipH2 i18n="@@border">Border</h2>
+  <div ipPanel>
+    <ip-border [border]="options.border"></ip-border>
+  </div>
+  <h2 ipH2 i18n="@@padding">Padding</h2>
+  <div ipPanel>
+    <ip-padding [padding]="options.padding"></ip-padding>
+  </div>
 </ng-container>

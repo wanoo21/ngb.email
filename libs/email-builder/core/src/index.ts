@@ -40,3 +40,7 @@ export * from "./settings/image-upload";
 export * from "./settings/border";
 export * from "./settings/padding";
 export * from "./settings/margin";
+export * from "./settings/font";
+export * from "./settings/line-height";
+export * from "./settings/link";
+export * from "./settings/align";

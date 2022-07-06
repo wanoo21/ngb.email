@@ -1,0 +1,14 @@
+<div class="grid grid-cols-3 gap-2">
+  <div class="flex flex-col col-span-2">
+    <label [ipLabel]="l" i18n="@@link">Link</label>
+    <input type="text" ipInput #l="input" [(ngModel)]="link.href" placeholder="https://..." i18n-placeholder="@@link_placeholder">
+  </div>
+  <div class="flex flex-col col-span-1">
+    <label [ipLabel]="t" i18n="@@link_target">Target</label>
+    <select ipInput #t="input" class="appearance-none" [(ngModel)]="link.target">
+      <option *ngFor="let target of targets" [value]="target">
+        {{getTargetLabel(target)}}
+      </option>
+    </select>
+  </div>
+</div>

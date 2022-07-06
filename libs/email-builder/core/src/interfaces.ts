@@ -143,14 +143,14 @@ export type TFontStyle = 'italic' | 'normal' | 'oblique';
  * Builder font weight types.
  * @default inherit
  */
-export type TFontWeight =
-  | number
-  | 'bold'
-  | 'bolder'
-  | 'inherit'
-  | 'initial'
-  | 'light'
-  | 'normal';
+export type TFontWeight = number;
+  // | number
+  // | 'bold'
+  // | 'bolder'
+  // | 'inherit'
+  // | 'initial'
+  // | 'light'
+  // | 'normal';
 /**
  * Builder background-repeat types.
  * @default no-repeat
@@ -230,11 +230,11 @@ export interface IBackground {
  * Builder font styles interface.
  */
 export interface IFont {
-  family?: string;
-  fallback?: string;
-  size?: number;
-  style?: TFontStyle;
-  weight?: TFontWeight;
+  family: string;
+  fallback: string;
+  size: number;
+  style: TFontStyle;
+  weight: TFontWeight;
 }
 
 export type IFontFamily = Set<string>;

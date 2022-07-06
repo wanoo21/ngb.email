@@ -1,8 +1,12 @@
-<p>divider-block works! {{ options.padding.top | number }}</p>
+<div [ngStyle]="borderStyles"></div>
+
 <ng-container *ipEmailBuilderSettings>
-  <input
-    type="number"
-    [(ngModel)]="options.padding.top"
-    placeholder="Change me"
-  />
+  <h2 ipH2 i18n="@@divider_color">Divider Color</h2>
+  <div ipPanel>
+    <ip-border [border]="options.border"></ip-border>
+  </div>
+  <h2 ipH2 i18n="@@padding">Padding</h2>
+  <div ipPanel>
+    <ip-padding [padding]="options.padding"></ip-padding>
+  </div>
 </ng-container>

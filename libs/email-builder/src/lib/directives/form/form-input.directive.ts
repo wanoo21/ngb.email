@@ -81,10 +81,10 @@ export class FormH3Directive extends AddClassList {
   exportAs: "hint"
 })
 export class FormHintDirective extends AddClassList {
-  @Input() variant = "gray";
+  @Input() variant = "gray-400";
 
   get classList(): string {
-    return `text-xs text-${this.variant}-400 font-light mt-1`;
+    return `text-xs text-${this.variant} font-light mt-1`;
   };
 }
 

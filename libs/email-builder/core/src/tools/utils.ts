@@ -5,10 +5,10 @@
  *
  * @return CSS Border styles.
  */
-import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight, TFontWeight } from "../interfaces";
+import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight } from "../interfaces";
 
-export function createBorder(border: IBorder, rule = 'border'): { [p: string]: string; borderRadius: string } {
-  const { color = '#000000', style = 'solid', width = 4, radius = 0 } = border;
+export function createBorder(border: Partial<IBorder>, rule = "border"): { [p: string]: string; borderRadius: string } {
+  const { color = "#000000", style = "solid", width = 4, radius = 0 } = border;
   return {
     [rule]: `${width}px ${style} ${color}`,
     borderRadius: `${radius}px`
@@ -20,7 +20,7 @@ export function createBorder(border: IBorder, rule = 'border'): { [p: string]: s
  * @param padding Padding object.
  * @param rule Most likely you won't need it, but for some cases, it can be changed. Default is: `padding`.
  */
-export function createPadding(padding: IPadding, rule = 'padding'): Record<string, string> {
+export function createPadding(padding: IPadding, rule = "padding"): Record<string, string> {
   const { top = 10, right = 25, bottom = 10, left = 25 } = padding;
   return {
     [rule]: `${top}px ${right}px ${bottom}px ${left}px`
@@ -42,8 +42,8 @@ export function createMargin(margin: IMargin): { margin: string } {
  * Create CSS font styles based on {@link IFont} object.
  * @param font Font object.
  */
-export function createFont(font: IFont): { fontFamily: string; fontSize: string; fontStyle: string; fontWeight: number | TFontWeight } {
-  const { family = '', size = 13, style = 'normal', weight = 'normal' } = font;
+export function createFont(font: IFont): { fontFamily: string; fontSize: string; fontStyle: string; fontWeight: number } {
+  const { family = "", size = 13, style = "normal", weight = 400 } = font;
   return {
     fontFamily: family,
     fontSize: `${size}px`,
@@ -57,9 +57,9 @@ export function createFont(font: IFont): { fontFamily: string; fontSize: string;
  * @param lineHeight Line-height object.
  */
 export function createLineHeight(lineHeight: ILineHeight): { lineHeight: string } {
-  const { value = 22, unit = 'px' } = lineHeight;
+  const { value = 22, unit = "px" } = lineHeight;
   return {
-    lineHeight: unit !== 'none' ? `${value}${unit}` : 'normal'
+    lineHeight: unit !== "none" ? `${value}${unit}` : "normal"
   };
 }
 
@@ -68,7 +68,7 @@ export function createLineHeight(lineHeight: ILineHeight): { lineHeight: string 
  * @param background Background object.
  */
 export function createBackground(background: Partial<IBackground>): string {
-  const { url = '', color = 'white', repeat = 'no-repeat' } = background;
+  const { url = "", color = "white", repeat = "no-repeat" } = background;
   return `${color} ${url && `url(${url})`} ${repeat} top center`;
 }
 
@@ -77,6 +77,6 @@ export function createBackground(background: Partial<IBackground>): string {
  * @param widthHeight Width or Height object.
  */
 export function createWidthHeight(widthHeight: IWidthHeight): string {
-  const { value = 100, unit = '%', auto = false } = widthHeight;
-  return (auto && 'auto') || (['%', 'px'].indexOf(unit) > -1 && `${value}${unit}`) || unit;
+  const { value = 100, unit = "%", auto = false } = widthHeight;
+  return (auto && "auto") || (["%", "px"].indexOf(unit) > -1 && `${value}${unit}`) || unit;
 }

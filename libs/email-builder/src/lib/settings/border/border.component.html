@@ -1,4 +1,4 @@
-<ip-color [color]="border.color" *ngIf="hasOwn('color')"></ip-color>
+<ip-color [(color)]="border.color" *ngIf="hasOwn('color')"></ip-color>
 
 <div class="flex gap-2 mt-2">
   <input type="number" ipInput [(ngModel)]="border.width" *ngIf="hasOwn('width')" placeholder="Width"
