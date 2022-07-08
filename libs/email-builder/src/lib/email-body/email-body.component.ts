@@ -7,4 +7,5 @@ import { AIPEmailBody } from '@wlocalhost/ngx-email-builder/core';
   styleUrls: ['./email-body.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class EmailBodyComponent extends AIPEmailBody {}
+export class EmailBodyComponent extends AIPEmailBody {
+}

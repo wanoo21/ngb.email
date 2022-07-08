@@ -1,6 +1,8 @@
-<ng-container *ngFor="let structure of structures">
-  <ip-structure [structure]="structure" [bodyWidth]="options.width" class="group relative"></ip-structure>
-</ng-container>
+<div cdkDropList #structuresDropList="cdkDropList" (cdkDropListDropped)="dropListDropped($event)">
+  <div *ngFor="let structure of structures" cdkDrag [cdkDragData]="structure">
+    <ip-structure [structure]="structure" [bodyWidth]="options.width" class="group relative"></ip-structure>
+  </div>
+</div>
 
 <ng-container *ipEmailBuilderSettings>
   <div ipPanel class="mt-4">

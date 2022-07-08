@@ -1,5 +1,6 @@
 <div *ngFor="let column of structure.elements; let index = index" [ngStyle]="columnStyles(index)" class="column"
-     [class.empty]="!column.length" cdkDropList>
+     [class.empty]="!column.length" cdkDropList [cdkDropListData]="column"
+     (cdkDropListDropped)="dropListDropped($event)">
   <ng-container *ngIf="column.length; else addNewBlockButton">
     <div class="relative group" *ngFor="let block of column" cdkDrag [cdkDragData]="instance.cmpInstance">
       <ng-container [ipEmailBuilderDynamicBlockDirective]="block" #instance="instance">

@@ -1,4 +1,5 @@
-import { Directive, HostBinding, HostListener, Input, QueryList, ViewChildren } from "@angular/core";
+import { AfterViewInit, Directive, HostBinding, HostListener, Input, QueryList, ViewChildren } from "@angular/core";
+import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 
 import { WithSettings } from "./WithSettings";
 import { Structure } from "../structure/structure";
@@ -6,13 +7,17 @@ import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dyna
 import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
 import { createBorder, createMargin, createPadding, createWidthHeight } from "../tools/utils";
 import { AIPEmailBody } from "./Body";
+import { IIPEmailBuilderBlockData } from "../private-tokens";
+import { AIPEmailBuilderBlockExtendedOptions } from "./Block";
 
 @Directive()
-export abstract class AIPStructure extends WithSettings {
+export abstract class AIPStructure extends WithSettings implements AfterViewInit {
   @Input() structure = new Structure();
   @Input() bodyWidth!: AIPEmailBody["options"]["width"];
   @ViewChildren(IPEmailBuilderDynamicDirective)
   readonly blocks!: QueryList<IPEmailBuilderDynamicDirective>;
+  @ViewChildren(CdkDropList)
+  readonly dropLists!: QueryList<CdkDropList<IIPEmailBuilderBlockData[]>>;
   editColumnIndex = 0;
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
@@ -47,7 +52,7 @@ export abstract class AIPStructure extends WithSettings {
   }
 
   get columnsSize(): number[] {
-    return this.structure.options.columns.map((_, index) => index).slice();
+    return this.structure.options.columns.map((_, index) => index);
   }
 
   get verticalLabels(): TVerticalAlign[] {
@@ -85,6 +90,23 @@ export abstract class AIPStructure extends WithSettings {
 
   editColumn(index: number): void {
     this.editColumnIndex = index;
+  }
+
+  dropListDropped(drop: CdkDragDrop<AIPEmailBuilderBlockExtendedOptions[], (IIPEmailBuilderBlockData | AIPEmailBuilderBlockExtendedOptions)[]>) {
+    const { previousContainer, container, previousIndex, currentIndex, item } = drop;
+    if (this.builderUiService.columnsDropLists.has(previousContainer as CdkDropList<IIPEmailBuilderBlockData[]>)) {
+      transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex);
+    } else {
+      container.data.splice(currentIndex, 0, item.data);
+    }
+  }
+
+  ngAfterViewInit(): void {
+    // Add all inside columns to columns drop lists
+    this.dropLists.forEach(dropList => {
+      dropList.connectedTo = Array.from(this.builderUiService.columnsDropLists);
+      this.builderUiService.columnsDropLists.add(dropList);
+    });
   }
 
   override markForCheck(): boolean {

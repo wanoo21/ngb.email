@@ -7,13 +7,17 @@ import { IPEmailBuilderBlockDataPipe } from "./pipes/ipemail-builder-block-data.
 import { IPEmailBuilderDynamicDirective } from "./directives/email-builder-dynamic.directive";
 import { IPEmailBuilderSettingsDirective } from "./directives/ipemail-builder-settings.directive";
 import { SocialPathPipe } from './pipes/social-path.pipe';
+import { ToBodyBlockPipe } from './pipes/to-body-block.pipe';
+import { ToBodyStructurePipe } from './pipes/to-body-structure.pipe';
 
 @NgModule({
   declarations: [
     IPEmailBuilderBlockDataPipe,
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
-    SocialPathPipe
+    SocialPathPipe,
+    ToBodyBlockPipe,
+    ToBodyStructurePipe
   ],
   imports: [CommonModule, PortalModule, FormsModule],
   exports: [
@@ -22,7 +26,9 @@ import { SocialPathPipe } from './pipes/social-path.pipe';
     PortalModule,
     FormsModule,
     IPEmailBuilderSettingsDirective,
-    SocialPathPipe
+    SocialPathPipe,
+    ToBodyBlockPipe,
+    ToBodyStructurePipe
   ],
   providers: []
 })

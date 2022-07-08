@@ -1,14 +1,18 @@
-import { Directive, HostBinding, HostListener, Input, OnInit } from "@angular/core";
+import { AfterViewInit, Directive, HostBinding, HostListener, Input, OnInit, ViewChild } from "@angular/core";
 
 import { WithSettings } from "./WithSettings";
 import { IIPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
 import { TDirection } from "../interfaces";
+import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
+import { IStructure } from "../structure/structure";
 
 @Directive()
-export abstract class AIPEmailBody extends WithSettings implements OnInit {
+export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit {
   @Input() options!: IIPEmail["general"];
   @Input() structures!: IIPEmail["structures"];
+  @ViewChild("structuresDropList", { static: true, read: CdkDropList })
+  readonly structuresDropList: CdkDropList | undefined;
   #directionLabels = new Map<TDirection, string>([
     ["ltr", $localize`:@@direction:Left to right`],
     ["rtl", $localize`:@@direction:Right to left`]
@@ -45,9 +49,25 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit {
     this.edit();
   }
 
+  dropListDropped({ container, previousContainer, currentIndex, previousIndex, item }: CdkDragDrop<IStructure[]>) {
+    if (this.builderUiService.structuresDropLists.has(previousContainer)) {
+      transferArrayItem(container.data, previousContainer.data, currentIndex, previousIndex);
+    } else {
+      container.data.splice(currentIndex, 0, item.data);
+    }
+  }
+
   ngOnInit() {
     // Always show general settings if nothing is editing
     this.builderUiService.setDefaultSettingsPortal(this.settingsPortal);
+  }
+
+  ngAfterViewInit(): void {
+    if (this.structuresDropList) {
+      this.structuresDropList.data = this.structures;
+      this.structuresDropList.autoScrollDisabled = false;
+      this.builderUiService.structuresDropLists.add(this.structuresDropList);
+    }
   }
 
   override markForCheck(): boolean {
