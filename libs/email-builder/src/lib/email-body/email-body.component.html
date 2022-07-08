@@ -1,11 +1,42 @@
-<ip-structure
-  *ngFor="let structure of structures" [structure]="structure" [bodyWidth]="options.width"
-  class="group relative" cdkDropList></ip-structure>
+<ng-container *ngFor="let structure of structures">
+  <ip-structure [structure]="structure" [bodyWidth]="options.width" class="group relative"></ip-structure>
+</ng-container>
 
 <ng-container *ipEmailBuilderSettings>
-  <input type="number" [(ngModel)]="options.width.value" ipInput placeholder="Body width">
-  <label>
-    <input type="checkbox" class="appearance-none checked:bg-blue-500" />
-    Full width
-  </label>
+  <div ipPanel class="mt-4">
+    <div class="flex flex-col">
+      <label [ipLabel]="i" i18n="@@template_name">Template name</label>
+      <input ipInput #i="input" type="text" [(ngModel)]="options.name">
+    </div>
+    <div class="flex flex-col mt-2">
+      <label [ipLabel]="t" i18n="@@template_preview_text">Preview text</label>
+      <textarea ipInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2"
+                [(ngModel)]="options.previewText"></textarea>
+      <p ipHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
+    </div>
+  </div>
+
+  <h2 ipH2 i18n="@@background">Background</h2>
+  <div ipPanel>
+    <ip-color [(color)]="options.background.color"></ip-color>
+  </div>
+
+  <h2 ipH2 i18n="@@template_attributes">Attributes</h2>
+  <div ipPanel>
+    <h3 ipH3 i18n="@@width">Width</h3>
+    <ip-width-height [size]="options.width"></ip-width-height>
+    <div class="flex flex-col mt-2">
+      <label [ipLabel]="s" i18n="@@direction">Direction</label>
+      <select ipInput #s="input" [(ngModel)]="options.direction" class="appearance-none">
+        <option *ngFor="let dir of directionKeys" [value]="dir">
+          {{getDirectionLabel(dir)}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <h2 ipH2 i18n="@@padding">Padding</h2>
+  <div ipPanel>
+    <ip-padding [padding]="options.padding"></ip-padding>
+  </div>
 </ng-container>

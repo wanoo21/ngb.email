@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
-import { AIPEmailBuilderBlock, IPadding } from "@wlocalhost/ngx-email-builder/core";
+import {
+  AIPEmailBuilderBlock,
+  createPadding,
+  IPadding,
+  TIPEmailBuilderStyles
+} from "@wlocalhost/ngx-email-builder/core";
 
 @Component({
   selector: "wlocalhost-my-htmlblock",
@@ -24,4 +29,10 @@ export class MyHTMLBlockComponent extends AIPEmailBuilderBlock<{ padding: IPaddi
   options = {
     padding: { top: 10 }
   };
+
+  get hostStyles(): TIPEmailBuilderStyles {
+    return {
+      ...createPadding(this.options.padding)
+    };
+  }
 }

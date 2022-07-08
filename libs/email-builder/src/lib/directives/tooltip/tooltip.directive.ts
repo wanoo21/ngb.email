@@ -1,4 +1,4 @@
-import { Component, Directive, HostListener, Input, OnInit } from "@angular/core";
+import { Component, Directive, HostListener, Input, OnDestroy, OnInit } from "@angular/core";
 import { AbsDirective } from "@ngcomma/ngx-abstract";
 import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
@@ -14,7 +14,7 @@ export class TooltipComponent {
 @Directive({
   selector: "[ipTooltip]"
 })
-export class TooltipDirective extends AbsDirective implements OnInit {
+export class TooltipDirective extends AbsDirective implements OnInit, OnDestroy {
   @Input() ipTooltip!: string;
   private overlayRef!: OverlayRef;
 
@@ -31,7 +31,12 @@ export class TooltipDirective extends AbsDirective implements OnInit {
 
   @HostListener("mouseout")
   hide() {
-    this.overlayRef.detach()
+    this.overlayRef.detach();
+  }
+
+  override ngOnDestroy() {
+    super.ngOnDestroy();
+    this.hide();
   }
 
   ngOnInit() {

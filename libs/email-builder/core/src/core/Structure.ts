@@ -3,13 +3,14 @@ import { Directive, HostBinding, HostListener, Input, QueryList, ViewChildren } 
 import { WithSettings } from "./WithSettings";
 import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
-import { IWidthHeight, TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
+import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
 import { createBorder, createMargin, createPadding, createWidthHeight } from "../tools/utils";
+import { AIPEmailBody } from "./Body";
 
 @Directive()
 export abstract class AIPStructure extends WithSettings {
   @Input() structure = new Structure();
-  @Input() bodyWidth!: IWidthHeight;
+  @Input() bodyWidth!: AIPEmailBody["options"]["width"];
   @ViewChildren(IPEmailBuilderDynamicDirective)
   readonly blocks!: QueryList<IPEmailBuilderDynamicDirective>;
   editColumnIndex = 0;

@@ -1,6 +1,6 @@
 import { AIPEmailBuilderBlock } from "../../core/Block";
 import { IBorder, ILink, IPadding, IWidthHeight, TAlign, TIPEmailBuilderStyles } from "../../interfaces";
-import { Directive, HostBinding } from "@angular/core";
+import { Directive } from "@angular/core";
 import { createBorder, createPadding, createWidthHeight } from "../../tools/utils";
 
 /**
@@ -53,7 +53,6 @@ export class ImageBlock extends AIPEmailBuilderBlock<IImageBlockOptions> {
     }
   };
 
-  @HostBinding("style")
   get hostStyles() {
     return {
       textAlign: this.options.align,

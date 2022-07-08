@@ -1,8 +1,9 @@
 import { Directive, inject, Input } from "@angular/core";
 import { AIPEmailBuilderService, IFont } from "@wlocalhost/ngx-email-builder/core";
+import { AbsComponent } from "@ngcomma/ngx-abstract";
 
 @Directive()
-export abstract class AIPFont {
+export abstract class AIPFont extends AbsComponent {
   @Input() font!: IFont;
   builderService = inject(AIPEmailBuilderService);
   #standardWeights = [100, 400, 500, 700, 900];
@@ -16,13 +17,13 @@ export abstract class AIPFont {
     return this.builderService.standardFonts;
   }
 
-  get weight(): number {
-    return this.font.weight;
+  get weight(): string {
+    return String(this.font.weight);
   }
 
-  set weight(value: number) {
-    if (this.weights.includes(value)) {
-      this.font.weight = value;
+  set weight(value: string) {
+    if (this.weights.includes(+value)) {
+      this.font.weight = +value;
     } else {
       this.font.weight = this.weights[0];
     }
@@ -34,8 +35,8 @@ export abstract class AIPFont {
 
   get weights(): number[] {
     if (this.googleFont) {
-      const [, weights = "400"] = this.googleFont.split("wght@");
-      return weights.split(";").map(n => parseInt(n, 10));
+      const [, weights = "400"] = this.googleFont.split(":wght@");
+      return weights.split(";").filter(Boolean).map(n => parseInt(n, 10));
     } else {
       return this.#standardWeights;
     }
@@ -64,7 +65,7 @@ export abstract class AIPFont {
       this.font.family = value;
     } else {
       this.font.family = this.font.fallback;
-      this.weight = 400;
+      this.weight = "400";
     }
   }
 

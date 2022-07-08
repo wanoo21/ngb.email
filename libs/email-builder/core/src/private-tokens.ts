@@ -6,15 +6,15 @@ import { IBlockState } from "./interfaces";
 
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
-    xApiKey: ""
+    xApiKey: "", socialIconsPath: ""
   };
 
   constructor(config?: IIPEmailBuilderConfig) {
     this.defConfig = { ...this.defConfig, ...config };
   }
 
-  get config(): IIPEmailBuilderConfig {
-    return this.defConfig;
+  get socialIconsPath(): NonNullable<IIPEmailBuilderConfig["socialIconsPath"]> {
+    return this.defConfig.socialIconsPath || "https://www.mailjet.com/images/theme/v1/icons/ico-social";
   }
 
   get isFreeVersion(): boolean {
@@ -26,13 +26,9 @@ export class IPEmailBuilderConfig {
   }
 }
 
-export const IP_EMAIL_BUILDER_CONFIG = new InjectionToken<IPEmailBuilderConfig>(
-  "Wlocalhost configurations",
-  {
+export const IP_EMAIL_BUILDER_CONFIG = new InjectionToken<IPEmailBuilderConfig>("Wlocalhost configurations", {
     providedIn: "root",
-    factory: () => {
-      return new IPEmailBuilderConfig();
-    }
+    factory: () => new IPEmailBuilderConfig()
   }
 );
 

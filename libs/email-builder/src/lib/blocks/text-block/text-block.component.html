@@ -5,14 +5,14 @@
     <textarea ipInput [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
   </div>
 
-  <h2 ipH2>Font</h2>
+  <h2 ipH2 i18n="@@font">Font</h2>
   <div ipPanel>
-    <h3 ipH3>Color</h3>
+    <h3 ipH3 i18n="@@text_color">Color</h3>
     <ip-color [(color)]="options.color"></ip-color>
     <ip-font class="pt-2" [font]="options.font"></ip-font>
     <ip-line-height class="pt-2" [lineHeight]="options.lineHeight"></ip-line-height>
   </div>
-  <h2 ipH2>Padding</h2>
+  <h2 ipH2 i18n="@@padding">Padding</h2>
   <div ipPanel>
     <ip-padding [padding]="options.padding"></ip-padding>
   </div>

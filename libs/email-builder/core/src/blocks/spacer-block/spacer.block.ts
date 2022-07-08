@@ -1,14 +1,13 @@
 import { AIPEmailBuilderBlock } from "../../core/Block";
-import { IWidthHeight } from "../../interfaces";
-import { Directive, HostBinding } from "@angular/core";
+import { IWidthHeight, TIPEmailBuilderStyles } from "../../interfaces";
+import { Directive } from "@angular/core";
 import { createWidthHeight } from "../../tools/utils";
 
 /**
  * Builder {@link SpacerBlock} options interface.
  */
 export interface ISpacerBlockOptions {
-  height: IWidthHeight;
-  width: IWidthHeight;
+  height: Omit<IWidthHeight, "auto">;
 }
 
 @Directive()
@@ -19,14 +18,12 @@ export class SpacerBlock extends AIPEmailBuilderBlock<ISpacerBlockOptions> {
       value: 20,
       unit: "px",
       units: ["px"]
-    },
-    width: {
-      value: 100,
-      unit: "%"
     }
   };
 
-  @HostBinding("style.height") get height() {
-    return createWidthHeight(this.options.height);
-  }
+  get hostStyles(): TIPEmailBuilderStyles {
+    return {
+      height: createWidthHeight(this.options.height)
+    };
+  };
 }

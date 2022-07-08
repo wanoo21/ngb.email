@@ -3,14 +3,23 @@ import { Directive, HostBinding, HostListener, Input, OnInit } from "@angular/co
 import { WithSettings } from "./WithSettings";
 import { IIPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
+import { TDirection } from "../interfaces";
 
 @Directive()
 export abstract class AIPEmailBody extends WithSettings implements OnInit {
   @Input() options!: IIPEmail["general"];
   @Input() structures!: IIPEmail["structures"];
+  #directionLabels = new Map<TDirection, string>([
+    ["ltr", $localize`:@@direction:LTR`],
+    ["rtl", $localize`:@@direction:RTL`]
+  ]);
+
+  get directionKeys() {
+    return this.#directionLabels.keys();
+  }
 
   @HostBinding("style")
-  get bodyStyles(): Record<string, string | number> {
+  get hostStyles(): Record<string, string | number> {
     const { padding, background } = this.options;
     return {
       ...createPadding(padding),
@@ -25,6 +34,11 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit {
   @HostBinding("attr.dir")
   get dir(): string {
     return this.options.direction;
+  }
+
+  getDirectionLabel(dir: TDirection): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.#directionLabels.get(dir)!;
   }
 
   @HostListener("click") onClick() {

@@ -8,14 +8,4 @@
       }
     }
   }
-
-  ::ng-deep .btn {
-    &:active, &.active {
-      @apply shadow-inner bg-gray-50 border ring ring-inset ring-gray-200;
-    }
-
-    &:disabled {
-      @apply bg-gray-50 opacity-50;
-    }
-  }
 }

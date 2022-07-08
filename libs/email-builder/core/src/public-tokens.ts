@@ -6,6 +6,7 @@ import { AIPEmailBuilderRestService } from './services/email-builder-rest-servic
 
 export interface IIPEmailBuilderConfig {
   xApiKey?: string;
+  socialIconsPath?: string;
   providers?: [
     Type<AIPEmailBuilderService> | null,
     Type<AIPEmailBuilderStorageService> | null,

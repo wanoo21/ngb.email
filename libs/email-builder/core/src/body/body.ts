@@ -7,16 +7,16 @@ import { IStructure } from "../structure/structure";
  * Builder {@link IIPEmail} general options interface.
  */
 export interface IGeneralOptions {
-  width: IWidthHeight;
-  background: Pick<IBackground, "color" | "size">;
+  width: Omit<IWidthHeight, "auto">;
+  background: Pick<IBackground, "color">;
   padding: IPadding;
   direction: TDirection;
   name: string;
   previewText: string;
-  global: {
-    fonts?: string[];
-    padding?: IPadding;
-  };
+  // global: {
+  //   fonts?: string[];
+  //   padding?: IPadding;
+  // };
 }
 
 /**
@@ -30,10 +30,7 @@ export interface IIPEmail {
 export class IPEmail {
   general: IGeneralOptions;
 
-  constructor(
-    public structures: IStructure[] = [],
-    general: Partial<IGeneralOptions> = {}
-  ) {
+  constructor(public structures: IStructure[] = [], general: Partial<IGeneralOptions> = {}) {
     this.general = defaultsDeep(general, {
       name: "",
       previewText: "",
@@ -44,14 +41,14 @@ export class IPEmail {
       },
       background: {
         // url: '',
-        color: "#f1f1f1",
+        color: "#f1f1f1"
         // repeat: 'repeat',
-        size: {
-          value: 100,
-          unit: "%",
-          auto: true,
-          units: ["px", "%", "cover", "contain"]
-        }
+        // size: {
+        //   value: 100,
+        //   unit: "%",
+        //   auto: true,
+        //   units: ["px", "%", "cover", "contain"]
+        // }
       },
       padding: {
         top: 16,

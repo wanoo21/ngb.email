@@ -1,4 +1,4 @@
-import { Directive, HostBinding } from "@angular/core";
+import { Directive } from "@angular/core";
 
 import { AIPEmailBuilderBlock } from "../../core/Block";
 import { IBorder, IPadding, TIPEmailBuilderStyles } from "../../interfaces";
@@ -29,7 +29,6 @@ export class DividerBlock extends AIPEmailBuilderBlock<IDividerBlockOptions> {
     }
   };
 
-  @HostBinding("style")
   get hostStyles(): TIPEmailBuilderStyles {
     return createPadding(this.options.padding);
   }

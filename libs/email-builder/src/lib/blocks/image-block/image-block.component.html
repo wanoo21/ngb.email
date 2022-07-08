@@ -13,12 +13,18 @@
         <input type="text" ipInput #a="input" [(ngModel)]="options.title">
         <p ipHint i18n="@@image_block_alternative_description">Alternative text to show in case image was blocked.</p>
       </div>
-      <ip-align [model]="options.align"></ip-align>
+      <ip-align [(model)]="options.align"></ip-align>
     </div>
     <ip-link class="pt-2" [link]="options.link"></ip-link>
     <p ipHint i18n="@@image_block_link_description">Link to redirect to on click</p>
   </div>
   <h2 ipH2 i18n="@@image_block_sizes">Sizes</h2>
+  <div ipPanel>
+    <h3 ipH3 i18n="@@width">Width</h3>
+    <ip-width-height [size]="options.width"></ip-width-height>
+    <h3 ipH3 class="pt-2" i18n="@@height">Height</h3>
+    <ip-width-height [size]="options.height"></ip-width-height>
+  </div>
   <h2 ipH2 i18n="@@border">Border</h2>
   <div ipPanel>
     <ip-border [border]="options.border"></ip-border>

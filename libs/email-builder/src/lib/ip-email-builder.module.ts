@@ -28,7 +28,7 @@ import { PaddingComponent } from './settings/padding/padding.component';
 import { MarginComponent } from './settings/margin/margin.component';
 
 import { TextBlockComponent } from './blocks/text-block/text-block.component';
-import { ButtonBlockComponent } from './blocks/button/button-block.component';
+import { ButtonBlockComponent } from './blocks/button-block/button-block.component';
 import { DividerBlockComponent } from './blocks/divider-block/divider-block.component';
 import { ImageBlockComponent } from './blocks/image-block/image-block.component';
 import { SocialBlockComponent } from './blocks/social-block/social-block.component';
@@ -37,6 +37,7 @@ import { FontComponent } from './settings/font/font.component';
 import { LineHeightComponent } from './settings/line-height/line-height.component';
 import { LinkComponent } from './settings/link/link.component';
 import { AlignComponent } from './settings/align/align.component';
+import { WidthHeightComponent } from './settings/width-height/width-height.component';
 
 @NgModule({
   imports: [
@@ -71,6 +72,7 @@ import { AlignComponent } from './settings/align/align.component';
     LineHeightComponent,
     LinkComponent,
     AlignComponent,
+    WidthHeightComponent,
   ],
   exports: [IpEmailBuilderComponent, IPEmailBuilderCoreModule],
   providers: [

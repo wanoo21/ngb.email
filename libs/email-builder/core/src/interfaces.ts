@@ -38,22 +38,22 @@ export interface IForRootConf {
   apiPath?: string;
 
   /**
-   * Show download button on builder top bar.
+   * Show download button-block on builder top bar.
    * @default true
    */
   useDownloadButton?: boolean;
   /**
-   * Show preview button  on builder top bar.
+   * Show preview button-block  on builder top bar.
    * @default true
    */
   usePreviewButton?: boolean;
   /**
-   * Show save button on builder top bar.
+   * Show save button-block on builder top bar.
    * @default true
    */
   useSaveButton?: boolean;
   /**
-   * Show a button that opens template gallery in case email body is empty.
+   * Show a button-block that opens template gallery in case email body is empty.
    * @default true
    */
   templateListIfEmpty?: boolean;
@@ -211,9 +211,9 @@ export interface IWidthHeight {
    */
   unit: TUnits;
   // Either full width or full height styles.
-  auto?: boolean;
+  auto: boolean;
   // Units to be shown as options.
-  units?: TUnits[];
+  units: TUnits[];
 }
 
 /**

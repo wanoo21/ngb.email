@@ -44,3 +44,4 @@ export * from "./settings/font";
 export * from "./settings/line-height";
 export * from "./settings/link";
 export * from "./settings/align";
+export * from "./settings/width-height";

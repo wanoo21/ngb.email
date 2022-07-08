@@ -76,7 +76,7 @@ export function createBackground(background: Partial<IBackground>): string {
  * Create Width or Height styles based on {@link IWidthHeight} object.
  * @param widthHeight Width or Height object.
  */
-export function createWidthHeight(widthHeight: IWidthHeight): string {
+export function createWidthHeight(widthHeight: Partial<IWidthHeight>): string {
   const { value = 100, unit = "%", auto = false } = widthHeight;
   return (auto && "auto") || (["%", "px"].indexOf(unit) > -1 && `${value}${unit}`) || unit;
 }
