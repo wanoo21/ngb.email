@@ -10,8 +10,8 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit {
   @Input() options!: IIPEmail["general"];
   @Input() structures!: IIPEmail["structures"];
   #directionLabels = new Map<TDirection, string>([
-    ["ltr", $localize`:@@direction:LTR`],
-    ["rtl", $localize`:@@direction:RTL`]
+    ["ltr", $localize`:@@direction:Left to right`],
+    ["rtl", $localize`:@@direction:Right to left`]
   ]);
 
   get directionKeys() {

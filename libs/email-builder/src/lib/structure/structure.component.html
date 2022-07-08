@@ -116,8 +116,10 @@
         Full width structure
       </button>
     </div>
+  </div>
 
-    <h2 ipH2 i18n="@@structure_columns_styles" class="pt-2">Columns styles</h2>
+  <h2 ipH2 i18n="@@structure_columns_styles">Columns styles</h2>
+  <div ipPanel>
     <div class="grid grid-cols-6 gap-2">
       <button *ngFor="let index of columnsSize" ipBtn (click)="editColumn(index)"
               [class.active]="editColumnIndex === index">
