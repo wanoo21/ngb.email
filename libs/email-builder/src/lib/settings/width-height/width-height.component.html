@@ -1,5 +1,5 @@
 <div class="flex gap-2">
-  <button ipBtn (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto">Auto</button>
+  <button ipBtn (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto" i18n="@@width_height_auto">Auto</button>
   <input ipInput type="number" [(ngModel)]="size.value" [disabled]="disableValueField">
   <select ipInput class="appearance-none" [(ngModel)]="size.unit" [disabled]="isAuto">
     <option *ngFor="let unit of units" [value]="unit">

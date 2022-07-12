@@ -1,12 +1,11 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
+import { IStructure, TStructureTypes } from "@wlocalhost/ngx-email-builder/core";
 
 @Pipe({
-  name: 'toBodyStructure'
+  name: "toBodyStructure"
 })
 export class ToBodyStructurePipe implements PipeTransform {
-
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
+  transform(structure: IStructure): TStructureTypes {
+    return structure.type;
   }
-
 }

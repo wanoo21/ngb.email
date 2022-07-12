@@ -1,4 +1,14 @@
-import { AfterViewInit, Directive, HostBinding, HostListener, Input, QueryList, ViewChildren } from "@angular/core";
+import {
+  AfterViewInit,
+  Directive,
+  EventEmitter,
+  HostBinding,
+  HostListener,
+  Input,
+  Output,
+  QueryList,
+  ViewChildren
+} from "@angular/core";
 import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 
 import { WithSettings } from "./WithSettings";
@@ -9,6 +19,7 @@ import { createBorder, createMargin, createPadding, createWidthHeight } from "..
 import { AIPEmailBody } from "./Body";
 import { IIPEmailBuilderBlockData } from "../private-tokens";
 import { AIPEmailBuilderBlockExtendedOptions } from "./Block";
+import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 
 @Directive()
 export abstract class AIPStructure extends WithSettings implements AfterViewInit {
@@ -19,6 +30,8 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   @ViewChildren(CdkDropList)
   readonly dropLists!: QueryList<CdkDropList<IIPEmailBuilderBlockData[]>>;
   editColumnIndex = 0;
+  @Output() private clone = new EventEmitter<Structure>();
+  @Output() private delete = new EventEmitter<Structure>();
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
   #verticalLabels = new Map<TVerticalAlign, string>([
@@ -59,6 +72,10 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
     return [...this.#verticalLabels.keys()];
   }
 
+  get columnsDropLists(): CdkDropList<IIPEmailBuilderBlockData[]>[] {
+    return Array.from(this.builderUiService.columnsDropLists);
+  }
+
   getVerticalAlignLabel(key: TVerticalAlign): string {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.#verticalLabels.get(key)!;
@@ -66,6 +83,30 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
 
   @HostListener("click", ["$event"]) onClick(ev: Event) {
     ev.stopPropagation();
+  }
+
+  duplicateSelf(): void {
+    this.clone.next(this.structure);
+  }
+
+  removeSelf(): void {
+    this.delete.next(this.structure);
+    this.detachSettingsPortal();
+  }
+
+  duplicateBlock($event: MouseEvent, block: AIPEmailBuilderBlockExtendedOptions, column: AIPEmailBuilderBlockExtendedOptions[]): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    const indexOf = column.indexOf(block);
+    column.splice(indexOf, 0, cloneDeep(block));
+  }
+
+  removeBlock($event: MouseEvent, block: AIPEmailBuilderBlockExtendedOptions, column: AIPEmailBuilderBlockExtendedOptions[]): void {
+    $event.preventDefault();
+    $event.stopPropagation();
+    const indexOf = column.indexOf(block);
+    column.splice(indexOf, 1);
+    this.detachSettingsPortal();
   }
 
   columnStyles(columnKey: number): TIPEmailBuilderStyles {
@@ -104,7 +145,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   ngAfterViewInit(): void {
     // Add all inside columns to columns drop lists
     this.dropLists.forEach(dropList => {
-      dropList.connectedTo = Array.from(this.builderUiService.columnsDropLists);
       this.builderUiService.columnsDropLists.add(dropList);
     });
   }

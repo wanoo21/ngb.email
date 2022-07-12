@@ -7,7 +7,7 @@
 }
 
 .tool-button {
-  @apply p-1 bg-gray-300 text-white hover:bg-gray-400 rounded-full transition-colors;
+  @apply p-1 bg-gray-400 text-white hover:bg-gray-500 rounded-full transition-colors;
 }
 
 .overflow {
@@ -15,6 +15,36 @@
   row-gap: 0;
 }
 
-.menu-container {
-  @apply bg-white p-1 shadow-lg rounded border-[1px] grid gap-2;
+.cdk-drop-list-dragging {
+  @apply ring-pink-700 ring-2 ring-offset-2 ring-opacity-60 h-10 min-h-fit;
+}
+
+.cdk-drop-list-receiving {
+  @apply ring-pink-500 ring-2 ring-offset-2 ring-opacity-40 h-10 min-h-fit;
+}
+
+.cdk-drag-placeholder {
+  @apply h-10 bg-gray-200 rounded border border-gray-300 cursor-move;
+}
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+  0 8px 10px 1px rgba(0, 0, 0, 0.14),
+  0 3px 14px 2px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  @apply h-2;
+}
+//
+//.cdk-drag-placeholder {
+//  opacity: 0;
+//}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drop-list-dragging .cdk-drag:not(.cdk-drag-placeholder) {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }

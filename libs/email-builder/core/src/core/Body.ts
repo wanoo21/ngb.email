@@ -1,11 +1,12 @@
 import { AfterViewInit, Directive, HostBinding, HostListener, Input, OnInit, ViewChild } from "@angular/core";
+import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 
 import { WithSettings } from "./WithSettings";
 import { IIPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
-import { TDirection } from "../interfaces";
-import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
-import { IStructure } from "../structure/structure";
+import { TDirection, TStructureTypes } from "../interfaces";
+import { IStructure, Structure } from "../structure/structure";
+import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 
 @Directive()
 export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit {
@@ -49,11 +50,27 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
     this.edit();
   }
 
-  dropListDropped({ container, previousContainer, currentIndex, previousIndex, item }: CdkDragDrop<IStructure[]>) {
+  deleteStructure(structure: Structure): void {
+    const indexOf = this.structures.indexOf(structure);
+    this.structures.splice(indexOf, 1);
+  }
+
+  duplicateStructure(structure: Structure): void {
+    const indexOf = this.structures.indexOf(structure);
+    this.structures.splice(indexOf, 0, cloneDeep(structure));
+  }
+
+  dropListDropped({
+                    container,
+                    previousContainer,
+                    currentIndex,
+                    previousIndex,
+                    item
+                  }: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
     if (this.builderUiService.structuresDropLists.has(previousContainer)) {
       transferArrayItem(container.data, previousContainer.data, currentIndex, previousIndex);
     } else {
-      container.data.splice(currentIndex, 0, item.data);
+      container.data.splice(currentIndex, 0, new Structure(item.data));
     }
   }
 

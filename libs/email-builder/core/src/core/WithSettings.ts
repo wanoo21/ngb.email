@@ -15,6 +15,10 @@ export abstract class WithSettings extends AbsComponent implements DoCheck {
     return !!this.settingsPortal?.isAttached;
   }
 
+  detachSettingsPortal(): void {
+    this.builderUiService.attachSettingsPortal(null);
+  }
+
   edit(): void {
     this.builderUiService.attachSettingsPortal(this.settingsPortal);
   }

@@ -1,6 +1,7 @@
-<div cdkDropList #structuresDropList="cdkDropList" (cdkDropListDropped)="dropListDropped($event)">
+<div cdkDropList #structuresDropList (cdkDropListDropped)="dropListDropped($event)">
   <div *ngFor="let structure of structures" cdkDrag [cdkDragData]="structure">
-    <ip-structure [structure]="structure" [bodyWidth]="options.width" class="group relative"></ip-structure>
+    <ip-structure [structure]="structure" [bodyWidth]="options.width" class="group relative"
+                  (clone)="duplicateStructure($event)" (delete)="deleteStructure($event)"></ip-structure>
   </div>
 </div>
 
