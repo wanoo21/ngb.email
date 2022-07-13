@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AIPEmailBuilderService } from '@wlocalhost/ngx-email-builder/core';
+import { AIPEmailBuilderService } from '@wlocalhost/ngx-email-builder';
 
 @Injectable({
   providedIn: 'root',

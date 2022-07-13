@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/ngx-email-builder/src",
+  "prefix": "ip",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/ngx-email-builder"],
+      "options": {
+        "project": "libs/ngx-email-builder/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/ngx-email-builder/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/ngx-email-builder/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/ngx-email-builder"],
+      "options": {
+        "jestConfig": "libs/ngx-email-builder/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/ngx-email-builder/**/*.ts",
+          "libs/ngx-email-builder/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

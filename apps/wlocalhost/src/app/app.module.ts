@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { IPEmailBuilderModule } from "@wlocalhost/ngx-email-builder";
+import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
 import { RouterModule } from "@angular/router";
-import { addNewIPEmailBuilderBlock } from "@wlocalhost/ngx-email-builder/core";
+import { addNewIPEmailBuilderBlock } from "@wlocalhost/ngx-email-builder";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { PortalModule } from "@angular/cdk/portal";
@@ -20,7 +20,7 @@ import { MyHTMLBlockComponent } from "./my-htmlblock/my-htmlblock.component";
     FormsModule,
     PortalModule,
     RouterModule.forRoot([], { initialNavigation: "enabledBlocking" }),
-    IPEmailBuilderModule.forRoot({
+    TailwindEmailBuilderModule.forRoot({
       xApiKey: "sss"
     }),
     NgxAbstractModule.withConfig({
@@ -30,7 +30,7 @@ import { MyHTMLBlockComponent } from "./my-htmlblock/my-htmlblock.component";
     })
   ],
   providers: [
-    ...addNewIPEmailBuilderBlock(MyHTMLBlockComponent, 'html',  $localize`:@@block:HTML`, { disabled: true })
+    ...addNewIPEmailBuilderBlock(MyHTMLBlockComponent, "html", $localize`:@@block:HTML`, { disabled: true })
   ],
   bootstrap: [AppComponent]
 })

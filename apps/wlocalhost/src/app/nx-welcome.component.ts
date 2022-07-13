@@ -6,7 +6,7 @@ import {
   SocialBlock,
   Structure,
   TextBlock
-} from "@wlocalhost/ngx-email-builder/core";
+} from "@wlocalhost/ngx-email-builder";
 import { AbsPage } from "@ngcomma/ngx-abstract";
 
 @Component({

@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/wlocalhost",
         "index": "apps/wlocalhost/src/index.html",
@@ -18,7 +20,9 @@
           "apps/wlocalhost/src/favicon.ico",
           "apps/wlocalhost/src/assets"
         ],
-        "styles": ["apps/wlocalhost/src/styles.scss"],
+        "styles": [
+          "apps/wlocalhost/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/wlocalhost"],
+      "outputs": [
+        "coverage/apps/wlocalhost"
+      ],
       "options": {
         "jestConfig": "apps/wlocalhost/jest.config.ts",
         "passWithNoTests": true

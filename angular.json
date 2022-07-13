@@ -4,8 +4,9 @@
   "projects": {
     "api": "apps/api",
     "api-interfaces": "libs/api-interfaces",
-    "email-builder": "libs/email-builder",
     "ngx-abstract": "libs/ngx-abstract",
+    "ngx-email-builder": "libs/ngx-email-builder",
+    "tailwind-email-builder": "libs/tailwind-email-builder",
     "wlocalhost": "apps/wlocalhost",
     "wlocalhost-e2e": "apps/wlocalhost-e2e"
   }

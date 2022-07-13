@@ -1,10 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
-import {
-  AIPEmailBuilderBlock,
-  createPadding,
-  IPadding,
-  TIPEmailBuilderStyles
-} from "@wlocalhost/ngx-email-builder/core";
+import { AIPEmailBuilderBlock, createPadding, IPadding, TIPEmailBuilderStyles } from "@wlocalhost/ngx-email-builder";
 
 @Component({
   selector: "wlocalhost-my-htmlblock",
