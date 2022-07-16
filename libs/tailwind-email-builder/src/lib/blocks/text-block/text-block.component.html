@@ -8,12 +8,12 @@
   <h2 ipH2 i18n="@@font">Font</h2>
   <div ipPanel>
     <h3 ipH3 i18n="@@text_color">Color</h3>
-    <ip-color [(color)]="options.color"></ip-color>
-    <ip-font class="pt-2" [font]="options.font"></ip-font>
-    <ip-line-height class="pt-2" [lineHeight]="options.lineHeight"></ip-line-height>
+    <ip-color [(value)]="options.color"></ip-color>
+    <ip-font class="pt-2" [(value)]="options.font"></ip-font>
+    <ip-line-height class="pt-2" [(value)]="options.lineHeight"></ip-line-height>
   </div>
   <h2 ipH2 i18n="@@padding">Padding</h2>
   <div ipPanel>
-    <ip-padding [padding]="options.padding"></ip-padding>
+    <ip-padding [(value)]="options.padding"></ip-padding>
   </div>
 </ng-container>

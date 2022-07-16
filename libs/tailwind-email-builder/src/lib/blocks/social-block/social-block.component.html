@@ -51,13 +51,13 @@
 
           </div>
         </div>
-        <ip-link [link]="currentNetwork"></ip-link>
+        <ip-link [(value)]="currentNetworkAsILink"></ip-link>
       </div>
     </ng-container>
   </div>
   <h2 ipH2 i18n="@@font">Font</h2>
   <div ipPanel>
-    <ip-font [font]="options.font"></ip-font>
+    <ip-font [(value)]="options.font"></ip-font>
   </div>
 
   <h2 ipH2 i18n="@@social_block_styles">Styles</h2>
@@ -75,12 +75,12 @@
         <label [ipLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
         <input ipInput #i="input" class="appearance-none" type="number" [(ngModel)]="options.iconSize.value">
       </div>
-      <ip-align [(model)]="options.align"></ip-align>
+      <ip-align [(value)]="options.align"></ip-align>
     </div>
   </div>
 
   <h2 ipH2 i18n="@@padding">Padding</h2>
   <div ipPanel>
-    <ip-padding [padding]="options.padding"></ip-padding>
+    <ip-padding [(value)]="options.padding"></ip-padding>
   </div>
 </ng-container>

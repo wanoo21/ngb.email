@@ -1,6 +1,7 @@
+import { Directive } from "@angular/core";
+
 import { AIPEmailBuilderBlock } from "../../core/Block";
 import { IBorder, ILink, IPadding, IWidthHeight, TAlign, TIPEmailBuilderStyles } from "../../interfaces";
-import { Directive } from "@angular/core";
 import { createBorder, createPadding, createWidthHeight } from "../../tools/utils";
 
 /**

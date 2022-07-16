@@ -1,7 +1,8 @@
+import { Directive } from "@angular/core";
+
 import { AIPEmailBuilderBlock } from "../../core/Block";
 import { IBorder, IFont, ILineHeight, ILink, IPadding, TAlign, TIPEmailBuilderStyles } from "../../interfaces";
 import { createBorder, createFont, createLineHeight, createPadding } from "../../tools/utils";
-import { Directive } from "@angular/core";
 
 /**
  * Builder {@link ButtonBlock} options interface.

@@ -1,4 +1,4 @@
-<div *ngFor="let column of structure.elements; let index = index" [ngStyle]="columnStyles(index)" class="column"
+<div *ngFor="let column of value.elements; let index = index" [ngStyle]="columnStyles(index)" class="column"
      [class.empty]="!column.length" cdkDropList [cdkDropListData]="column"
      (cdkDropListDropped)="dropListDropped($event)" [cdkDropListConnectedTo]="columnsDropLists">
   <div class="relative group" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
@@ -71,35 +71,35 @@
     </button>
   </div>
   <h2 ipH2 i18n="@@background">Background</h2>
-  <ip-background ipPanel [background]="structure.options.background"></ip-background>
+  <ip-background ipPanel [(value)]="value.options.background"></ip-background>
   <h2 ipH2 i18n="@@border">Border</h2>
-  <ip-border ipPanel [border]="structure.options.border"></ip-border>
+  <ip-border ipPanel [(value)]="value.options.border"></ip-border>
   <h2 ipH2 i18n="@@padding">Padding</h2>
-  <ip-padding ipPanel [padding]="structure.options.padding"></ip-padding>
+  <ip-padding ipPanel [(value)]="value.options.padding"></ip-padding>
   <h2 ipH2 i18n="@@margin">Margin</h2>
-  <ip-margin ipPanel [margin]="structure.options.margin"></ip-margin>
+  <ip-margin ipPanel [(value)]="value.options.margin"></ip-margin>
   <h2 ipH2 i18n="@@layout">Layout</h2>
   <div ipPanel>
     <div class="grid grid-cols-2 gap-2">
       <div class="flex flex-col">
         <label [ipLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
-        <input ipInput #vertical="input" type="number" [(ngModel)]="structure.options.gaps[0]">
+        <input ipInput #vertical="input" type="number" [(ngModel)]="value.options.gaps[0]">
       </div>
       <div class="flex flex-col">
         <label [ipLabel]="horizontal" i18n="@@structure_horizontal_gap">Horizontal Gap</label>
-        <input ipInput #horizontal="input" type="number" [(ngModel)]="structure.options.gaps[1]">
+        <input ipInput #horizontal="input" type="number" [(ngModel)]="value.options.gaps[1]">
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-2 pt-2">
-      <button ipBtn [class.active]="structure.options.disableResponsive"
-              (click)="structure.options.disableResponsive = !structure.options.disableResponsive"
+      <button ipBtn [class.active]="value.options.disableResponsive"
+              (click)="value.options.disableResponsive = !value.options.disableResponsive"
               i18n="@@disable_responsive"
       >
         Disable responsive
       </button>
-      <button ipBtn [class.active]="structure.options.fullWidth"
-              (click)="structure.options.fullWidth = !structure.options.fullWidth"
+      <button ipBtn [class.active]="value.options.fullWidth"
+              (click)="value.options.fullWidth = !value.options.fullWidth"
               i18n="@@full_width_structure"
       >
         Full width structure
@@ -116,12 +116,12 @@
       </button>
     </div>
 
-    <ng-container *ngFor="let column of structure.options.columns; let index = index">
+    <ng-container *ngFor="let column of value.options.columns; let index = index">
       <div class="flex flex-col pt-2" *ngIf="editColumnIndex === index">
         <h3 ipH3 i18n="@@background_color">Background Color</h3>
-        <ip-color [(color)]="column.background.color"></ip-color>
+        <ip-color [(value)]="column.background.color"></ip-color>
         <h3 ipH3 class="pt-1" i18n="@@border">Border</h3>
-        <ip-border [border]="column.border"></ip-border>
+        <ip-border [(value)]="column.border!"></ip-border>
         <h3 ipH3 class="pt-1" i18n="@@vertical_align">Vertical Align</h3>
         <div class="grid grid-cols-3 gap-2">
           <button ipBtn *ngFor="let align of verticalLabels"

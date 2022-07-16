@@ -2,16 +2,15 @@ import { Injectable } from "@angular/core";
 import { CdkPortal, CdkPortalOutlet } from "@angular/cdk/portal";
 import { BehaviorSubject, map } from "rxjs";
 import { CdkDropList } from "@angular/cdk/drag-drop";
-import { IStructure } from "@wlocalhost/ngx-email-builder";
+import { AIPEmailBuilderBlockExtendedOptions, IStructure } from "@wlocalhost/ngx-email-builder";
 
 import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
-import { IIPEmailBuilderBlockData } from "../private-tokens";
 
 @Injectable({
   providedIn: "root"
 })
 export class IPEmailBuilderUiService {
-  columnsDropLists = new Set<CdkDropList<IIPEmailBuilderBlockData[]>>();
+  columnsDropLists = new Set<CdkDropList<AIPEmailBuilderBlockExtendedOptions[]>>();
   structuresDropLists = new Set<CdkDropList<IStructure[]>>();
   #attachSettingsPortal$ = new BehaviorSubject<CdkPortal | null>(null);
   #defaultSettingsPortal: IPEmailBuilderSettingsDirective | null | undefined;

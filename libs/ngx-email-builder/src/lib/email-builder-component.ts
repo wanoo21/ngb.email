@@ -1,21 +1,47 @@
-import { Directive, inject, Input } from "@angular/core";
+import {
+  Directive,
+  DoCheck,
+  EventEmitter,
+  inject,
+  Input,
+  KeyValueDiffer,
+  KeyValueDiffers,
+  OnInit,
+  Output
+} from "@angular/core";
+
+import { AIPEmailBuilderRestService, AIPEmailBuilderService } from "./services";
+import { IPEmail } from "./body/body";
 import { AbsComponent } from "@ngcomma/ngx-abstract";
 
-import { AIPEmailBuilderService } from "./services/email-builder-service/email-builder.service";
-import { AIPEmailBuilderStorageService } from "./services/email-builder-storage-service/email-builder-storage.service";
-import { AIPEmailBuilderRestService } from "./services/email-builder-rest-service/email-builder-rest.service";
-import {
-  AIPEmailBuilderMiddlewareService
-} from "./services/email-builder-middleware-service/email-builder-middleware.service";
-import { IPEmail } from "./body/body";
-
 @Directive()
-export abstract class AIPEmailBuilderComponent extends AbsComponent {
-  @Input() email = new IPEmail([], { direction: this.direction.value });
+export abstract class AIPEmailBuilderComponent extends AbsComponent implements OnInit, DoCheck {
+  @Input() value = new IPEmail([], { direction: this.direction.value });
+  @Output() valueChange = new EventEmitter();
   readonly emailBuilderService = inject(AIPEmailBuilderService);
-  readonly emailBuilderStorageService = inject(AIPEmailBuilderStorageService);
-  readonly emailBuilderMiddlewareService = inject(
-    AIPEmailBuilderMiddlewareService
-  );
-  readonly emailBuilderRestService = inject(AIPEmailBuilderRestService);
+  readonly restService = inject(AIPEmailBuilderRestService);
+  #differs = inject(KeyValueDiffers);
+
+  #valueDiffer!: KeyValueDiffer<string, any>;
+  #backgroundDiffer!: KeyValueDiffer<string, any>;
+
+  convert(): void {
+    console.log(this.value);
+    this.restService.convert(this.value).subscribe();
+  }
+
+  ngOnInit() {
+    this.#valueDiffer = this.#differs.find(this.value.general).create();
+    this.#backgroundDiffer = this.#differs.find(this.value.general.background).create();
+  }
+
+  ngDoCheck(): void {
+    const changes = this.#valueDiffer.diff(this.value.general);
+    const backgroundDifferChanges = this.#backgroundDiffer.diff(this.value.general.background);
+    [changes, backgroundDifferChanges].forEach(change => {
+      change?.forEachChangedItem(item => {
+        console.log(item);
+      });
+    });
+  }
 }

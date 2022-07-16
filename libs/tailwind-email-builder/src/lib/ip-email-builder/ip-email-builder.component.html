@@ -1,7 +1,10 @@
 <div class="grid grid-cols-12 grid-rows-1 h-full">
-  <ip-email-body class="col-span-7 md:col-span-9 sm:col-span-8 overflow-x-auto"
-    [structures]="email.structures"
-    [options]="email.general"
-  ></ip-email-body>
+  <div class="col-span-7 md:col-span-9 sm:col-span-8 flex flex-col">
+    <div class="bg-white shadow-sm border border-b py-3 px-4 w-full flex gap-2 flex-shrink-0">
+      <button ipBtn>Preview changes</button>
+      <button ipBtn (click)="convert()">Save</button>
+    </div>
+    <ip-email-body class="overflow-x-auto flex-1" [email]="value"></ip-email-body>
+  </div>
   <ip-email-aside class="col-span-5 md:col-span-3 sm:col-span-4"></ip-email-aside>
 </div>

@@ -1,10 +1,11 @@
-import { Directive, inject, Input } from "@angular/core";
-import { AIPEmailBuilderService, IFont } from "@wlocalhost/ngx-email-builder";
-import { AbsComponent } from "@ngcomma/ngx-abstract";
+import { Directive, inject } from "@angular/core";
+
+import { AIPValueChanged } from "../core/ValueChanged";
+import { IFont } from "../interfaces";
+import { AIPEmailBuilderService } from "../services";
 
 @Directive()
-export abstract class AIPFont extends AbsComponent {
-  @Input() font!: IFont;
+export abstract class AIPFont extends AIPValueChanged<IFont> {
   builderService = inject(AIPEmailBuilderService);
   #standardWeights = [100, 400, 500, 700, 900];
   #stylesMap = new Map<IFont["style"], string>([
@@ -18,14 +19,14 @@ export abstract class AIPFont extends AbsComponent {
   }
 
   get weight(): string {
-    return String(this.font.weight);
+    return String(this.value.weight);
   }
 
   set weight(value: string) {
     if (this.weights.includes(+value)) {
-      this.font.weight = +value;
+      this.value.weight = +value;
     } else {
-      this.font.weight = this.weights[0];
+      this.value.weight = this.weights[0];
     }
   }
 
@@ -43,28 +44,28 @@ export abstract class AIPFont extends AbsComponent {
   }
 
   get family(): string {
-    const { family, fallback } = this.font;
+    const { family, fallback } = this.value;
     return this.standardFonts.includes(family) ? family : fallback;
   }
 
   set family(value: string) {
     if (!this.googleFont) {
-      this.font.family = value;
+      this.value.family = value;
     } else {
-      this.font.fallback = value;
+      this.value.fallback = value;
     }
   }
 
   get googleFont(): string {
-    const { family } = this.font;
+    const { family } = this.value;
     return !this.standardFonts.includes(family) ? family : "";
   }
 
   set googleFont(value: string) {
     if (value) {
-      this.font.family = value;
+      this.value.family = value;
     } else {
-      this.font.family = this.font.fallback;
+      this.value.family = this.value.fallback;
       this.weight = "400";
     }
   }

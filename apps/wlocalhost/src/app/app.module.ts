@@ -20,9 +20,7 @@ import { MyHTMLBlockComponent } from "./my-htmlblock/my-htmlblock.component";
     FormsModule,
     PortalModule,
     RouterModule.forRoot([], { initialNavigation: "enabledBlocking" }),
-    TailwindEmailBuilderModule.forRoot({
-      xApiKey: "sss"
-    }),
+    TailwindEmailBuilderModule.forRoot(),
     NgxAbstractModule.withConfig({
       page: {
         prefix: "{title} | Wlocalhost"
@@ -30,7 +28,7 @@ import { MyHTMLBlockComponent } from "./my-htmlblock/my-htmlblock.component";
     })
   ],
   providers: [
-    ...addNewIPEmailBuilderBlock(MyHTMLBlockComponent, "html", $localize`:@@block:HTML`, { disabled: true })
+    ...addNewIPEmailBuilderBlock(MyHTMLBlockComponent, "html", $localize`:@@block:HTML`)
   ],
   bootstrap: [AppComponent]
 })

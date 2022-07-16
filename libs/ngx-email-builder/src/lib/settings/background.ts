@@ -1,12 +1,10 @@
-import { AbsComponent } from "@ngcomma/ngx-abstract";
-import { Directive, Input } from "@angular/core";
+import { Directive } from "@angular/core";
 
 import { IBackground, TBackgroundRepeat, TUnits } from "../interfaces";
+import { AIPValueChanged } from "../core/ValueChanged";
 
 @Directive()
-export abstract class AIPBackground extends AbsComponent {
-  @Input() background!: IBackground;
-
+export abstract class AIPBackground extends AIPValueChanged<IBackground> {
   readonly #repeatLabels = new Map<TBackgroundRepeat, string>([
     ["no-repeat", $localize`:@@no_repeat:No`],
     ["repeat", $localize`:@@repeat:Repeat`],
@@ -18,7 +16,7 @@ export abstract class AIPBackground extends AbsComponent {
     ["%", $localize`:@@unit:Percent`],
     ["px", $localize`:@@unit:Pixels`],
     ["cover", $localize`:@@unit:Cover`],
-    ["contain", $localize`:@@unit:Contain`],
+    ["contain", $localize`:@@unit:Contain`]
   ]);
 
   get repeatKeys(): TBackgroundRepeat[] {

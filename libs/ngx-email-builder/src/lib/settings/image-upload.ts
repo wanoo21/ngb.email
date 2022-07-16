@@ -1,8 +1,9 @@
-import { AbsComponent } from "@ngcomma/ngx-abstract";
 import { Directive, EventEmitter, Input, Output } from "@angular/core";
 
+import { IIPValueChanged } from "../core/ValueChanged";
+
 @Directive()
-export abstract class AIPImageUpload extends AbsComponent {
-  @Input() src!: string;
-  @Output() srcChange = new EventEmitter();
+export abstract class AIPImageUpload implements IIPValueChanged<string> {
+  @Input() value!: string;
+  @Output() valueChange = new EventEmitter();
 }

@@ -1,10 +1,10 @@
-import { IMargin } from "@wlocalhost/ngx-email-builder";
-import { Directive, Input } from "@angular/core";
+import { Directive } from "@angular/core";
+
+import { AIPValueChanged } from "../core/ValueChanged";
+import { IMargin } from "../interfaces";
 
 @Directive()
-export abstract class AIPMargin {
-  @Input() margin!: IMargin;
-
+export abstract class AIPMargin extends AIPValueChanged<IMargin> {
   readonly #marginLabels = new Map<keyof IMargin, string>([
     ["top", $localize`:@@padding_top:Top`],
     ["bottom", $localize`:@@padding_bottom:Bottom`]

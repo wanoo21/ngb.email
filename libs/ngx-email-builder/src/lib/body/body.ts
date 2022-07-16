@@ -13,10 +13,10 @@ export interface IGeneralOptions {
   direction: TDirection;
   name: string;
   previewText: string;
-  // global: {
-  //   fonts?: string[];
-  //   padding?: IPadding;
-  // };
+  global: {
+    // fonts?: string[];
+    // padding?: IPadding;
+  };
 }
 
 /**
@@ -56,17 +56,16 @@ export class IPEmail {
         bottom: 10,
         left: 10
       },
-      direction: "ltr"
-      // global: {
-      //   // TODO Add more global configurations
-      //   // fonts: [],
-      //   padding: {
-      //     top: 0,
-      //     right: 0,
-      //     bottom: 0,
-      //     left: 0
-      //   }
-      // }
+      direction: "ltr",
+      global: {
+        // fonts: [],
+        padding: {
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0
+        }
+      }
     }) as IGeneralOptions;
   }
 }

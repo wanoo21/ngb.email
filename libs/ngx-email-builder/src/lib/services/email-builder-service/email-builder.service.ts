@@ -1,6 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
+// import { AIPEmailBuilderRestService } from "../email-builder-rest-service/email-builder-rest.service";
 
 @Injectable({
   providedIn: "root",
@@ -21,6 +22,8 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tok
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderService {
+  // readonly restService = inject(AIPEmailBuilderRestService)
+
   standardFonts = [
     "Palatino Linotype, Book Antiqua, Palatino, serif",
     "Times New Roman, Times, serif",

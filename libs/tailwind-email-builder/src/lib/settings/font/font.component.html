@@ -17,7 +17,7 @@
 <div class="grid grid-cols-3 gap-2 pt-2">
   <div class="flex flex-col" i18n="@@font_size">
     <label [ipLabel]="fs">Size</label>
-    <input ipInput #fs="input" [(ngModel)]="font.size" type="number" />
+    <input ipInput #fs="input" [(ngModel)]="value.size" type="number" />
   </div>
   <div class="flex flex-col" i18n="@@font_weight">
     <label [ipLabel]="w">Weight</label>
@@ -27,7 +27,7 @@
   </div>
   <div class="flex flex-col" i18n="@@font_style">
     <label [ipLabel]="fst">Style</label>
-    <select ipInput #fst="input" [(ngModel)]="font.style" class="appearance-none">
+    <select ipInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
       <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
     </select>
   </div>

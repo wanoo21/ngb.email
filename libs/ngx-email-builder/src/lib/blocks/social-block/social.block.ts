@@ -77,7 +77,6 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
     }
   };
   supportedNetworks: ISocialNetwork["name"][] = ["github", "instagram", "web", "snapchat", "youtube", "vimeo", "medium", "soundcloud", "facebook", "twitter", "pinterest", "linkedin", "tumblr", "xing"];
-
   currentNetwork: ISocialNetwork | undefined;
   readonly #modeLabels = new Map([
     ["horizontal", $localize`:@@social_horizontal:Horizontal`],
@@ -86,6 +85,14 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
 
   get modeKeys() {
     return this.#modeLabels.keys();
+  }
+
+  get currentNetworkAsILink(): ILink {
+    return this.currentNetwork as ILink;
+  }
+
+  set currentNetworkAsILink(link: ILink) {
+    this.currentNetwork = { ...this.currentNetwork, ...link } as ISocialNetwork;
   }
 
   get hostStyles(): TIPEmailBuilderStyles {
@@ -127,7 +134,7 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
   }
 
   deleteCurrentNetwork(): void {
-    this.networks = this.networks.filter(network => network !== this.currentNetwork);
+    this.networks = this.networks.filter(network => network.name !== this.currentNetwork?.name);
     this.currentNetwork = undefined;
   }
 

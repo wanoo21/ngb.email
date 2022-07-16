@@ -1,10 +1,13 @@
 import { Directive, EventEmitter, Input, Output } from "@angular/core";
-import { TAlign, TVerticalAlign } from "@wlocalhost/ngx-email-builder";
+
+import { IIPValueChanged } from "../core/ValueChanged";
+import { TAlign, TVerticalAlign } from "../interfaces";
 
 @Directive()
-export abstract class AIPAlign {
+export abstract class AIPAlign implements IIPValueChanged<TAlign | TVerticalAlign> {
   @Input() mode: "vertical" | "horizontal" = "horizontal";
-  @Output() modelChange = new EventEmitter();
+  @Output() valueChange = new EventEmitter();
+
   @Input() disabled = false;
   #horizontalLabels = new Map<TAlign, string>([
     ["left", $localize`:@@horizontal_align:Left`],
@@ -18,14 +21,14 @@ export abstract class AIPAlign {
   ]);
   private _model!: TAlign | TVerticalAlign;
 
-  get model(): TAlign | TVerticalAlign {
+  get value(): TAlign | TVerticalAlign {
     return this._model;
   }
 
   @Input()
-  set model(value: TAlign | TVerticalAlign) {
+  set value(value: TAlign | TVerticalAlign) {
     this._model = value;
-    this.modelChange.next(value);
+    this.valueChange.next(value);
   }
 
   get horizontalLabels(): TAlign[] {

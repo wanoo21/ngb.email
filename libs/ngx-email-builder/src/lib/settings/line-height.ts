@@ -1,10 +1,10 @@
 import { Directive, Input } from "@angular/core";
 
 import { ILineHeight, TLineHeight } from "../interfaces";
+import { AIPValueChanged } from "../core/ValueChanged";
 
 @Directive()
-export abstract class AIPLineHeight {
-  @Input() lineHeight!: ILineHeight;
+export abstract class AIPLineHeight extends AIPValueChanged<ILineHeight> {
   @Input() units: TLineHeight[] = ["%", "px", "none"];
 
   #unitsLabels: Map<string, string> = new Map<TLineHeight, string>([

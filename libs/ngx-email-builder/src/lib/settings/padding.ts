@@ -1,10 +1,10 @@
-import { Directive, Input } from "@angular/core";
+import { Directive } from "@angular/core";
+
 import { IPadding } from "../interfaces";
+import { AIPValueChanged } from "../core/ValueChanged";
 
 @Directive()
-export abstract class AIPPadding {
-  @Input() padding!: IPadding;
-
+export abstract class AIPPadding extends AIPValueChanged<IPadding> {
   readonly #paddingLabels = new Map<keyof IPadding, string>([
     ["top", $localize`:@@padding_top:Top`],
     ["right", $localize`:@@padding_right:Right`],

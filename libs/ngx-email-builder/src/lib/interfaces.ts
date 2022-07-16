@@ -219,7 +219,7 @@ export interface IWidthHeight {
 /**
  * Builder background styles interface.
  */
-export interface IBackground {
+export interface  IBackground {
   color: string;
   url: string;
   repeat: TBackgroundRepeat;

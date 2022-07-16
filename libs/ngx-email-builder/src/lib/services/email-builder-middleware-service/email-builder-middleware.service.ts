@@ -3,6 +3,7 @@ import { Observable, of } from "rxjs";
 
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
 import { IStructure } from "../../structure/structure";
+import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
 
 @Injectable({
   providedIn: "root",
@@ -27,6 +28,16 @@ export abstract class AIPEmailBuilderMiddlewareService {
 
   structuresList(structures: IStructure[]): Observable<IStructure[]> {
     return of(structures);
+  }
+
+  deleteStructure(structure: IStructure): Promise<boolean> {
+    const ask = confirm("Are you sure?");
+    return Promise.resolve(ask);
+  }
+
+  deleteBlock(block: AIPEmailBuilderBlockExtendedOptions): Promise<boolean> {
+    const ask = confirm("Are you sure?");
+    return Promise.resolve(ask);
   }
 }
 

@@ -6,7 +6,7 @@ import { IBlockState } from "./interfaces";
 
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
-    xApiKey: "", socialIconsPath: ""
+    xApiKey: "", socialIconsPath: "", convertorPath: ""
   };
 
   constructor(config?: IIPEmailBuilderConfig) {
@@ -17,8 +17,16 @@ export class IPEmailBuilderConfig {
     return this.defConfig.socialIconsPath || "https://www.mailjet.com/images/theme/v1/icons/ico-social";
   }
 
+  get xApiKey(): NonNullable<IIPEmailBuilderConfig["xApiKey"]> {
+    return this.defConfig.xApiKey || "t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz";
+  }
+
   get isFreeVersion(): boolean {
     return !this.defConfig.xApiKey;
+  }
+
+  get convertorPath(): string {
+    return this.defConfig.convertorPath || "https://ngb-api.wlocalhost.org/v1";
   }
 
   get providers(): IIPEmailBuilderConfig["providers"] {

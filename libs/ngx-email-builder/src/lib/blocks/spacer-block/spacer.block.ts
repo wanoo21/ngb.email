@@ -1,6 +1,7 @@
+import { Directive } from "@angular/core";
+
 import { AIPEmailBuilderBlock } from "../../core/Block";
 import { IWidthHeight, TIPEmailBuilderStyles } from "../../interfaces";
-import { Directive } from "@angular/core";
 import { createWidthHeight } from "../../tools/utils";
 
 /**

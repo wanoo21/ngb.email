@@ -12,7 +12,7 @@ import { AbsPage } from "@ngcomma/ngx-abstract";
 @Component({
   selector: "wlocalhost-nx-welcome",
   template: `
-    <ip-email-builder [email]="email"></ip-email-builder> `,
+    <ip-email-builder [(value)]="email"></ip-email-builder> `,
   styles: []
 })
 export class NxWelcomeComponent extends AbsPage {

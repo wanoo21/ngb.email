@@ -1,17 +1,26 @@
-import { AfterViewInit, Directive, HostBinding, HostListener, Input, OnInit, ViewChild } from "@angular/core";
+import {
+  AfterViewInit,
+  Directive,
+  HostBinding,
+  HostListener,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild
+} from "@angular/core";
 import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
+import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 
 import { WithSettings } from "./WithSettings";
-import { IIPEmail } from "../body/body";
+import { IPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
 import { TDirection, TStructureTypes } from "../interfaces";
 import { IStructure, Structure } from "../structure/structure";
-import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 
 @Directive()
-export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit {
-  @Input() options!: IIPEmail["general"];
-  @Input() structures!: IIPEmail["structures"];
+export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit, OnChanges {
+  @Input() email!: IPEmail;
   @ViewChild("structuresDropList", { static: true, read: CdkDropList })
   readonly structuresDropList: CdkDropList | undefined;
   #directionLabels = new Map<TDirection, string>([
@@ -25,7 +34,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   @HostBinding("style")
   get hostStyles(): Record<string, string | number> {
-    const { padding, background } = this.options;
+    const { padding, background } = this.email.general;
     return {
       ...createPadding(padding),
       background: createBackground(background),
@@ -38,7 +47,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   @HostBinding("attr.dir")
   get dir(): string {
-    return this.options.direction;
+    return this.email.general.direction;
   }
 
   getDirectionLabel(dir: TDirection): string {
@@ -51,13 +60,13 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
   }
 
   deleteStructure(structure: Structure): void {
-    const indexOf = this.structures.indexOf(structure);
-    this.structures.splice(indexOf, 1);
+    const indexOf = this.email.structures.indexOf(structure);
+    this.email.structures.splice(indexOf, 1);
   }
 
   duplicateStructure(structure: Structure): void {
-    const indexOf = this.structures.indexOf(structure);
-    this.structures.splice(indexOf, 0, cloneDeep(structure));
+    const indexOf = this.email.structures.indexOf(structure);
+    this.email.structures.splice(indexOf, 0, cloneDeep(structure));
   }
 
   dropListDropped({
@@ -81,10 +90,14 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   ngAfterViewInit(): void {
     if (this.structuresDropList) {
-      this.structuresDropList.data = this.structures;
+      this.structuresDropList.data = this.email.structures;
       this.structuresDropList.autoScrollDisabled = false;
       this.builderUiService.structuresDropLists.add(this.structuresDropList);
     }
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
   }
 
   override markForCheck(): boolean {

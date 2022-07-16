@@ -87,7 +87,9 @@ export class TailwindEmailBuilderModule {
   ): ModuleWithProviders<TailwindEmailBuilderModule> {
     return {
       ngModule: TailwindEmailBuilderModule,
-      providers: [...withConfig(config)]
+      providers: [
+        ...withConfig(config)
+      ]
     };
   }
 }

@@ -1,10 +1,10 @@
-import { Directive, Input } from "@angular/core";
-import { IBorder } from "@wlocalhost/ngx-email-builder";
+import { Directive } from "@angular/core";
+
+import { AIPValueChanged } from "../core/ValueChanged";
+import { IBorder } from "../interfaces";
 
 @Directive()
-export abstract class AIPBorder {
-  @Input() border!: Partial<IBorder>;
-
+export abstract class AIPBorder extends AIPValueChanged<IBorder> {
   readonly #styleLabels = new Map<IBorder["style"], string>([
     ["solid", $localize`:@@border_style:Solid`],
     ["dotted", $localize`:@@border_style:Dotted`],
@@ -18,8 +18,7 @@ export abstract class AIPBorder {
   }
 
   hasOwn(key: keyof IBorder): boolean {
-    // eslint-disable-next-line no-prototype-builtins
-    return this.border.hasOwnProperty(key);
+    return Object.keys(this.value).includes(key);
   }
 
   getStyleLabel(style: IBorder["style"]): string {

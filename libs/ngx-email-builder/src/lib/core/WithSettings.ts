@@ -1,7 +1,7 @@
 import { Directive, DoCheck, HostBinding, inject, ViewChild } from "@angular/core";
 import { AbsComponent } from "@ngcomma/ngx-abstract";
 
-import { IPEmailBuilderUiService } from "../services/email-builder-ui.service";
+import { IPEmailBuilderUiService } from "../services";
 import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
 
 @Directive()

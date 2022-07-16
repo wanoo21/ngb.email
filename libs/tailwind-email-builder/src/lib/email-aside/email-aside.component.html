@@ -16,7 +16,9 @@
       <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
         <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
              [cdkDragData]="structure | toBodyStructure">
-          <div *ngFor="let col of structure.options.columns" class="bg-gray-200 h-4 w-full rounded"></div>
+          <div *ngFor="let col of structure.options.columns; let index = index" class="bg-gray-200 h-9 w-full rounded"
+               [ngClass]="{'w-1/3 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
+          ></div>
         </div>
       </ng-container>
     </div>
@@ -37,6 +39,7 @@
   </ng-container>
 </div>
 
-<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
+<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected"
+     ngForm>
   <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
 </div>

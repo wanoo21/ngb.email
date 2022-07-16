@@ -1,10 +1,10 @@
-import { Directive, Input } from "@angular/core";
-import { ILink, TLinkTarget } from "@wlocalhost/ngx-email-builder";
+import { Directive } from "@angular/core";
+
+import { AIPValueChanged } from "../core/ValueChanged";
+import { ILink, TLinkTarget } from "../interfaces";
 
 @Directive()
-export abstract class AIPLink {
-  @Input() link!: ILink;
-
+export abstract class AIPLink extends AIPValueChanged<ILink> {
   #targetLabels = new Map<TLinkTarget, string>([
     ["_blank", $localize`:@@link_target:Blank`],
     ["_self", $localize`:@@link_target:Self`],
