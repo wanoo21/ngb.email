@@ -3,6 +3,10 @@
     <div class="bg-white shadow-sm border border-b py-3 px-4 w-full flex gap-2 flex-shrink-0">
       <button ipBtn>Preview changes</button>
       <button ipBtn (click)="convert()">Save</button>
+
+      <div class="ms-auto">
+        <button ipBtn [ipHistory]="'prev'">Prev</button>
+      </div>
     </div>
     <ip-email-body class="overflow-x-auto flex-1" [email]="value"></ip-email-body>
   </div>

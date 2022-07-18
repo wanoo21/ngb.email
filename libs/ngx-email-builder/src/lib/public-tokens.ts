@@ -1,5 +1,6 @@
 import { Type } from "@angular/core";
 import {
+  AIPEmailBuilderHistoryService,
   AIPEmailBuilderMiddlewareService,
   AIPEmailBuilderRestService,
   AIPEmailBuilderService,
@@ -14,6 +15,7 @@ export interface IIPEmailBuilderConfig {
       Type<AIPEmailBuilderService> | null,
       Type<AIPEmailBuilderStorageService> | null,
       Type<AIPEmailBuilderMiddlewareService> | null,
-      Type<AIPEmailBuilderRestService> | null
+      Type<AIPEmailBuilderRestService> | null,
+      Type<AIPEmailBuilderHistoryService> | null,
   ];
 }

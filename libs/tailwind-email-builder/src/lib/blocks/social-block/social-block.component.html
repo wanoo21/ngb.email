@@ -15,7 +15,7 @@
 </ng-template>
 
 
-<ng-container *ipEmailBuilderSettings>
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <h2 ipH2 i18n="@@social_block_networks">Networks</h2>
   <div ipPanel>
     <h3 ipH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>

@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, inject, Input, KeyValueDiffer, KeyValueDiffers, Output } from "@angular/core";
+import { Directive, EventEmitter, Input, Output } from "@angular/core";
 import { AbsComponent } from "@ngcomma/ngx-abstract";
 
 export interface IIPValueChanged<T> {
@@ -10,22 +10,21 @@ export interface IIPValueChanged<T> {
 export abstract class AIPValueChanged<T extends Record<string, any>> extends AbsComponent implements IIPValueChanged<T> {
   @Input() value!: T;
   @Output() valueChange = new EventEmitter<T>();
-  readonly differs = inject(KeyValueDiffers);
-  #valueDiffer!: KeyValueDiffer<keyof T, any>;
+  // readonly differs = inject(KeyValueDiffers);
+  // #valueDiffer!: KeyValueDiffer<keyof T, any>;
+  //
+  // #debounce = debounce(() => {
+  //   const changes = this.#valueDiffer.diff(this.value);
+  //   if (changes) {
+  //     this.valueChange.next(this.value);
+  //   }
+  // }, 500);
 
-  ngDoCheck(): void {
-    const changes = this.#valueDiffer.diff(this.value);
-    if (changes) {
-      changes.forEachChangedItem(({ key, currentValue }) => {
-        console.log({ key, currentValue });
-      });
-      this.valueChange.next(this.value);
-      // this.changeDetectorRef.markForCheck();
-    }
-  }
-
-  ngOnInit(): void {
-    // console.log("init", this.value);
-    this.#valueDiffer = this.differs.find(this.value).create();
-  }
+  // ngDoCheck(): void {
+  //   this.#debounce();
+  // }
+  //
+  // ngOnInit(): void {
+  //   this.#valueDiffer = this.differs.find(this.value).create();
+  // }
 }

@@ -1,6 +1,6 @@
 <div [innerHTML]="innerText"></div>
 
-<ng-container *ipEmailBuilderSettings>
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <div ipPanel class="mt-4">
     <textarea ipInput [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
   </div>

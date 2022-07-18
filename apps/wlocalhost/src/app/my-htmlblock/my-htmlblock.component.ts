@@ -5,7 +5,7 @@ import { AIPEmailBuilderBlock, createPadding, IPadding, TIPEmailBuilderStyles } 
   selector: "wlocalhost-my-htmlblock",
   template: `
     <p>my-htmlblock works! {{ innerText }}</p>
-    <ng-container *ipEmailBuilderSettings>
+    <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
       <input type="text" [(ngModel)]="innerText" placeholder="Change me" />
     </ng-container>
   `,

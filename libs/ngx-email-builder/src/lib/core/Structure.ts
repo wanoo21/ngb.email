@@ -1,19 +1,17 @@
 import {
   AfterViewInit,
   Directive,
-  DoCheck,
   ElementRef,
   EventEmitter,
   HostBinding,
   HostListener,
   inject,
   Input,
-  OnInit,
   Output,
   QueryList,
   ViewChildren
 } from "@angular/core";
-import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
+import { cloneDeep, defaultsDeep } from "@ngcomma/ngx-abstract/utils";
 
 import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Structure } from "../structure/structure";
@@ -29,7 +27,7 @@ import { AIPEmailBuilderMiddlewareService } from "../services";
 // type KeyOfType<T, U> = { [P in keyof T]: T[P] extends U ? P : never }[keyof T]
 
 @Directive()
-export abstract class AIPStructure extends WithSettings implements OnInit, AfterViewInit, IIPValueChanged<Structure>, DoCheck {
+export abstract class AIPStructure extends WithSettings implements AfterViewInit, IIPValueChanged<Structure> {
   @Input() value!: Structure;
   @Output() valueChange = new EventEmitter<Structure>();
   // Body general width
@@ -54,9 +52,6 @@ export abstract class AIPStructure extends WithSettings implements OnInit, After
     ["bottom", $localize`:@@vertical_align:Bottom`]
   ]);
   #middlewareService = inject(AIPEmailBuilderMiddlewareService);
-  // #differs = inject(KeyValueDiffers);
-  // #optionsDiffer!: KeyValueDiffer<string, any>;
-  // #structureOptionsKeys: Array<KeyOfType<IStructureOptions, Record<string, any>>> = ["margin", "padding", "background", "border"];
 
   @HostBinding("style")
   get bodyStyles(): TIPEmailBuilderStyles {
@@ -166,10 +161,6 @@ export abstract class AIPStructure extends WithSettings implements OnInit, After
     }
   }
 
-  ngOnInit(): void {
-    // this.#optionsDiffer = this.#differs.find(this.value.options).create();
-  }
-
   ngAfterViewInit(): void {
     /**
      * A small change detection improvement.
@@ -196,5 +187,9 @@ export abstract class AIPStructure extends WithSettings implements OnInit, After
       return true;
     }
     return false;
+  }
+
+  toObject(): Structure["options"] {
+    return defaultsDeep(this.value.options, {} as Structure["options"]);
   }
 }

@@ -1,6 +1,6 @@
 <img [src]="src" [title]="options.title" [alt]="options.title" [ngStyle]="imageStyles" />
 
-<ng-container *ipEmailBuilderSettings>
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <h2 ipH2 i18n="@@image_block_image">Image</h2>
   <div ipPanel>
     <ip-image-upload [(value)]="src"></ip-image-upload>

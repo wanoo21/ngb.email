@@ -17,9 +17,9 @@ export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends With
   builderService = inject(AIPEmailBuilderService);
   @HostBinding("style")
   abstract hostStyles: TIPEmailBuilderStyles;
+  // readonly optionsToWatch = this.toObject();
   #document = inject(DOCUMENT);
   #googleFontLink = this.#document.createElement("link");
-
   #addFontToHead = debounce((family: string) => {
     const fontIsIncluded = Array.from(this.#document.querySelectorAll("link")).some(({ href }) => href.includes(family));
     if (!fontIsIncluded) {

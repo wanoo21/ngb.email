@@ -1,6 +1,6 @@
 <div [ngStyle]="borderStyles"></div>
 
-<ng-container *ipEmailBuilderSettings>
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <h2 ipH2 i18n="@@divider_color">Divider Color</h2>
   <div ipPanel>
     <ip-border [(value)]="border"></ip-border>

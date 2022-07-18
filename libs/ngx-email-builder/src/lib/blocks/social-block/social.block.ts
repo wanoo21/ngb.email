@@ -129,7 +129,7 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
       this.currentNetwork = this.networks.find(({ name }) => name === network)!;
     } else {
       this.currentNetwork = { name: network, href: "", label: "", target: "_blank" };
-      this.networks.push(this.currentNetwork);
+      this.networks = [...this.networks, this.currentNetwork];
     }
   }
 

@@ -14,6 +14,8 @@ import { ToBodyStructurePipe } from "./pipes/to-body-structure.pipe";
 import { ApplyMiddlewarePipe } from "./pipes/apply-middleware.pipe";
 import { IpEmailBuilderStructureDirective } from "./directives/ip-email-builder-structure.directive";
 import { IpEmailBuilderInterceptor } from "./ip-email-builder.interceptor";
+import { ToWatchOptionsPipe } from './pipes/to-watch-options.pipe';
+import { IPHistoryDirective } from './directives/history.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { IpEmailBuilderInterceptor } from "./ip-email-builder.interceptor";
     ToBodyBlockPipe,
     ToBodyStructurePipe,
     ApplyMiddlewarePipe,
-    IpEmailBuilderStructureDirective
+    IpEmailBuilderStructureDirective,
+    ToWatchOptionsPipe,
+    IPHistoryDirective
   ],
   imports: [CommonModule, PortalModule, FormsModule, HttpClientModule],
   exports: [
@@ -39,7 +43,9 @@ import { IpEmailBuilderInterceptor } from "./ip-email-builder.interceptor";
     ApplyMiddlewarePipe,
     NgxAbstractModule,
     HttpClientModule,
-    IpEmailBuilderStructureDirective
+    IpEmailBuilderStructureDirective,
+    ToWatchOptionsPipe,
+    IPHistoryDirective
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: IpEmailBuilderInterceptor, multi: true }

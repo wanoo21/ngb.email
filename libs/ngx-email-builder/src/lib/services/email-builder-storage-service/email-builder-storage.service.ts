@@ -1,8 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import {
-  IP_EMAIL_BUILDER_CONFIG,
-  IPEmailBuilderConfig,
-} from '../../private-tokens';
+import {IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig,} from '../../private-tokens';
 
 @Injectable({
   providedIn: 'root',
