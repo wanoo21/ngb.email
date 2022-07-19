@@ -1,37 +1,37 @@
 <div cdkDropList #structuresDropList (cdkDropListDropped)="dropListDropped($event)">
-  <div *ngFor="let structure of email.structures; let index = index" cdkDrag [cdkDragData]="structure">
+  <div *ngFor="let structure of value.structures; let index = index" cdkDrag [cdkDragData]="structure">
     <ip-structure (clone)="duplicateStructure($event)"
                   (delete)="deleteStructure($event)" [value]="structure"
-                  [bodyWidth]="email.general.width" class="group relative"></ip-structure>
+                  [bodyWidth]="value.general.width" class="group relative"></ip-structure>
   </div>
 </div>
 
-<ng-container *ipEmailBuilderSettings="email.general">
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <div ipPanel class="mt-4">
     <div class="flex flex-col">
       <label [ipLabel]="i" i18n="@@template_name">Template name</label>
-      <input ipInput #i="input" type="text" [(ngModel)]="email.general.name">
+      <input ipInput #i="input" type="text" [(ngModel)]="value.general.name">
     </div>
     <div class="flex flex-col mt-2">
       <label [ipLabel]="t" i18n="@@template_preview_text">Preview text</label>
       <textarea ipInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2"
-                [(ngModel)]="email.general.previewText"></textarea>
+                [(ngModel)]="value.general.previewText"></textarea>
       <p ipHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
     </div>
   </div>
 
   <h2 ipH2 i18n="@@background">Background</h2>
   <div ipPanel>
-    <ip-color [(value)]="email.general.background.color"></ip-color>
+    <ip-color [(value)]="value.general.background.color"></ip-color>
   </div>
 
   <h2 ipH2 i18n="@@template_attributes">Attributes</h2>
   <div ipPanel>
     <h3 ipH3 i18n="@@width">Width</h3>
-    <ip-width-height [(value)]="email.general.width!"></ip-width-height>
+    <ip-width-height [(value)]="value.general.width!"></ip-width-height>
     <div class="flex flex-col mt-2">
       <label [ipLabel]="s" i18n="@@direction">Direction</label>
-      <select ipInput #s="input" [(ngModel)]="email.general.direction" class="appearance-none">
+      <select ipInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
         <option *ngFor="let dir of directionKeys" [value]="dir">
           {{getDirectionLabel(dir)}}
         </option>
@@ -41,6 +41,6 @@
 
   <h2 ipH2 i18n="@@padding">Padding</h2>
   <div ipPanel>
-    <ip-padding [(value)]="email.general.padding"></ip-padding>
+    <ip-padding [(value)]="value.general.padding"></ip-padding>
   </div>
 </ng-container>

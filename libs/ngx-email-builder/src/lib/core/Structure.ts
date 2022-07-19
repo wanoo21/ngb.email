@@ -188,8 +188,4 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
     }
     return false;
   }
-
-  toObject(): Structure["options"] {
-    return defaultsDeep(this.value.options, {} as Structure["options"]);
-  }
 }

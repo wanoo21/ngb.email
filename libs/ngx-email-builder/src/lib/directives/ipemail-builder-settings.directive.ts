@@ -1,22 +1,32 @@
 import { Directive, DoCheck, inject, Input, KeyValueDiffer, KeyValueDiffers, OnInit } from "@angular/core";
 import { CdkPortal } from "@angular/cdk/portal";
 import { debounce } from "@ngcomma/ngx-abstract/utils";
+
 import { AIPEmailBuilderHistoryService } from "../services";
+import { AIPEmailBuilderBlock } from "../core/Block";
+import { AIPStructure } from "../core/Structure";
+import { AIPEmailBody } from "../core/Body";
+import { TIPEmailBuilderStyles } from "../interfaces";
+
+export interface IIPOptionsHistoryContext<T extends TIPEmailBuilderStyles = TIPEmailBuilderStyles> {
+  cmp: AIPEmailBuilderBlock<T> | AIPStructure | AIPEmailBody,
+  watch: T
+}
 
 @Directive({
   selector: "[ipEmailBuilderSettings]",
   exportAs: "settings"
 })
-export class IPEmailBuilderSettingsDirective<T extends Record<string, any> = Record<string, any>> extends CdkPortal implements DoCheck, OnInit {
+export class IPEmailBuilderSettingsDirective extends CdkPortal implements DoCheck, OnInit {
   readonly differs = inject(KeyValueDiffers);
-  @Input() ipEmailBuilderSettings!: T;
-  #valueDiffer!: KeyValueDiffer<keyof T, any>;
-  #deepDiffers: Map<keyof T, KeyValueDiffer<keyof T, any>> = new Map();
+  @Input() ipEmailBuilderSettings!: IIPOptionsHistoryContext;
+  #valueDiffer!: KeyValueDiffer<keyof IIPOptionsHistoryContext["watch"], any>;
+  #deepDiffers: Map<keyof IIPOptionsHistoryContext["watch"], KeyValueDiffer<IIPOptionsHistoryContext["watch"], any>> = new Map();
   #historyService = inject(AIPEmailBuilderHistoryService);
   #debounceDoCheck = debounce(() => {
-    const changes = this.#valueDiffer.diff(this.ipEmailBuilderSettings);
-    const deepChanges = Object.keys(this.ipEmailBuilderSettings).map(key => {
-      const option = this.ipEmailBuilderSettings[key];
+    const changes = this.#valueDiffer.diff(this.ipEmailBuilderSettings.watch);
+    const deepChanges = Object.keys(this.ipEmailBuilderSettings.watch).map(key => {
+      const option = this.ipEmailBuilderSettings.watch[key];
       if (typeof option === "object") {
         return this.#deepDiffers.get(key)?.diff(option);
       }
@@ -25,18 +35,25 @@ export class IPEmailBuilderSettingsDirective<T extends Record<string, any> = Rec
 
     [...deepChanges, changes].forEach(change => {
       change?.forEachChangedItem(({ key, currentValue, previousValue }) => {
-        console.log({ key, currentValue, previousValue });
+        console.log({ key, currentValue, previousValue }, this.ipEmailBuilderSettings.cmp);
         this.#historyService.addHistory(() => {
-          alert(); // TODO
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          Object.assign(this.ipEmailBuilderSettings.cmp, { [key]: previousValue });
+          console.log(previousValue);
+          this.ipEmailBuilderSettings.cmp.changeDetectorRef.detectChanges();
+          // if (!(this.ipEmailBuilderSettings.cmp instanceof AIPEmailBuilderBlock)) {
+          //   this.ipEmailBuilderSettings.cmp.valueChange.next(this.ipEmailBuilderSettings.cmp.value)
+          // }
         });
       });
     });
   }, 700);
 
   ngOnInit(): void {
-    this.#valueDiffer = this.differs.find(this.ipEmailBuilderSettings).create();
-    Object.keys(this.ipEmailBuilderSettings).forEach(key => {
-      const option = this.ipEmailBuilderSettings[key];
+    this.#valueDiffer = this.differs.find(this.ipEmailBuilderSettings.watch).create();
+    Object.keys(this.ipEmailBuilderSettings.watch).forEach(key => {
+      const option = this.ipEmailBuilderSettings.watch[key];
       if (typeof option === "object") {
         this.#deepDiffers.set(key, this.differs.find(option).create());
       }

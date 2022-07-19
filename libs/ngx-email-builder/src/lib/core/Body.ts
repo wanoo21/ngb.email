@@ -1,11 +1,13 @@
 import {
   AfterViewInit,
   Directive,
+  EventEmitter,
   HostBinding,
   HostListener,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
   ViewChild
 } from "@angular/core";
@@ -17,10 +19,12 @@ import { IPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
 import { TDirection, TStructureTypes } from "../interfaces";
 import { IStructure, Structure } from "../structure/structure";
+import { AIPValueChanged } from "./ValueChanged";
 
 @Directive()
-export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit, OnChanges {
-  @Input() email!: IPEmail;
+export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit, OnChanges, AIPValueChanged<IPEmail> {
+  @Input() value!: IPEmail;
+  @Output() valueChange = new EventEmitter();
   @ViewChild("structuresDropList", { static: true, read: CdkDropList })
   readonly structuresDropList: CdkDropList | undefined;
   #directionLabels = new Map<TDirection, string>([
@@ -34,7 +38,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   @HostBinding("style")
   get hostStyles(): Record<string, string | number> {
-    const { padding, background } = this.email.general;
+    const { padding, background } = this.value.general;
     return {
       ...createPadding(padding),
       background: createBackground(background),
@@ -47,7 +51,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   @HostBinding("attr.dir")
   get dir(): string {
-    return this.email.general.direction;
+    return this.value.general.direction;
   }
 
   getDirectionLabel(dir: TDirection): string {
@@ -60,13 +64,13 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
   }
 
   deleteStructure(structure: Structure): void {
-    const indexOf = this.email.structures.indexOf(structure);
-    this.email.structures.splice(indexOf, 1);
+    const indexOf = this.value.structures.indexOf(structure);
+    this.value.structures.splice(indexOf, 1);
   }
 
   duplicateStructure(structure: Structure): void {
-    const indexOf = this.email.structures.indexOf(structure);
-    this.email.structures.splice(indexOf, 0, cloneDeep(structure));
+    const indexOf = this.value.structures.indexOf(structure);
+    this.value.structures.splice(indexOf, 0, cloneDeep(structure));
   }
 
   dropListDropped({
@@ -90,7 +94,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   ngAfterViewInit(): void {
     if (this.structuresDropList) {
-      this.structuresDropList.data = this.email.structures;
+      this.structuresDropList.data = this.value.structures;
       this.structuresDropList.autoScrollDisabled = false;
       this.builderUiService.structuresDropLists.add(this.structuresDropList);
     }

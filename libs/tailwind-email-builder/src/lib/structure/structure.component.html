@@ -46,7 +46,7 @@
   </button>
 </div>
 
-<ng-container *ipEmailBuilderSettings="value.options">
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <h2 ipH2 i18n="@@structure_actions">Actions</h2>
   <div class="flex gap-1">
     <button class="text-black/75" ipBtn ipTooltip="Duplicate" i18n-ipTooltip="@@structure_duplicate"
