@@ -4,6 +4,7 @@ import { Observable, of } from "rxjs";
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
 import { IStructure } from "../../structure/structure";
 import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
+import { IUserTemplateCategory } from "../../interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -22,6 +23,8 @@ import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderMiddlewareService {
+  readonly templatesThumbsPath = inject(IP_EMAIL_BUILDER_CONFIG).templatesThumbsPath;
+
   blocksList(blocks: IIPEmailBuilderBlockData[]): Observable<IIPEmailBuilderBlockData[]> {
     return of(blocks);
   }
@@ -30,13 +33,32 @@ export abstract class AIPEmailBuilderMiddlewareService {
     return of(structures);
   }
 
+  categoryList(categories: IUserTemplateCategory[]): Observable<IUserTemplateCategory[]> {
+    return of(categories);
+  }
+
+  categoryTemplates(category: IUserTemplateCategory): Observable<IUserTemplateCategory["templates"]> {
+    return of(category.templates);
+  }
+
+  templateThumbnail(category: IUserTemplateCategory, template: string): string {
+    return `${this.templatesThumbsPath}/${category}-${template}.jpg`;
+  }
+
   deleteStructure(structure: IStructure): Promise<boolean> {
-    const ask = confirm("Are you sure?");
-    return Promise.resolve(ask);
+    return this.confirm("Are you sure?");
   }
 
   deleteBlock(block: AIPEmailBuilderBlockExtendedOptions): Promise<boolean> {
-    const ask = confirm("Are you sure?");
+    return this.confirm("Are you sure?");
+  }
+
+  alert(message: string): void {
+    alert(message);
+  }
+
+  confirm(message: string): Promise<boolean> {
+    const ask = confirm(message);
     return Promise.resolve(ask);
   }
 }

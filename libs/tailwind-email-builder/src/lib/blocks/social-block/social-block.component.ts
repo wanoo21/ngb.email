@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
 import { SocialBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-social-block",
+  selector: "tail-social-block",
   templateUrl: "social-block.component.html",
   styleUrls: ["social-block.component.scss"],
   encapsulation: ViewEncapsulation.ShadowDom,

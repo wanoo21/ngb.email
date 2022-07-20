@@ -1,11 +1,11 @@
 <div class="grid grid-cols-3 gap-2">
   <div class="flex flex-col col-span-1">
-    <label [ipLabel]="i">Line Height</label>
-    <input ipInput #i="input" type="number" [(ngModel)]="value.value">
+    <label [tailLabel]="i">Line Height</label>
+    <input tailInput #i="input" type="number" [(ngModel)]="value.value">
   </div>
   <div class="flex flex-col col-span-2">
-    <label [ipLabel]="u">Unit</label>
-    <select ipInput #u="input" [(ngModel)]="value.unit" class="appearance-none">
+    <label [tailLabel]="u">Unit</label>
+    <select tailInput #u="input" [(ngModel)]="value.unit" class="appearance-none">
       <option *ngFor="let unit of units" [value]="unit">{{getUnitLabel(unit)}}</option>
     </select>
   </div>

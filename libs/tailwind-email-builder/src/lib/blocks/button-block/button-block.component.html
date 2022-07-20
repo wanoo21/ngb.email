@@ -1,39 +1,39 @@
 <button type="button" [ngStyle]="buttonStyles">{{ innerText }}</button>
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
-  <h2 ipH2 i18n="@@button_block_text">Button text</h2>
-  <div ipPanel>
-    <input type="text" ipInput [(ngModel)]="innerText">
+  <h2 tailH2 i18n="@@button_block_text">Button text</h2>
+  <div tailPanel>
+    <input type="text" tailInput [(ngModel)]="innerText">
   </div>
-  <h2 ipH2 i18n="@@font">Font</h2>
-  <div ipPanel>
-    <ip-font [(value)]="options.font"></ip-font>
+  <h2 tailH2 i18n="@@font">Font</h2>
+  <div tailPanel>
+    <tail-font [(value)]="options.font"></tail-font>
   </div>
-  <h2 ipH2 i18n="@@button_block_background_color">Background color</h2>
-  <div ipPanel>
-    <ip-color [(value)]="options.backgroundColor"></ip-color>
+  <h2 tailH2 i18n="@@button_block_background_color">Background color</h2>
+  <div tailPanel>
+    <tail-color [(value)]="options.backgroundColor"></tail-color>
   </div>
-  <h2 ipH2 i18n="@@border">Border</h2>
-  <div ipPanel>
-    <ip-border [(value)]="options.border"></ip-border>
+  <h2 tailH2 i18n="@@border">Border</h2>
+  <div tailPanel>
+    <tail-border [(value)]="options.border"></tail-border>
   </div>
-  <h2 ipH2 i18n="@@button_block_attributes">Attributes</h2>
-  <div ipPanel>
+  <h2 tailH2 i18n="@@button_block_attributes">Attributes</h2>
+  <div tailPanel>
     <div class="grid grid-cols-3 gap-2">
-      <ip-align [(value)]="options.align" class="col-span-2"></ip-align>
-      <button ipBtn (click)="options.fullWidth = !options.fullWidth" [class.active]="options.fullWidth"
+      <tail-align [(value)]="options.align" class="col-span-2"></tail-align>
+      <button tailBtn (click)="options.fullWidth = !options.fullWidth" [class.active]="options.fullWidth"
               i18n="@@button_block_full_width">
         Full Width
       </button>
     </div>
-    <ip-link class="pt-2" [(value)]="options.link"></ip-link>
+    <tail-link class="pt-2" [(value)]="options.link"></tail-link>
     <div class="flex flex-col pt-2">
-      <h3 ipH3 i18n="@@button_block_inner_padding">Inner Padding</h3>
-      <ip-padding [(value)]="options.innerPadding"></ip-padding>
+      <h3 tailH3 i18n="@@button_block_inner_padding">Inner Padding</h3>
+      <tail-padding [(value)]="options.innerPadding"></tail-padding>
     </div>
     <div class="flex flex-col pt-2">
-      <h3 ipH3 i18n="@@padding">Padding</h3>
-      <ip-padding [(value)]="options.padding"></ip-padding>
+      <h3 tailH3 i18n="@@padding">Padding</h3>
+      <tail-padding [(value)]="options.padding"></tail-padding>
     </div>
   </div>
 </ng-container>

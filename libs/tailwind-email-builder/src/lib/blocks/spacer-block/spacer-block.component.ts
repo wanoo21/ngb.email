@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { SpacerBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-spacer-block",
+  selector: "tail-spacer-block",
   templateUrl: "./spacer-block.component.html",
   styleUrls: ["./spacer-block.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush

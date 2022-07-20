@@ -11,7 +11,7 @@ import {
   QueryList,
   ViewChildren
 } from "@angular/core";
-import { cloneDeep, defaultsDeep } from "@ngcomma/ngx-abstract/utils";
+import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 
 import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Structure } from "../structure/structure";
@@ -23,8 +23,6 @@ import { IPEmail } from "../body/body";
 import { WithSettings } from "./WithSettings";
 import { IIPValueChanged } from "./ValueChanged";
 import { AIPEmailBuilderMiddlewareService } from "../services";
-
-// type KeyOfType<T, U> = { [P in keyof T]: T[P] extends U ? P : never }[keyof T]
 
 @Directive()
 export abstract class AIPStructure extends WithSettings implements AfterViewInit, IIPValueChanged<Structure> {

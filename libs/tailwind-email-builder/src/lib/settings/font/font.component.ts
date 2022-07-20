@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { AIPFont } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-font",
+  selector: "tail-font",
   templateUrl: "./font.component.html",
   styleUrls: ["./font.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush

@@ -23,8 +23,9 @@ export * from "./lib/core/Block";
 export * from "./lib/core/ValueChanged";
 export * from "./lib/interfaces";
 
-// Email Body
+// Email Aside & Template List
 export * from "./lib/core/Aside";
+export * from "./lib/core/TemplateList";
 
 // Email Aside
 export * from "./lib/core/Body";

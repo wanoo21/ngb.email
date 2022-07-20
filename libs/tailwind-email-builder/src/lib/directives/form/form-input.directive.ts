@@ -14,7 +14,7 @@ abstract class AddClassList<T = HTMLElement> extends AbsDirective<T> implements 
 }
 
 @Directive({
-  selector: "[ipInput]",
+  selector: "[tailInput]",
   exportAs: "input"
 })
 export class FormInputDirective extends AddClassList<HTMLInputElement> implements OnInit {
@@ -27,22 +27,22 @@ export class FormInputDirective extends AddClassList<HTMLInputElement> implement
 }
 
 @Directive({
-  selector: "[ipLabel]",
+  selector: "[tailLabel]",
   exportAs: "label"
 })
 export class FormLabelDirective extends AddClassList<HTMLLabelElement> implements AfterViewInit {
   classList = `text-xs font-medium text-gray-400 mb-1`;
-  @Input() ipLabel?: FormInputDirective;
+  @Input() tailLabel?: FormInputDirective;
 
   ngAfterViewInit(): void {
-    if (this.ipLabel && !this.el.getAttribute("for")) {
-      this.renderer2.setAttribute(this.el, "for", this.ipLabel.el.id);
+    if (this.tailLabel && !this.el.getAttribute("for")) {
+      this.renderer2.setAttribute(this.el, "for", this.tailLabel.el.id);
     }
   }
 }
 
 @Directive({
-  selector: "[ipBtn]",
+  selector: "[tailBtn]",
   exportAs: "btn"
 })
 export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements OnInit {
@@ -54,6 +54,9 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
 
   override ngOnInit() {
     super.ngOnInit();
+    if (!this.el.hasAttribute("type")) {
+      this.el.type = "button";
+    }
     this.el.querySelectorAll("svg").forEach(svg => {
       svg.style.pointerEvents = "none";
     });
@@ -61,7 +64,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
 }
 
 @Directive({
-  selector: "[ipH2]",
+  selector: "[tailH2]",
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
@@ -69,7 +72,7 @@ export class FormH2Directive extends AddClassList {
 }
 
 @Directive({
-  selector: "[ipH3]",
+  selector: "[tailH3]",
   exportAs: "h3"
 })
 export class FormH3Directive extends AddClassList {
@@ -77,7 +80,7 @@ export class FormH3Directive extends AddClassList {
 }
 
 @Directive({
-  selector: "[ipHint]",
+  selector: "[tailHint]",
   exportAs: "hint"
 })
 export class FormHintDirective extends AddClassList {
@@ -89,7 +92,7 @@ export class FormHintDirective extends AddClassList {
 }
 
 @Directive({
-  selector: "[ipPanel]",
+  selector: "[tailPanel]",
   exportAs: "panel"
 })
 export class FormPanelDirective extends AddClassList {

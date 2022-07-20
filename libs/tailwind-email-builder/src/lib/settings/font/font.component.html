@@ -1,33 +1,33 @@
 <div class="flex flex-col">
-  <label [ipLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
-  <input ipInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
-  <p ipHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
+  <label [tailLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
+  <input tailInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
+  <p tailHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
 </div>
 <div class="flex flex-col pt-2">
-  <label [ipLabel]="s" *ngIf="!googleFont" i18n="@@standard_font">Standard Font</label>
-  <label [ipLabel]="s" *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</label>
-  <select ipInput #s="input" [(ngModel)]="family" class="appearance-none">
+  <label [tailLabel]="s" *ngIf="!googleFont" i18n="@@standard_font">Standard Font</label>
+  <label [tailLabel]="s" *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</label>
+  <select tailInput #s="input" [(ngModel)]="family" class="appearance-none">
     <option *ngFor="let font of standardFonts" [value]="font">{{font}}</option>
   </select>
-  <p ipHint *ngIf="googleFont" i18n="@@fallback_font_description">
+  <p tailHint *ngIf="googleFont" i18n="@@fallback_font_description">
     Fallback font is used in case custom font is not supported.
   </p>
 </div>
 
 <div class="grid grid-cols-3 gap-2 pt-2">
   <div class="flex flex-col" i18n="@@font_size">
-    <label [ipLabel]="fs">Size</label>
-    <input ipInput #fs="input" [(ngModel)]="value.size" type="number" />
+    <label [tailLabel]="fs">Size</label>
+    <input tailInput #fs="input" [(ngModel)]="value.size" type="number" />
   </div>
   <div class="flex flex-col" i18n="@@font_weight">
-    <label [ipLabel]="w">Weight</label>
-    <select ipInput #w="input" [(ngModel)]="weight" class="appearance-none">
+    <label [tailLabel]="w">Weight</label>
+    <select tailInput #w="input" [(ngModel)]="weight" class="appearance-none">
       <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
     </select>
   </div>
   <div class="flex flex-col" i18n="@@font_style">
-    <label [ipLabel]="fst">Style</label>
-    <select ipInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
+    <label [tailLabel]="fst">Style</label>
+    <select tailInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
       <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
     </select>
   </div>

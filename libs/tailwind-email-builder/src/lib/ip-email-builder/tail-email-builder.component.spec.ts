@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IpEmailBuilderComponent } from './ip-email-builder.component';
+import { TailEmailBuilderComponent } from './tail-email-builder.component';
 
 describe('IpEmailBuilderComponent', () => {
-  let component: IpEmailBuilderComponent;
-  let fixture: ComponentFixture<IpEmailBuilderComponent>;
+  let component: TailEmailBuilderComponent;
+  let fixture: ComponentFixture<TailEmailBuilderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [IpEmailBuilderComponent],
+      declarations: [TailEmailBuilderComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(IpEmailBuilderComponent);
+    fixture = TestBed.createComponent(TailEmailBuilderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

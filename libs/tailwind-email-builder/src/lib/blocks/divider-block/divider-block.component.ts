@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
 import { DividerBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-divider-block",
+  selector: "tail-divider-block",
   templateUrl: 'divider-block.component.html',
   styleUrls: ['divider-block.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,

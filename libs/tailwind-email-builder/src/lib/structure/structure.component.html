@@ -47,58 +47,58 @@
 </div>
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
-  <h2 ipH2 i18n="@@structure_actions">Actions</h2>
+  <h2 tailH2 i18n="@@structure_actions">Actions</h2>
   <div class="flex gap-1">
-    <button class="text-black/75" ipBtn ipTooltip="Duplicate" i18n-ipTooltip="@@structure_duplicate"
+    <button class="text-black/75" tailBtn ipTooltip="Duplicate" i18n-ipTooltip="@@structure_duplicate"
             (click)="duplicateSelf()">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
         <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
       </svg>
     </button>
-    <button class="text-red-700/75" ipBtn ipTooltip="Delete" i18n-ipTooltip="@@structure_delete" (click)="removeSelf()">
+    <button class="text-red-700/75" tailBtn ipTooltip="Delete" i18n-ipTooltip="@@structure_delete" (click)="removeSelf()">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd"
               d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
               clip-rule="evenodd" />
       </svg>
     </button>
-    <button class="text-green-700/75" ipBtn ipTooltip="Save as new module" i18n-ipTooltip="@@structure_save_as_module">
+    <button class="text-green-700/75" tailBtn ipTooltip="Save as new module" i18n-ipTooltip="@@structure_save_as_module">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path
           d="M7.707 10.293a1 1 0 10-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 11.586V6h5a2 2 0 012 2v7a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h5v5.586l-1.293-1.293zM9 4a1 1 0 012 0v2H9V4z" />
       </svg>
     </button>
   </div>
-  <h2 ipH2 i18n="@@background">Background</h2>
-  <ip-background ipPanel [(value)]="value.options.background"></ip-background>
-  <h2 ipH2 i18n="@@border">Border</h2>
-  <ip-border ipPanel [(value)]="value.options.border"></ip-border>
-  <h2 ipH2 i18n="@@padding">Padding</h2>
-  <ip-padding ipPanel [(value)]="value.options.padding"></ip-padding>
-  <h2 ipH2 i18n="@@margin">Margin</h2>
-  <ip-margin ipPanel [(value)]="value.options.margin"></ip-margin>
-  <h2 ipH2 i18n="@@layout">Layout</h2>
-  <div ipPanel>
+  <h2 tailH2 i18n="@@background">Background</h2>
+  <tail-background tailPanel [(value)]="value.options.background"></tail-background>
+  <h2 tailH2 i18n="@@border">Border</h2>
+  <tail-border tailPanel [(value)]="value.options.border"></tail-border>
+  <h2 tailH2 i18n="@@padding">Padding</h2>
+  <tail-padding tailPanel [(value)]="value.options.padding"></tail-padding>
+  <h2 tailH2 i18n="@@margin">Margin</h2>
+  <tail-margin tailPanel [(value)]="value.options.margin"></tail-margin>
+  <h2 tailH2 i18n="@@layout">Layout</h2>
+  <div tailPanel>
     <div class="grid grid-cols-2 gap-2">
       <div class="flex flex-col">
-        <label [ipLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
-        <input ipInput #vertical="input" type="number" [(ngModel)]="value.options.gaps[0]">
+        <label [tailLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
+        <input tailInput #vertical="input" type="number" [(ngModel)]="value.options.gaps[0]">
       </div>
       <div class="flex flex-col">
-        <label [ipLabel]="horizontal" i18n="@@structure_horizontal_gap">Horizontal Gap</label>
-        <input ipInput #horizontal="input" type="number" [(ngModel)]="value.options.gaps[1]">
+        <label [tailLabel]="horizontal" i18n="@@structure_horizontal_gap">Horizontal Gap</label>
+        <input tailInput #horizontal="input" type="number" [(ngModel)]="value.options.gaps[1]">
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-2 pt-2">
-      <button ipBtn [class.active]="value.options.disableResponsive"
+      <button tailBtn [class.active]="value.options.disableResponsive"
               (click)="value.options.disableResponsive = !value.options.disableResponsive"
               i18n="@@disable_responsive"
       >
         Disable responsive
       </button>
-      <button ipBtn [class.active]="value.options.fullWidth"
+      <button tailBtn [class.active]="value.options.fullWidth"
               (click)="value.options.fullWidth = !value.options.fullWidth"
               i18n="@@full_width_structure"
       >
@@ -107,10 +107,10 @@
     </div>
   </div>
 
-  <h2 ipH2 i18n="@@structure_columns_styles">Columns styles</h2>
-  <div ipPanel>
+  <h2 tailH2 i18n="@@structure_columns_styles">Columns styles</h2>
+  <div tailPanel>
     <div class="grid grid-cols-6 gap-2">
-      <button *ngFor="let index of columnsSize" ipBtn (click)="editColumn(index)"
+      <button *ngFor="let index of columnsSize" tailBtn (click)="editColumn(index)"
               [class.active]="editColumnIndex === index">
         {{index + 1}}
       </button>
@@ -118,13 +118,13 @@
 
     <ng-container *ngFor="let column of value.options.columns; let index = index">
       <div class="flex flex-col pt-2" *ngIf="editColumnIndex === index">
-        <h3 ipH3 i18n="@@background_color">Background Color</h3>
-        <ip-color [(value)]="column.background.color"></ip-color>
-        <h3 ipH3 class="pt-1" i18n="@@border">Border</h3>
-        <ip-border [(value)]="column.border!"></ip-border>
-        <h3 ipH3 class="pt-1" i18n="@@vertical_align">Vertical Align</h3>
+        <h3 tailH3 i18n="@@background_color">Background Color</h3>
+        <tail-color [(value)]="column.background.color"></tail-color>
+        <h3 tailH3 class="pt-1" i18n="@@border">Border</h3>
+        <tail-border [(value)]="column.border!"></tail-border>
+        <h3 tailH3 class="pt-1" i18n="@@vertical_align">Vertical Align</h3>
         <div class="grid grid-cols-3 gap-2">
-          <button ipBtn *ngFor="let align of verticalLabels"
+          <button tailBtn *ngFor="let align of verticalLabels"
                   [class.active]="column.verticalAlign === align"
                   (click)="column.verticalAlign = align"
           >

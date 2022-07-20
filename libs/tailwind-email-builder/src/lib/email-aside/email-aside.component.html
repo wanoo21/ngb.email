@@ -1,6 +1,6 @@
-<ng-container cdkStepper #stepper="cdkStepper">
+<ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
   <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
-    <h2 ipH2 i18n="@@blocks_list">Blocks</h2>
+    <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
     <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
@@ -10,7 +10,7 @@
         </div>
       </ng-container>
     </div>
-    <h2 ipH2 i18n="@@structude_list">Structures</h2>
+    <h2 tailH2 i18n="@@structude_list">Structures</h2>
     <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
@@ -39,7 +39,6 @@
   </ng-container>
 </div>
 
-<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected"
-     ngForm>
+<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
   <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
 </div>

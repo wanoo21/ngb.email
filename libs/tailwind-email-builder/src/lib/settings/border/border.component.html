@@ -1,16 +1,16 @@
-<!--<ip-color [(value)]="value.color" *ngIf="hasOwn('color')"></ip-color>-->
+<!--<tail-color [(value)]="value.color" *ngIf="hasOwn('color')"></tail-color>-->
 
 <div class="flex gap-2 mt-2">
-  <input type="number" ipInput [(ngModel)]="value.width" *ngIf="hasOwn('width')" placeholder="Width"
+  <input type="number" tailInput [(ngModel)]="value.width" *ngIf="hasOwn('width')" placeholder="Width"
          i18n-placeholder="@@border_width">
-  <input type="number" ipInput [(ngModel)]="value.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
+  <input type="number" tailInput [(ngModel)]="value.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
          i18n-placeholder="@@border_radius">
 </div>
 
 <ng-container *ngIf="value.width">
-  <h3 ipH3 i18n="@@border_style" class="pt-2">Border style</h3>
+  <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
   <div class="grid grid-cols-5 gap-2">
-    <button ipBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
+    <button tailBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
             (click)="value.style = style">
       {{getStyleLabel(style)}}
     </button>

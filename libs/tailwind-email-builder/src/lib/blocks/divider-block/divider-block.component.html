@@ -1,12 +1,12 @@
 <div [ngStyle]="borderStyles"></div>
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
-  <h2 ipH2 i18n="@@divider_color">Divider Color</h2>
-  <div ipPanel>
-    <ip-border [(value)]="border"></ip-border>
+  <h2 tailH2 i18n="@@divider_color">Divider Color</h2>
+  <div tailPanel>
+    <tail-border [(value)]="border"></tail-border>
   </div>
-  <h2 ipH2 i18n="@@padding">Padding</h2>
-  <div ipPanel>
-    <ip-padding [(value)]="options.padding"></ip-padding>
+  <h2 tailH2 i18n="@@padding">Padding</h2>
+  <div tailPanel>
+    <tail-padding [(value)]="options.padding"></tail-padding>
   </div>
 </ng-container>

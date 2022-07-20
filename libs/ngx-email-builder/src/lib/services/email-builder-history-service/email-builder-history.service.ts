@@ -43,7 +43,7 @@ export abstract class AIPEmailBuilderHistoryService {
     // this.#currentIndex--;
   }
 
-  hasChanges(): boolean {
+  get hasChanges(): boolean {
     return this.#historyMap.size > 0;
   }
 

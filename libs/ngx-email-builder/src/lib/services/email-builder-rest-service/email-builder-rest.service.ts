@@ -3,7 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
-import { IPEmail } from "../../body/body";
+import { IIPEmail, IPEmail } from "../../body/body";
+import { IMjmlServerResponse, IUserTemplateCategory } from "../../interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -25,8 +26,18 @@ export abstract class AIPEmailBuilderRestService {
   readonly http = inject(HttpClient);
   readonly #convertorPath = inject(IP_EMAIL_BUILDER_CONFIG).convertorPath;
 
-  convert(email: IPEmail): Observable<any> {
-    return this.http.post(this.#convertorPath, email);
+  convert(email: IPEmail): Observable<IMjmlServerResponse> {
+    return this.http.post<IMjmlServerResponse>(this.#convertorPath, email);
+  }
+
+  tmplCategories$(): Observable<IUserTemplateCategory[]>;
+  tmplCategories$(category?: string, template?: string): Observable<IIPEmail>;
+  tmplCategories$(category?: string, template?: string): Observable<IIPEmail | IUserTemplateCategory[]> {
+    let params = {};
+    if (category && template) {
+      params = { category, template };
+    }
+    return this.http.get<IIPEmail | IUserTemplateCategory[]>(`${this.#convertorPath}/templates`, { params });
   }
 }
 

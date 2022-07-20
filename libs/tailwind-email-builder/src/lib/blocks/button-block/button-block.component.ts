@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
 import { ButtonBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-button-block-block",
+  selector: "tail-button-block-block",
   templateUrl: "button-block.component.html",
   styleUrls: ["button-block.component.scss"],
   encapsulation: ViewEncapsulation.ShadowDom,

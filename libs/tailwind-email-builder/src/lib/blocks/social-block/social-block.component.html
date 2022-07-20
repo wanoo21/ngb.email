@@ -16,9 +16,9 @@
 
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
-  <h2 ipH2 i18n="@@social_block_networks">Networks</h2>
-  <div ipPanel>
-    <h3 ipH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
+  <h2 tailH2 i18n="@@social_block_networks">Networks</h2>
+  <div tailPanel>
+    <h3 tailH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
     <div class="grid grid-cols-7 gap-2 pb-2">
       <ng-container *ngFor="let network of supportedNetworks">
         <img class="flex-1 border px-2 py-1.5 cursor-pointer active:shadow-inner"
@@ -29,12 +29,12 @@
       </ng-container>
     </div>
     <ng-container *ngIf="currentNetwork">
-      <h3 ipH3 class="uppercase">{{currentNetwork.name}}</h3>
+      <h3 tailH3 class="uppercase">{{currentNetwork.name}}</h3>
       <div class="grid grid-rows-2 gap-2">
         <div class="flex flex-col">
-          <label [ipLabel]="l" i18n="@@social_block_network_label">Label</label>
+          <label [tailLabel]="l" i18n="@@social_block_network_label">Label</label>
           <div class="flex gap-2">
-            <input #l="input" ipInput type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
+            <input #l="input" tailInput type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
             <button
               class="rounded bg-red-500 shadow-sm text-white px-2 py-1.5 active:shadow-inner opacity-90 hover:opacity-100 transition-opacity"
               ipTooltip="Delete"
@@ -51,36 +51,36 @@
 
           </div>
         </div>
-        <ip-link [(value)]="currentNetworkAsILink"></ip-link>
+        <tail-link [(value)]="currentNetworkAsILink"></tail-link>
       </div>
     </ng-container>
   </div>
-  <h2 ipH2 i18n="@@font">Font</h2>
-  <div ipPanel>
-    <ip-font [(value)]="options.font"></ip-font>
+  <h2 tailH2 i18n="@@font">Font</h2>
+  <div tailPanel>
+    <tail-font [(value)]="options.font"></tail-font>
   </div>
 
-  <h2 ipH2 i18n="@@social_block_styles">Styles</h2>
-  <div ipPanel>
+  <h2 tailH2 i18n="@@social_block_styles">Styles</h2>
+  <div tailPanel>
     <div class="grid grid-cols-3 gap-2">
       <div class="flex flex-col">
-        <label [ipLabel]="s" i18n="@@social_block_mode">Mode</label>
-        <select ipInput #s="input" class="appearance-none" [(ngModel)]="options.mode">
+        <label [tailLabel]="s" i18n="@@social_block_mode">Mode</label>
+        <select tailInput #s="input" class="appearance-none" [(ngModel)]="options.mode">
           <option *ngFor="let mode of modeKeys" [value]="mode">
             {{getModeLabel(mode)}}
           </option>
         </select>
       </div>
       <div class="flex flex-col">
-        <label [ipLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
-        <input ipInput #i="input" class="appearance-none" type="number" [(ngModel)]="options.iconSize.value">
+        <label [tailLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
+        <input tailInput #i="input" class="appearance-none" type="number" [(ngModel)]="options.iconSize.value">
       </div>
-      <ip-align [(value)]="options.align"></ip-align>
+      <tail-align [(value)]="options.align"></tail-align>
     </div>
   </div>
 
-  <h2 ipH2 i18n="@@padding">Padding</h2>
-  <div ipPanel>
-    <ip-padding [(value)]="options.padding"></ip-padding>
+  <h2 tailH2 i18n="@@padding">Padding</h2>
+  <div tailPanel>
+    <tail-padding [(value)]="options.padding"></tail-padding>
   </div>
 </ng-container>

@@ -1,4 +1,4 @@
-import { Directive, Inject, Input, KeyValueDiffers } from "@angular/core";
+import { Directive, Inject, Input } from "@angular/core";
 import { AbsDirective } from "@ngcomma/ngx-abstract";
 
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
@@ -14,8 +14,7 @@ export class IPEmailBuilderDynamicDirective extends AbsDirective {
 
   constructor(
     @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
-    readonly blocksData: IIPEmailBuilderBlockData[],
-    readonly differs: KeyValueDiffers
+    readonly blocksData: IIPEmailBuilderBlockData[]
   ) {
     super();
   }

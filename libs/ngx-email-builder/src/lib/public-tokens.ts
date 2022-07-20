@@ -11,6 +11,7 @@ export interface IIPEmailBuilderConfig {
   xApiKey?: string;
   socialIconsPath?: string;
   convertorPath?: string;
+  templatesThumbsPath?: string;
   providers?: [
       Type<AIPEmailBuilderService> | null,
       Type<AIPEmailBuilderStorageService> | null,

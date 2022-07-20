@@ -17,6 +17,10 @@ export class IPEmailBuilderConfig {
     return this.defConfig.socialIconsPath || "https://www.mailjet.com/images/theme/v1/icons/ico-social";
   }
 
+  get templatesThumbsPath(): NonNullable<IIPEmailBuilderConfig["templatesThumbsPath"]> {
+    return this.defConfig.templatesThumbsPath || "https://ngb-templates.s3.amazonaws.com";
+  }
+
   get xApiKey(): NonNullable<IIPEmailBuilderConfig["xApiKey"]> {
     return this.defConfig.xApiKey || "t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz";
   }

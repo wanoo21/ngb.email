@@ -2,9 +2,10 @@ import { Injectable } from "@angular/core";
 import { CdkPortal, CdkPortalOutlet } from "@angular/cdk/portal";
 import { BehaviorSubject, map } from "rxjs";
 import { CdkDropList } from "@angular/cdk/drag-drop";
-import { AIPEmailBuilderBlockExtendedOptions, IStructure } from "@wlocalhost/ngx-email-builder";
 
 import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
+import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
+import { IStructure } from "../structure/structure";
 
 @Injectable({
   providedIn: "root"

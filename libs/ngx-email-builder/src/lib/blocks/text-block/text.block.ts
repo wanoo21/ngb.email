@@ -16,7 +16,7 @@ export interface ITextBlockOptions {
 
 @Directive()
 export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> implements OnDestroy {
-  override type = "text_format";
+  override type = "text";
   innerText = "TEXT";
   options: ITextBlockOptions = {
     color: "#000000",

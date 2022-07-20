@@ -1,4 +1,4 @@
-import { forwardRef, Provider, Type } from "@angular/core";
+import { Provider, Type } from "@angular/core";
 
 import { IIPEmailBuilderConfig } from "../public-tokens";
 import {
@@ -15,7 +15,6 @@ import { ButtonBlock } from "../blocks/button-block/button.block";
 import { DividerBlock } from "../blocks/divider-block/divider.block";
 import { SocialBlock } from "../blocks/social-block/social.block";
 import { SpacerBlock } from "../blocks/spacer-block/spacer.block";
-import { AIPStructure } from "../core/Structure";
 
 export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
   return [
@@ -32,17 +31,7 @@ export function addNewIPEmailBuilderBlock(block: Type<AIPEmailBuilderBlock>, typ
     { provide: IP_EMAIL_BUILDER_BLOCKS, useValue: block, multi: true },
     {
       provide: IP_EMAIL_BUILDER_BLOCKS_DATA,
-      useValue: {
-        block,
-        type,
-        title
-        // state: {
-        //   disabled: false,
-        //   message: "",
-        //   order: 0,
-        //   ...state
-        // }
-      },
+      useValue: { block, type, title },
       multi: true
     }
   ];
@@ -51,7 +40,7 @@ export function addNewIPEmailBuilderBlock(block: Type<AIPEmailBuilderBlock>, typ
 export function addDefaultBlock(block: Type<TextBlock | ImageBlock | ButtonBlock | DividerBlock | SocialBlock | SpacerBlock>, title: string) {
   let type = "";
   if (block.prototype instanceof TextBlock) {
-    type = "text_format";
+    type = "text";
   } else if (block.prototype instanceof ImageBlock) {
     type = "image";
   } else if (block.prototype instanceof ButtonBlock) {

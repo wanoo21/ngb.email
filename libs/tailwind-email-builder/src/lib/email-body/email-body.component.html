@@ -1,37 +1,53 @@
-<div cdkDropList #structuresDropList (cdkDropListDropped)="dropListDropped($event)">
-  <div *ngFor="let structure of value.structures; let index = index" cdkDrag [cdkDragData]="structure">
-    <ip-structure (clone)="duplicateStructure($event)"
-                  (delete)="deleteStructure($event)" [value]="structure"
-                  [bodyWidth]="value.general.width" class="group relative"></ip-structure>
+<ng-container [ngSwitch]="contentPart$ | async">
+  <div cdkDropList #structuresDropList (cdkDropListDropped)="dropListDropped($event)" *ngSwitchDefault>
+    <ng-container *ngIf="value.structures.length; else emptyBody">
+      <div *ngFor="let structure of value.structures; let index = index" cdkDrag [cdkDragData]="structure">
+        <tail-structure (clone)="duplicateStructure($event)"
+                      (delete)="deleteStructure($event)" [value]="structure"
+                      [bodyWidth]="value.general.width" class="group relative"></tail-structure>
+      </div>
+    </ng-container>
   </div>
-</div>
+  <tail-template-list *ngSwitchCase="'templates'" class="w-1/2 h-full" (selected)="changeValue($event)"></tail-template-list>
+</ng-container>
+
+<ng-template #emptyBody>
+  <div class="bg-white rounded border-1" [style.width.px]="value.general.width.value">
+    <div class="empty-message flex flex-col p-2 gap-10 justify-center items-center h-72">
+      <p class="text-base text-gray-500" i18n="@@empty_body_message">
+        Start by Drag and Drop some structures or select a template from list.
+      </p>
+      <button tailBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+    </div>
+  </div>
+</ng-template>
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
-  <div ipPanel class="mt-4">
+  <div tailPanel class="mt-4">
     <div class="flex flex-col">
-      <label [ipLabel]="i" i18n="@@template_name">Template name</label>
-      <input ipInput #i="input" type="text" [(ngModel)]="value.general.name">
+      <label [tailLabel]="i" i18n="@@template_name">Template name</label>
+      <input tailInput #i="input" type="text" [(ngModel)]="value.general.name">
     </div>
     <div class="flex flex-col mt-2">
-      <label [ipLabel]="t" i18n="@@template_preview_text">Preview text</label>
-      <textarea ipInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2"
+      <label [tailLabel]="t" i18n="@@template_preview_text">Preview text</label>
+      <textarea tailInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2"
                 [(ngModel)]="value.general.previewText"></textarea>
-      <p ipHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
+      <p tailHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
     </div>
   </div>
 
-  <h2 ipH2 i18n="@@background">Background</h2>
-  <div ipPanel>
-    <ip-color [(value)]="value.general.background.color"></ip-color>
+  <h2 tailH2 i18n="@@background">Background</h2>
+  <div tailPanel>
+    <tail-color [(value)]="value.general.background.color"></tail-color>
   </div>
 
-  <h2 ipH2 i18n="@@template_attributes">Attributes</h2>
-  <div ipPanel>
-    <h3 ipH3 i18n="@@width">Width</h3>
-    <ip-width-height [(value)]="value.general.width!"></ip-width-height>
+  <h2 tailH2 i18n="@@template_attributes">Attributes</h2>
+  <div tailPanel>
+    <h3 tailH3 i18n="@@width">Width</h3>
+    <tail-width-height [(value)]="value.general.width!"></tail-width-height>
     <div class="flex flex-col mt-2">
-      <label [ipLabel]="s" i18n="@@direction">Direction</label>
-      <select ipInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
+      <label [tailLabel]="s" i18n="@@direction">Direction</label>
+      <select tailInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
         <option *ngFor="let dir of directionKeys" [value]="dir">
           {{getDirectionLabel(dir)}}
         </option>
@@ -39,8 +55,8 @@
     </div>
   </div>
 
-  <h2 ipH2 i18n="@@padding">Padding</h2>
-  <div ipPanel>
-    <ip-padding [(value)]="value.general.padding"></ip-padding>
+  <h2 tailH2 i18n="@@padding">Padding</h2>
+  <div tailPanel>
+    <tail-padding [(value)]="value.general.padding"></tail-padding>
   </div>
 </ng-container>

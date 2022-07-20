@@ -13,6 +13,7 @@ import {
 } from "@angular/core";
 import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
+import { BehaviorSubject } from "rxjs";
 
 import { WithSettings } from "./WithSettings";
 import { IPEmail } from "../body/body";
@@ -24,9 +25,11 @@ import { AIPValueChanged } from "./ValueChanged";
 @Directive()
 export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit, OnChanges, AIPValueChanged<IPEmail> {
   @Input() value!: IPEmail;
-  @Output() valueChange = new EventEmitter();
-  @ViewChild("structuresDropList", { static: true, read: CdkDropList })
+  @Output() valueChange = new EventEmitter<IPEmail>();
+  @ViewChild("structuresDropList", { static: false, read: CdkDropList })
   readonly structuresDropList: CdkDropList | undefined;
+  contentPart$ = new BehaviorSubject<null | "templates">(null);
+
   #directionLabels = new Map<TDirection, string>([
     ["ltr", $localize`:@@direction:Left to right`],
     ["rtl", $localize`:@@direction:Right to left`]
@@ -102,6 +105,17 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
+  }
+
+  showTemplateList($event: Event): void {
+    $event.preventDefault();
+    this.contentPart$.next("templates");
+  }
+
+  changeValue(template: IPEmail): void {
+    this.value = template;
+    this.valueChange.next(template);
+    this.contentPart$.next(null);
   }
 
   override markForCheck(): boolean {

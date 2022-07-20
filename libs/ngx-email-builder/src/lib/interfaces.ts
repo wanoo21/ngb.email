@@ -3,61 +3,60 @@
  * All rights reserved.
  */
 
-import { IStructure } from './structure/structure';
-import { IIPEmail } from './body/body';
+import { IStructure } from "./structure/structure";
 
 /**
  * Main builder configuration Interface. See also {@link NgxEmailBuilderModule#withConfig}.
  */
-export interface IForRootConf {
-  /**
-   *  Either an [Extended or Commercial License]{@link https://wlocalhost.org/#} key if any, otherwise leave it empty.
-   *  @default t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz
-   */
-  xApiKey?: string;
-
-  /**
-   * @deprecated Rewrite IpUserRestApiService in providers instead
-   * @ignore
-   */
-  uploadImagePath?: string;
-  /**
-   * @deprecated Rewrite IpUserRestApiService in providers instead
-   * @ignore
-   */
-  uploadImageName?: string;
-  /**
-   * @deprecated Rewrite IpUserRestApiService in providers instead
-   * @ignore
-   */
-  csrf?: { name: string; token: string };
-  /**
-   * @deprecated Rewrite IpUserRestApiService in providers instead
-   * @ignore
-   */
-  apiPath?: string;
-
-  /**
-   * Show download button-block on builder top bar.
-   * @default true
-   */
-  useDownloadButton?: boolean;
-  /**
-   * Show preview button-block  on builder top bar.
-   * @default true
-   */
-  usePreviewButton?: boolean;
-  /**
-   * Show save button-block on builder top bar.
-   * @default true
-   */
-  useSaveButton?: boolean;
-  /**
-   * Show a button-block that opens template gallery in case email body is empty.
-   * @default true
-   */
-  templateListIfEmpty?: boolean;
-}
+// export interface IForRootConf {
+//   /**
+//    *  Either an [Extended or Commercial License]{@link https://wlocalhost.org/#} key if any, otherwise leave it empty.
+//    *  @default t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz
+//    */
+//   xApiKey?: string;
+//
+//   /**
+//    * @deprecated Rewrite IpUserRestApiService in providers instead
+//    * @ignore
+//    */
+//   uploadImagePath?: string;
+//   /**
+//    * @deprecated Rewrite IpUserRestApiService in providers instead
+//    * @ignore
+//    */
+//   uploadImageName?: string;
+//   /**
+//    * @deprecated Rewrite IpUserRestApiService in providers instead
+//    * @ignore
+//    */
+//   csrf?: { name: string; token: string };
+//   /**
+//    * @deprecated Rewrite IpUserRestApiService in providers instead
+//    * @ignore
+//    */
+//   apiPath?: string;
+//
+//   /**
+//    * Show download button-block on builder top bar.
+//    * @default true
+//    */
+//   useDownloadButton?: boolean;
+//   /**
+//    * Show preview button-block  on builder top bar.
+//    * @default true
+//    */
+//   usePreviewButton?: boolean;
+//   /**
+//    * Show save button-block on builder top bar.
+//    * @default true
+//    */
+//   useSaveButton?: boolean;
+//   /**
+//    * Show a button-block that opens template gallery in case email body is empty.
+//    * @default true
+//    */
+//   templateListIfEmpty?: boolean;
+// }
 
 /**
  * Convertor errors response interface, id any.
@@ -96,70 +95,70 @@ export interface IMjmlServerResponse {
  * @default cols_1
  */
 export type TStructureTypes =
-  | 'cols_1'
-  | 'cols_2'
-  | 'cols_3'
-  | 'cols_4'
-  | 'cols_5'
-  | 'cols_6'
-  | 'cols_12'
-  | 'cols_21';
+  | "cols_1"
+  | "cols_2"
+  | "cols_3"
+  | "cols_4"
+  | "cols_5"
+  | "cols_6"
+  | "cols_12"
+  | "cols_21";
 /**
  * Builder direction types.
  * @default ltr
  */
-export type TDirection = 'ltr' | 'rtl';
+export type TDirection = "ltr" | "rtl";
 /**
  * Builder units types.
  * @default px
  */
-export type TUnits = '%' | 'px' | 'cover' | 'contain';
+export type TUnits = "%" | "px" | "cover" | "contain";
 /**
  * Builder align types.
  * @default left
  */
-export type TAlign = 'left' | 'center' | 'right';
+export type TAlign = "left" | "center" | "right";
 /**
  * Builder vertical align types.
  * @default middle
  */
-export type TVerticalAlign = 'top' | 'middle' | 'bottom';
+export type TVerticalAlign = "top" | "middle" | "bottom";
 /**
  * Builder Line-height types.
  * @default none
  */
-export type TLineHeight = '%' | 'px' | 'none';
+export type TLineHeight = "%" | "px" | "none";
 /**
  * Builder Link target.
  * @default _blank
  */
-export type TLinkTarget = '_blank' | '_self' | '_parent' | '_top';
+export type TLinkTarget = "_blank" | "_self" | "_parent" | "_top";
 /**
  * Builder font style types.
  * @default normal
  */
-export type TFontStyle = 'italic' | 'normal' | 'oblique';
+export type TFontStyle = "italic" | "normal" | "oblique";
 /**
  * Builder font weight types.
  * @default inherit
  */
 export type TFontWeight = number;
-  // | number
-  // | 'bold'
-  // | 'bolder'
-  // | 'inherit'
-  // | 'initial'
-  // | 'light'
-  // | 'normal';
+// | number
+// | 'bold'
+// | 'bolder'
+// | 'inherit'
+// | 'initial'
+// | 'light'
+// | 'normal';
 /**
  * Builder background-repeat types.
  * @default no-repeat
  */
 export type TBackgroundRepeat =
-  | 'no-repeat'
-  | 'repeat'
-  | 'repeat-x'
-  | 'repeat-y';
+  | "no-repeat"
+  | "repeat"
+  | "repeat-x"
+  | "repeat-y";
 
 /**
  * Builder border styles interface.
@@ -171,7 +170,7 @@ export interface IBorder {
    * Border style.
    * @default solid
    */
-  style: 'solid' | 'dotted' | 'dashed' | 'double' | 'groove';
+  style: "solid" | "dotted" | "dashed" | "double" | "groove";
   /**
    * Border width
    */
@@ -219,7 +218,7 @@ export interface IWidthHeight {
 /**
  * Builder background styles interface.
  */
-export interface  IBackground {
+export interface IBackground {
   color: string;
   url: string;
   repeat: TBackgroundRepeat;
@@ -237,7 +236,7 @@ export interface IFont {
   weight: TFontWeight;
 }
 
-export type IFontFamily = Set<string>;
+// export type IFontFamily = Set<string>;
 
 /**
  * Builder line-height styles interface.
@@ -289,36 +288,36 @@ export interface IUserModule {
 /**
  * Builder predefined template interface.
  */
-export interface IUserTemplate {
-  id?: string;
-  title: string;
-  thumbPath: string;
-  templateData: IIPEmail;
-}
+// export interface IUserTemplate {
+//   id?: string;
+//   title: string;
+//   thumbPath: string;
+//   templateData: IIPEmail;
+// }
 
 /**
  * Builder Template Gallery templates interface.
  */
 export interface IUserTemplateCategory {
   category: string;
-  templates: IUserTemplate[];
+  templates: string[];
 }
 
 /**
  * Builder IMage Gallery images interface.
  */
-export interface IUserImageCategory {
-  category: string;
-  images: string[];
-}
+// export interface IUserImageCategory {
+//   category: string;
+//   images: string[];
+// }
 
 /**
  * Template Storage/Cache keys.
  */
-export enum ETemplatesStorage {
-  LATEST_USED = 'NGB_LATEST_USED_TEMPLATES',
-  STORAGE = 'NGB_TEMP_TEMPLATES_STORAGE',
-}
+// export enum ETemplatesStorage {
+//   LATEST_USED = "NGB_LATEST_USED_TEMPLATES",
+//   STORAGE = "NGB_TEMP_TEMPLATES_STORAGE",
+// }
 
 
 export type TIPEmailBuilderStyles = Record<string, string | number | undefined>;

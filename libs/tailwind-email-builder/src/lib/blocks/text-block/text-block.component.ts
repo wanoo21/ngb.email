@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
 import { TextBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-text-block",
+  selector: "tail-text-block",
   templateUrl: "text-block.component.html",
   styleUrls: ["text-block.component.scss"],
   encapsulation: ViewEncapsulation.ShadowDom,

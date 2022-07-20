@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { AIPLink } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-link",
+  selector: "tail-link",
   templateUrl: "./link.component.html",
   styleUrls: ["./link.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush

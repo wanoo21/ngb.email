@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/
 import { ImageBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: "ip-image-block",
+  selector: "tail-image-block",
   templateUrl: 'image-block.component.html',
   styleUrls: ['image-block.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
