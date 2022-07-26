@@ -5,6 +5,11 @@ import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig
 import { IStructure } from "../../structure/structure";
 import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
 import { IUserTemplateCategory } from "../../interfaces";
+import { IPEmail } from "../../body/body";
+
+export type middlewareBlockActions = "delete" | "duplicate" | "edit";
+export type middlewareStructureActions = middlewareBlockActions | "save";
+export type middlewareEmailActions = "preview" | "save";
 
 @Injectable({
   providedIn: "root",
@@ -45,11 +50,7 @@ export abstract class AIPEmailBuilderMiddlewareService {
     return `${this.templatesThumbsPath}/${category}-${template}.jpg`;
   }
 
-  deleteStructure(structure: IStructure): Promise<boolean> {
-    return this.confirm("Are you sure?");
-  }
-
-  deleteBlock(block: AIPEmailBuilderBlockExtendedOptions): Promise<boolean> {
+  delete(entity: IStructure | AIPEmailBuilderBlockExtendedOptions): Promise<boolean> {
     return this.confirm("Are you sure?");
   }
 
@@ -60,6 +61,14 @@ export abstract class AIPEmailBuilderMiddlewareService {
   confirm(message: string): Promise<boolean> {
     const ask = confirm(message);
     return Promise.resolve(ask);
+  }
+
+  can(action: middlewareBlockActions, entity: AIPEmailBuilderBlockExtendedOptions): boolean
+  can(action: middlewareStructureActions, entity: IStructure): boolean
+  can(action: middlewareEmailActions, entity: IPEmail): boolean
+  can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean
+  can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean {
+    return action !== "save";
   }
 }
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, HostBinding, OnInit, ViewChild } from "@angular/core";
 import { AIPEmailBuilderAside } from "@wlocalhost/ngx-email-builder";
 import { CdkStepper } from "@angular/cdk/stepper";
 import { tap } from "rxjs";
@@ -16,4 +16,8 @@ export class EmailAsideComponent extends AIPEmailBuilderAside implements OnInit 
     // skip(1),
     tap(() => this.stepper.selectedIndex = 2)
   );
+
+  @HostBinding("class.relative") isReadonly(): boolean {
+    return this.readonly;
+  }
 }

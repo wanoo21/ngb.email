@@ -42,3 +42,5 @@
 <div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
   <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
 </div>
+
+<div class="absolute inset-0 bg-white opacity-80" *ngIf="readonly"></div>

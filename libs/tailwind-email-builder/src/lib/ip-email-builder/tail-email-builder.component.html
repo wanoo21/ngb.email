@@ -1,14 +1,28 @@
 <div class="grid grid-cols-12 grid-rows-1 h-full">
-  <div class="col-span-7 md:col-span-9 sm:col-span-8 flex flex-col">
+  <div class="col-span-7 md:col-span-9 sm:col-span-8 flex flex-col" [ngSwitch]="screen | async">
     <div class="bg-white shadow-sm border border-b py-3 px-4 w-full flex gap-2 flex-shrink-0">
-      <button tailBtn>Preview changes</button>
-      <button tailBtn (click)="convert()">Save</button>
+      <ng-container *ngIf="value | ipCan: 'preview'">
+        <button tailBtn (click)="preview()" *ngSwitchDefault>Preview</button>
+        <button tailBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
+      </ng-container>
+      <!--      <button tailBtn (click)="convert()">Save</button>-->
 
-      <div class="ms-auto">
-        <button tailBtn [ipHistory]="'prev'">Prev</button>
-      </div>
+      <!--      <div class="ms-auto">-->
+      <!--        <button tailBtn [ipHistory]="'prev'">Prev</button>-->
+      <!--      </div>-->
     </div>
-    <tail-email-body class="overflow-x-auto flex-1" [(value)]="value"></tail-email-body>
+
+    <ng-container *ngSwitchCase="'preview'">
+      <ng-container *ngIf="value | ipPreviewLink | async as link; else loading">
+        <iframe [src]="link" class="overflow-x-auto flex-1"></iframe>
+      </ng-container>
+      <ng-template #loading>
+        <p>Loading, please wait ...</p>
+      </ng-template>
+    </ng-container>
+
+    <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"></tail-email-body>
   </div>
-  <tail-email-aside class="col-span-5 md:col-span-3 sm:col-span-4"></tail-email-aside>
+  <tail-email-aside [readonly]="(screen | async) !== null"
+                    class="col-span-5 md:col-span-3 sm:col-span-4"></tail-email-aside>
 </div>

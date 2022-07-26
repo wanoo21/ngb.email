@@ -1,4 +1,4 @@
-import { Directive, inject, OnInit, ViewChild } from "@angular/core";
+import { Directive, inject, Input, OnInit, ViewChild } from "@angular/core";
 import { CdkPortalOutlet } from "@angular/cdk/portal";
 import { CdkDropList } from "@angular/cdk/drag-drop";
 
@@ -10,6 +10,7 @@ import { AIPEmailBuilderBlockExtendedOptions } from "./Block";
 
 @Directive()
 export abstract class AIPEmailBuilderAside implements OnInit {
+  @Input() readonly = false;
   @ViewChild(CdkPortalOutlet, { static: true })
   readonly asideSettingsPortal!: CdkPortalOutlet;
   readonly builderUiService = inject(IPEmailBuilderUiService);

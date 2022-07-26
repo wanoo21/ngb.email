@@ -101,7 +101,7 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   }
 
   async removeSelf(): Promise<void> {
-    const isYes = await this.#middlewareService.deleteStructure(this.value);
+    const isYes = await this.#middlewareService.delete(this.value);
     if (isYes) {
       this.delete.next(this.value);
       this.detachSettingsPortal();
@@ -118,7 +118,7 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   async removeBlock($event: MouseEvent, block: AIPEmailBuilderBlockExtendedOptions, column: AIPEmailBuilderBlockExtendedOptions[]): Promise<void> {
     $event.preventDefault();
     $event.stopPropagation();
-    const isYes = await this.#middlewareService.deleteBlock(block);
+    const isYes = await this.#middlewareService.delete(block);
     if (isYes) {
       const indexOf = column.indexOf(block);
       column.splice(indexOf, 1);
