@@ -6,59 +6,6 @@
 import { IStructure } from "./structure/structure";
 
 /**
- * Main builder configuration Interface. See also {@link NgxEmailBuilderModule#withConfig}.
- */
-// export interface IForRootConf {
-//   /**
-//    *  Either an [Extended or Commercial License]{@link https://wlocalhost.org/#} key if any, otherwise leave it empty.
-//    *  @default t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz
-//    */
-//   xApiKey?: string;
-//
-//   /**
-//    * @deprecated Rewrite IpUserRestApiService in providers instead
-//    * @ignore
-//    */
-//   uploadImagePath?: string;
-//   /**
-//    * @deprecated Rewrite IpUserRestApiService in providers instead
-//    * @ignore
-//    */
-//   uploadImageName?: string;
-//   /**
-//    * @deprecated Rewrite IpUserRestApiService in providers instead
-//    * @ignore
-//    */
-//   csrf?: { name: string; token: string };
-//   /**
-//    * @deprecated Rewrite IpUserRestApiService in providers instead
-//    * @ignore
-//    */
-//   apiPath?: string;
-//
-//   /**
-//    * Show download button-block on builder top bar.
-//    * @default true
-//    */
-//   useDownloadButton?: boolean;
-//   /**
-//    * Show preview button-block  on builder top bar.
-//    * @default true
-//    */
-//   usePreviewButton?: boolean;
-//   /**
-//    * Show save button-block on builder top bar.
-//    * @default true
-//    */
-//   useSaveButton?: boolean;
-//   /**
-//    * Show a button-block that opens template gallery in case email body is empty.
-//    * @default true
-//    */
-//   templateListIfEmpty?: boolean;
-// }
-
-/**
  * Convertor errors response interface, id any.
  */
 export interface IMjmlServerResponseErrors {
@@ -143,13 +90,6 @@ export type TFontStyle = "italic" | "normal" | "oblique";
  * @default inherit
  */
 export type TFontWeight = number;
-// | number
-// | 'bold'
-// | 'bolder'
-// | 'inherit'
-// | 'initial'
-// | 'light'
-// | 'normal';
 /**
  * Builder background-repeat types.
  * @default no-repeat
