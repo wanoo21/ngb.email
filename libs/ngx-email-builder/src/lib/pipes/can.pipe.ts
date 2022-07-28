@@ -14,7 +14,7 @@ import { IStructure } from "../structure/structure";
 @Pipe({
   name: "ipCan"
 })
-export class CanPipe implements PipeTransform {
+export class IpCanPipe implements PipeTransform {
 
   constructor(
     readonly middleware: AIPEmailBuilderMiddlewareService

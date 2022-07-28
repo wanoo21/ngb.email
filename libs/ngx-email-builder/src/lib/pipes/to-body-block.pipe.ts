@@ -1,6 +1,6 @@
 import { Inject, Pipe, PipeTransform } from "@angular/core";
-import { AIPEmailBuilderBlockExtendedOptions } from "@wlocalhost/ngx-email-builder";
 
+import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
 
 @Pipe({

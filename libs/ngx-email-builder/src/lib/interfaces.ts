@@ -226,7 +226,7 @@ export interface IUserModule {
 }
 
 /**
- * Builder predefined template interface.
+ * Builder predefined ng-add interface.
  */
 // export interface IUserTemplate {
 //   id?: string;

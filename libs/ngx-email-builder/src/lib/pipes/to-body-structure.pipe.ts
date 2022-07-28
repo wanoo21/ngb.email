@@ -1,5 +1,7 @@
 import { Pipe, PipeTransform } from "@angular/core";
-import { IStructure, TStructureTypes } from "@wlocalhost/ngx-email-builder";
+
+import { TStructureTypes } from "../interfaces";
+import { IStructure } from "../structure/structure";
 
 @Pipe({
   name: "toBodyStructure"

@@ -47,3 +47,17 @@ export * from "./lib/settings/line-height";
 export * from "./lib/settings/link";
 export * from "./lib/settings/align";
 export * from "./lib/settings/width-height";
+
+// Pipes
+export * from "./lib/pipes/apply-middleware.pipe";
+export * from "./lib/pipes/can.pipe";
+export * from "./lib/pipes/preview-link.pipe";
+export * from "./lib/pipes/social-path.pipe";
+export * from "./lib/pipes/to-body-block.pipe";
+export * from "./lib/pipes/to-body-structure.pipe";
+export * from "./lib/pipes/to-watch-options.pipe";
+
+// Directives
+export * from "./lib/directives/email-builder-dynamic.directive";
+export * from "./lib/directives/history.directive";
+export * from "./lib/directives/ipemail-builder-settings.directive";
