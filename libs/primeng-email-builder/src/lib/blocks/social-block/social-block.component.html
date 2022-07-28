@@ -1,0 +1,86 @@
+<ng-container *ngIf="networks.length; else noSocialNetworks">
+  <div class="network" *ngFor="let network of networks">
+    <div [ngStyle]="labelStyles">
+      <img [src]="network.name | socialPath" [width]="options.iconSize.value"
+           [height]="options.iconSize.value" [class]="network.name" [alt]="network.name" />
+    </div>
+    <span *ngIf="network.label">{{ network.label }}</span>
+  </div>
+</ng-container>
+
+<ng-template #noSocialNetworks>
+  <p i18n="@@social_block_empty_networks_list" style="margin: 0">
+    Please add some social networks.
+  </p>
+</ng-template>
+
+
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+  <h2 tailH2 i18n="@@social_block_networks">Networks</h2>
+  <div tailPanel>
+    <h3 tailH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
+    <div class="grid grid-cols-7 gap-2 pb-2">
+      <ng-container *ngFor="let network of supportedNetworks">
+        <img class="flex-1 border px-2 py-1.5 cursor-pointer active:shadow-inner"
+             [src]="network | socialPath"
+             [alt]="network" [ipTooltip]="network | titlecase" [class]="network"
+             [class.active]="networkIsActive(network)"
+             (click)="addOrEditNetwork(network)">
+      </ng-container>
+    </div>
+    <ng-container *ngIf="currentNetwork">
+      <h3 tailH3 class="uppercase">{{currentNetwork.name}}</h3>
+      <div class="grid grid-rows-2 gap-2">
+        <div class="flex flex-col">
+          <label [tailLabel]="l" i18n="@@social_block_network_label">Label</label>
+          <div class="flex gap-2">
+            <input #l="input" tailInput type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
+            <button
+              class="rounded bg-red-500 shadow-sm text-white px-2 py-1.5 active:shadow-inner opacity-90 hover:opacity-100 transition-opacity"
+              ipTooltip="Delete"
+              (click)="deleteCurrentNetwork()"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none"
+                   viewBox="0 0 24 24"
+                   stroke="currentColor"
+                   stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </button>
+
+          </div>
+        </div>
+        <prime-link [(value)]="currentNetworkAsILink"></prime-link>
+      </div>
+    </ng-container>
+  </div>
+  <h2 tailH2 i18n="@@font">Font</h2>
+  <div tailPanel>
+    <prime-font [(value)]="options.font"></prime-font>
+  </div>
+
+  <h2 tailH2 i18n="@@social_block_styles">Styles</h2>
+  <div tailPanel>
+    <div class="grid grid-cols-3 gap-2">
+      <div class="flex flex-col">
+        <label [tailLabel]="s" i18n="@@social_block_mode">Mode</label>
+        <select tailInput #s="input" class="appearance-none" [(ngModel)]="options.mode">
+          <option *ngFor="let mode of modeKeys" [value]="mode">
+            {{getModeLabel(mode)}}
+          </option>
+        </select>
+      </div>
+      <div class="flex flex-col">
+        <label [tailLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
+        <input tailInput #i="input" class="appearance-none" type="number" [(ngModel)]="options.iconSize.value">
+      </div>
+      <prime-align [(value)]="options.align"></prime-align>
+    </div>
+  </div>
+
+  <h2 tailH2 i18n="@@padding">Padding</h2>
+  <div tailPanel>
+    <prime-padding [(value)]="options.padding"></prime-padding>
+  </div>
+</ng-container>

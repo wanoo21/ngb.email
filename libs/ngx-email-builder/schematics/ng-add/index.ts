@@ -2,13 +2,12 @@
  * Copyright (c) 2022.
  */
 
-import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
-import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
+import { Rule, Tree } from "@angular-devkit/schematics";
 
 // Just return the tree
 export function ngAdd(): Rule {
-  return (tree: Tree, context: SchematicContext) => {
-    context.addTask(new NodePackageInstallTask());
+  return (tree: Tree) => {
+    // context.addTask(new NodePackageInstallTask());
     return tree;
   };
 }

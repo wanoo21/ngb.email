@@ -1,0 +1,39 @@
+<button type="button" [ngStyle]="buttonStyles">{{ innerText }}</button>
+
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+  <h2 tailH2 i18n="@@button_block_text">Button text</h2>
+  <div tailPanel>
+    <input type="text" tailInput [(ngModel)]="innerText">
+  </div>
+  <h2 tailH2 i18n="@@font">Font</h2>
+  <div tailPanel>
+    <prime-font [(value)]="options.font"></prime-font>
+  </div>
+  <h2 tailH2 i18n="@@button_block_background_color">Background color</h2>
+  <div tailPanel>
+    <prime-color [(value)]="options.backgroundColor"></prime-color>
+  </div>
+  <h2 tailH2 i18n="@@border">Border</h2>
+  <div tailPanel>
+    <prime-border [(value)]="options.border"></prime-border>
+  </div>
+  <h2 tailH2 i18n="@@button_block_attributes">Attributes</h2>
+  <div tailPanel>
+    <div class="grid grid-cols-3 gap-2">
+      <prime-align [(value)]="options.align" class="col-span-2"></prime-align>
+      <button tailBtn (click)="options.fullWidth = !options.fullWidth" [class.active]="options.fullWidth"
+              i18n="@@button_block_full_width">
+        Full Width
+      </button>
+    </div>
+    <prime-link class="pt-2" [(value)]="options.link"></prime-link>
+    <div class="flex flex-col pt-2">
+      <h3 tailH3 i18n="@@button_block_inner_padding">Inner Padding</h3>
+      <prime-padding [(value)]="options.innerPadding"></prime-padding>
+    </div>
+    <div class="flex flex-col pt-2">
+      <h3 tailH3 i18n="@@padding">Padding</h3>
+      <prime-padding [(value)]="options.padding"></prime-padding>
+    </div>
+  </div>
+</ng-container>

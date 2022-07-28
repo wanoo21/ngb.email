@@ -1,12 +1,14 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { PrimengEmailBuilderModule } from "@wlocalhost/ngx-primeng-email-builder";
 
-import { RemoteEntryComponent } from './entry.component';
+import { RemoteEntryComponent } from "./entry.component";
 
 @NgModule({
   declarations: [RemoteEntryComponent],
-  imports: [CommonModule],
+  imports: [CommonModule, PrimengEmailBuilderModule],
   providers: [],
-  exports: [RemoteEntryComponent],
+  exports: [RemoteEntryComponent]
 })
-export class RemoteEntryModule {}
+export class RemoteEntryModule {
+}

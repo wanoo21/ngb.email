@@ -1,0 +1,18 @@
+<prime-color [(value)]="value.color" *ngIf="hasOwn('color')"></prime-color>
+
+<div class="flex gap-2 mt-2">
+  <input type="number" tailInput [(ngModel)]="value.width" *ngIf="hasOwn('width')" placeholder="Width"
+         i18n-placeholder="@@border_width">
+  <input type="number" tailInput [(ngModel)]="value.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
+         i18n-placeholder="@@border_radius">
+</div>
+
+<ng-container *ngIf="value.width">
+  <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
+  <div class="grid grid-cols-5 gap-2">
+    <button tailBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
+            (click)="value.style = style">
+      {{getStyleLabel(style)}}
+    </button>
+  </div>
+</ng-container>
