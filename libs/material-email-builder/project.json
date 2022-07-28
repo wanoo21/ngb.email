@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/material-email-builder/src",
+  "prefix": "md",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/material-email-builder"],
+      "options": {
+        "project": "libs/material-email-builder/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/material-email-builder/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/material-email-builder/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/material-email-builder"],
+      "options": {
+        "jestConfig": "libs/material-email-builder/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/material-email-builder/**/*.ts",
+          "libs/material-email-builder/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

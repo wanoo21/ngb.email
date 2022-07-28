@@ -1,0 +1,41 @@
+{
+  "projectType": "library",
+  "sourceRoot": "libs/primeng-email-builder/src",
+  "prefix": "prime",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["dist/libs/primeng-email-builder"],
+      "options": {
+        "project": "libs/primeng-email-builder/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/primeng-email-builder/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/primeng-email-builder/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/primeng-email-builder"],
+      "options": {
+        "jestConfig": "libs/primeng-email-builder/jest.config.ts",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/primeng-email-builder/**/*.ts",
+          "libs/primeng-email-builder/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": ["primeng builder", "angular builder", "angular email builder"]
+}

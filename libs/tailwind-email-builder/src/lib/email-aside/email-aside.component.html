@@ -23,7 +23,9 @@
       </ng-container>
     </div>
   </cdk-step>
-  <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">1</cdk-step>
+  <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">
+    <p tailHint>Not implemented yet</p>
+  </cdk-step>
   <cdk-step label="Settings" i18n-label="@@ip_aside_stepper:Settings">
     <ng-container [cdkPortalOutlet]="currentSettings$ | async"></ng-container>
   </cdk-step>

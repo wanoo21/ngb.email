@@ -21,29 +21,20 @@
       "@ngcomma/ngx-abstract": [
         "libs/ngx-abstract/src/index.ts"
       ],
-      "@ngcomma/ngx-abstract/collection": [
-        "libs/ngx-abstract/collection/src/index.ts"
+      "@ngcomma/ngx-abstract/*": [
+        "libs/ngx-abstract/*/src/index.ts"
       ],
-      "@ngcomma/ngx-abstract/data": [
-        "libs/ngx-abstract/data/src/index.ts"
-      ],
-      "@ngcomma/ngx-abstract/dialog": [
-        "libs/ngx-abstract/dialog/src/index.ts"
-      ],
-      "@ngcomma/ngx-abstract/dnd": [
-        "libs/ngx-abstract/dnd/src/index.ts"
-      ],
-      "@ngcomma/ngx-abstract/form": [
-        "libs/ngx-abstract/form/src/index.ts"
-      ],
-      "@ngcomma/ngx-abstract/utils": [
-        "libs/ngx-abstract/utils/src/index.ts"
-      ],
-      "@wlocalhost/api-interfaces": [
-        "libs/api-interfaces/src/index.ts"
+      "@wlocalhost/ngx-bootstrap-email-builder": [
+        "libs/bootstrap-email-builder/src/index.ts"
       ],
       "@wlocalhost/ngx-email-builder": [
         "libs/ngx-email-builder/src/index.ts"
+      ],
+      "@wlocalhost/ngx-md-email-builder": [
+        "libs/material-email-builder/src/index.ts"
+      ],
+      "@wlocalhost/ngx-primeng-email-builder": [
+        "libs/primeng-email-builder/src/index.ts"
       ],
       "@wlocalhost/ngx-tailwind-email-builder": [
         "libs/tailwind-email-builder/src/index.ts"
