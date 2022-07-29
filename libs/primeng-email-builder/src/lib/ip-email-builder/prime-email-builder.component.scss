@@ -1,24 +1,26 @@
+@import 'primeflex/primeflex.scss';
+
 :root {
   --ip-email-builder-host-height: 100vh;
 }
 
 :host {
-  display: block;
+  width: 100%;
   height: var(--ip-email-builder-host-height, 100vh);
 }
 
 ::ng-deep {
   .is-editing:not(prime-email-body) {
-    @apply ring-2 ring-pink-400/50 ring-offset-2 z-10;
+    @include styleclass('ring-2 ring-offset-2 z-10');
   }
 
   img {
     //border-radius: 3px;
 
-    @apply rounded transition-all;
+    @include styleclass('rounded transition-all');
 
     &.active {
-      @apply rounded-xl;
+      @include styleclass('rounded-xl');
     }
 
     &.facebook {

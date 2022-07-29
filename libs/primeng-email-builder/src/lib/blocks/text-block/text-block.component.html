@@ -1,19 +1,19 @@
 <div [innerHTML]="innerText"></div>
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
-  <div tailPanel class="mt-4">
-    <textarea tailInput [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
+  <div primePanel class="mt-4">
+    <textarea primeInput [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
   </div>
 
-  <h2 tailH2 i18n="@@font">Font</h2>
-  <div tailPanel>
-    <h3 tailH3 i18n="@@text_color">Color</h3>
+  <h2 primeH2 i18n="@@font">Font</h2>
+  <div primePanel>
+    <h3 primeH3 i18n="@@text_color">Color</h3>
     <prime-color [(value)]="options.color"></prime-color>
     <prime-font class="pt-2" [(value)]="options.font"></prime-font>
     <prime-line-height class="pt-2" [(value)]="options.lineHeight"></prime-line-height>
   </div>
-  <h2 tailH2 i18n="@@padding">Padding</h2>
-  <div tailPanel>
+  <h2 primeH2 i18n="@@padding">Padding</h2>
+  <div primePanel>
     <prime-padding [(value)]="options.padding"></prime-padding>
   </div>
 </ng-container>

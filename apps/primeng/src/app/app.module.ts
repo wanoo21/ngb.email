@@ -6,6 +6,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { PrimengEmailBuilderModule } from "@wlocalhost/ngx-primeng-email-builder";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { RemoteEntryModule } from "./remote-entry/entry.module"
 import { AppComponent } from "./app.component";
@@ -13,7 +14,7 @@ import { NxWelcomeComponent } from "./nx-welcome.component";
 
 @NgModule({
   declarations: [AppComponent, NxWelcomeComponent],
-  imports: [BrowserModule, PrimengEmailBuilderModule.forRoot()],
+  imports: [BrowserModule, BrowserAnimationsModule, PrimengEmailBuilderModule.forRoot()],
   providers: [],
   bootstrap: [AppComponent]
 })

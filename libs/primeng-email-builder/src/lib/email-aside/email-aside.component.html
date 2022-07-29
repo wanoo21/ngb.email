@@ -1,48 +1,56 @@
 <ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
   <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
-    <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
-         [cdkDropListSortingDisabled]="true">
-      <ng-container *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
-        <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
-             cdkDrag [cdkDragData]="block | toBodyBlock">
+    <h2 primeH2 i18n="@@blocks_list">Blocks</h2>
+    <div class="grid" cdkDropList [cdkDropListConnectedTo]="columnsDropLists" [cdkDropListSortingDisabled]="true">
+      <div class="col-6" *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
+        <div
+          class="border-1 border-round border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
+          cdkDrag [cdkDragData]="block | toBodyBlock">
           {{ block.title }}
         </div>
-      </ng-container>
+      </div>
     </div>
-    <h2 tailH2 i18n="@@structude_list">Structures</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
-         [cdkDropListSortingDisabled]="true">
-      <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
-        <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
+    <h2 primeH2 i18n="@@structude_list">Structures</h2>
+    <div class="grid" cdkDropList [cdkDropListConnectedTo]="structuresDropLists" [cdkDropListSortingDisabled]="true">
+      <div class="col-6" *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
+        <div class="border-1 border-round border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
              [cdkDragData]="structure | toBodyStructure">
-          <div *ngFor="let col of structure.options.columns; let index = index" class="bg-gray-200 h-9 w-full rounded"
-               [ngClass]="{'w-1/3 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
+          <div *ngFor="let col of structure.options.columns; let index = index"
+               class="bg-gray-200 h-3rem w-full border-round"
+               [ngClass]="{'w-6 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
           ></div>
         </div>
-      </ng-container>
+      </div>
     </div>
   </cdk-step>
   <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">
-    <p tailHint>Not implemented yet</p>
+    <p primeHint>Not implemented yet</p>
   </cdk-step>
   <cdk-step label="Settings" i18n-label="@@ip_aside_stepper:Settings">
     <ng-container [cdkPortalOutlet]="currentSettings$ | async"></ng-container>
   </cdk-step>
 </ng-container>
 
-<div class="stepper grid grid-cols-3 divide-x divide-gray-200" role="tablist">
-  <ng-container *ngFor="let step of stepper.steps">
-    <button (click)="step.select()"
-            class="step bg-white py-3 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
-            [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
-      {{step.label}}
-    </button>
-  </ng-container>
-</div>
+<p-panel #panel [showHeader]="false" styleClass="p-0 h-full bg-gray-200" class="h-full block">
 
-<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
-  <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
-</div>
+  <ng-template pTemplate="content">
+    <div class="flex" role="tablist">
+      <ng-container *ngFor="let step of stepper.steps">
+        <button (click)="step.select()" pButton class="flex-1 border-noround p-button-secondary shadow-none"
+                [label]="step.label"
+                [class.p-button-text]="step === stepper.selected" role="tab"
+                [attr.aria-selected]="step === stepper.selected">
+        </button>
+      </ng-container>
+    </div>
 
-<div class="absolute inset-0 bg-white opacity-80" *ngIf="readonly"></div>
+    <div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel"
+         [attr.aria-expanded]="!!stepper.selected">
+      <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
+    </div>
+  </ng-template>
+</p-panel>
+
+<p-blockUI [blocked]="readonly" [target]="panel"></p-blockUI>
+
+<!--<div class="absolute inset-0 bg-white opacity-80" *ngIf="readonly"></div>-->

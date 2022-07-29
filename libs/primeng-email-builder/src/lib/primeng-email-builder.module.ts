@@ -37,6 +37,14 @@ import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
 
+import { ButtonModule } from "primeng/button";
+import { InputTextModule } from "primeng/inputtext";
+import { InputTextareaModule } from "primeng/inputtextarea";
+import { ColorPickerModule } from "primeng/colorpicker";
+import { DropdownModule } from "primeng/dropdown";
+import { BlockUIModule } from "primeng/blockui";
+import { PanelModule } from "primeng/panel";
+
 @NgModule({
   imports: [
     CommonModule,
@@ -44,7 +52,14 @@ import { TemplateListComponent } from "./template-list/template-list.component";
     IpFormUIModule,
     CdkStepperModule,
     DragDropModule,
-    TextFieldModule
+    TextFieldModule,
+    ButtonModule,
+    InputTextModule,
+    InputTextareaModule,
+    ColorPickerModule,
+    DropdownModule,
+    BlockUIModule,
+    PanelModule
   ],
   declarations: [
     PrimeEmailBuilderComponent,

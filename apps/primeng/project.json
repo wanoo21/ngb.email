@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/primeng",
         "index": "apps/primeng/src/index.html",
@@ -13,8 +15,17 @@
         "polyfills": "apps/primeng/src/polyfills.ts",
         "tsConfig": "apps/primeng/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/primeng/src/favicon.ico", "apps/primeng/src/assets"],
-        "styles": ["apps/primeng/src/styles.scss"],
+        "assets": [
+          "apps/primeng/src/favicon.ico",
+          "apps/primeng/src/assets"
+        ],
+        "styles": [
+          "apps/primeng/src/styles.scss",
+          "node_modules/primeicons/primeicons.css",
+          "node_modules/primeng/resources/themes/lara-light-blue/theme.css",
+          "node_modules/primeng/resources/primeng.min.css",
+          "node_modules/primeflex/primeflex.css"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/primeng/webpack.config.js"
@@ -80,12 +91,17 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/primeng/**/*.ts", "apps/primeng/**/*.html"]
+        "lintFilePatterns": [
+          "apps/primeng/**/*.ts",
+          "apps/primeng/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/primeng"],
+      "outputs": [
+        "coverage/apps/primeng"
+      ],
       "options": {
         "jestConfig": "apps/primeng/jest.config.ts",
         "passWithNoTests": true

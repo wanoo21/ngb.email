@@ -3,15 +3,15 @@
 }
 
 .column.empty {
-  @apply grid place-content-center bg-gray-200 h-24 min-h-fit rounded border-2 border-gray-300 #{!important};
+  @apply grid place-content-center bg-gray-200 h-24 min-h-fit border-round border-2 border-gray-300 #{!important};
 }
 
 .tool-button {
-  @apply p-1 bg-gray-400 text-white hover:bg-gray-500 rounded-full transition-colors;
+  @apply p-1 bg-gray-400 text-white hover:bg-gray-500 border-round-full transition-colors;
 }
 
 .overflow {
-  @apply shadow-sm absolute inset-0 bg-blue-100/50 flex flex-wrap items-center justify-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
+  @apply shadow-1 absolute inset-0 bg-blue-100/50 flex flex-wrap align-items-center justify-content-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
   row-gap: 0;
 }
 
@@ -24,7 +24,7 @@
 }
 
 .cdk-drag-placeholder {
-  @apply h-10 bg-gray-200 rounded border border-gray-300 cursor-move;
+  @apply h-10 bg-gray-200 border-round border border-gray-300 cursor-move;
 }
 
 .cdk-drag-preview {

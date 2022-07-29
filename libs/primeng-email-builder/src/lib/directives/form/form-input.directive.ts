@@ -7,18 +7,20 @@ abstract class AddClassList<T = HTMLElement> extends AbsDirective<T> implements 
   abstract classList: string;
 
   ngOnInit(): void {
-    this.classList.split(" ").forEach(className => {
-      this.renderer2.addClass(this.el, className);
-    });
+    if (this.classList.length) {
+      this.classList.split(" ").forEach(className => {
+        this.renderer2.addClass(this.el, className);
+      });
+    }
   }
 }
 
 @Directive({
-  selector: "[tailInput]",
+  selector: "[primeInput]",
   exportAs: "input"
 })
 export class FormInputDirective extends AddClassList<HTMLInputElement> implements OnInit {
-  classList = `rounded bg-white border px-2 py-1 w-full text-black-700/75 text-sm outline-1 placeholder-shown:border-gray-200 read-only:bg-gray-100 disabled:opacity-75`;
+  classList = ``;
 
   override ngOnInit() {
     super.ngOnInit();
@@ -27,29 +29,29 @@ export class FormInputDirective extends AddClassList<HTMLInputElement> implement
 }
 
 @Directive({
-  selector: "[tailLabel]",
+  selector: "[primeLabel]",
   exportAs: "label"
 })
 export class FormLabelDirective extends AddClassList<HTMLLabelElement> implements AfterViewInit {
-  classList = `text-xs font-medium text-gray-400 mb-1`;
-  @Input() tailLabel?: FormInputDirective;
+  classList = `text-sm font-medium text-gray-400 mb-1`;
+  @Input() primeLabel?: FormInputDirective;
 
   ngAfterViewInit(): void {
-    if (this.tailLabel && !this.el.getAttribute("for")) {
-      this.renderer2.setAttribute(this.el, "for", this.tailLabel.el.id);
+    if (this.primeLabel && !this.el.getAttribute("for")) {
+      this.renderer2.setAttribute(this.el, "for", this.primeLabel.el.id);
     }
   }
 }
 
 @Directive({
-  selector: "[tailBtn]",
+  selector: "[primeBtn]",
   exportAs: "btn"
 })
 export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements OnInit {
   @Input() size = "sm";
 
   get classList(): string {
-    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size} flex gap-1 items-center justify-center`;
+    return `btn border-round shadow-1 bg-white border-1 px-2 py-1.5 text-${this.size} flex gap-1 align-items-center justify-content-center`;
   }
 
   override ngOnInit() {
@@ -64,7 +66,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
 }
 
 @Directive({
-  selector: "[tailH2]",
+  selector: "[primeH2]",
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
@@ -72,7 +74,7 @@ export class FormH2Directive extends AddClassList {
 }
 
 @Directive({
-  selector: "[tailH3]",
+  selector: "[primeH3]",
   exportAs: "h3"
 })
 export class FormH3Directive extends AddClassList {
@@ -80,7 +82,7 @@ export class FormH3Directive extends AddClassList {
 }
 
 @Directive({
-  selector: "[tailHint]",
+  selector: "[primeHint]",
   exportAs: "hint"
 })
 export class FormHintDirective extends AddClassList {
@@ -92,12 +94,12 @@ export class FormHintDirective extends AddClassList {
 }
 
 @Directive({
-  selector: "[tailPanel]",
+  selector: "[primePanel]",
   exportAs: "panel"
 })
 export class FormPanelDirective extends AddClassList {
   get classList(): string {
-    return `p-2 rounded bg-white border`;
+    return `p-2 border-round bg-white border-1 border-gray-200`;
   };
 }
 

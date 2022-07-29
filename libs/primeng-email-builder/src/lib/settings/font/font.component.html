@@ -1,33 +1,33 @@
 <div class="flex flex-col">
-  <label [tailLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
-  <input tailInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
-  <p tailHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
+  <label [primeLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
+  <input primeInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
+  <p primeHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
 </div>
 <div class="flex flex-col pt-2">
-  <label [tailLabel]="s" *ngIf="!googleFont" i18n="@@standard_font">Standard Font</label>
-  <label [tailLabel]="s" *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</label>
-  <select tailInput #s="input" [(ngModel)]="family" class="appearance-none">
+  <label [primeLabel]="s" *ngIf="!googleFont" i18n="@@standard_font">Standard Font</label>
+  <label [primeLabel]="s" *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</label>
+  <select primeInput #s="input" [(ngModel)]="family" class="appearance-none">
     <option *ngFor="let font of standardFonts" [value]="font">{{font}}</option>
   </select>
-  <p tailHint *ngIf="googleFont" i18n="@@fallback_font_description">
+  <p primeHint *ngIf="googleFont" i18n="@@fallback_font_description">
     Fallback font is used in case custom font is not supported.
   </p>
 </div>
 
 <div class="grid grid-cols-3 gap-2 pt-2">
   <div class="flex flex-col" i18n="@@font_size">
-    <label [tailLabel]="fs">Size</label>
-    <input tailInput #fs="input" [(ngModel)]="value.size" type="number" />
+    <label [primeLabel]="fs">Size</label>
+    <input primeInput #fs="input" [(ngModel)]="value.size" type="number" />
   </div>
   <div class="flex flex-col" i18n="@@font_weight">
-    <label [tailLabel]="w">Weight</label>
-    <select tailInput #w="input" [(ngModel)]="weight" class="appearance-none">
+    <label [primeLabel]="w">Weight</label>
+    <select primeInput #w="input" [(ngModel)]="weight" class="appearance-none">
       <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
     </select>
   </div>
   <div class="flex flex-col" i18n="@@font_style">
-    <label [tailLabel]="fst">Style</label>
-    <select tailInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
+    <label [primeLabel]="fst">Style</label>
+    <select primeInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
       <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
     </select>
   </div>

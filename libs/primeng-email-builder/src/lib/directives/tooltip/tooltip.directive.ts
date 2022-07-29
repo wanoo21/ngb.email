@@ -5,17 +5,17 @@ import { ComponentPortal } from "@angular/cdk/portal";
 
 @Component({
   template: `
-    <div class="bg-gray-900/75 text-white rounded py-1 px-2 text-xs shadow-sm">{{title}}</div>`
+    <div class="bg-gray-900/75 text-white rounded py-1 px-2 text-xs shadow-1">{{title}}</div>`
 })
 export class TooltipComponent {
   @Input() title = "";
 }
 
 @Directive({
-  selector: "[ipTooltip]"
+  selector: "[primeTooltip]"
 })
 export class TooltipDirective extends AbsDirective implements OnInit, OnDestroy {
-  @Input() ipTooltip!: string;
+  @Input() primeTooltip!: string;
   private overlayRef!: OverlayRef;
 
   constructor(readonly overlayPositionBuilder: OverlayPositionBuilder, readonly overlay: Overlay) {
@@ -26,7 +26,7 @@ export class TooltipDirective extends AbsDirective implements OnInit, OnDestroy 
   show() {
     const tooltipCmp = new ComponentPortal(TooltipComponent);
     const tooltipRef = this.overlayRef.attach(tooltipCmp);
-    tooltipRef.instance.title = this.ipTooltip;
+    tooltipRef.instance.title = this.primeTooltip;
   }
 
   @HostListener("mouseout")
