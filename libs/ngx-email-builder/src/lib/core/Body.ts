@@ -39,6 +39,10 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
     return this.#directionLabels.keys();
   }
 
+  get directionOptions() {
+    return [...this.directionKeys].map(dir => ({ label: this.getDirectionLabel(dir), value: dir }));
+  }
+
   @HostBinding("style")
   get hostStyles(): Record<string, string | number> {
     const { padding, background } = this.value.general;

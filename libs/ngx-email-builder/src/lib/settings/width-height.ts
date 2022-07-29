@@ -12,8 +12,11 @@ export abstract class AIPWidthHeight extends AIPValueChanged<any> {
     ["contain", $localize`:@@unit:Contain`],
     ["cover", $localize`:@@unit:Cover`]
   ]);
-
   #defaultUnits: TUnits[] = ["%", "px"];
+
+  get options() {
+    return this.units.map(unit => ({ label: this.getUnitLabel(unit), value: unit }));
+  }
 
   get units(): TUnits[] {
     return this.value.units || this.#defaultUnits;
