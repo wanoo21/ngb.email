@@ -6,11 +6,9 @@
     "material-email-builder": "libs/material-email-builder",
     "ngx-abstract": "libs/ngx-abstract",
     "ngx-email-builder": "libs/ngx-email-builder",
-    "primeng": "apps/primeng",
-    "primeng-e2e": "apps/primeng-e2e",
     "primeng-email-builder": "libs/primeng-email-builder",
-    "tailwind-email-builder": "libs/tailwind-email-builder",
-    "wlocalhost": "apps/wlocalhost",
-    "wlocalhost-e2e": "apps/wlocalhost-e2e"
+    "root": "apps/root",
+    "root-e2e": "apps/root-e2e",
+    "tailwind-email-builder": "libs/tailwind-email-builder"
   }
 }
