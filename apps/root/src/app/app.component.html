@@ -1,0 +1,15 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>Demo builder</span>
+    <span style="margin-inline-start: 1rem"></span>
+    <button mat-button routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Primeng
+    </button>
+    <button mat-button routerLink="/tail" routerLinkActive="active">Tailwind</button>
+    <span style="margin-inline-start: auto"></span>
+    <button mat-raised-button>Buy License</button>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<p>Description</p>
+
+<router-outlet></router-outlet>
