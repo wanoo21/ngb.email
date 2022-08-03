@@ -1,7 +1,5 @@
-<div class="flex gap-2 w-full">
-  <button pButton (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto" i18n="@@width_height_auto">
-    Auto
-  </button>
+<div class="flex flex-wrap gap-2">
+  <button pButton class="flex-shrink-0" (click)="toggleAuto()" [class.p-button-outlined]="isAuto" *ngIf="hasAuto" i18n-label="@@width_height_auto" label="Auto"></button>
   <input pInputText class="flex-1" type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
-  <p-dropdown [options]="options" [(ngModel)]="value.unit"></p-dropdown>
+  <p-dropdown class="flex-1" [options]="options" [(ngModel)]="value.unit" [disabled]="disableValueField"></p-dropdown>
 </div>

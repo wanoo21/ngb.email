@@ -24,6 +24,9 @@ export class FormInputDirective extends AddClassList<HTMLInputElement> implement
 
   override ngOnInit() {
     super.ngOnInit();
+    if (this.el.type === "number" && !this.el.hasAttribute("min")) {
+      this.renderer2.setAttribute(this.el, "min", "0");
+    }
     this.renderer2.setAttribute(this.el, "id", randomString());
   }
 }
@@ -33,7 +36,7 @@ export class FormInputDirective extends AddClassList<HTMLInputElement> implement
   exportAs: "label"
 })
 export class FormLabelDirective extends AddClassList<HTMLLabelElement> implements AfterViewInit {
-  classList = `text-sm font-medium text-gray-400 mb-1`;
+  classList = `text-sm font-medium mb-1 text-color`;
   @Input() primeLabel?: FormInputDirective;
 
   ngAfterViewInit(): void {
@@ -44,33 +47,11 @@ export class FormLabelDirective extends AddClassList<HTMLLabelElement> implement
 }
 
 @Directive({
-  selector: "[primeBtn]",
-  exportAs: "btn"
-})
-export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements OnInit {
-  @Input() size = "sm";
-
-  get classList(): string {
-    return `btn border-round shadow-1 bg-white border-1 px-2 py-1.5 text-${this.size} flex gap-1 align-items-center justify-content-center`;
-  }
-
-  override ngOnInit() {
-    super.ngOnInit();
-    if (!this.el.hasAttribute("type")) {
-      this.el.type = "button";
-    }
-    this.el.querySelectorAll("svg").forEach(svg => {
-      svg.style.pointerEvents = "none";
-    });
-  }
-}
-
-@Directive({
   selector: "[primeH2]",
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
-  classList = `font-semibold text-sm mt-4 mb-2 text-gray-800 uppercase`;
+  classList = `font-semibold text-sm mt-4 mb-2 uppercase text-color`;
 }
 
 @Directive({
@@ -78,7 +59,7 @@ export class FormH2Directive extends AddClassList {
   exportAs: "h3"
 })
 export class FormH3Directive extends AddClassList {
-  classList = `text-xs font-medium text-gray-400 mb-1`;
+  classList = `text-xs font-medium mb-1 text-color`;
 }
 
 @Directive({
@@ -86,10 +67,10 @@ export class FormH3Directive extends AddClassList {
   exportAs: "hint"
 })
 export class FormHintDirective extends AddClassList {
-  @Input() variant = "gray-400";
+  @Input() variant = "color";
 
   get classList(): string {
-    return `text-xs text-${this.variant} font-light mt-1`;
+    return `text-sm text-${this.variant} font-light m-0 mt-1`;
   };
 }
 
@@ -99,13 +80,13 @@ export class FormHintDirective extends AddClassList {
 })
 export class FormPanelDirective extends AddClassList {
   get classList(): string {
-    return `p-2 border-round bg-white border-1 border-gray-200`;
+    return `p-2`;
   };
 }
 
 @NgModule({
-  declarations: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective],
-  exports: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective]
+  declarations: [FormInputDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective],
+  exports: [FormInputDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective]
 })
 export class IpFormUIModule {
 }

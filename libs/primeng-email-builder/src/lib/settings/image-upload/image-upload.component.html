@@ -1,9 +1,11 @@
-<div class="grid grid-cols-5 gap-2">
-  <div class="col-span-4 flex flex-col">
+<div class="flex gap-2">
+  <div class="w-9 flex flex-column">
     <label [primeLabel]="i" i18n="@@image_source">Image source</label>
-    <input type="url" #i="input" primeInput [(ngModel)]="value" placeholder="https://...">
+    <input type="url" #i="input" pInputText primeInput [(ngModel)]="value" (ngModelChange)="valueChange.next(value)"
+           placeholder="https://...">
   </div>
-  <div class="col-span-1 border-round border overflow-hidden bg-white">
-    <img [src]="i.el.value" alt="" class="w-full h-full" *ngIf="i.el.value.length">
+  <div class="w-3 border-round border-1 border-gray-200 overflow-hidden bg-white p-0 max-h-5rem">
+    <img [src]="i.el.value" alt="" class="w-full h-full" *ngIf="i.el.value.length"
+         style="object-fit: cover">
   </div>
 </div>

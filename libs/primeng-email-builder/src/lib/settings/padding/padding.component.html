@@ -1,6 +1,6 @@
 <div class="grid">
   <div class="col-6 flex flex-column" *ngFor="let key of paddingKeys">
     <label [primeLabel]="i">{{getPaddingLabel(key)}}</label>
-    <input type="number" #i="input" pInputText primeInput [(ngModel)]="value[key]">
+    <input type="number" #i="input" pInputText primeInput [(ngModel)]="value[key]" min="0">
   </div>
 </div>

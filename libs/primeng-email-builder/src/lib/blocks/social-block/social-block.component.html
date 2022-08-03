@@ -19,36 +19,25 @@
   <h2 primeH2 i18n="@@social_block_networks">Networks</h2>
   <div primePanel>
     <h3 primeH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
-    <div class="grid grid-cols-7 gap-2 pb-2">
+    <div class="flex flex-wrap gap-2 pb-2">
       <ng-container *ngFor="let network of supportedNetworks">
-        <img class="flex-1 border px-2 py-1.5 cursor-pointer active:shadow-inner"
+        <img class="flex-1 max-w-3rem border-1 border-round border-gray-200 px-2 py-1 cursor-pointer"
              [src]="network | socialPath"
-             [alt]="network" [primeTooltip]="network | titlecase" [class]="network"
-             [class.active]="networkIsActive(network)"
+             [alt]="network" [pTooltip]="network | titlecase" [class]="network" tooltipPosition="top"
+             [class.border-round-2xl]="networkIsActive(network)"
              (click)="addOrEditNetwork(network)">
       </ng-container>
     </div>
     <ng-container *ngIf="currentNetwork">
       <h3 primeH3 class="uppercase">{{currentNetwork.name}}</h3>
-      <div class="grid grid-rows-2 gap-2">
-        <div class="flex flex-col">
+      <div class="flex flex-column gap-2">
+        <div class="flex flex-column">
           <label [primeLabel]="l" i18n="@@social_block_network_label">Label</label>
           <div class="flex gap-2">
-            <input #l="input" primeInput type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
-            <button
-              class="rounded bg-red-500 shadow-1 text-white px-2 py-1.5 active:shadow-inner opacity-90 hover:opacity-100 transition-opacity"
-              primeTooltip="Delete"
-              (click)="deleteCurrentNetwork()"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none"
-                   viewBox="0 0 24 24"
-                   stroke="currentColor"
-                   stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </button>
-
+            <input #l="input" primeInput pInputText type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
+            <button pButton class="p-button-sm p-button-danger" pTooltip="Delete" tooltipPosition="top"
+                    i18n-pTooltip="@@social_network_delete" (click)="deleteCurrentNetwork()"
+                    type="button" icon="pi pi-trash"></button>
           </div>
         </div>
         <prime-link [(value)]="currentNetworkAsILink"></prime-link>
@@ -62,21 +51,17 @@
 
   <h2 primeH2 i18n="@@social_block_styles">Styles</h2>
   <div primePanel>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col">
+    <div class="flex flex-wrap gap-2">
+      <div class="flex-1 flex flex-column">
         <label [primeLabel]="s" i18n="@@social_block_mode">Mode</label>
-        <select primeInput #s="input" class="appearance-none" [(ngModel)]="options.mode">
-          <option *ngFor="let mode of modeKeys" [value]="mode">
-            {{getModeLabel(mode)}}
-          </option>
-        </select>
+        <p-dropdown [options]="modeOptions" [(ngModel)]="options.mode" primeInput #s="input"></p-dropdown>
       </div>
-      <div class="flex flex-col">
+      <div class="flex-1 flex flex-column">
         <label [primeLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
-        <input primeInput #i="input" class="appearance-none" type="number" [(ngModel)]="options.iconSize.value">
+        <input primeInput pInputText #i="input" type="number" [(ngModel)]="options.iconSize.value">
       </div>
-      <prime-align [(value)]="options.align"></prime-align>
     </div>
+    <prime-align class="mt-2" [(value)]="options.align"></prime-align>
   </div>
 
   <h2 primeH2 i18n="@@padding">Padding</h2>

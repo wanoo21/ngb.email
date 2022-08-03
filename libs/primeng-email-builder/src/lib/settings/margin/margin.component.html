@@ -1,6 +1,6 @@
-<div class="grid grid-cols-2 gap-2">
-  <div class="flex flex-col" *ngFor="let key of marginKeys">
+<div class="grid">
+  <div class="col-6 flex flex-column" *ngFor="let key of marginKeys">
     <label [primeLabel]="i">{{getMarginLabel(key)}}</label>
-    <input primeInput #i="input" type="number" [(ngModel)]="value[key]">
+    <input primeInput #i="input" type="number" pInputText [(ngModel)]="value[key]">
   </div>
 </div>

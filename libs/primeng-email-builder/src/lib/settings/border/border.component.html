@@ -1,18 +1,17 @@
 <prime-color [(value)]="value.color" *ngIf="hasOwn('color')"></prime-color>
 
-<div class="flex gap-2 mt-2">
-  <input type="number" primeInput [(ngModel)]="value.width" *ngIf="hasOwn('width')" placeholder="Width"
-         i18n-placeholder="@@border_width">
-  <input type="number" primeInput [(ngModel)]="value.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
-         i18n-placeholder="@@border_radius">
+<div class="grid mt-2">
+  <div class="col-6" *ngIf="hasOwn('width')">
+    <input type="number" class="w-full" pInputText primeInput [(ngModel)]="ngValue.width" placeholder="Width"
+           i18n-placeholder="@@border_width">
+  </div>
+  <div class="col-6" *ngIf="hasOwn('radius')">
+    <input type="number" class="w-full" pInputText primeInput [(ngModel)]="ngValue.radius" placeholder="Radius"
+           i18n-placeholder="@@border_radius">
+  </div>
 </div>
 
 <ng-container *ngIf="value.width">
   <h3 primeH3 i18n="@@border_style" class="pt-2">Border style</h3>
-  <div class="grid grid-cols-5 gap-2">
-    <button primeBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
-            (click)="value.style = style">
-      {{getStyleLabel(style)}}
-    </button>
-  </div>
+  <p-dropdown [options]="styleOptions" [(ngModel)]="value.style" class="w-full"></p-dropdown>
 </ng-container>

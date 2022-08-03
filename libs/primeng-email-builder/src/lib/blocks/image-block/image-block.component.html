@@ -7,13 +7,15 @@
   </div>
   <h2 primeH2 i18n="@@image_block_attributes">Attributes</h2>
   <div primePanel>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col col-span-2">
+    <div class="flex gap-2">
+      <div class="w-8 flex flex-column">
         <label [primeLabel]="a" i18n="@@image_block_alternative">Alternative text</label>
-        <input type="text" primeInput #a="input" [(ngModel)]="options.title">
-        <p primeHint i18n="@@image_block_alternative_description">Alternative text to show in case image was blocked.</p>
+        <input type="text" pInputText primeInput #a="input" [(ngModel)]="options.title">
+        <p primeHint i18n="@@image_block_alternative_description">
+          Alternative text to show in case image was blocked.
+        </p>
       </div>
-      <prime-align [(value)]="options.align"></prime-align>
+      <prime-align class="w-4" [(value)]="options.align"></prime-align>
     </div>
     <prime-link class="pt-2" [(value)]="options.link"></prime-link>
     <p primeHint i18n="@@image_block_link_description">Link to redirect to on click</p>

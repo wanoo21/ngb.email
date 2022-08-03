@@ -9,13 +9,13 @@ import {
 import { CdkStepperModule } from "@angular/cdk/stepper";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { TextFieldModule } from "@angular/cdk/text-field";
+import { OverlayModule } from "@angular/cdk/overlay";
 
 import { PrimeEmailBuilderComponent } from "./ip-email-builder/prime-email-builder.component";
 import { StructureComponent } from "./structure/structure.component";
 import { EmailBodyComponent } from "./email-body/email-body.component";
 import { EmailAsideComponent } from "./email-aside/email-aside.component";
 import { IpFormUIModule } from "./directives/form/form-input.directive";
-import { TooltipComponent, TooltipDirective } from "./directives/tooltip/tooltip.directive";
 import { BackgroundComponent } from "./settings/background/background.component";
 import { ColorComponent } from "./settings/color/color.component";
 import { ImageUploadComponent } from "./settings/image-upload/image-upload.component";
@@ -44,6 +44,8 @@ import { ColorPickerModule } from "primeng/colorpicker";
 import { DropdownModule } from "primeng/dropdown";
 import { BlockUIModule } from "primeng/blockui";
 import { PanelModule } from "primeng/panel";
+import { TooltipModule } from "primeng/tooltip";
+import { InputNumberModule } from "primeng/inputnumber";
 
 @NgModule({
   imports: [
@@ -59,15 +61,16 @@ import { PanelModule } from "primeng/panel";
     ColorPickerModule,
     DropdownModule,
     BlockUIModule,
-    PanelModule
+    PanelModule,
+    OverlayModule,
+    TooltipModule,
+    InputNumberModule
   ],
   declarations: [
     PrimeEmailBuilderComponent,
     StructureComponent,
     EmailBodyComponent,
     EmailAsideComponent,
-    TooltipDirective,
-    TooltipComponent,
     BackgroundComponent,
     ColorComponent,
     ImageUploadComponent,
@@ -87,7 +90,7 @@ import { PanelModule } from "primeng/panel";
     WidthHeightComponent,
     TemplateListComponent
   ],
-  exports: [PrimeEmailBuilderComponent],
+  exports: [PrimeEmailBuilderComponent, NgxEmailBuilderModule],
   providers: [
     ...addDefaultBlock(TextBlockComponent, $localize`:@@block:Text`),
     ...addDefaultBlock(ButtonBlockComponent, $localize`:@@block:Button`),
@@ -98,7 +101,7 @@ import { PanelModule } from "primeng/panel";
   ]
 })
 export class PrimengEmailBuilderModule {
-  static forRoot(config?: IIPEmailBuilderConfig): ModuleWithProviders<PrimengEmailBuilderModule> {
+  static withConfig(config?: IIPEmailBuilderConfig): ModuleWithProviders<PrimengEmailBuilderModule> {
     return {
       ngModule: PrimengEmailBuilderModule,
       providers: [...withConfig(config)]

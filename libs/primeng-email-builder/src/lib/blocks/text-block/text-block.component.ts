@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
 import { TextBlock } from "@wlocalhost/ngx-email-builder";
+import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
   selector: "prime-text-block",
@@ -9,4 +10,11 @@ import { TextBlock } from "@wlocalhost/ngx-email-builder";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextBlockComponent extends TextBlock {
+  constructor(readonly domSanitizer: DomSanitizer) {
+    super();
+  }
+
+  get safeHtml() {
+    return this.domSanitizer.bypassSecurityTrustHtml(this.innerText);
+  }
 }

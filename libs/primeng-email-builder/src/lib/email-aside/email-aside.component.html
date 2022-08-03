@@ -31,7 +31,8 @@
   </cdk-step>
 </ng-container>
 
-<p-panel #panel [showHeader]="false" styleClass="p-0 h-full bg-gray-200" class="h-full block">
+<p-panel #panel [showHeader]="false" styleClass="p-0 h-full"
+         class="h-full block bg-gray-200 max-h-full overflow-y-auto">
 
   <ng-template pTemplate="content">
     <div class="flex" role="tablist">
@@ -44,13 +45,10 @@
       </ng-container>
     </div>
 
-    <div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel"
-         [attr.aria-expanded]="!!stepper.selected">
+    <div class="px-2 flex-1 pb-4" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
       <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
     </div>
   </ng-template>
 </p-panel>
 
 <p-blockUI [blocked]="readonly" [target]="panel"></p-blockUI>
-
-<!--<div class="absolute inset-0 bg-white opacity-80" *ngIf="readonly"></div>-->

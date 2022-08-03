@@ -1,30 +1,48 @@
+@import 'primeflex/primeflex.scss';
+
 :host {
   display: block;
+
+  &:hover {
+    .menu {
+      @include styleclass('opacity-100');
+      z-index: 20;
+    }
+  }
 }
 
-.column.empty {
-  @apply grid place-content-center bg-gray-200 h-24 min-h-fit border-round border-2 border-gray-300 #{!important};
+.column {
+  &.empty {
+    @include styleclass('grid place-content-center bg-gray-200 h-4rem min-h-fit border-round border-2 border-gray-300');
+  }
+
+  &:hover {
+    .overflow {
+      @include styleclass('opacity-100');
+    }
+  }
 }
 
-.tool-button {
-  @apply p-1 bg-gray-400 text-white hover:bg-gray-500 border-round-full transition-colors;
+.p-button {
+  @include styleclass('p-1 w-2rem h-2rem border-round-2xl');
 }
 
 .overflow {
-  @apply shadow-1 absolute inset-0 bg-blue-100/50 flex flex-wrap align-items-center justify-content-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
+  @include styleclass('shadow-sm absolute bg-blue-50 flex flex-wrap align-items-center justify-content-center gap-2 px-2 opacity-0');
   row-gap: 0;
+  inset: 0;
 }
 
 .cdk-drop-list-dragging {
-  @apply ring-pink-700 ring-2 ring-offset-2 ring-opacity-60 h-10 min-h-fit;
+  @include styleclass('ring-pink-700 ring-2 ring-offset-2 ring-opacity-60 h-10 min-h-fit');
 }
 
 .cdk-drop-list-receiving {
-  @apply ring-pink-500 ring-2 ring-offset-2 ring-opacity-40 h-10 min-h-fit;
+  @include styleclass('ring-pink-500 ring-2 ring-offset-2 ring-opacity-40 h-10 min-h-fit');
 }
 
 .cdk-drag-placeholder {
-  @apply h-10 bg-gray-200 border-round border border-gray-300 cursor-move;
+  @include styleclass('h-10 bg-gray-200 border-round border border-gray-300 cursor-move');
 }
 
 .cdk-drag-preview {
@@ -34,8 +52,9 @@
   0 8px 10px 1px rgba(0, 0, 0, 0.14),
   0 3px 14px 2px rgba(0, 0, 0, 0.12);
   background-color: white;
-  @apply h-2;
+  @include styleclass('h-2rem');
 }
+
 //
 //.cdk-drag-placeholder {
 //  opacity: 0;

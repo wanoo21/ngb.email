@@ -2,7 +2,7 @@
 
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <div primePanel class="mt-4">
-    <textarea primeInput [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
+    <textarea class="w-full" primeInput pInputText [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
   </div>
 
   <h2 primeH2 i18n="@@font">Font</h2>

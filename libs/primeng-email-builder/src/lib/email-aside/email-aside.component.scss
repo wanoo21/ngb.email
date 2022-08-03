@@ -1,8 +1,16 @@
 :host {
 
-  ::ng-deep .p-panel-content {
-    padding: 0;
-    border: 0;
-    background: transparent;
+  ::ng-deep {
+    .p-panel-content {
+      padding: 0 !important;
+      border: 0;
+      min-height: fit-content;
+      height: 100%;
+    }
+
+    .p-toggleable-content {
+      min-height: fit-content;
+      height: 100%;
+    }
   }
 }

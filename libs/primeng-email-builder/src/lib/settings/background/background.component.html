@@ -6,30 +6,21 @@
 
 <ng-container *ngIf="value.url.length">
   <h3 primeH3 i18n="@@value_image_repeat" class="pt-2">Background image repeat</h3>
-  <div class="grid grid-cols-4 gap-2">
-    <button *ngFor="let repeat of repeatKeys" primeBtn size="xs"
-            [class.active]="value.repeat === repeat"
-            (click)="value.repeat = repeat"
-    >
-      {{getRepeatLabel(repeat)}}
-    </button>
+  <div class="flex flex-wrap gap-2">
+    <button pButton *ngFor="let repeat of repeatKeys" [class.p-button-outlined]="value.repeat === repeat"
+            (click)="value.repeat = repeat" [label]="getRepeatLabel(repeat)" class="p-button-sm flex-1"></button>
   </div>
   <h3 primeH3 i18n="@@value_image_size" class="pt-2">Background image size</h3>
-  <div class="grid grid-cols-5 gap-2">
-    <button primeBtn size="xs" [class.active]="value.size.auto"
-            (click)="value.size.auto = !value.size.auto" i18n="@@value_image_size_auto">
-      Auto
-    </button>
-    <button *ngFor="let unit of value.size.units" primeBtn size="xs"
-            [class.active]="value.size.unit === unit && !value.size.auto"
-            (click)="value.size.unit = unit"
-            [disabled]="value.size.auto"
-    >
-      {{getUnitLabel(unit)}}
-    </button>
+  <div class="flex flex-wrap gap-2">
+    <button pButton [class.p-button-outlined]="value.size.auto"
+            (click)="value.size.auto = !value.size.auto" i18n-label="@@value_image_size_auto" label="Auto"
+            class="p-button-sm"></button>
+
+    <p-dropdown [options]="unitsOptions" [(ngModel)]="value.size.unit" [disabled]="value.size.auto" class="flex-1"></p-dropdown>
   </div>
 
-  <div class="mt-1" *ngIf="['%', 'px'].includes(value.size.unit) && !value.size.auto">
-    <input type="number" primeInput [(ngModel)]="value.size.value">
+  <div class="mt-2" *ngIf="['%', 'px'].includes(value.size.unit) && !value.size.auto">
+    <p-inputNumber [(ngModel)]="value.size.value" [suffix]="value.size.unit" class="w-full"
+                   styleClass="w-full"></p-inputNumber>
   </div>
 </ng-container>
