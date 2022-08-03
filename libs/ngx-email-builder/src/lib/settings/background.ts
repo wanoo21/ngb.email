@@ -11,13 +11,20 @@ export abstract class AIPBackground extends AIPValueChanged<IBackground> {
     ["repeat-x", $localize`:@@repeat_x:X`],
     ["repeat-y", $localize`:@@repeat_y:Y`]
   ]);
-
   readonly #unitLabels = new Map<TUnits, string>([
     ["%", $localize`:@@unit:Percent`],
     ["px", $localize`:@@unit:Pixels`],
     ["cover", $localize`:@@unit:Cover`],
     ["contain", $localize`:@@unit:Contain`]
   ]);
+
+  get unitsOptions() {
+    return this.value.size.units.map(unit => ({ value: unit, label: this.getUnitLabel(unit) }));
+  }
+
+  get repeatOptions() {
+    return this.repeatKeys.map(key => ({ value: key, label: this.getRepeatLabel(key) }));
+  }
 
   get repeatKeys(): TBackgroundRepeat[] {
     return [...this.#repeatLabels.keys()];

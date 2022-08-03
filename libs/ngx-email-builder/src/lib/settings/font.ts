@@ -34,6 +34,10 @@ export abstract class AIPFont extends AIPValueChanged<IFont> {
     return [...this.#stylesMap.keys()];
   }
 
+  get styleOptions() {
+    return this.styles.map(style => ({ value: style, label: this.getStyleLabel(style) }));
+  }
+
   get weights(): number[] {
     if (this.googleFont) {
       const [, weights = "400"] = this.googleFont.split(":wght@");

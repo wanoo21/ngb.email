@@ -13,6 +13,10 @@ export abstract class AIPLineHeight extends AIPValueChanged<ILineHeight> {
     ["none", $localize`:@@unit:None`]
   ]);
 
+  get uniOptions() {
+    return this.units.map(value => ({ value, label: this.getUnitLabel(value) }));
+  }
+
   getUnitLabel(unit: TLineHeight): string {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.#unitsLabels.get(unit)!;

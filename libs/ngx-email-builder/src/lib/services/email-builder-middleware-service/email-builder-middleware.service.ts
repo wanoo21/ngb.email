@@ -68,7 +68,7 @@ export abstract class AIPEmailBuilderMiddlewareService {
   can(action: middlewareEmailActions, entity: IPEmail): boolean
   can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean
   can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean {
-    return action !== "save";
+    return true;
   }
 }
 

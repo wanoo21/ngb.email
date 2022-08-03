@@ -7,7 +7,6 @@ import { TAlign, TVerticalAlign } from "../interfaces";
 export abstract class AIPAlign implements IIPValueChanged<TAlign | TVerticalAlign> {
   @Input() mode: "vertical" | "horizontal" = "horizontal";
   @Output() valueChange = new EventEmitter();
-
   @Input() disabled = false;
   #horizontalLabels = new Map<TAlign, string>([
     ["left", $localize`:@@horizontal_align:Left`],
@@ -37,6 +36,14 @@ export abstract class AIPAlign implements IIPValueChanged<TAlign | TVerticalAlig
 
   get verticalLabels(): TVerticalAlign[] {
     return [...this.#verticalLabels.keys()];
+  }
+
+  get verticalOptions() {
+    return this.verticalLabels.map(label => ({ value: label, label: this.getVerticalAlignLabel(label) }));
+  }
+
+  get horizontalOptions() {
+    return this.horizontalLabels.map(label => ({ value: label, label: this.getHorizontalAlignLabel(label) }));
   }
 
   getHorizontalAlignLabel(key: TAlign): string {

@@ -87,6 +87,10 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
     return this.#modeLabels.keys();
   }
 
+  get modeOptions() {
+    return [...this.modeKeys].map(value => ({ value, label: this.getModeLabel(value) }));
+  }
+
   get currentNetworkAsILink(): ILink {
     return this.currentNetwork as ILink;
   }

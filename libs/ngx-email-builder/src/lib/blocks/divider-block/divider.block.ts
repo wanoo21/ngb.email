@@ -36,6 +36,4 @@ export class DividerBlock extends AIPEmailBuilderBlock<IDividerBlockOptions> {
   get borderStyles(): TIPEmailBuilderStyles {
     return createBorder(this.options.border, "borderTop");
   }
-
-  border = this.options.border as IBorder
 }

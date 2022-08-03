@@ -16,6 +16,10 @@ export abstract class AIPLink extends AIPValueChanged<ILink> {
     return [...this.#targetLabels.keys()];
   }
 
+  get targetOptions() {
+    return this.targets.map(target => ({ value: target, label: this.getTargetLabel(target) }));
+  }
+
   getTargetLabel(target: TLinkTarget): string {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.#targetLabels.get(target)!;

@@ -1,10 +1,11 @@
-import { Directive } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 
 import { AIPValueChanged } from "../core/ValueChanged";
 import { IBorder } from "../interfaces";
 
 @Directive()
-export abstract class AIPBorder extends AIPValueChanged<IBorder> {
+export abstract class AIPBorder extends AIPValueChanged<any> {
+  @Input() override value!: IBorder | Omit<IBorder, "radius">;
   readonly #styleLabels = new Map<IBorder["style"], string>([
     ["solid", $localize`:@@border_style:Solid`],
     ["dotted", $localize`:@@border_style:Dotted`],
@@ -15,6 +16,14 @@ export abstract class AIPBorder extends AIPValueChanged<IBorder> {
 
   get styleLabels(): IBorder["style"][] {
     return [...this.#styleLabels.keys()];
+  }
+
+  get styleOptions() {
+    return this.styleLabels.map(style => ({ value: style, label: this.getStyleLabel(style) }));
+  }
+
+  get ngValue(): IBorder {
+    return this.value as IBorder;
   }
 
   hasOwn(key: keyof IBorder): boolean {
