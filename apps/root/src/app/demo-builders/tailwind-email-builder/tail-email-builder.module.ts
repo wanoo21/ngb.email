@@ -9,12 +9,7 @@ import { TailwindEmailBuilderComponent } from "./tailwind-email-builder/tailwind
   declarations: [TailwindEmailBuilderComponent],
   imports: [
     CommonModule, TailwindEmailBuilderModule,
-    RouterModule.forChild([
-      {
-        path: "",
-        component: TailwindEmailBuilderComponent,
-        title: "DnD Tailwind email builder"
-      }
+    RouterModule.forChild([{ path: "", component: TailwindEmailBuilderComponent }
     ])
   ]
 })

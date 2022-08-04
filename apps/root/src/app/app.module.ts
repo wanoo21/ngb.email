@@ -9,6 +9,9 @@ import { AppComponent } from "./app.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatListModule } from "@angular/material/list";
 import { MatButtonModule } from "@angular/material/button";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,17 +23,20 @@ import { MatButtonModule } from "@angular/material/button";
     RouterModule.forRoot([
       {
         path: "",
-        loadChildren: () => import("./primeng-builder/primeng-builder.module").then(m => m.PrimengBuilderModule),
+        loadChildren: () => import("./demo-builders/primeng-builder/primeng-builder.module").then(m => m.PrimengBuilderModule),
         pathMatch: "full"
       },
       {
         path: "tail",
-        loadChildren: () => import("./tailwind-email-builder/tail-email-builder.module").then(m => m.TailEmailBuilderModule)
+        loadChildren: () => import("./demo-builders/tailwind-email-builder/tail-email-builder.module").then(m => m.TailEmailBuilderModule)
       }
     ], { initialNavigation: "enabledBlocking" }),
     MatToolbarModule,
     MatListModule,
-    MatButtonModule
+    MatButtonModule,
+    MatMenuModule,
+    MatChipsModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

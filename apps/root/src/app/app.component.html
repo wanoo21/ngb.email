@@ -1,15 +1,56 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span>Demo builder</span>
-    <span style="margin-inline-start: 1rem"></span>
-    <button mat-button routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Primeng
-    </button>
-    <button mat-button routerLink="/tail" routerLinkActive="active">Tailwind</button>
-    <span style="margin-inline-start: auto"></span>
-    <button mat-raised-button>Buy License</button>
+    <div class="flex flex-col">
+      <h1>Demo builder</h1>
+      <p class="font-extralight text-sm m-0 tracking-normal">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+        Aperiam,
+        atque dolorem
+        et
+        eum fuga laboriosam laborum magnam molestias mollitia numquam odit quaerat ratione.</p>
+    </div>
+    <span class="ml-auto"></span>
+    <div class="flex gap-2">
+      <button mat-button routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Primeng
+      </button>
+      <button mat-button routerLink="/tail" routerLinkActive="active">Tailwind</button>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<p>Description</p>
+<div class="flex flex-wrap shadow-2xl px-4 py-3 gap-2 border-bottom-1 bg-gray-100">
+  <div class="flex gap-2 text-gray-500" *ngIf="skinService.skins$ | async as skins">
+    <span class="self-center">Skins:</span>
+    <mat-chip-list aria-label="Skin selection">
+      <ng-container *ngFor="let skin of skins; let index = index">
+        <mat-chip color="accent" style="cursor: pointer"
+                  (click)="skinService.setActiveSkin(skin)"
+                  [selected]="(skinService.activeSkin$ | async) === skin"
+                  [matTooltip]="skin"
+        >
+          {{index + 1}}
+        </mat-chip>
+      </ng-container>
+    </mat-chip-list>
+    <span class="self-center">{{skinService.activeSkin$ | async}}</span>
+  </div>
+  <span class="ml-auto"></span>
+  <div class="flex gap-2">
+    <button mat-raised-button color="accent">Subscribe now</button>
+    <mat-divider vertical></mat-divider>
+    <ins
+      class="text-xs bg-stone-800 text-gray-100 px-3 py-1.5 rounded border-1 font-light no-underline select-all self-center">
+      npm i @wlocalhost/primeng-email-builder
+    </ins>
+  </div>
+</div>
+
+
+<mat-menu #skinsMenu="matMenu">
+  <ng-template matMenuContent let-skins="skins">
+    <button mat-menu-item *ngFor="let skin of skins"
+            (click)="skinService.setActiveSkin(skin)">{{skin | titlecase}}</button>
+  </ng-template>
+</mat-menu>
 
 <router-outlet></router-outlet>
