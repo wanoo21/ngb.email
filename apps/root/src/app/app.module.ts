@@ -20,17 +20,33 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     BrowserModule,
     BrowserAnimationsModule,
     NgxEmailBuilderModule.forRoot(),
-    RouterModule.forRoot([
-      {
-        path: "",
-        loadChildren: () => import("./demo-builders/primeng-builder/primeng-builder.module").then(m => m.PrimengBuilderModule),
-        pathMatch: "full"
-      },
-      {
-        path: "tail",
-        loadChildren: () => import("./demo-builders/tailwind-email-builder/tail-email-builder.module").then(m => m.TailEmailBuilderModule)
-      }
-    ], { initialNavigation: "enabledBlocking" }),
+    RouterModule.forRoot(
+      [
+        {
+          path: "",
+          loadChildren: () =>
+            import(
+              "./demo-builders/primeng-email-builder/primeng-builder.module"
+              ).then((m) => m.PrimengBuilderModule),
+          pathMatch: "full"
+        },
+        {
+          path: "tail",
+          loadChildren: () =>
+            import(
+              "./demo-builders/tailwind-email-builder/tail-email-builder.module"
+              ).then((m) => m.TailEmailBuilderModule)
+        },
+        {
+          path: "material",
+          loadChildren: () =>
+            import(
+              "./demo-builders/material-email-builder/md-email-builder.module"
+              ).then((m) => m.MdEmailBuilderModule)
+        }
+      ],
+      { initialNavigation: "enabledBlocking" }
+    ),
     MatToolbarModule,
     MatListModule,
     MatButtonModule,

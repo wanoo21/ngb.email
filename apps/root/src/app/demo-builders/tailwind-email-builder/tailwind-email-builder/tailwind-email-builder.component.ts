@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from "@angular/core";
-import { SkinsService } from "../../../services/skins.service";
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+import { AbstractDemoEmailBuilder } from "../../../abstract/abstract-demo-email-builder";
 
 @Component({
   selector: "wlocalhost-tailwind-email-builder",
@@ -10,11 +10,6 @@ import { SkinsService } from "../../../services/skins.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.ShadowDom
 })
-export class TailwindEmailBuilderComponent implements OnInit {
-  constructor(readonly skinsService: SkinsService) {
-  }
-
-  ngOnInit(): void {
-    this.skinsService.addSkins(null);
-  }
+export class TailwindEmailBuilderComponent extends AbstractDemoEmailBuilder {
+  override skins = null;
 }
