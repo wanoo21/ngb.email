@@ -1,0 +1,12 @@
+<div class="grid grid-cols-3 gap-2">
+  <div class="flex flex-col col-span-1">
+    <label [mdLabel]="i" i18n="@@line_height">Line Height</label>
+    <input mdInput #i="input" type="number" [(ngModel)]="value.value">
+  </div>
+  <div class="flex flex-col col-span-2">
+    <label [mdLabel]="u" i18n="@@line_height_unit">Unit</label>
+    <select mdInput #u="input" [(ngModel)]="value.unit" class="appearance-none">
+      <option *ngFor="let unit of units" [value]="unit">{{getUnitLabel(unit)}}</option>
+    </select>
+  </div>
+</div>

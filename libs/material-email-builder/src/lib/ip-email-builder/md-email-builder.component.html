@@ -1,0 +1,28 @@
+<mat-drawer-container fxFlex>
+  <mat-drawer-content>
+    <div fxFlex fxLayout="column" [ngSwitch]="screen | async">
+      <mat-toolbar fxFlex="none" fxShrink="0">
+        <ng-container *ngIf="value | ipCan: 'preview'">
+          <button mat-flat-button color="primary" (click)="preview()" *ngSwitchDefault>Preview</button>
+          <button mat-flat-button color="primary" (click)="screen.next(null)" *ngSwitchCase="'preview'">
+            Close Preview
+          </button>
+        </ng-container>
+      </mat-toolbar>
+
+      <ng-container *ngSwitchCase="'preview'">
+        <ng-container *ngIf="value | ipPreviewLink | async as link; else loading">
+          <iframe fxFlex [src]="link" class="overflow-x-auto"></iframe>
+        </ng-container>
+        <ng-template #loading>
+          <p i18n="@@template_loading" class="mat-body-1">Loading, please wait ...</p>
+        </ng-template>
+      </ng-container>
+
+      <md-email-body *ngSwitchDefault fxFlex class="overflow-x-auto" [(value)]="value"></md-email-body>
+    </div>
+  </mat-drawer-content>
+  <mat-drawer mode="side" opened position="end">
+    <md-email-aside [readonly]="(screen | async) !== null" fxFlex="480px" fxShrink="0"></md-email-aside>
+  </mat-drawer>
+</mat-drawer-container>

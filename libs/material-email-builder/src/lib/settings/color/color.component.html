@@ -1,0 +1,8 @@
+<div class="grid grid-cols-5 gap-2">
+  <div class="col-span-4">
+    <input type="text" [disabled]="disabled" mdInput #i="input" [value]="value" (input)="valueChange.next(i.el.value)"
+           placeholder="Color" i18n-placeholder="@@color">
+  </div>
+  <div class="col-span-1 rounded border" [style.background-color]="i.el.value"></div>
+</div>
+<p mdHint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</p>

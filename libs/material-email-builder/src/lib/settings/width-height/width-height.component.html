@@ -1,0 +1,9 @@
+<div class="flex gap-2">
+  <button mdBtn (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto" i18n="@@width_height_auto">Auto</button>
+  <input mdInput type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
+  <select mdInput class="appearance-none" [(ngModel)]="value.unit" [disabled]="isAuto">
+    <option *ngFor="let unit of units" [value]="unit">
+      {{getUnitLabel(unit)}}
+    </option>
+  </select>
+</div>

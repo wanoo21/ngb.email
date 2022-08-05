@@ -1,0 +1,12 @@
+<div [ngStyle]="borderStyles"></div>
+
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+  <h2 mdH2 i18n="@@divider_color">Divider Color</h2>
+  <div mdPanel>
+    <md-border [(value)]="options.border"></md-border>
+  </div>
+  <h2 mdH2 i18n="@@padding">Padding</h2>
+  <div mdPanel>
+    <md-padding [(value)]="options.padding"></md-padding>
+  </div>
+</ng-container>

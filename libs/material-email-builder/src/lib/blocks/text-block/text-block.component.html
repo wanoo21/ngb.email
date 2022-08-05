@@ -1,0 +1,19 @@
+<div [innerHTML]="innerText"></div>
+
+<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+  <div mdPanel class="mt-4">
+    <textarea mdInput [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
+  </div>
+
+  <h2 mdH2 i18n="@@font">Font</h2>
+  <div mdPanel>
+    <h3 mdH3 i18n="@@text_color">Color</h3>
+    <md-color [(value)]="options.color"></md-color>
+    <md-font class="pt-2" [(value)]="options.font"></md-font>
+    <md-line-height class="pt-2" [(value)]="options.lineHeight"></md-line-height>
+  </div>
+  <h2 mdH2 i18n="@@padding">Padding</h2>
+  <div mdPanel>
+    <md-padding [(value)]="options.padding"></md-padding>
+  </div>
+</ng-container>
