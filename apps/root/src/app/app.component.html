@@ -18,7 +18,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="flex flex-wrap shadow-2xl px-4 py-3 gap-2 border-bottom-1 bg-gray-100">
+<div class="flex flex-wrap px-4 py-3 gap-2 border-bottom-1 bg-gray-100">
   <div class="flex gap-2 text-gray-500" *ngIf="skinService.skins$ | async as skins">
     <span class="self-center">Skins:</span>
     <mat-chip-list aria-label="Skin selection">
@@ -36,7 +36,7 @@
   </div>
   <span class="ml-auto"></span>
   <div class="flex gap-2">
-    <button mat-raised-button color="accent">Subscribe now</button>
+    <button mat-flat-button color="accent">Subscribe now</button>
     <mat-divider vertical></mat-divider>
     <ins
       class="text-xs bg-stone-800 text-gray-100 px-3 py-1.5 rounded border-1 font-light no-underline select-all self-center">
