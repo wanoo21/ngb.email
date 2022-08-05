@@ -17,12 +17,12 @@
         <iframe [src]="link" class="overflow-x-auto flex-1"></iframe>
       </ng-container>
       <ng-template #loading>
-        <p>Loading, please wait ...</p>
+        <p i18n="@@template_loading">Loading, please wait ...</p>
       </ng-template>
     </ng-container>
 
     <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"></tail-email-body>
   </div>
   <tail-email-aside [readonly]="(screen | async) !== null"
-                    class="col-span-5 md:col-span-3 sm:col-span-4"></tail-email-aside>
+                    class="col-span-5 md:col-span-3 sm:col-span-4 select-text"></tail-email-aside>
 </div>

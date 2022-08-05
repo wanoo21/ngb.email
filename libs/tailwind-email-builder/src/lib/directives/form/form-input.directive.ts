@@ -68,7 +68,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
-  classList = `font-semibold text-sm mt-4 mb-2 text-gray-800 uppercase`;
+  classList = `font-semibold text-sm mt-4 mb-2 text-gray-800 uppercase select-none`;
 }
 
 @Directive({
