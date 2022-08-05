@@ -16,9 +16,11 @@
     @include styleclass('grid place-content-center bg-gray-200 h-4rem min-h-fit border-round border-2 border-gray-300');
   }
 
-  &:hover {
-    .overflow {
-      @include styleclass('opacity-100');
+  .block {
+    &:hover {
+      .overflow {
+        @include styleclass('opacity-100');
+      }
     }
   }
 }

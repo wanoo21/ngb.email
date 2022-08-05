@@ -51,7 +51,7 @@ export class FormLabelDirective extends AddClassList<HTMLLabelElement> implement
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
-  classList = `font-semibold text-sm mt-4 mb-2 uppercase text-color`;
+  classList = `font-semibold text-sm mt-4 mb-2 uppercase text-color select-none`;
 }
 
 @Directive({

@@ -2,8 +2,10 @@
   display: block;
 
   .cdk-drop-list-dragging {
-    .empty-message {
-      display: none;
+    user-select: none;
+
+    ::ng-deep .empty-message {
+      display: none !important;
     }
   }
 }

@@ -1,10 +1,11 @@
 <ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
   <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
     <h2 primeH2 i18n="@@blocks_list">Blocks</h2>
-    <div class="grid" cdkDropList [cdkDropListConnectedTo]="columnsDropLists" [cdkDropListSortingDisabled]="true">
+    <div class="grid" cdkDropList [cdkDropListConnectedTo]="columnsDropLists" [cdkDropListSortingDisabled]="true"
+         [cdkDropListAutoScrollDisabled]="true">
       <div class="col-6" *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
         <div
-          class="border-1 border-round border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
+          class="border-1 surface-border border-round text-sm uppercase text-center p-4 cursor-move select-none"
           cdkDrag [cdkDragData]="block | toBodyBlock">
           {{ block.title }}
         </div>
@@ -13,10 +14,12 @@
     <h2 primeH2 i18n="@@structude_list">Structures</h2>
     <div class="grid" cdkDropList [cdkDropListConnectedTo]="structuresDropLists" [cdkDropListSortingDisabled]="true">
       <div class="col-6" *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
-        <div class="border-1 border-round border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
-             [cdkDragData]="structure | toBodyStructure">
+        <div
+          class="border-1 surface-border border-round cursor-move select-none flex gap-2 p-2"
+          cdkDrag
+          [cdkDragData]="structure | toBodyStructure">
           <div *ngFor="let col of structure.options.columns; let index = index"
-               class="bg-gray-200 h-3rem w-full border-round"
+               class="surface-300 h-3rem w-full border-round"
                [ngClass]="{'w-6 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
           ></div>
         </div>
@@ -31,8 +34,7 @@
   </cdk-step>
 </ng-container>
 
-<p-panel #panel [showHeader]="false" styleClass="p-0 h-full"
-         class="h-full block bg-gray-200 max-h-full overflow-y-auto">
+<p-panel #panel [showHeader]="false" styleClass="p-0 h-full" class="h-full block max-h-full overflow-y-auto">
 
   <ng-template pTemplate="content">
     <div class="flex" role="tablist">

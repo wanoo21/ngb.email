@@ -4,7 +4,7 @@
       <div *ngFor="let structure of value.structures; let index = index" cdkDrag [cdkDragData]="structure">
         <prime-structure (clone)="duplicateStructure($event)"
                          (delete)="deleteStructure($event)" [value]="structure"
-                         [bodyWidth]="value.general.width" class="group relative"></prime-structure>
+                         [bodyWidth]="value.general.width" class="relative"></prime-structure>
       </div>
     </ng-container>
   </div>
@@ -13,12 +13,14 @@
 </ng-container>
 
 <ng-template #emptyBody>
-  <div class="bg-white border-round border-1 border-gray-200" [style.width.px]="value.general.width.value">
+  <div [style.width.px]="value.general.width.value">
     <div class="empty-message flex flex-column p-2 justify-content-center align-items-center h-30rem">
       <p class="text-base text-gray-500" i18n="@@empty_body_message">
         Start by Drag and Drop some structures or select a template from list.
       </p>
-      <button pButton class="p-button-sm" i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+      <button pButton class="p-button-sm" i18n="@@choose_template_btn" (click)="showTemplateList($event)">
+        Select Template
+      </button>
     </div>
   </div>
 </ng-template>

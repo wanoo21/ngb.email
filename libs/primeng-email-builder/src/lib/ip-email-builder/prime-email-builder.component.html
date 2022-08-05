@@ -1,6 +1,6 @@
 <div class="grid grid-nogutter h-full">
   <div class="col-9 flex flex-column h-full" [ngSwitch]="screen | async">
-    <div class="bg-body border-bottom-1 border-secondary-1 py-3 px-4 w-full flex flex-shrink-0">
+    <div class="border-bottom-1 border-50 py-3 px-4 w-full flex flex-shrink-0">
       <ng-container *ngIf="value | ipCan: 'preview'">
         <button pButton class="p-button-sm" (click)="preview()" *ngSwitchDefault>Preview</button>
         <button pButton class="p-button-sm" (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
@@ -9,14 +9,15 @@
 
     <ng-container *ngSwitchCase="'preview'">
       <ng-container *ngIf="value | ipPreviewLink | async as link; else loading">
-        <iframe [src]="link" class="overflow-y-auto flex-1 border-0"></iframe>
+        <iframe [src]="link" class="overflow-y-auto flex-1 border-none"></iframe>
       </ng-container>
       <ng-template #loading>
-        <p>Loading, please wait ...</p>
+        <p i18n="@@template_loading">Loading, please wait ...</p>
       </ng-template>
     </ng-container>
 
     <prime-email-body *ngSwitchDefault class="overflow-y-auto flex-1" [(value)]="value"></prime-email-body>
   </div>
-  <prime-email-aside [readonly]="(screen | async) !== null" class="col-3 h-full"></prime-email-aside>
+  <prime-email-aside [readonly]="(screen | async) !== null"
+                     class="col-3 h-full border-left-1 border-50 select-text"></prime-email-aside>
 </div>

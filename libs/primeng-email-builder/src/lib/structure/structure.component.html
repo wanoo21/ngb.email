@@ -1,7 +1,7 @@
 <div *ngFor="let column of value.elements; let index = index" [ngStyle]="columnStyles(index)" class="column"
      [class.empty]="!column.length" cdkDropList [cdkDropListData]="column"
      (cdkDropListDropped)="dropListDropped($event)" [cdkDropListConnectedTo]="columnsDropLists">
-  <div class="relative group" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
+  <div class="relative block" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
     <ng-container [ipEmailBuilderDynamicBlockDirective]="block" #instance="instance">
       <div class="overflow" (click)="instance.cmpInstance?.edit()">
         <button class="p-button-sm p-button-icon" pButton (click)="duplicateBlock($event, block, column)"

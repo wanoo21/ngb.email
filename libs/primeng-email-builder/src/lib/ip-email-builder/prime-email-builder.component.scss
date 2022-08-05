@@ -10,9 +10,15 @@
   display: block;
 }
 
+::ng-deep .cdk-drag-preview {
+//  border: 1px solid red;
+  @include styleclass('bg-white');
+//  cursor: pointer;
+}
+
 ::ng-deep {
   .is-editing:not(prime-email-body) {
-    @include styleclass('ring-2 ring-offset-2 z-10');
+    @include styleclass('z-10');
   }
 
   .p-dropdown {
@@ -22,7 +28,7 @@
   img {
     //border-radius: 3px;
 
-    @include styleclass('rounded transition-all');
+    @include styleclass('border-round transition-all');
 
     &.active {
       @include styleclass('rounded-xl');
