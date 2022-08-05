@@ -1,12 +1,12 @@
-import { Directive, DoCheck, HostBinding, inject, ViewChild } from "@angular/core";
-import { AbsComponent } from "@ngcomma/ngx-abstract";
+import { ChangeDetectorRef, Directive, DoCheck, HostBinding, inject, ViewChild } from "@angular/core";
 
 import { IPEmailBuilderUiService } from "../services";
 import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
 
 @Directive()
-export abstract class WithSettings extends AbsComponent implements DoCheck {
+export abstract class WithSettings implements DoCheck {
   readonly builderUiService = inject(IPEmailBuilderUiService);
+  readonly changeDetectorRef = inject(ChangeDetectorRef);
   @ViewChild(IPEmailBuilderSettingsDirective, { static: true })
   readonly settingsPortal!: IPEmailBuilderSettingsDirective;
 

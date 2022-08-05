@@ -1,5 +1,4 @@
 import { Directive, EventEmitter, Input, Output } from "@angular/core";
-import { AbsComponent } from "@ngcomma/ngx-abstract";
 
 export interface IIPValueChanged<T> {
   value: T;
@@ -7,7 +6,7 @@ export interface IIPValueChanged<T> {
 }
 
 @Directive()
-export abstract class AIPValueChanged<T extends Record<string, any>> extends AbsComponent implements IIPValueChanged<T> {
+export abstract class AIPValueChanged<T extends Record<string, any>> implements IIPValueChanged<T> {
   @Input() value!: T;
   @Output() valueChange = new EventEmitter<T>();
   // readonly differs = inject(KeyValueDiffers);

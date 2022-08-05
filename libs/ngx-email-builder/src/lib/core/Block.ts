@@ -1,6 +1,7 @@
-import { Directive, HostBinding, inject, OnDestroy } from "@angular/core";
+import { Directive, HostBinding, inject, OnDestroy, Renderer2 } from "@angular/core";
 import { debounce, defaultsDeep } from "@ngcomma/ngx-abstract/utils";
 import { DOCUMENT } from "@angular/common";
+
 import { IFont, TIPEmailBuilderStyles } from "../interfaces";
 import { AIPEmailBuilderService } from "../services";
 import { WithSettings } from "./WithSettings";
@@ -14,10 +15,10 @@ export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> ex
 export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends WithSettings implements OnDestroy {
   type!: string;
   abstract options: T;
-  builderService = inject(AIPEmailBuilderService);
+  readonly builderService = inject(AIPEmailBuilderService);
+  readonly renderer2 = inject(Renderer2);
   @HostBinding("style")
   abstract hostStyles: TIPEmailBuilderStyles;
-  // readonly optionsToWatch = this.toObject();
   #document = inject(DOCUMENT);
   #googleFontLink = this.#document.createElement("link");
   #addFontToHead = debounce((family: string) => {
@@ -40,8 +41,7 @@ export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends With
     return { ...font, family };
   }
 
-  override ngOnDestroy() {
-    super.ngOnDestroy();
+  ngOnDestroy() {
     this.#googleFontLink.remove();
   }
 

@@ -97,6 +97,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
   ngOnInit() {
     // Always show general settings if nothing is editing
     this.builderUiService.setDefaultSettingsPortal(this.settingsPortal);
+    this.edit();
   }
 
   ngAfterViewInit(): void {
