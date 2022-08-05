@@ -1,6 +1,5 @@
 import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-// import { CdkMenuModule } from "@angular/cdk/menu";
 import {
   addDefaultBlock,
   IIPEmailBuilderConfig,
@@ -42,7 +41,6 @@ import { TemplateListComponent } from "./template-list/template-list.component";
     CommonModule,
     NgxEmailBuilderModule,
     IpFormUIModule,
-    // CdkMenuModule,
     CdkStepperModule,
     DragDropModule,
     TextFieldModule
@@ -84,9 +82,7 @@ import { TemplateListComponent } from "./template-list/template-list.component";
   ]
 })
 export class TailwindEmailBuilderModule {
-  static forRoot(
-    config?: IIPEmailBuilderConfig
-  ): ModuleWithProviders<TailwindEmailBuilderModule> {
+  static forRoot(config?: IIPEmailBuilderConfig): ModuleWithProviders<TailwindEmailBuilderModule> {
     return {
       ngModule: TailwindEmailBuilderModule,
       providers: [...withConfig(config)]
