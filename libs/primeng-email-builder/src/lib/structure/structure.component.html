@@ -1,19 +1,21 @@
-<div *ngFor="let column of value.elements; let index = index" [ngStyle]="columnStyles(index)" class="column"
-     [class.empty]="!column.length" cdkDropList [cdkDropListData]="column"
-     (cdkDropListDropped)="dropListDropped($event)" [cdkDropListConnectedTo]="columnsDropLists">
-  <div class="relative block" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
-    <ng-container [ipEmailBuilderDynamicBlockDirective]="block" #instance="instance">
-      <div class="overflow" (click)="instance.cmpInstance?.edit()">
-        <button class="p-button-sm p-button-icon" pButton (click)="duplicateBlock($event, block, column)"
-                *ngIf="instance.cmpInstance! | ipCan: 'duplicate'" type="button" icon="pi pi-clone"></button>
-        <button pButton class="p-button-sm cursor-move p-button-icon" cdkDragHandle type="button" icon="pi pi-sort"></button>
-        <button pButton class="p-button-sm p-button-danger p-button-icon" (click)="removeBlock($event, block, column)"
-                *ngIf="instance.cmpInstance! | ipCan: 'delete'"
-                type="button" icon="pi pi-trash"></button>
-      </div>
-    </ng-container>
+<ng-container *ngFor="let column of value.elements; let index = index">
+  <div [ngStyle]="columnStyles(index)" class="column" [class.empty]="!column.length" cdkDropList
+       [ipEmailBuilderColumn]="column">
+    <div class="relative block" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
+      <ng-container [ipEmailBuilderDynamicBlockDirective]="block" #instance="instance">
+        <div class="overflow" (click)="instance.cmpInstance?.edit()">
+          <button class="p-button-sm p-button-icon" pButton (click)="duplicateBlock($event, block, column)"
+                  *ngIf="instance.cmpInstance! | ipCan: 'duplicate'" type="button" icon="pi pi-clone"></button>
+          <button pButton class="p-button-sm cursor-move p-button-icon" cdkDragHandle type="button"
+                  icon="pi pi-sort"></button>
+          <button pButton class="p-button-sm p-button-danger p-button-icon" (click)="removeBlock($event, block, column)"
+                  *ngIf="instance.cmpInstance! | ipCan: 'delete'"
+                  type="button" icon="pi pi-trash"></button>
+        </div>
+      </ng-container>
+    </div>
   </div>
-</div>
+</ng-container>
 
 <div
   class="menu absolute top-0 right-0 opacity-0 bg-white p-1 shadow-2 border-round border-1 border-gray-200 gap-2 flex">
