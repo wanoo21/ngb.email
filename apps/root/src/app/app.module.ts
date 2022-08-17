@@ -12,9 +12,10 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { HtmlBlockComponent } from "./html-block/html-block.component";
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, HtmlBlockComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -24,25 +25,16 @@ import { MatTooltipModule } from "@angular/material/tooltip";
       [
         {
           path: "",
-          loadChildren: () =>
-            import(
-              "./demo-builders/primeng-email-builder/primeng-builder.module"
-              ).then((m) => m.PrimengBuilderModule),
+          loadChildren: () => import( "./demo-builders/primeng-email-builder/primeng-builder.module" ).then((m) => m.PrimengBuilderModule),
           pathMatch: "full"
         },
         {
           path: "tail",
-          loadChildren: () =>
-            import(
-              "./demo-builders/tailwind-email-builder/tail-email-builder.module"
-              ).then((m) => m.TailEmailBuilderModule)
+          loadChildren: () => import( "./demo-builders/tailwind-email-builder/tail-email-builder.module" ).then((m) => m.TailEmailBuilderModule)
         },
         {
           path: "material",
-          loadChildren: () =>
-            import(
-              "./demo-builders/material-email-builder/md-email-builder.module"
-              ).then((m) => m.MdEmailBuilderModule)
+          loadChildren: () => import( "./demo-builders/material-email-builder/md-email-builder.module" ).then((m) => m.MdEmailBuilderModule)
         }
       ],
       { initialNavigation: "enabledBlocking" }

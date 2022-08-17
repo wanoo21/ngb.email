@@ -19,7 +19,7 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="flex flex-wrap px-4 py-3 gap-2 border-bottom-1 bg-gray-100">
+<div class="flex flex-wrap px-4 py-3 gap-2 mat-elevation-z4">
   <div class="flex gap-2 text-gray-500" *ngIf="skinService.skins$ | async as skins">
     <span class="self-center">Skins:</span>
     <mat-chip-list aria-label="Skin selection">
@@ -45,13 +45,5 @@
     </ins>
   </div>
 </div>
-
-
-<mat-menu #skinsMenu="matMenu">
-  <ng-template matMenuContent let-skins="skins">
-    <button mat-menu-item *ngFor="let skin of skins"
-            (click)="skinService.setActiveSkin(skin)">{{skin | titlecase}}</button>
-  </ng-template>
-</mat-menu>
 
 <router-outlet></router-outlet>
