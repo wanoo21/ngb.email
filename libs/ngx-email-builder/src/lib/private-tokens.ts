@@ -1,15 +1,40 @@
-import { InjectionToken, Type } from "@angular/core";
+import { inject, InjectionToken, isDevMode, Type } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { firstValueFrom } from "rxjs";
 
 import { IIPEmailBuilderConfig } from "./public-tokens";
 import { AIPEmailBuilderBlock } from "./core/Block";
 import { IBlockState } from "./interfaces";
+
+interface ILicenseResponse {
+  status: boolean;
+  active: boolean;
+}
+
+//
+// class LicenseCache {
+//   constructor(readonly keyName: string | undefined) {
+//   }
+//
+//   get key() {
+//     if (!this.keyName) {
+//       return '0'
+//     }
+//     const cachedKey = sessionStorage.getItem(String(this.keyName).toLowerCase());
+//     return cachedKey || "0";
+//   }
+//
+//   set key(key: string) {
+//     sessionStorage.setItem(String(this.keyName).toLowerCase(), key);
+//   }
+// }
 
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
     xApiKey: "", socialIconsPath: "", convertorPath: ""
   };
 
-  constructor(config?: IIPEmailBuilderConfig) {
+  constructor(config: IIPEmailBuilderConfig, readonly http: HttpClient) {
     this.defConfig = { ...this.defConfig, ...config };
   }
 
@@ -25,8 +50,17 @@ export class IPEmailBuilderConfig {
     return this.defConfig.xApiKey || "t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz";
   }
 
+  get hasValidLicense(): boolean {
+    return !!this.defConfig.licenseKey && /^([(A-Z\d+)]{8}-){3}([(A-Z\d+)]{8})$/g.test(this.defConfig.licenseKey);
+  }
+
   get isFreeVersion(): boolean {
-    return !this.defConfig.xApiKey;
+    if (isDevMode()) {
+      return !this.hasValidLicense;
+    } else if (this.hasValidLicense) {
+      return sessionStorage.getItem(this.#licenseHash) !== "1";
+    }
+    return true;
   }
 
   get convertorPath(): string {
@@ -36,11 +70,31 @@ export class IPEmailBuilderConfig {
   get providers(): IIPEmailBuilderConfig["providers"] {
     return this.defConfig.providers;
   }
+
+  get #licenseHash(): string {
+    return `__${this.defConfig.licenseKey}`.toLowerCase().replace(/-/g, "");
+  }
+
+  fetchLicense() {
+    if (this.hasValidLicense) {
+      if (!isDevMode() && !sessionStorage.getItem(this.#licenseHash)) {
+        return firstValueFrom(this.http.post<ILicenseResponse>("https://ngb-api.wlocalhost.org/v1/activate", {
+          licenseKey: this.defConfig.licenseKey
+        }), { defaultValue: { status: true, active: false } }).then(({ status, active }) => {
+          sessionStorage.setItem(this.#licenseHash, String(Number(status && active)));
+        });
+      }
+    }
+    return Promise.resolve();
+  }
 }
 
 export const IP_EMAIL_BUILDER_CONFIG = new InjectionToken<IPEmailBuilderConfig>("Wlocalhost configurations", {
     providedIn: "root",
-    factory: () => new IPEmailBuilderConfig()
+    factory: () => {
+      const httpClient = inject(HttpClient);
+      return new IPEmailBuilderConfig({}, httpClient);
+    }
   }
 );
 
