@@ -13,7 +13,6 @@ import {
 } from "@angular/core";
 import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 
-import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
 import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
@@ -33,9 +32,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   // All blocks
   @ViewChildren(IPEmailBuilderDynamicDirective)
   readonly blocks!: QueryList<IPEmailBuilderDynamicDirective>;
-  // Column drop lists
-  @ViewChildren(CdkDropList)
-  readonly dropLists!: QueryList<CdkDropList<AIPEmailBuilderBlockExtendedOptions[]>>;
   // Column to edit
   editColumnIndex = 0;
   // Clone & Delete Output
@@ -81,10 +77,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
 
   get verticalLabels(): TVerticalAlign[] {
     return [...this.#verticalLabels.keys()];
-  }
-
-  get columnsDropLists(): CdkDropList<AIPEmailBuilderBlockExtendedOptions[]>[] {
-    return Array.from(this.builderUiService.columnsDropLists);
   }
 
   getVerticalAlignLabel(key: TVerticalAlign): string {
@@ -150,15 +142,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
     this.editColumnIndex = index;
   }
 
-  dropListDropped(drop: CdkDragDrop<AIPEmailBuilderBlockExtendedOptions[]>) {
-    const { previousContainer, container, previousIndex, currentIndex, item } = drop;
-    if (this.builderUiService.columnsDropLists.has(previousContainer)) {
-      transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex);
-    } else {
-      container.data.splice(currentIndex, 0, item.data);
-    }
-  }
-
   ngAfterViewInit(): void {
     /**
      * A small change detection improvement.
@@ -172,10 +155,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
         this.changeDetectorRef.detach();
       }
     }).observe(this.#elRef);
-    // Add all inside columns to columns drop lists
-    this.dropLists.forEach(dropList => {
-      this.builderUiService.columnsDropLists.add(dropList);
-    });
   }
 
   override markForCheck(): boolean {

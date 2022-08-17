@@ -14,6 +14,7 @@ export abstract class AIPEmailBuilderAside implements OnInit {
   @ViewChild(CdkPortalOutlet, { static: true })
   readonly asideSettingsPortal!: CdkPortalOutlet;
   readonly builderUiService = inject(IPEmailBuilderUiService);
+  readonly activeSettings$ = this.builderUiService.currentSettingsPortal$;
   readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
   readonly structures = (["cols_1", "cols_2", "cols_12", "cols_21", "cols_3", "cols_4", "cols_5", "cols_6"] as TStructureTypes[]).map(type => new Structure(type));
 

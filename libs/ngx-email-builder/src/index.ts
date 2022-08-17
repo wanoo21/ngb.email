@@ -59,5 +59,7 @@ export * from "./lib/pipes/to-watch-options.pipe";
 
 // Directives
 export * from "./lib/directives/email-builder-dynamic.directive";
-export * from "./lib/directives/history.directive";
-export * from "./lib/directives/ipemail-builder-settings.directive";
+export * from "./lib/directives/email-builder-history.directive";
+export * from "./lib/directives/email-builder-settings.directive";
+export * from "./lib/directives/email-builder-structures.directive";
+export * from "./lib/directives/email-builder-column.directive";

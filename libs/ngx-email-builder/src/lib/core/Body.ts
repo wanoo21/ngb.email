@@ -1,5 +1,4 @@
 import {
-  AfterViewInit,
   Directive,
   EventEmitter,
   HostBinding,
@@ -8,31 +7,27 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChanges,
-  ViewChild
+  SimpleChanges
 } from "@angular/core";
-import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 import { BehaviorSubject } from "rxjs";
 
 import { WithSettings } from "./WithSettings";
 import { IPEmail } from "../body/body";
 import { createBackground, createPadding } from "../tools/utils";
-import { TDirection, TStructureTypes } from "../interfaces";
-import { IStructure, Structure } from "../structure/structure";
+import { TDirection } from "../interfaces";
+import { Structure } from "../structure/structure";
 import { AIPValueChanged } from "./ValueChanged";
 
 @Directive()
-export abstract class AIPEmailBody extends WithSettings implements OnInit, AfterViewInit, OnChanges, AIPValueChanged<IPEmail> {
+export abstract class AIPEmailBody extends WithSettings implements OnInit, OnChanges, AIPValueChanged<IPEmail> {
   @Input() value!: IPEmail;
   @Output() valueChange = new EventEmitter<IPEmail>();
-  @ViewChild("structuresDropList", { static: false, read: CdkDropList })
-  readonly structuresDropList: CdkDropList | undefined;
   contentPart$ = new BehaviorSubject<null | "templates">(null);
 
   #directionLabels = new Map<TDirection, string>([
-    ["ltr", $localize`:@@direction:Left to right`],
-    ["rtl", $localize`:@@direction:Right to left`]
+    ["ltr", $localize`:@@direction_ltr:Left to right`],
+    ["rtl", $localize`:@@direction_rtl:Right to left`]
   ]);
 
   get directionKeys() {
@@ -80,19 +75,19 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
     this.value.structures.splice(indexOf, 0, cloneDeep(structure));
   }
 
-  dropListDropped({
-                    container,
-                    previousContainer,
-                    currentIndex,
-                    previousIndex,
-                    item
-                  }: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
-    if (this.builderUiService.structuresDropLists.has(previousContainer)) {
-      transferArrayItem(container.data, previousContainer.data, currentIndex, previousIndex);
-    } else {
-      container.data.splice(currentIndex, 0, new Structure(item.data));
-    }
-  }
+  // dropListDropped({
+  //                   container,
+  //                   previousContainer,
+  //                   currentIndex,
+  //                   previousIndex,
+  //                   item
+  //                 }: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
+  //   if (this.builderUiService.structuresDropLists.has(previousContainer)) {
+  //     transferArrayItem(container.data, previousContainer.data, currentIndex, previousIndex);
+  //   } else {
+  //     container.data.splice(currentIndex, 0, new Structure(item.data));
+  //   }
+  // }
 
   ngOnInit() {
     // Always show general settings if nothing is editing
@@ -100,16 +95,9 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, After
     this.edit();
   }
 
-  ngAfterViewInit(): void {
-    if (this.structuresDropList) {
-      this.structuresDropList.data = this.value.structures;
-      this.structuresDropList.autoScrollDisabled = false;
-      this.builderUiService.structuresDropLists.add(this.structuresDropList);
-    }
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
+    // this.syncStructureDndList();
   }
 
   showTemplateList($event: Event): void {

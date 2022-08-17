@@ -9,6 +9,7 @@ import {
 
 export interface IIPEmailBuilderConfig {
   xApiKey?: string;
+  licenseKey?: string;
   socialIconsPath?: string;
   convertorPath?: string;
   templatesThumbsPath?: string;

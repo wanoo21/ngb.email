@@ -26,11 +26,13 @@ export abstract class AIPEmailBuilderHistoryService {
   #historyMap = new Map<number, (() => void)>();
   #currentIndex = 0;
 
+  get hasChanges(): boolean {
+    return this.#historyMap.size > 0;
+  }
+
   // TODO: Add the right logic for history
   addHistory(fn: (() => void)): void {
     this.#historyMap.set(Date.now(), fn);
-    // this.#currentIndex++;
-    console.log([...this.#historyMap]);
   }
 
   runNext(): void {
@@ -41,10 +43,6 @@ export abstract class AIPEmailBuilderHistoryService {
   runPrev(): void {
     [...this.#historyMap.values()][this.#currentIndex]();
     // this.#currentIndex--;
-  }
-
-  get hasChanges(): boolean {
-    return this.#historyMap.size > 0;
   }
 
   clear(): void {

@@ -3,7 +3,7 @@ import { CdkPortal, CdkPortalOutlet } from "@angular/cdk/portal";
 import { BehaviorSubject, map } from "rxjs";
 import { CdkDropList } from "@angular/cdk/drag-drop";
 
-import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
+import { IPEmailBuilderSettingsDirective } from "../directives/email-builder-settings.directive";
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 import { IStructure } from "../structure/structure";
 

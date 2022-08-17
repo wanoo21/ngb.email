@@ -1,4 +1,5 @@
-import { Provider, Type } from "@angular/core";
+import { inject, Provider, Type } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 import { IIPEmailBuilderConfig } from "../public-tokens";
 import {
@@ -16,11 +17,14 @@ import { DividerBlock } from "../blocks/divider-block/divider.block";
 import { SocialBlock } from "../blocks/social-block/social.block";
 import { SpacerBlock } from "../blocks/spacer-block/spacer.block";
 
-export function withConfig(config?: IIPEmailBuilderConfig): Provider[] {
+export function withConfig(config: IIPEmailBuilderConfig = {}): Provider[] {
   return [
     {
       provide: IP_EMAIL_BUILDER_CONFIG,
-      useValue: new IPEmailBuilderConfig(config)
+      useFactory: () => {
+        const httpClient = inject(HttpClient);
+        return new IPEmailBuilderConfig(config, httpClient);
+      }
     }
   ];
 }

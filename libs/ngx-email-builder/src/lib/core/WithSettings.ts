@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Directive, DoCheck, HostBinding, inject, ViewChild } from "@angular/core";
 
 import { IPEmailBuilderUiService } from "../services";
-import { IPEmailBuilderSettingsDirective } from "../directives/ipemail-builder-settings.directive";
+import { IPEmailBuilderSettingsDirective } from "../directives/email-builder-settings.directive";
 
 @Directive()
 export abstract class WithSettings implements DoCheck {

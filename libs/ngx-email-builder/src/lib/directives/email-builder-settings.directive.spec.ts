@@ -1,4 +1,4 @@
-import { IPEmailBuilderSettingsDirective } from "./ipemail-builder-settings.directive";
+import { IPEmailBuilderSettingsDirective } from "./email-builder-settings.directive";
 
 describe("IPEmailBuilderSettingsDirective", () => {
   it("should create an instance", () => {

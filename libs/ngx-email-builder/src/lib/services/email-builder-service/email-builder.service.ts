@@ -1,7 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
-// import { AIPEmailBuilderRestService } from "../email-builder-rest-service/email-builder-rest.service";
 
 @Injectable({
   providedIn: "root",
@@ -9,9 +8,7 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tok
     const [useExisting] = factory.providers || [];
     if (factory.isFreeVersion) {
       if (useExisting) {
-        console.warn(
-          "It seems you try to rewrite AIPEmailBuilderService, but this is not allowed in free version."
-        );
+        console.warn("It seems you try to rewrite AIPEmailBuilderService, but this is not allowed in free version.");
       }
       return new FreeIPEmailBuilderService();
     } else if (!factory.isFreeVersion && useExisting) {
@@ -22,8 +19,6 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tok
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderService {
-  // readonly restService = inject(AIPEmailBuilderRestService)
-
   standardFonts = [
     "Palatino Linotype, Book Antiqua, Palatino, serif",
     "Times New Roman, Times, serif",

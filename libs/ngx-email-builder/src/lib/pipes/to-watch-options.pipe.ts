@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { AIPEmailBuilderBlock } from "../core/Block";
 import { AIPEmailBody } from "../core/Body";
 import { AIPStructure } from "../core/Structure";
-import { IIPOptionsHistoryContext } from "../directives/ipemail-builder-settings.directive";
+import { IIPOptionsHistoryContext } from "../directives/email-builder-settings.directive";
 
 @Pipe({
   name: "toWatchOptions",
