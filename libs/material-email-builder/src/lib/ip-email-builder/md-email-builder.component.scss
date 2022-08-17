@@ -7,10 +7,43 @@
   height: var(--ip-email-builder-host-height, 100vh);
 }
 
+mat-drawer {
+  max-width: 480px;
+}
+
 ::ng-deep {
-  .is-editing:not(md-email-body) {
-    @apply ring-2 ring-pink-400/50 ring-offset-2 z-10;
+  .p-2 {
+    padding: 0.5rem;
   }
+
+  .px-2 {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+
+  .pb-2 {
+    padding-bottom: 0.5rem;
+  }
+
+  .mb-0 {
+    margin-bottom: 0 !important;
+  }
+
+  .select-none {
+    user-select: none;
+  }
+
+  [cdkDragHandle] {
+    cursor: move;
+  }
+
+  .relative {
+    position: relative;
+  }
+
+  //.is-editing:not(md-email-body) {
+  //  @apply ring-2 ring-pink-400/50 ring-offset-2 z-10;
+  //}
 
   img {
     //border-radius: 3px;

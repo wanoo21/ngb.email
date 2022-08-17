@@ -1,18 +1,21 @@
-<md-color [(value)]="value.color" *ngIf="hasOwn('color')"></md-color>
+<md-color class="pb-2" [(value)]="value.color" *ngIf="hasOwn('color')"></md-color>
 
-<div class="flex gap-2 mt-2">
-  <input type="number" mdInput [(ngModel)]="ngValue.width" *ngIf="hasOwn('width')" placeholder="Width"
-         i18n-placeholder="@@border_width">
-  <input type="number" mdInput [(ngModel)]="ngValue.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
-         i18n-placeholder="@@border_radius">
+<div fxLayout fxLayoutGap="0.5rem" class="pb-2" style="width: 100%">
+  <mat-form-field *ngIf="hasOwn('width')" appearance="fill" fxFlex>
+    <mat-label i18n="@@border_width">Width</mat-label>
+    <input type="number" matInput [(ngModel)]="ngValue.width">
+  </mat-form-field>
+  <mat-form-field *ngIf="hasOwn('radius')" appearance="fill" fxFlex>
+    <mat-label i18n="@@border_radius">Radius</mat-label>
+    <input type="number" matInput [(ngModel)]="ngValue.radius">
+  </mat-form-field>
 </div>
 
 <ng-container *ngIf="value.width">
-  <h3 mdH3 i18n="@@border_style" class="pt-2">Border style</h3>
-  <div class="grid grid-cols-5 gap-2">
-    <button mdBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
-            (click)="value.style = style">
+  <h3 mdH3 i18n="@@border_style" class="pb-2">Border style</h3>
+  <mat-button-toggle-group [(ngModel)]="value.style" fxLayout>
+    <mat-button-toggle *ngFor="let style of styleLabels" [value]="style" fxFlex>
       {{getStyleLabel(style)}}
-    </button>
-  </div>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
 </ng-container>

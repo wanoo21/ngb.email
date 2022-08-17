@@ -6,9 +6,6 @@ import {
   NgxEmailBuilderModule,
   withConfig
 } from "@wlocalhost/ngx-email-builder";
-import { CdkStepperModule } from "@angular/cdk/stepper";
-import { DragDropModule } from "@angular/cdk/drag-drop";
-import { TextFieldModule } from "@angular/cdk/text-field";
 
 import { MdEmailBuilderComponent } from "./ip-email-builder/md-email-builder.component";
 import { MdStructureComponent } from "./structure/md-structure.component";
@@ -40,20 +37,41 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatRippleModule } from "@angular/material/core";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatDividerModule } from "@angular/material/divider";
+import { MatCardModule } from "@angular/material/card";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatInputModule } from "@angular/material/input";
+import { MatSelectModule } from "@angular/material/select";
+import { DragDropModule } from "@angular/cdk/drag-drop";
+import { MatIconModule } from "@angular/material/icon";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 
 @NgModule({
   imports: [
     CommonModule,
     NgxEmailBuilderModule,
     IpFormUIModule,
-    CdkStepperModule,
     DragDropModule,
-    TextFieldModule,
     MatTooltipModule,
     FlexLayoutModule,
     MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatTabsModule,
+    MatRippleModule,
+    MatChipsModule,
+    MatDividerModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule
   ],
   declarations: [
     MdEmailBuilderComponent,

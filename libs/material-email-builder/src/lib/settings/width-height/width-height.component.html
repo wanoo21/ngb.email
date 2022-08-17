@@ -1,9 +1,13 @@
-<div class="flex gap-2">
-  <button mdBtn (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto" i18n="@@width_height_auto">Auto</button>
-  <input mdInput type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
-  <select mdInput class="appearance-none" [(ngModel)]="value.unit" [disabled]="isAuto">
-    <option *ngFor="let unit of units" [value]="unit">
-      {{getUnitLabel(unit)}}
-    </option>
-  </select>
+<div fxLayout fxLayoutGap="0.5rem">
+  <button mat-button (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto" i18n="@@width_height_auto">
+    Auto
+  </button>
+  <mat-form-field appearance="fill" fxFlex>
+    <input matInput type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
+  </mat-form-field>
+  <mat-form-field appearance="fill" fxFlex>
+    <mat-select [(ngModel)]="value.unit" [disabled]="isAuto">
+      <mat-option *ngFor="let unit of units" [value]="unit">{{getUnitLabel(unit)}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>

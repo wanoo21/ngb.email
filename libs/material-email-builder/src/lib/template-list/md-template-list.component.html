@@ -1,36 +1,35 @@
-<div class="flex p-2 gap-2 flex-wrap" *ngIf="tmplCategories$ | async as categoryList; else load">
+<div  gdColumns="repeat(5, 1fr)" gdGap="0.5rem" *ngIf="tmplCategories$ | async as categoryList; else load" class="p-2">
   <ng-container *ngFor="let category of [categoryList] | applyMiddleware: 'categoryList' | async">
-    <button mdBtn class="capitalize" [class.active]="category === (selectedCategory$ | async)"
+    <button mat-flat-button [class.active]="category === (selectedCategory$ | async)"
             (click)="selectCategory(category)">
       {{category.category}}
     </button>
   </ng-container>
 </div>
 
-<div class="grid grid-cols-3 gap-2 p-2" *ngIf="selectedCategory$ | async as category">
+<div class="p-2" gdColumns="repeat(3, 1fr)" gdGap="0.5rem" *ngIf="selectedCategory$ | async as category">
   <!--  <ng-container *ngIf="[category] | applyMiddleware: 'categoryTemplates' | async as templates; else emptyBodyMessage">-->
   <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
-    <div class="relative h-60 rounded border overflow-hidden group">
-      <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
-           class="w-full h-full object-cover object-[center_top] group-hover:object-bottom">
-      <div
-        class="absolute bottom-0 w-full bg-white translate-y-5 p-2 group-hover:translate-y-0 transition-transform text-center">
-        <h3 mdH3>{{template | titlecase}}</h3>
-        <button mdBtn class="opacity-0 group-hover:opacity-100 transition-opacity mx-auto" i18n="@@use_in_editor"
-                (click)="selectTemplate(category.category, template)">
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>{{template | titlecase}}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template">
+      <mat-card-actions>
+        <button mat-button (click)="selectTemplate(category.category, template)" i18n="@@use_in_editor">
           Use in editor
         </button>
-      </div>
-    </div>
+      </mat-card-actions>
+    </mat-card>
   </ng-container>
   <!--  </ng-container>-->
 </div>
 
 
 <ng-template #load>
-  <p i18n="@@loading_templates">Loading, please wait ...</p>
+  <p class="mat-body" i18n="@@loading_templates">Loading, please wait ...</p>
 </ng-template>
 
 <ng-template #emptyBodyMessage>
-  <p i18n="@@empty_template_list">No templates in this category</p>
+  <p class="mat-body" i18n="@@empty_template_list">No templates in this category</p>
 </ng-template>

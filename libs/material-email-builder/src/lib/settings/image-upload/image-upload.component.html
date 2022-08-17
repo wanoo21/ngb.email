@@ -1,9 +1,12 @@
-<div class="grid grid-cols-5 gap-2">
-  <div class="col-span-4 flex flex-col">
-    <label [mdLabel]="i" i18n="@@image_source">Image source</label>
-    <input type="url" #i="input" mdInput [(ngModel)]="value" placeholder="https://...">
-  </div>
-  <div class="col-span-1 rounded border overflow-hidden bg-white">
-    <img [src]="i.el.value" alt="" class="w-full h-full" *ngIf="i.el.value.length">
+<div fxLayoutGap="0.5rem">
+  <mat-form-field fxFlex="75%" appearance="fill">
+    <mat-label i18n="@@image_source">Image source</mat-label>
+    <input type="url" matInput [(ngModel)]="value" (ngModelChange)="valueChange.next(value)" placeholder="https://...">
+    <mat-hint i18n="@@value_image_outlook_support">
+      Background image has limited support in some Outlook versions.
+    </mat-hint>
+  </mat-form-field>
+  <div fxFlex="25%" style="background-color: lightgray">
+    <img [src]="value" alt="" fxFlexFill *ngIf="value.length">
   </div>
 </div>

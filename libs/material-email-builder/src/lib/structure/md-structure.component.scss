@@ -3,16 +3,72 @@
 }
 
 .column.empty {
-  @apply grid place-content-center bg-gray-200 h-24 min-h-fit rounded border-2 border-gray-300 #{!important};
+  display: grid;
+  height: 6rem;
+  min-height: fit-content;
+  place-content: center;
+  border-radius: 0.25rem !important;
+  border-width: 2px !important;
+  border-color: rgb(209 213 219 / 1) !important;
+  background-color: rgb(229 231 235 / 1) !important;
 }
 
 .tool-button {
-  @apply p-1 bg-gray-400 text-white hover:bg-gray-500 rounded-full transition-colors;
+  border: 0;
+  border-radius: 9999px;
+  background-color: rgb(156 163 175 / 1);
+  padding: 0.25rem;
+  color: rgb(255 255 255 / 1);
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+  line-height: 0;
+  cursor: pointer;
+
+  svg {
+    width: 0.75rem;
+    height: 0.75rem;
+  }
 }
 
 .overflow {
-  @apply shadow-sm absolute inset-0 bg-blue-100/50 flex flex-wrap items-center justify-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: rgb(219 234 254 / 0.5);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  opacity: 0;
   row-gap: 0;
+}
+
+.block:hover {
+  .overflow {
+    opacity: 1;
+  }
+}
+
+.structure-tools {
+  box-sizing: border-box;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 3px;
+  background-color: white;
+  opacity: 0;
+}
+
+:host:hover {
+  .structure-tools {
+    opacity: 1;
+  }
 }
 
 .cdk-drop-list-dragging {
@@ -36,6 +92,7 @@
   background-color: white;
   @apply h-2;
 }
+
 //
 //.cdk-drag-placeholder {
 //  opacity: 0;

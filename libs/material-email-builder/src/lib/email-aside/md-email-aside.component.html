@@ -1,48 +1,40 @@
-<ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
-  <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
+<mat-tab-group fxFill>
+  <mat-tab label="Content" i18n-label="@@ip_aside_stepper:Content">
     <h2 mdH2 i18n="@@blocks_list">Blocks</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
+    <div class="px-2 pb-2 select-none" gdColumns="1fr 1fr" gdGap="0.5rem" cdkDropList
+         [cdkDropListConnectedTo]="columnsDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
-        <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
-             cdkDrag [cdkDragData]="block | toBodyBlock">
+        <button mat-stroked-button disableRipple cdkDrag [cdkDragData]="block | toBodyBlock" style="cursor:move;">
           {{ block.title }}
-        </div>
+        </button>
       </ng-container>
     </div>
     <h2 mdH2 i18n="@@structude_list">Structures</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
+    <div class="px-2 pb-2 select-none" gdColumns="1fr 1fr" gdGap="0.5rem" cdkDropList
+         [cdkDropListConnectedTo]="structuresDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
-        <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
-             [cdkDragData]="structure | toBodyStructure">
-          <div *ngFor="let col of structure.options.columns; let index = index" class="bg-gray-200 h-9 w-full rounded"
-               [ngClass]="{'w-1/3 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
-          ></div>
+        <div [attr.aria-label]="structure.type" cdkDrag [cdkDragData]="structure | toBodyStructure" fxLayout
+             fxLayoutAlign="start center"
+             fxLayoutGap="0.5rem" class="mat-stroked-button" style="padding: 0.5rem">
+          <ng-container *ngFor="let col of structure.options.columns; let index = index">
+            <div
+              class="mat-chip mat-standard-chip"
+              fxFlex="100%"
+              *ngIf="structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1; else simpleChip"></div>
+            <ng-template #simpleChip>
+              <mat-chip fxFlex disableRipple class="mat-chip mat-standard-chip"></mat-chip>
+            </ng-template>
+          </ng-container>
         </div>
       </ng-container>
     </div>
-  </cdk-step>
-  <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">
+  </mat-tab>
+  <mat-tab label="Modules" i18n-label="@@ip_aside_stepper:Modules">
     <p mdHint>Not implemented yet</p>
-  </cdk-step>
-  <cdk-step label="Settings" i18n-label="@@ip_aside_stepper:Settings">
+  </mat-tab>
+  <mat-tab label="Settings" i18n-label="@@ip_aside_stepper:Settings">
     <ng-container [cdkPortalOutlet]="currentSettings$ | async"></ng-container>
-  </cdk-step>
-</ng-container>
-
-<div class="stepper grid grid-cols-3 divide-x divide-gray-200" role="tablist">
-  <ng-container *ngFor="let step of stepper.steps">
-    <button (click)="step.select()"
-            class="step bg-white py-3 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
-            [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
-      {{step.label}}
-    </button>
-  </ng-container>
-</div>
-
-<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
-  <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
-</div>
-
-<div class="absolute inset-0 bg-white opacity-80" *ngIf="readonly"></div>
+  </mat-tab>
+</mat-tab-group>

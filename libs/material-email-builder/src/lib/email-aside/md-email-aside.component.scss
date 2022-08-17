@@ -1,11 +1,3 @@
 :host {
-  @apply bg-gray-100 border-l flex flex-col;
-
-  .stepper {
-    .step {
-      &.active {
-        @apply bg-gray-100 shadow-inner border-b-0;
-      }
-    }
-  }
+  display: block;
 }

@@ -1,8 +1,10 @@
-<div class="grid grid-cols-5 gap-2">
-  <div class="col-span-4">
-    <input type="text" [disabled]="disabled" mdInput #i="input" [value]="value" (input)="valueChange.next(i.el.value)"
-           placeholder="Color" i18n-placeholder="@@color">
+<div fxLayout fxLayoutGap="0.5rem">
+  <div fxFlex="75%" fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label i18n="@@color">Color</mat-label>
+      <input type="text" matInput [(ngModel)]="value" (input)="valueChange.next(value)">
+      <mat-hint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</mat-hint>
+    </mat-form-field>
   </div>
-  <div class="col-span-1 rounded border" [style.background-color]="i.el.value"></div>
+  <div fxFlex="25%" fxShrink="0" [style.background-color]="value"></div>
 </div>
-<p mdHint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</p>

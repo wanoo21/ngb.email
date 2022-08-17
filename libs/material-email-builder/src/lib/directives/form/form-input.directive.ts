@@ -68,7 +68,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
-  classList = `font-semibold text-sm mt-4 mb-2 text-gray-800 uppercase select-none`;
+  classList = `mat-h2 px-2 mb-0`;
 }
 
 @Directive({
@@ -76,7 +76,7 @@ export class FormH2Directive extends AddClassList {
   exportAs: "h3"
 })
 export class FormH3Directive extends AddClassList {
-  classList = `text-xs font-medium text-gray-400 mb-1`;
+  classList = `mat-h3 px-2 mb-0`;
 }
 
 @Directive({
@@ -84,10 +84,10 @@ export class FormH3Directive extends AddClassList {
   exportAs: "hint"
 })
 export class FormHintDirective extends AddClassList {
-  @Input() variant = "gray-400";
+  @Input() variant = "body";
 
   get classList(): string {
-    return `text-xs text-${this.variant} font-light mt-1`;
+    return `mat-caption mat-${this.variant}`;
   };
 }
 
@@ -97,7 +97,7 @@ export class FormHintDirective extends AddClassList {
 })
 export class FormPanelDirective extends AddClassList {
   get classList(): string {
-    return `p-2 rounded bg-white border`;
+    return `p-2 pb-2`;
   };
 }
 
