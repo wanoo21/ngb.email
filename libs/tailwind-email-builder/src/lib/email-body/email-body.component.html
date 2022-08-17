@@ -1,5 +1,5 @@
 <ng-container [ngSwitch]="contentPart$ | async">
-  <div cdkDropList #structuresDropList (cdkDropListDropped)="dropListDropped($event)" *ngSwitchDefault>
+  <div cdkDropList [ipEmailBuilderStructures]="value.structures" *ngSwitchDefault>
     <ng-container *ngIf="value.structures.length; else emptyBody">
       <div *ngFor="let structure of value.structures; let index = index" cdkDrag [cdkDragData]="structure">
         <tail-structure (clone)="duplicateStructure($event)"
