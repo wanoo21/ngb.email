@@ -1,18 +1,15 @@
 <ng-container *ngFor="let column of value.elements; let index = index">
-  <div [ngStyle]="columnStyles(index)" class="column" [class.empty]="!column.length" cdkDropList
-       [ipEmailBuilderColumn]="column">
-    <div class="relative block" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
-      <ng-container [ipEmailBuilderDynamicBlockDirective]="block" #instance="instance">
-        <div class="overflow" (click)="instance.cmpInstance?.edit()">
-          <button class="p-button-sm p-button-icon" pButton (click)="duplicateBlock($event, block, column)"
-                  *ngIf="instance.cmpInstance! | ipCan: 'duplicate'" type="button" icon="pi pi-clone"></button>
-          <button pButton class="p-button-sm cursor-move p-button-icon" cdkDragHandle type="button"
-                  icon="pi pi-sort"></button>
-          <button pButton class="p-button-sm p-button-danger p-button-icon" (click)="removeBlock($event, block, column)"
-                  *ngIf="instance.cmpInstance! | ipCan: 'delete'"
-                  type="button" icon="pi pi-trash"></button>
-        </div>
-      </ng-container>
+  <div [ngStyle]="index | ipColumnStyles: value.options" cdkDropList [ipEmailBuilderColumn]="column">
+    <div class="relative block" cdkDrag *ngFor="let block of column">
+      <div class="overflow" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
+        <button class="p-button-sm p-button-icon" pButton (click)="duplicateBlock($event, ins, column)"
+                *ngIf="ins | ipCan: 'duplicate'" type="button" icon="pi pi-clone"></button>
+        <button pButton class="p-button-sm cursor-move p-button-icon" cdkDragHandle type="button"
+                icon="pi pi-sort"></button>
+        <button pButton class="p-button-sm p-button-danger p-button-icon" (click)="removeBlock($event, ins, column)"
+                *ngIf="ins | ipCan: 'delete'"
+                type="button" icon="pi pi-trash"></button>
+      </div>
     </div>
   </div>
 </ng-container>

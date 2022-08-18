@@ -1,11 +1,11 @@
 <ng-container [ngSwitch]="contentPart$ | async">
   <div cdkDropList [ipEmailBuilderStructures]="value.structures" *ngSwitchDefault>
     <ng-container *ngIf="value.structures.length; else emptyBody">
-      <div *ngFor="let structure of value.structures; let index = index" cdkDrag [cdkDragData]="structure">
+      <ng-container *ngFor="let structure of value.structures">
         <prime-structure (clone)="duplicateStructure($event)"
                          (delete)="deleteStructure($event)" [value]="structure"
-                         [bodyWidth]="value.general.width" class="relative"></prime-structure>
-      </div>
+                         [bodyWidth]="value.general.width" class="relative" cdkDrag></prime-structure>
+      </ng-container>
     </ng-container>
   </div>
   <prime-template-list *ngSwitchCase="'templates'" class="w-8 h-full"

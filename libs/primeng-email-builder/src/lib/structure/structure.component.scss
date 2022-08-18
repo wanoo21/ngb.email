@@ -13,7 +13,11 @@
 
 .column {
   &.empty {
-    @include styleclass('grid place-content-center bg-gray-200 h-4rem min-h-fit border-round border-2 border-gray-300');
+    @include styleclass('grid place-content-center h-4rem min-h-fit');
+
+    &:not(.cdk-drop-list-dragging) {
+      @include styleclass('bg-gray-200 border-round border-2 border-gray-300');
+    }
   }
 
   .block {
