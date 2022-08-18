@@ -96,7 +96,7 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
   }
 
   set currentNetworkAsILink(link: ILink) {
-    this.currentNetwork = { ...this.currentNetwork, ...link } as ISocialNetwork;
+    Object.assign(this.currentNetwork || {}, link);
   }
 
   get hostStyles(): TIPEmailBuilderStyles {
@@ -128,18 +128,20 @@ export class SocialBlock extends AIPEmailBuilderBlock<ISocialBlockOptions> {
   }
 
   addOrEditNetwork(network: ISocialNetwork["name"]): void {
-    if (this.networks.some(({ name }) => name === network)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this.currentNetwork = this.networks.find(({ name }) => name === network)!;
+    if (this.networkIsActive(network)) {
+      this.currentNetwork = this.networks.find(({ name }) => name === network);
     } else {
       this.currentNetwork = { name: network, href: "", label: "", target: "_blank" };
-      this.networks = [...this.networks, this.currentNetwork];
+      this.networks.push(this.currentNetwork);
     }
   }
 
   deleteCurrentNetwork(): void {
-    this.networks = this.networks.filter(network => network.name !== this.currentNetwork?.name);
-    this.currentNetwork = undefined;
+    if (this.currentNetwork) {
+      const indexOf = this.networks.indexOf(this.currentNetwork);
+      this.networks.splice(indexOf, 1);
+      this.currentNetwork = undefined;
+    }
   }
 
   override toObject(options?: Partial<ISocialBlockOptions>, networks = this.networks) {

@@ -11,24 +11,6 @@ interface ILicenseResponse {
   active: boolean;
 }
 
-//
-// class LicenseCache {
-//   constructor(readonly keyName: string | undefined) {
-//   }
-//
-//   get key() {
-//     if (!this.keyName) {
-//       return '0'
-//     }
-//     const cachedKey = sessionStorage.getItem(String(this.keyName).toLowerCase());
-//     return cachedKey || "0";
-//   }
-//
-//   set key(key: string) {
-//     sessionStorage.setItem(String(this.keyName).toLowerCase(), key);
-//   }
-// }
-
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
     xApiKey: "", socialIconsPath: "", convertorPath: ""
