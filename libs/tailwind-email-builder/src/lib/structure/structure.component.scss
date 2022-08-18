@@ -3,7 +3,11 @@
 }
 
 .column.empty {
-  @apply grid place-content-center bg-gray-200 h-24 min-h-fit rounded border-2 border-gray-300 #{!important};
+  @apply grid place-content-center h-24 min-h-fit;
+
+  &:not(.cdk-drop-list-dragging) {
+    @apply bg-gray-200 rounded border-2 border-gray-300 #{!important};
+  }
 }
 
 .tool-button {
@@ -36,6 +40,7 @@
   background-color: white;
   @apply h-2;
 }
+
 //
 //.cdk-drag-placeholder {
 //  opacity: 0;
