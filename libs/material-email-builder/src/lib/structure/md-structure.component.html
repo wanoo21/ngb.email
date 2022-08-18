@@ -1,33 +1,28 @@
 <ng-container *ngFor="let column of value.elements; let index = index">
-  <div [ngStyle]="columnStyles(index)" class="column" [class.empty]="!column.length" cdkDropList
-       [ipEmailBuilderColumn]="column">
-    <div class="relative block" *ngFor="let block of column" cdkDrag [cdkDragData]="block">
-      <ng-container [ipEmailBuilderDynamicBlockDirective]="block" #instance="instance">
-        <div class="overflow" (click)="instance.cmpInstance?.edit()">
-          <button class="tool-button" (click)="duplicateBlock($event, block, column)"
-                  *ngIf="instance.cmpInstance! | ipCan: 'duplicate'">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
-              <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
-            </svg>
-          </button>
-          <button class="tool-button" cdkDragHandle>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd"
-                    d="M9 3a1 1 0 012 0v5.5a.5.5 0 001 0V4a1 1 0 112 0v4.5a.5.5 0 001 0V6a1 1 0 112 0v5a7 7 0 11-14 0V9a1 1 0 012 0v2.5a.5.5 0 001 0V4a1 1 0 012 0v4.5a.5.5 0 001 0V3z"
-                    clip-rule="evenodd" />
-            </svg>
-          </button>
-          <button class="tool-button" (click)="removeBlock($event, block, column)"
-                  *ngIf="instance.cmpInstance! | ipCan: 'delete'">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd"
-                    d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
-                    clip-rule="evenodd" />
-            </svg>
-          </button>
-        </div>
-      </ng-container>
+  <div [ngStyle]="index | ipColumnStyles: value.options" cdkDropList [ipEmailBuilderColumn]="column">
+    <div class="relative block" cdkDrag *ngFor="let block of column">
+      <div class="overflow" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
+        <button class="tool-button" (click)="duplicateBlock($event, ins, column)" *ngIf="ins | ipCan: 'duplicate'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+            <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+          </svg>
+        </button>
+        <button class="tool-button" cdkDragHandle>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M9 3a1 1 0 012 0v5.5a.5.5 0 001 0V4a1 1 0 112 0v4.5a.5.5 0 001 0V6a1 1 0 112 0v5a7 7 0 11-14 0V9a1 1 0 012 0v2.5a.5.5 0 001 0V4a1 1 0 012 0v4.5a.5.5 0 001 0V3z"
+                  clip-rule="evenodd" />
+          </svg>
+        </button>
+        <button class="tool-button" (click)="removeBlock($event, ins, column)" *ngIf="ins | ipCan: 'delete'">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd"
+                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                  clip-rule="evenodd" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </ng-container>
@@ -51,12 +46,10 @@
 <ng-container *ipEmailBuilderSettings="this | toWatchOptions">
   <h2 mdH2 i18n="@@structure_actions">Actions</h2>
   <div fxLayout fxLayoutGap="0.5rem" mdPanel>
-    <button mat-stroked-button i18n="@@structure_duplicate" (click)="duplicateSelf()"
-            *ngIf="value | ipCan: 'duplicate'">
+    <button mat-stroked-button i18n="@@structure_duplicate" (click)="duplicateSelf()" *ngIf="value | ipCan: 'duplicate'">
       Duplicate
     </button>
-    <button mat-stroked-button color="warn" i18n="@@structure_delete" (click)="removeSelf()"
-            *ngIf="value | ipCan: 'delete'">
+    <button mat-stroked-button color="warn" i18n="@@structure_delete" (click)="removeSelf()" *ngIf="value | ipCan: 'delete'">
       Delete
     </button>
     <button mat-stroked-button color="primary" i18n="@@structure_save_as_module" *ngIf="value | ipCan: 'save'">
