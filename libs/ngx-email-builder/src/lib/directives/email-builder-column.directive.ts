@@ -1,4 +1,4 @@
-import { Directive, DoCheck, Input } from "@angular/core";
+import { Directive, DoCheck, HostBinding, Input } from "@angular/core";
 import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-drop";
 
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
@@ -10,6 +10,7 @@ import { AbstractEmailBuilderDropList } from "./abstract-email-builder-drop-list
 })
 export class IPEmailBuilderColumnDirective extends AbstractEmailBuilderDropList implements DoCheck {
   @Input("ipEmailBuilderColumn") data!: AIPEmailBuilderBlockExtendedOptions[];
+  @HostBinding("class.column") withClass = true;
 
   get connectedTo(): CdkDropList[] {
     return Array.from(this.builderUiService.columnsDropLists);

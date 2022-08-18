@@ -17,11 +17,12 @@ import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
 import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
 import { createBorder, createMargin, createPadding, createWidthHeight } from "../tools/utils";
-import { AIPEmailBuilderBlockExtendedOptions } from "./Block";
+import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "./Block";
 import { IPEmail } from "../body/body";
 import { WithSettings } from "./WithSettings";
 import { IIPValueChanged } from "./ValueChanged";
 import { AIPEmailBuilderMiddlewareService } from "../services";
+import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
 
 @Directive()
 export abstract class AIPStructure extends WithSettings implements AfterViewInit, IIPValueChanged<Structure> {
@@ -46,6 +47,14 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
     ["bottom", $localize`:@@vertical_align:Bottom`]
   ]);
   #middlewareService = inject(AIPEmailBuilderMiddlewareService);
+  #cdkDrag = inject(CdkDrag);
+
+  // Attach child handle to host drag
+  @ViewChildren(CdkDragHandle)
+  set dragHandle(handles: QueryList<CdkDragHandle>) {
+    this.#cdkDrag.data = this.value;
+    this.#cdkDrag._handles = handles;
+  }
 
   @HostBinding("style")
   get bodyStyles(): TIPEmailBuilderStyles {
@@ -100,14 +109,14 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
     }
   }
 
-  duplicateBlock($event: MouseEvent, block: AIPEmailBuilderBlockExtendedOptions, column: AIPEmailBuilderBlockExtendedOptions[]): void {
+  duplicateBlock($event: MouseEvent, block: AIPEmailBuilderBlock, column: AIPEmailBuilderBlockExtendedOptions[]): void {
     $event.preventDefault();
     $event.stopPropagation();
     const indexOf = column.indexOf(block);
-    column.splice(indexOf, 0, cloneDeep(block));
+    column.splice(indexOf, 0, cloneDeep(block.toObject()));
   }
 
-  async removeBlock($event: MouseEvent, block: AIPEmailBuilderBlockExtendedOptions, column: AIPEmailBuilderBlockExtendedOptions[]): Promise<void> {
+  async removeBlock($event: MouseEvent, block: AIPEmailBuilderBlock, column: AIPEmailBuilderBlockExtendedOptions[]): Promise<void> {
     $event.preventDefault();
     $event.stopPropagation();
     const isYes = await this.#middlewareService.delete(block);
@@ -116,26 +125,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
       column.splice(indexOf, 1);
       this.detachSettingsPortal();
     }
-  }
-
-  columnStyles(columnKey: number): TIPEmailBuilderStyles {
-    const { gaps } = this.value.options;
-    const column = this.value.options.columns[columnKey];
-
-    let verticalAlign = "center";
-    if (column.verticalAlign === "bottom") {
-      verticalAlign = "flex-end";
-    } else if (column.verticalAlign === "top") {
-      verticalAlign = "flex-start";
-    }
-
-    return {
-      margin: gaps.map(gap => `${gap}px`).join(" "),
-      placeSelf: `${verticalAlign} stretch`,
-      wordBreak: "break-word",
-      backgroundColor: column.background.color,
-      ...createBorder(column.border)
-    };
   }
 
   editColumn(index: number): void {
@@ -158,7 +147,7 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   }
 
   override markForCheck(): boolean {
-    const mustCheckNow = this.blocks?.some(({ cmpInstance }) => !!cmpInstance?.isCurrentlyEditing);
+    const mustCheckNow = this.blocks?.some(({ context }) => context.$implicit.isCurrentlyEditing);
     if (mustCheckNow || this.#hasLastEditedBlock) {
       this.#hasLastEditedBlock = mustCheckNow;
       return true;

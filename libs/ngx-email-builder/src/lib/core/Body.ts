@@ -75,20 +75,6 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, OnCha
     this.value.structures.splice(indexOf, 0, cloneDeep(structure));
   }
 
-  // dropListDropped({
-  //                   container,
-  //                   previousContainer,
-  //                   currentIndex,
-  //                   previousIndex,
-  //                   item
-  //                 }: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
-  //   if (this.builderUiService.structuresDropLists.has(previousContainer)) {
-  //     transferArrayItem(container.data, previousContainer.data, currentIndex, previousIndex);
-  //   } else {
-  //     container.data.splice(currentIndex, 0, new Structure(item.data));
-  //   }
-  // }
-
   ngOnInit() {
     // Always show general settings if nothing is editing
     this.builderUiService.setDefaultSettingsPortal(this.settingsPortal);

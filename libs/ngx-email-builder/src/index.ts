@@ -56,6 +56,7 @@ export * from "./lib/pipes/social-path.pipe";
 export * from "./lib/pipes/to-body-block.pipe";
 export * from "./lib/pipes/to-body-structure.pipe";
 export * from "./lib/pipes/to-watch-options.pipe";
+export * from "./lib/pipes/column-styles.pipe";
 
 // Directives
 export * from "./lib/directives/email-builder-dynamic.directive";

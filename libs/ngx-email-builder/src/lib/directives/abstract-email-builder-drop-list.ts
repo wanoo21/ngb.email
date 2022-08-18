@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, Host, OnDestroy } from "@angular/core";
+import { AfterViewInit, Directive, Host, HostBinding, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
 import { CdkDragDrop, CdkDropList } from "@angular/cdk/drag-drop";
 
@@ -16,6 +16,10 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
   ) {
   }
 
+  @HostBinding("class.empty")
+  get hasEmptyData(): boolean {
+    return !this.data.length;
+  }
 
   ngAfterViewInit(): void {
     if (this.dropList) {
@@ -30,7 +34,7 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
 
   ngOnDestroy(): void {
     this.dropList?.ngOnDestroy();
-    this.#subscription.unsubscribe()
+    this.#subscription.unsubscribe();
   }
 
 }

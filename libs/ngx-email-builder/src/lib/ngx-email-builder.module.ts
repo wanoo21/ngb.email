@@ -23,6 +23,7 @@ import { IpCanPipe } from "./pipes/can.pipe";
 import { IIPEmailBuilderConfig } from "./public-tokens";
 import { withConfig } from "./tools/core";
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens";
+import { ColumnStylesPipe } from './pipes/column-styles.pipe';
 
 
 // https://github.com/jscutlery/semver
@@ -40,7 +41,8 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens"
     IPEmailBuilderHistoryDirective,
     IpPreviewLinkPipe,
     IpCanPipe,
-    IPEmailBuilderColumnDirective
+    IPEmailBuilderColumnDirective,
+    ColumnStylesPipe
   ],
   imports: [CommonModule, PortalModule, FormsModule, HttpClientModule],
   exports: [
@@ -59,7 +61,8 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens"
     IPEmailBuilderHistoryDirective,
     IpPreviewLinkPipe,
     IpCanPipe,
-    IPEmailBuilderColumnDirective
+    IPEmailBuilderColumnDirective,
+    ColumnStylesPipe
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: IpEmailBuilderInterceptor, multi: true }

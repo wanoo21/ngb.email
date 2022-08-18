@@ -1,5 +1,5 @@
 import { Directive, HostBinding, Input } from "@angular/core";
-import { CdkDragDrop, transferArrayItem } from "@angular/cdk/drag-drop";
+import { CdkDragDrop, moveItemInArray } from "@angular/cdk/drag-drop";
 
 import { IStructure, Structure } from "../structure/structure";
 import { TStructureTypes } from "../interfaces";
@@ -20,7 +20,7 @@ export class IPEmailBuilderStructuresDirective extends AbstractEmailBuilderDropL
   dropListDropped(event: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
     const { container, previousContainer, currentIndex, previousIndex, item } = event;
     if (this.builderUiService.structuresDropLists.has(previousContainer)) {
-      transferArrayItem(container.data, previousContainer.data, currentIndex, previousIndex);
+      moveItemInArray(container.data, previousIndex, currentIndex);
     } else {
       container.data.splice(currentIndex, 0, new Structure(item.data));
     }
