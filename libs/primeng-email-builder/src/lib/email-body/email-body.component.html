@@ -25,7 +25,7 @@
   </div>
 </ng-template>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div primePanel class="mt-4">
     <div class="flex flex-column">
       <label [primeLabel]="i" i18n="@@template_name">Template name</label>

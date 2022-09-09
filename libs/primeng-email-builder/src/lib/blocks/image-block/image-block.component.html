@@ -1,6 +1,6 @@
 <img [src]="src" [title]="options.title" [alt]="options.title" [ngStyle]="imageStyles" />
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 primeH2 i18n="@@image_block_image">Image</h2>
   <div primePanel>
     <prime-image-upload [(value)]="src"></prime-image-upload>

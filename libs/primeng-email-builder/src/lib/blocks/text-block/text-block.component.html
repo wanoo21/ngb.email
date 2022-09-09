@@ -1,6 +1,6 @@
 <div [innerHTML]="innerText"></div>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div primePanel class="mt-4">
     <textarea class="w-full" primeInput pInputText [(ngModel)]="innerText" cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
   </div>

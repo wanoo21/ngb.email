@@ -1,6 +1,6 @@
 <div [ngStyle]="borderStyles"></div>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 primeH2 i18n="@@divider_color">Divider Color</h2>
   <div primePanel>
     <prime-border [(value)]="options.border"></prime-border>

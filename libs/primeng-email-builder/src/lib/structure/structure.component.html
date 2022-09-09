@@ -21,7 +21,7 @@
   <button pButton class="p-button-sm cursor-move" cdkDragHandle type="button" icon="pi pi-sort"></button>
 </div>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 primeH2 i18n="@@structure_actions">Actions</h2>
   <div class="flex gap-1">
     <button pButton pTooltip="Duplicate" i18n-pTooltip="@@structure_duplicate" tooltipPosition="top"
