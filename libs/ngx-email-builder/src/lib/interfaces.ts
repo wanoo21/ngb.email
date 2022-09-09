@@ -260,4 +260,4 @@ export interface IUserTemplateCategory {
 // }
 
 
-export type TIPEmailBuilderStyles = Record<string, string | number | undefined>;
+export type TIPEmailBuilderStyles = Record<string, any>;

@@ -1,31 +1,32 @@
 import {
-  AfterViewInit,
   Directive,
-  ElementRef,
   EventEmitter,
   HostBinding,
   HostListener,
   inject,
   Input,
+  OnInit,
   Output,
   QueryList,
   ViewChildren
 } from "@angular/core";
 import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
+import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
 
 import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
 import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
-import { createBorder, createMargin, createPadding, createWidthHeight } from "../tools/utils";
+import { createBorder, createMargin, createPadding, createWidthHeight, mergeObjects } from "../tools/utils";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "./Block";
 import { IPEmail } from "../body/body";
 import { WithSettings } from "./WithSettings";
 import { IIPValueChanged } from "./ValueChanged";
 import { AIPEmailBuilderMiddlewareService } from "../services";
-import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
+import { filter, takeUntil } from "rxjs";
+import { applyDiff } from "recursive-diff";
 
 @Directive()
-export abstract class AIPStructure extends WithSettings implements AfterViewInit, IIPValueChanged<Structure> {
+export abstract class AIPStructure extends WithSettings implements IIPValueChanged<Structure>, OnInit {
   @Input() value!: Structure;
   @Output() valueChange = new EventEmitter<Structure>();
   // Body general width
@@ -40,7 +41,6 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
   @Output() private delete = new EventEmitter<Structure>();
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
-  #elRef = inject(ElementRef).nativeElement;
   #verticalLabels = new Map<TVerticalAlign, string>([
     ["top", $localize`:@@vertical_align:Top`],
     ["middle", $localize`:@@vertical_align:Middle`],
@@ -131,19 +131,18 @@ export abstract class AIPStructure extends WithSettings implements AfterViewInit
     this.editColumnIndex = index;
   }
 
-  ngAfterViewInit(): void {
-    /**
-     * A small change detection improvement.
-     * If it's outside viewport - ignore definitively, even if it's markForCheck().
-     */
-    new IntersectionObserver(([{ isIntersecting }]) => {
-      if (isIntersecting) {
-        this.changeDetectorRef.reattach();
-        this.changeDetectorRef.markForCheck();
-      } else {
-        this.changeDetectorRef.detach();
-      }
-    }).observe(this.#elRef);
+  ngOnInit(): void {
+    this.historyService.commitPush$.pipe(
+      filter(({ id }) => {
+        const [type, changeId] = id.split(":");
+        return type === "structure" && changeId === this.value.id;
+      }),
+      takeUntil(this.destroyed)
+    ).subscribe(({ diff }) => {
+      mergeObjects(this.value.options, applyDiff(this.value.options, diff));
+      this.valueChange.next(this.value);
+      this.changeDetectorRef.markForCheck();
+    });
   }
 
   override markForCheck(): boolean {

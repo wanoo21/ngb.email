@@ -3,8 +3,11 @@
  */
 
 import { inject, Injectable } from "@angular/core";
+import { rdiffResult } from "recursive-diff";
+import { Subject } from "rxjs";
 
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
+import { IJSUndoManagerCommit, JSUndoManager } from "../../tools/undo-manager";
 
 @Injectable({
   providedIn: "root",
@@ -23,30 +26,40 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tok
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderHistoryService {
-  #historyMap = new Map<number, (() => void)>();
-  #currentIndex = 0;
+  limit = 50;
+  readonly #factory = inject(IP_EMAIL_BUILDER_CONFIG);
+  readonly #manager = new JSUndoManager(this.#factory.isFreeVersion ? 10 : this.limit);
+  private readonly commit$ = new Subject<IJSUndoManagerCommit>();
+  readonly commitPush$ = this.commit$.asObservable();
 
-  get hasChanges(): boolean {
-    return this.#historyMap.size > 0;
+  get hasUndo() {
+    return this.#manager.canUndo();
   }
 
-  // TODO: Add the right logic for history
-  addHistory(fn: (() => void)): void {
-    this.#historyMap.set(Date.now(), fn);
+  get hasRedo() {
+    return this.#manager.canRedo();
   }
 
-  runNext(): void {
-    [...this.#historyMap.values()][this.#currentIndex]();
-    this.#currentIndex--;
+  get hasChanges() {
+    return !this.#manager.isEmpty();
   }
 
-  runPrev(): void {
-    [...this.#historyMap.values()][this.#currentIndex]();
-    // this.#currentIndex--;
+  addHistory(id: string, diff: rdiffResult[], dirty = false): void {
+    this.#manager.record(id, diff, dirty);
+  }
+
+  redo(): void {
+    const commit = this.#manager.redo();
+    commit && this.commit$.next(commit);
+  }
+
+  undo(): void {
+    const commit = this.#manager.undo();
+    commit && this.commit$.next(commit);
   }
 
   clear(): void {
-    this.#historyMap.clear();
+    this.#manager.reset();
   }
 }
 

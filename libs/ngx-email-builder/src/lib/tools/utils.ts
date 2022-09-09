@@ -80,3 +80,71 @@ export function createWidthHeight(widthHeight: Partial<IWidthHeight>): string {
   const { value = 100, unit = "%", auto = false } = widthHeight;
   return (auto && "auto") || (["%", "px"].indexOf(unit) > -1 && `${value}${unit}`) || unit;
 }
+
+/**
+ * Deep merge objects
+ * @param current
+ * @param updates
+ */
+export function mergeObjects(current: Record<string, any>, updates: Record<string, any>) {
+  for (const key of Object.keys(updates)) {
+    // eslint-disable-next-line no-prototype-builtins
+    if (!current.hasOwnProperty(key) || typeof updates[key] !== "object") current[key] = updates[key];
+    else mergeObjects(current[key], updates[key]);
+  }
+  return current;
+}
+
+
+/**
+ * An alternative lodash defaultsDeep function. Use it on your own risk.
+ * @param to The object with default properties
+ * @param sources An array of objects with default properties
+ */
+export function defaultsDeep<T extends Record<string, any>>(to: T = {} as T, ...sources: T[]): T {
+  for (const source of sources) {
+    for (const key in source) {
+      // eslint-disable-next-line no-prototype-builtins
+      if (to.hasOwnProperty(key)) {
+        continue;
+      }
+      if (!Array.isArray(source[key]) && typeof source[key] === "object") {
+        to[key] = defaultsDeep(to[key], source[key]);
+      } else {
+        to[key] = source[key];
+      }
+    }
+  }
+  return to as unknown as T;
+}
+
+/**
+ * An alternative lodash cloneDeep function. Use it on your own risk.
+ * @param obj Object to be cloned.
+ */
+export function cloneDeep<T>(obj = {}): T {
+  return JSON.parse(JSON.stringify(obj));
+}
+
+/**
+ * Debounce a function based on delay
+ * @param callback
+ * @param delay
+ */
+export function debounce<T = void>(callback: (...args: any[]) => T, delay = 1000) {
+  let timeoutId: number | undefined;
+  return (...args: any[]): T | void => {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      timeoutId = undefined;
+      callback(...args);
+    }, delay) as unknown as number;
+  };
+}
+
+/**
+ * Generate a random, unique string
+ */
+export function randomString(from = 10, to = 5): string {
+  return btoa(String(Math.random())).substr(from, to).toLowerCase();
+}

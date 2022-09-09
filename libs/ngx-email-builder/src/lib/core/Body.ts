@@ -9,18 +9,18 @@ import {
   Output,
   SimpleChanges
 } from "@angular/core";
-import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, filter, takeUntil } from "rxjs";
+import { applyDiff } from "recursive-diff";
 
 import { WithSettings } from "./WithSettings";
 import { IPEmail } from "../body/body";
-import { createBackground, createPadding } from "../tools/utils";
+import { cloneDeep, createBackground, createPadding, mergeObjects } from "../tools/utils";
 import { TDirection } from "../interfaces";
 import { Structure } from "../structure/structure";
-import { AIPValueChanged } from "./ValueChanged";
+import { IIPValueChanged } from "./ValueChanged";
 
 @Directive()
-export abstract class AIPEmailBody extends WithSettings implements OnInit, OnChanges, AIPValueChanged<IPEmail> {
+export abstract class AIPEmailBody extends WithSettings implements OnInit, OnChanges, IIPValueChanged<IPEmail> {
   @Input() value!: IPEmail;
   @Output() valueChange = new EventEmitter<IPEmail>();
   contentPart$ = new BehaviorSubject<null | "templates">(null);
@@ -79,6 +79,18 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, OnCha
     // Always show general settings if nothing is editing
     this.builderUiService.setDefaultSettingsPortal(this.settingsPortal);
     this.edit();
+
+    this.historyService.commitPush$.pipe(
+      filter(({ id }) => {
+        const [type, changeId] = id.split(":");
+        return type === "body" && !changeId;
+      }),
+      takeUntil(this.destroyed)
+    ).subscribe(({ diff }) => {
+      mergeObjects(this.value.general, applyDiff(this.value.general, diff));
+      this.valueChange.next(this.value);
+      this.changeDetectorRef.markForCheck();
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {

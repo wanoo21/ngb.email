@@ -21,11 +21,11 @@ export class IPEmailBuilderConfig {
   }
 
   get socialIconsPath(): NonNullable<IIPEmailBuilderConfig["socialIconsPath"]> {
-    return this.defConfig.socialIconsPath || "https://www.mailjet.com/images/theme/v1/icons/ico-social";
+    return !this.isFreeVersion && this.defConfig.socialIconsPath || "https://www.mailjet.com/images/theme/v1/icons/ico-social";
   }
 
   get templatesThumbsPath(): NonNullable<IIPEmailBuilderConfig["templatesThumbsPath"]> {
-    return this.defConfig.templatesThumbsPath || "https://ngb-templates.s3.amazonaws.com";
+    return !this.isFreeVersion && this.defConfig.templatesThumbsPath || "https://ngb-templates.s3.amazonaws.com";
   }
 
   get xApiKey(): NonNullable<IIPEmailBuilderConfig["xApiKey"]> {
@@ -46,7 +46,7 @@ export class IPEmailBuilderConfig {
   }
 
   get convertorPath(): string {
-    return this.defConfig.convertorPath || "https://ngb-api.wlocalhost.org/v1";
+    return !this.isFreeVersion && this.defConfig.convertorPath || "https://ngb-api.wlocalhost.org/v1";
   }
 
   get providers(): IIPEmailBuilderConfig["providers"] {

@@ -1,12 +1,12 @@
-import { Directive, EventEmitter, Input, Output } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 
-import { IIPValueChanged } from "../core/ValueChanged";
+import { AIPValueChanged } from "../core/ValueChanged";
 import { TAlign, TVerticalAlign } from "../interfaces";
 
 @Directive()
-export abstract class AIPAlign implements IIPValueChanged<TAlign | TVerticalAlign> {
+export abstract class AIPAlign extends AIPValueChanged<any> {
+  @Input() override value!: TAlign | TVerticalAlign;
   @Input() mode: "vertical" | "horizontal" = "horizontal";
-  @Output() valueChange = new EventEmitter();
   @Input() disabled = false;
   #horizontalLabels = new Map<TAlign, string>([
     ["left", $localize`:@@horizontal_align:Left`],
@@ -18,17 +18,17 @@ export abstract class AIPAlign implements IIPValueChanged<TAlign | TVerticalAlig
     ["middle", $localize`:@@vertical_align:Middle`],
     ["bottom", $localize`:@@vertical_align:Bottom`]
   ]);
-  private _model!: TAlign | TVerticalAlign;
-
-  get value(): TAlign | TVerticalAlign {
-    return this._model;
-  }
-
-  @Input()
-  set value(value: TAlign | TVerticalAlign) {
-    this._model = value;
-    this.valueChange.next(value);
-  }
+  // private _model!: TAlign | TVerticalAlign;
+  //
+  // override get value(): TAlign | TVerticalAlign {
+  //   return this._model;
+  // }
+  //
+  // @Input()
+  // override set value(value: TAlign | TVerticalAlign) {
+  //   this._model = value;
+  //   // this.valueChange.next(value);
+  // }
 
   get horizontalLabels(): TAlign[] {
     return [...this.#horizontalLabels.keys()];

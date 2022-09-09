@@ -1,10 +1,12 @@
-import { Directive, HostBinding, inject, OnDestroy, Renderer2 } from "@angular/core";
-import { debounce, defaultsDeep } from "@ngcomma/ngx-abstract/utils";
+import { Directive, HostBinding, inject, OnDestroy, OnInit, Renderer2 } from "@angular/core";
 import { DOCUMENT } from "@angular/common";
+import { filter, takeUntil } from "rxjs";
+import { applyDiff } from "recursive-diff";
 
 import { IFont, TIPEmailBuilderStyles } from "../interfaces";
 import { AIPEmailBuilderService } from "../services";
 import { WithSettings } from "./WithSettings";
+import { debounce, defaultsDeep, mergeObjects, randomString } from "../tools/utils";
 
 export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> extends Record<string, any> {
   options: T;
@@ -12,9 +14,10 @@ export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> ex
 }
 
 @Directive()
-export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends WithSettings implements OnDestroy {
+export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends WithSettings implements OnInit, OnDestroy {
   type!: string;
   abstract options: T;
+  readonly id = randomString();
   readonly builderService = inject(AIPEmailBuilderService);
   readonly renderer2 = inject(Renderer2);
   @HostBinding("style")
@@ -41,7 +44,21 @@ export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends With
     return { ...font, family };
   }
 
-  ngOnDestroy() {
+  ngOnInit(): void {
+    this.historyService.commitPush$.pipe(
+      filter(({ id }) => {
+        const [type, changeId] = id.split(":");
+        return type === "block" && changeId === this.id;
+      }),
+      takeUntil(this.destroyed)
+    ).subscribe(({ diff }) => {
+      mergeObjects(this, applyDiff(this.toObject(), diff));
+      this.changeDetectorRef.markForCheck();
+    });
+  }
+
+  override ngOnDestroy() {
+    super.ngOnDestroy();
     this.#googleFontLink.remove();
   }
 

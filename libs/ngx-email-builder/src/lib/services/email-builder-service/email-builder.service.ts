@@ -1,6 +1,10 @@
 import { inject, Injectable } from "@angular/core";
+import { lastValueFrom } from "rxjs";
 
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
+import { AIPEmailBuilderRestService } from "../email-builder-rest-service/email-builder-rest.service";
+import { IMjmlServerResponse } from "../../interfaces";
+import { IPEmail } from "../../body/body";
 
 @Injectable({
   providedIn: "root",
@@ -19,6 +23,7 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tok
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderService {
+  readonly restService = inject(AIPEmailBuilderRestService);
   standardFonts = [
     "Palatino Linotype, Book Antiqua, Palatino, serif",
     "Times New Roman, Times, serif",
@@ -33,6 +38,10 @@ export abstract class AIPEmailBuilderService {
     "Courier New, Courier, monospace",
     "Lucida Console, Monaco, monospace"
   ];
+
+  convert(value: IPEmail): Promise<IMjmlServerResponse> {
+    return lastValueFrom(this.restService.convert(value));
+  }
 }
 
 class ProIPEmailBuilderService extends AIPEmailBuilderService {

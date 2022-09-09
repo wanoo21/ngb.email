@@ -1,10 +1,9 @@
-import { Directive, EventEmitter, Input, Output } from "@angular/core";
+import { Directive, Input } from "@angular/core";
 
-import { IIPValueChanged } from "../core/ValueChanged";
+import { AIPValueChanged } from "../core/ValueChanged";
 
 @Directive()
-export abstract class AIPColor implements IIPValueChanged<string | undefined> {
-  @Input() value: string | undefined;
-  @Output() valueChange = new EventEmitter();
+export abstract class AIPColor extends AIPValueChanged<any> {
+  @Input() override value!: string | undefined;
   @Input() disabled = false;
 }

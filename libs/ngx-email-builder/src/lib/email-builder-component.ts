@@ -1,30 +1,34 @@
 import { Directive, EventEmitter, HostListener, inject, Input, Output } from "@angular/core";
-import { AbsComponent } from "@ngcomma/ngx-abstract";
 import { BehaviorSubject } from "rxjs";
+import { Directionality } from "@angular/cdk/bidi";
 
-import { AIPEmailBuilderHistoryService, AIPEmailBuilderMiddlewareService } from "./services";
+import { AIPEmailBuilderHistoryService, AIPEmailBuilderMiddlewareService, AIPEmailBuilderService } from "./services";
 import { IPEmail } from "./body/body";
+import { IMjmlServerResponse } from "./interfaces";
 
 @Directive()
-export abstract class AIPEmailBuilderComponent extends AbsComponent {
-  @Input() value = new IPEmail([], { direction: this.direction.value });
-  @Output() valueChange = new EventEmitter();
+export abstract class AIPEmailBuilderComponent {
+  @Output() valueChange = new EventEmitter<IPEmail>();
+  @Output() afterSave = new EventEmitter<IMjmlServerResponse>();
   readonly historyService = inject(AIPEmailBuilderHistoryService);
-  // readonly restService = inject(AIPEmailBuilderRestService);
+  readonly direction = inject(Directionality);
+  @Input() value = new IPEmail([], { direction: this.direction.value });
+  readonly emailBuilderService = inject(AIPEmailBuilderService);
   readonly middlewareService = inject(AIPEmailBuilderMiddlewareService);
   readonly screen = new BehaviorSubject<"preview" | null>(null);
 
-  // convert(): void {
-  //   if (!this.value.structures.length) {
-  //     this.middlewareService.alert($localize`:@@convert_empty_body:Add some structures before save.`);
-  //   } else {
-  //     this.restService.convert(this.value).subscribe();
-  //   }
-  // }
+  async convert(): Promise<void> {
+    if (!this.value.structures.length) {
+      this.middlewareService.alert($localize`:@@convert_empty_body:Add some structures before save.`);
+    } else {
+      const res = await this.emailBuilderService.convert(this.value);
+      this.afterSave.next(res);
+    }
+  }
 
   preview(): void {
     if (!this.value.structures.length) {
-      this.middlewareService.alert($localize`:@@convert_empty_body:Add some structures before preview.`);
+      this.middlewareService.alert($localize`:@@convert_empty_body:Add some structures before save.`);
     } else {
       this.screen.next("preview");
     }

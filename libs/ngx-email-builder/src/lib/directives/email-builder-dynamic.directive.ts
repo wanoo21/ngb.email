@@ -63,6 +63,7 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
 
   ngDoCheck(): void {
     if (this.#keyValueDiffers && this.#instance?.isCurrentlyEditing) {
+      this.cdkDrag.data = this.#instance.toObject();
       // Update the incoming context with updated details
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { options, type, ...rest } = this.#instance.toObject();
@@ -71,7 +72,6 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
         diff.forEachItem(({ currentValue, key }) => {
           Object.assign(this.#comingContext, { [key]: currentValue });
         });
-        this.cdkDrag.data = this.#instance.toObject();
       }
     }
   }

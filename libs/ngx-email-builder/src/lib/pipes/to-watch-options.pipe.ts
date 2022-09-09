@@ -3,21 +3,19 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { AIPEmailBuilderBlock } from "../core/Block";
 import { AIPEmailBody } from "../core/Body";
 import { AIPStructure } from "../core/Structure";
-import { IIPOptionsHistoryContext } from "../directives/email-builder-settings.directive";
+import { IIPOptionsHistoryContext } from "../directives/email-builder-history-host.directive";
 
 @Pipe({
-  name: "toWatchOptions",
-  pure: false
+  name: "toHistoryOptions"
 })
-export class ToWatchOptionsPipe implements PipeTransform {
+export class ToHistoryOptionsPipe implements PipeTransform {
   transform(cmp: AIPEmailBuilderBlock | AIPStructure | AIPEmailBody): IIPOptionsHistoryContext<Record<string, any>> {
     if (cmp instanceof AIPEmailBuilderBlock) {
-      const { options, ...rest } = cmp.toObject();
-      return { cmp, watch: { ...rest, options: cmp.options } };
+      return { cmp, watch: {} };
     } else if (cmp instanceof AIPStructure) {
-      return { cmp, watch: cmp.value.options };
+      return { cmp, watch: {} };
     } else {
-      return { cmp, watch: cmp.value.general };
+      return { cmp, watch: {} };
     }
   }
 }

@@ -1,8 +1,8 @@
-import { ToWatchOptionsPipe } from './to-watch-options.pipe';
+import { ToHistoryOptionsPipe } from './to-watch-options.pipe';
 
 describe('ToWatchOptionsPipe', () => {
   it('create an instance', () => {
-    const pipe = new ToWatchOptionsPipe();
+    const pipe = new ToHistoryOptionsPipe();
     expect(pipe).toBeTruthy();
   });
 });
