@@ -1,4 +1,4 @@
-<div *ipEmailBuilderSettings="this | toWatchOptions">
+<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 mdH2 i18n="@@spacer_block_size">Size</h2>
   <div mdPanel>
     <md-width-height [(value)]="options.height!"></md-width-height>

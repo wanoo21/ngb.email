@@ -28,7 +28,7 @@
   </div>
 </ng-template>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div mdPanel fxLayout="column">
     <mat-form-field appearance="fill">
       <mat-label i18n="@@template_name">Template name</mat-label>

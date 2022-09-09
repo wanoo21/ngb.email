@@ -15,7 +15,7 @@
 </ng-template>
 
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 mdH2 i18n="@@social_block_networks">Networks</h2>
   <div mdPanel>
     <h3 mdH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>

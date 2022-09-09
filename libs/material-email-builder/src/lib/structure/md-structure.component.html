@@ -43,7 +43,7 @@
   </button>
 </div>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 mdH2 i18n="@@structure_actions">Actions</h2>
   <div fxLayout fxLayoutGap="0.5rem" mdPanel>
     <button mat-stroked-button i18n="@@structure_duplicate" (click)="duplicateSelf()" *ngIf="value | ipCan: 'duplicate'">
