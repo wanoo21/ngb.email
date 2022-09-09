@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { AIPEmailBody } from '@wlocalhost/ngx-email-builder';
+import { FormControl } from "@angular/forms";
 
 @Component({
   selector: 'tail-email-body',
@@ -8,4 +9,5 @@ import { AIPEmailBody } from '@wlocalhost/ngx-email-builder';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmailBodyComponent extends AIPEmailBody {
+  control = new FormControl()
 }

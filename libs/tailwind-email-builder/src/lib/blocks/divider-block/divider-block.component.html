@@ -1,6 +1,6 @@
 <div [ngStyle]="borderStyles"></div>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 tailH2 i18n="@@divider_color">Divider Color</h2>
   <div tailPanel>
     <tail-border [(value)]="options.border"></tail-border>

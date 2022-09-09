@@ -1,6 +1,6 @@
 <button type="button" [ngStyle]="buttonStyles">{{ innerText }}</button>
 
-<ng-container *ipEmailBuilderSettings="this | toWatchOptions">
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 tailH2 i18n="@@button_block_text">Button text</h2>
   <div tailPanel>
     <input type="text" tailInput [(ngModel)]="innerText">

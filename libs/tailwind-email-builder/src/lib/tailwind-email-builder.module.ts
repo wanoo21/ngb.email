@@ -35,6 +35,7 @@ import { LinkComponent } from "./settings/link/link.component";
 import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
+import { ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { TemplateListComponent } from "./template-list/template-list.component";
     IpFormUIModule,
     CdkStepperModule,
     DragDropModule,
-    TextFieldModule
+    TextFieldModule,
+    ReactiveFormsModule
   ],
   declarations: [
     TailEmailBuilderComponent,
