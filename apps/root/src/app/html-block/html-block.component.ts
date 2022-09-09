@@ -18,7 +18,7 @@ export class HtmlBlockComponent extends AIPEmailBuilderBlock<HTMLOptions> {
 
   get hostStyles(): TIPEmailBuilderStyles {
     return {
-      padding: this.options.paddingTop
+      paddingTop: `${this.options.paddingTop}px`
     };
-  };
+  }
 }
