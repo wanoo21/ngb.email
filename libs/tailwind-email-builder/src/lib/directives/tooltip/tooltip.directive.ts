@@ -1,5 +1,4 @@
-import { Component, Directive, HostListener, Input, OnDestroy, OnInit } from "@angular/core";
-import { AbsDirective } from "@ngcomma/ngx-abstract";
+import { Component, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit } from "@angular/core";
 import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
 
@@ -12,21 +11,24 @@ export class TooltipComponent {
 }
 
 @Directive({
-  selector: "[ipTooltip]"
+  selector: "[tailTooltip]"
 })
-export class TooltipDirective extends AbsDirective implements OnInit, OnDestroy {
-  @Input() ipTooltip!: string;
+export class TooltipDirective implements OnInit, OnDestroy {
+  @Input() tailTooltip!: string;
   private overlayRef!: OverlayRef;
 
-  constructor(readonly overlayPositionBuilder: OverlayPositionBuilder, readonly overlay: Overlay) {
-    super();
+  constructor(
+    readonly overlayPositionBuilder: OverlayPositionBuilder,
+    readonly overlay: Overlay,
+    readonly elementRef: ElementRef
+  ) {
   }
 
   @HostListener("mouseenter")
   show() {
     const tooltipCmp = new ComponentPortal(TooltipComponent);
     const tooltipRef = this.overlayRef.attach(tooltipCmp);
-    tooltipRef.instance.title = this.ipTooltip;
+    tooltipRef.instance.title = this.tailTooltip;
   }
 
   @HostListener("mouseout")
@@ -34,14 +36,13 @@ export class TooltipDirective extends AbsDirective implements OnInit, OnDestroy 
     this.overlayRef.detach();
   }
 
-  override ngOnDestroy() {
-    super.ngOnDestroy();
+  ngOnDestroy() {
     this.hide();
   }
 
   ngOnInit() {
     const positionStrategy = this.overlayPositionBuilder
-      .flexibleConnectedTo(this.el)
+      .flexibleConnectedTo(this.elementRef.nativeElement)
       .withPositions([{
         originX: "center",
         originY: "top",

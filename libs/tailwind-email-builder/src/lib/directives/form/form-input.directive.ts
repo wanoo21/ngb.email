@@ -1,10 +1,18 @@
-import { AfterViewInit, Directive, Input, NgModule, OnInit } from "@angular/core";
-import { AbsDirective } from "@ngcomma/ngx-abstract";
-import { randomString } from "@ngcomma/ngx-abstract/utils";
+import { AfterViewInit, Directive, ElementRef, inject, Input, NgModule, OnInit, Renderer2 } from "@angular/core";
+import { randomString } from "@wlocalhost/ngx-email-builder";
 
 @Directive()
-abstract class AddClassList<T = HTMLElement> extends AbsDirective<T> implements OnInit {
+abstract class AddClassList<T = HTMLElement> implements OnInit {
   abstract classList: string;
+  readonly renderer2 = inject(Renderer2);
+  private readonly elementRef = inject<ElementRef<T>>(ElementRef);
+
+  /**
+   * Directive's HTMLElement
+   */
+  get el(): T {
+    return this.elementRef.nativeElement;
+  }
 
   ngOnInit(): void {
     this.classList.split(" ").forEach(className => {
@@ -88,7 +96,7 @@ export class FormHintDirective extends AddClassList {
 
   get classList(): string {
     return `text-xs text-${this.variant} font-light mt-1`;
-  };
+  }
 }
 
 @Directive({
@@ -98,7 +106,7 @@ export class FormHintDirective extends AddClassList {
 export class FormPanelDirective extends AddClassList {
   get classList(): string {
     return `p-2 rounded bg-white border`;
-  };
+  }
 }
 
 @NgModule({

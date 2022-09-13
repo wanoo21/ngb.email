@@ -23,7 +23,7 @@
       <ng-container *ngFor="let network of supportedNetworks">
         <img class="flex-1 border px-2 py-1.5 cursor-pointer active:shadow-inner"
              [src]="network | socialPath"
-             [alt]="network" [ipTooltip]="network | titlecase" [class]="network"
+             [alt]="network" [tailTooltip]="network | titlecase" [class]="network"
              [class.active]="networkIsActive(network)"
              (click)="addOrEditNetwork(network)">
       </ng-container>
@@ -37,7 +37,7 @@
             <input #l="input" tailInput type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
             <button
               class="rounded bg-red-500 shadow-sm text-white px-2 py-1.5 active:shadow-inner opacity-90 hover:opacity-100 transition-opacity"
-              ipTooltip="Delete"
+              tailTooltip="Delete"
               (click)="deleteCurrentNetwork()"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none"
