@@ -1,39 +1,48 @@
 <button type="button" [ngStyle]="buttonStyles">{{ innerText }}</button>
 
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 mdH2 i18n="@@button_block_text">Button text</h2>
-  <div mdPanel>
-    <input type="text" mdInput [(ngModel)]="innerText">
-  </div>
-  <h2 mdH2 i18n="@@font">Font</h2>
-  <div mdPanel>
-    <md-font [(value)]="options.font"></md-font>
-  </div>
-  <h2 mdH2 i18n="@@button_block_background_color">Background color</h2>
-  <div mdPanel>
-    <md-color [(value)]="options.backgroundColor"></md-color>
-  </div>
-  <h2 mdH2 i18n="@@border">Border</h2>
-  <div mdPanel>
-    <md-border [(value)]="options.border"></md-border>
-  </div>
-  <h2 mdH2 i18n="@@button_block_attributes">Attributes</h2>
-  <div mdPanel>
-    <div class="grid grid-cols-3 gap-2">
-      <md-align [(value)]="options.align" class="col-span-2"></md-align>
-      <button mdBtn (click)="options.fullWidth = !options.fullWidth" [class.active]="options.fullWidth"
-              i18n="@@button_block_full_width">
-        Full Width
-      </button>
-    </div>
-    <md-link class="pt-2" [(value)]="options.link"></md-link>
-    <div class="flex flex-col pt-2">
+<div fxLayout="column" *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <mat-form-field appearance="fill" fxFlex>
+    <mat-label i18n="@@button_block_text">Button text</mat-label>
+    <input type="text" matInput ipHistoryModel [(ngModel)]="innerText">
+  </mat-form-field>
+
+  <mat-accordion displayMode="flat">
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n="@@font">Font</mat-panel-title>
+      </mat-expansion-panel-header>
+      <md-font [(value)]="options.font"></md-font>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n="@@block_styles">Styles</mat-panel-title>
+      </mat-expansion-panel-header>
+      <h2 mdH3 i18n="@@button_block_background_color">Background color</h2>
+      <div mdPanel>
+        <md-color [(value)]="options.backgroundColor"></md-color>
+      </div>
+      <h2 mdH3 i18n="@@border">Border</h2>
+      <div mdPanel>
+        <md-border [(value)]="options.border"></md-border>
+      </div>
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mat-elevation-z0">
+      <mat-expansion-panel-header>
+        <mat-panel-title i18n="@@button_block_attributes">Attributes</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div fxLayoutGap="0.5rem" fxLayoutAlign="stretch center">
+        <md-align [(value)]="options.align"></md-align>
+        <mat-slide-toggle fxFlex ipHistoryModel [(ngModel)]="options.fullWidth" i18n="@@button_block_full_width">
+          Full Width
+        </mat-slide-toggle>
+      </div>
+      <md-link class="pt-2" [(value)]="options.link"></md-link>
       <h3 mdH3 i18n="@@button_block_inner_padding">Inner Padding</h3>
       <md-padding [(value)]="options.innerPadding"></md-padding>
-    </div>
-    <div class="flex flex-col pt-2">
       <h3 mdH3 i18n="@@padding">Padding</h3>
       <md-padding [(value)]="options.padding"></md-padding>
-    </div>
-  </div>
-</ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

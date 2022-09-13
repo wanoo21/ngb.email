@@ -1,14 +1,13 @@
-<div class="flex flex-col col-span-1">
-  <ng-container *ngIf="mode === 'horizontal'">
-    <label [mdLabel]="s" i18n="@@horizontal_align">Horizontal Align</label>
-    <select #s="input" mdInput [(ngModel)]="value" class="appearance-none" [disabled]="disabled">
-      <option *ngFor="let option of horizontalLabels" [value]="option">{{getHorizontalAlignLabel(option)}}</option>
-    </select>
-  </ng-container>
-  <ng-container *ngIf="mode === 'vertical'">
-    <label [mdLabel]="s" i18n="@@vertical_align">Vertical Align</label>
-    <select #s="input" mdInput [(ngModel)]="value" class="appearance-none" [disabled]="disabled">
-      <option *ngFor="let option of verticalLabels" [value]="option">{{getVerticalAlignLabel(option)}}</option>
-    </select>
-  </ng-container>
-</div>
+<mat-form-field appearance="fill" *ngIf="mode === 'horizontal'" fxFlex>
+  <mat-label i18n="@@horizontal_align">Horizontal Align</mat-label>
+  <mat-select ipHistoryModel [(ngModel)]="value" [disabled]="disabled">
+    <mat-option *ngFor="let option of horizontalLabels"
+                [value]="option">{{getHorizontalAlignLabel(option)}}</mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field appearance="fill" *ngIf="mode === 'vertical'" fxFlex>
+  <mat-label i18n="@@vertical_align">Vertical Align</mat-label>
+  <mat-select ipHistoryModel [(ngModel)]="value" [disabled]="disabled">
+    <mat-option *ngFor="let option of verticalLabels" [value]="option">{{getVerticalAlignLabel(option)}}</mat-option>
+  </mat-select>
+</mat-form-field>

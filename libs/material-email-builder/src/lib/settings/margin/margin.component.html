@@ -1,6 +1,6 @@
 <div fxLayout fxLayoutGap="0.5rem">
   <mat-form-field *ngFor="let key of marginKeys" fxFlex appearance="fill">
     <mat-label>{{getMarginLabel(key)}}</mat-label>
-    <input matInput type="number" [(ngModel)]="value[key]">
+    <input matInput type="number" ipHistoryModel [(ngModel)]="value[key]">
   </mat-form-field>
 </div>

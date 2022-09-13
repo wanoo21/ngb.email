@@ -1,16 +1,17 @@
-<md-color class="pb-2" [(value)]="value.color"></md-color>
+<md-color class="pb-2" [(value)]="value.color" allowTransparent="false"></md-color>
 <md-image-upload class="pb-2" [(value)]="value.url"></md-image-upload>
 
 <ng-container *ngIf="value.url.length">
   <h3 mdH3 class="p-2" i18n="@@value_image_repeat">Background image repeat</h3>
-  <mat-button-toggle-group [(ngModel)]="value.repeat" fxLayout style="width: 100%">
+  <mat-button-toggle-group ipHistoryModel [(ngModel)]="value.repeat" fxLayout style="width: 100%">
     <mat-button-toggle *ngFor="let repeat of repeatKeys" [value]="repeat" fxFlex>
       {{getRepeatLabel(repeat)}}
     </mat-button-toggle>
   </mat-button-toggle-group>
   <h3 mdH3 class="p-2" i18n="@@value_image_size">Background image size</h3>
   <div fxLayout fxLayoutGap="0.5rem" fxLayoutAlign="start center" class="pb-2">
-    <mat-slide-toggle [(ngModel)]="value.size.auto" fxFlex="25%" i18n="@@value_image_size_auto">Auto</mat-slide-toggle>
+    <mat-slide-toggle ipHistoryModel [(ngModel)]="value.size.auto" fxFlex="25%" i18n="@@value_image_size_auto">Auto
+    </mat-slide-toggle>
 
     <mat-button-toggle-group [(ngModel)]="value.size.unit" fxLayout fxFlex>
       <mat-button-toggle *ngFor="let unit of value.size.units" [value]="unit" fxFlex>
@@ -21,6 +22,6 @@
 
   <mat-form-field appearance="fill" *ngIf="['%', 'px'].includes(value.size.unit) && !value.size.auto"
                   style="margin-top: 0.5rem; width: 100%">
-    <input type="number" matInput [(ngModel)]="value.size.value">
+    <input type="number" ipHistoryModel matInput [(ngModel)]="value.size.value">
   </mat-form-field>
 </ng-container>

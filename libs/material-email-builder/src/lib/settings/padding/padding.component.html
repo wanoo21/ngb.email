@@ -1,6 +1,6 @@
 <div gdColumns="1fr 1fr" gdGap="0 0.5rem">
   <mat-form-field appearance="fill" *ngFor="let key of paddingKeys">
     <mat-label>{{getPaddingLabel(key)}}</mat-label>
-    <input matInput type="number" [(ngModel)]="value[key]">
+    <input matInput type="number" ipHistoryModel [(ngModel)]="value[key]">
   </mat-form-field>
 </div>

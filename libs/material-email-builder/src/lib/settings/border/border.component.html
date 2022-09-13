@@ -1,21 +1,21 @@
 <md-color class="pb-2" [(value)]="value.color" *ngIf="hasOwn('color')"></md-color>
 
-<div fxLayout fxLayoutGap="0.5rem" class="pb-2" style="width: 100%">
+<div fxLayout fxLayoutGap="0.5rem" style="width: 100%">
   <mat-form-field *ngIf="hasOwn('width')" appearance="fill" fxFlex>
     <mat-label i18n="@@border_width">Width</mat-label>
-    <input type="number" matInput [(ngModel)]="ngValue.width">
+    <input type="number" ipHistoryModel matInput [(ngModel)]="ngValue.width">
   </mat-form-field>
   <mat-form-field *ngIf="hasOwn('radius')" appearance="fill" fxFlex>
     <mat-label i18n="@@border_radius">Radius</mat-label>
-    <input type="number" matInput [(ngModel)]="ngValue.radius">
+    <input type="number" ipHistoryModel matInput [(ngModel)]="ngValue.radius">
   </mat-form-field>
 </div>
 
-<ng-container *ngIf="value.width">
-  <h3 mdH3 i18n="@@border_style" class="pb-2">Border style</h3>
-  <mat-button-toggle-group [(ngModel)]="value.style" fxLayout>
+<div *ngIf="value.width" class="pb-2">
+  <h3 mdH3 i18n="@@border_style">Border style</h3>
+  <mat-button-toggle-group ipHistoryModel [(ngModel)]="value.style" fxLayout>
     <mat-button-toggle *ngFor="let style of styleLabels" [value]="style" fxFlex>
       {{getStyleLabel(style)}}
     </mat-button-toggle>
   </mat-button-toggle-group>
-</ng-container>
+</div>

@@ -49,6 +49,7 @@ import { DragDropModule } from "@angular/cdk/drag-drop";
 import { MatIconModule } from "@angular/material/icon";
 import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatExpansionModule } from "@angular/material/expansion";
 
 @NgModule({
   imports: [
@@ -71,7 +72,8 @@ import { MatSlideToggleModule } from "@angular/material/slide-toggle";
     MatSelectModule,
     MatIconModule,
     MatButtonToggleModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatExpansionModule
   ],
   declarations: [
     MdEmailBuilderComponent,

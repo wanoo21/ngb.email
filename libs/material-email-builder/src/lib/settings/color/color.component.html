@@ -2,8 +2,9 @@
   <div fxFlex="75%" fxLayout="column">
     <mat-form-field appearance="fill">
       <mat-label i18n="@@color">Color</mat-label>
-      <input type="text" matInput [(ngModel)]="value" (input)="valueChange.next(value)">
-      <mat-hint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</mat-hint>
+      <input type="text" ipHistoryModel matInput [(ngModel)]="value" (input)="valueChange.next(value)">
+      <mat-hint i18n="@@leave_empty_for_transparent" *ngIf="allowTransparent">Leave empty to make it transparent
+      </mat-hint>
     </mat-form-field>
   </div>
   <div fxFlex="25%" fxShrink="0" [style.background-color]="value"></div>

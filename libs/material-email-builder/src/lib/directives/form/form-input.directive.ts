@@ -1,10 +1,18 @@
-import { AfterViewInit, Directive, Input, NgModule, OnInit } from "@angular/core";
-import { AbsDirective } from "@ngcomma/ngx-abstract";
-import { randomString } from "@ngcomma/ngx-abstract/utils";
+import { AfterViewInit, Directive, ElementRef, inject, Input, NgModule, OnInit, Renderer2 } from "@angular/core";
+import { randomString } from "@wlocalhost/ngx-email-builder";
 
 @Directive()
-abstract class AddClassList<T = HTMLElement> extends AbsDirective<T> implements OnInit {
+abstract class AddClassList<T = HTMLElement> implements OnInit {
   abstract classList: string;
+  readonly renderer2 = inject(Renderer2);
+  private readonly elementRef = inject<ElementRef<T>>(ElementRef);
+
+  /**
+   * Directive's HTMLElement
+   */
+  get el(): T {
+    return this.elementRef.nativeElement;
+  }
 
   ngOnInit(): void {
     this.classList.split(" ").forEach(className => {
@@ -68,7 +76,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
-  classList = `mat-h2 px-2 mb-0`;
+  classList = `mat-h2 mb-0`;
 }
 
 @Directive({
@@ -76,7 +84,7 @@ export class FormH2Directive extends AddClassList {
   exportAs: "h3"
 })
 export class FormH3Directive extends AddClassList {
-  classList = `mat-h3 px-2 mb-0`;
+  classList = `mat-h5 mb-0`;
 }
 
 @Directive({
@@ -88,7 +96,7 @@ export class FormHintDirective extends AddClassList {
 
   get classList(): string {
     return `mat-caption mat-${this.variant}`;
-  };
+  }
 }
 
 @Directive({
@@ -97,8 +105,8 @@ export class FormHintDirective extends AddClassList {
 })
 export class FormPanelDirective extends AddClassList {
   get classList(): string {
-    return `p-2 pb-2`;
-  };
+    return `pb-2`;
+  }
 }
 
 @NgModule({

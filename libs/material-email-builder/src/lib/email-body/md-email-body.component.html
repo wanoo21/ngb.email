@@ -28,41 +28,44 @@
   </div>
 </ng-template>
 
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <div mdPanel fxLayout="column">
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@template_name">Template name</mat-label>
-      <input matInput [(ngModel)]="value.general.name">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@template_preview_text">Preview text</mat-label>
-      <textarea matInput [(ngModel)]="value.general.previewText"></textarea>
-      <mat-hint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</mat-hint>
-    </mat-form-field>
-  </div>
+<mat-accordion displayMode="flat" *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <mat-expansion-panel expanded class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@template_general">General</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column">
+      <mat-form-field appearance="fill">
+        <mat-label i18n="@@template_name">Template name</mat-label>
+        <input matInput ipHistoryModel [(ngModel)]="value.general.name">
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label i18n="@@template_preview_text">Preview text</mat-label>
+        <textarea matInput ipHistoryModel [(ngModel)]="value.general.previewText"></textarea>
+        <mat-hint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</mat-hint>
+      </mat-form-field>
+    </div>
+  </mat-expansion-panel>
 
-  <h2 mdH2 i18n="@@background">Background</h2>
-  <div mdPanel>
-    <md-color [(value)]="value.general.background.color"></md-color>
-  </div>
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@template_general_styles">Styles</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div mdPanel>
+      <h3 mdH3 i18n="@@background">Background</h3>
+      <md-color [(value)]="value.general.background.color" allowTransparent="false"></md-color>
+    </div>
 
-  <h2 mdH2 i18n="@@template_attributes">Attributes</h2>
-  <div mdPanel fxLayout="column">
-    <mat-label i18n="@@width" class="pb-2">Width</mat-label>
-    <md-width-height [(value)]="value.general.width!"></md-width-height>
-
-    <mat-form-field appearance="fill">
-      <mat-label i18n="@@direction">Direction</mat-label>
-      <mat-select [(ngModel)]="value.general.direction">
-        <mat-option *ngFor="let dir of directionKeys" [value]="dir">
-          {{getDirectionLabel(dir)}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-
-  <h2 mdH2 i18n="@@padding">Padding</h2>
-  <div mdPanel>
-    <md-padding [(value)]="value.general.padding"></md-padding>
-  </div>
-</ng-container>
+    <div mdPanel fxLayout="column">
+      <md-width-height [(value)]="value.general.width!"></md-width-height>
+      <mat-form-field appearance="fill">
+        <mat-label i18n="@@direction">Direction</mat-label>
+        <mat-select ipHistoryModel [(ngModel)]="value.general.direction">
+          <mat-option *ngFor="let dir of directionKeys" [value]="dir">
+            {{getDirectionLabel(dir)}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <md-padding [(value)]="value.general.padding"></md-padding>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

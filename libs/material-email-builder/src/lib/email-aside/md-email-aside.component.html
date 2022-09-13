@@ -1,6 +1,6 @@
 <mat-tab-group fxFill>
-  <mat-tab label="Content" i18n-label="@@ip_aside_stepper:Content">
-    <h2 mdH2 i18n="@@blocks_list">Blocks</h2>
+  <mat-tab label="Content" i18n-label="@@ip_aside_stepper_content">
+    <h2 mdH2 i18n="@@blocks_list" class="px-2">Blocks</h2>
     <div class="px-2 pb-2 select-none" gdColumns="1fr 1fr" gdGap="0.5rem" cdkDropList
          [cdkDropListConnectedTo]="columnsDropLists"
          [cdkDropListSortingDisabled]="true">
@@ -10,7 +10,7 @@
         </button>
       </ng-container>
     </div>
-    <h2 mdH2 i18n="@@structude_list">Structures</h2>
+    <h2 mdH2 i18n="@@structude_list" class="px-2">Structures</h2>
     <div class="px-2 pb-2 select-none" gdColumns="1fr 1fr" gdGap="0.5rem" cdkDropList
          [cdkDropListConnectedTo]="structuresDropLists"
          [cdkDropListSortingDisabled]="true">
@@ -31,10 +31,10 @@
       </ng-container>
     </div>
   </mat-tab>
-  <mat-tab label="Modules" i18n-label="@@ip_aside_stepper:Modules">
-    <p mdHint>Not implemented yet</p>
+  <mat-tab label="Modules" i18n-label="@@ip_aside_stepper_modules">
+    <mat-hint>Not implemented yet</mat-hint>
   </mat-tab>
-  <mat-tab label="Settings" i18n-label="@@ip_aside_stepper:Settings">
+  <mat-tab label="Settings" i18n-label="@@ip_aside_stepper_settings">
     <ng-container [cdkPortalOutlet]="currentSettings$ | async"></ng-container>
   </mat-tab>
 </mat-tab-group>

@@ -43,69 +43,85 @@
   </button>
 </div>
 
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 mdH2 i18n="@@structure_actions">Actions</h2>
-  <div fxLayout fxLayoutGap="0.5rem" mdPanel>
-    <button mat-stroked-button i18n="@@structure_duplicate" (click)="duplicateSelf()" *ngIf="value | ipCan: 'duplicate'">
-      Duplicate
-    </button>
-    <button mat-stroked-button color="warn" i18n="@@structure_delete" (click)="removeSelf()" *ngIf="value | ipCan: 'delete'">
-      Delete
-    </button>
-    <button mat-stroked-button color="primary" i18n="@@structure_save_as_module" *ngIf="value | ipCan: 'save'">
-      Save as module
-    </button>
-  </div>
-  <h2 mdH2 i18n="@@background">Background</h2>
-  <md-background mdPanel [(value)]="value.options.background"></md-background>
-  <h2 mdH2 i18n="@@border">Border</h2>
-  <md-border mdPanel [(value)]="value.options.border"></md-border>
-  <h2 mdH2 i18n="@@padding">Padding</h2>
-  <md-padding mdPanel [(value)]="value.options.padding"></md-padding>
-  <h2 mdH2 i18n="@@margin">Margin</h2>
-  <md-margin mdPanel [(value)]="value.options.margin"></md-margin>
-  <h2 mdH2 i18n="@@layout">Layout</h2>
-  <div mdPanel>
-    <div fxLayout fxLayoutGap="0.5rem" class="pb-2">
-      <mat-form-field appearance="fill" fxFlex>
-        <mat-label i18n="@@structure_vertical_gap">Vertical Gap</mat-label>
-        <input matInput type="number" [(ngModel)]="value.options.gaps[0]">
-      </mat-form-field>
-      <mat-form-field appearance="fill" fxFlex>
-        <mat-label i18n="@@structure_horizontal_gap">Horizontal Gap</mat-label>
-        <input matInput type="number" [(ngModel)]="value.options.gaps[1]">
-      </mat-form-field>
+<mat-accordion displayMode="flat" *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <mat-expansion-panel class="mat-elevation-z0" expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@structure_actions">Actions</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout fxLayoutGap="0.5rem">
+      <button mat-stroked-button i18n="@@structure_duplicate" (click)="duplicateSelf()"
+              *ngIf="value | ipCan: 'duplicate'">
+        Duplicate
+      </button>
+      <button mat-stroked-button color="warn" i18n="@@structure_delete" (click)="removeSelf()"
+              *ngIf="value | ipCan: 'delete'">
+        Delete
+      </button>
+      <button mat-stroked-button color="primary" i18n="@@structure_save_as_module" *ngIf="value | ipCan: 'save'">
+        Save as module
+      </button>
     </div>
+  </mat-expansion-panel>
 
-    <div fxLayout="column" fxLayoutGap="0.5rem" class="pb-2">
-      <mat-slide-toggle [(ngModel)]="value.options.disableResponsive" i18n="@@disable_responsive">
-        Disable responsive
-      </mat-slide-toggle>
-      <mat-slide-toggle [(ngModel)]="value.options.fullWidth" i18n="@@full_width_structure">
-        Full width structure
-      </mat-slide-toggle>
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@structure_styles">Styles</mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3 mdH3 i18n="@@background">Background</h3>
+    <md-background class="pb-2" [(value)]="value.options.background"></md-background>
+    <h3 mdH3 i18n="@@border">Border</h3>
+    <md-border [(value)]="value.options.border"></md-border>
+    <!--  <h3 mdH3 i18n="@@padding">Padding</h3>-->
+    <md-padding [(value)]="value.options.padding"></md-padding>
+    <!--  <h3 mdH3 i18n="@@margin">Margin</h3>-->
+    <md-margin [(value)]="value.options.margin"></md-margin>
+    <h3 mdH3 i18n="@@layout">Layout</h3>
+    <div mdPanel>
+      <div fxLayout fxLayoutGap="0.5rem" class="pb-2">
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label i18n="@@structure_vertical_gap">Vertical Gap</mat-label>
+          <input matInput ipHistoryModel type="number" [(ngModel)]="value.options.gaps[0]">
+        </mat-form-field>
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label i18n="@@structure_horizontal_gap">Horizontal Gap</mat-label>
+          <input matInput ipHistoryModel type="number" [(ngModel)]="value.options.gaps[1]">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="0.5rem" class="pb-2">
+        <mat-slide-toggle ipHistoryModel [(ngModel)]="value.options.disableResponsive" i18n="@@disable_responsive">
+          Disable responsive
+        </mat-slide-toggle>
+        <mat-slide-toggle ipHistoryModel [(ngModel)]="value.options.fullWidth" i18n="@@full_width_structure">
+          Full width structure
+        </mat-slide-toggle>
+      </div>
     </div>
-  </div>
+  </mat-expansion-panel>
 
-  <h2 mdH2 i18n="@@structure_columns_styles">Columns styles</h2>
-  <div mdPanel>
-    <mat-button-toggle-group [(ngModel)]="editColumnIndex" (ngModelChange)="editColumn(editColumnIndex)" fxLayout>
-      <mat-button-toggle fxFlex *ngFor="let index of columnsSize" [value]="index">{{index + 1}}</mat-button-toggle>
-    </mat-button-toggle-group>
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@structure_columns_styles">Columns styles</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="pb-2">
+      <mat-button-toggle-group [(ngModel)]="editColumnIndex" (ngModelChange)="editColumn(editColumnIndex)" fxLayout>
+        <mat-button-toggle fxFlex *ngFor="let index of columnsSize" [value]="index">{{index + 1}}</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
 
     <ng-container *ngFor="let column of value.options.columns; let index = index">
       <div fxLayout="column" fxLayoutGap="0.5rem" *ngIf="editColumnIndex === index">
         <h3 mdH3 i18n="@@background_color">Background Color</h3>
-        <md-color [(value)]="column.background.color"></md-color>
+        <md-color [(value)]="column.background.color" allowTransparent="false"></md-color>
         <h3 mdH3 class="pt-1" i18n="@@border">Border</h3>
         <md-border [(value)]="column.border!"></md-border>
         <h3 mdH3 class="pt-1" i18n="@@vertical_align">Vertical Align</h3>
-        <mat-button-toggle-group [(ngModel)]="column.verticalAlign" fxLayout>
+        <mat-button-toggle-group ipHistoryModel [(ngModel)]="column.verticalAlign" fxLayout>
           <mat-button-toggle fxFlex *ngFor="let align of verticalLabels" [value]="align">
             {{getVerticalAlignLabel(align)}}
           </mat-button-toggle>
         </mat-button-toggle-group>
       </div>
     </ng-container>
-  </div>
-</ng-container>
+  </mat-expansion-panel>
+</mat-accordion>

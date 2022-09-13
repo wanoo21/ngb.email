@@ -1,36 +1,36 @@
 <img [src]="src" [title]="options.title" [alt]="options.title" [ngStyle]="imageStyles" />
 
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 mdH2 i18n="@@image_block_image">Image</h2>
-  <div mdPanel>
-    <md-image-upload [(value)]="src"></md-image-upload>
-  </div>
-  <h2 mdH2 i18n="@@image_block_attributes">Attributes</h2>
-  <div mdPanel>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col col-span-2">
-        <label [mdLabel]="a" i18n="@@image_block_alternative">Alternative text</label>
-        <input type="text" mdInput #a="input" [(ngModel)]="options.title">
-        <p mdHint i18n="@@image_block_alternative_description">Alternative text to show in case image was blocked.</p>
-      </div>
-      <md-align [(value)]="options.align"></md-align>
+<mat-accordion displayMode="flat" *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <mat-expansion-panel class="mat-elevation-z0" expanded>
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@image_block_attributes">Attributes</mat-panel-title>
+    </mat-expansion-panel-header>
+    <md-image-upload [(value)]="src" isBackgroundImage="false" class="pb-2"></md-image-upload>
+    <div fxLayoutGap="0.5rem" fxLayoutAlign="stretch center">
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label i18n="@@image_block_alternative">Alternative text</mat-label>
+        <input type="text" matInput ipHistoryModel [(ngModel)]="options.title">
+        <!--        <mat-hint i18n="@@image_block_alternative_description">-->
+        <!--          Alternative text to show in case image was blocked.-->
+        <!--        </mat-hint>-->
+      </mat-form-field>
+      <md-align [(value)]="options.align" fxFlex="200px"></md-align>
     </div>
-    <md-link class="pt-2" [(value)]="options.link"></md-link>
-    <p mdHint i18n="@@image_block_link_description">Link to redirect to on click</p>
-  </div>
-  <h2 mdH2 i18n="@@image_block_sizes">Sizes</h2>
-  <div mdPanel>
-    <h3 mdH3 i18n="@@width">Width</h3>
-    <md-width-height [(value)]="options.width"></md-width-height>
-    <h3 mdH3 class="pt-2" i18n="@@height">Height</h3>
-    <md-width-height [(value)]="options.height"></md-width-height>
-  </div>
-  <h2 mdH2 i18n="@@border">Border</h2>
-  <div mdPanel>
+    <md-link [(value)]="options.link"></md-link>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@block_styles">Styles</mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="column" fxLayoutGap="0.5rem" fxLayoutAlign="stretch flex-start">
+      <h3 mdH3 i18n="@@width">Width</h3>
+      <md-width-height [(value)]="options.width"></md-width-height>
+      <h3 mdH3 class="pt-2" i18n="@@height">Height</h3>
+      <md-width-height [(value)]="options.height"></md-width-height>
+    </div>
+    <h3 mdH3 i18n="@@border">Border</h3>
     <md-border [(value)]="options.border"></md-border>
-  </div>
-  <h2 mdH2 i18n="@@padding">Padding</h2>
-  <div mdPanel>
     <md-padding [(value)]="options.padding"></md-padding>
-  </div>
-</ng-container>
+  </mat-expansion-panel>
+</mat-accordion>

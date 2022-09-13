@@ -1,34 +1,37 @@
-<div class="flex flex-col">
-  <label [mdLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
-  <input mdInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
-  <p mdHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
-</div>
-<div class="flex flex-col pt-2">
-  <label [mdLabel]="s" *ngIf="!googleFont" i18n="@@standard_font">Standard Font</label>
-  <label [mdLabel]="s" *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</label>
-  <select mdInput #s="input" [(ngModel)]="family" class="appearance-none">
-    <option *ngFor="let font of standardFonts" [value]="font">{{font}}</option>
-  </select>
-  <p mdHint *ngIf="googleFont" i18n="@@fallback_font_description">
-    Fallback font is used in case custom font is not supported.
-  </p>
+<div fxLayout="column" fxLayoutGap="0.5rem" class="pb-2">
+  <mat-form-field appearance="fill">
+    <mat-label i18n="@@custom_google_font">Custom Google Font</mat-label>
+    <input matInput ipHistoryModel [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
+    <mat-hint i18n="@@empty_google_font">Leave empty to use standard fonts.</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label *ngIf="!googleFont" i18n="@@standard_font">Standard Font</mat-label>
+    <mat-label *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</mat-label>
+    <mat-select ipHistoryModel [(ngModel)]="family">
+      <mat-option *ngFor="let font of standardFonts" [value]="font">{{font}}</mat-option>
+    </mat-select>
+    <mat-hint *ngIf="googleFont" i18n="@@fallback_font_description">
+      Fallback font is used in case custom font is not supported.
+    </mat-hint>
+  </mat-form-field>
 </div>
 
-<div class="grid grid-cols-3 gap-2 pt-2">
-  <div class="flex flex-col" i18n="@@font_size">
-    <label [mdLabel]="fs">Size</label>
-    <input mdInput #fs="input" [(ngModel)]="value.size" type="number" />
-  </div>
-  <div class="flex flex-col" i18n="@@font_weight">
-    <label [mdLabel]="w">Weight</label>
-    <select mdInput #w="input" [(ngModel)]="weight" class="appearance-none">
-      <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
-    </select>
-  </div>
-  <div class="flex flex-col" i18n="@@font_style">
-    <label [mdLabel]="fst">Style</label>
-    <select mdInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
-      <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
-    </select>
-  </div>
+<div fxLayoutGap="0.5rem" fxLayoutAlign="stretch center">
+  <mat-form-field appearance="fill">
+    <mat-label i18n="@@font_size">Size</mat-label>
+    <input matInput ipHistoryModel [(ngModel)]="value.size" type="number" />
+  </mat-form-field>
+  <mat-form-field appearance="fill" fxFlex>
+    <mat-label i18n="@@font_weight">Weight</mat-label>
+    <mat-select ipHistoryModel [(ngModel)]="weight">
+      <mat-option *ngFor="let weight of weights" [value]="weight">{{weight}}</mat-option>
+    </mat-select>
+  </mat-form-field>
 </div>
+<mat-form-field appearance="fill">
+  <mat-label i18n="@@font_style">Style</mat-label>
+  <mat-select ipHistoryModel [(ngModel)]="value.style">
+    <mat-option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</mat-option>
+  </mat-select>
+</mat-form-field>

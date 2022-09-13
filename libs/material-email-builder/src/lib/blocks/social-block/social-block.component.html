@@ -1,5 +1,5 @@
 <ng-container *ngIf="networks.length; else noSocialNetworks">
-  <div class="network" *ngFor="let network of networks">
+  <div fxLayout fxLayoutAlign="center center" *ngFor="let network of networks">
     <div [ngStyle]="labelStyles">
       <img [src]="network.name | socialPath" [width]="options.iconSize.value"
            [height]="options.iconSize.value" [class]="network.name" [alt]="network.name" />
@@ -14,73 +14,58 @@
   </p>
 </ng-template>
 
+<mat-accordion *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <mat-expansion-panel expanded class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@social_block_networks">Networks</mat-panel-title>
+    </mat-expansion-panel-header>
 
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 mdH2 i18n="@@social_block_networks">Networks</h2>
-  <div mdPanel>
     <h3 mdH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
-    <div class="grid grid-cols-7 gap-2 pb-2">
-      <ng-container *ngFor="let network of supportedNetworks">
-        <img class="flex-1 border px-2 py-1.5 cursor-pointer active:shadow-inner"
-             [src]="network | socialPath"
-             [alt]="network" [matTooltip]="network | titlecase" [class]="network"
-             [class.active]="networkIsActive(network)"
-             (click)="addOrEditNetwork(network)">
-      </ng-container>
-    </div>
-    <ng-container *ngIf="currentNetwork">
-      <h3 mdH3 class="uppercase">{{currentNetwork.name}}</h3>
-      <div class="grid grid-rows-2 gap-2">
-        <div class="flex flex-col">
-          <label [mdLabel]="l" i18n="@@social_block_network_label">Label</label>
-          <div class="flex gap-2">
-            <input #l="input" mdInput type="text" class="flex-1" [(ngModel)]="currentNetwork.label">
-            <button
-              class="rounded bg-red-500 shadow-sm text-white px-2 py-1.5 active:shadow-inner opacity-90 hover:opacity-100 transition-opacity"
-              matTooltip="Delete"
-              (click)="deleteCurrentNetwork()"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none"
-                   viewBox="0 0 24 24"
-                   stroke="currentColor"
-                   stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-            </button>
-
-          </div>
-        </div>
-        <md-link [(value)]="currentNetworkAsILink"></md-link>
+    <div class="pb-2" fxLayout="row wrap" fxLayoutGap="0.5rem" style="max-width: 100%;">
+      <div class="pb-2" *ngFor="let network of supportedNetworks">
+        <img fxFlex="40px" style="cursor: pointer" [src]="network | socialPath" [alt]="network"
+             [matTooltip]="network | titlecase" [class]="network"
+             [class.active]="networkIsActive(network)" (click)="addOrEditNetwork(network)">
       </div>
-    </ng-container>
-  </div>
-  <h2 mdH2 i18n="@@font">Font</h2>
-  <div mdPanel>
+    </div>
+    <div gdRows="2" gdGap="0.5rem" *ngIf="currentNetwork">
+      <div fxLayout>
+        <mat-form-field appearance="fill" fxFlex>
+          <mat-label>{{currentNetwork.name | titlecase}}</mat-label>
+          <input matInput type="text" fxFlex ipHistoryModel [(ngModel)]="currentNetwork.label">
+        </mat-form-field>
+        <button mat-icon-button color="warn" matTooltip="Delete" i18n-matTooltip="@@delete"
+                (click)="deleteCurrentNetwork()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+               stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </button>
+      </div>
+      <md-link [(value)]="currentNetworkAsILink"></md-link>
+    </div>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel class="mat-elevation-z0">
+    <mat-expansion-panel-header>
+      <mat-panel-title i18n="@@block_styles">Styles</mat-panel-title>
+    </mat-expansion-panel-header>
+    <h3 mdH3 i18n="@@font">Font</h3>
     <md-font [(value)]="options.font"></md-font>
-  </div>
-
-  <h2 mdH2 i18n="@@social_block_styles">Styles</h2>
-  <div mdPanel>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col">
-        <label [mdLabel]="s" i18n="@@social_block_mode">Mode</label>
-        <select mdInput #s="input" class="appearance-none" [(ngModel)]="options.mode">
-          <option *ngFor="let mode of modeKeys" [value]="mode">
-            {{getModeLabel(mode)}}
-          </option>
-        </select>
-      </div>
-      <div class="flex flex-col">
-        <label [mdLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
-        <input mdInput #i="input" class="appearance-none" type="number" [(ngModel)]="options.iconSize.value">
-      </div>
-      <md-align [(value)]="options.align"></md-align>
+    <div fxLayoutGap="0.5rem" style="width: 100%">
+      <mat-form-field appearance="fill" fxFlex>
+        <mat-label i18n="@@social_block_mode">Mode</mat-label>
+        <mat-select ipHistoryModel [(ngModel)]="options.mode">
+          <mat-option *ngFor="let mode of modeKeys" [value]="mode">{{getModeLabel(mode)}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex="100px">
+        <mat-label i18n="@@social_block_icon_size">Icon Size</mat-label>
+        <input matInput type="number" ipHistoryModel [(ngModel)]="options.iconSize.value">
+      </mat-form-field>
     </div>
-  </div>
-
-  <h2 mdH2 i18n="@@padding">Padding</h2>
-  <div mdPanel>
+    <md-align [(value)]="options.align"></md-align>
     <md-padding [(value)]="options.padding"></md-padding>
-  </div>
-</ng-container>
+  </mat-expansion-panel>
+</mat-accordion>
