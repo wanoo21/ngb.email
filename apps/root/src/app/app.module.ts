@@ -12,10 +12,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatTooltipModule } from "@angular/material/tooltip";
-import { HtmlBlockComponent } from "./html-block/html-block.component";
 
 @NgModule({
-  declarations: [AppComponent, HtmlBlockComponent],
+  declarations: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
