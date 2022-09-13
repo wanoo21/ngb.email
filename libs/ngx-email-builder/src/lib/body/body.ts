@@ -1,7 +1,7 @@
-import { defaultsDeep } from "@ngcomma/ngx-abstract/utils";
 
 import { IBackground, IPadding, IWidthHeight, TDirection } from "../interfaces";
 import { IStructure } from "../structure/structure";
+import { defaultsDeep } from "../tools/utils";
 
 /**
  * Builder {@link IIPEmail} general options interface.

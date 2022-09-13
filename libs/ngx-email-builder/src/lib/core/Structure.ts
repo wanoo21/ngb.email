@@ -10,13 +10,12 @@ import {
   QueryList,
   ViewChildren
 } from "@angular/core";
-import { cloneDeep } from "@ngcomma/ngx-abstract/utils";
 import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
 
 import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
 import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
-import { createBorder, createMargin, createPadding, createWidthHeight, mergeObjects } from "../tools/utils";
+import { cloneDeep, createBorder, createMargin, createPadding, createWidthHeight, mergeObjects } from "../tools/utils";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "./Block";
 import { IPEmail } from "../body/body";
 import { WithSettings } from "./WithSettings";

@@ -6,8 +6,8 @@ import { IMargin } from "../interfaces";
 @Directive()
 export abstract class AIPMargin extends AIPValueChanged<IMargin> {
   readonly #marginLabels = new Map<keyof IMargin, string>([
-    ["top", $localize`:@@padding_top:Top`],
-    ["bottom", $localize`:@@padding_bottom:Bottom`]
+    ["top", $localize`:@@margin_top:Margin Top`],
+    ["bottom", $localize`:@@margin_bottom:Margin Bottom`]
   ]);
 
   get marginKeys() {

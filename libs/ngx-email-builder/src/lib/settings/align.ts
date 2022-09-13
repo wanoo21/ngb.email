@@ -9,26 +9,15 @@ export abstract class AIPAlign extends AIPValueChanged<any> {
   @Input() mode: "vertical" | "horizontal" = "horizontal";
   @Input() disabled = false;
   #horizontalLabels = new Map<TAlign, string>([
-    ["left", $localize`:@@horizontal_align:Left`],
-    ["center", $localize`:@@horizontal_align:Center`],
-    ["right", $localize`:@@horizontal_align:Right`]
+    ["left", $localize`:@@horizontal_left_align:Left`],
+    ["center", $localize`:@@horizontal_center_align:Center`],
+    ["right", $localize`:@@horizontal_right_align:Right`]
   ]);
   #verticalLabels = new Map<TVerticalAlign, string>([
-    ["top", $localize`:@@vertical_align:Top`],
-    ["middle", $localize`:@@vertical_align:Middle`],
-    ["bottom", $localize`:@@vertical_align:Bottom`]
+    ["top", $localize`:@@vertical_top_align:Top`],
+    ["middle", $localize`:@@vertical_middle_align:Middle`],
+    ["bottom", $localize`:@@vertical_bottom_align:Bottom`]
   ]);
-  // private _model!: TAlign | TVerticalAlign;
-  //
-  // override get value(): TAlign | TVerticalAlign {
-  //   return this._model;
-  // }
-  //
-  // @Input()
-  // override set value(value: TAlign | TVerticalAlign) {
-  //   this._model = value;
-  //   // this.valueChange.next(value);
-  // }
 
   get horizontalLabels(): TAlign[] {
     return [...this.#horizontalLabels.keys()];

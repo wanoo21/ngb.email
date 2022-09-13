@@ -6,11 +6,12 @@ import { IWidthHeight, TUnits } from "../interfaces";
 @Directive()
 export abstract class AIPWidthHeight extends AIPValueChanged<any> {
   @Input() override value!: IWidthHeight | Omit<IWidthHeight, "auto">;
+  @Input() label = $localize`:@@width:Width`;
   readonly #unitsLabels: Map<TUnits, string> = new Map([
-    ["%", $localize`:@@unit:Percent`],
-    ["px", $localize`:@@unit:Pixels`],
-    ["contain", $localize`:@@unit:Contain`],
-    ["cover", $localize`:@@unit:Cover`]
+    ["%", $localize`:@@unit_percent:Percent`],
+    ["px", $localize`:@@unit_pixels:Pixels`],
+    ["contain", $localize`:@@unit_contain:Contain`],
+    ["cover", $localize`:@@unit_cover:Cover`]
   ]);
   #defaultUnits: TUnits[] = ["%", "px"];
 
@@ -33,6 +34,10 @@ export abstract class AIPWidthHeight extends AIPValueChanged<any> {
 
   get isAuto(): boolean {
     return this.hasAuto && (this.value as IWidthHeight).auto;
+  }
+
+  get valueAsIWidthHeight(): IWidthHeight {
+    return this.value as IWidthHeight;
   }
 
   getUnitLabel(unit: TUnits): string {

@@ -2,7 +2,6 @@ import { APP_INITIALIZER, ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PortalModule } from "@angular/cdk/portal";
 import { FormsModule } from "@angular/forms";
-import { NgxAbstractModule } from "@ngcomma/ngx-abstract";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 
 import "@angular/localize/init";
@@ -59,7 +58,6 @@ import { EmailBuilderHistoryHostDirective } from './directives/email-builder-his
     ToBodyBlockPipe,
     ToBodyStructurePipe,
     ApplyMiddlewarePipe,
-    NgxAbstractModule,
     HttpClientModule,
     ToHistoryOptionsPipe,
     IPEmailBuilderHistoryActionDirective,

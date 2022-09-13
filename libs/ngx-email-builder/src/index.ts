@@ -18,7 +18,7 @@ export * from "./lib/blocks/spacer-block/spacer.block";
 // Core services & classes
 export * from "./lib/public-tokens";
 export * from "./lib/tools/core";
-// export * from "./lib/tools/utils";
+export * from "./lib/tools/utils";
 export * from "./lib/core/Block";
 export * from "./lib/core/ValueChanged";
 export * from "./lib/interfaces";
