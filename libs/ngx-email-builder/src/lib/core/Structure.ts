@@ -11,6 +11,8 @@ import {
   ViewChildren
 } from "@angular/core";
 import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
+import { filter, takeUntil } from "rxjs";
+import { applyDiff } from "recursive-diff";
 
 import { Structure } from "../structure/structure";
 import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
@@ -21,8 +23,6 @@ import { IPEmail } from "../body/body";
 import { WithSettings } from "./WithSettings";
 import { IIPValueChanged } from "./ValueChanged";
 import { AIPEmailBuilderMiddlewareService } from "../services";
-import { filter, takeUntil } from "rxjs";
-import { applyDiff } from "recursive-diff";
 
 @Directive()
 export abstract class AIPStructure extends WithSettings implements IIPValueChanged<Structure>, OnInit {
@@ -41,9 +41,9 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
   #verticalLabels = new Map<TVerticalAlign, string>([
-    ["top", $localize`:@@vertical_align:Top`],
-    ["middle", $localize`:@@vertical_align:Middle`],
-    ["bottom", $localize`:@@vertical_align:Bottom`]
+    ["top", $localize`:@@vertical_align_top:Top`],
+    ["middle", $localize`:@@vertical_align_middle:Middle`],
+    ["bottom", $localize`:@@vertical_align_bottom:Bottom`]
   ]);
   #middlewareService = inject(AIPEmailBuilderMiddlewareService);
   #cdkDrag = inject(CdkDrag);

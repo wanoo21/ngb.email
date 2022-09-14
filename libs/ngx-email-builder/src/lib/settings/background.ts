@@ -6,16 +6,16 @@ import { AIPValueChanged } from "../core/ValueChanged";
 @Directive()
 export abstract class AIPBackground extends AIPValueChanged<IBackground> {
   readonly #repeatLabels = new Map<TBackgroundRepeat, string>([
-    ["no-repeat", $localize`:@@no_repeat:No`],
-    ["repeat", $localize`:@@repeat:Repeat`],
-    ["repeat-x", $localize`:@@repeat_x:X`],
-    ["repeat-y", $localize`:@@repeat_y:Y`]
+    ["no-repeat", $localize`:@@repeat_no:No Repeat`],
+    ["repeat", $localize`:@@repeat_repeat:Repeat`],
+    ["repeat-x", $localize`:@@repeat_x:Repeat X`],
+    ["repeat-y", $localize`:@@repeat_y:Repeat Y`]
   ]);
   readonly #unitLabels = new Map<TUnits, string>([
-    ["%", $localize`:@@unit:Percent`],
-    ["px", $localize`:@@unit:Pixels`],
-    ["cover", $localize`:@@unit:Cover`],
-    ["contain", $localize`:@@unit:Contain`]
+    ["%", $localize`:@@unit_percent:Percent`],
+    ["px", $localize`:@@unit_pixels:Pixels`],
+    ["cover", $localize`:@@unit_cover:Cover`],
+    ["contain", $localize`:@@unit_contain:Contain`]
   ]);
 
   get unitsOptions() {

@@ -8,9 +8,9 @@ export abstract class AIPLineHeight extends AIPValueChanged<ILineHeight> {
   @Input() units: TLineHeight[] = ["%", "px", "none"];
 
   #unitsLabels: Map<string, string> = new Map<TLineHeight, string>([
-    ["%", $localize`:@@unit:Percent`],
-    ["px", $localize`:@@unit:Pixels`],
-    ["none", $localize`:@@unit:None`]
+    ["%", $localize`:@@unit_percent:Percent`],
+    ["px", $localize`:@@unit_pixels:Pixels`],
+    ["none", $localize`:@@unit_none:None`]
   ]);
 
   get uniOptions() {

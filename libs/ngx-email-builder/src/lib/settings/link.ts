@@ -6,10 +6,10 @@ import { ILink, TLinkTarget } from "../interfaces";
 @Directive()
 export abstract class AIPLink extends AIPValueChanged<ILink> {
   #targetLabels = new Map<TLinkTarget, string>([
-    ["_blank", $localize`:@@link_target:Blank`],
-    ["_self", $localize`:@@link_target:Self`],
-    ["_parent", $localize`:@@link_target:Parent`],
-    ["_top", $localize`:@@link_target:Top`]
+    ["_blank", $localize`:@@link_target_blank:Blank`],
+    ["_self", $localize`:@@link_target_self:Self`],
+    ["_parent", $localize`:@@link_target_parent:Parent`],
+    ["_top", $localize`:@@link_target_top:Top`]
   ]);
 
   get targets(): TLinkTarget[] {

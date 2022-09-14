@@ -16,16 +16,16 @@
 </div>
 
 <div class="flex gap-2 pt-2">
-  <div class="w-4 flex flex-column" i18n="@@font_size">
-    <label [primeLabel]="fs">Size</label>
+  <div class="w-4 flex flex-column">
+    <label [primeLabel]="fs" i18n="@@font_size">Size</label>
     <input primeInput pInputText #fs="input" [(ngModel)]="value.size" type="number" />
   </div>
-  <div class="w-4 flex flex-column" i18n="@@font_weight">
-    <label [primeLabel]="w">Weight</label>
+  <div class="w-4 flex flex-column">
+    <label [primeLabel]="w" i18n="@@font_weight">Weight</label>
     <p-dropdown [options]="weights" primeInput #w="input" [(ngModel)]="weight"></p-dropdown>
   </div>
-  <div class="w-4 flex flex-column" i18n="@@font_style">
-    <label [primeLabel]="fst">Style</label>
+  <div class="w-4 flex flex-column">
+    <label [primeLabel]="fst" i18n="@@font_style">Style</label>
     <p-dropdown [options]="styleOptions" primeInput #fst="input" [(ngModel)]="value.style"></p-dropdown>
   </div>
 </div>

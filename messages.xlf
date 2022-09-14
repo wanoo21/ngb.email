@@ -2,18 +2,11 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
   <file source-language="en-US" datatype="plaintext" original="ng2.template">
     <body>
-      <trans-unit id="7913678223536081420" datatype="html">
-        <source>HTML</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">apps/root/src/app/demo-builders/material-email-builder/md-email-builder.module.ts</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="button_block_text" datatype="html">
         <source>Button text</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -28,15 +21,15 @@
         <source>Font</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">58</context>
+          <context context-type="linenumber">54</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -63,11 +56,34 @@
           <context context-type="linenumber">8</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="block_styles" datatype="html">
+        <source>Styles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/divider-block/divider-block.component.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/spacer-block/spacer-block.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="button_block_background_color" datatype="html">
         <source>Background color</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -82,19 +98,19 @@
         <source>Border</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">16</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">32</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">72</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">107</context>
+          <context context-type="linenumber">116</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -106,11 +122,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">45</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">87</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -122,18 +138,18 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">80</context>
+          <context context-type="linenumber">76</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">128</context>
+          <context context-type="linenumber">124</context>
         </context-group>
       </trans-unit>
       <trans-unit id="button_block_attributes" datatype="html">
         <source>Attributes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">20</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -148,7 +164,7 @@
         <source> Full Width </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">25,27</context>
+          <context context-type="linenumber">37,39</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -163,7 +179,7 @@
         <source>Inner Padding</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">31</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -178,31 +194,11 @@
         <source>Padding</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/divider-block/divider-block.component.html</context>
-          <context context-type="linenumber">8</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">64,66</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">21</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -230,7 +226,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/button-block/button-block.component.html</context>
@@ -254,18 +250,18 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">58,59</context>
+          <context context-type="linenumber">59,60</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="divider_color" datatype="html">
         <source>Divider Color</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/divider-block/divider-block.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/divider-block/divider-block.component.html</context>
@@ -276,26 +272,11 @@
           <context context-type="linenumber">4</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="image_block_image" datatype="html">
-        <source>Image</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="image_block_attributes" datatype="html">
         <source>Attributes</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
@@ -310,7 +291,7 @@
         <source>Alternative text</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">11</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
@@ -319,62 +300,17 @@
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
           <context context-type="linenumber">12</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="image_block_alternative_description" datatype="html">
-        <source>Alternative text to show in case image was blocked.</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">14,16</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="image_block_link_description" datatype="html">
-        <source>Link to redirect to on click</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">19</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="image_block_sizes" datatype="html">
-        <source>Sizes</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">21</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">23</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="width" datatype="html">
         <source>Width</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">27</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">51,52</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
@@ -390,14 +326,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">46,47</context>
+          <context context-type="linenumber">47,48</context>
         </context-group>
       </trans-unit>
       <trans-unit id="height" datatype="html">
         <source>Height</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
-          <context context-type="linenumber">25</context>
+          <context context-type="linenumber">29</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
@@ -427,7 +363,7 @@
         <source>Networks</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
@@ -442,7 +378,7 @@
         <source>Click on any icon to add, edit or remove.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">21</context>
+          <context context-type="linenumber">23</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
@@ -453,41 +389,18 @@
           <context context-type="linenumber">21</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="social_block_network_label" datatype="html">
-        <source>Label</source>
+      <trans-unit id="delete" datatype="html">
+        <source>Delete</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">35</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="social_block_styles" datatype="html">
-        <source>Styles</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">63</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">52</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">63</context>
+          <context context-type="linenumber">37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="social_block_mode" datatype="html">
         <source>Mode</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">58</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
@@ -502,7 +415,7 @@
         <source>Icon Size</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
-          <context context-type="linenumber">75</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
@@ -517,7 +430,7 @@
         <source>Size</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/spacer-block/spacer-block.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">6</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/spacer-block/spacer-block.component.html</context>
@@ -528,33 +441,17 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="text_color" datatype="html">
-        <source>Color</source>
+      <trans-unit id="inner_text" datatype="html">
+        <source>Inner Text</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
-          <context context-type="linenumber">10</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ip_aside_stepper:Content" datatype="html">
+      <trans-unit id="ip_aside_stepper_content" datatype="html">
         <source>Content</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-aside/md-email-aside.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-aside/email-aside.component.html</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-aside/email-aside.component.html</context>
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
@@ -588,34 +485,18 @@
           <context context-type="linenumber">13,14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="ip_aside_stepper:Modules" datatype="html">
+      <trans-unit id="ip_aside_stepper_modules" datatype="html">
         <source>Modules</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-aside/md-email-aside.component.html</context>
           <context context-type="linenumber">34</context>
         </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-aside/email-aside.component.html</context>
-          <context context-type="linenumber">29</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-aside/email-aside.component.html</context>
-          <context context-type="linenumber">26</context>
-        </context-group>
       </trans-unit>
-      <trans-unit id="ip_aside_stepper:Settings" datatype="html">
+      <trans-unit id="ip_aside_stepper_settings" datatype="html">
         <source>Settings</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-aside/md-email-aside.component.html</context>
           <context context-type="linenumber">37</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-aside/email-aside.component.html</context>
-          <context context-type="linenumber">32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-aside/email-aside.component.html</context>
-          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="empty_body_message" datatype="html">
@@ -630,11 +511,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">18,20</context>
+          <context context-type="linenumber">19,21</context>
         </context-group>
       </trans-unit>
       <trans-unit id="choose_template_btn" datatype="html">
-        <source>Select Template </source>
+        <source> Select Template </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
           <context context-type="linenumber">24,26</context>
@@ -645,14 +526,21 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">20,23</context>
+          <context context-type="linenumber">21,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="template_general" datatype="html">
+        <source>General</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
+          <context context-type="linenumber">34,35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="template_name" datatype="html">
         <source>Template name</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">34,35</context>
+          <context context-type="linenumber">38,39</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
@@ -660,14 +548,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">29,30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="template_preview_text" datatype="html">
         <source>Preview text</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">38,39</context>
+          <context context-type="linenumber">42,43</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
@@ -675,14 +563,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">32,33</context>
+          <context context-type="linenumber">33,34</context>
         </context-group>
       </trans-unit>
       <trans-unit id="template_preview_text_hint" datatype="html">
         <source>This text is displayed in the inbox of the recipient.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">40,42</context>
+          <context context-type="linenumber">44,46</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
@@ -690,18 +578,25 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">35,39</context>
+          <context context-type="linenumber">36,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="template_general_styles" datatype="html">
+        <source>Styles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
+          <context context-type="linenumber">51,52</context>
         </context-group>
       </trans-unit>
       <trans-unit id="background" datatype="html">
         <source>Background</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">44,46</context>
+          <context context-type="linenumber">54,55</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">66</context>
+          <context context-type="linenumber">70</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
@@ -709,37 +604,22 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">43</context>
+          <context context-type="linenumber">40</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">39,41</context>
+          <context context-type="linenumber">40,42</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">78</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="template_attributes" datatype="html">
-        <source>Attributes</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">49,50</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">47,49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">44,46</context>
+          <context context-type="linenumber">74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="direction" datatype="html">
         <source>Direction</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/email-body/md-email-body.component.html</context>
-          <context context-type="linenumber">55,56</context>
+          <context context-type="linenumber">61,62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
@@ -747,7 +627,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
-          <context context-type="linenumber">49,50</context>
+          <context context-type="linenumber">50,51</context>
         </context-group>
       </trans-unit>
       <trans-unit id="template_loading" datatype="html">
@@ -762,54 +642,89 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/ip-email-builder/tail-email-builder.component.html</context>
-          <context context-type="linenumber">20,22</context>
+          <context context-type="linenumber">21,23</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="block" datatype="html">
+      <trans-unit id="block_text_title" datatype="html">
         <source>Text</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
-          <context context-type="linenumber">102</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
-          <context context-type="linenumber">103</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
           <context context-type="linenumber">104</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
-          <context context-type="linenumber">105</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
-          <context context-type="linenumber">106</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
-          <context context-type="linenumber">107</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/primeng-email-builder.module.ts</context>
           <context context-type="linenumber">95</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="block_button_title" datatype="html">
+        <source>Button</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/primeng-email-builder.module.ts</context>
           <context context-type="linenumber">96</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="block_image_title" datatype="html">
+        <source>Image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
+          <context context-type="linenumber">106</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/primeng-email-builder.module.ts</context>
           <context context-type="linenumber">97</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="block_divider_title" datatype="html">
+        <source>Divider</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/primeng-email-builder.module.ts</context>
           <context context-type="linenumber">98</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
+          <context context-type="linenumber">81</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="block_social_title" datatype="html">
+        <source>Social</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+        <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/primeng-email-builder.module.ts</context>
           <context context-type="linenumber">99</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
+          <context context-type="linenumber">82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="block_spacer_title" datatype="html">
+        <source>Spacer</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/material-email-builder.module.ts</context>
+          <context context-type="linenumber">109</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/primeng-email-builder.module.ts</context>
@@ -817,46 +732,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
-          <context context-type="linenumber">76</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
-          <context context-type="linenumber">77</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
-          <context context-type="linenumber">78</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
-          <context context-type="linenumber">79</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
-          <context context-type="linenumber">80</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/tailwind-email-builder.module.ts</context>
-          <context context-type="linenumber">81</context>
+          <context context-type="linenumber">83</context>
         </context-group>
       </trans-unit>
       <trans-unit id="horizontal_align" datatype="html">
         <source>Horizontal Align</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/align/align.component.html</context>
-          <context context-type="linenumber">3</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">2</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/align/align.component.html</context>
@@ -875,31 +758,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">109</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/core/Structure.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/core/Structure.ts</context>
-          <context context-type="linenumber">45</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/core/Structure.ts</context>
-          <context context-type="linenumber">46</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
-          <context context-type="linenumber">17</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
-          <context context-type="linenumber">18</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
-          <context context-type="linenumber">19</context>
+          <context context-type="linenumber">118</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/align/align.component.html</context>
@@ -907,7 +766,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">92</context>
+          <context context-type="linenumber">89</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/align/align.component.html</context>
@@ -915,7 +774,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">130</context>
+          <context context-type="linenumber">126</context>
         </context-group>
       </trans-unit>
       <trans-unit id="value_image_repeat" datatype="html">
@@ -949,10 +808,10 @@
         </context-group>
       </trans-unit>
       <trans-unit id="value_image_size_auto" datatype="html">
-        <source>Auto</source>
+        <source>Auto </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/background/background.component.html</context>
-          <context context-type="linenumber">13</context>
+          <context context-type="linenumber">13,14</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/background/background.component.html</context>
@@ -993,39 +852,11 @@
           <context context-type="linenumber">6</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="border_style" datatype="html">
-        <source>Border style</source>
+      <trans-unit id="border_styles" datatype="html">
+        <source>Border styles</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/border/border.component.html</context>
           <context context-type="linenumber">15</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
-          <context context-type="linenumber">14</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/border/border.component.html</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/border/border.component.html</context>
-          <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="color" datatype="html">
@@ -1040,25 +871,25 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/color/color.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
       <trans-unit id="leave_empty_for_transparent" datatype="html">
-        <source>Leave empty to make it transparent</source>
+        <source>Leave empty to make it transparent </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/color/color.component.html</context>
-          <context context-type="linenumber">6</context>
+          <context context-type="linenumber">6,7</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/color/color.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
       <trans-unit id="custom_google_font" datatype="html">
         <source>Custom Google Font</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">2</context>
+          <context context-type="linenumber">3</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
@@ -1073,7 +904,7 @@
         <source>Leave empty to use standard fonts.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">4</context>
+          <context context-type="linenumber">5</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
@@ -1088,7 +919,7 @@
         <source>Standard Font</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">7</context>
+          <context context-type="linenumber">9</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
@@ -1103,7 +934,7 @@
         <source>Fallback Font</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">8</context>
+          <context context-type="linenumber">10</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
@@ -1118,7 +949,7 @@
         <source> Fallback font is used in case custom font is not supported. </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">12,14</context>
+          <context context-type="linenumber">14,16</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
@@ -1130,60 +961,48 @@
         </context-group>
       </trans-unit>
       <trans-unit id="font_size" datatype="html">
-        <source><x id="START_TAG_LABEL" ctype="x-label" equiv-text="&lt;label [mdLabel]=&quot;fs&quot;&gt;"/>Size<x id="CLOSE_TAG_LABEL" ctype="x-label" equiv-text="&lt;/label&gt;"/><x id="TAG_INPUT" ctype="x-input" equiv-text="&lt;input mdInput #fs=&quot;input&quot; [(ngModel)]=&quot;value.size&quot; type=&quot;number&quot; /&gt;"/></source>
+        <source>Size</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">19,20</context>
+          <context context-type="linenumber">22</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">20,21</context>
+          <context context-type="linenumber">20</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">19,20</context>
+          <context context-type="linenumber">19</context>
         </context-group>
       </trans-unit>
       <trans-unit id="font_weight" datatype="html">
-        <source><x id="START_TAG_LABEL" ctype="x-label" equiv-text="&lt;label [mdLabel]=&quot;w&quot;&gt;"/>Weight<x id="CLOSE_TAG_LABEL" ctype="x-label" equiv-text="&lt;/label&gt;"/><x id="START_TAG_SELECT" ctype="x-select" equiv-text="&lt;select mdInput #w=&quot;input&quot; [(ngModel)]=&quot;weight&quot; class=&quot;appearance-none&quot;&gt;"/><x id="START_TAG_OPTION" ctype="x-option" equiv-text="&lt;option *ngFor=&quot;let weight of weights&quot; [value]=&quot;weight&quot;&gt;"/><x id="INTERPOLATION" equiv-text="{{weight}}"/><x id="CLOSE_TAG_OPTION" ctype="x-option" equiv-text="&lt;/option&gt;"/><x id="CLOSE_TAG_SELECT" ctype="x-select" equiv-text="&lt;/select&gt;"/></source>
+        <source>Weight</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">23,26</context>
+          <context context-type="linenumber">26</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">24,25</context>
+          <context context-type="linenumber">24</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">23,26</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="font_style" datatype="html">
-        <source><x id="START_TAG_LABEL" ctype="x-label" equiv-text="&lt;label [mdLabel]=&quot;fst&quot;&gt;"/>Style<x id="CLOSE_TAG_LABEL" ctype="x-label" equiv-text="&lt;/label&gt;"/><x id="START_TAG_SELECT" ctype="x-select" equiv-text="&lt;select mdInput #fst=&quot;input&quot; [(ngModel)]=&quot;value.style&quot; class=&quot;appearance-none&quot;&gt;"/><x id="START_TAG_OPTION" ctype="x-option" equiv-text="&lt;option *ngFor=&quot;let style of styles&quot; [value]=&quot;style&quot;&gt;"/><x id="INTERPOLATION" equiv-text="{{getStyleLabel(style)}}"/><x id="CLOSE_TAG_OPTION" ctype="x-option" equiv-text="&lt;/option&gt;"/><x id="CLOSE_TAG_SELECT" ctype="x-select" equiv-text="&lt;/select&gt;"/></source>
+        <source>Style</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">29,32</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/font.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/font.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/font.ts</context>
-          <context context-type="linenumber">14</context>
+          <context context-type="linenumber">33</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">28</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/font/font.component.html</context>
-          <context context-type="linenumber">29,32</context>
+          <context context-type="linenumber">29</context>
         </context-group>
       </trans-unit>
       <trans-unit id="image_source" datatype="html">
@@ -1280,23 +1099,7 @@
         <source>Target</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/link/link.component.html</context>
-          <context context-type="linenumber">7</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">8</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/link/link.component.html</context>
@@ -1322,26 +1125,60 @@
           <context context-type="linenumber">2</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="unit" datatype="html">
+        <source>Unit</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/settings/width-height/width-height.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/line-height.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/line-height.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/line-height.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="structure_actions" datatype="html">
         <source>Actions</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">52</context>
+          <context context-type="linenumber">49</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">28</context>
+          <context context-type="linenumber">25</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">53</context>
+          <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
       <trans-unit id="structure_duplicate" datatype="html">
         <source> Duplicate </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">55,57</context>
+          <context context-type="linenumber">53,55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="structure_delete" datatype="html">
+        <source> Delete </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
+          <context context-type="linenumber">57,59</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
@@ -1349,157 +1186,134 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">55</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="structure_delete" datatype="html">
-        <source> Delete </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">59,61</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">33</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">62</context>
+          <context context-type="linenumber">58</context>
         </context-group>
       </trans-unit>
       <trans-unit id="structure_save_as_module" datatype="html">
         <source> Save as module </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">62,64</context>
+          <context context-type="linenumber">60,62</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">38</context>
+          <context context-type="linenumber">35</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">70</context>
+          <context context-type="linenumber">66</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="margin" datatype="html">
-        <source>Margin</source>
+      <trans-unit id="structure_styles" datatype="html">
+        <source>Styles</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">72</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">84</context>
+          <context context-type="linenumber">68</context>
         </context-group>
       </trans-unit>
       <trans-unit id="layout" datatype="html">
         <source>Layout</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">74</context>
+          <context context-type="linenumber">78</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">48</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">82</context>
         </context-group>
       </trans-unit>
       <trans-unit id="structure_vertical_gap" datatype="html">
         <source>Vertical Gap</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">82</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">55</context>
+          <context context-type="linenumber">52</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">90</context>
+          <context context-type="linenumber">86</context>
         </context-group>
       </trans-unit>
       <trans-unit id="structure_horizontal_gap" datatype="html">
         <source>Horizontal Gap</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">82</context>
+          <context context-type="linenumber">86</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">59</context>
+          <context context-type="linenumber">56</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">94</context>
+          <context context-type="linenumber">90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="disable_responsive" datatype="html">
         <source> Disable responsive </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">88,90</context>
+          <context context-type="linenumber">92,94</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">67</context>
+          <context context-type="linenumber">64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">103,105</context>
+          <context context-type="linenumber">99,101</context>
         </context-group>
       </trans-unit>
       <trans-unit id="full_width_structure" datatype="html">
         <source> Full width structure </source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">91,93</context>
+          <context context-type="linenumber">95,97</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">72</context>
+          <context context-type="linenumber">69</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">109,111</context>
+          <context context-type="linenumber">105,107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="structure_columns_styles" datatype="html">
         <source>Columns styles</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">97</context>
+          <context context-type="linenumber">104</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">78</context>
+          <context context-type="linenumber">75</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">115</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="background_color" datatype="html">
         <source>Background Color</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/material-email-builder/src/lib/structure/md-structure.component.html</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">114</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">88</context>
+          <context context-type="linenumber">85</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
-          <context context-type="linenumber">126</context>
+          <context context-type="linenumber">122</context>
         </context-group>
       </trans-unit>
       <trans-unit id="use_in_editor" datatype="html">
@@ -1582,28 +1396,95 @@
           <context context-type="linenumber">30</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="vertical_align_top" datatype="html">
+        <source>Top</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/core/Structure.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="vertical_align_middle" datatype="html">
+        <source>Middle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/core/Structure.ts</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="vertical_align_bottom" datatype="html">
+        <source>Bottom</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/core/Structure.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="convert_empty_body" datatype="html">
-        <source>Add some structures before preview.</source>
+        <source>Add some structures before save.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/email-builder-component.ts</context>
-          <context context-type="linenumber">27</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/email-builder-component.ts</context>
+          <context context-type="linenumber">31</context>
         </context-group>
       </trans-unit>
       <trans-unit id="prevent_unload_message" datatype="html">
         <source>There are unsaved changes, are you sure you want to leave the page?</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/email-builder-component.ts</context>
-          <context context-type="linenumber">36</context>
+          <context context-type="linenumber">40</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="no_repeat" datatype="html">
-        <source>No</source>
+      <trans-unit id="horizontal_left_align" datatype="html">
+        <source>Left</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="horizontal_center_align" datatype="html">
+        <source>Center</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="horizontal_right_align" datatype="html">
+        <source>Right</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="vertical_top_align" datatype="html">
+        <source>Top</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="vertical_middle_align" datatype="html">
+        <source>Middle</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="vertical_bottom_align" datatype="html">
+        <source>Bottom</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/align.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="repeat_no" datatype="html">
+        <source>No Repeat</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="repeat" datatype="html">
+      <trans-unit id="repeat_repeat" datatype="html">
         <source>Repeat</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
@@ -1611,100 +1492,242 @@
         </context-group>
       </trans-unit>
       <trans-unit id="repeat_x" datatype="html">
-        <source>X</source>
+        <source>Repeat X</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
       <trans-unit id="repeat_y" datatype="html">
-        <source>Y</source>
+        <source>Repeat Y</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">12</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="unit" datatype="html">
+      <trans-unit id="unit_percent" datatype="html">
         <source>Percent</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">15</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unit_pixels" datatype="html">
+        <source>Pixels</source>
+        <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">16</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unit_cover" datatype="html">
+        <source>Cover</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">17</context>
         </context-group>
         <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="unit_contain" datatype="html">
+        <source>Contain</source>
+        <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/background.ts</context>
           <context context-type="linenumber">18</context>
         </context-group>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/line-height.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/line-height.ts</context>
-          <context context-type="linenumber">12</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/line-height.ts</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
           <context context-type="linenumber">13</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="border_style_solid" datatype="html">
+        <source>Solid</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
           <context context-type="linenumber">10</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="border_style_dotted" datatype="html">
+        <source>Dotted</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="border_style_dashed" datatype="html">
+        <source>Dashed</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
           <context context-type="linenumber">12</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="border_style_double" datatype="html">
+        <source>Double</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/width-height.ts</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
           <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="border_style_groove" datatype="html">
+        <source>Groove</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/border.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="font_style_normal" datatype="html">
+        <source>Normal</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/font.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="font_style_italic" datatype="html">
+        <source>Italic</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/font.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="font_style_oblique" datatype="html">
+        <source>Oblique</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/font.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="link_target_blank" datatype="html">
+        <source>Blank</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="link_target_self" datatype="html">
+        <source>Self</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="link_target_parent" datatype="html">
+        <source>Parent</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="link_target_top" datatype="html">
+        <source>Top</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/link.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="margin_top" datatype="html">
+        <source>Margin Top</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/margin.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="margin_bottom" datatype="html">
+        <source>Margin Bottom</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/margin.ts</context>
+          <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
       <trans-unit id="padding_top" datatype="html">
-        <source>Top</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/margin.ts</context>
-          <context context-type="linenumber">9</context>
-        </context-group>
+        <source>Padding Top</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/padding.ts</context>
           <context context-type="linenumber">9</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="padding_bottom" datatype="html">
-        <source>Bottom</source>
+      <trans-unit id="padding_right" datatype="html">
+        <source>Padding Right</source>
         <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/margin.ts</context>
+          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/padding.ts</context>
           <context context-type="linenumber">10</context>
         </context-group>
+      </trans-unit>
+      <trans-unit id="padding_bottom" datatype="html">
+        <source>Padding Bottom</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/padding.ts</context>
           <context context-type="linenumber">11</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="padding_right" datatype="html">
-        <source>Right</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/padding.ts</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="padding_left" datatype="html">
-        <source>Left</source>
+        <source>Padding Left</source>
         <context-group purpose="location">
           <context context-type="sourcefile">libs/ngx-email-builder/src/lib/settings/padding.ts</context>
           <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="image_block_image" datatype="html">
+        <source>Image</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="image_block_alternative_description" datatype="html">
+        <source> Alternative text to show in case image was blocked. </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="image_block_link_description" datatype="html">
+        <source>Link to redirect to on click</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="image_block_sizes" datatype="html">
+        <source>Sizes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/image-block/image-block.component.html</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="social_block_network_label" datatype="html">
+        <source>Label</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
+          <context context-type="linenumber">35</context>
         </context-group>
       </trans-unit>
       <trans-unit id="social_network_delete" datatype="html">
@@ -1712,6 +1735,94 @@
         <context-group purpose="location">
           <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
           <context context-type="linenumber">38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="social_block_styles" datatype="html">
+        <source>Styles</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/social-block/social-block.component.html</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="text_color" datatype="html">
+        <source>Color</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/blocks/text-block/text-block.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ip_aside_stepper:Content" datatype="html">
+        <source>Content</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-aside/email-aside.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-aside/email-aside.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ip_aside_stepper:Modules" datatype="html">
+        <source>Modules</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-aside/email-aside.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-aside/email-aside.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="ip_aside_stepper:Settings" datatype="html">
+        <source>Settings</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-aside/email-aside.component.html</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-aside/email-aside.component.html</context>
+          <context context-type="linenumber">29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="template_attributes" datatype="html">
+        <source>Attributes</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/email-body/email-body.component.html</context>
+          <context context-type="linenumber">47,49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/email-body/email-body.component.html</context>
+          <context context-type="linenumber">45,47</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="border_style" datatype="html">
+        <source>Border style</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/settings/border/border.component.html</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/settings/border/border.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="margin" datatype="html">
+        <source>Margin</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/primeng-email-builder/src/lib/structure/structure.component.html</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">libs/tailwind-email-builder/src/lib/structure/structure.component.html</context>
+          <context context-type="linenumber">80</context>
         </context-group>
       </trans-unit>
     </body>

@@ -12,7 +12,7 @@
 </div>
 
 <div *ngIf="value.width" class="pb-2">
-  <h3 mdH3 i18n="@@border_style">Border style</h3>
+  <h3 mdH3 i18n="@@border_styles">Border styles</h3>
   <mat-button-toggle-group ipHistoryModel [(ngModel)]="value.style" fxLayout>
     <mat-button-toggle *ngFor="let style of styleLabels" [value]="style" fxFlex>
       {{getStyleLabel(style)}}

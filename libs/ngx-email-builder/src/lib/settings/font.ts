@@ -9,9 +9,9 @@ export abstract class AIPFont extends AIPValueChanged<IFont> {
   builderService = inject(AIPEmailBuilderService);
   #standardWeights = [100, 400, 500, 700, 900];
   #stylesMap = new Map<IFont["style"], string>([
-    ["normal", $localize`:@@font_style:Normal`],
-    ["italic", $localize`:@@font_style:Italic`],
-    ["oblique", $localize`:@@font_style:Oblique`]
+    ["normal", $localize`:@@font_style_normal:Normal`],
+    ["italic", $localize`:@@font_style_italic:Italic`],
+    ["oblique", $localize`:@@font_style_oblique:Oblique`]
   ]);
 
   get standardFonts(): string[] {

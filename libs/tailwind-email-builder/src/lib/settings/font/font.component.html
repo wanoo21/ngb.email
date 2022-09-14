@@ -15,18 +15,18 @@
 </div>
 
 <div class="grid grid-cols-3 gap-2 pt-2">
-  <div class="flex flex-col" i18n="@@font_size">
-    <label [tailLabel]="fs">Size</label>
+  <div class="flex flex-col">
+    <label [tailLabel]="fs" i18n="@@font_size">Size</label>
     <input tailInput #fs="input" [(ngModel)]="value.size" type="number" />
   </div>
-  <div class="flex flex-col" i18n="@@font_weight">
-    <label [tailLabel]="w">Weight</label>
+  <div class="flex flex-col">
+    <label [tailLabel]="w" i18n="@@font_weight">Weight</label>
     <select tailInput #w="input" [(ngModel)]="weight" class="appearance-none">
       <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
     </select>
   </div>
-  <div class="flex flex-col" i18n="@@font_style">
-    <label [tailLabel]="fst">Style</label>
+  <div class="flex flex-col">
+    <label [tailLabel]="fst" i18n="@@font_style">Style</label>
     <select tailInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
       <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
     </select>

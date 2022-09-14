@@ -101,12 +101,12 @@ import { MatExpansionModule } from "@angular/material/expansion";
   ],
   exports: [MdEmailBuilderComponent, NgxEmailBuilderModule],
   providers: [
-    ...addDefaultBlock(TextBlockComponent, $localize`:@@block:Text`),
-    ...addDefaultBlock(ButtonBlockComponent, $localize`:@@block:Button`),
-    ...addDefaultBlock(ImageBlockComponent, $localize`:@@block:Image`),
-    ...addDefaultBlock(DividerBlockComponent, $localize`:@@block:Divider`),
-    ...addDefaultBlock(SocialBlockComponent, $localize`:@@block:Social`),
-    ...addDefaultBlock(SpacerBlockComponent, $localize`:@@block:Spacer`)
+    ...addDefaultBlock(TextBlockComponent, $localize`:@@block_text_title:Text`),
+    ...addDefaultBlock(ButtonBlockComponent, $localize`:@@block_button_title:Button`),
+    ...addDefaultBlock(ImageBlockComponent, $localize`:@@block_image_title:Image`),
+    ...addDefaultBlock(DividerBlockComponent, $localize`:@@block_divider_title:Divider`),
+    ...addDefaultBlock(SocialBlockComponent, $localize`:@@block_social_title:Social`),
+    ...addDefaultBlock(SpacerBlockComponent, $localize`:@@block_spacer_title:Spacer`)
   ]
 })
 export class MaterialEmailBuilderModule {

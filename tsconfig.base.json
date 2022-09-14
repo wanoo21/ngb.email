@@ -18,12 +18,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@ngcomma/ngx-abstract": [
-        "libs/ngx-abstract/src/index.ts"
-      ],
-      "@ngcomma/ngx-abstract/*": [
-        "libs/ngx-abstract/*/src/index.ts"
-      ],
       "@wlocalhost/ngx-bootstrap-email-builder": [
         "libs/bootstrap-email-builder/src/index.ts"
       ],
