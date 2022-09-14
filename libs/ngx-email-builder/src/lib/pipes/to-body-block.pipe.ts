@@ -3,6 +3,12 @@ import { Inject, Pipe, PipeTransform } from "@angular/core";
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
 
+/**
+ * Return the right {@link AIPEmailBuilderBlockExtendedOptions} block based on {@link IIPEmailBuilderBlockData}.
+ * Triggers an error if not found.
+ *
+ * Most used for [cdkDragData] inside blocks list.
+ */
 @Pipe({
   name: "toBodyBlock"
 })

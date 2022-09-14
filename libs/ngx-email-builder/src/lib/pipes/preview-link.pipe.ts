@@ -5,6 +5,10 @@ import { map, Observable } from "rxjs";
 import { IPEmail } from "../body/body";
 import { AIPEmailBuilderRestService } from "../services";
 
+/**
+ * Dynamically create and revoke an {@link URL.createObjectURL} link.
+ * On init, it converts current {@link IPEmail} to HTML and after return a {@link Blob} url.
+ */
 @Pipe({
   name: "ipPreviewLink"
 })

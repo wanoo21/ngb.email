@@ -26,9 +26,8 @@ import { IJSUndoManagerCommit, JSUndoManager } from "../../tools/undo-manager";
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderHistoryService {
-  limit = 50;
   readonly #factory = inject(IP_EMAIL_BUILDER_CONFIG);
-  readonly #manager = new JSUndoManager(this.#factory.isFreeVersion ? 10 : this.limit);
+  readonly #manager = new JSUndoManager(this.#factory.historyRecordLimit);
   private readonly commit$ = new Subject<IJSUndoManagerCommit>();
   readonly commitPush$ = this.commit$.asObservable();
 

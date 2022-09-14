@@ -4,6 +4,9 @@ import { CdkDragDrop, CdkDropList } from "@angular/cdk/drag-drop";
 
 import { IPEmailBuilderUiService } from "../services";
 
+/**
+ * @internal
+ */
 @Directive()
 export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnDestroy {
   abstract data: any[];
@@ -12,7 +15,7 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
 
   constructor(
     readonly builderUiService: IPEmailBuilderUiService,
-    @Host() readonly dropList: CdkDropList
+    @Host() readonly dropList?: CdkDropList
   ) {
   }
 
@@ -27,6 +30,8 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
       this.dropList.autoScrollDisabled = false;
       this.#subscription.add(this.dropList.dropped.subscribe(event => this.dropListDropped(event)));
       this.dropListCollection.add(this.dropList);
+    } else {
+      console.warn('You must add [cdkDropList] directive to host element.')
     }
   }
 

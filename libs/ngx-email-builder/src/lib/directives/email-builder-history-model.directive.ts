@@ -4,6 +4,13 @@ import { debounceTime, distinctUntilChanged, filter, Subject, takeUntil } from "
 
 import { EmailBuilderHistoryHostDirective } from "./email-builder-history-host.directive";
 
+/**
+ * A simple directive that trigger "detectChanges" on root {@link EmailBuilderHistoryHostDirective} element once the formControl value has changed.
+ * Use only when if you want to add a record of this form element value onto history manager.
+ *
+ * It requires ngModel, formControl or any other directives that extends an {@link NgControl} class.
+ * @exportAs ipHistoryModel
+ */
 @Directive({
   selector: "[ipHistoryModel]",
   exportAs: "ipHistoryModel"

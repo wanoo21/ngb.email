@@ -20,9 +20,7 @@ export abstract class AIPTemplateList {
   }
 
   selectTemplate(category: string, template: string): void {
-    this.restService.tmplCategories$(category, template).pipe(
-      take(1)
-    ).subscribe(template => {
+    this.restService.tmplCategories$(category, template).pipe(take(1)).subscribe(template => {
       this.selected.next(template);
     });
   }

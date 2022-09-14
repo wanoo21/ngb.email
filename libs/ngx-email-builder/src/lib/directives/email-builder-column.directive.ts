@@ -4,6 +4,12 @@ import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-d
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 import { AbstractEmailBuilderDropList } from "./abstract-email-builder-drop-list";
 
+/**
+ * A directive which connects columns between each other.
+ * It requires to have [cdkDropList] directive to host or current element.
+ *
+ * @exportAs ipColumn
+ */
 @Directive({
   selector: "[ipEmailBuilderColumn]",
   exportAs: "ipColumn"
@@ -12,14 +18,17 @@ export class IPEmailBuilderColumnDirective extends AbstractEmailBuilderDropList 
   @Input("ipEmailBuilderColumn") data!: AIPEmailBuilderBlockExtendedOptions[];
   @HostBinding("class.column") withClass = true;
 
+  // A list of connected columns drop lists
   get connectedTo(): CdkDropList[] {
     return Array.from(this.builderUiService.columnsDropLists);
   }
 
+  // A list of all columns drop lists
   get dropListCollection() {
     return this.builderUiService.columnsDropLists;
-  };
+  }
 
+  // Add a new block inside current column
   dropListDropped(drop: CdkDragDrop<AIPEmailBuilderBlockExtendedOptions[]>) {
     const { previousContainer, container, previousIndex, currentIndex, item } = drop;
     if (this.builderUiService.columnsDropLists.has(previousContainer)) {
@@ -30,6 +39,8 @@ export class IPEmailBuilderColumnDirective extends AbstractEmailBuilderDropList 
   }
 
   ngDoCheck(): void {
-    this.dropList.connectedTo = this.connectedTo;
+    if (this.dropList) {
+      this.dropList.connectedTo = this.connectedTo;
+    }
   }
 }

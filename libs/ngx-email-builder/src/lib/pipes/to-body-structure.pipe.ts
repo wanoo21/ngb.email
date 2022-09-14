@@ -3,6 +3,11 @@ import { Pipe, PipeTransform } from "@angular/core";
 import { TStructureTypes } from "../interfaces";
 import { IStructure } from "../structure/structure";
 
+/**
+ * Return the right {@link TStructureTypes} based on {@link IStructure}.
+ *
+ * Most used for [cdkDragData] inside structure list.
+ */
 @Pipe({
   name: "toBodyStructure"
 })

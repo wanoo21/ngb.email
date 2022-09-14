@@ -4,6 +4,9 @@ import { TIPEmailBuilderStyles } from "../interfaces";
 import { IStructureOptions } from "../structure/structure";
 import { createBorder } from "../tools/utils";
 
+/**
+ * Return column styles based on index and {@link IStructureOptions}.
+ */
 @Pipe({
   name: "ipColumnStyles",
   pure: false

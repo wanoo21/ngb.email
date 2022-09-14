@@ -226,38 +226,12 @@ export interface IUserModule {
 }
 
 /**
- * Builder predefined ng-add interface.
- */
-// export interface IUserTemplate {
-//   id?: string;
-//   title: string;
-//   thumbPath: string;
-//   templateData: IIPEmail;
-// }
-
-/**
  * Builder Template Gallery templates interface.
  */
 export interface IUserTemplateCategory {
   category: string;
   templates: string[];
 }
-
-/**
- * Builder IMage Gallery images interface.
- */
-// export interface IUserImageCategory {
-//   category: string;
-//   images: string[];
-// }
-
-/**
- * Template Storage/Cache keys.
- */
-// export enum ETemplatesStorage {
-//   LATEST_USED = "NGB_LATEST_USED_TEMPLATES",
-//   STORAGE = "NGB_TEMP_TEMPLATES_STORAGE",
-// }
 
 
 export type TIPEmailBuilderStyles = Record<string, any>;

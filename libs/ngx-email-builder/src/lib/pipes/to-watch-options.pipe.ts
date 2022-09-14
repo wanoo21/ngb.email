@@ -5,6 +5,9 @@ import { AIPEmailBody } from "../core/Body";
 import { AIPStructure } from "../core/Structure";
 import { IIPOptionsHistoryContext } from "../directives/email-builder-history-host.directive";
 
+/**
+ * Transform current component options and send to [ipEmailBuilderHistoryHost] directive.
+ */
 @Pipe({
   name: "toHistoryOptions"
 })

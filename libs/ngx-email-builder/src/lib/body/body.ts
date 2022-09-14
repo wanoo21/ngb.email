@@ -27,6 +27,9 @@ export interface IIPEmail {
   structures: IStructure[];
 }
 
+/**
+ * Main email builder data structure.
+ */
 export class IPEmail {
   general: IGeneralOptions;
 

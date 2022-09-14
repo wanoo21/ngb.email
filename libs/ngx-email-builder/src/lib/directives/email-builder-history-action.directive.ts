@@ -1,9 +1,15 @@
 import { Directive, HostBinding, HostListener, Inject, Input } from "@angular/core";
+import { BooleanInput, coerceBooleanProperty } from "@angular/cdk/coercion";
 
 import { AIPEmailBuilderHistoryService } from "../services";
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../private-tokens";
-import { BooleanInput, coerceBooleanProperty } from "@angular/cdk/coercion";
 
+/**
+ * Implement Undo/Redo.
+ * Not ready yet to use.
+ *
+ * @exportAs ipHistory
+ */
 @Directive({
   selector: "[ipEmailBuilderHistoryAction]",
   exportAs: "ipHistory"

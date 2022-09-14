@@ -2,8 +2,10 @@ import { Pipe, PipeTransform } from "@angular/core";
 
 import { AIPEmailBuilderMiddlewareService } from "../services";
 
-// type KeyOfType<T, U> = { [P in keyof T]: T[P] extends U ? P : never }[keyof T]
-
+/**
+ * Transform data right in component's HTML based on some {@link AIPEmailBuilderMiddlewareService} methods.
+ * Allowed methods: "blocksList" | "structuresList" | "categoryList" | "categoryTemplates" | "templateThumbnail"
+ */
 @Pipe({
   name: "applyMiddleware"
 })

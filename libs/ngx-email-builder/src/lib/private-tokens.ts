@@ -36,6 +36,10 @@ export class IPEmailBuilderConfig {
     return !!this.defConfig.licenseKey && /^([(A-Z\d+)]{8}-){3}([(A-Z\d+)]{8})$/g.test(this.defConfig.licenseKey);
   }
 
+  get historyRecordLimit(): number {
+    return this.isFreeVersion ? 5 : this.defConfig.historyRecordLimit || 20;
+  }
+
   get isFreeVersion(): boolean {
     if (isDevMode()) {
       return !this.hasValidLicense;

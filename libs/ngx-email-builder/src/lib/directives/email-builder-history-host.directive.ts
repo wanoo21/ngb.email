@@ -7,11 +7,22 @@ import { AIPStructure } from "../core/Structure";
 import { TIPEmailBuilderStyles } from "../interfaces";
 import { AIPEmailBody } from "../core/Body";
 
+/**
+ * Context for history host element
+ */
 export interface IIPOptionsHistoryContext<T extends TIPEmailBuilderStyles = TIPEmailBuilderStyles> {
+  // Current host class
   cmp: AIPEmailBuilderBlock<T> | AIPStructure | AIPEmailBody,
+  // Object with elements to watch
   watch: T
 }
 
+/**
+ * This directive watches the options and make sure you don't leave without unsaved changes.
+ * Even though History Logic is not ready yet, it's important to use it as root settings element.
+ *
+ * @exportAs ipEmailBuilderHistoryHost
+ */
 @Directive({
   selector: "[ipEmailBuilderHistoryHost]",
   exportAs: "ipEmailBuilderHistoryHost"
@@ -24,6 +35,7 @@ export class EmailBuilderHistoryHostDirective implements OnInit {
     this.detectChanges(false);
   }
 
+  // Detect differences in options if user made some changes
   detectChanges(isAction: boolean): void {
     if (this.ipEmailBuilderHistoryHost) {
       const { cmp, watch } = this.ipEmailBuilderHistoryHost;

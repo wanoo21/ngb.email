@@ -14,10 +14,18 @@ import { CdkDrag } from "@angular/cdk/drag-drop";
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 
+// Default context for dynamic block.
 class IPEmailBuilderDynamicDirectiveContext {
+  // Newly created block.
   $implicit!: AIPEmailBuilderBlock;
 }
 
+/**
+ * Create and insert the block dynamically to the view.
+ * It requires to have [cdkDrag] directive on host or current element.
+ *
+ * @exportAs instance
+ */
 @Directive({
   selector: "[ipEmailBuilderDynamicBlockDirective]",
   exportAs: "instance"
@@ -34,7 +42,7 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
     readonly viewContainerRef: ViewContainerRef,
     readonly templateRef: TemplateRef<IPEmailBuilderDynamicDirectiveContext>,
     readonly differs: KeyValueDiffers,
-    @Host() readonly cdkDrag: CdkDrag
+    @Host() readonly cdkDrag?: CdkDrag
   ) {
   }
 
@@ -63,7 +71,9 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
 
   ngDoCheck(): void {
     if (this.#keyValueDiffers && this.#instance?.isCurrentlyEditing) {
-      this.cdkDrag.data = this.#instance.toObject();
+      if (this.cdkDrag) {
+        this.cdkDrag.data = this.#instance.toObject();
+      }
       // Update the incoming context with updated details
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { options, type, ...rest } = this.#instance.toObject();

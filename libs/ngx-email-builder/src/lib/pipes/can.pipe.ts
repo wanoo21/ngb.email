@@ -10,15 +10,15 @@ import {
 } from "../services";
 import { IStructure } from "../structure/structure";
 
-
+/**
+ * Check if end user can or can not perform an action based on {@link AIPEmailBuilderMiddlewareService.can} method.
+ */
 @Pipe({
   name: "ipCan"
 })
 export class IpCanPipe implements PipeTransform {
 
-  constructor(
-    readonly middleware: AIPEmailBuilderMiddlewareService
-  ) {
+  constructor(readonly middleware: AIPEmailBuilderMiddlewareService) {
   }
 
   transform(entity: AIPEmailBuilderBlockExtendedOptions, action: middlewareBlockActions): boolean;
