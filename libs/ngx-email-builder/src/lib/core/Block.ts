@@ -8,6 +8,7 @@ import { AIPEmailBuilderService } from "../services";
 import { WithSettings } from "./WithSettings";
 import { debounce, defaultsDeep, mergeObjects, randomString } from "../tools/utils";
 
+
 export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> extends Record<string, any> {
   options: T;
   type: string;
@@ -18,8 +19,8 @@ export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends With
   type!: string;
   abstract options: T;
   readonly id = randomString();
-  readonly builderService = inject(AIPEmailBuilderService);
-  readonly renderer2 = inject(Renderer2);
+  private readonly builderService = inject(AIPEmailBuilderService);
+  private readonly renderer2 = inject(Renderer2);
   @HostBinding("style")
   abstract hostStyles: TIPEmailBuilderStyles;
   #document = inject(DOCUMENT);
