@@ -1,13 +1,6 @@
 {
   "name": "@wlocalhost/ngx-email-builder",
   "version": "0.0.0",
-  "scripts": {
-    "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/libs/ngx-email-builder/"
-  },
-  "ng-add": {
-    "save": true
-  },
   "schematics": "./schematics/collection.json",
   "peerDependencies": {},
   "dependencies": {
