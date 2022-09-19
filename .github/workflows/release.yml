@@ -1,0 +1,33 @@
+on:
+  push:
+    branches:
+      - main
+      - beta
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Prerelease
+        if: github.ref_name === 'beta'
+        run: |
+          nx affected --exclude=bootstrap-email-builder --target version --dryRun --releaseAs=prerelease --preid=beta --trackDeps --push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release
+        if: github.ref_name === 'main'
+        run: |
+          nx affected --exclude=bootstrap-email-builder --target version --dryRun --trackDeps --push
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
