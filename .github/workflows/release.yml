@@ -20,14 +20,16 @@ jobs:
 
       - name: Prerelease
         if: github.ref_name == 'beta'
+        shell: bash
         run: |
-          nx affected --exclude=bootstrap-email-builder --target version --dryRun --releaseAs=prerelease --preid=beta --trackDeps --push
+          npx nx affected --exclude=bootstrap-email-builder --target version --dryRun --releaseAs=prerelease --preid=beta --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Release
         if: github.ref_name == 'main'
+        shell: bash
         run: |
-          nx affected --exclude=bootstrap-email-builder --target version --dryRun --trackDeps --push
+          npx nx affected --exclude=bootstrap-email-builder --target version --dryRun --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
