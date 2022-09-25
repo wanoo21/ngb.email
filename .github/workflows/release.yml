@@ -20,6 +20,7 @@ jobs:
         run: |
           git config user.name "GitHub Bot"
           git config user.email "support@wlocalhost.org"
+          git branch -a
 
       - name: Install deps
         run: npm ci
@@ -28,7 +29,6 @@ jobs:
         if: github.ref_name == 'beta'
         shell: bash
         run: |
-          git branch -b
           npx nx run-many --all --base=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
