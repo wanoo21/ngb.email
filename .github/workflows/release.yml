@@ -16,6 +16,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          cache: 'npm'
+
+      - name: Setup Git
+        run: |
+          git config user.name "GitHub Bot"
+          git config user.email "support@wlocalhost.org"
+          git branch -a
 
       - name: Install deps
         run: npm ci
