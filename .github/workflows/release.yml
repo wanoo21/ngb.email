@@ -22,6 +22,7 @@ jobs:
         run: |
           git config user.name "GitHub Bot"
           git config user.email "support@wlocalhost.org"
+          git fetch origin --recurse-submodules=no --progress --prune
           git branch -a
 
       - name: Install deps
@@ -34,7 +35,7 @@ jobs:
           npx nx run-many --all --base=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
         if: github.ref_name == 'main'
@@ -43,4 +44,4 @@ jobs:
           npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
