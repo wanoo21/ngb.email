@@ -16,6 +16,9 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@wlocalhost'
+          always-auth: true
 
       - name: Setup Git
         run: |
@@ -24,7 +27,10 @@ jobs:
           git branch -a
 
       - name: Install deps
-        run: npm ci
+        run: |
+          npm adduser
+          npm whoami
+          npm ci
 
       - name: Prerelease
         if: github.ref_name == 'beta'
