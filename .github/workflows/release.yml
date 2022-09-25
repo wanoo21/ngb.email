@@ -28,14 +28,13 @@ jobs:
 
       - name: Install deps
         run: |
-          npm adduser
-          npm whoami
           npm ci
 
       - name: Prerelease
         if: github.ref_name == 'beta'
         shell: bash
         run: |
+          npm whoami
           npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -45,6 +44,7 @@ jobs:
         if: github.ref_name == 'main'
         shell: bash
         run: |
+          npm whoami
           npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
