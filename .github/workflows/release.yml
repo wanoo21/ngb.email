@@ -13,7 +13,6 @@ jobs:
       - uses: actions/checkout@master
         with:
           fetch-depth: 0
-          ref: 'main'
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
@@ -22,7 +21,6 @@ jobs:
         run: |
           git config user.name "GitHub Bot"
           git config user.email "support@wlocalhost.org"
-          git fetch origin --recurse-submodules=no --progress --prune
           git branch -a
 
       - name: Install deps
@@ -32,7 +30,7 @@ jobs:
         if: github.ref_name == 'beta'
         shell: bash
         run: |
-          npx nx run-many --all --base=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push
+          npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
