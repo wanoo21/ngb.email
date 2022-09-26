@@ -26,7 +26,7 @@ export abstract class AIPEmailBuilderAside implements OnInit {
   readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
   // A list of DnD structures.
   readonly structures = (["cols_1", "cols_2", "cols_12", "cols_21", "cols_3", "cols_4", "cols_5", "cols_6"] as TStructureTypes[]).map(type => new Structure(type));
-  private readonly builderUiService = inject(IPEmailBuilderUiService);
+  readonly builderUiService = inject(IPEmailBuilderUiService);
   // Current active portal settings.
   readonly activeSettings$ = this.builderUiService.currentSettingsPortal$;
 
