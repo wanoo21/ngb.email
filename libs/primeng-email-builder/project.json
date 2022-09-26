@@ -61,7 +61,10 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "${tag}",
-        "notes": "${notes}"
+        "notes": "${notes}",
+        "files": [
+          "./libs/primeng-email-builder"
+        ]
       }
     }
   },

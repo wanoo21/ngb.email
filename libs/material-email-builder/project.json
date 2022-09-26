@@ -5,7 +5,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/material-email-builder"],
+      "outputs": [
+        "dist/libs/material-email-builder"
+      ],
       "options": {
         "project": "libs/material-email-builder/ng-package.json"
       },
@@ -21,7 +23,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/material-email-builder"],
+      "outputs": [
+        "coverage/libs/material-email-builder"
+      ],
       "options": {
         "jestConfig": "libs/material-email-builder/jest.config.ts",
         "passWithNoTests": true
@@ -57,7 +61,10 @@
       "executor": "@jscutlery/semver:github",
       "options": {
         "tag": "${tag}",
-        "notes": "${notes}"
+        "notes": "${notes}",
+        "files": [
+          "./libs/material-email-builder"
+        ]
       }
     }
   },
