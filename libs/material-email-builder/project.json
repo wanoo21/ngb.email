@@ -63,7 +63,7 @@
         "tag": "${tag}",
         "notes": "${notes}",
         "files": [
-          "./libs/material-email-builder"
+          "./libs/material-email-builder/*"
         ]
       }
     }
