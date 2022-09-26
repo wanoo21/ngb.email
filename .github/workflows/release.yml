@@ -35,7 +35,7 @@ jobs:
         shell: bash
         run: |
           npm whoami
-          npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push
+          npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push --skipCommit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -45,7 +45,7 @@ jobs:
         shell: bash
         run: |
           npm whoami
-          npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push
+          npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push --skipCommit
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
