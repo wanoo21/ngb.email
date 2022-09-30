@@ -11,12 +11,16 @@ export class IpEmailBuilderInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    const { xApiKey, isFreeVersion } = this.factory;
     if (request.url.startsWith("https://ngb-api.wlocalhost.org")) {
       // const notify = this.userInterface.notify('Loading, please wait ...', null, null);
       return next.handle(request.clone({
+          setParams: {
+            l: isFreeVersion ? "reg" : "pro"
+          },
           setHeaders: {
             "Content-Type": "application/json",
-            "X-Api-Key": this.factory.xApiKey
+            "X-Api-Key": xApiKey
           },
           responseType: "json"
         })
