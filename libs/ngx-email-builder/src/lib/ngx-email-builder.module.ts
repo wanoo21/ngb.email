@@ -24,7 +24,7 @@ import { IIPEmailBuilderConfig } from "./public-tokens";
 import { withConfig } from "./tools/core";
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens";
 import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
-import { EmailBuilderHistoryHostDirective } from './directives/email-builder-history-host.directive';
+import { EmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
 
 
 // https://github.com/jscutlery/semver

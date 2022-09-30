@@ -1,14 +1,4 @@
-import {
-  Directive,
-  EventEmitter,
-  HostBinding,
-  HostListener,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges
-} from "@angular/core";
+import { Directive, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from "@angular/core";
 import { BehaviorSubject, filter, takeUntil } from "rxjs";
 import { applyDiff } from "recursive-diff";
 
@@ -20,7 +10,7 @@ import { Structure } from "../structure/structure";
 import { IIPValueChanged } from "./ValueChanged";
 
 @Directive()
-export abstract class AIPEmailBody extends WithSettings implements OnInit, OnChanges, IIPValueChanged<IPEmail> {
+export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPValueChanged<IPEmail> {
   @Input() value!: IPEmail;
   @Output() valueChange = new EventEmitter<IPEmail>();
   contentPart$ = new BehaviorSubject<null | "templates">(null);
@@ -91,11 +81,6 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, OnCha
       this.valueChange.next(this.value);
       this.changeDetectorRef.markForCheck();
     });
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    // this.syncStructureDndList();
   }
 
   showTemplateList($event: Event): void {

@@ -1,6 +1,7 @@
 import { Directive, EventEmitter, HostListener, inject, Input, Output } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { Directionality } from "@angular/cdk/bidi";
+import { getDiff } from "recursive-diff";
 
 import { AIPEmailBuilderHistoryService, AIPEmailBuilderMiddlewareService, AIPEmailBuilderService } from "./services";
 import { IPEmail } from "./body/body";
@@ -12,10 +13,24 @@ export abstract class AIPEmailBuilderComponent {
   @Output() afterSave = new EventEmitter<IMjmlServerResponse>();
   readonly historyService = inject(AIPEmailBuilderHistoryService);
   readonly direction = inject(Directionality);
-  @Input() value = new IPEmail([], { direction: this.direction.value });
   readonly emailBuilderService = inject(AIPEmailBuilderService);
   readonly middlewareService = inject(AIPEmailBuilderMiddlewareService);
   readonly screen = new BehaviorSubject<"preview" | null>(null);
+
+  private _value = new IPEmail([], { direction: this.direction.value });
+
+  get value(): IPEmail {
+    return this._value;
+  }
+
+  @Input()
+  set value(value: IPEmail) {
+    this._value = value;
+    const diff = getDiff(value, this._value);
+    if (diff.length) {
+      this.valueChange.next(value);
+    }
+  }
 
   async convert(): Promise<void> {
     if (!this.value.structures.length) {
