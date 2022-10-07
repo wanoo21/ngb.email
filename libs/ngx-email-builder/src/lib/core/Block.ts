@@ -15,14 +15,14 @@ export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> ex
 }
 
 @Directive()
-export abstract class AIPEmailBuilderBlock<T = Record<string, any>> extends WithSettings implements OnInit, OnDestroy {
+export abstract class AIPEmailBuilderBlock<T extends Record<string, any> = Record<string, any>> extends WithSettings implements OnInit, OnDestroy {
   type!: string;
   abstract options: T;
   readonly id = randomString();
-  private readonly builderService = inject(AIPEmailBuilderService);
-  private readonly renderer2 = inject(Renderer2);
   @HostBinding("style")
   abstract hostStyles: TIPEmailBuilderStyles;
+  private readonly builderService = inject(AIPEmailBuilderService);
+  private readonly renderer2 = inject(Renderer2);
   #document = inject(DOCUMENT);
   #googleFontLink = this.#document.createElement("link");
   #addFontToHead = debounce((family: string) => {

@@ -25,8 +25,8 @@ export abstract class AIPEmailBuilderComponent {
 
   @Input()
   set value(value: IPEmail) {
+    const diff = getDiff(this._value, value);
     this._value = value;
-    const diff = getDiff(value, this._value);
     if (diff.length) {
       this.valueChange.next(value);
     }
