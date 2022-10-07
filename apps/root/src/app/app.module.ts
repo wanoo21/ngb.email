@@ -6,12 +6,7 @@ import { CommonModule } from "@angular/common";
 import { NgxEmailBuilderModule } from "@wlocalhost/ngx-email-builder";
 
 import { AppComponent } from "./app.component";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatListModule } from "@angular/material/list";
-import { MatButtonModule } from "@angular/material/button";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatChipsModule } from "@angular/material/chips";
-import { MatTooltipModule } from "@angular/material/tooltip";
+import { SharedModule } from "./shared/shared.module";
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,26 +19,36 @@ import { MatTooltipModule } from "@angular/material/tooltip";
       [
         {
           path: "",
-          loadChildren: () => import( "./demo-builders/primeng-email-builder/primeng-builder.module" ).then((m) => m.PrimengBuilderModule),
-          pathMatch: "full"
+          loadComponent: () =>
+            import("./pages/index/index.component").then(
+              (c) => c.IndexComponent
+            ),
+          children: [
+            {
+              path: "",
+              loadComponent: () =>
+                import("./pages/index/v14-info/v14-info.component").then(
+                  (c) => c.V14InfoComponent
+                )
+            },
+            {
+              path: "v9",
+              loadComponent: () =>
+                import("./pages/index/v9-info/v9-info.component").then(
+                  (c) => c.V9InfoComponent
+                )
+            }
+          ]
         },
         {
-          path: "tail",
-          loadChildren: () => import( "./demo-builders/tailwind-email-builder/tail-email-builder.module" ).then((m) => m.TailEmailBuilderModule)
-        },
-        {
-          path: "material",
-          loadChildren: () => import( "./demo-builders/material-email-builder/md-email-builder.module" ).then((m) => m.MdEmailBuilderModule)
+          path: "demo",
+          loadChildren: () =>
+            import("./pages/demo/demo.module").then((m) => m.DemoModule)
         }
       ],
       { initialNavigation: "enabledBlocking" }
     ),
-    MatToolbarModule,
-    MatListModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatChipsModule,
-    MatTooltipModule
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

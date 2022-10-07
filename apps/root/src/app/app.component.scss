@@ -1,7 +1,7 @@
 :host {
   display: block;
 
-  button.active {
+ ::ng-deep button.active {
     background: rgba(0, 0, 0, .2);
   }
 }

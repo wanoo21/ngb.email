@@ -1,0 +1,13 @@
+:host {
+  display: block;
+
+  h1 {
+    @apply mb-2 leading-tight;
+  }
+
+  .code-example {
+    h6 {
+      @apply text-xs font-bold mb-0;
+    }
+  }
+}

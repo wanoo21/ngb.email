@@ -1,49 +1,24 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <div class="flex flex-col">
-      <h1 class="mat-h1">Demo builder</h1>
-      <p class="mat-caption m-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-        Aperiam,
-        atque dolorem
-        et
-        eum fuga laboriosam laborum magnam molestias mollitia numquam odit quaerat ratione.</p>
+<mat-toolbar color="primary" class="mat-elevation-z4 sticky top-0">
+  <mat-toolbar-row class="m-auto max-w-screen-xl min-h-fit">
+    <button mat-button routerLink="/">LOGO</button>
+    <div class="ml-4 flex gap-2">
+      <button mat-button routerLink="/" routerLinkActive="active">Documentation</button>
+      <button mat-button routerLink="/demo" routerLinkActive="active">MJML Converter</button>
+      <button mat-button routerLink="/demo" routerLinkActive="active">Become Partner</button>
+      <button mat-button routerLink="/demo" routerLinkActive="active">Themes Demonstrations</button>
     </div>
-    <span class="ml-auto"></span>
-    <div class="flex gap-2">
-      <button mat-button routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        Primeng
-      </button>
-      <button mat-button routerLink="/tail" routerLinkActive="active">Tailwind</button>
-      <button mat-button routerLink="/material" routerLinkActive="active">Material</button>
+    <div class="ml-auto flex gap-2">
+      <button mat-button>Store</button>
+      <button mat-button>NPM</button>
+      <button mat-button>Help</button>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<div class="flex flex-wrap px-4 py-3 gap-2 mat-elevation-z4">
-  <div class="flex gap-2 text-gray-500" *ngIf="skinService.skins$ | async as skins">
-    <span class="self-center">Skins:</span>
-    <mat-chip-list aria-label="Skin selection">
-      <ng-container *ngFor="let skin of skins; let index = index">
-        <mat-chip color="accent" style="cursor: pointer"
-                  (click)="skinService.setActiveSkin(skin)"
-                  [selected]="(skinService.activeSkin$ | async) === skin"
-                  [matTooltip]="skin"
-        >
-          {{index + 1}}
-        </mat-chip>
-      </ng-container>
-    </mat-chip-list>
-    <span class="self-center">{{skinService.activeSkin$ | async}}</span>
-  </div>
-  <span class="ml-auto"></span>
-  <div class="flex gap-2">
-    <button mat-flat-button color="accent">Subscribe now</button>
-    <mat-divider vertical></mat-divider>
-    <ins
-      class="text-xs bg-stone-800 text-gray-100 px-3 py-1.5 rounded border-1 font-light no-underline select-all self-center">
-      npm i @wlocalhost/primeng-email-builder
-    </ins>
-  </div>
-</div>
-
 <router-outlet></router-outlet>
+
+<footer class="mat-toolbar mat-primary py-2">
+  <div class="m-auto max-w-screen-xl min-h-fit text-center">
+<!--    <p class="mat-caption">@Copyright NgComma SRL</p>-->
+  </div>
+</footer>
