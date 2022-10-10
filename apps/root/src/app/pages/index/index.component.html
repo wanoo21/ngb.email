@@ -51,12 +51,12 @@
     <nav mat-tab-nav-bar backgroundColor="accent" [tabPanel]="tabPanel" mat-align-tabs="center">
       <ng-container *ngFor="let link of links">
         <a mat-tab-link [routerLink]="link.link" (click)="activeLink = link"
-           [active]="activeLink === link"> {{link.label}} </a>
+           [active]="activeLink === link">{{link.label}}</a>
       </ng-container>
     </nav>
   </div>
 </header>
 
-<mat-tab-nav-panel #tabPanel class="block m-auto max-w-screen-xl min-h-fit p-4 mat-body">
+<mat-tab-nav-panel #tabPanel class="block m-auto max-w-screen-xl min-h-fit mat-body bg-white text-gray-700">
   <router-outlet></router-outlet>
 </mat-tab-nav-panel>

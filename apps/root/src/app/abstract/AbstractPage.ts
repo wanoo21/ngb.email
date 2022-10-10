@@ -11,6 +11,7 @@ export abstract class AbstractPage {
   readonly title = inject(Title);
 
   @HostBinding("class.mat-typography") defaultTypography = true;
+  @HostBinding("class.bg-gray-200") defaultBg = true;
 
   protected constructor(title: string, description: string) {
     this.title.setTitle(title);

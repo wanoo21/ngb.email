@@ -2,6 +2,8 @@
 @use '@angular/material' as mat;
 @use 'sass:map';
 
+@tailwind base;
+@tailwind components;
 @tailwind utilities;
 @include mat.core();
 
@@ -25,14 +27,10 @@ $dark-theme: mat.define-dark-theme((
   )
 ));
 
-html,
-body {
-  height: 100%;
-}
-
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+@layer base {
+  body {
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  }
 }
 
 @include mat.all-component-themes($light-theme);
