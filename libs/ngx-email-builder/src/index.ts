@@ -6,6 +6,7 @@ export * from "./lib/services/email-builder-service/email-builder.service";
 export * from "./lib/services/email-builder-storage-service/email-builder-storage.service";
 export * from "./lib/services/email-builder-middleware-service/email-builder-middleware.service";
 export * from "./lib/services/email-builder-rest-service/email-builder-rest.service";
+export * from "./lib/services/email-builder-history-service/email-builder-history.service";
 
 // Default blocks blocks
 export * from "./lib/blocks/text-block/text.block";
