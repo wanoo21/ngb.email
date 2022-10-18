@@ -1,5 +1,9 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
+import { MatButtonModule } from "@angular/material/button";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from "@angular/material/input";
 
 @Component({
   selector: "wlocalhost-v14-info",
@@ -7,7 +11,11 @@ import { MatCardModule } from "@angular/material/card";
   styleUrls: ["./v14-info.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    MatCardModule
+    MatCardModule,
+    MatButtonModule,
+    MatExpansionModule,
+    FormsModule,
+    MatInputModule
   ],
   standalone: true
 })

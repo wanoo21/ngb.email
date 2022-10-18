@@ -122,7 +122,7 @@
           </div>
           <div class="flex-1">
             <h5 class="mb-0 text-gray-700">Step 3</h5>
-            <h4 class="mat-h1 mb-0">Enjoy!</h4>
+            <h4 class="mat-h1 mb-0">Build email template!</h4>
           </div>
         </div>
         <p>This card has divider and indeterminate progress as footer</p>
@@ -135,34 +135,80 @@
 </section>
 
 <section class="pb-16 pt-10 px-4 bg-[#3f51b5] text-white">
-  <h3 class="mat-h2 uppercase">Just one simple license</h3>
-  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis natus
-    necessitatibus!
-    Architecto, aut consequuntur dolorem eius eligendi et expedita explicabo laborum magni modi molestias natus
-    perspiciatis provident.</p>
+  <h3 class="mat-h2 uppercase">Just one license</h3>
+  <div class="grid md:grid-cols-3 gap-2">
+    <p class="col-span-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis
+      natus
+      necessitatibus!
+      Architecto, aut consequuntur dolorem eius eligendi et expedita explicabo laborum magni modi molestias natus
+      perspiciatis provident.</p>
+    <div class="flex flex-col items-center gap-4 col-span-1">
+      <a href="#" mat-flat-button>Buy License for $700/year</a>
+      <a href="#" mat-button>Try for free</a>
+    </div>
+  </div>
 </section>
 
+<!--<section class="pb-16 pt-10 px-4">-->
+<!--  <h3 class="mat-h2 uppercase">See what others are saying</h3>-->
+<!--  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis natus-->
+<!--    necessitatibus!-->
+<!--    Architecto, aut consequuntur dolorem eius eligendi et expedita explicabo laborum magni modi molestias natus-->
+<!--    perspiciatis provident.</p>-->
+<!--</section>-->
+
 <section class="pb-16 pt-10 px-4">
-  <h3 class="mat-h2 uppercase">See what others are saying</h3>
-  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis natus
-    necessitatibus!
-    Architecto, aut consequuntur dolorem eius eligendi et expedita explicabo laborum magni modi molestias natus
-    perspiciatis provident.</p>
+  <h3 class="mat-h2 uppercase">Frequently Asked Questions</h3>
+  <div class="grid md:grid-cols-2 gap-4">
+    <mat-accordion class="col-span-1">
+      <mat-expansion-panel expanded>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            This is the expansion title
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>This is the primary content of the panel.</p>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Self aware panel
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>I'm visible because I am open</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+    <div class="col-span-1 flex flex-col gap-4 items-start">
+      <h4 class="mat-h2">Are there any questions or do you think there is a lack of flexibility in the
+        functionality?</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias aliquid atque debitis dolores earum
+        fugiat impedit in ipsam itaque magni maxime nam natus quam, quos repellendus repudiandae rerum ut!</p>
+      <a mat-flat-button color="accent" href="#">support@ngb.email</a>
+      <img src="/assets/payments-logos-copy.png" alt="Payments Logo" class="w-6/12">
+      <small>Guaranteed SAFE Checkout by Stripe. We use SSL encryption to protect your personal information, including
+        your credit card information.</small>
+    </div>
+  </div>
 </section>
 
 <section class="pb-16 pt-10 px-4 bg-[#3f51b5] text-white">
-  <h3 class="mat-h2 uppercase">Frequently Asked Questions</h3>
-  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis natus
-    necessitatibus!
-    Architecto, aut consequuntur dolorem eius eligendi et expedita explicabo laborum magni modi molestias natus
-    perspiciatis provident.</p>
-</section>
-
-<section class="pb-16 pt-10 px-4">
   <h3 class="mat-h2 uppercase">Not ready yet? Let's be in touch</h3>
-  <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis natus
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur ducimus eaque facilis natus
     necessitatibus!
     Architecto, aut consequuntur dolorem eius eligendi et expedita explicabo laborum magni modi molestias natus
     perspiciatis provident.</p>
-  <p>subscription form</p>
+
+  <div class="p-4 rounded bg-white w-6/12 mx-auto mt-16 text-gray-700">
+    <form action="https://app.gumroad.com/follow_from_embed_form" method="post">
+      <input type="hidden" name="seller_id" value="3894180114352" />
+      <div class="flex flex-col items-start w-full gap-4">
+        <mat-form-field appearance="outline" class="w-full">
+          <mat-label>Your email address</mat-label>
+          <input matInput type="email" name="email" required />
+          <mat-hint>No SPAM, we promise.</mat-hint>
+        </mat-form-field>
+        <button mat-flat-button type="submit" color="accent">Follow Us</button>
+      </div>
+    </form>
+  </div>
 </section>
