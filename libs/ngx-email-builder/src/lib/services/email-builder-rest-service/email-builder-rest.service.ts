@@ -1,10 +1,11 @@
 import { inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { Observable } from "rxjs";
+import { Observable, tap } from "rxjs";
 
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
 import { IIPEmail, IPEmail } from "../../body/body";
 import { IMjmlServerResponse, IUserTemplateCategory } from "../../interfaces";
+import { AIPEmailBuilderHistoryService } from "../email-builder-history-service/email-builder-history.service";
 
 @Injectable({
   providedIn: "root",
@@ -24,10 +25,16 @@ import { IMjmlServerResponse, IUserTemplateCategory } from "../../interfaces";
 })
 export abstract class AIPEmailBuilderRestService {
   readonly http = inject(HttpClient);
+  readonly historyService = inject(AIPEmailBuilderHistoryService);
   readonly #convertorPath = inject(IP_EMAIL_BUILDER_CONFIG).convertorPath;
 
   convert(email: IPEmail): Observable<IMjmlServerResponse> {
-    return this.http.post<IMjmlServerResponse>(this.#convertorPath, email);
+    return this.http.post<IMjmlServerResponse>(this.#convertorPath, email).pipe(
+      tap(() => {
+        // Clear all history records after successfully converted
+        this.historyService.clear();
+      })
+    );
   }
 
   tmplCategories$(): Observable<IUserTemplateCategory[]>;
