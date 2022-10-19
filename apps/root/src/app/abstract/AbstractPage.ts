@@ -13,8 +13,16 @@ export abstract class AbstractPage {
   @HostBinding("class.mat-typography") defaultTypography = true;
   @HostBinding("class.bg-gray-200") defaultBg = true;
 
-  protected constructor(title: string, description: string) {
-    this.title.setTitle(title);
+  protected constructor(title?: string, description?: string, withPrefix?: boolean) {
+    title && this.setTitle(title, withPrefix);
+    description && this.setDescription(description);
+  }
+
+  setTitle(title: string, withPrefix = true): void {
+    this.title.setTitle(`${title} ${withPrefix ? `| WYSIWYG Email Template Editor` : ""}`);
+  }
+
+  setDescription(description: string): void {
     this.meta.updateTag({ name: "description", content: description });
   }
 }

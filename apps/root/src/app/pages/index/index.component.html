@@ -10,8 +10,8 @@
         <br>
         Email Template Builder
       </h1>
-      <h2 class="mat-h1 uppercase">Build by developers, made for developers!</h2>
-      <p class="text-sm font-light">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus animi at, autem
+      <h2 class="mat-h1 uppercase">Build by developers for developers!</h2>
+      <p class="text-sm font-light">Here must be MJML keyword consectetur adipisicing elit. Accusamus animi at, autem
         consectetur dolorem exercitationem, Lorem ipsum dolor sit amet, consectetur adipisicing</p>
     </div>
     <div class="flex-col gap-2 code-example">
@@ -42,8 +42,8 @@
         </div>
       </div>
       <div class="flex gap-2 justify-end">
-        <button mat-button>Demonstration</button>
-        <button mat-flat-button>Buy the License</button>
+        <button mat-button>Tell me more</button>
+        <button mat-flat-button>License for $700/year</button>
       </div>
     </div>
   </div>
@@ -57,6 +57,8 @@
   </div>
 </header>
 
-<mat-tab-nav-panel #tabPanel class="block m-auto max-w-screen-xl min-h-fit mat-body bg-white text-gray-700">
-  <router-outlet></router-outlet>
-</mat-tab-nav-panel>
+<mat-drawer-container>
+  <mat-tab-nav-panel #tabPanel class="block m-auto max-w-screen-xl min-h-fit mat-body bg-white text-gray-700">
+    <router-outlet></router-outlet>
+  </mat-tab-nav-panel>
+</mat-drawer-container>

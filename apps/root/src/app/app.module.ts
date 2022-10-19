@@ -19,31 +19,33 @@ import { SharedModule } from "./shared/shared.module";
       [
         {
           path: "",
-          loadComponent: () =>
-            import("./pages/index/index.component").then(
-              (c) => c.IndexComponent
-            ),
+          loadComponent: () => import("./pages/index/index.component").then(({ IndexComponent }) => IndexComponent),
           children: [
             {
               path: "",
-              loadComponent: () =>
-                import("./pages/index/v14-info/v14-info.component").then(
-                  (c) => c.V14InfoComponent
-                )
+              loadComponent: () => import("./pages/index/v14-info/v14-info.component").then((c) => c.V14InfoComponent)
             },
             {
               path: "v9",
-              loadComponent: () =>
-                import("./pages/index/v9-info/v9-info.component").then(
-                  (c) => c.V9InfoComponent
-                )
+              loadComponent: () => import("./pages/index/v9-info/v9-info.component").then((c) => c.V9InfoComponent)
             }
           ]
         },
         {
           path: "demo",
-          loadChildren: () =>
-            import("./pages/demo/demo.module").then((m) => m.DemoModule)
+          loadChildren: () => import("./pages/demo/demo.module").then(({ DemoModule }) => DemoModule)
+        },
+        {
+          path: "converter",
+          loadComponent: () => import("./pages/converter/converter.component").then(({ ConverterComponent }) => ConverterComponent)
+        },
+        {
+          path: "documentation",
+          loadComponent: () => import("./pages/docs/docs.component").then(({ DocsComponent }) => DocsComponent)
+        },
+        {
+          path: "templates",
+          loadComponent: () => import("./pages/templates/templates.component").then(({ TemplatesComponent }) => TemplatesComponent)
         }
       ],
       { initialNavigation: "enabledBlocking" }

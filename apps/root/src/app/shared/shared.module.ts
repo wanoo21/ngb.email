@@ -7,9 +7,15 @@ import { MatMenuModule } from "@angular/material/menu";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatSidenavModule } from "@angular/material/sidenav";
+
+import { InnerPageComponent } from "../components/inner-page/inner-page.component";
 
 @NgModule({
-  declarations: [],
+  declarations: [InnerPageComponent],
+  imports: [
+    MatSidenavModule
+  ],
   exports: [
     CommonModule,
     MatToolbarModule,
@@ -18,7 +24,9 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
     MatMenuModule,
     MatChipsModule,
     MatTooltipModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    InnerPageComponent,
+    MatSidenavModule
   ]
 })
 export class SharedModule {
