@@ -3,6 +3,7 @@ import { CdkDragDrop, CdkDropList, transferArrayItem } from "@angular/cdk/drag-d
 
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 import { AbstractEmailBuilderDropList } from "./abstract-email-builder-drop-list";
+import { cloneDeep } from "../tools/utils";
 
 /**
  * A directive which connects columns between each other.
@@ -34,7 +35,7 @@ export class IPEmailBuilderColumnDirective extends AbstractEmailBuilderDropList 
     if (this.builderUiService.columnsDropLists.has(previousContainer)) {
       transferArrayItem(previousContainer.data, container.data, previousIndex, currentIndex);
     } else {
-      container.data.splice(currentIndex, 0, item.data);
+      container.data.splice(currentIndex, 0, cloneDeep(item.data));
     }
   }
 
