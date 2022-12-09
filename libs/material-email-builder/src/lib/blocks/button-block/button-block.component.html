@@ -18,9 +18,13 @@
       <mat-expansion-panel-header>
         <mat-panel-title i18n="@@block_styles">Styles</mat-panel-title>
       </mat-expansion-panel-header>
+      <h2 mdH3 i18n="@@button_color">Color</h2>
+      <div mdPanel>
+        <md-color [(value)]="options.color" allowTransparent="false"></md-color>
+      </div>
       <h2 mdH3 i18n="@@button_block_background_color">Background color</h2>
       <div mdPanel>
-        <md-color [(value)]="options.backgroundColor"></md-color>
+        <md-color [(value)]="options.backgroundColor" allowTransparent="false"></md-color>
       </div>
       <h2 mdH3 i18n="@@border">Border</h2>
       <div mdPanel>
