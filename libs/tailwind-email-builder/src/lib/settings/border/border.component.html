@@ -1,4 +1,4 @@
-<tail-color [(value)]="value.color" *ngIf="hasOwn('color')"></tail-color>
+<tail-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></tail-color>
 
 <div class="flex gap-2 mt-2">
   <input type="number" tailInput [(ngModel)]="ngValue.width" *ngIf="hasOwn('width')" placeholder="Width"
