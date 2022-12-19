@@ -54,6 +54,7 @@ export * from "./lib/pipes/apply-middleware.pipe";
 export * from "./lib/pipes/can.pipe";
 export * from "./lib/pipes/preview-link.pipe";
 export * from "./lib/pipes/social-path.pipe";
+export * from "./lib/pipes/template-thumb-path.pipe";
 export * from "./lib/pipes/to-body-block.pipe";
 export * from "./lib/pipes/to-body-structure.pipe";
 export * from "./lib/pipes/to-watch-options.pipe";

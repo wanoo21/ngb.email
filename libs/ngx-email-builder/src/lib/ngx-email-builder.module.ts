@@ -25,6 +25,7 @@ import { withConfig } from "./tools/core";
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens";
 import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
 import { EmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
+import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
 
 
 // https://github.com/jscutlery/semver
@@ -47,7 +48,7 @@ import { EmailBuilderHistoryHostDirective } from "./directives/email-builder-his
     IPHistoryModelDirective,
     EmailBuilderHistoryHostDirective
   ],
-  imports: [CommonModule, PortalModule, FormsModule, HttpClientModule],
+  imports: [CommonModule, PortalModule, FormsModule, HttpClientModule, TemplateThumbPathPipe],
   exports: [
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
@@ -66,7 +67,8 @@ import { EmailBuilderHistoryHostDirective } from "./directives/email-builder-his
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
     IPHistoryModelDirective,
-    EmailBuilderHistoryHostDirective
+    EmailBuilderHistoryHostDirective,
+    TemplateThumbPathPipe
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: IpEmailBuilderInterceptor, multi: true }
