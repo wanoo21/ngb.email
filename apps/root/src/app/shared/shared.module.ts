@@ -8,13 +8,18 @@ import { MatChipsModule } from "@angular/material/chips";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { MatSidenavModule } from "@angular/material/sidenav";
-
+import { SanitizePipe } from "../pipes/sanitize.pipe";
+import { RouterLinkActive, RouterLinkWithHref } from "@angular/router";
 import { InnerPageComponent } from "../components/inner-page/inner-page.component";
 
 @NgModule({
-  declarations: [InnerPageComponent],
+  declarations: [],
   imports: [
-    MatSidenavModule
+    MatSidenavModule,
+    SanitizePipe,
+    RouterLinkWithHref,
+    RouterLinkActive,
+    InnerPageComponent
   ],
   exports: [
     CommonModule,
@@ -25,8 +30,11 @@ import { InnerPageComponent } from "../components/inner-page/inner-page.componen
     MatChipsModule,
     MatTooltipModule,
     MatSnackBarModule,
-    InnerPageComponent,
-    MatSidenavModule
+    MatSidenavModule,
+    SanitizePipe,
+    RouterLinkWithHref,
+    RouterLinkActive,
+    InnerPageComponent
   ]
 })
 export class SharedModule {

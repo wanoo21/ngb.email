@@ -5,6 +5,7 @@
 import { Directive, HostBinding, inject } from "@angular/core";
 import { Meta, Title } from "@angular/platform-browser";
 
+
 @Directive()
 export abstract class AbstractPage {
   readonly meta = inject(Meta);

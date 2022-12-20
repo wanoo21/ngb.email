@@ -38,3 +38,7 @@ $dark-theme: mat.define-dark-theme((
 @media (prefers-color-scheme: dark) {
   @include mat.all-component-colors($dark-theme);
 }
+
+pre {
+  @apply m-2 p-2 bg-black text-white text-sm rounded select-all;
+}

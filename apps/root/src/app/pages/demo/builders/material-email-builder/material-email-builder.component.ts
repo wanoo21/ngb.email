@@ -30,7 +30,7 @@ import { AbstractDemoEmailBuilder } from "../abstract-demo-email-builder";
 export class MaterialEmailBuilderComponent extends AbstractDemoEmailBuilder {
   override skins = ["deeppurple-amber", "indigo-pink", "pink-bluegrey", "purple-green"];
   override skinTheme = "https://cdn.jsdelivr.net/npm/@angular/material@14.1.0/prebuilt-themes/{skin}.css";
-  email = new IPEmail();
+  email = new IPEmail([], { name: "New name" });
   npmName = "@wlocalhost/ngx-md-email-builder";
   title = "Angular Material Email Template Builder";
   description = "An Angular Material email builder with different skins";

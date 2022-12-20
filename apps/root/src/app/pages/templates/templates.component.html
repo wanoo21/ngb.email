@@ -1,3 +1,21 @@
 <wlocalhost-inner-page>
-  Templates
+  <div class="grid gap-2 grid-cols-4">
+    <mat-action-list class="col-span-1">
+      <ng-container *ngFor="let category of categories$ | async">
+        <button mat-list-item (click)="changeTemplates(category)">{{category.category | titlecase}}</button>
+      </ng-container>
+    </mat-action-list>
+
+    <div class="col-span-3">
+      <div class="grid grid-cols-4 gap-2" *ngIf="templates$ | async as templates; else emptyCategory">
+        <ng-container *ngFor="let template of templates">
+          <img [attr.src]="template | templateThumbPath" alt="" class="w-100">
+        </ng-container>
+      </div>
+    </div>
+  </div>
 </wlocalhost-inner-page>
+
+<ng-template #emptyCategory>
+  <p>No templates found for this category yet.</p>
+</ng-template>

@@ -1,9 +1,9 @@
-import { NgModule } from "@angular/core";
+import { inject, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { CommonModule } from "@angular/common";
-import { NgxEmailBuilderModule } from "@wlocalhost/ngx-email-builder";
+import { AIPEmailBuilderRestService, NgxEmailBuilderModule } from "@wlocalhost/ngx-email-builder";
 
 import { AppComponent } from "./app.component";
 import { SharedModule } from "./shared/shared.module";
@@ -45,7 +45,12 @@ import { SharedModule } from "./shared/shared.module";
         },
         {
           path: "templates",
-          loadComponent: () => import("./pages/templates/templates.component").then(({ TemplatesComponent }) => TemplatesComponent)
+          loadComponent: () => import("./pages/templates/templates.component").then(({ TemplatesComponent }) => TemplatesComponent),
+          resolve: {
+            categories: () => {
+              return inject(AIPEmailBuilderRestService).tmplCategories$();
+            }
+          }
         }
       ],
       { initialNavigation: "enabledBlocking" }
