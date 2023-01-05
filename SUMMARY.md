@@ -1,14 +1,13 @@
 # Table of contents
 
+* [⭐ Getting Started](README.md)
+  * [A brief introduction](getting-started/a-brief-introduction.md)
+
 ## ✈ Services
 
-* [Page 2](README.md)
-
-***
-
-* [⭐ Getting Started](getting-started/README.md)
-  * [A brief introduction](getting-started/a-brief-introduction.md)
-  * [Middleware service](getting-started/middleware-service.md)
+* [A brief introduction](services/a-brief-introduction.md)
+* [UI Service](services/ui-service.md)
+* [Middleware service](services/middleware-service.md)
 
 ## 🏫 Custom Templates
 
