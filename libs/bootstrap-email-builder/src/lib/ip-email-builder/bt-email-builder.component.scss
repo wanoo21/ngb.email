@@ -1,0 +1,81 @@
+:root {
+  --ip-email-builder-host-height: 100vh;
+}
+
+:host {
+  display: block;
+  height: var(--ip-email-builder-host-height, 100vh);
+}
+
+::ng-deep {
+  .is-editing:not(tail-email-body) {
+    @apply ring-2 ring-pink-400/50 ring-offset-2 z-10;
+  }
+
+  img {
+    //border-radius: 3px;
+
+    @apply rounded transition-all;
+
+    &.active {
+      @apply rounded-xl;
+    }
+
+    &.facebook {
+      background-color: #3a5898;
+    }
+
+    &.twitter {
+      background-color: #d95988;
+    }
+
+    &.github {
+      background-color: #000000;
+    }
+
+    &.instagram {
+      background-color: #3f729b;
+    }
+
+    &.web {
+      background-color: #4bade9;
+    }
+
+    &.snapchat {
+      background-color: #fffa54;
+    }
+
+    &.youtube {
+      background-color: #ea3323;
+    }
+
+    &.vimeo {
+      background-color: #53b4e7;
+    }
+
+    &.medium {
+      background-color: #000000;
+    }
+
+    &.soundcloud {
+      background-color: #ef7f31;
+    }
+
+    &.pinterest {
+      background-color: #bd071c;
+    }
+
+    &.linkedin {
+      background-color: #0077b5;
+    }
+
+    &.tumblr {
+      background-color: #334356;
+    }
+
+    &.xing {
+      background-color: #296365;
+    }
+  }
+}
+

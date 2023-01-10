@@ -1,0 +1,9 @@
+<div class="grid grid-cols-5 gap-2">
+  <div class="col-span-4 flex flex-col">
+    <label [btLabel]="i" i18n="@@image_source">Image source</label>
+    <input type="url" #i="input" btInput [(ngModel)]="value" placeholder="https://...">
+  </div>
+  <div class="col-span-1 rounded border overflow-hidden bg-white">
+    <img [src]="i.el.value" alt="" class="w-full h-full" *ngIf="i.el.value.length">
+  </div>
+</div>

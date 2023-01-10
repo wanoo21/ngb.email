@@ -1,0 +1,12 @@
+<div [ngStyle]="borderStyles"></div>
+
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <h2 btH2 i18n="@@divider_color">Divider Color</h2>
+  <div btPanel>
+    <bt-border [(value)]="options.border"></bt-border>
+  </div>
+  <h2 btH2 i18n="@@padding">Padding</h2>
+  <div btPanel>
+    <bt-padding [(value)]="options.padding"></bt-padding>
+  </div>
+</ng-container>

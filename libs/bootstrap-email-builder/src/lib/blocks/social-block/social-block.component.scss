@@ -1,0 +1,7 @@
+:host {
+  display: block;
+
+  .network {
+    @apply flex items-center;
+  }
+}

@@ -1,0 +1,6 @@
+<div class="grid grid-cols-2 gap-2">
+  <div class="flex flex-col" *ngFor="let key of marginKeys">
+    <label [btLabel]="i">{{getMarginLabel(key)}}</label>
+    <input btInput #i="input" type="number" [(ngModel)]="value[key]">
+  </div>
+</div>
