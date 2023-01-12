@@ -39,6 +39,16 @@ export abstract class AIPEmailBuilderService {
     "Lucida Console, Monaco, monospace"
   ];
 
+  /**
+   * Convert IPEmail object to ready-to-use MJML and HTML
+   *
+   * @param value IPEmail object
+   * @returns Promise with MJML and Template
+   * @example
+   * ```ts
+   * const {mjml, html} = await this.emailBuilderService.convert(email);
+   * ```
+   */
   convert(value: IPEmail): Promise<IMjmlServerResponse> {
     return lastValueFrom(this.restService.convert(value));
   }

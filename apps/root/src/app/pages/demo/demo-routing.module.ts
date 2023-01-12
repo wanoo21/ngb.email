@@ -19,6 +19,10 @@ const routes: Routes = [
       {
         path: "material",
         loadComponent: () => import( "./builders/material-email-builder/material-email-builder.component" ).then(({ MaterialEmailBuilderComponent }) => MaterialEmailBuilderComponent)
+      },
+      {
+        path: "bootstrap",
+        loadComponent: () => import( "./builders/bootstrap-email-builder/bootstrap-email-builder.component" ).then(({ BootstrapEmailBuilderComponent }) => BootstrapEmailBuilderComponent)
       }
     ]
   }
