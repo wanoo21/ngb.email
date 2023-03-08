@@ -5,6 +5,11 @@
 :host {
   display: block;
   height: var(--ip-email-builder-host-height, 100vh);
+  --bs-white-rgb: 255, 255, 255;
+  --bs-border-radius: 3px;
+  --bs-border-style: solid;
+  --bs-border-color: #d3d3d3;
+  --bs-light-rgb: 229,231,235;
 }
 
 ::ng-deep {

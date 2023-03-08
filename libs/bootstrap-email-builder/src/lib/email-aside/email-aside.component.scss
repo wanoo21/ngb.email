@@ -1,5 +1,10 @@
 :host {
   @apply bg-gray-100 border-l flex flex-col;
+  height: 100%;
+
+  .w-33 {
+    width: calc(100% / 3) !important;
+  }
 
   .stepper {
     .step {

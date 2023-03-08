@@ -1,23 +1,24 @@
 <ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
   <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
-    <h2 btH2 i18n="@@blocks_list">Blocks</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
+    <h2 class="fs-5 fw-normal text-center" btH2 i18n="@@blocks_list">Blocks</h2>
+    <div class="row gap-2  w-100 me-auto ms-auto" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
-        <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
+        <div class="col bg-white rounded border border-1  text-center px-5 py-2 w-50" style="cursor: pointer"
              cdkDrag [cdkDragData]="block | toBodyBlock">
           {{ block.title }}
         </div>
       </ng-container>
     </div>
-    <h2 btH2 i18n="@@structude_list">Structures</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
+    <h2 class="fs-5 fw-normal text-center" btH2 i18n="@@structude_list">Structures</h2>
+    <div class="d-grid gap-2" style="grid-template-columns: repeat(2, 1fr)" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
-        <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
+        <div class="border rounded border-1 bg-white d-flex gap-2 p-2" style="cursor: pointer" cdkDrag
              [cdkDragData]="structure | toBodyStructure">
-          <div *ngFor="let col of structure.options.columns; let index = index" class="bg-gray-200 h-9 w-full rounded"
-               [ngClass]="{'w-1/3 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
+          <div *ngFor="let col of structure.options.columns; let index = index" class="bg-light  w-100 rounded"
+               style="height: 39px"
+               [ngClass]="{'w-33 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
           ></div>
         </div>
       </ng-container>
@@ -31,17 +32,18 @@
   </cdk-step>
 </ng-container>
 
-<div class="stepper grid grid-cols-3 divide-x divide-gray-200" role="tablist">
-  <ng-container *ngFor="let step of stepper.steps">
-    <button (click)="step.select()"
-            class="step bg-white py-3 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
+<div class="stepper d-flex" role="tablist">
+  <ng-container *ngFor="let step of stepper.steps let index = index">
+    <button (click)="step.select()" [ngClass]="{'border-start-0 border-end-0': index === 1,
+    'border-bottom-0': step === stepper.selected}"
+            class="step bg-white py-3 uppercase text-sm border border-1 w-100"
             [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
       {{step.label}}
     </button>
   </ng-container>
 </div>
 
-<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
+<div class="flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
   <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
 </div>
 

@@ -14,11 +14,13 @@
 
 <ng-template #emptyBody>
   <div class="bg-white rounded border-1" [style.width.px]="value.general.width.value">
-    <div class="empty-message flex flex-col p-2 gap-10 justify-center items-center h-72">
+    <div class="empty-message d-flex  flex-column p-2 gap-10 align-items-center h-75">
       <p class="text-base text-gray-500" i18n="@@empty_body_message">
         Start by Drag and Drop some structures or select a template from list.
       </p>
-      <button btBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+      <div>
+        <button btBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+      </div>
     </div>
   </div>
 </ng-template>

@@ -1,6 +1,6 @@
-<div class="grid grid-cols-12 grid-rows-1 h-full">
-  <div class="col-span-7 md:col-span-9 sm:col-span-8 flex flex-col" [ngSwitch]="screen | async">
-    <div class="bg-white shadow-sm border border-b py-3 px-4 w-full flex gap-2 flex-shrink-0">
+<div class="d-flex h-100 col">
+  <div class="col-10" [ngSwitch]="screen | async">
+    <div class="bg-white shadow-sm border border-b py-3 px-4 w-100 flex gap-2 flex-shrink-0">
       <ng-container *ngIf="value | ipCan: 'preview'">
         <button btBtn (click)="preview()" *ngSwitchDefault>Preview</button>
         <button btBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
@@ -22,8 +22,8 @@
       </ng-template>
     </ng-container>
 
-    <bt-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"></bt-email-body>
+    <bt-email-body *ngSwitchDefault class="overflow-x-auto col-6 m-auto mt-3" [(value)]="value"></bt-email-body>
   </div>
   <bt-email-aside [readonly]="(screen | async) !== null"
-                    class="col-span-5 md:col-span-3 sm:col-span-4 select-text"></bt-email-aside>
+                    class="col-2 select-text p-2"></bt-email-aside>
 </div>
