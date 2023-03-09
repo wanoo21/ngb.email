@@ -14,13 +14,20 @@
   .text-xs {
     font-size: 12px;
   }
+
   .text-sm {
     font-size: 14px !important;
   }
+
   .text-gray-400 {
     color: #9CA3AF;
   }
+
   .appearance-none {
     appearance: none;
+  }
+
+  .h-60 {
+    height: 15rem;
   }
 }

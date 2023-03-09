@@ -1,3 +1,17 @@
 :host {
   display: block;
+
+  .btn {
+    transition: ease-in-out 0.3s;
+  }
+  .group-hover {
+    transition: ease-in-out 0.3s;
+    transform: translate(0, 19px);
+  }
+  .group:hover .group-hover {
+    transform: translate(0, 0);
+  }
+  .group:hover .btn {
+    opacity: 1 !important;
+  }
 }

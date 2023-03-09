@@ -9,8 +9,7 @@ import { AbstractDemoEmailBuilder } from "../abstract-demo-email-builder";
   standalone: true,
   imports: [CommonModule, BootstrapEmailBuilderModule],
   template: `
-    <link  href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-           integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <bt-email-builder></bt-email-builder>`,
   styles: [
     `

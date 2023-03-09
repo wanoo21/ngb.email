@@ -8,14 +8,14 @@
       </ng-container>
     </ng-container>
   </div>
-  <bt-template-list *ngSwitchCase="'templates'" class="w-1/2 h-full"
+  <bt-template-list *ngSwitchCase="'templates'" class="w-50 h-100"
                       (selected)="changeValue($event)"></bt-template-list>
 </ng-container>
 
 <ng-template #emptyBody>
-  <div class="bg-white rounded border-1" [style.width.px]="value.general.width.value">
-    <div class="empty-message d-flex  flex-column p-2 gap-10 align-items-center h-75">
-      <p class="text-base text-gray-500" i18n="@@empty_body_message">
+  <div class="bg-white rounded border-1 py-3" [style.width.px]="value.general.width.value">
+    <div class="empty-message d-flex  flex-column p-2 gap-10 align-items-center">
+      <p class="text-base text-secondary" i18n="@@empty_body_message">
         Start by Drag and Drop some structures or select a template from list.
       </p>
       <div>

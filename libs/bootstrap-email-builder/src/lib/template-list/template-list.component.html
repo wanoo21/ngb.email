@@ -1,4 +1,4 @@
-<div class="flex p-2 gap-2 flex-wrap" *ngIf="tmplCategories$ | async as categoryList; else load">
+<div class="d-flex p-2 gap-2 flex-wrap" *ngIf="tmplCategories$ | async as categoryList; else load">
   <ng-container *ngFor="let category of [categoryList] | applyMiddleware: 'categoryList' | async">
     <button btBtn class="capitalize" [class.active]="category === (selectedCategory$ | async)"
             (click)="selectCategory(category)">
@@ -7,16 +7,16 @@
   </ng-container>
 </div>
 
-<div class="grid grid-cols-3 gap-2 p-2" *ngIf="selectedCategory$ | async as category">
+<div class="d-grid gap-2 p-2" style="grid-template-columns: repeat(3, minmax(0, 1fr))" *ngIf="selectedCategory$ | async as category">
   <!--  <ng-container *ngIf="[category] | applyMiddleware: 'categoryTemplates' | async as templates; else emptyBodyMessage">-->
   <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
-    <div class="relative h-60 rounded border overflow-hidden group">
+    <div class="position-relative h-60 rounded border overflow-hidden group">
       <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
-           class="w-full h-full object-cover object-[center_top] group-hover:object-bottom">
+           class="w-100 h-100 object-fit-cover">
       <div
-        class="absolute bottom-0 w-full bg-white translate-y-5 p-2 group-hover:translate-y-0 transition-transform text-center">
+        class="position-absolute bottom-0 w-100 bg-white  p-2 group-hover text-center">
         <h3 btH3>{{template | titlecase}}</h3>
-        <button btBtn class="opacity-0 group-hover:opacity-100 transition-opacity mx-auto" i18n="@@use_in_editor"
+        <button btBtn class="btn opacity-0 mx-auto" i18n="@@use_in_editor"
                 (click)="selectTemplate(category.category, template)">
           Use in editor
         </button>

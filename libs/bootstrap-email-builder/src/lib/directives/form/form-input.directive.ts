@@ -26,7 +26,7 @@ abstract class AddClassList<T = HTMLElement> implements OnInit {
   exportAs: "input"
 })
 export class FormInputDirective extends AddClassList<HTMLInputElement> implements OnInit {
-  classList = `rounded bg-white border px-2 py-1 w-100 text-black-700/75 text-sm`
+  classList = `rounded bg-white border px-2 py-1 w-100 text-dark text-sm`
   // outline-1 placeholder-shown:border-gray-200 read-only:bg-gray-100 disabled:opacity-75`;
 
   override ngOnInit() {
@@ -40,7 +40,7 @@ export class FormInputDirective extends AddClassList<HTMLInputElement> implement
   exportAs: "label"
 })
 export class FormLabelDirective extends AddClassList<HTMLLabelElement> implements AfterViewInit {
-  classList = `text-xs font-medium text-gray-400 mb-1`;
+  classList = `text-xs fw-normal text-gray-400 mb-1`;
   @Input() btLabel?: FormInputDirective;
 
   ngAfterViewInit(): void {
@@ -58,7 +58,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
   @Input() size = "sm";
 
   get classList(): string {
-    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size} flex gap-1 items-center justify-center`;
+    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size} d-flex gap-1 justify-items-center`;
   }
 
   override ngOnInit() {
@@ -77,7 +77,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
   exportAs: "h2"
 })
 export class FormH2Directive extends AddClassList {
-  classList = `fw-bolder text-sm mt-4 mb-2 text-dark text-uppercase select-none`;
+  classList = `fw-bolder text-sm mt-4 mb-2 text-dark text-uppercase user-select-none`;
 }
 
 @Directive({
