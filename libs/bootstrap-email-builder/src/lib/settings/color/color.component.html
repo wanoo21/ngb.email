@@ -1,9 +1,9 @@
-<div class="grid grid-cols-5 gap-2">
-  <div class="col-span-4">
-    <input type="text" [disabled]="disabled" btInput #i="input" ipHistoryModel [(ngModel)]="value"
+<div class="d-flex col gap-2">
+  <div class="col-9">
+    <input class="w-100" type="text" [disabled]="disabled" btInput #i="input" ipHistoryModel [(ngModel)]="value"
            (ngModelChange)="valueChange.next(i.el.value)"
            placeholder="Color" i18n-placeholder="@@color">
   </div>
-  <div class="col-span-1 rounded border" [style.background-color]="i.el.value"></div>
+  <div class="rounded border col" [style.background-color]="i.el.value"></div>
 </div>
 <p btHint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</p>

@@ -1,6 +1,8 @@
 :host {
-  @apply bg-gray-100 border-l flex flex-col;
-  height: 100%;
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e5e7eb;
 
   .w-33 {
     width: calc(100% / 3) !important;

@@ -27,19 +27,19 @@
 
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div btPanel class="mt-4">
-    <div class="flex flex-col">
-      <label [btLabel]="i" i18n="@@template_name">Template name</label>
-      <input btInput #i="input" type="text" ipHistoryModel [(ngModel)]="value.general.name">
+    <div class="form-group">
+      <label [btLabel]="i" i18n="@@template_name" class="fw-normal">Template name</label>
+      <input class="form-control" btInput #i="input" type="text" ipHistoryModel [(ngModel)]="value.general.name">
     </div>
-    <div class="flex flex-col mt-2">
-      <label [btLabel]="t" i18n="@@template_preview_text">Preview text</label>
-      <textarea btInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2" ipHistoryModel
+    <div class="form-group mt-2">
+      <label [btLabel]="t" i18n="@@template_preview_text" class="fw-normal">Preview text</label>
+      <textarea class="form-control" rows="6" style="resize: none" btInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2" ipHistoryModel
                 [(ngModel)]="value.general.previewText"></textarea>
-      <p btHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
+      <p btHint i18n="@@template_preview_text_hint" class="fw-light">This text is displayed in the inbox of the recipient.</p>
     </div>
   </div>
 
-  <h2 btH2 i18n="@@background">Background</h2>
+  <h2 class="" btH2 i18n="@@background">Background</h2>
   <div btPanel>
     <bt-color [(value)]="value.general.background.color"></bt-color>
   </div>
@@ -48,7 +48,7 @@
   <div btPanel>
     <h3 btH3 i18n="@@width">Width</h3>
     <bt-width-height [(value)]="value.general.width!"></bt-width-height>
-    <div class="flex flex-col mt-2">
+    <div class="d-flex flex-column mt-2">
       <label [btLabel]="s" i18n="@@direction">Direction</label>
       <select btInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
         <option *ngFor="let dir of directionKeys" [value]="dir">

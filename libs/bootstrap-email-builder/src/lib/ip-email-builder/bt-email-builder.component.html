@@ -1,5 +1,5 @@
-<div class="d-flex h-100 col">
-  <div class="col-10" [ngSwitch]="screen | async">
+<div class="d-flex h-100  col">
+  <div class="col-9" [ngSwitch]="screen | async">
     <div class="bg-white shadow-sm border border-b py-3 px-4 w-100 flex gap-2 flex-shrink-0">
       <ng-container *ngIf="value | ipCan: 'preview'">
         <button btBtn (click)="preview()" *ngSwitchDefault>Preview</button>
@@ -7,10 +7,10 @@
       </ng-container>
       <!--      <button btBtn (click)="convert()">Save</button>-->
 
-      <div class="ms-auto">
-        <button btBtn ipEmailBuilderHistoryAction="undo">Prev</button>
-        <button btBtn ipEmailBuilderHistoryAction="redo">Redo</button>
-      </div>
+<!--      <div class="ms-auto">-->
+<!--        <button btBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
+<!--        <button btBtn ipEmailBuilderHistoryAction="redo">Redo</button>-->
+<!--      </div>-->
     </div>
 
     <ng-container *ngSwitchCase="'preview'">
@@ -22,8 +22,8 @@
       </ng-template>
     </ng-container>
 
-    <bt-email-body *ngSwitchDefault class="overflow-x-auto col-6 m-auto mt-3" [(value)]="value"></bt-email-body>
+    <bt-email-body *ngSwitchDefault class="overflow-x-auto col m-auto" [(value)]="value"></bt-email-body>
   </div>
   <bt-email-aside [readonly]="(screen | async) !== null"
-                    class="col-2 select-text p-2"></bt-email-aside>
+                    class="col-3 select-text p-2 pb-4 pt-0"></bt-email-aside>
 </div>

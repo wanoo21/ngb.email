@@ -1,16 +1,17 @@
 <ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
   <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
-    <h2 class="fs-5 fw-normal text-center" btH2 i18n="@@blocks_list">Blocks</h2>
-    <div class="row gap-2  w-100 me-auto ms-auto" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
+    <h2 btH2 i18n="@@blocks_list">Blocks</h2>
+    <div class="d-grid gap-2  w-100 me-auto ms-auto" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
+         style="grid-template-columns: repeat(2, 1fr)"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
-        <div class="col bg-white rounded border border-1  text-center px-5 py-2 w-50" style="cursor: pointer"
+        <div class="col bg-white fw-light rounded border border-1  text-center px-5 py-2" style="cursor: pointer"
              cdkDrag [cdkDragData]="block | toBodyBlock">
-          {{ block.title }}
+          {{ block.title | uppercase }}
         </div>
       </ng-container>
     </div>
-    <h2 class="fs-5 fw-normal text-center" btH2 i18n="@@structude_list">Structures</h2>
+    <h2 btH2 i18n="@@structude_list">Structures</h2>
     <div class="d-grid gap-2" style="grid-template-columns: repeat(2, 1fr)" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
@@ -38,7 +39,7 @@
     'border-bottom-0': step === stepper.selected}"
             class="step bg-white py-3 uppercase text-sm border border-1 w-100"
             [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
-      {{step.label}}
+      {{step.label | uppercase}}
     </button>
   </ng-container>
 </div>

@@ -1,9 +1,26 @@
 :host {
   display: block;
+  height: var(--ip-email-builder-host-height, 100vh);
+
 
   .cdk-drop-list-dragging {
     .empty-message {
       display: none;
     }
+  }
+}
+
+::ng-deep {
+  .text-xs {
+    font-size: 12px;
+  }
+  .text-sm {
+    font-size: 14px !important;
+  }
+  .text-gray-400 {
+    color: #9CA3AF;
+  }
+  .appearance-none {
+    appearance: none;
   }
 }
