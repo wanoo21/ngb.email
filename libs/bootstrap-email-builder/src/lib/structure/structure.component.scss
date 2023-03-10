@@ -1,5 +1,10 @@
 :host {
   display: block;
+  &:hover .group-hover {
+    opacity: 1 !important;
+    z-index: 20;
+    transition: opacity 0.3s;
+  }
 }
 
 .column.empty {
@@ -11,7 +16,9 @@
 }
 
 .tool-button {
-  @apply p-1 bg-gray-400 text-white hover:bg-gray-500 rounded-full transition-colors;
+  @apply  bg-gray-400 text-white hover:bg-gray-500 transition-colors;
+  border-radius: 50%;
+  border: none;
 }
 
 .overflow {

@@ -1,6 +1,6 @@
 <ng-container *ngFor="let column of value.elements; let index = index">
   <div [ngStyle]="index | ipColumnStyles: value.options" cdkDropList [ipEmailBuilderColumn]="column">
-    <div class="relative group" cdkDrag *ngFor="let block of column">
+    <div class="position-relative group" cdkDrag *ngFor="let block of column">
       <div class="overflow" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
         <button class="tool-button" (click)="duplicateBlock($event, ins, column)" *ngIf="ins | ipCan: 'duplicate'">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
@@ -8,7 +8,7 @@
             <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
           </svg>
         </button>
-        <button class="tool-button cursor-move" cdkDragHandle>
+        <button class="tool-button" style="cursor: move" cdkDragHandle>
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd"
                   d="M9 3a1 1 0 012 0v5.5a.5.5 0 001 0V4a1 1 0 112 0v4.5a.5.5 0 001 0V6a1 1 0 112 0v5a7 7 0 11-14 0V9a1 1 0 012 0v2.5a.5.5 0 001 0V4a1 1 0 012 0v4.5a.5.5 0 001 0V3z"
@@ -29,7 +29,7 @@
 </ng-container>
 
 <div
-  class="absolute top-0 right-0 opacity-0 group-hover:opacity-100 group-hover:z-20 transition-opacity bg-white p-1 shadow-lg rounded border-[1px] gap-2 flex">
+  class="position-absolute top-0 end-0 opacity-0 group-hover  bg-white p-1 shadow-lg rounded border-1 gap-2 d-flex">
   <button class="tool-button" (click)="edit()" *ngIf="value | ipCan: 'edit'">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
       <path
@@ -48,14 +48,14 @@
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 btH2 i18n="@@structure_actions">Actions</h2>
   <div class="flex gap-1">
-    <button class="text-black/75" btBtn ipTooltip="Duplicate" i18n-ipTooltip="@@structure_duplicate"
+    <button class="text-dark" btBtn ipTooltip="Duplicate" i18n-ipTooltip="@@structure_duplicate"
             (click)="duplicateSelf()" *ngIf="value | ipCan: 'duplicate'">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
         <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
       </svg>
     </button>
-    <button class="text-red-700/75" btBtn ipTooltip="Delete" i18n-ipTooltip="@@structure_delete"
+    <button class="tex-danger" btBtn ipTooltip="Delete" i18n-ipTooltip="@@structure_delete"
             (click)="removeSelf()" *ngIf="value | ipCan: 'delete'">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd"
@@ -63,7 +63,7 @@
               clip-rule="evenodd" />
       </svg>
     </button>
-    <button class="text-green-700/75" btBtn ipTooltip="Save as new module"
+    <button class="text-success" btBtn ipTooltip="Save as new module"
             i18n-ipTooltip="@@structure_save_as_module" *ngIf="value | ipCan: 'save'">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path
@@ -81,12 +81,12 @@
   <bt-margin btPanel [(value)]="value.options.margin"></bt-margin>
   <h2 btH2 i18n="@@layout">Layout</h2>
   <div btPanel>
-    <div class="grid grid-cols-2 gap-2">
-      <div class="flex flex-col">
+    <div class="col  gap-2">
+      <div class="d-flex flex-column col-md-6">
         <label [btLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
         <input btInput #vertical="input" type="number" [(ngModel)]="value.options.gaps[0]">
       </div>
-      <div class="flex flex-col">
+      <div class="flex flex-column col-md-6">
         <label [btLabel]="horizontal" i18n="@@structure_horizontal_gap">Horizontal Gap</label>
         <input btInput #horizontal="input" type="number" [(ngModel)]="value.options.gaps[1]">
       </div>

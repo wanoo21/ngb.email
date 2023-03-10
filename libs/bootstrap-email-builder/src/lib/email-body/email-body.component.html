@@ -4,7 +4,7 @@
       <ng-container *ngFor="let structure of value.structures">
         <bt-structure (clone)="duplicateStructure($event)"
                         (delete)="deleteStructure($event)" [value]="structure"
-                        [bodyWidth]="value.general.width" class="group relative" cdkDrag></bt-structure>
+                        [bodyWidth]="value.general.width" class="group position-relative" cdkDrag></bt-structure>
       </ng-container>
     </ng-container>
   </div>

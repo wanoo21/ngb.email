@@ -1,13 +1,17 @@
 :root {
-  //--ip-email-builder-host-height: 100vh;
+  --ip-email-builder-host-height: 100vh;
 }
 
 :host {
   display: block;
-  height: 100%;
+  .builder-container {
+    height: calc(100% - 73px);
+  }
+
+  //height: 100%;
   //height: 80% !important;
   //--ip-email-builder-host-height: 80%;
-  //height: var(--ip-email-builder-host-height, 100vh);
+  height: var(--ip-email-builder-host-height, 100vh);
   --bs-white-rgb: 255, 255, 255;
   --bs-border-radius: 3px;
   --bs-border-style: solid;

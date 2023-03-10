@@ -1,5 +1,5 @@
 <div class="d-flex h-100  col">
-  <div class="col-9" [ngSwitch]="screen | async">
+  <div class="col-9 builder-container" [ngSwitch]="screen | async">
     <div class="bg-white shadow-sm border border-b py-3 px-4 w-100 flex gap-2 flex-shrink-0">
       <ng-container *ngIf="value | ipCan: 'preview'">
         <button btBtn (click)="preview()" *ngSwitchDefault>Preview</button>
@@ -15,7 +15,7 @@
 
     <ng-container *ngSwitchCase="'preview'">
       <ng-container *ngIf="value | ipPreviewLink | async as link; else loading">
-        <iframe [src]="link" class="overflow-x-auto flex-1"></iframe>
+        <iframe [src]="link" class="overflow-x-auto w-100 h-100"></iframe>
       </ng-container>
       <ng-template #loading>
         <p i18n="@@template_loading">Loading, please wait ...</p>
