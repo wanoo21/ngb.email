@@ -15,7 +15,7 @@
                   clip-rule="evenodd" />
           </svg>
         </button>
-        <button class="tool-button text-red-700/75" (click)="removeBlock($event, ins, column)"
+        <button class="tool-button" (click)="removeBlock($event, ins, column)"
                 *ngIf="ins | ipCan: 'delete'">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd"
@@ -47,7 +47,7 @@
 
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 btH2 i18n="@@structure_actions">Actions</h2>
-  <div class="flex gap-1">
+  <div class="d-flex gap-1">
     <button class="text-dark" btBtn ipTooltip="Duplicate" i18n-ipTooltip="@@structure_duplicate"
             (click)="duplicateSelf()" *ngIf="value | ipCan: 'duplicate'">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -55,7 +55,7 @@
         <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
       </svg>
     </button>
-    <button class="tex-danger" btBtn ipTooltip="Delete" i18n-ipTooltip="@@structure_delete"
+    <button class="text-danger" btBtn ipTooltip="Delete" i18n-ipTooltip="@@structure_delete"
             (click)="removeSelf()" *ngIf="value | ipCan: 'delete'">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd"

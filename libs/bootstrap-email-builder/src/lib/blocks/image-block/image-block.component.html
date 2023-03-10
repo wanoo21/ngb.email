@@ -7,8 +7,8 @@
   </div>
   <h2 btH2 i18n="@@image_block_attributes">Attributes</h2>
   <div btPanel>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col col-span-2">
+    <div class="d-grid gap-2" style="grid-template-columns: 2fr 1fr">
+      <div class="d-flex flex-column">
         <label [btLabel]="a" i18n="@@image_block_alternative">Alternative text</label>
         <input type="text" btInput #a="input" [(ngModel)]="options.title">
         <p btHint i18n="@@image_block_alternative_description">Alternative text to show in case image was blocked.</p>
