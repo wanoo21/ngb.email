@@ -1,5 +1,5 @@
-<div class="grid grid-cols-4 gap-2">
-  <div class="flex flex-col" *ngFor="let key of paddingKeys">
+<div class="d-flex gap-2">
+  <div class="d-flex flex-column" *ngFor="let key of paddingKeys">
     <label [btLabel]="i">{{getPaddingLabel(key)}}</label>
     <input type="number" #i="input" btInput [(ngModel)]="value[key]">
   </div>

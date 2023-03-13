@@ -81,25 +81,25 @@
   <bt-margin btPanel [(value)]="value.options.margin"></bt-margin>
   <h2 btH2 i18n="@@layout">Layout</h2>
   <div btPanel>
-    <div class="col  gap-2">
-      <div class="d-flex flex-column col-md-6">
+    <div class="d-flex col  gap-2">
+      <div class="d-flex flex-column w-100">
         <label [btLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
         <input btInput #vertical="input" type="number" [(ngModel)]="value.options.gaps[0]">
       </div>
-      <div class="flex flex-column col-md-6">
+      <div class="d-flex flex-column w-100">
         <label [btLabel]="horizontal" i18n="@@structure_horizontal_gap">Horizontal Gap</label>
         <input btInput #horizontal="input" type="number" [(ngModel)]="value.options.gaps[1]">
       </div>
     </div>
 
-    <div class="grid grid-cols-2 gap-2 pt-2">
-      <button btBtn [class.active]="value.options.disableResponsive"
+    <div class="d-flex gap-2 pt-2">
+      <button class="w-100" btBtn [class.active]="value.options.disableResponsive"
               (click)="value.options.disableResponsive = !value.options.disableResponsive"
               i18n="@@disable_responsive"
       >
         Disable responsive
       </button>
-      <button btBtn [class.active]="value.options.fullWidth"
+      <button class="w-100" btBtn [class.active]="value.options.fullWidth"
               (click)="value.options.fullWidth = !value.options.fullWidth"
               i18n="@@full_width_structure"
       >
@@ -110,8 +110,8 @@
 
   <h2 btH2 i18n="@@structure_columns_styles">Columns styles</h2>
   <div btPanel>
-    <div class="grid grid-cols-6 gap-2">
-      <button *ngFor="let index of columnsSize" btBtn (click)="editColumn(index)"
+    <div class="d-flex col-2  gap-2">
+      <button class="w-100" *ngFor="let index of columnsSize" btBtn (click)="editColumn(index)"
               [class.active]="editColumnIndex === index">
         {{index + 1}}
       </button>
@@ -124,8 +124,8 @@
         <h3 btH3 class="pt-1" i18n="@@border">Border</h3>
         <bt-border [(value)]="column.border!"></bt-border>
         <h3 btH3 class="pt-1" i18n="@@vertical_align">Vertical Align</h3>
-        <div class="grid grid-cols-3 gap-2">
-          <button btBtn *ngFor="let align of verticalLabels"
+        <div class="d-flex gap-2">
+          <button btBtn class="w-100" *ngFor="let align of verticalLabels"
                   [class.active]="column.verticalAlign === align"
                   (click)="column.verticalAlign = align"
           >

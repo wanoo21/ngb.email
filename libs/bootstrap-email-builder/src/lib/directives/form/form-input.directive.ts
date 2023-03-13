@@ -58,7 +58,7 @@ export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements
   @Input() size = "sm";
 
   get classList(): string {
-    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size} d-flex gap-1 justify-items-center`;
+    return `btn rounded shadow-sm bg-white border px-2 py-1 text-${this.size} d-flex gap-1 justify-content-center`;
   }
 
   override ngOnInit() {

@@ -1,6 +1,6 @@
 <bt-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></bt-color>
 
-<div class="flex gap-2 mt-2">
+<div class="d-flex gap-2 mt-2">
   <input type="number" btInput [(ngModel)]="ngValue.width" *ngIf="hasOwn('width')" placeholder="Width"
          i18n-placeholder="@@border_width">
   <input type="number" btInput [(ngModel)]="ngValue.radius" *ngIf="hasOwn('radius')" placeholder="Radius"
@@ -9,7 +9,7 @@
 
 <ng-container *ngIf="value.width">
   <h3 btH3 i18n="@@border_style" class="pt-2">Border style</h3>
-  <div class="grid grid-cols-5 gap-2">
+  <div class="d-flex gap-2">
     <button btBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
             (click)="value.style = style">
       {{getStyleLabel(style)}}

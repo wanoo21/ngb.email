@@ -14,18 +14,18 @@
   </p>
 </div>
 
-<div class="grid grid-cols-3 gap-2 pt-2">
-  <div class="flex flex-col">
+<div class="d-flex gap-2 pt-2">
+  <div class="d-flex flex-column w-100">
     <label [btLabel]="fs" i18n="@@font_size">Size</label>
     <input btInput #fs="input" [(ngModel)]="value.size" type="number" />
   </div>
-  <div class="flex flex-col">
+  <div class="d-flex flex-column w-100">
     <label [btLabel]="w" i18n="@@font_weight">Weight</label>
     <select btInput #w="input" [(ngModel)]="weight" class="appearance-none">
       <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
     </select>
   </div>
-  <div class="flex flex-col">
+  <div class="d-flex flex-column w-100">
     <label [btLabel]="fst" i18n="@@font_style">Style</label>
     <select btInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
       <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
