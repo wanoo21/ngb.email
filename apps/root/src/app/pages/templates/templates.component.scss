@@ -1,3 +1,40 @@
 :host {
   display: block;
+
+  .btn {
+    transition: ease-in-out 0.3s;
+  }
+
+  .group-hover {
+    transition: ease-in-out 0.3s;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .group {
+    overflow: hidden;
+    position: relative;
+    &:hover .btn {
+      opacity: 1 !important;
+    }
+  }
+
+  h3.title {
+    color: #9CA3AF;
+    font-size: 12px;
+    margin-bottom: 0;
+    font-weight: 600;
+  }
+}
+
+::ng-deep {
+  .mat-stroked-button {
+    font-size: 12px;
+    color: #212529;
+    &:hover {
+      background: #ffffff !important;
+    }
+  }
 }

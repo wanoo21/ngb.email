@@ -8,7 +8,6 @@
 </div>
 
 <div class="d-grid gap-2 p-2" style="grid-template-columns: repeat(3, minmax(0, 1fr))" *ngIf="selectedCategory$ | async as category">
-  <!--  <ng-container *ngIf="[category] | applyMiddleware: 'categoryTemplates' | async as templates; else emptyBodyMessage">-->
   <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
     <div class="position-relative h-60 rounded border overflow-hidden group">
       <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
@@ -23,7 +22,6 @@
       </div>
     </div>
   </ng-container>
-  <!--  </ng-container>-->
 </div>
 
 

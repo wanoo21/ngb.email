@@ -36,4 +36,8 @@ export class TemplatesComponent extends AbstractPage {
   changeTemplates(category: IUserTemplateCategory): void {
     this.currentCategory.next(category);
   }
+
+  selectTemplate(template: any) {
+    
+  }
 }
