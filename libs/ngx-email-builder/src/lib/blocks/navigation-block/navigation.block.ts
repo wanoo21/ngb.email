@@ -17,7 +17,7 @@ export interface INavigationBlockOptions {
 }
 
 @Directive()
-export abstract class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOptions> {
+export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOptions> {
   override type = "navigation";
 
   options: INavigationBlockOptions = {
