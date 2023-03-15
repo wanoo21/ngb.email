@@ -1,8 +1,8 @@
 ---
-description: How to configure email template builder default blocks.
+description: How to configure default email template builder blocks.
 ---
 
-# Configure default blocks
+# Default blocks
 
 Default blocks are a bunch of abstract classes that can be imported into the builder template from `@wlocalhost/ngx-email-builder` package.
 
