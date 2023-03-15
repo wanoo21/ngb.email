@@ -1,5 +1,33 @@
-<p>navigation-block works!</p>
+<p [style]="hostStyles">navigation-block works!</p>
 
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  Options
+  <h2 tailH2 i18n="@@font">Font</h2>
+  <div tailPanel>
+    <h3 tailH3 i18n="@@text_color">Color</h3>
+    <tail-color [(value)]="options.color"></tail-color>
+    <tail-font class="pt-2" [(value)]="options.font"></tail-font>
+    <tail-line-height class="pt-2" [(value)]="options.lineHeight"></tail-line-height>
+    <div class="flex flex-col col-span-1 pt-2">
+      <label [tailLabel]="i" i18n="@@letter_spacing">Letter Spacing</label>
+      <input tailInput #i="input" type="number" [(ngModel)]="options.letterSpacing" ipHistoryModel>
+    </div>
+    <div class="flex flex-col col-span-1 pt-2">
+      <label [tailLabel]="i" i18n="@@text_decoration">Text Decoration</label>
+      <select tailInput #i="input" [(ngModel)]="options.textDecoration" ipHistoryModel>
+        <option *ngFor="let decor of textDecoration" [value]="decor.label">{{decor.key}}</option>
+      </select>
+    </div>
+  </div>
+  <h2 tailH2 i18n="@@padding">Padding</h2>
+  <div tailPanel>
+    <tail-padding [(value)]="options.padding"></tail-padding>
+  </div>
+  <h2 tailH2 i18n="@@align">Align</h2>
+  <div tailPanel class="grid grid-cols-3 gap-2">
+    <tail-align class="col-span-2"  [(value)]="options.align"></tail-align>
+    <button  tailBtn (click)="options.hamburger = !options.hamburger" [style.box-shadow]="options.hamburger ? '0 2px 2px 3px #f3f3f3' : ''"
+            i18n="@@button_block_full_width">
+     Add Hamburger
+    </button>
+  </div>
 </ng-container>
