@@ -9,6 +9,10 @@ import { TDirection } from "../interfaces";
 import { Structure } from "../structure/structure";
 import { IIPValueChanged } from "./ValueChanged";
 
+/**
+ * The abstract class for the builder body component.
+ * It provides a common interface for the settings component to interact with the builder.
+ */
 @Directive()
 export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPValueChanged<IPEmail> {
   @Input() value!: IPEmail;

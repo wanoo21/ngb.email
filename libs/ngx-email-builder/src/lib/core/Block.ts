@@ -14,6 +14,10 @@ export interface AIPEmailBuilderBlockExtendedOptions<T = Record<string, any>> ex
   type: string;
 }
 
+/**
+ * The abstract class for a builder block component. It provides a common interface for the settings component to interact with the builder.
+ * @template T The options interface for the block.
+ */
 @Directive()
 export abstract class AIPEmailBuilderBlock<T extends Record<string, any> = Record<string, any>> extends WithSettings implements OnInit, OnDestroy {
   type!: string;
@@ -34,6 +38,10 @@ export abstract class AIPEmailBuilderBlock<T extends Record<string, any> = Recor
     }
   }, 1000);
 
+  /**
+   * Parses the font family and adds the font to the head if it is not a standard font.
+   * @param font
+   */
   parseFont(font: IFont): IFont {
     let family = font.family;
     if (!this.builderService.standardFonts.includes(font.family)) {
@@ -63,6 +71,11 @@ export abstract class AIPEmailBuilderBlock<T extends Record<string, any> = Recor
     this.#googleFontLink.remove();
   }
 
+  /**
+   * Returns the block as an object.
+   * @param options
+   * @param args
+   */
   toObject(options?: Partial<T>, ...args: never[]): AIPEmailBuilderBlockExtendedOptions<T>;
   toObject(options?: Partial<T>): AIPEmailBuilderBlockExtendedOptions<T> {
     return { options: defaultsDeep<T>((options || {}) as T, this.options), type: this.type };
