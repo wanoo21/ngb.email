@@ -15,6 +15,7 @@ export * from "./lib/blocks/button-block/button.block";
 export * from "./lib/blocks/divider-block/divider.block";
 export * from "./lib/blocks/social-block/social.block";
 export * from "./lib/blocks/spacer-block/spacer.block";
+export * from "./lib/blocks/navigation-block/navigation.block";
 
 // Core services & classes
 export * from "./lib/public-tokens";

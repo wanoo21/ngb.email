@@ -27,7 +27,6 @@ import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
 import { EmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
 import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
 
-
 // https://github.com/jscutlery/semver
 
 @NgModule({
@@ -48,7 +47,13 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     IPHistoryModelDirective,
     EmailBuilderHistoryHostDirective
   ],
-  imports: [CommonModule, PortalModule, FormsModule, HttpClientModule, TemplateThumbPathPipe],
+  imports: [
+    CommonModule,
+    PortalModule,
+    FormsModule,
+    HttpClientModule,
+    TemplateThumbPathPipe
+  ],
   exports: [
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
@@ -71,18 +76,27 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     TemplateThumbPathPipe
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: IpEmailBuilderInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: IpEmailBuilderInterceptor,
+      multi: true
+    }
   ]
 })
 export class NgxEmailBuilderModule {
-  static forRoot(config?: IIPEmailBuilderConfig): ModuleWithProviders<NgxEmailBuilderModule> {
+  static forRoot(
+    config?: IIPEmailBuilderConfig
+  ): ModuleWithProviders<NgxEmailBuilderModule> {
     return {
       ngModule: NgxEmailBuilderModule,
       providers: [
         {
-          provide: APP_INITIALIZER, useFactory: (config: IPEmailBuilderConfig) => {
+          provide: APP_INITIALIZER,
+          useFactory: (config: IPEmailBuilderConfig) => {
             return () => config.fetchLicense();
-          }, deps: [IP_EMAIL_BUILDER_CONFIG], multi: true
+          },
+          deps: [IP_EMAIL_BUILDER_CONFIG],
+          multi: true
         },
         ...withConfig(config)
       ]
