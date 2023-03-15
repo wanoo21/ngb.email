@@ -11,21 +11,22 @@
 
 ## 🏫 Custom Templates
 
+* [Getting Started](custom-templates/getting-started.md)
 * [Create new template](custom-templates/create-new-template.md)
 * [Configure existing template](custom-templates/configure-existing-template.md)
 
 ## 🏗 Custom block
 
 * [Create a new block](custom-block/create-a-new-block.md)
-* [Configure predefined blocks](custom-block/configure-predefined-blocks/README.md)
-  * [Text](custom-block/configure-predefined-blocks/text.md)
-  * [Image](custom-block/configure-predefined-blocks/image.md)
-  * [Button](custom-block/configure-predefined-blocks/button.md)
-  * [Social](custom-block/configure-predefined-blocks/social.md)
-  * [Divider](custom-block/configure-predefined-blocks/divider.md)
-  * [Spacer](custom-block/configure-predefined-blocks/spacer.md)
-  * [Menu](custom-block/configure-predefined-blocks/menu.md)
-  * [HTML](custom-block/configure-predefined-blocks/html.md)
+* [Configure default blocks](custom-block/configure-default-blocks/README.md)
+  * [Text](custom-block/configure-default-blocks/text.md)
+  * [Image](custom-block/configure-default-blocks/image.md)
+  * [Button](custom-block/configure-default-blocks/button.md)
+  * [Social](custom-block/configure-default-blocks/social.md)
+  * [Divider](custom-block/configure-default-blocks/divider.md)
+  * [Spacer](custom-block/configure-default-blocks/spacer.md)
+  * [Navigation](custom-block/configure-default-blocks/navigation.md)
+  * [HTML](custom-block/configure-default-blocks/html.md)
 
 ## 🪚 Abstract components
 
