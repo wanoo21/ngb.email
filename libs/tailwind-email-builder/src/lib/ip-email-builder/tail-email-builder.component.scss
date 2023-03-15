@@ -5,6 +5,29 @@
 :host {
   display: block;
   height: var(--ip-email-builder-host-height, 100vh);
+
+  .active {
+    transform: scale(1.2);
+    background-color: rgba(236, 239, 245, 0.65) !important;
+  }
+
+  .preview {
+    transition: ease-in-out 0.3s
+  }
+
+  .icon {
+    top: 11px;
+    right: 11px;
+
+    &-item {
+      transition: ease-in-out 0.2s;
+      background-color: white;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
 }
 
 ::ng-deep {
