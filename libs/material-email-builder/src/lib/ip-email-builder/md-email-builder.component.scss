@@ -5,6 +5,54 @@
 :host {
   display: block;
   height: var(--ip-email-builder-host-height, 100vh);
+
+  .active {
+    transform: scale(1.2);
+    background-color: rgba(236, 239, 245, 0.65) !important;
+  }
+
+  .content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+  }
+
+  .preview {
+    transition: ease-in-out 0.3s
+  }
+
+  .icon {
+    top: 11px;
+    right: 11px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    &-item {
+      transition: ease-in-out 0.2s;
+      background-color: white;
+      border: 0.6px solid #dcd8d8;
+      border-radius: 3px;
+      cursor: pointer;
+      padding: 6px;
+
+      &:nth-of-type(2) {
+        margin-top: 8px;
+        margin-bottom: 8px;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  .tablet {
+    margin-bottom: -6px;
+  }
 }
 
 mat-drawer {
@@ -21,12 +69,28 @@ mat-drawer {
     padding-right: 0.5rem !important;
   }
 
+  .h-6 {
+    width: 1.39rem;
+  }
+
+  .w-6 {
+    width: 1.39rem;
+  }
+
   .pb-2 {
     padding-bottom: 0.5rem;
   }
 
   .mb-0 {
     margin-bottom: 0 !important;
+  }
+
+  .mb-1 {
+    margin-bottom: 0.25rem;
+  }
+
+  .mt-1 {
+    margin-top: 0.25rem;
   }
 
   .select-none {
