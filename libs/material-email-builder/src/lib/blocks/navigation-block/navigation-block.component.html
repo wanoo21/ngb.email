@@ -1,0 +1,43 @@
+<p>navigation-block works!</p>
+
+
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <h2 mdH2 i18n="@@font">Font</h2>
+  <div mdPanel>
+    <h3 mdH3 i18n="@@text_color">Color</h3>
+    <md-color [(value)]="options.color"></md-color>
+    <md-font class="pt-2" [(value)]="options.font"></md-font>
+    <md-line-height class="pt-2" [(value)]="options.lineHeight"></md-line-height>
+    <div fxLayoutGap="0.5rem">
+      <mat-form-field appearance="fill" class="d-flex flex-column pt-2">
+        <mat-label [mdLabel]="i" i18n="@@letter_spacing">Letter Spacing</mat-label>
+        <input matInput mdInput #i="input" type="number" [(ngModel)]="options.letterSpacing" ipHistoryModel>
+      </mat-form-field>
+      <mat-form-field appearance="fill" fxFlex class="d-flex flex-column pt-2">
+        <mat-label  i18n="@@text_decoration">Text Decoration</mat-label>
+        <mat-select class="appearance-none" [(ngModel)]="options.textDecoration" ipHistoryModel>
+          <mat-option *ngFor="let key of textDecorationKeys" [value]="key">
+            {{getTextDecorationLabel(key)}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <h2 mdH2 i18n="@@padding">Padding</h2>
+  <div mdPanel>
+    <md-padding [(value)]="options.padding"></md-padding>
+  </div>
+  <h2 mdH2 i18n="@@align">Align</h2>
+  <div mdPanel class="d-grid gap-2 align-items-end" style="grid-template-columns: 2fr 1fr">
+    <div fxLayoutGap="1" fxLayout>
+      <md-align class="col-span-2" [(value)]="options.align"></md-align>
+    <div style="height: 58px;">
+      <button style="height: 100%;  margin-left: 10px;" mat-raised-button mdBtn (click)="options.hamburger = !options.hamburger"
+              [style.box-shadow]="options.hamburger ? '0 2px 2px 3px #f3f3f3 !important' : ''"
+              i18n="@@enable_hamburger">
+        Enable Hamburger
+      </button>
+    </div>
+    </div>
+  </div>
+</ng-container>
