@@ -12,9 +12,11 @@
       <input tailInput #i="input" type="number" [(ngModel)]="options.letterSpacing" ipHistoryModel>
     </div>
     <div class="flex flex-col col-span-1 pt-2">
-      <label [tailLabel]="i" i18n="@@text_decoration">Text Decoration</label>
-      <select tailInput #i="input" [(ngModel)]="options.textDecoration" ipHistoryModel>
-        <option *ngFor="let decor of textDecoration" [value]="decor.label">{{decor.key}}</option>
+      <label [tailLabel]="s" i18n="@@text_decoration">Text Decoration</label>
+      <select class="appearance-none" tailInput #s="input" [(ngModel)]="options.textDecoration" ipHistoryModel>
+        <option *ngFor="let key of textDecorationKeys" [value]="key">
+          {{getTextDecorationLabel(key)}}
+        </option>
       </select>
     </div>
   </div>
@@ -24,10 +26,11 @@
   </div>
   <h2 tailH2 i18n="@@align">Align</h2>
   <div tailPanel class="grid grid-cols-3 gap-2">
-    <tail-align class="col-span-2"  [(value)]="options.align"></tail-align>
-    <button  tailBtn (click)="options.hamburger = !options.hamburger" [style.box-shadow]="options.hamburger ? '0 2px 2px 3px #f3f3f3' : ''"
-            i18n="@@button_block_full_width">
-     Add Hamburger
+    <tail-align class="col-span-2" [(value)]="options.align"></tail-align>
+    <button tailBtn (click)="options.hamburger = !options.hamburger"
+            [style.box-shadow]="options.hamburger ? '0 2px 2px 3px #f3f3f3' : ''"
+            i18n="@@enable_hamburger">
+      Enable Hamburger
     </button>
   </div>
 </ng-container>
