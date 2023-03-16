@@ -1,11 +1,13 @@
 import { Directive, EventEmitter, HostListener, inject, Input, Output } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, map } from "rxjs";
 import { Directionality } from "@angular/cdk/bidi";
 import { getDiff } from "recursive-diff";
 
 import { AIPEmailBuilderHistoryService, AIPEmailBuilderMiddlewareService, AIPEmailBuilderService } from "./services";
 import { IPEmail } from "./body/body";
 import { IMjmlServerResponse } from "./interfaces";
+
+export type TPreviewDevice = "desktop" | "tablet" | "mobile";
 
 @Directive()
 export abstract class AIPEmailBuilderComponent {
@@ -16,6 +18,20 @@ export abstract class AIPEmailBuilderComponent {
   readonly emailBuilderService = inject(AIPEmailBuilderService);
   readonly middlewareService = inject(AIPEmailBuilderMiddlewareService);
   readonly screen = new BehaviorSubject<"preview" | null>(null);
+  // A map of device sizes
+  readonly deviceSizes = new Map<TPreviewDevice, string>([
+    ["desktop", "100%"],
+    ["tablet", "768px"],
+    ["mobile", "360px"]
+  ]);
+  readonly #previewDevice$ = new BehaviorSubject<TPreviewDevice>("desktop");
+  readonly previewDeviceWidth$ = this.#previewDevice$.pipe(
+    map((device) => this.deviceSizes.get(device))
+  );
+
+  get previewDevice(): TPreviewDevice {
+    return this.#previewDevice$.getValue();
+  }
 
   private _value = new IPEmail([], { direction: this.direction.value });
 
@@ -47,6 +63,10 @@ export abstract class AIPEmailBuilderComponent {
     } else {
       this.screen.next("preview");
     }
+  }
+
+  changePreviewDevice(device: TPreviewDevice): void {
+    this.#previewDevice$.next(device);
   }
 
   @HostListener("window:beforeunload", ["$event"])
