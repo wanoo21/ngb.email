@@ -10,11 +10,13 @@ export interface INavigationBlockOptions {
   color: string;
   font: IFont;
   lineHeight: ILineHeight;
-  letterSpacing: number | "none";
+  letterSpacing: number;
   padding: IPadding;
   target: string;
   textDecoration: "underline" | "overline" | "none";
 }
+
+export type TTextDecoration = "underline" | "overline" | "none";
 
 @Directive()
 export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOptions> {
@@ -35,7 +37,7 @@ export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOption
       value: 22,
       unit: "px"
     },
-    letterSpacing: "none",
+    letterSpacing: 0,
     padding: {
       top: 10,
       right: 25,
@@ -46,6 +48,18 @@ export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOption
     textDecoration: "none"
   };
 
+  // A map of text decoration options
+  #textDecoration = new Map<TTextDecoration, string>([
+    ["none", $localize`:@@none:None`],
+    ["underline", $localize`:@@underline:Underline`],
+    ["overline", $localize`:@@overline:Overline`]
+  ]);
+
+  // A list of text decoration options
+  get textDecorationKeys(): TTextDecoration[] {
+    return [...this.#textDecoration.keys()];
+  }
+
   get hostStyles(): TIPEmailBuilderStyles {
     const { color, font, lineHeight, padding, align, letterSpacing, textDecoration } = this.options;
 
@@ -54,10 +68,16 @@ export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOption
       "word-break": "break-all",
       "text-align": align,
       "text-decoration": textDecoration,
-      "letter-spacing": letterSpacing === "none" ? "normal" : letterSpacing,
+      "letter-spacing": `${letterSpacing}px`,
       ...createLineHeight(lineHeight),
       ...createFont(this.parseFont(font)),
       ...createPadding(padding)
     };
+  }
+
+  // Get the label for a decoration option
+  getTextDecorationLabel(key: TTextDecoration): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.#textDecoration.get(key)!;
   }
 }
