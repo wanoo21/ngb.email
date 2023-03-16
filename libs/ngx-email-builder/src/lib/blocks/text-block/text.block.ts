@@ -28,7 +28,7 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> implement
       weight: 400
     },
     lineHeight: {
-      value: 1,
+      value: 16,
       unit: "px"
     },
     padding: {
