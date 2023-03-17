@@ -45,3 +45,8 @@
 ## 🏪 MJML Converter
 
 * [A brief introduction](mjml-converter/a-brief-introduction.md)
+
+***
+
+* [🏢 Builder Interfaces](builder-interfaces.md)
+* [🔌 Builder Utils](builder-utils.md)
