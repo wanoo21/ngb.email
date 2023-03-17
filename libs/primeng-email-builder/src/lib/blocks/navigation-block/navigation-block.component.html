@@ -1,1 +1,36 @@
 <p>navigation-block works!</p>
+
+
+
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <h2 primeH2 i18n="@@font">Font</h2>
+  <div primePanel>
+    <h3 primeH3 i18n="@@text_color">Color</h3>
+    <prime-color [(value)]="options.color"></prime-color>
+    <prime-font class="pt-2" [(value)]="options.font"></prime-font>
+    <prime-line-height class="pt-2" [(value)]="options.lineHeight"></prime-line-height>
+    <div class="flex flex-column pt-2">
+      <label [primeLabel]="i" i18n="@@letter_spacing">Letter Spacing</label>
+      <input primeInput #i="input" type="number" pInputText [(ngModel)]="options.letterSpacing" ipHistoryModel>
+    </div>
+    <div class="flex flex-column pt-2">
+      <label [primeLabel]="s" i18n="@@text_decoration">Text Decoration</label>
+      <p-dropdown [options]=" textDecorationKeys" primeInput #s="input" [(ngModel)]="options.textDecoration" ipHistoryModel></p-dropdown>
+    </div>
+  </div>
+  <h2 primeH2 i18n="@@padding">Padding</h2>
+  <div primePanel>
+    <prime-padding [(value)]="options.padding"></prime-padding>
+  </div>
+  <h2 primeH2 i18n="@@align">Align</h2>
+  <div primePanel class="flex gap-2">
+    <prime-align class="w-8" [(value)]="options.align"></prime-align>
+   <div class="flex flex-column justify-content-end">
+     <button  pButton pRipple type="button" class="py-2 p-element p-ripple p-button-raised p-button-text p-button-plain p-button p-component" (click)="options.hamburger = !options.hamburger" style="height: 56px"
+             [style.box-shadow]="options.hamburger ? '0 2px 2px 3px #f3f3f3 !important' : ''"
+             i18n="@@enable_hamburger">
+       Enable Hamburger
+     </button>
+   </div>
+  </div>
+</ng-container>
