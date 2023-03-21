@@ -85,7 +85,7 @@ export class MyHtmlBlockComponent extends AIPEmailBuilderBlock<MyHTMLBlockOption
 }
 ```
 
-`createPadding` function is also part of `@wlocalhost/ngx-email-builder`. See [this page for the full list of all utils functions](../builder-utils.md).
+`createPadding` function is also part of `@wlocalhost/ngx-email-builder`. See [this page for the full list of all utils functions](../utility-functions.md).
 
 Now you can say you already have a custom block, but we are not done yet :sunglasses:.
 

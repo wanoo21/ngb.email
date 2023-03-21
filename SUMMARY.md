@@ -19,7 +19,7 @@
 
 * [Create a new block](custom-blocks/create-a-new-block.md)
 * [Default blocks](custom-blocks/default-blocks/README.md)
-  * [Text Block](custom-blocks/default-blocks/text-block.md)
+  * [Text Block](custom-blocks/default-blocks/text.md)
   * [Image](custom-blocks/default-blocks/image.md)
   * [Button](custom-blocks/default-blocks/button.md)
   * [Social](custom-blocks/default-blocks/social.md)
@@ -49,4 +49,4 @@
 ***
 
 * [🏢 Builder Interfaces](builder-interfaces.md)
-* [🔌 Builder Utils](builder-utils.md)
+* [🔌 Utility Functions](utility-functions.md)
