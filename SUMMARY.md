@@ -17,6 +17,7 @@
 
 ## 🏗 Custom blocks
 
+* [The Structure Class](custom-blocks/the-structure-class.md)
 * [Create a new block](custom-blocks/create-a-new-block.md)
 * [Default blocks](custom-blocks/default-blocks/README.md)
   * [Text Block](custom-blocks/default-blocks/text.md)
