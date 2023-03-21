@@ -128,6 +128,63 @@ Builder border styles interface.
 * `width: number`: Border width.
 * `radius: number`: Border radius.
 
+### **`IFont`**
+
+The `IFont` interface describes the font style of a block. It has the following properties:
+
+* `family` (string): Font family name.
+* `fallback` (string): Fallback font family name.
+* `size` (number): Font size in pixels.
+* `style` ([TFontStyle](builder-interfaces.md#tfontstyle)): Font style, can be `italic`, `normal`, or `oblique`.
+* `weight` ([TFontWeight](builder-interfaces.md#tfontweight)): Font weight in number.
+
+### **`IPadding`**
+
+The `IPadding` interface describes the padding of a block. It has the following optional properties:
+
+* `top` (number): Padding size for the top side of the block.
+* `right` (number): Padding size for the right side of the block.
+* `bottom` (number): Padding size for the bottom side of the block.
+* `left` (number): Padding size for the left side of the block.
+
+### **`IMargin`**
+
+The `IMargin` interface describes the margin of a block. It has the following optional properties:
+
+* `top` (number): Margin size for the top side of the block.
+* `bottom` (number): Margin size for the bottom side of the block.
+
+### `ILineHeight`
+
+The `ILineHeight` interface represents the line-height CSS property, which sets the height of a line box.
+
+#### Properties
+
+* `value`: The numeric value of the line height. Default is `22`.
+* `unit`: The unit of measurement for the line height. Possible values are `px`, `%`, or `none`. Default is `px`.
+
+### `IBackground`
+
+The `IBackground` interface represents the CSS background style.
+
+#### Properties
+
+* `color`: The color of the background. Default is `white`.
+* `url`: The URL of the background image.
+* `repeat`: The repeat style of the background image. Possible values are `no-repeat`, `repeat`, `repeat-x`, or `repeat-y`. Default is `no-repeat`.
+* `size`: An object that defines the width and height of the background image. See [IWidthHeight](builder-interfaces.md#iwidthheight).
+
+### `IWidthHeight`
+
+The `IWidthHeight` interface represents the width and height CSS properties.
+
+#### Properties
+
+* `value`: The numeric value of the width or height. Default is `100`.
+* `unit`: The unit of measurement for the width or height. Possible values are `px`, `%`, `cover`, or `contain`. Default is `%`.
+* `auto`: If `true`, the width or height is set to `auto`. Default is `false`.
+* `units`: An array of possible unit values.
+
 ### `IUserModule`
 
 The `IUserModule` interface defines a user module object that can be used to store user-defined modules. A user module consists of a name and an instance of the `IStructure` interface.

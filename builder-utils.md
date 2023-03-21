@@ -15,7 +15,7 @@ These utility functions provide a valuable set of tools for developers building 
 
 ### createBorder
 
-Create CSS border styles based on an `IBorder` object.
+Create CSS border styles based on an [`IBorder`](builder-interfaces.md#iborder) object.
 
 **Parameters**
 
@@ -28,12 +28,12 @@ Create CSS border styles based on an `IBorder` object.
 
 ### createPadding
 
-Create CSS padding styles based on an `IPadding` object.
+Create CSS padding styles based on an [`IPadding`](builder-interfaces.md#ipadding) object.
 
 **Parameters**
 
 * `padding`: IPadding - The padding object containing padding values for each side.
-* `rule` (optional): string - The CSS rule to apply the padding styles. The default value is "padding".
+* `rule` (optional): `"padding" | "margin"` - The CSS rule to apply the styles. The default value is "padding".
 
 **Returns**
 
@@ -41,11 +41,11 @@ Create CSS padding styles based on an `IPadding` object.
 
 ### createMargin
 
-Create CSS margin styles based on an `IMargin` object.
+Create CSS margin styles based on an [`IMargin`](builder-interfaces.md#imargin) object.
 
 **Parameters**
 
-* `margin`: IMargin - The margin object containing margin values for top and bottom.
+* `margin`: IMargin - The margin object containing margin values for the top and bottom.
 
 **Returns**
 
@@ -53,7 +53,7 @@ Create CSS margin styles based on an `IMargin` object.
 
 ### createFont
 
-Create CSS font styles based on an `IFont` object.
+Create CSS font styles based on an [`IFont`](builder-interfaces.md#ifont) object.
 
 **Parameters**
 
@@ -65,7 +65,7 @@ Create CSS font styles based on an `IFont` object.
 
 ### createLineHeight
 
-Create CSS line-height styles based on an `ILineHeight` object.
+Create CSS line-height styles based on an [`ILineHeight`](builder-interfaces.md#ilineheight) object.
 
 **Parameters**
 
@@ -77,7 +77,7 @@ Create CSS line-height styles based on an `ILineHeight` object.
 
 ### createBackground
 
-Create CSS background styles based on an `IBackground` object.
+Create CSS background styles based on an [`IBackground`](builder-interfaces.md#ibackground) object.
 
 **Parameters**
 
@@ -89,7 +89,7 @@ Create CSS background styles based on an `IBackground` object.
 
 ### createWidthHeight
 
-Create CSS width or height styles based on an `IWidthHeight` object.
+Create CSS width or height styles based on an [`IWidthHeight`](builder-interfaces.md#iwidthheight) object.
 
 **Parameters**
 
@@ -114,7 +114,7 @@ Deep merge two objects. Use it at your own risk.
 
 ### defaultsDeep
 
-An alternative to the lodash `defaultsDeep` function. Use it on your own risk.
+An alternative to the lodash `defaultsDeep` function. Use it at your own risk.
 
 **Parameters**
 
