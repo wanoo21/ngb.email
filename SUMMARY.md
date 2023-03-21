@@ -19,7 +19,7 @@
 
 * [Create a new block](custom-blocks/create-a-new-block.md)
 * [Default blocks](custom-blocks/default-blocks/README.md)
-  * [Text](custom-blocks/default-blocks/text.md)
+  * [Text Block](custom-blocks/default-blocks/text-block.md)
   * [Image](custom-blocks/default-blocks/image.md)
   * [Button](custom-blocks/default-blocks/button.md)
   * [Social](custom-blocks/default-blocks/social.md)
