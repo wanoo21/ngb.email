@@ -147,6 +147,14 @@ The `IPadding` interface describes the padding of a block. It has the following 
 * `bottom` (number): Padding size for the bottom side of the block.
 * `left` (number): Padding size for the left side of the block.
 
+### `ILink`
+
+The `ILink` interface defines the properties that can be used to customize the behavior and appearance of links in email blocks. It has the following properties:
+
+* `url`: The URL that the link should point to.
+* `title`: The title attribute of the link element.
+* `target`: The target attribute of the link element. This can be one of "\_self", "\_blank", "\_parent", or "\_top".
+
 ### **`IMargin`**
 
 The `IMargin` interface describes the margin of a block. It has the following optional properties:

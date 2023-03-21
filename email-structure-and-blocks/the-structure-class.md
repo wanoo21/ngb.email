@@ -28,7 +28,7 @@ Here is the anatomy of a Structure:
    * Each inner array represents a column in the Structure.
    * Each element of the inner array represents a Block inside the corresponding column.
 
-For example, the following code creates a Structure with two columns, where the first column contains a [TextBlock](default-blocks/text.md), and the second column contains a [ButtonBlock](default-blocks/button.md):
+For example, the following code creates a Structure with two columns, where the first column contains a [TextBlock](using-default-blocks/text-block.md), and the second column contains a [ButtonBlock](using-default-blocks/button-block.md):
 
 ```javascript
 import { Structure, TextBlock, ButtonBlock } from '@wlocalhost/ngx-email-builder';
@@ -40,7 +40,7 @@ const myStructure = new Structure('cols_2', [
 
 In this example, the Structure has two columns because of the 'cols\_2' type.
 
-The first column contains a [TextBlock](default-blocks/text.md) with the content 'Hello', and the second column contains a [ButtonBlock](default-blocks/button.md) with the label 'Click me'.
+The first column contains a [TextBlock](using-default-blocks/text-block.md) with the content 'Hello', and the second column contains a [ButtonBlock](using-default-blocks/button-block.md) with the label 'Click me'.
 
 This is just a basic example, and you can customize the Structure further using the various options available.
 

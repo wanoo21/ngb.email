@@ -15,19 +15,19 @@
 * [Create new template](custom-templates/create-new-template.md)
 * [Configure existing template](custom-templates/configure-existing-template.md)
 
-## 🏗 Custom blocks
+## 🏗 Email Structure and Blocks
 
-* [The Structure Class](custom-blocks/the-structure-class.md)
-* [Create a new block](custom-blocks/create-a-new-block.md)
-* [Default blocks](custom-blocks/default-blocks/README.md)
-  * [Text Block](custom-blocks/default-blocks/text.md)
-  * [Image](custom-blocks/default-blocks/image.md)
-  * [Button](custom-blocks/default-blocks/button.md)
-  * [Social](custom-blocks/default-blocks/social.md)
-  * [Divider](custom-blocks/default-blocks/divider.md)
-  * [Spacer](custom-blocks/default-blocks/spacer.md)
-  * [Navigation](custom-blocks/default-blocks/navigation.md)
-  * [HTML](custom-blocks/default-blocks/html.md)
+* [The Structure Class](email-structure-and-blocks/the-structure-class.md)
+* [Create a new block](email-structure-and-blocks/create-a-new-block.md)
+* [Using Default Blocks](email-structure-and-blocks/using-default-blocks/README.md)
+  * [Text Block](email-structure-and-blocks/using-default-blocks/text-block.md)
+  * [Image Block](email-structure-and-blocks/using-default-blocks/image-block.md)
+  * [Button Block](email-structure-and-blocks/using-default-blocks/button-block.md)
+  * [Social Block](email-structure-and-blocks/using-default-blocks/social-block.md)
+  * [Divider Block](email-structure-and-blocks/using-default-blocks/divider-block.md)
+  * [Spacer Block](email-structure-and-blocks/using-default-blocks/spacer-block.md)
+  * [Navigation](email-structure-and-blocks/using-default-blocks/navigation.md)
+  * [HTML](email-structure-and-blocks/using-default-blocks/html.md)
 
 ## 🪚 Abstract components
 
