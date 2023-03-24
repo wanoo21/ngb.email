@@ -14,6 +14,7 @@ export interface INavigationBlockOptions {
   padding: IPadding;
   target: string;
   textDecoration: "underline" | "overline" | "none";
+  elements: { label: string, href: string }[];
 }
 
 export type TTextDecoration = "underline" | "overline" | "none";
@@ -45,7 +46,10 @@ export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOption
       left: 25
     },
     target: "_blank",
-    textDecoration: "none"
+    textDecoration: "none",
+    elements: [
+      { href: "", label: "Home" }
+    ]
   };
 
   // A map of text decoration options
