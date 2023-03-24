@@ -1,8 +1,14 @@
+---
+description: >-
+  The Social Block is a block that allows you to display links to your social
+  media accounts in your email.
+---
+
 # Social Block
 
 The Social Block is a block that allows you to display links to your social media accounts in your email. It supports several options to help you customize the appearance of your social media icons.
 
-### Options
+## Options
 
 #### `ISocialBlockOptions`
 
@@ -29,7 +35,7 @@ The `ISocialNetwork` interface includes the following properties:
 * `name` (type: `"github" | "instagram" | "web" | "snapchat" | "youtube" | "vimeo" | "medium" | "soundcloud" | "facebook" | "twitter" | "pinterest" | "linkedin" | "tumblr" | "xing"`): The name of the social media network to display.
 * `padding` (type: `IPadding`): The padding around the social media icon.
 
-### Usage
+## Usage
 
 To use the Social Block in your email, you can create a new instance of the `SocialBlock` class and customize its options and network details. Here's an example:
 

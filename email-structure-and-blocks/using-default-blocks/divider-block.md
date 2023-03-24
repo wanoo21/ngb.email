@@ -1,13 +1,19 @@
+---
+description: >-
+  The Divider Block is a block that allows you to create a horizontal line to
+  separate content in your email.
+---
+
 # Divider Block
 
 The Divider Block is a block that allows you to create a horizontal line to separate content in your email. It supports several options to help you customize the appearance of the divider.
 
-### Options
+## Options
 
 * `border`: An object defining the border of the divider. It uses the [`IBorder`](../../builder-interfaces.md#iborder) interface, but without the "radius" property.
 * `padding`: An object defining the padding around the divider. It uses the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
 
-### Usage
+## Usage
 
 To use the Divider Block in your email, you can create a new instance of the DividerBlock class and customize its options. Here's an example:
 

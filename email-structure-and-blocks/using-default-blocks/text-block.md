@@ -1,15 +1,21 @@
+---
+description: >-
+  The Text Block is a block that allows you to display text content in your
+  email.
+---
+
 # Text Block
 
 The Text Block is a block that allows you to display text content in your email. It supports several options to help you customize the appearance of your text.
 
-### **Options**
+## **Options**
 
 * color (string): The color of the text.
 * font ([IFont](../../builder-interfaces.md#ifont)): The font of the text.
 * lineHeight ([ILineHeight](../../builder-interfaces.md#ilineheight)): The line height of the text.
 * padding ([IPadding](../../builder-interfaces.md#ipadding)): The padding around the text.
 
-### **Usage**
+## **Usage**
 
 To use the Text Block in your email, you can create a new instance of the `TextBlock` class and customize its options. Here's an example:
 

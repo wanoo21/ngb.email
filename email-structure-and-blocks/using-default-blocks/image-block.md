@@ -1,8 +1,12 @@
+---
+description: The Image Block is a block that allows you to display images in your email.
+---
+
 # Image Block
 
 The Image Block is a block that allows you to display images in your email. It supports several options to help you customize the appearance of your image.
 
-### Options
+## Options
 
 The Image Block supports the following options:
 
@@ -14,7 +18,7 @@ The Image Block supports the following options:
 * `title`: The title of the image. This is used for accessibility purposes.
 * `padding`: The padding around the image. It supports the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
 
-### Usage
+## Usage
 
 To use the Image Block in your email, you can create a new instance of the `ImageBlock` class and customize its options. Here's an example:
 

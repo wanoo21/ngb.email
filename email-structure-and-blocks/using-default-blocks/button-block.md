@@ -1,8 +1,12 @@
+---
+description: The Button Block is a block that allows you to add a button to your email.
+---
+
 # Button Block
 
 The Button Block is a block that allows you to add a button to your email. It supports several options to help you customize the appearance of the button.
 
-### Options
+## Options
 
 * `backgroundColor`: The background color of the button.
 * `border`: The border of the button. This is an instance of the [`IBorder`](../../builder-interfaces.md#iborder) interface.
@@ -18,7 +22,7 @@ The Button Block is a block that allows you to add a button to your email. It su
 * `innerPadding`: The padding inside the button. This is an instance of the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
 * `padding`: The padding around the button. This is an instance of the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
 
-### Usage
+## Usage
 
 To use the Button Block in your email, you can create a new instance of the ButtonBlock class and customize its options. Here's an example:
 
