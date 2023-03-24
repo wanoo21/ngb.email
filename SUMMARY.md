@@ -26,7 +26,7 @@
   * [Social Block](email-structure-and-blocks/using-default-blocks/social-block.md)
   * [Divider Block](email-structure-and-blocks/using-default-blocks/divider-block.md)
   * [Spacer Block](email-structure-and-blocks/using-default-blocks/spacer-block.md)
-  * [Navigation](email-structure-and-blocks/using-default-blocks/navigation.md)
+  * [Navigation Block](email-structure-and-blocks/using-default-blocks/navigation-block.md)
   * [HTML](email-structure-and-blocks/using-default-blocks/html.md)
 
 ## 🪚 Abstract components
