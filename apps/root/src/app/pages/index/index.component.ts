@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { MatTabsModule } from "@angular/material/tabs";
+import { MatLegacyTabsModule as MatTabsModule } from "@angular/material/legacy-tabs";
 import { CommonModule } from "@angular/common";
-import { RouterLinkActive, RouterLinkWithHref, RouterOutlet } from "@angular/router";
+import { RouterLinkActive, RouterLink, RouterOutlet } from "@angular/router";
 
 import { AbstractPage } from "../../abstract/AbstractPage";
 import { SharedModule } from "../../shared/shared.module";
@@ -15,7 +15,7 @@ import { SharedModule } from "../../shared/shared.module";
     MatTabsModule,
     CommonModule,
     RouterOutlet,
-    RouterLinkWithHref,
+    RouterLink,
     RouterLinkActive,
     SharedModule
   ],

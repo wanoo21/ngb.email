@@ -1,13 +1,13 @@
 {
+  "name": "primeng-email-builder",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/primeng-email-builder/src",
   "prefix": "prime",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/primeng-email-builder"
-      ],
+      "outputs": ["{workspaceRoot}/dist/libs/primeng-email-builder"],
       "options": {
         "project": "libs/primeng-email-builder/ng-package.json"
       },
@@ -23,9 +23,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/primeng-email-builder"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/primeng-email-builder"],
       "options": {
         "jestConfig": "libs/primeng-email-builder/jest.config.ts",
         "passWithNoTests": true
@@ -65,9 +63,5 @@
       }
     }
   },
-  "tags": [
-    "primeng builder",
-    "angular builder",
-    "angular email builder"
-  ]
+  "tags": ["primeng builder", "angular builder", "angular email builder"]
 }

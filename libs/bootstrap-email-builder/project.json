@@ -1,11 +1,13 @@
 {
+  "name": "bootstrap-email-builder",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/bootstrap-email-builder/src",
   "prefix": "bt",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/bootstrap-email-builder"],
+      "outputs": ["{workspaceRoot}/dist/libs/bootstrap-email-builder"],
       "options": {
         "project": "libs/bootstrap-email-builder/ng-package.json"
       },
@@ -21,7 +23,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/bootstrap-email-builder"],
+      "outputs": ["{workspaceRoot}/coverage/libs/bootstrap-email-builder"],
       "options": {
         "jestConfig": "libs/bootstrap-email-builder/jest.config.ts",
         "passWithNoTests": true

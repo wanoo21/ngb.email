@@ -1,13 +1,13 @@
 {
+  "name": "ngx-email-builder",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/ngx-email-builder/src",
   "prefix": "ip",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/ngx-email-builder"
-      ],
+      "outputs": ["{workspaceRoot}/dist/libs/ngx-email-builder"],
       "options": {
         "project": "libs/ngx-email-builder/ng-package.json"
       },
@@ -23,9 +23,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/ngx-email-builder"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/ngx-email-builder"],
       "options": {
         "jestConfig": "libs/ngx-email-builder/jest.config.ts",
         "passWithNoTests": true
@@ -44,10 +42,7 @@
       "executor": "@jscutlery/semver:version",
       "options": {
         "preset": "angular",
-        "postTargets": [
-          "ngx-email-builder:deploy",
-          "ngx-email-builder:github"
-        ]
+        "postTargets": ["ngx-email-builder:deploy", "ngx-email-builder:github"]
       }
     },
     "deploy": {

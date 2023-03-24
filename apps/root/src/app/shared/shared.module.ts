@@ -1,15 +1,15 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { MatListModule } from "@angular/material/list";
-import { MatButtonModule } from "@angular/material/button";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatChipsModule } from "@angular/material/chips";
-import { MatTooltipModule } from "@angular/material/tooltip";
-import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { MatLegacyListModule as MatListModule } from "@angular/material/legacy-list";
+import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
+import { MatLegacyMenuModule as MatMenuModule } from "@angular/material/legacy-menu";
+import { MatLegacyChipsModule as MatChipsModule } from "@angular/material/legacy-chips";
+import { MatLegacyTooltipModule as MatTooltipModule } from "@angular/material/legacy-tooltip";
+import { MatLegacySnackBarModule as MatSnackBarModule } from "@angular/material/legacy-snack-bar";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { SanitizePipe } from "../pipes/sanitize.pipe";
-import { RouterLinkActive, RouterLinkWithHref } from "@angular/router";
+import { RouterLinkActive, RouterLink } from "@angular/router";
 import { InnerPageComponent } from "../components/inner-page/inner-page.component";
 
 @NgModule({
@@ -17,7 +17,7 @@ import { InnerPageComponent } from "../components/inner-page/inner-page.componen
   imports: [
     MatSidenavModule,
     SanitizePipe,
-    RouterLinkWithHref,
+    RouterLink,
     RouterLinkActive,
     InnerPageComponent
   ],
@@ -32,7 +32,7 @@ import { InnerPageComponent } from "../components/inner-page/inner-page.componen
     MatSnackBarModule,
     MatSidenavModule,
     SanitizePipe,
-    RouterLinkWithHref,
+    RouterLink,
     RouterLinkActive,
     InnerPageComponent
   ]
