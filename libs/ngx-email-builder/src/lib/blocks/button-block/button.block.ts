@@ -96,4 +96,8 @@ export class ButtonBlock extends AIPEmailBuilderBlock<IButtonBlockOptions> {
       ...createLineHeight(lineHeight)
     };
   }
+
+  override toObject(options?: Partial<IButtonBlockOptions>, innerText = this.innerText) {
+    return { ...super.toObject(options), innerText };
+  }
 }
