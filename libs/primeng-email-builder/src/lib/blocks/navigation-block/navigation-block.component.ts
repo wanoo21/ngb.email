@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, Component, ViewEncapsulation} from '@angular/core';
-import {NavigationBlock} from "@wlocalhost/ngx-email-builder";
+import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+import { NavigationBlock } from "@wlocalhost/ngx-email-builder";
 
 @Component({
-  selector: 'prime-navigation-block',
-  templateUrl: './navigation-block.component.html',
-  styleUrls: ['./navigation-block.component.scss'],
+  selector: "prime-navigation-block",
+  templateUrl: "./navigation-block.component.html",
+  styleUrls: ["./navigation-block.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  encapsulation: ViewEncapsulation.ShadowDom,
+  encapsulation: ViewEncapsulation.ShadowDom
 })
-export class NavigationBlockComponent extends NavigationBlock{
+export class NavigationBlockComponent extends NavigationBlock {
 }
