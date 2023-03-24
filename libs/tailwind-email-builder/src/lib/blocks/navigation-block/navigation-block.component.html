@@ -1,5 +1,15 @@
-<p [style]="hostStyles">navigation-block works!</p>
+<ul>
+  <li *ngFor="let link of options.elements">
+    <a [href]="link.href" [style.color]="options.color" [style.font-family]="options.font"
+       [style.line-height]="options.lineHeight" [style.letter-spacing]="options.letterSpacing"
+       [style.text-decoration]="options.textDecoration" [style.padding]="options.padding"
+       [style.text-align]="options.align">
+      {{link.label}}
+    </a>
+  </li>
+</ul>
 
+<p [style]="hostStyles">navigation-block works!</p>
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 tailH2 i18n="@@font">Font</h2>
   <div tailPanel>
