@@ -11,9 +11,9 @@ The Text Block is a block that allows you to display text content in your email.
 ## **Options**
 
 * color (string): The color of the text.
-* font ([IFont](../../builder-interfaces.md#ifont)): The font of the text.
-* lineHeight ([ILineHeight](../../builder-interfaces.md#ilineheight)): The line height of the text.
-* padding ([IPadding](../../builder-interfaces.md#ipadding)): The padding around the text.
+* font ([IFont](../../interfaces.md#ifont)): The font of the text.
+* lineHeight ([ILineHeight](../../interfaces.md#ilineheight)): The line height of the text.
+* padding ([IPadding](../../interfaces.md#ipadding)): The padding around the text.
 
 ## **Usage**
 

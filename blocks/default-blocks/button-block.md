@@ -9,18 +9,18 @@ The Button Block is a block that allows you to add a button to your email. It su
 ## Options
 
 * `backgroundColor`: The background color of the button.
-* `border`: The border of the button. This is an instance of the [`IBorder`](../../builder-interfaces.md#iborder) interface.
+* `border`: The border of the button. This is an instance of the [`IBorder`](../../interfaces.md#iborder) interface.
 * `color`: The text color of the button.
-* `font`: The font of the text on the button. This is an instance of the [`IFont`](../../builder-interfaces.md#ifont) interface.
+* `font`: The font of the text on the button. This is an instance of the [`IFont`](../../interfaces.md#ifont) interface.
 * `align`: The alignment of the button. This can be one of the following values:
   * `left`: The button is aligned to the left.
   * `center`: The button is centered.
   * `right`: The button is aligned to the right.
 * `fullWidth`: A boolean value indicating whether the button should take up the full width of its container.
-* `lineHeight`: The line height of the text on the button. This is an instance of the [`ILineHeight`](../../builder-interfaces.md#ilineheight) interface.
-* `link`: The link that the button should open when clicked. This is an instance of the [`ILink`](../../builder-interfaces.md#ilink) interface.
-* `innerPadding`: The padding inside the button. This is an instance of the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
-* `padding`: The padding around the button. This is an instance of the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
+* `lineHeight`: The line height of the text on the button. This is an instance of the [`ILineHeight`](../../interfaces.md#ilineheight) interface.
+* `link`: The link that the button should open when clicked. This is an instance of the [`ILink`](../../interfaces.md#ilink) interface.
+* `innerPadding`: The padding inside the button. This is an instance of the [`IPadding`](../../interfaces.md#ipadding) interface.
+* `padding`: The padding around the button. This is an instance of the [`IPadding`](../../interfaces.md#ipadding) interface.
 
 ## Usage
 

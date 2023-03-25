@@ -4,13 +4,13 @@ description: >-
   email layouts using multiple columns with different widths and styles.
 ---
 
-# The Structure Class
+# Structure
 
 With the Structure class, you can define the number of columns, their widths, and various other styles such as border, background, and padding. You can also add various elements such as text, images, buttons, and other blocks to each column.
 
 In this documentation, we'll go through the various properties and methods of the Structure class, and how to use them to create complex email layouts. We'll also provide some examples to help you understand how to use the class in your own projects.
 
-### Anatomy of a Structure
+## Anatomy of a Structure
 
 A Structure consists of several properties and options that define the appearance and layout of the content inside it.&#x20;
 
@@ -18,17 +18,17 @@ Here is the anatomy of a Structure:
 
 1. Type:
    * The type of Structure determines the number of columns and their widths.
-   * Possible values for the type are defined in the [`TStructureTypes`](../builder-interfaces.md#tstructuretypes) interface.
+   * Possible values for the type are defined in the [`TStructureTypes`](../interfaces.md#tstructuretypes) interface.
 2. Options:
    * An object containing the Structure's styling options.
    * The options include `border`, `background`, `padding`, `margin`, `disableResponsive`, `fullWidth`, `gaps`, `columnsWidth`, and `columns`.
-   * Each option is defined in its corresponding interface: [`IBorder`](../builder-interfaces.md#iborder), [`IBackground`](../builder-interfaces.md#ibackground), [`IPadding`](../builder-interfaces.md#ipadding), [`IMargin`](../builder-interfaces.md#imargin), and [`IStructureOptions`](the-structure-class.md#istructurecolumnoptions).
+   * Each option is defined in its corresponding interface: [`IBorder`](../interfaces.md#iborder), [`IBackground`](../interfaces.md#ibackground), [`IPadding`](../interfaces.md#ipadding), [`IMargin`](../interfaces.md#imargin), and [`IStructureOptions`](structure.md#istructurecolumnoptions).
 3. Elements:
    * An array of arrays that contains the Blocks placed inside the Structure.
    * Each inner array represents a column in the Structure.
    * Each element of the inner array represents a Block inside the corresponding column.
 
-For example, the following code creates a Structure with two columns, where the first column contains a [TextBlock](using-default-blocks/text-block.md), and the second column contains a [ButtonBlock](using-default-blocks/button-block.md):
+For example, the following code creates a Structure with two columns, where the first column contains a [TextBlock](default-blocks/text-block.md), and the second column contains a [ButtonBlock](default-blocks/button-block.md):
 
 ```javascript
 import { Structure, TextBlock, ButtonBlock } from '@wlocalhost/ngx-email-builder';
@@ -40,15 +40,15 @@ const myStructure = new Structure('cols_2', [
 
 In this example, the Structure has two columns because of the 'cols\_2' type.
 
-The first column contains a [TextBlock](using-default-blocks/text-block.md) with the content 'Hello', and the second column contains a [ButtonBlock](using-default-blocks/button-block.md) with the label 'Click me'.
+The first column contains a [TextBlock](default-blocks/text-block.md) with the content 'Hello', and the second column contains a [ButtonBlock](default-blocks/button-block.md) with the label 'Click me'.
 
 This is just a basic example, and you can customize the Structure further using the various options available.
 
-### Structure Options
+## Structure Options
 
 Structure options are used to define the styles of a structure.
 
-#### IStructureOptions
+### IStructureOptions
 
 The styles of a structure are defined by an object implementing the `IStructureOptions` interface:
 
@@ -90,9 +90,9 @@ For example, if the structure has 2 `columns`, then `columnsWidth` should be an 
 
 By default, all columns have equal width, so `columnsWidth` is initialized to an array with equal values.
 
-The `columns` property is an array of [`IStructureColumnOptions`](the-structure-class.md#istructurecolumnoptions) objects that define the styles for each column in the structure.
+The `columns` property is an array of [`IStructureColumnOptions`](structure.md#istructurecolumnoptions) objects that define the styles for each column in the structure.
 
-#### IStructureColumnOptions
+### IStructureColumnOptions
 
 The styles of a column in a structure are defined by an object implementing the `IStructureColumnOptions` interface:
 
@@ -106,19 +106,19 @@ The styles of a column in a structure are defined by an object implementing the 
 Where:
 
 * `background` defines the background color of the column, with `color` being a string value.
-* `border` defines the border of the column, with [`IBorder`](../builder-interfaces.md#iborder) being an interface with the following properties:
+* `border` defines the border of the column, with [`IBorder`](../interfaces.md#iborder) being an interface with the following properties:
   * `width`: the width of the border in pixels.
   * `color`: the color of the border in hexadecimal format.
   * `radius`: the radius of the border's corners in pixels.
   * `style`: the style of the border, either `"solid"`, `"dashed"`, or `"dotted"`.
-* `verticalAlign` defines the vertical alignment of the column within the structure, with [`TVerticalAlign`](../builder-interfaces.md#tverticalalign) being a string value equal to one of the following:
+* `verticalAlign` defines the vertical alignment of the column within the structure, with [`TVerticalAlign`](../interfaces.md#tverticalalign) being a string value equal to one of the following:
   * `"top"`: the column is aligned to the top of the structure.
   * `"middle"`: the column is aligned to the middle of the structure.
   * `"bottom"`: the column is aligned to the bottom of the structure.
 
-### Customizing Structure Options
+## Customizing Structure Options
 
-You can customize the options for a structure by passing a partial object of the [`IStructureOptions`](the-structure-class.md#istructureoptions) interface to the `Structure` constructor.&#x20;
+You can customize the options for a structure by passing a partial object of the [`IStructureOptions`](structure.md#istructureoptions) interface to the `Structure` constructor.&#x20;
 
 Any missing properties will be filled with default values. For example:
 
@@ -194,7 +194,7 @@ The padding and margin are also set to specific values.
 
 For example, if you have a structure with three columns, and `columnsWidth` is `[3, 4, 3]`, then the first and third columns will be 30% wide, and the second column will be 40% wide. **The sum of the values in `columnsWidth` should always add up to 10.**
 
-### Examples
+## Examples
 
 Example 1: Creating a two-column structure with TextBlocks:
 
@@ -243,8 +243,8 @@ const structure = new Structure('cols_4', [
 
 ```
 
-### Conclusion
+## Conclusion
 
 The Structure is a powerful tool in the NGB Email Builder. It allows you to easily create responsive email templates by defining the structure of the email and the layout of its columns. By using the Structure, you can create complex email designs that look great on any device.
 
-When creating a Structure, it is important to keep in mind the [anatomy of the Structure](the-structure-class.md#anatomy-of-a-structure) and the options available to you. You should also follow best practices such as setting column widths and using padding and margins effectively.
+When creating a Structure, it is important to keep in mind the [anatomy of the Structure](structure.md#anatomy-of-a-structure) and the options available to you. You should also follow best practices such as setting column widths and using padding and margins effectively.

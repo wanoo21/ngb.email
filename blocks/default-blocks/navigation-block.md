@@ -12,13 +12,13 @@ The Navigation Block is a block that allows you to display a navigation menu in 
 
 The Navigation Block supports the following options:
 
-* `align`: The alignment of the navigation menu. It supports the [`TAlign`](../../builder-interfaces.md#talign) interface.
+* `align`: The alignment of the navigation menu. It supports the [`TAlign`](../../interfaces.md#talign) interface.
 * `hamburger`: Boolean value indicating whether to display the hamburger menu icon for mobile devices.
 * `color`: The color of the navigation menu text.
-* `font`: The font settings for the navigation menu. It supports the [`IFont`](../../builder-interfaces.md#ifont) interface.
-* `lineHeight`: The line height of the navigation menu text. It supports the [`ILineHeight`](../../builder-interfaces.md#ilineheight) interface.
+* `font`: The font settings for the navigation menu. It supports the [`IFont`](../../interfaces.md#ifont) interface.
+* `lineHeight`: The line height of the navigation menu text. It supports the [`ILineHeight`](../../interfaces.md#ilineheight) interface.
 * `letterSpacing`: The letter spacing of the navigation menu text.
-* `padding`: The padding around the navigation menu. It supports the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
+* `padding`: The padding around the navigation menu. It supports the [`IPadding`](../../interfaces.md#ipadding) interface.
 * `target`: The default link target for navigation menu links.
 * `textDecoration`: The text-decoration for navigation menu links. This can be `underline`, `overline`, or `none`.
 * `elements`: An array of objects representing the individual navigation menu items. Each object has a `label` property for the text and a `href` property for the link URL.

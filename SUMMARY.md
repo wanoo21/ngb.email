@@ -1,38 +1,53 @@
 # Table of contents
 
-* [⭐ Getting Started](README.md)
-  * [A brief introduction](getting-started/a-brief-introduction.md)
+## 🌟 Getting Started
+
+* [Introduction to the library](README.md)
+* [Installation](getting-started/installation.md)
+* [Configuration](getting-started/configuration.md)
+
+## 🏗 Blocks
+
+* [Structure](blocks/structure.md)
+* [Default Blocks](blocks/default-blocks/README.md)
+  * [Text Block](blocks/default-blocks/text-block.md)
+  * [Image Block](blocks/default-blocks/image-block.md)
+  * [Button Block](blocks/default-blocks/button-block.md)
+  * [Social Block](blocks/default-blocks/social-block.md)
+  * [Divider Block](blocks/default-blocks/divider-block.md)
+  * [Spacer Block](blocks/default-blocks/spacer-block.md)
+  * [Navigation Block](blocks/default-blocks/navigation-block.md)
+  * [HTML](blocks/default-blocks/html.md)
+* [Custom block](blocks/custom-block.md)
 
 ## ✈ Services
 
-* [A brief introduction](services/a-brief-introduction.md)
-* [UI Service](services/ui-service.md)
-* [Middleware service](services/middleware-service.md)
+* [AIPEmailBuilderService](services/aipemailbuilderservice.md)
+* [IPEmailBuilderUiService](services/ipemailbuilderuiservice.md)
+* [AIPEmailBuilderRestService](services/aipemailbuilderrestservice.md)
+* [AIPEmailBuilderMiddlewareService](services/aipemailbuildermiddlewareservice.md)
+* [AIPEmailBuilderHistoryService](services/aipemailbuilderhistoryservice.md)
 
-## 🏫 Custom Templates
+## 🏫 Templates
 
-* [Getting Started](custom-templates/getting-started.md)
-* [Create new template](custom-templates/create-new-template.md)
-* [Configure existing template](custom-templates/configure-existing-template.md)
-
-## 🏗 Email Structure and Blocks
-
-* [The Structure Class](email-structure-and-blocks/the-structure-class.md)
-* [Create a new block](email-structure-and-blocks/create-a-new-block.md)
-* [Using Default Blocks](email-structure-and-blocks/using-default-blocks/README.md)
-  * [Text Block](email-structure-and-blocks/using-default-blocks/text-block.md)
-  * [Image Block](email-structure-and-blocks/using-default-blocks/image-block.md)
-  * [Button Block](email-structure-and-blocks/using-default-blocks/button-block.md)
-  * [Social Block](email-structure-and-blocks/using-default-blocks/social-block.md)
-  * [Divider Block](email-structure-and-blocks/using-default-blocks/divider-block.md)
-  * [Spacer Block](email-structure-and-blocks/using-default-blocks/spacer-block.md)
-  * [Navigation Block](email-structure-and-blocks/using-default-blocks/navigation-block.md)
-  * [HTML](email-structure-and-blocks/using-default-blocks/html.md)
-
-## 🪚 Abstract components
-
-* [A brief introduction](abstract-components/a-brief-introduction.md)
-* [Align](abstract-components/align.md)
+* [Default Templates](templates/default-templates.md)
+* [Custom templates](templates/custom-templates/README.md)
+  * [AIPEmailBuilderComponent](templates/custom-templates/aipemailbuildercomponent/README.md)
+    * [AIPEmailBody](templates/custom-templates/aipemailbuildercomponent/aipemailbody/README.md)
+      * [AIPStructure](templates/custom-templates/aipemailbuildercomponent/aipemailbody/aipstructure.md)
+      * [AIPTemplateList](templates/custom-templates/aipemailbuildercomponent/aipemailbody/aiptemplatelist.md)
+    * [AIPEmailBuilderAside](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/README.md)
+      * [AIPAlign](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipalign.md)
+      * [AIPBackground](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipbackground.md)
+      * [AIPBorder](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipborder.md)
+      * [AIPColor](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipcolor.md)
+      * [AIPFont](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipfont.md)
+      * [AIPImageUpload](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipimageupload.md)
+      * [AIPLineHeight](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aiplineheight.md)
+      * [AIPLink](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aiplink.md)
+      * [AIPMargin](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipmargin.md)
+      * [AIPPadding](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aippadding.md)
+      * [AIPWidthHeight](templates/custom-templates/aipemailbuildercomponent/aipemailbuilderaside/aipwidthheight.md)
 
 ## 🦼 Directives
 
@@ -49,5 +64,15 @@
 
 ***
 
-* [🏢 Builder Interfaces](builder-interfaces.md)
-* [🔌 Utility Functions](builder-utils.md)
+* [🏢 Interfaces](interfaces.md)
+* [🔌 Utility](utility.md)
+
+## Usage Examples
+
+* [Generating an email using the library](usage-examples/generating-an-email-using-the-library.md)
+* [Adding custom functionality with middleware](usage-examples/adding-custom-functionality-with-middleware.md)
+
+## Troubleshooting and FAQs
+
+* [Common issues and solutions](troubleshooting-and-faqs/common-issues-and-solutions.md)
+* [Frequently asked questions](troubleshooting-and-faqs/frequently-asked-questions.md)

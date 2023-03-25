@@ -10,8 +10,8 @@ The Divider Block is a block that allows you to create a horizontal line to sepa
 
 ## Options
 
-* `border`: An object defining the border of the divider. It uses the [`IBorder`](../../builder-interfaces.md#iborder) interface, but without the "radius" property.
-* `padding`: An object defining the padding around the divider. It uses the [`IPadding`](../../builder-interfaces.md#ipadding) interface.
+* `border`: An object defining the border of the divider. It uses the [`IBorder`](../../interfaces.md#iborder) interface, but without the "radius" property.
+* `padding`: An object defining the padding around the divider. It uses the [`IPadding`](../../interfaces.md#ipadding) interface.
 
 ## Usage
 

@@ -10,7 +10,7 @@ The Spacer Block is a block that adds empty space between other blocks in your e
 
 ## Options
 
-* `height` (type: [`IWidthHeight`](../../builder-interfaces.md#iwidthheight)): The height of the spacer block. This can be set using either pixels or percentage values. The `auto` value is not supported.
+* `height` (type: [`IWidthHeight`](../../interfaces.md#iwidthheight)): The height of the spacer block. This can be set using either pixels or percentage values. The `auto` value is not supported.
 
 ## Usage
 

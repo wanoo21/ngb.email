@@ -2,7 +2,7 @@
 description: How to create a custom email template builder block.
 ---
 
-# Create a new block
+# Custom block
 
 Creating a new block in our template builder is pretty straightforward. In this documentation, you'll find a step-by-step guide on how to create your custom block.&#x20;
 
@@ -56,7 +56,7 @@ export interface MyHTMLBlockOptions {
 }
 ```
 
-`IPadding` is a `@wlocalhost/ngx-email-builder` interface, see [this page for all interfaces provided by the builder](../builder-interfaces.md).
+`IPadding` is a `@wlocalhost/ngx-email-builder` interface, see [this page for all interfaces provided by the builder](../interfaces.md).
 
 And this is our updated component.
 
@@ -85,7 +85,7 @@ export class MyHtmlBlockComponent extends AIPEmailBuilderBlock<MyHTMLBlockOption
 }
 ```
 
-`createPadding` function is also part of `@wlocalhost/ngx-email-builder`. See [this page for the full list of all utils functions](../builder-utils.md).
+`createPadding` function is also part of `@wlocalhost/ngx-email-builder`. See [this page for the full list of all utils functions](../utility.md).
 
 Now you can say you already have a custom block, but we are not done yet :sunglasses:.
 
