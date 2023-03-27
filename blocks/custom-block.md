@@ -22,7 +22,7 @@ ng g c myHtmlBlock --display-block --change-detection=OnPush
 
 Cool, now let's go to the second step.
 
-## Step 2. Define the component as a builder block
+## Step 2. Define the component as an email builder block
 
 Before marking this component as a block, let's create an empty interface that will contain the block's options.
 
@@ -38,15 +38,9 @@ export class MyHtmlBlockComponent extends AIPEmailBuilderBlock<MyHTMLBlockOption
 }
 ```
 
-`AIPEmailBuilderBlock` is a base class for implementing email blocks in the email builder application.
+[AIPEmailBuilderBlock](aipemailbuilderblock.md) is a base class for implementing email blocks in the email builder application.
 
 The class has [lifecycle hooks](https://yon.fun/angular-lifecycle-hooks/) for initializing, cleaning up resources, listening to changes in the block, and updating its properties accordingly.
-
-**The `AIPEmailBuilderBlock` requires some properties to be defined:**
-
-* `type`: This is the type of the block. It's very important to be unique because this is the identification key for the builder and converter.
-* `options`: This object contains all default options. We'll see an example later.
-* `hostStyles`: This is a getter property that returns styles that should be applied to the component host.
 
 Now it's time to add some options to our interface. Let's assume we want to add just the padding.
 
@@ -56,7 +50,7 @@ export interface MyHTMLBlockOptions {
 }
 ```
 
-`IPadding` is a `@wlocalhost/ngx-email-builder` interface, see [this page for all interfaces provided by the builder](../interfaces.md).
+[IPadding](../interfaces.md#ipadding) is a `@wlocalhost/ngx-email-builder` interface, see [this page for all interfaces provided by the builder](../interfaces.md).
 
 And this is our updated component.
 

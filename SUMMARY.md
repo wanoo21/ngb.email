@@ -9,6 +9,7 @@
 ## 🏗 Blocks
 
 * [Structure](blocks/structure.md)
+* [AIPEmailBuilderBlock](blocks/aipemailbuilderblock.md)
 * [Default Blocks](blocks/default-blocks/README.md)
   * [Text Block](blocks/default-blocks/text-block.md)
   * [Image Block](blocks/default-blocks/image-block.md)
@@ -51,12 +52,18 @@
 
 ## 🦼 Directives
 
-* [A brief introduction](directives/a-brief-introduction.md)
-* [Settings](directives/settings.md)
+* [IPEmailBuilderColumnDirective](directives/ipemailbuildercolumndirective.md)
+* [IPEmailBuilderDynamicDirective](directives/ipemailbuilderdynamicdirective.md)
+* [IPEmailBuilderHistoryActionDirective](directives/ipemailbuilderhistoryactiondirective.md)
+* [IPEmailBuilderHistoryHostDirective](directives/ipemailbuilderhistoryhostdirective.md)
+* [IPHistoryModelDirective](directives/iphistorymodeldirective.md)
+* [IPEmailBuilderSettingsDirective](directives/ipemailbuildersettingsdirective.md)
+* [IPEmailBuilderStructuresDirective](directives/ipemailbuilderstructuresdirective.md)
 
 ## 🚡 Pipes
 
 * [Apply middleware](pipes/apply-middleware.md)
+* [ToHistoryOptionsPipe](pipes/tohistoryoptionspipe.md)
 
 ## 🏪 MJML Converter
 
