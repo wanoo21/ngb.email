@@ -62,8 +62,10 @@
 
 ## 🚡 Pipes
 
-* [Apply middleware](pipes/apply-middleware.md)
+* [ApplyMiddlewarePipe](pipes/applymiddlewarepipe.md)
 * [ToHistoryOptionsPipe](pipes/tohistoryoptionspipe.md)
+* [IpCanPipe](pipes/ipcanpipe.md)
+* [ColumnStylesPipe](pipes/columnstylespipe.md)
 
 ## 🏪 MJML Converter
 
