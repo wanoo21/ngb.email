@@ -8,6 +8,7 @@ import { IPEmailBuilderSettingsDirective } from "../directives/email-builder-set
  * An abstract class that provides a common interface for components that contain settings.
  * It also provides a common interface for the settings component to interact with the builder.
  *
+ * @internal
  */
 @Directive()
 export abstract class WithSettings implements DoCheck, OnDestroy {

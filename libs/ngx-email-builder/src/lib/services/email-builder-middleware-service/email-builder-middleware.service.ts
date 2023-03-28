@@ -12,7 +12,7 @@ export type middlewareStructureActions = middlewareBlockActions | "save";
 export type middlewareEmailActions = "preview" | "save";
 
 /**
- * The AIPEmailBuilderMiddlewareService is an abstract service that provides middleware functions for the email builder.
+ * The AIPEmailBuilderMiddlewareService is the base class that provides middleware functions for the email builder.
  */
 @Injectable({
   providedIn: "root",
@@ -33,14 +33,15 @@ export type middlewareEmailActions = "preview" | "save";
 export abstract class AIPEmailBuilderMiddlewareService {
   /**
    * The path to the templates thumbnails.
+   * @type {string}
    */
   readonly templatesThumbsPath = inject(IP_EMAIL_BUILDER_CONFIG).templatesThumbsPath;
 
   /**
    * Returns the list of blocks.
    *
-   * @param blocks The list of blocks.
-   * @returns The list of blocks.
+   * @param {IIPEmailBuilderBlockData[]} blocks The list of blocks.
+   * @returns {Observable<IIPEmailBuilderBlockData[]>} The list of blocks.
    */
   blocksList(blocks: IIPEmailBuilderBlockData[]): Observable<IIPEmailBuilderBlockData[]> {
     return of(blocks);
@@ -49,8 +50,8 @@ export abstract class AIPEmailBuilderMiddlewareService {
   /**
    * Returns the list of structures.
    *
-   * @param structures The list of structures.
-   * @returns The list of structures.
+   * @param {IStructure[]} structures The list of structures.
+   * @returns {Observable<IStructure[]>} The list of structures.
    */
   structuresList(structures: IStructure[]): Observable<IStructure[]> {
     return of(structures);
@@ -59,8 +60,8 @@ export abstract class AIPEmailBuilderMiddlewareService {
   /**
    * Returns the list of categories.
    *
-   * @param categories The list of categories.
-   * @returns The list of categories.
+   * @param {IUserTemplateCategory[]} categories The list of categories.
+   * @returns {Observable<IUserTemplateCategory[]>} The list of categories.
    */
   categoryList(categories: IUserTemplateCategory[]): Observable<IUserTemplateCategory[]> {
     return of(categories);
@@ -69,8 +70,8 @@ export abstract class AIPEmailBuilderMiddlewareService {
   /**
    * Returns the list of templates in the given category.
    *
-   * @param category The category.
-   * @returns The list of templates in the category.
+   * @param {IUserTemplateCategory} category The category.
+   * @returns {Observable<IUserTemplateCategory["templates"]>} The list of templates in the category.
    */
   categoryTemplates(category: IUserTemplateCategory): Observable<IUserTemplateCategory["templates"]> {
     return of(category.templates);
@@ -79,14 +80,13 @@ export abstract class AIPEmailBuilderMiddlewareService {
   /**
    * Returns the path to the thumbnail for the given category and template.
    *
-   * @param category The category.
-   * @param template The template name.
-   * @returns The path to the thumbnail.
+   * @param {IUserTemplateCategory} category The category.
+   * @param {string} template The template name.
+   * @returns {string} The path to the thumbnail.
    */
   templateThumbnail(category: IUserTemplateCategory, template: string): string {
     return `${this.templatesThumbsPath}/${category}-${template}.jpg`;
   }
-
   /**
    * Prompts the user with a confirmation dialog to delete an entity.
    *
@@ -133,8 +133,15 @@ export abstract class AIPEmailBuilderMiddlewareService {
   }
 }
 
+/**
+ * An implementation of the `AIPEmailBuilderMiddlewareService` for the Pro version of the email builder.
+ */
 class ProIPEmailBuilderMiddlewareService extends AIPEmailBuilderMiddlewareService {
 }
 
+/**
+ * An implementation of the `AIPEmailBuilderMiddlewareService` for the free version of the email builder.
+ */
 class FreeIPEmailBuilderMiddlewareService extends AIPEmailBuilderMiddlewareService {
 }
+

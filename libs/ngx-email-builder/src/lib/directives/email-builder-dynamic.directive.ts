@@ -14,7 +14,9 @@ import { CdkDrag } from "@angular/cdk/drag-drop";
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 
-// Default context for dynamic block.
+/**
+ * Default context for dynamic block.
+ */
 class IPEmailBuilderDynamicDirectiveContext {
   // Newly created block.
   $implicit!: AIPEmailBuilderBlock;
@@ -36,6 +38,13 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
   #instance!: AIPEmailBuilderBlock | undefined;
   #comingContext!: AIPEmailBuilderBlockExtendedOptions;
 
+  /**
+   * @param blocksData A list of all available blocks with their factories.
+   * @param viewContainerRef Reference to the view container.
+   * @param templateRef Reference to the template.
+   * @param differs KeyValueDiffers factory.
+   * @param cdkDrag Optional directive on the host element.
+   */
   constructor(
     @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
     readonly blocksData: IIPEmailBuilderBlockData[],
@@ -43,9 +52,13 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
     readonly templateRef: TemplateRef<IPEmailBuilderDynamicDirectiveContext>,
     readonly differs: KeyValueDiffers,
     @Host() readonly cdkDrag?: CdkDrag
-  ) {
-  }
+  ) {}
 
+  /**
+   * Setter for the dynamic block's context.
+   * Creates a new instance of the block and attaches it to the view.
+   * @throws {TypeError} If no such block was found.
+   */
   @Input()
   set ipEmailBuilderDynamicBlockDirective(context: AIPEmailBuilderBlockExtendedOptions) {
     this.#comingContext = context;
@@ -65,10 +78,17 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
     }
   }
 
+  /**
+   * Guard function for template context. Returns true always.
+   */
   static ngTemplateContextGuard(dir: IPEmailBuilderDynamicDirective, ctx: unknown): ctx is IPEmailBuilderDynamicDirectiveContext {
     return true;
   }
 
+  /**
+   * Detect changes of the dynamic block's instance and incoming context.
+   * Updates incoming context with updated instance details.
+   */
   ngDoCheck(): void {
     if (this.#keyValueDiffers && this.#instance?.isCurrentlyEditing) {
       if (this.cdkDrag) {
