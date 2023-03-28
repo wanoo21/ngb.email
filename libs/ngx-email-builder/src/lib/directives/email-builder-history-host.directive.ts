@@ -8,18 +8,22 @@ import { TIPEmailBuilderStyles } from "../interfaces";
 import { AIPEmailBody } from "../core/Body";
 
 /**
- * Context for history host element
+ * Context for the history host element.
  */
 export interface IIPOptionsHistoryContext<T extends TIPEmailBuilderStyles = TIPEmailBuilderStyles> {
-  // Current host class
+  /**
+   * The current host class.
+   */
   cmp: AIPEmailBuilderBlock<T> | AIPStructure | AIPEmailBody,
-  // Object with elements to watch
+  /**
+   * An object with elements to watch.
+   */
   watch: T
 }
 
 /**
- * This directive watches the options and make sure you don't leave without unsaved changes.
- * Even though History Logic is not ready yet, it's important to use it as root settings element.
+ * Watches the options and ensures that changes are not left unsaved.
+ * Use it as the root settings element.
  *
  * @exportAs ipEmailBuilderHistoryHost
  */
@@ -27,15 +31,26 @@ export interface IIPOptionsHistoryContext<T extends TIPEmailBuilderStyles = TIPE
   selector: "[ipEmailBuilderHistoryHost]",
   exportAs: "ipEmailBuilderHistoryHost"
 })
-export class EmailBuilderHistoryHostDirective implements OnInit {
+export class IPEmailBuilderHistoryHostDirective implements OnInit {
+
+  /**
+   * The history context.
+   */
   @Input() ipEmailBuilderHistoryHost?: IIPOptionsHistoryContext;
+
+  /**
+   * The history service.
+   */
   readonly historyService = inject(AIPEmailBuilderHistoryService);
 
   ngOnInit(): void {
     this.detectChanges(false);
   }
 
-  // Detect differences in options if user made some changes
+  /**
+   * Detects differences in options if the user made some changes.
+   * @param isAction A boolean indicating if the change is an action.
+   */
   detectChanges(isAction: boolean): void {
     if (this.ipEmailBuilderHistoryHost) {
       const { cmp, watch } = this.ipEmailBuilderHistoryHost;

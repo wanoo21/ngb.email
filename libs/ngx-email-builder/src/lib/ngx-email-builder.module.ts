@@ -24,7 +24,7 @@ import { IIPEmailBuilderConfig } from "./public-tokens";
 import { withConfig } from "./tools/core";
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens";
 import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
-import { EmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
+import { IPEmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
 import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
 
 // https://github.com/jscutlery/semver
@@ -45,7 +45,7 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
     IPHistoryModelDirective,
-    EmailBuilderHistoryHostDirective
+    IPEmailBuilderHistoryHostDirective
   ],
   imports: [
     CommonModule,
@@ -72,7 +72,7 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
     IPHistoryModelDirective,
-    EmailBuilderHistoryHostDirective,
+    IPEmailBuilderHistoryHostDirective,
     TemplateThumbPathPipe
   ],
   providers: [
