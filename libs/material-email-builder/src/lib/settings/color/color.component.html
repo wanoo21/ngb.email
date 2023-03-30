@@ -1,5 +1,5 @@
-<div fxLayout fxLayoutGap="0.5rem">
-  <div fxFlex="75%" fxLayout="column">
+<div fxLayoutGap="0.5rem">
+  <div fxFlex="80" fxLayout="column">
     <mat-form-field appearance="fill">
       <mat-label i18n="@@color">Color</mat-label>
       <input type="text" ipHistoryModel matInput [(ngModel)]="value" (input)="valueChange.next(value)">
@@ -7,5 +7,7 @@
       </mat-hint>
     </mat-form-field>
   </div>
-  <div fxFlex="25%" fxShrink="0" [style.background-color]="value"></div>
+  <div fxFlex="20" [style.background-color]="value" style="overflow: hidden; height: 60px">
+    <input class="rounded border py-0" fxFlex type="color" [(ngModel)]="value" style="width: 119%; margin-left: -6px; margin-top: -6px; height: 150%">
+  </div>
 </div>
