@@ -18,8 +18,8 @@ export abstract class AIPBorder extends AIPValueChanged<any> {
   readonly #borderLabels = new Map<keyof ISizes, string>([
     ["top", $localize`:@@border_top:Border Top`],
     ["right", $localize`:@@border_right:Border Right`],
+    ["left", $localize`:@@border_left:Border Left`],
     ["bottom", $localize`:@@border_bottom:Border Bottom`],
-    ["left", $localize`:@@border_left:Border Left`]
   ]);
 
   get borderKeys() {
