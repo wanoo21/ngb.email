@@ -25,6 +25,12 @@ export class ImageBlock extends AIPEmailBuilderBlock<IImageBlockOptions> {
     border: {
       color: "#cccccc",
       style: "solid",
+      sizes: {
+        top: 0,
+        right: 0,
+        left: 0,
+        bottom: 0,
+      },
       width: 0,
       radius: 0
     },
