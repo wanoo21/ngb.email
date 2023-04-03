@@ -1,7 +1,7 @@
 import { Directive, Input } from "@angular/core";
 
 import { AIPValueChanged } from "../core/ValueChanged";
-import { IBorder } from "../interfaces";
+import {IBorder, IPadding, ISizes} from "../interfaces";
 
 @Directive()
 export abstract class AIPBorder extends AIPValueChanged<any> {
@@ -13,6 +13,23 @@ export abstract class AIPBorder extends AIPValueChanged<any> {
     ["double", $localize`:@@border_style_double:Double`],
     ["groove", $localize`:@@border_style_groove:Groove`]
   ]);
+
+
+  readonly #borderLabels = new Map<keyof ISizes, string>([
+    ["top", $localize`:@@border_top:Border Top`],
+    ["right", $localize`:@@border_right:Border Right`],
+    ["bottom", $localize`:@@border_bottom:Border Bottom`],
+    ["left", $localize`:@@border_left:Border Left`]
+  ]);
+
+  get borderKeys() {
+    return [...this.#borderLabels.keys()];
+  }
+
+  getBorderLabels(key: keyof ISizes): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.#borderLabels.get(key)!;
+  }
 
   get styleLabels(): IBorder["style"][] {
     return [...this.#styleLabels.keys()];
