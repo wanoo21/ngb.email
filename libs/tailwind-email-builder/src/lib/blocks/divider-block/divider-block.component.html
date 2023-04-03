@@ -3,7 +3,12 @@
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <h2 tailH2 i18n="@@divider_color">Divider Color</h2>
   <div tailPanel>
-    <tail-border [(value)]="options.border"></tail-border>
+    <tail-border [(value)]="options.border">
+      <div class="flex gap-2 mt-2">
+        <input type="number" tailInput [(ngModel)]="options.border.width"  placeholder="Width"
+               i18n-placeholder="@@border_width">
+      </div>
+    </tail-border>
   </div>
   <h2 tailH2 i18n="@@padding">Padding</h2>
   <div tailPanel>
