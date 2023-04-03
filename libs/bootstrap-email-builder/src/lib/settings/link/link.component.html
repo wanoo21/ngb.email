@@ -1,9 +1,9 @@
-<div class="d-grid gap-2" style="grid-template-columns: 2fr 1fr">
-  <div class="d-flex flex-column">
+<div class="d-flex gap-2" style="grid-template-columns: 2fr 1fr">
+  <div class="d-flex flex-column w-75">
     <label [btLabel]="l" i18n="@@link">Link</label>
     <input type="text" btInput #l="input" [(ngModel)]="value.href" placeholder="https://..." i18n-placeholder="@@link_placeholder">
   </div>
-  <div class="d-flex flex-column">
+  <div class="d-flex flex-column w-25">
     <label [btLabel]="t" i18n="@@link_target">Target</label>
     <select btInput #t="input" class="appearance-none" [(ngModel)]="value.target">
       <option *ngFor="let target of targets" [value]="target">
