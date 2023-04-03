@@ -1,15 +1,18 @@
 <tail-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></tail-color>
 
-<div class="grid grid-cols-4 gap-2 mt-2" *ngIf="value.sizes">
+<div class="grid grid-cols-4 gap-2 mt-2" *ngIf="value.sizes; else width">
   <div class="flex flex-col" *ngFor="let key of borderKeys">
     <label [tailLabel]="i">{{getBorderLabels(key)}}</label>
     <input type="number" #i="input" tailInput [(ngModel)]="value.sizes[key]">
   </div>
 </div>
 
-<ng-container *ngIf="!value.sizes">
-  <ng-content></ng-content>
-</ng-container>
+<ng-template #width>
+  <div class="flex gap-2 mt-2">
+    <input type="number" tailInput [(ngModel)]="value.width"  placeholder="Width"
+           i18n-placeholder="@@border_width">
+  </div>
+</ng-template>
 
 <div class="flex flex-col mt-2">
   <h3 tailH3 i18n="@@border_radius">Border Radius</h3>
