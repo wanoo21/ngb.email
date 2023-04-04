@@ -7,7 +7,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/root",
         "index": "apps/root/src/index.html",
@@ -15,13 +17,20 @@
         "polyfills": "apps/root/src/polyfills.ts",
         "tsConfig": "apps/root/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/root/src/favicon.ico", "apps/root/src/assets"],
-        "styles": ["apps/root/src/styles.scss"],
+        "assets": [
+          "apps/root/src/favicon.ico",
+          "apps/root/src/assets"
+        ],
+        "styles": [
+          "apps/root/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/root/webpack.config.js"
         },
-        "allowedCommonJsDependencies": ["recursive-diff"]
+        "allowedCommonJsDependencies": [
+          "recursive-diff"
+        ]
       },
       "configurations": {
         "production": {
@@ -84,17 +93,25 @@
     "lint": {
       "executor": "@nrwl/linter:eslint",
       "options": {
-        "lintFilePatterns": ["apps/root/**/*.ts", "apps/root/**/*.html"]
+        "lintFilePatterns": [
+          "apps/root/**/*.ts",
+          "apps/root/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/apps/root"],
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/root"
+      ],
       "options": {
         "jestConfig": "apps/root/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": [
+    "tailwind-demo-app"
+  ]
 }

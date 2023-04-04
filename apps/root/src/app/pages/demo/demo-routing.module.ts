@@ -14,7 +14,7 @@ const routes: Routes = [
       },
       {
         path: "tail",
-        loadComponent: () => import( "./builders/tailwind-email-builder/tailwind-email-builder.component" ).then(({ TailwindEmailBuilderComponent }) => TailwindEmailBuilderComponent)
+        loadChildren: () => import("tailwind-demo-app/Module").then(m => m.RemoteEntryModule)
       },
       {
         path: "material",

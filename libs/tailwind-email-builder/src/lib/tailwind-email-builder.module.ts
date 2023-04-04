@@ -80,7 +80,7 @@ import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
   ],
   exports: [
     TailEmailBuilderComponent,
-    NgxEmailBuilderModule,
+    // NgxEmailBuilderModule,
   ],
   providers: [
     ...addDefaultBlock(TextBlockComponent, $localize`:@@block_text_title:Text`),
