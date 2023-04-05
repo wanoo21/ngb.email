@@ -1,15 +1,25 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Component, NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
-import { RemoteEntryComponent } from './entry.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
-import { remoteRoutes } from './entry.routes';
-import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
+import RemoteEntryComponent from "./entry.component";
+
+// A simple component that will be bootstrapped when the remote entry module is loaded
+@Component({
+  selector: "wlocalhost-tailwind-demo-app",
+  template: `
+    <wlocalhost-tailwind-demo-app-entry></wlocalhost-tailwind-demo-app-entry>
+  `
+})
+export class TailwindDemoAppComponent {
+}
 
 @NgModule({
-  declarations: [RemoteEntryComponent, NxWelcomeComponent],
-  imports: [CommonModule, RouterModule.forChild(remoteRoutes), TailwindEmailBuilderModule],
-  providers: [],
+  declarations: [TailwindDemoAppComponent],
+  imports: [CommonModule, BrowserModule, BrowserAnimationsModule, RemoteEntryComponent],
+  bootstrap: [TailwindDemoAppComponent],
+  providers: []
 })
-export class RemoteEntryModule {}
+export class RemoteEntryModule {
+}

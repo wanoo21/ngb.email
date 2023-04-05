@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { loadRemoteModule } from "@nrwl/angular/mf";
 
 import { DemoComponent } from "./demo/demo.component";
 
@@ -10,19 +11,19 @@ const routes: Routes = [
     children: [
       {
         path: "",
-        loadComponent: () => import( "./builders/primeng-email-builder/primeng-builder.component" ).then(({ PrimengBuilderComponent }) => PrimengBuilderComponent)
+        loadComponent: () => loadRemoteModule("primeng-demo-app", "./Component")
       },
       {
         path: "tail",
-        loadChildren: () => import("tailwind-demo-app/Module").then(m => m.RemoteEntryModule)
+        loadComponent: () => loadRemoteModule("tailwind-demo-app", "./Component")
       },
       {
         path: "material",
-        loadComponent: () => import( "./builders/material-email-builder/material-email-builder.component" ).then(({ MaterialEmailBuilderComponent }) => MaterialEmailBuilderComponent)
+        loadComponent: () => loadRemoteModule("material-demo-app", "./Component")
       },
       {
         path: "bootstrap",
-        loadComponent: () => import( "./builders/bootstrap-email-builder/bootstrap-email-builder.component" ).then(({ BootstrapEmailBuilderComponent }) => BootstrapEmailBuilderComponent)
+        loadComponent: () => loadRemoteModule("bootstrap-demo-app", "./Component")
       }
     ]
   }
