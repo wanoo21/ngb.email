@@ -12,26 +12,7 @@ The service has two implementations: `ProIPEmailBuilderService` for the Pro vers
 
 Here are some key features of the `AIPEmailBuilderService`:
 
-*   **convert(value: IPEmail): Promise\<IMjmlServerResponse>**: This method accepts an `IPEmail` object and returns a `Promise` that resolves to an object with `mjml` and `html` properties containing the MJML and HTML versions of the email.
-
-    Example usage:
-
-    ```typescript
-    const email = {
-      subject: "Welcome to our Newsletter!",
-      body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit...",
-      sender: "John Doe <johndoe@example.com>",
-      recipients: [
-        "jane@example.com",
-        "jim@example.com"
-      ],
-      attachments: []
-    };
-
-    const response = await this.emailBuilderService.convert(email);
-    console.log(response.mjml);
-    console.log(response.html);
-    ```
+* **convert(value: IPEmail): Promise\<IMjmlServerResponse>**: This method accepts an `IPEmail` object and returns a `Promise` that resolves to an object with `mjml` and `html` properties containing the MJML and HTML versions of the email.
 *   **standardFonts**: This property is an array of standard fonts that can be used in an email template.
 
     Example usage:
