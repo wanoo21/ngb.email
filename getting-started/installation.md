@@ -27,7 +27,7 @@ The free version is available on npm, so you can install it with your favorite p
 * Chakra UI.
 * Ant Design.
 
-Let us know in the [Discord channel](https://discord.gg/uPjk6TX4).
+Let us know in the [Discord channel](https://discord.gg/S6Yx6yNZSG).
 
 `@wlocalhost/ngx-email-builder` package is the base for all templates, you don't need to install it separately.
 
