@@ -66,6 +66,11 @@
 * [ToHistoryOptionsPipe](pipes/tohistoryoptionspipe.md)
 * [IpCanPipe](pipes/ipcanpipe.md)
 * [ColumnStylesPipe](pipes/columnstylespipe.md)
+* [IpPreviewLinkPipe](pipes/ippreviewlinkpipe.md)
+* [SocialPathPipe](pipes/socialpathpipe.md)
+* [TemplateThumbPathPipe](pipes/templatethumbpathpipe.md)
+* [ToBodyBlockPipe](pipes/tobodyblockpipe.md)
+* [ToBodyStructurePipe](pipes/tobodystructurepipe.md)
 
 ## 🏪 MJML Converter
 

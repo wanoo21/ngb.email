@@ -1,7 +1,3 @@
----
-coverY: 0
----
-
 # Introduction to the library
 
 Welcome to the documentation of the **Next-Generation eXtensible Email Builder** or shorter **NGX Email Builder**.
@@ -9,6 +5,7 @@ Welcome to the documentation of the **Next-Generation eXtensible Email Builder**
 This library allows you to create HTML emails with a simple and intuitive API.
 
 ## Some of the features of this library are:
+
 * Drag and drop builder
 * Responsive emails (mobile friendly) based on the [MJML](https://mjml.io/) framework.
 * Customize the builder to look like your brand
