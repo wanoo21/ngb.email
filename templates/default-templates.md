@@ -1,5 +1,5 @@
 ---
-description: Getting started with NGB Email Builder templates
+description: Getting started with NGX Email Builder templates
 ---
 
 # Getting Started
