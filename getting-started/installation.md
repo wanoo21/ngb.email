@@ -1,15 +1,17 @@
 ---
 title: How to install NGX Email Builder
-description: This article explains how to install NGX Email Builder.
-tags: ['installation', 'getting started']
+tags:
+  - installation
+  - getting started
 permalink: /getting-started/installation
+description: This article explains how to install NGX Email Builder.
 ---
 
-## Install NGX Email Builder
+# Installation
 
-There are few ways to install NGX Email Builder, we'll cover them all. Choose the one that suits you best.
+There are a few ways to install NGB Email Builder, we'll cover them all. Choose the one that suits you best.
 
-### Free version from npm
+## Free version from npm
 
 The free version is available on npm, so you can install it with your favorite package manager. Go to the [npm organization page](https://www.npmjs.com/org/wlocalhost) and choose the template you want to install.
 
@@ -18,7 +20,7 @@ The free version is available on npm, so you can install it with your favorite p
 * Bootstrap - `@wlocalhost/ngx-bootstrap-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-bootstrap-email-builder).
 * Tailwind - `@wlocalhost/ngx-tailwind-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-tailwind-email-builder).
 
-#### Maybe other ideas? Some from the list below?
+### Maybe other ideas? Some from the list below?
 
 * Foundation.
 * Bulma.
@@ -33,12 +35,10 @@ Let us know in the [Discord channel](https://discord.gg/S6Yx6yNZSG).
 
 Follow the instructions of the chosen template to install it.
 
-### Paid version
+## Paid version
 
 The paid version is available on [Gumroad](https://wlocalhost.gumroad.com/l/ngb-14). You can download it from there and install it manually.
 
+## Module federation
 
-### Module federation
-
-Yes, we're going to add support for module federation too, as soon as we'll have our website ready. 
-It would be a good opportunity to test it.
+Yes, we're going to add support for module federation too, as soon as we'll have our website ready. It would be a good opportunity to test it.

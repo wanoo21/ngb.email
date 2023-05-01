@@ -23,6 +23,7 @@
 
 ## ✈ Services
 
+* [Rewrite Default Services](services/rewrite-default-services.md)
 * [AIPEmailBuilderService](services/aipemailbuilderservice.md)
 * [IPEmailBuilderUiService](services/ipemailbuilderuiservice.md)
 * [AIPEmailBuilderRestService](services/aipemailbuilderrestservice.md)
