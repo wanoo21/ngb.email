@@ -1,5 +1,5 @@
 ---
-title: How to configure NGX Email Builder
+title: How to configure NGB Email Builder
 tags:
   - configuration
   - getting started
@@ -7,41 +7,29 @@ permalink: /getting-started/configuration
 description: This article explains how to configure NGB Email Builder.
 ---
 
-# Configuration
+# How to configure NGB Email Builder
 
-## Configuration Object
+To configure the NGB Email Builder is pretty straightforward. All you need to do is to add configuration options to the `forRoot` method.
 
-Create a configuration object for the NGB Email Builder that contains the settings and options you want to customize. The configuration object should be of type `TemplateEmailBuilderConfig` (replace `Template` with the name of the template you're using).
-
-Here's a sample configuration object:
+For example, if you bought [Tailwind Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-tailwind-email-builder), you can configure it like this:
 
 ```typescript
+import { TailwindEmailBuilderModule } from "@@wlocalhost/ngx-tailwind-email-builder";
+
 @NgModule({
-imports: [
-// Other imports...
-    TailwindEmailBuilderModule.forRoot(emailBuilderConfig),
-  ],
-// Other configurations...
+  imports: [
+    TailwindEmailBuilderModule.forRoot({
+      licenseKey: "your-license-key", // use your own license key for paid versions
+      convertorPath: "https://your-custom-path.com", // use your own converter
+      historyRecordLimit: 10 // save 10 history records
+    })
+  ]
 })
-export class AppModule {}
+export class AppModule {
+}
 ```
 
-The `TailwindEmailBuilderModule` provides a `forRoot` method that accepts an optional configuration object of type `IIPEmailBuilderConfig`. You can use this method to customize the behavior of the email builder in your application.
-
-Here's an overview of the available configuration options:
-
-* _`xApiKey`_ (optional): The Wlocalhost converter path API key. Use this if you don't run the converter on your side.
-* _`licenseKey`_ (optional): The license key for paid versions of the email builder.
-* _`socialIconsPath`_ (optional, paid versions only): A custom path for social icons. Defaults to "[https://www.mailjet.com/images/theme/v1/icons/ico-social](https://www.mailjet.com/images/theme/v1/icons/ico-social)".
-* _`convertorPath`_ (optional, paid versions only): A custom converter path. Defaults to "[https://ngb-api.wlocalhost.org](https://ngb-api.wlocalhost.org)".
-* _`templatesThumbsPath`_ (optional, paid versions only): A custom path for template thumbnails. Defaults to "[https://ngb-templates.s3.amazonaws.com](https://ngb-templates.s3.amazonaws.com)".
-* _`historyRecordLimit`_ (optional, paid versions only): The maximum number of history records the history manager can save. Defaults to 5 for the free version and 20 for paid versions.
-* _`providers`_ (optional, paid versions only): An array of types for overriding the default Email Builder services.&#x20;
-
-To configure the `TailwindEmailBuilderModule`, create an `IIPEmailBuilderConfig` object with the desired configuration options, and pass it to the `forRoot` method when importing the module in your `app.module.ts` file.
-
-Example:
-
+No matter of the template you did choose, they contain the same `IIPEmailBuilderConfig` configuration options, here's how it looks:
 ```typescript
 export interface IIPEmailBuilderConfig {
   xApiKey?: string;
@@ -59,3 +47,29 @@ export interface IIPEmailBuilderConfig {
   ];
 }
 ```
+
+Now let's go one by one and explain each configuration option:
+
+* _`xApiKey`_ (optional): The Wlocalhost converter path API key. Use this if you don't run the converter on your side.
+* _`licenseKey`_ (optional): The license key for paid versions of the email builder.
+* _`socialIconsPath`_ (optional, paid versions only): A custom path for social icons. Defaults to "[https://www.mailjet.com/images/theme/v1/icons/ico-social](https://www.mailjet.com/images/theme/v1/icons/ico-social)".
+* _`convertorPath`_ (optional, paid versions only): A custom converter path. Defaults to "[https://ngb-api.wlocalhost.org](https://ngb-api.wlocalhost.org)".
+* _`templatesThumbsPath`_ (optional, paid versions only): A custom path for template thumbnails. Defaults to "[https://ngb-templates.s3.amazonaws.com](https://ngb-templates.s3.amazonaws.com)".
+* _`historyRecordLimit`_ (optional, paid versions only): The maximum number of history records the history manager can save. Defaults to 5 for the free version and 20 for paid versions.
+* _`providers`_ (optional, paid versions only): An array of types for overriding the default Email Builder services.&#x20;
+
+For more information about the `providers`, and how to override the services, check the [override default serives](../services/rewrite-default-services.md) section.
+
+## Configure the builder in standalone mode 
+If you want to use the standalone components, you can configure them like this:
+
+```typescript
+import { TailwindEmailBuilderModule } from "@@wlocalhost/ngx-tailwind-email-builder";
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    importProvidersFrom(TailwindEmailBuilderModule.forRoot({ ... })),
+  ]
+});
+```
+Check our [Discord channel](https://discord.gg/S6Yx6yNZSG) for more information about the standalone components.
