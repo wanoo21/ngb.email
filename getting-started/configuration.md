@@ -11,10 +11,10 @@ description: This article explains how to configure NGB Email Builder.
 
 To configure the NGB Email Builder is pretty straightforward. All you need to do is to add configuration options to the `forRoot` method.
 
-For example, if you bought [Tailwind Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-tailwind-email-builder), you can configure it like this:
+For example, if you bought [Tailwind Email Builder](../templates/default-templates/tailwind-email-builder.md), you can configure it like this:
 
 ```typescript
-import { TailwindEmailBuilderModule } from "@@wlocalhost/ngx-tailwind-email-builder";
+import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
 
 @NgModule({
   imports: [
@@ -58,13 +58,13 @@ Now let's go one by one and explain each configuration option:
 * _`historyRecordLimit`_ (optional, paid versions only): The maximum number of history records the history manager can save. Defaults to 5 for the free version and 20 for paid versions.
 * _`providers`_ (optional, paid versions only): An array of types for overriding the default Email Builder services.&#x20;
 
-For more information about the `providers`, and how to override the services, check the [override default serives](../services/rewrite-default-services.md) section.
+For more information about the `providers`, and how to override the services, check the [override default services](../services/rewrite-default-services.md) section.
 
 ## Configure the builder in standalone mode 
 If you want to use the standalone components, you can configure them like this:
 
 ```typescript
-import { TailwindEmailBuilderModule } from "@@wlocalhost/ngx-tailwind-email-builder";
+import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
 
 bootstrapApplication(AppComponent, {
   providers: [
@@ -72,4 +72,4 @@ bootstrapApplication(AppComponent, {
   ]
 });
 ```
-Check our [Discord channel](https://discord.gg/S6Yx6yNZSG) for more information about the standalone components.
+For more information about how to add configurations to standalone components, check the [official documentation page](https://angular.io/guide/standalone-components) or ask us in our [Discord channel](https://discord.gg/S6Yx6yNZSG) for more.
