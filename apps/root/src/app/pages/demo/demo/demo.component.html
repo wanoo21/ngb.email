@@ -16,21 +16,21 @@
   </div>
 
   <div class="flex flex-wrap px-4 py-3 gap-2">
-    <div class="flex gap-2" *ngIf="skinService.skins$ | async as skins">
-      <span class="self-center">Skins:</span>
-      <mat-chip-list aria-label="Skin selection">
-        <ng-container *ngFor="let skin of skins; let index = index">
-          <mat-chip color="accent" style="cursor: pointer"
-                    (click)="skinService.setActiveSkin(skin)"
-                    [selected]="(skinService.activeSkin$ | async) === skin"
-                    [matTooltip]="skin"
-          >
-            {{index + 1}}
-          </mat-chip>
-        </ng-container>
-      </mat-chip-list>
-      <span class="self-center">{{skinService.activeSkin$ | async}}</span>
-    </div>
+<!--    <div class="flex gap-2" *ngIf="skinService.skins$ | async as skins">-->
+<!--      <span class="self-center">Skins:</span>-->
+<!--      <mat-chip-list aria-label="Skin selection">-->
+<!--        <ng-container *ngFor="let skin of skins; let index = index">-->
+<!--          <mat-chip color="accent" style="cursor: pointer"-->
+<!--                    (click)="skinService.setActiveSkin(skin)"-->
+<!--                    [selected]="(skinService.activeSkin$ | async) === skin"-->
+<!--                    [matTooltip]="skin"-->
+<!--          >-->
+<!--            {{index + 1}}-->
+<!--          </mat-chip>-->
+<!--        </ng-container>-->
+<!--      </mat-chip-list>-->
+<!--      <span class="self-center">{{skinService.activeSkin$ | async}}</span>-->
+<!--    </div>-->
     <span class="ml-auto"></span>
     <div class="flex gap-2">
       <a href="https://store.wlocalhost.org/l/ngb-14" target="_blank" mat-flat-button color="accent">Subscribe now</a>

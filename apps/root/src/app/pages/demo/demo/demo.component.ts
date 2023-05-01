@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { MatSnackBar } from "@angular/material/snack-bar";
+
 import { SkinService } from "../skin.service";
-import { MatLegacySnackBar as MatSnackBar } from "@angular/material/legacy-snack-bar";
 
 @Component({
   selector: "wlocalhost-demo",
@@ -13,6 +14,6 @@ export class DemoComponent {
   }
 
   npmLinkCopied(success: boolean): void {
-    success && this.matSnackBar.open("Copied to clipboard!", 'Thanks', {duration: 3000});
+    success && this.matSnackBar.open("Copied to clipboard!", "Thanks", { duration: 3000 });
   }
 }

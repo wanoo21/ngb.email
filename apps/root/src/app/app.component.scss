@@ -1,5 +1,6 @@
 :host {
   display: block;
+
   footer {
     position: fixed;
     left: 0;
@@ -8,7 +9,7 @@
     z-index: 11;
   }
 
- ::ng-deep button.active {
+  ::ng-deep .mdc-button.active {
     background: rgba(0, 0, 0, .2);
   }
 }

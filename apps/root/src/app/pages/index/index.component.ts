@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { MatLegacyTabsModule as MatTabsModule } from "@angular/material/legacy-tabs";
-import { CommonModule } from "@angular/common";
-import { RouterLinkActive, RouterLink, RouterOutlet } from "@angular/router";
+import { RouterLink, RouterLinkActive, RouterOutlet } from "@angular/router";
 
 import { AbstractPage } from "../../abstract/AbstractPage";
 import { SharedModule } from "../../shared/shared.module";
+import { V14InfoComponent } from "./v14-info/v14-info.component";
 
 @Component({
   selector: "wlocalhost-index",
@@ -12,28 +11,15 @@ import { SharedModule } from "../../shared/shared.module";
   styleUrls: ["./index.component.scss"],
   standalone: true,
   imports: [
-    MatTabsModule,
-    CommonModule,
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    SharedModule
+    SharedModule,
+    V14InfoComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class IndexComponent extends AbstractPage {
-  links = [
-    {
-      link: "./",
-      label: "Brand new Email Builder for Angular v14+"
-    },
-    {
-      link: "v9",
-      label: "Old Email Builder for Angular below v14"
-    }
-  ];
-  activeLink = this.links[0];
-
   constructor() {
     super("MJML and Angular WYSIWYG Email Template Editor", "A developer-first email template builder based on Angular and MJML.", false);
   }
