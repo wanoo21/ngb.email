@@ -13,15 +13,16 @@ We decided to create a [Tailwind Email Builder](tailwind-email-builder.md) becau
 
 The Tailwind Email Builder depends on the following libraries:
 
-- [Tailwind CSS](https://tailwindcss.com/) - used for styling the email builder.
-- [Angular Localize](https://angular.io/guide/i18n) - used for internationalization.
-- [Angular CDK](https://material.angular.io/cdk/categories) - used for drag and drop and other functionality.
-- [NGX Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-email-builder) - used for the core email builder logics.
-- [Recursive Diff](https://www.npmjs.com/package/recursive-diff) - used for detecting changes in the email builder.
+* [Tailwind CSS](https://tailwindcss.com/) - used for styling the email builder.
+* [Angular Localize](https://angular.io/guide/i18n) - used for internationalization.
+* [Angular CDK](https://material.angular.io/cdk/categories) - used for drag and drop and other functionality.
+* [NGX Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-email-builder) - used for the core email builder logics.
+* [Recursive Diff](https://www.npmjs.com/package/recursive-diff) - used for detecting changes in the email builder.
 
 Before using the Tailwind Email Builder, you need to:
-- Have added `@angular/localize` to your project.
-- Have added `@angular/cdk` to your project.
+
+* Have added `@angular/localize` to your project.
+* Have added `@angular/cdk` to your project.
 
 ## Getting started
 
@@ -48,6 +49,7 @@ import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-build
 export class AppModule {
 }
 ```
+
 For the list of all available options, please check the [configuration options](../../getting-started/configuration.md) page.
 
 ### Configure the builder in standalone mode
@@ -83,5 +85,7 @@ export class AppComponent {
 ```
 
 ### Stackblitz Demo
+
+{% embed url="https://stackblitz.com/edit/ngx-tailwind-email-builder" %}
 
 You can find a demo of the Tailwind Email Builder on [Stackblitz](https://stackblitz.com/edit/ngx-tailwind-email-builder).
