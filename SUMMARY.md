@@ -32,7 +32,11 @@
 
 ## 🏫 Templates
 
-* [Default Templates](templates/default-templates.md)
+* [Default Templates](templates/default-templates/README.md)
+  * [Tailwind Email Builder](templates/default-templates/tailwind-email-builder.md)
+  * [Bootstrap Email Builder](templates/default-templates/bootstrap-email-builder.md)
+  * [PrimeNg Email Builder](templates/default-templates/primeng-email-builder.md)
+  * [Material Email Builder](templates/default-templates/material-email-builder.md)
 * [Custom templates](templates/custom-templates/README.md)
   * [AIPEmailBuilderComponent](templates/custom-templates/aipemailbuildercomponent/README.md)
     * [AIPEmailBody](templates/custom-templates/aipemailbuildercomponent/aipemailbody/README.md)

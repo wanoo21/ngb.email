@@ -15,10 +15,10 @@ There are a few ways to install NGB Email Builder, we'll cover them all. Choose 
 
 The free version is available on npm, so you can install it with your favorite package manager. Go to the [npm organization page](https://www.npmjs.com/org/wlocalhost) and choose the template you want to install.
 
-* PrimeNG - `@wlocalhost/ngx-primeng-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-primeng-email-builder).
-* Material Design - `@wlocalhost/ngx-md-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-md-email-builder).
-* Bootstrap - `@wlocalhost/ngx-bootstrap-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-bootstrap-email-builder).
-* Tailwind - `@wlocalhost/ngx-tailwind-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-tailwind-email-builder).
+* [PrimeNG](../templates/default-templates/primeng-email-builder.md) - `@wlocalhost/ngx-primeng-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-primeng-email-builder).
+* [Material Design](../templates/default-templates/material-email-builder.md) - `@wlocalhost/ngx-md-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-md-email-builder).
+* [Bootstrap](../templates/default-templates/bootstrap-email-builder.md) - `@wlocalhost/ngx-bootstrap-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-bootstrap-email-builder).
+* [Tailwind](../templates/default-templates/tailwind-email-builder.md) - `@wlocalhost/ngx-tailwind-email-builder` - [install](https://www.npmjs.com/package/@wlocalhost/ngx-tailwind-email-builder).
 
 ### Maybe other ideas? Some from the list below?
 
