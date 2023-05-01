@@ -15,7 +15,7 @@ import { SharedModule } from "./shared/shared.module";
     BrowserModule,
     BrowserAnimationsModule,
     NgxEmailBuilderModule.forRoot({
-      xApiKey: "VXm3apHyRp3Tgmq1Z0Fj36tgaWcfMsO550aoKley",
+      xApiKey: "VXm3apHyRp3Tgmq1Z0Fj36tgaWcfMsO550aoKley"
     }),
     RouterModule.forRoot(
       [
