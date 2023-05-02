@@ -4,7 +4,7 @@ This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
-Run nx test material-email-builder to execute the unit tests.
+Run `nx test material-email-builder` to execute the unit tests.
 
 ## Installation
 
@@ -12,11 +12,11 @@ You can install this library using either `npm` or `yarn`.
 
 ### Using npm
 
-npm i @wlocalhost/ngx-md-email-builder
+`npm i @wlocalhost/ngx-md-email-builder`
 
 ### Using npm
 
-yarn add @wlocalhost/ngx-md-email-builder
+`yarn add @wlocalhost/ngx-md-email-builder`
 
 ### Dependencies
 
