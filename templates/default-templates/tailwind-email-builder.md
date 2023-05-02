@@ -3,7 +3,7 @@ title: Tailwind Email Builder
 description: Tailwind Email Builder
 ---
 
-# Tailwind Email Builder Template
+# Tailwind Email Builder
 
 [Tailwind](https://tailwindcss.com/) is a popular utility-first CSS framework for building custom user interfaces. We created the Tailwind Email Builder because we love Tailwind and think it's a great framework for building SaaS products.
 
@@ -11,15 +11,15 @@ description: Tailwind Email Builder
 
 The Tailwind Email Builder depends on the following libraries:
 
-- [Tailwind CSS](https://tailwindcss.com/) for styling the email builder.
-- [Angular Localize](https://angular.io/guide/i18n) for internationalization.
-- [Angular CDK](https://material.angular.io/cdk/categories) for drag and drop and other functionality.
-- [NGX Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-email-builder) for the core email builder logic.
-- [Recursive Diff](https://www.npmjs.com/package/recursive-diff) for detecting changes in the email builder.
+* [Tailwind CSS](https://tailwindcss.com/) for styling the email builder.
+* [Angular Localize](https://angular.io/guide/i18n) for internationalization.
+* [Angular CDK](https://material.angular.io/cdk/categories) for drag and drop and other functionality.
+* [NGX Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-email-builder) for the core email builder logic.
+* [Recursive Diff](https://www.npmjs.com/package/recursive-diff) for detecting changes in the email builder.
 
 Before using the Tailwind Email Builder, you need to:
 
-- Add `@angular/localize` and `@angular/cdk` to your project.
+* Add `@angular/localize` and `@angular/cdk` to your project.
 
 ## Getting Started
 
@@ -46,6 +46,7 @@ import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-build
 export class AppModule {
 }
 ```
+
 For a full list of available options, check out the [configuration options](../../getting-started/configuration.md) page.
 
 ### Configure the Builder in Standalone Mode
@@ -65,7 +66,7 @@ bootstrapApplication(AppComponent, {
 ### Use the Builder in Your Application
 
 ```html
-<ngx-tailwind-email-builder [(value)]="email"></ngx-tailwind-email-builder>
+<tail-email-builder [(value)]="email"></tail-email-builder>
 ```
 
 Where `email` is an `IPEmail` class:
