@@ -12,11 +12,11 @@ You can install this library using either `npm` or `yarn`.
 
 ### Using npm
 
-npm i @wlocalhost/ngx-primeng-email-builder
+`npm i @wlocalhost/ngx-primeng-email-builder`
 
 ### Using npm
 
-yarn add @wlocalhost/ngx-primeng-email-builder
+`yarn add @wlocalhost/ngx-primeng-email-builder`
 
 ### Dependencies
 
