@@ -20,7 +20,7 @@ yarn add @wlocalhost/ngx-primeng-email-builder
 
 ### Dependencies
 
-tslib
+[tslib](https://www.npmjs.com/package/tslib)
 
 ### Documentation
 
