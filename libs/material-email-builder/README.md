@@ -30,6 +30,3 @@ For more information, please refer to the following documentation:
 
 [material-email-builder](https://docs.ngb.email/templates/default-templates/material-email-builder)
 
-### Running Unit Tests
-
-Run nx test material-email-builder to execute the unit tests.
