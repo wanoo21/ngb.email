@@ -1,32 +1,63 @@
-# bootstrap-email-builder
+# Bootstrap Email Builder Library
 
-This library was generated with [Nx](https://nx.dev).
+This library provides a set of components and services to build email templates using Bootstrap. It is built on top
+of [NGB Email Builder](https://ngb.email) and [Bootstrap](https://getbootstrap.com/).
 
-## Running unit tests
+The installation instructions provided here are intended for demo purposes only. For more information on how to install
+and use the Bootstrap Email Builder, please refer to
+the [documentation](https://docs.ngb.email/templates/default-templates/bootstrap-email-builder).
 
-Run `nx test bootstrap-email-builder` to execute the unit tests.
+Before using the Bootstrap Email Builder, you need to:
+
+* Have Bootstrap installed in your project.
+* Add `@angular/localize` and `@angular/cdk` to your project.
 
 ## Installation
 
-You can install this library using either `npm` or `yarn`.
+First, install the Bootstrap Email Builder with its dependencies:
 
-### Using npm
+```bash
+npm install @wlocalhost/ngx-bootstrap-email-builder @wlocalhost/ngx-email-builder recursive-diff
+```
 
-`npm i @wlocalhost/ngx-bootstrap-email-builder`
+Then, add the Bootstrap Email Builder module to your application:
 
-### Using yarn
+```typescript
+import { BootstrapEmailBuilderModule } from "@wlocalhost/ngx-bootstrap-email-builder";
 
-`yarn add @wlocalhost/ngx-bootstrap-email-builder`
+@NgModule({
+  imports: [
+    BootstrapEmailBuilderModule.forRoot({
+      licenseKey: "your-license-key", // use your own license key for paid versions
+      convertorPath: "https://your-custom-path.com", // use your own converter
+      historyRecordLimit: 10 // save 10 history records
+    })
+  ]
+})
+export class AppModule {
+}
+```
 
-### Dependencies
+For a full list of available options, check out
+the [configuration options](https://docs.ngb.email/getting-started/configuration) page.
 
-[tslib](https://www.npmjs.com/package/tslib?activeTab=readme)
+## Use the Builder in Your Application
 
-### Documentation
+```html
 
-For more information, please refer to the following documentation:
+<bt-email-builder [(value)]="email"></bt-email-builder>
+```
 
-[ngb.email](https://docs.ngb.email)
+Where `email` is an `IPEmail` class:
 
-[bootstrap-email-builder](https://docs.ngb.email/templates/default-templates/bootstrap-email-builder)
+```typescript
+import { IPEmail } from "@wlocalhost/ngx-email-builder";
 
+@Component({ ... })
+export class AppComponent {
+  email = new IPEmail();
+}
+```
+
+For more information on how to use the Bootstrap Email Builder, please refer to
+the [documentation](https://docs.ngb.email/templates/default-templates/bootstrap-email-builder).
