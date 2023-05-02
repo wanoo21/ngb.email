@@ -12,11 +12,11 @@ You can install this library using either `npm` or `yarn`.
 
 ### Using npm
 
-npm i @wlocalhost/ngx-tailwind-email-builder
+`npm i @wlocalhost/ngx-tailwind-email-builder`
 
 ### Using npm
 
-yarn add @wlocalhost/ngx-tailwind-email-builder
+`yarn add @wlocalhost/ngx-tailwind-email-builder`
 
 ### Dependencies
 
