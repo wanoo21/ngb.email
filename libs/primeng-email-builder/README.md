@@ -30,6 +30,4 @@ For more information, please refer to the following documentation:
 
 [primeng-email-builder](https://docs.ngb.email/templates/default-templates/primeng-email-builder)
 
-### Running Unit Tests
 
-nx test primeng-email-builder
