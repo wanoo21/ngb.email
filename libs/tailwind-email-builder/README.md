@@ -14,7 +14,7 @@ You can install this library using either `npm` or `yarn`.
 
 `npm i @wlocalhost/ngx-tailwind-email-builder`
 
-### Using npm
+### Using yarn
 
 `yarn add @wlocalhost/ngx-tailwind-email-builder`
 
