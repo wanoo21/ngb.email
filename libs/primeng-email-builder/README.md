@@ -1,33 +1,59 @@
-# primeng-email-builder
+# PrimeNG Email Builder Library
 
-This library was generated with [Nx](https://nx.dev).
+This library provides a set of components and services to build email templates using PrimeNG. It is built on top
+of [NGB Email Builder](https://ngb.email) and [PrimeNG](https://www.primefaces.org/primeng/).
 
-## Running unit tests
+The installation instructions provided here are intended for demo purposes only. For more information on how to install
+and use the PrimeNG Email Builder, please refer to
+the [documentation](https://docs.ngb.email/templates/default-templates/primeng-email-builder).
 
-Run `nx test primeng-email-builder` to execute the unit tests.
+Before using the PrimeNG Email Builder, you need to:
+
+* Have PrimeNG installed in your project.
+* Add `@angular/localize` and `@angular/cdk` to your project.
 
 ## Installation
 
-You can install this library using either `npm` or `yarn`.
+First, install the PrimeNG Email Builder with its dependencies:
 
-### Using npm
+```bash
+npm install @wlocalhost/ngx-primeng-email-builder @wlocalhost/ngx-email-builder recursive-diff
+```
 
-`npm i @wlocalhost/ngx-primeng-email-builder`
+Then, add the PrimeNG Email Builder module to your application:
 
-### Using yarn
+```typescript
+import { PrimengEmailBuilderModule } from "@wlocalhost/ngx-primeng-email-builder";
 
-`yarn add @wlocalhost/ngx-primeng-email-builder`
+@NgModule({
+  imports: [
+    PrimengEmailBuilderModule.forRoot({
+      licenseKey: "your-license-key", // use your own license key for paid versions
+      convertorPath: "https://your-custom-path.com", // use your own converter
+      historyRecordLimit: 10 // save 10 history records
+    })
+  ]
+})
+export class AppModule {
+}
+```
 
-### Dependencies
+For a full list of available options, check out the [configuration options](https://docs.ngb.email/getting-started/configuration) page.
 
-[tslib](https://www.npmjs.com/package/tslib)
+## Use the Builder in Your Application
 
-### Documentation
+```html
+<prime-email-builder [(value)]="email"></prime-email-builder>
+```
 
-For more information, please refer to the following documentation:
+Where `email` is an `IPEmail` class:
 
-[ngb.email](https://docs.ngb.email)
+```typescript
+import { IPEmail } from "@wlocalhost/ngx-email-builder";
 
-[primeng-email-builder](https://docs.ngb.email/templates/default-templates/primeng-email-builder)
-
-
+@Component({ ... })
+export class AppComponent {
+  email = new IPEmail();
+}
+```
+For more information on how to use the PrimeNG Email Builder, please refer to the [documentation](https://docs.ngb.email/templates/default-templates/primeng-email-builder).
