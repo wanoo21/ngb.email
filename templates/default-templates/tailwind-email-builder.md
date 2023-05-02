@@ -79,7 +79,3 @@ export class AppComponent {
   email = new IPEmail();
 }
 ```
-
-### StackBlitz Demo
-
-You can find a demo of the Tailwind Email Builder on [StackBlitz](https://stackblitz.com/edit/ngx-tailwind-email-builder).
