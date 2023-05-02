@@ -22,22 +22,15 @@ this.emailBuilderRestService.convert(email).subscribe(response => {
 });
 ```
 
-* **Get Template Categories**: The `tmplCategories$()` method is used to retrieve a list of all email template categories from the email builder's REST API. The method returns an observable that emits an array of `IUserTemplateCategory` objects.
+* **Get Category Templates**: The getCategoryTemplates() method can be used to retrieve a list of templates within a specific category by passing the category name and optional template name as parameters. The method returns an observable that emits an IIPEmail object containing the selected template's data.
 
 Example usage:
 
 ```typescript
-this.emailBuilderRestService.tmplCategories$().subscribe(categories => {
-  console.log(categories); // array of IUserTemplateCategory objects
+const categoryName = "someCategoryName";
+const templateName = "someTemplateName"; // optional
+this.emailBuilderRestService.getCategoryTemplates(categoryName, templateName).subscribe(templates => {
+  console.log(templates); // array of IIPEmail objects
 });
 ```
 
-* **Get Category Templates**: The `tmplCategories$()` method can also be used to retrieve a list of templates within a specific category by passing the category name and optional template name as parameters. The method returns an observable that emits an `IIPEmail` object containing the selected template's data.
-
-Example usage:
-
-```typescript
-this.emailBuilderRestService.tmplCategories$().subscribe(categories => {
-  console.log(categories); // array of IUserTemplateCategory objects
-});
-```

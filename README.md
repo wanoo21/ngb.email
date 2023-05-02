@@ -2,9 +2,11 @@
 
 Welcome to the documentation of the **Next-Generation eXtensible Email Builder** or shorter **NGB Email Builder**.
 
-**NGB Email Builder** is an Angular library that contains bunch of abstract classes, [services](services/), [directives](directives/), [pipes](pipes/) and other Angular tools that you can use to create your own email builder.
+**NGB Email Builder** is an Angular library that contains a bunch of abstract classes, [services](services/), [directives](directives/), [pipes](pipes/), and other Angular tools that you can use to create your own email builder.
 
-You need to have a basic understanding of Angular to use this library. If you don't know Angular, you can learn it [here](https://angular.io/guide/quickstart). This library contains a lot of features, so it might be a bit overwhelming at first. But don't worry, this documentation will help you to get started.
+You need to have a basic understanding of Angular to use this library. If you don't know Angular, you can learn it [here](https://angular.io/guide/quickstart). This library contains many features so it might be a bit overwhelming at first.&#x20;
+
+But don't worry, this documentation will help you to get started.
 
 ## Some of the features of this library are:
 

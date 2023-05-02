@@ -2,7 +2,7 @@
 description: >-
   In NGX Email Builder, the providers option in the IIPEmailBuilderConfig
   configuration object allows you to override the default Email Builder services
-  with your own custom implementations. This featur
+  with your own custom implementations.
 ---
 
 # Rewrite Default Services
