@@ -1,32 +1,63 @@
-# tailwind-email-builder
+# Tailwind Email Builder Library
 
-This library was generated with [Nx](https://nx.dev).
+This library provides a set of components and services to build email templates using Tailwind CSS. It is built on top
+of [NGB Email Builder](https://ngb.email) and [Tailwind CSS](https://tailwindcss.com/).
 
-## Running unit tests
+The installation instructions provided here are intended for demo purposes only. For more information on how to install
+and use the Tailwind Email Builder, please refer to
+the [documentation](https://docs.ngb.email/templates/default-templates/tailwind-email-builder).
 
-Run `nx test tailwind-email-builder` to execute the unit tests.
+Before using the Tailwind Email Builder, you need to:
+
+* Have Tailwind CSS installed in your project.
+* Add `@angular/localize` and `@angular/cdk` to your project.
 
 ## Installation
 
-You can install this library using either `npm` or `yarn`.
+First, install the Tailwind Email Builder with its dependencies:
 
-### Using npm
+```bash
+npm install @wlocalhost/ngx-tailwind-email-builder @wlocalhost/ngx-email-builder recursive-diff
+```
 
-`npm i @wlocalhost/ngx-tailwind-email-builder`
+Then, add the Tailwind Email Builder module to your application:
 
-### Using yarn
+```typescript
+import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
 
-`yarn add @wlocalhost/ngx-tailwind-email-builder`
+@NgModule({
+  imports: [
+    TailwindEmailBuilderModule.forRoot({
+      licenseKey: "your-license-key", // use your own license key for paid versions
+      convertorPath: "https://your-custom-path.com", // use your own converter
+      historyRecordLimit: 10 // save 10 history records
+    })
+  ]
+})
+export class AppModule {
+}
+```
 
-### Dependencies
+For a full list of available options, check out
+the [configuration options](https://docs.ngb.email/getting-started/configuration) page.
 
-[tslib](https://www.npmjs.com/package/tslib)
+## Use the Builder in Your Application
 
-### Documentation
+```html
 
-For more information, please refer to the following documentation:
+<tail-email-builder [(value)]="email"></tail-email-builder>
+```
 
-[ngb.email](https://docs.ngb.email)
+Where `email` is an `IPEmail` class:
 
-[tailwind-email-builder](https://docs.ngb.email/templates/default-templates/tailwind-email-builder)
+```typescript
+import { IPEmail } from "@wlocalhost/ngx-email-builder";
 
+@Component({ ... })
+export class AppComponent {
+  email = new IPEmail();
+}
+```
+
+For more information on how to use the Tailwind Email Builder, please refer to
+the [documentation](https://docs.ngb.email/templates/default-templates/tailwind-email-builder).
