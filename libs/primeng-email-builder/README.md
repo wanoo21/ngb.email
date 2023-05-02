@@ -14,7 +14,7 @@ You can install this library using either `npm` or `yarn`.
 
 `npm i @wlocalhost/ngx-primeng-email-builder`
 
-### Using npm
+### Using yarn
 
 `yarn add @wlocalhost/ngx-primeng-email-builder`
 
