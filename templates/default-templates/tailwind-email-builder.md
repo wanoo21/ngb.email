@@ -3,36 +3,33 @@ title: Tailwind Email Builder
 description: Tailwind Email Builder
 ---
 
-# Tailwind Email Builder
+# Tailwind Email Builder Template
 
-[Tailwind](https://tailwindcss.com/) is a utility-first CSS framework for rapidly building custom user interfaces. It's among the popular CSS Frameworks for building responsive, mobile-first websites.
-
-We decided to create a [Tailwind Email Builder](tailwind-email-builder.md) because we love Tailwind and we think it's a great framework for building SaaS products, and not only.
+[Tailwind](https://tailwindcss.com/) is a popular utility-first CSS framework for building custom user interfaces. We created the Tailwind Email Builder because we love Tailwind and think it's a great framework for building SaaS products.
 
 ## Dependencies
 
 The Tailwind Email Builder depends on the following libraries:
 
-* [Tailwind CSS](https://tailwindcss.com/) - used for styling the email builder.
-* [Angular Localize](https://angular.io/guide/i18n) - used for internationalization.
-* [Angular CDK](https://material.angular.io/cdk/categories) - used for drag and drop and other functionality.
-* [NGX Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-email-builder) - used for the core email builder logics.
-* [Recursive Diff](https://www.npmjs.com/package/recursive-diff) - used for detecting changes in the email builder.
+- [Tailwind CSS](https://tailwindcss.com/) for styling the email builder.
+- [Angular Localize](https://angular.io/guide/i18n) for internationalization.
+- [Angular CDK](https://material.angular.io/cdk/categories) for drag and drop and other functionality.
+- [NGX Email Builder](https://www.npmjs.com/package/@wlocalhost/ngx-email-builder) for the core email builder logic.
+- [Recursive Diff](https://www.npmjs.com/package/recursive-diff) for detecting changes in the email builder.
 
 Before using the Tailwind Email Builder, you need to:
 
-* Have added `@angular/localize` to your project.
-* Have added `@angular/cdk` to your project.
+- Add `@angular/localize` and `@angular/cdk` to your project.
 
-## Getting started
+## Getting Started
 
-First you need to install the Tailwind Email Builder with some dependencies:
+First, install the Tailwind Email Builder with its dependencies:
 
 ```bash
 npm install @wlocalhost/ngx-tailwind-email-builder @wlocalhost/ngx-email-builder recursive-diff
 ```
 
-and then import the module in your application:
+Then, import the module in your application:
 
 ```typescript
 import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
@@ -49,12 +46,11 @@ import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-build
 export class AppModule {
 }
 ```
+For a full list of available options, check out the [configuration options](../../getting-started/configuration.md) page.
 
-For the list of all available options, please check the [configuration options](../../getting-started/configuration.md) page.
+### Configure the Builder in Standalone Mode
 
-### Configure the builder in standalone mode
-
-If you want to use the standalone components, you can configure them like this:
+If you want to use standalone components, you can configure them like this:
 
 ```typescript
 import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-builder";
@@ -66,10 +62,9 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
-### Use it in your application
+### Use the Builder in Your Application
 
 ```html
-
 <ngx-tailwind-email-builder [(value)]="email"></ngx-tailwind-email-builder>
 ```
 
@@ -84,8 +79,6 @@ export class AppComponent {
 }
 ```
 
-### Stackblitz Demo
+### StackBlitz Demo
 
-{% embed url="https://stackblitz.com/edit/ngx-tailwind-email-builder" %}
-
-You can find a demo of the Tailwind Email Builder on [Stackblitz](https://stackblitz.com/edit/ngx-tailwind-email-builder).
+You can find a demo of the Tailwind Email Builder on [StackBlitz](https://stackblitz.com/edit/ngx-tailwind-email-builder).
