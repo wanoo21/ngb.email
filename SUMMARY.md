@@ -1,8 +1,9 @@
 # Table of contents
 
+* [Welcome to NGB Email Builder](README.md)
+
 ## 🌟 Getting Started
 
-* [Introduction to the library](README.md)
 * [Installation](getting-started/installation.md)
 * [Configuration](getting-started/configuration.md)
 

@@ -1,4 +1,8 @@
-# Introduction to the library
+---
+coverY: 0
+---
+
+# Welcome to NGB Email Builder
 
 Welcome to the documentation of the **Next-Generation eXtensible Email Builder** or shorter **NGB Email Builder**.
 
