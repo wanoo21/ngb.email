@@ -1,33 +1,40 @@
 ---
 description: >-
-  This is a directive that enables the Undo/Redo functionality for the email
-  builder.
+  The IPEmailBuilderHistoryActionDirective directive implements undo and redo
+  actions in the email builder.
 ---
 
 # IPEmailBuilderHistoryActionDirective
 
-It binds the "undo" and "redo" actions to the "Ctrl+Z", "Ctrl+Y", and "Ctrl+Shift+Z" hotkeys, allowing the user to easily go back and forth between previous actions.
-
-To use this directive, add it to an element that should trigger the "undo" or "redo" action. Bind the `ipEmailBuilderHistoryAction` input to either "undo" or "redo".&#x20;
-
-Here's an example of how to use this directive:
+It can be used by adding it as an attribute to the corresponding HTML element, for example:
 
 ```html
 <button ipEmailBuilderHistoryAction="undo">Undo</button>
-<button ipEmailBuilderHistoryAction="redo">Redo</button>
 ```
 
-Optionally, you can disable the hotkeys by setting the `enableKeybinding` input to false:
+### Inputs
 
-```html
-<button ipEmailBuilderHistoryAction="undo" enableKeybinding="false">Undo</button>
-<button ipEmailBuilderHistoryAction="redo" enableKeybinding="false">Redo</button>
+* `ipEmailBuilderHistoryAction` (`"redo" | "undo"`, required): Determines whether the action performed by the directive is redo or undo.
+* `enableKeybinding` (`boolean`, optional): Determines whether the `Ctrl+Z`/`Ctrl+Y`/`Ctrl+Shift+Z` hotkeys are enabled for the action. Default value is `true`.
+
+### Usage
+
+Example usage:
+
+```typescript
+import { Component } from "@angular/core";
+import { IPEmailBuilderHistoryActionDirective } from "@wlocalhost/ngx-email-builder";
+
+@Component({
+  selector: "my-component",
+  template: `
+    <button ipEmailBuilderHistoryAction="undo">Undo</button>
+    <button ipEmailBuilderHistoryAction="redo">Redo</button>
+  `,
+})
+export class MyComponent {
+  constructor(private historyAction: IPEmailBuilderHistoryActionDirective) {
+    historyAction.enableKeybinding = false;
+  }
+}
 ```
-
-In this example, the two buttons allow the user to undo or redo the last action.&#x20;
-
-The `enableKeybinding` attribute is set to `false` to disable the hotkey bindings for undo and redo. This means that the user can only use the buttons to perform these actions.
-
-{% hint style="danger" %}
-Note that this directive is not yet ready to use, so use it with caution.
-{% endhint %}

@@ -1,6 +1,10 @@
-# AIPEmailBuilderComponent
+---
+description: >-
+  AIPEmailBuilderComponent is an abstract component that provides common
+  features for creating and editing email templates.
+---
 
-AIPEmailBuilderComponent is an abstract component that provides common features for creating and editing email templates.
+# AIPEmailBuilderComponent
 
 It exposes the following public properties and methods:
 
@@ -24,6 +28,8 @@ It exposes the following public properties and methods:
 * `afterSave`: An event emitted after successfully saving the current `IPEmail` object.
 
 To use this component, create a class that extends `AIPEmailBuilderComponent` and implement the required methods and events. Then, use this class to create the actual component that will be used in the application.
+
+### Usage
 
 Example usage:
 

@@ -1,25 +1,87 @@
 ---
 description: >-
-  The IPEmailBuilderStructuresDirective is a directive that connects all
-  structures' drop lists between each other.
+  An Angular directive that connects all structures' drop lists between each
+  other in the IP email builder.
 ---
 
 # IPEmailBuilderStructuresDirective
 
-This directive is used in the email builder to allow users to drag and drop structures within and between columns.
+### Properties
 
-To use this directive, simply add the `ipEmailBuilderStructures` attribute to a container element that will hold the structures.&#x20;
+#### `selector`
 
-Bind the value of the `ipEmailBuilderStructures` attribute to an array of structures that you want to display.
+The selector for the directive is `[ipEmailBuilderStructures]`.
 
-```html
-<div cdkDropList [ipEmailBuilderStructures]="structures"></div>
+#### `exportAs`
+
+The directive can be exported as `ipStructures`.
+
+#### `data`
+
+An input property that accepts an array of `IStructure` objects. It is required for the directive to work properly.
+
+```typescript
+@Input("ipEmailBuilderStructures") data!: IStructure[];
 ```
 
-Where `structures` is an array of [`IStructure`](../blocks/structure.md) objects.
+#### `minHeight`
 
-In order to use this directive, the host element must also have the `cdkDropList` directive. This allows the `IPEmailBuilderStructuresDirective` to connect all structures' drop lists between each other, enabling them to be moved and reordered within the email builder.
+A readonly host binding property that sets the minimum height of the directive's host element.
 
-The directive provides a drop list collection of all the structures' drop lists that is used to connect them with each other.&#x20;
+```typescript
+@HostBinding("style.minHeight.%") readonly minHeight = 100;
+```
 
-When an item is dropped, the `dropListDropped` method is called to handle the change. This method is responsible for updating the structure's data array to reflect the new position of the item within the list.
+#### `dropListCollection`
+
+A getter method that returns the collection of all structures' drop lists in the email builder.
+
+```typescript
+get dropListCollection() {
+  return this.builderUiService.structuresDropLists;
+}
+```
+
+### Methods
+
+#### `dropListDropped(event: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>)`
+
+A method that handles the drop event of the directive's drop list. It moves the dropped item within the same list or adds it to a new list if it's from a different list.
+
+```typescript
+dropListDropped(event: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
+  const { container, previousContainer, currentIndex, previousIndex, item } = event;
+  if (this.builderUiService.structuresDropLists.has(previousContainer)) {
+    moveItemInArray(container.data, previousIndex, currentIndex);
+  } else {
+    container.data.splice(currentIndex, 0, new Structure(item.data));
+  }
+}
+```
+
+### Extends
+
+This directive extends the `AbstractEmailBuilderDropList` from the IP email builder.
+
+### Usage
+
+Example usage:
+
+```typescript
+import { Component } from "@angular/core";
+import { IPEmailBuilderStructuresDirective } from "./ipemail-builder-structures.directive";
+
+@Component({
+  selector: "app-my-component",
+  template: `
+    <div [ipEmailBuilderStructures]="myStructures">
+      <!-- Content here -->
+    </div>
+  `
+})
+export class MyComponent {
+  myStructures = []; // your structures array here
+}
+```
+
+Then use the `ipEmailBuilderStructures` directive to connect all structures' drop lists between each other.

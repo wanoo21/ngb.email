@@ -1,25 +1,61 @@
 ---
 description: >-
-  The IPEmailBuilderDynamicDirective is used to create and insert a block
-  dynamically to the view.
+  The IPEmailBuilderDynamicDirective creates and inserts email builder blocks
+  dynamically in the view and requires the cdkDrag directive.
 ---
 
 # IPEmailBuilderDynamicDirective
 
-To use this directive, add the `*ipEmailBuilderDynamicBlockDirective` attribute to the host or current element, and set the directive's **input value to an instance of** [**`AIPEmailBuilderBlock`**](../blocks/aipemailbuilderblock.md)**.**
+### Selector
 
-```html
-<div *ipEmailBuilderDynamicBlockDirective="block; let ins"></div>
+```csharp
+[ipEmailBuilderDynamicBlockDirective]
 ```
 
-In the example above, the `block` variable is an instance of `AIPEmailBuilderBlock`, which defines the type and options for the dynamic block.&#x20;
+### Inputs
 
-The `let ins` syntax creates a local variable called `ins`, which refers to the instance of the dynamic block that was created.
+**`ipEmailBuilderDynamicBlockDirective`**
 
-To edit the block, you can call the `edit()` method on the `ins` variable.
+A dynamic block with its options. The options must include a `type` property that matches a block type from the `IP_EMAIL_BUILDER_BLOCKS_DATA` injection token.
+
+### Exported Members
+
+**`instance`**
+
+The instance of the dynamically created `AIPEmailBuilderBlock` object.
+
+### Usage
+
+Example usage:
 
 ```html
-<div *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()"></div>
+<ng-container *ngFor="let block of blocks">
+  <ng-container [ipEmailBuilderDynamicBlockDirective]="block"></ng-container>
+</ng-container>
 ```
 
-This will open the block's settings editor aside, where you can modify the block's options.
+```typescript
+import { Component } from "@angular/core";
+import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "@wlocalhost/ngx-email-builder";
+import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
+
+@Component({
+  selector: "app-email-builder",
+  templateUrl: "./email-builder.component.html",
+  styleUrls: ["./email-builder.component.scss"]
+})
+export class EmailBuilderComponent {
+  blocks: AIPEmailBuilderBlockExtendedOptions[];
+
+  constructor(
+    @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
+    private readonly blocksData: IIPEmailBuilderBlockData[]
+  ) {
+    // Initialize blocks with default options
+    this.blocks = blocksData.map(block => ({
+      type: block.type,
+      options: block.options
+    }));
+  }
+}
+```

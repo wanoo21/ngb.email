@@ -9,11 +9,11 @@ description: >-
 
 There are five Email Builder services you can override:
 
-1. _`AIPEmailBuilderService`_: The core email builder service responsible for managing the email structure, blocks, and content.
-2. _`AIPEmailBuilderStorageService`_: The service responsible for managing the storage of email templates, history records, and other data.
-3. _`AIPEmailBuilderMiddlewareService`_: The service responsible for handling middleware logic, such as allowing or disallowing certain actions (e.g., adding a new block).
-4. _`AIPEmailBuilderRestService`_: The service responsible for making RESTful API calls to convert email templates and perform other server-side operations.
-5. _`AIPEmailBuilderHistoryService`_: The service responsible for managing the history of actions performed in the email builder, allowing for undo and redo functionality.
+1. `AIPEmailBuilderService`: The core email builder service responsible for managing the email structure, blocks, and content.
+2. `AIPEmailBuilderStorageService`: The service responsible for managing the storage of email templates, history records, and other data.
+3. `AIPEmailBuilderMiddlewareService`: The service responsible for handling middleware logic, such as allowing or disallowing certain actions (e.g., adding a new block).
+4. `AIPEmailBuilderRestService`: The service responsible for making RESTful API calls to convert email templates and perform other server-side operations.
+5. `AIPEmailBuilderHistoryService`: The service responsible for managing the history of actions performed in the email builder, allowing for undo and redo functionality.
 
 To override these services, create custom classes that extend the default service classes and implement the desired functionality. Then, include the custom service classes in the `providers` array of the `IIPEmailBuilderConfig` object.
 

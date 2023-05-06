@@ -1,64 +1,139 @@
 ---
-description: The AIPEmailBuilderMiddlewareService is a key service in the email builder.
+description: >-
+  The AIPEmailBuilderMiddlewareService is the base class that provides
+  middleware functions for the email builder.
 ---
 
 # AIPEmailBuilderMiddlewareService
 
-It provides middleware functions that enable certain functionalities in the email builder, such as adding and deleting blocks, structures, and categories.
+The AIPEmailBuilderMiddlewareService provides middleware functions for the email builder, including retrieving lists of blocks, structures, and categories. It checks user permissions and confirms actions.
 
-The available methods in this service are as follows:
+## Properties
+
+* `templatesThumbsPath`: The path to the templates thumbnails.
+
+## Methods
 
 * `blocksList(blocks: IIPEmailBuilderBlockData[]): Observable<IIPEmailBuilderBlockData[]>`: Returns the list of blocks.
+
+**Parameters**:`blocks`: The list of blocks.
+
+**Returns**: `Observable<IIPEmailBuilderBlockData[]>:`The list of blocks.
+
 * `structuresList(structures: IStructure[]): Observable<IStructure[]>`: Returns the list of structures.
-* `categoryList(categories:` [`IUserTemplateCategory`](../interfaces.md#iusertemplatecategory)`[]): Observable<IUserTemplateCategory[]>`: Returns the list of categories.
-* `categoryTemplates(category: IUserTemplateCategory): Observable<IUserTemplateCategory["templates"]>`: Returns the list of templates in the given category.
+
+**Parameters**:`structures`: The list of structures.
+
+**Returns**: `Observable<IStructure[]>:`The list of structures.
+
+* `categoryList(categories: IUserTemplateCategory[]): Observable<IUserTemplateCategory[]>`: Returns the list of categories.
+
+**Parameters**:`categories`: The list of categories.
+
+**Returns**: `Observable<IUserTemplateCategory[]>:`_The list of categories._
+
+*   `categoryTemplates(category: IUserTemplateCategory): Observable<IUserTemplateCategory["templates"]>`: Returns the list of templates in the given category.
+
+
+
+**Parameters**:`category`: The category.
+
+**Returns**: `Observable<IUserTemplateCategory["templates"]>:`The list of templates in the category.
+
 * `templateThumbnail(category: IUserTemplateCategory, template: string): string`: Returns the path to the thumbnail for the given category and template.
+
+**Parameters**:
+
+* `category`: The category.
+* `template`: The template name.
+
+**Returns**: `string:`The path to the thumbnail.
+
 * `delete(entity: IStructure | AIPEmailBuilderBlockExtendedOptions): Promise<boolean>`: Prompts the user with a confirmation dialog to delete an entity.
+
+**Parameters**:`entity`: The entity to be deleted.
+
+**Returns**: A promise that resolves to `true` if the user confirms deletion, `false` otherwise.
+
 * `alert(message: string): void`: Displays an alert with the given message.
+
+**Parameters**:`message`: The message to be displayed.
+
 * `confirm(message: string): Promise<boolean>`: Prompts the user with a confirmation dialog.
+
+**Parameters**:`message`: The message to be displayed in the dialog.
+
+**Returns**: A promise that resolves to `true` if the user confirms, `false` otherwise.
+
 * `can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean`: Determines if the user can perform the specified action on the given entity.
 
-One of the important methods in the `AIPEmailBuilderMiddlewareService` is `can`.&#x20;
+**Parameters**:
 
-This method takes an action and an entity and returns a boolean value that indicates whether the user can perform the specified action on the given entity.&#x20;
+* `action`: The action to be performed.
+* `entity`: The entity on which the action is to be performed.
 
-The [`ipCan` pipe](../pipes/ipcanpipe.md) uses this method to check if the end-user can or cannot perform an action. For example, `ipCan` pipe can be used in the template to disable or hide certain buttons based on the user's permissions:
+**Returns**: `true` if the user can perform the action, `false` otherwise.
 
-```html
-<div *ngIf="block | ipCan: 'edit'">...</div>
-```
+## Usage
 
-This will show the content of the div only if the user can perform the `edit` action on the `block` entity.
-
-On the other hand, the [`applyMiddleware` pipe](../pipes/applymiddlewarepipe.md) allows you to transform data in a component's HTML based on some of the methods provided by the `AIPEmailBuilderMiddlewareService`.
-
-```html
-<!-- Apply a middleware function on the data -->
-<div *ngFor="let block of blocks | applyMiddleware:'blocksList'">{{ block.name }}</div>
-```
-
-**The allowed methods are "blocksList", "structuresList", "categoryList", "categoryTemplates", and "templateThumbnail".**
-
-Usage inside a class:
+Here's an example of how you could use the `AIPEmailBuilderMiddlewareService`:
 
 ```typescript
-// Check if the user can perform an action on the given entity
-const canDelete = middlewareService.can('deleteBlock', block);
+import { Component } from '@angular/core';
+import { AIPEmailBuilderMiddlewareService } from 'path/to/email-builder-middleware.service';
+import { IStructure } from 'path/to/structure';
+import { AIPEmailBuilderBlockExtendedOptions } from 'path/to/core/Block';
 
-// Display an alert with a message
-middlewareService.alert('Block deleted successfully.');
-
-// Delete an entity with a confirmation dialog
-middlewareService.delete(block).then(result => {
-  if (result) {
-    // entity deleted
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.component.html',
+  styleUrls: ['./my-component.component.scss']
+})
+export class MyComponent {
+  structure: IStructure = { /* your structure data here */ };
+  block: AIPEmailBuilderBlockExtendedOptions = { /* your block data here */ };
+​
+  constructor(private emailBuilderMiddlewareService: AIPEmailBuilderMiddlewareService) {}
+​
+  onDelete() {
+    this.emailBuilderMiddlewareService.delete(this.structure)
+      .then(confirmed => {
+        if (confirmed) {
+          // delete the structure
+          console.log('Structure deleted!');
+        } else {
+          // do nothing
+          console.log('Structure deletion cancelled.');
+        }
+      });
   }
-});
-
-// Get the thumbnail for a template
-const thumbnailPath = middlewareService.templateThumbnail(category, template);
+​
+  onDuplicate() {
+    const canDuplicate = this.emailBuilderMiddlewareService.can('duplicate', this.block);
+    if (canDuplicate) {
+      // duplicate the block
+      console.log('Block duplicated!');
+    } else {
+      this.emailBuilderMiddlewareService.alert('You are not allowed to duplicate this block.');
+    }
+  }
+​
+  onEdit() {
+    const canEdit = this.emailBuilderMiddlewareService.can('edit', this.block);
+    if (canEdit) {
+      // edit the block
+      console.log('Block edited!');
+    } else {
+      this.emailBuilderMiddlewareService.alert('You are not allowed to edit this block.');
+    }
+  }
+}
 ```
 
-The `AIPEmailBuilderMiddlewareService` has two subclasses, `ProIPEmailBuilderMiddlewareService` and `FreeIPEmailBuilderMiddlewareService`.&#x20;
+This is an example of how to use the `AIPEmailBuilderMiddlewareService` in an Angular component. The `AIPEmailBuilderMiddlewareService` is a base class that provides middleware functions for the email builder.
 
-These subclasses inherit from the abstract class and provide their implementations for the methods defined in the parent class. `ProIPEmailBuilderMiddlewareService` provides additional methods that are only available in the Pro version of the email builder.
+The component injects `AIPEmailBuilderMiddlewareService` and uses its `delete()`, `can('duplicate', ...)`, and `can('edit', ...)` methods to delete a structure, duplicate a block, and edit a block, respectively. These methods are triggered by some event (e.g. button click) in the component's template.
+
+For the `delete()` method, the component calls it with a structure as an argument, which prompts the user with a confirmation dialog to delete the structure. The `then()` function is used to handle the user's confirmation or cancellation of the deletion.
+
+For the `can('duplicate', ...)` and `can('edit', ...)` methods, the component calls them with a block as an argument to check if the user is allowed to perform the corresponding action on the block. If the user is allowed, the component performs the action; otherwise, an alert is displayed to inform the user that they are not allowed to perform the action.

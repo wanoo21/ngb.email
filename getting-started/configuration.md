@@ -7,7 +7,7 @@ permalink: /getting-started/configuration
 description: This article explains how to configure NGB Email Builder.
 ---
 
-# How to configure NGB Email Builder
+# Configuration
 
 To configure the NGB Email Builder is pretty straightforward. All you need to do is to add configuration options to the `forRoot` method.
 
@@ -30,6 +30,7 @@ export class AppModule {
 ```
 
 No matter of the template you did choose, they contain the same `IIPEmailBuilderConfig` configuration options, here's how it looks:
+
 ```typescript
 export interface IIPEmailBuilderConfig {
   xApiKey?: string;
@@ -50,17 +51,18 @@ export interface IIPEmailBuilderConfig {
 
 Now let's go one by one and explain each configuration option:
 
-* _`xApiKey`_ (optional): The Wlocalhost converter path API key. Use this if you don't run the converter on your side.
-* _`licenseKey`_ (optional): The license key for paid versions of the email builder.
-* _`socialIconsPath`_ (optional, paid versions only): A custom path for social icons. Defaults to "[https://www.mailjet.com/images/theme/v1/icons/ico-social](https://www.mailjet.com/images/theme/v1/icons/ico-social)".
-* _`convertorPath`_ (optional, paid versions only): A custom converter path. Defaults to "[https://ngb-api.wlocalhost.org](https://ngb-api.wlocalhost.org)".
-* _`templatesThumbsPath`_ (optional, paid versions only): A custom path for template thumbnails. Defaults to "[https://ngb-templates.s3.amazonaws.com](https://ngb-templates.s3.amazonaws.com)".
-* _`historyRecordLimit`_ (optional, paid versions only): The maximum number of history records the history manager can save. Defaults to 5 for the free version and 20 for paid versions.
-* _`providers`_ (optional, paid versions only): An array of types for overriding the default Email Builder services.&#x20;
+* `xApiKey` (optional): The Wlocalhost converter path API key. Use this if you don't run the converter on your side.
+* `licenseKey` (optional): The license key for paid versions of the email builder.
+* `socialIconsPath` (optional, paid versions only): A custom path for social icons. Defaults to "[https://www.mailjet.com/images/theme/v1/icons/ico-social](https://www.mailjet.com/images/theme/v1/icons/ico-social)".
+* `convertorPath` (optional, paid versions only): A custom converter path. Defaults to "[https://ngb-api.wlocalhost.org](https://ngb-api.wlocalhost.org)".
+* `templatesThumbsPath` (optional, paid versions only): A custom path for template thumbnails. Defaults to "[https://ngb-templates.s3.amazonaws.com](https://ngb-templates.s3.amazonaws.com)".
+* `historyRecordLimit` (optional, paid versions only): The maximum number of history records the history manager can save. Defaults to 5 for the free version and 20 for paid versions.
+* `providers` (optional, paid versions only): An array of types for overriding the default Email Builder services.
 
 For more information about the `providers`, and how to override the services, check the [override default services](../services/rewrite-default-services.md) section.
 
-## Configure the builder in standalone mode 
+## Configure the builder in standalone mode
+
 If you want to use the standalone components, you can configure them like this:
 
 ```typescript
@@ -72,4 +74,5 @@ bootstrapApplication(AppComponent, {
   ]
 });
 ```
+
 For more information about how to add configurations to standalone components, check the [official documentation page](https://angular.io/guide/standalone-components) or ask us in our [Discord channel](https://discord.gg/S6Yx6yNZSG) for more.

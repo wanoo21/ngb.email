@@ -1,57 +1,55 @@
 ---
 description: >-
-  The AIPEmailBuilderService is an abstract service that provides functionality
-  for converting an IPEmail object into a ready-to-use MJML and HTML template.
+  The AIPEmailBuilderService is an abstract service that provides conversion of
+  IPEmail object to ready-to-use MJML and HTML. It also includes an array of
+  standard fonts used in email building.
 ---
 
 # AIPEmailBuilderService
 
-This service also exposes a list of standard fonts that can be used in an email template.
+By utilizing the AIPEmailBuilderRestService instance, the AIPEmailBuilderService is able to carry out various server-side operations, such as email template conversions, through the execution of RESTful API calls.
 
-The service has two implementations: `ProIPEmailBuilderService` for the Pro version of the library, and `FreeIPEmailBuilderService` for the free version of the library.
+## Properties
 
-Here are some key features of the `AIPEmailBuilderService`:
+* `restService: AIPEmailBuilderRestService`: An instance of the `AIPEmailBuilderRestService` used to make RESTful API calls to convert email templates and perform other server-side operations.
+* `standardFonts: string[]`: An array of standard fonts used in email building.
 
-* **convert(value: IPEmail): Promise\<IMjmlServerResponse>**: This method accepts an `IPEmail` object and returns a `Promise` that resolves to an object with `mjml` and `html` properties containing the MJML and HTML versions of the email.
-*   **standardFonts**: This property is an array of standard fonts that can be used in an email template.
+## Methods
 
-    Example usage:
+* `convert(value: IPEmail): Promise<IMjmlServerResponse>:`Converts `IPEmail` object to ready-to-use MJML and HTML.
 
-    ```typescript
-    console.log(this.emailBuilderService.standardFonts);
-    // Output: 
-    // ["Palatino Linotype, Book Antiqua, Palatino, serif", 
-    //  "Times New Roman, Times, serif",
-    //  "Arial, Helvetica, sans-serif",
-    //  "Arial Black, Gadget, sans-serif",
-    //  "Comic Sans MS, cursive, sans-serif",
-    //  "Impact, Charcoal, sans-serif",
-    //  "Lucida Sans Unicode, Lucida Grande, sans-serif",
-    //  "Tahoma, Geneva, sans-serif",
-    //  "Trebuchet MS, Helvetica, sans-serif",
-    //  "Verdana, Geneva, sans-serif",
-    //  "Courier New, Courier, monospace",
-    //  "Lucida Console, Monaco, monospace"]
-    ```
+**Parameters**:`value`: The `IPEmail` object to convert.
 
-The `AIPEmailBuilderService` is injected as a dependency in other components and services to enable email-building functionalities. For example, here's how to use `AIPEmailBuilderService` in a component:
+**Returns**: A `Promise` that resolves to an `IMjmlServerResponse` object with the MJML and HTML templates.
+
+## Usage
+
+Here's an example of how you might use the `AIPEmailBuilderService`:
 
 ```typescript
 import { Component } from '@angular/core';
-import { AIPEmailBuilderService } from 'ngx-email-builder';
+import { AIPEmailBuilderService, IPEmail } from '@wlocalhost/ngx-email-builder';
 
 @Component({
   selector: 'app-email-builder',
-  templateUrl: './email-builder.component.html'
+  template: `
+    <div>{{ mjml }}</div>
+    <div>{{ html }}</div>
+  `,
 })
 export class EmailBuilderComponent {
   constructor(private emailBuilderService: AIPEmailBuilderService) {}
-  
-  // Use the emailBuilderService to convert an email object
+
   async convertEmail(email: IPEmail) {
-    const response = await this.emailBuilderService.convert(email);
-    console.log(response.mjml);
-    console.log(response.html);
+    const { mjml, html } = await this.emailBuilderService.convert(email);
+    this.mjml = mjml;
+    this.html = html;
   }
 }
 ```
+
+In the above example, we use the `AIPEmailBuilderService` to convert an `IPEmail` object to MJML and HTML templates.&#x20;
+
+We call the `convert` method on the service with the `IPEmail` object and await the `Promise` that is returned.&#x20;
+
+The `IMjmlServerResponse` object that is returned contains the MJML and HTML templates, which we then display in the template using interpolation.

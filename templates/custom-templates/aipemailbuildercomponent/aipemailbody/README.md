@@ -1,6 +1,11 @@
-# AIPEmailBody
+---
+description: >-
+  AIPEmailBody is an abstract class that defines the interface for settings to
+  interact with the builder. It implements the OnInit and IIPValueChanged
+  interfaces and extends the WithSettings class.
+---
 
-The `AIPEmailBody` abstract class provides a common interface for the settings component to interact with the builder. It extends the `WithSettings` class and implements the `OnInit` and `IIPValueChanged` interfaces.
+# AIPEmailBody
 
 ### Inputs
 
