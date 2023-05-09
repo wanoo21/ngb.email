@@ -15,6 +15,9 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@wlocalhost/bulma-email-builder": [
+        "libs/bulma-email-builder/src/index.ts"
+      ],
       "@wlocalhost/ngx-bootstrap-email-builder": [
         "libs/bootstrap-email-builder/src/index.ts"
       ],

@@ -1,0 +1,112 @@
+{
+  "name": "bulma-demo-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "wlocalhost",
+  "sourceRoot": "apps/bulma-demo-app/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/bulma-demo-app",
+        "index": "apps/bulma-demo-app/src/index.html",
+        "main": "apps/bulma-demo-app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/bulma-demo-app/tsconfig.app.json",
+        "assets": [
+          "apps/bulma-demo-app/src/favicon.ico",
+          "apps/bulma-demo-app/src/assets"
+        ],
+        "styles": ["apps/bulma-demo-app/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/bulma-demo-app/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/bulma-demo-app/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:module-federation-dev-server",
+      "options": {
+        "port": 4205,
+        "publicHost": "http://localhost:4205"
+      },
+      "configurations": {
+        "production": {
+          "browserTarget": "bulma-demo-app:build:production"
+        },
+        "development": {
+          "browserTarget": "bulma-demo-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "bulma-demo-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/bulma-demo-app/**/*.ts",
+          "apps/bulma-demo-app/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/bulma-demo-app/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "options": {
+        "buildTarget": "bulma-demo-app:build",
+        "port": 4200
+      }
+    }
+  }
+}
