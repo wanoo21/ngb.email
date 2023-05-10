@@ -63,5 +63,5 @@
       }
     }
   },
-  "tags": ["primeng builder", "angular builder", "angular email builder"]
+  "tags": ["scope:primeng-email-builder", "type:lib"]
 }

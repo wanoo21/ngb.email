@@ -116,7 +116,17 @@
           "buildTarget": "primeng-demo-app:build:production"
         }
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run primeng-demo-app:build:production",
+          "firebase deploy --only hosting:primeng"
+        ],
+        "parallel": false
+      }
     }
   },
-  "tags": []
+  "tags": ["scope:primeng-demo-app", "type:app"]
 }

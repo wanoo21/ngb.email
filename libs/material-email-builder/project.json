@@ -63,5 +63,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:material-email-builder", "type:lib"]
 }
