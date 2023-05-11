@@ -1,5 +1,5 @@
 import { Component, NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { NgOptimizedImage } from "@angular/common";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
@@ -12,7 +12,8 @@ import RemoteEntryComponent from "./entry.component";
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="https://ngb.email">
-          <img src="https://ngb.email/images/07e4537b7af79f452bd8156d40a9082b.png" alt="" width="60" height="60"
+          <img ngSrc="//ngb.email/images/07e4537b7af79f452bd8156d40a9082b.png" alt="ngb email builder logo" width="60"
+               height="60"
                class="d-inline-block">
           Bootstrap Email Template Builder
         </a>
@@ -38,7 +39,7 @@ import RemoteEntryComponent from "./entry.component";
   styles: [`
     :host {
       display: block;
-      --ip-email-builder-host-height: calc(100vh - 82px);
+      --ip-email-builder-host-height: calc(100vh - 86px);
     }
   `]
 })
@@ -47,7 +48,8 @@ export class BootstrapDemoAppComponent {
 
 @NgModule({
   declarations: [BootstrapDemoAppComponent],
-  imports: [BrowserModule, BrowserAnimationsModule, CommonModule, RemoteEntryComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, RemoteEntryComponent, NgOptimizedImage],
+  exports: [RemoteEntryComponent],
   bootstrap: [BootstrapDemoAppComponent],
   providers: []
 })
