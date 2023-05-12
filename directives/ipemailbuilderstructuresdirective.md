@@ -6,82 +6,34 @@ description: >-
 
 # IPEmailBuilderStructuresDirective
 
+### Selector
+
+The selector for this directive is:
+
+`[ipEmailBuilderStructures]`
+
 ### Properties
 
-#### `selector`
-
-The selector for the directive is `[ipEmailBuilderStructures]`.
-
-#### `exportAs`
-
-The directive can be exported as `ipStructures`.
-
-#### `data`
-
-An input property that accepts an array of `IStructure` objects. It is required for the directive to work properly.
-
-```typescript
-@Input("ipEmailBuilderStructures") data!: IStructure[];
-```
-
-#### `minHeight`
-
-A readonly host binding property that sets the minimum height of the directive's host element.
-
-```typescript
-@HostBinding("style.minHeight.%") readonly minHeight = 100;
-```
-
-#### `dropListCollection`
-
-A getter method that returns the collection of all structures' drop lists in the email builder.
-
-```typescript
-get dropListCollection() {
-  return this.builderUiService.structuresDropLists;
-}
-```
+* `data: IStructure[]`: An input property to pass an array of `IStructure` objects.
+* `minHeight: number`: A readonly property that sets the minimum height of the directive element to 100%.
+* `dropListCollection: Map<CdkDropList, string>`: A getter property that returns a map of all the `CdkDropList` instances of the directive element.
 
 ### Methods
 
-#### `dropListDropped(event: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>)`
-
-A method that handles the drop event of the directive's drop list. It moves the dropped item within the same list or adds it to a new list if it's from a different list.
-
-```typescript
-dropListDropped(event: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>) {
-  const { container, previousContainer, currentIndex, previousIndex, item } = event;
-  if (this.builderUiService.structuresDropLists.has(previousContainer)) {
-    moveItemInArray(container.data, previousIndex, currentIndex);
-  } else {
-    container.data.splice(currentIndex, 0, new Structure(item.data));
-  }
-}
-```
-
-### Extends
-
-This directive extends the `AbstractEmailBuilderDropList` from the IP email builder.
+* `dropListDropped(event: CdkDragDrop<IStructure[], IStructure[], TStructureTypes>): void`: A method that is triggered when a structure is dragged and dropped onto the `CdkDropList`. It moves the item to a new position in the array of structures or creates a new structure if it is not dropped onto an existing one.
 
 ### Usage
 
-Example usage:
+Usage example:
 
-```typescript
-import { Component } from "@angular/core";
-import { IPEmailBuilderStructuresDirective } from "./ipemail-builder-structures.directive";
-
-@Component({
-  selector: "app-my-component",
-  template: `
-    <div [ipEmailBuilderStructures]="myStructures">
-      <!-- Content here -->
-    </div>
-  `
-})
-export class MyComponent {
-  myStructures = []; // your structures array here
-}
+```html
+<div ipEmailBuilderStructures [data]="structures">
+  <div *ngFor="let structure of structures">
+    ...
+  </div>
+</div>
 ```
 
-Then use the `ipEmailBuilderStructures` directive to connect all structures' drop lists between each other.
+In the above example, the `ipEmailBuilderStructures` directive is attached to a `div` element and passed an array of `IStructure` objects using the `data` input property.&#x20;
+
+The structures are displayed using an `ngFor` loop. The `dropListDropped` method is called when a structure is dragged and dropped onto the `div` element.

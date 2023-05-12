@@ -7,79 +7,50 @@ description: >-
 
 # IPEmailBuilderHistoryHostDirective
 
-### Import
+### Selector
 
-To use the `EmailBuilderHistoryHostDirective`, you need to import it from the `@wlocalhost/ngx-email-builder` library:
+The selector for this directive is:
 
-```typescript
-import { EmailBuilderHistoryHostDirective } from "@wlocalhost/ngx-email-builder";
-```
+`[ipEmailBuilderHistoryHost]`
 
-### Directive Decorator
+### Properties
 
-The `EmailBuilderHistoryHostDirective` is decorated with the `@Directive` decorator, which provides configuration metadata for the directive. The decorator takes an object with the following properties:
+#### `ipEmailBuilderHistoryHost: IIPOptionsHistoryContext | undefined`
 
-* `selector` - a string representing the selector for the directive.
-* `exportAs` - a string representing the exported name for the directive.
+Input property that defines the context of the history host element, including the host class and object with elements to watch.
 
-```typescript
-@Directive({
-  selector: "[ipEmailBuilderHistoryHost]",
-  exportAs: "ipEmailBuilderHistoryHost"
-})
-```
+#### Methods
 
-### Class Definition
+**`ngOnInit(): void`**
 
-The `EmailBuilderHistoryHostDirective` class implements the `OnInit` interface and watches for changes in the email builder options. It takes an input of type `IIPOptionsHistoryContext`, which provides the context for the history host element.
+OnInit lifecycle hook that initializes the directive and calls `detectChanges` with the `isAction` flag set to `false`.
 
-```typescript
-export interface IIPOptionsHistoryContext<T extends TIPEmailBuilderStyles = TIPEmailBuilderStyles> {
-  // Current host class
-  cmp: AIPEmailBuilderBlock<T> | AIPStructure | AIPEmailBody,
-  // Object with elements to watch
-  watch: T
-}
+**`detectChanges(isAction: boolean): void`**
 
-@Directive({
-  selector: "[ipEmailBuilderHistoryHost]",
-  exportAs: "ipEmailBuilderHistoryHost"
-})
-export class EmailBuilderHistoryHostDirective implements OnInit {
-  @Input() ipEmailBuilderHistoryHost?: IIPOptionsHistoryContext;
-  readonly historyService = inject(AIPEmailBuilderHistoryService);
+Detects differences in options if the user made any changes.&#x20;
 
-  ngOnInit(): void {
-    this.detectChanges(false);
-  }
+If differences are detected, it adds a new history record using `addHistory()` method of `AIPEmailBuilderHistoryService`.
 
-  // Detect differences in options if user made some changes
-  detectChanges(isAction: boolean): void {
-    if (this.ipEmailBuilderHistoryHost) {
-      const { cmp, watch } = this.ipEmailBuilderHistoryHost;
-      if (cmp instanceof AIPEmailBuilderBlock) {
-        const diff = getDiff(watch, cmp.toObject());
-        this.historyService.addHistory(`block:${cmp.id}`, diff, isAction);
-      } else if (cmp instanceof AIPStructure) {
-        const diff = getDiff(watch, cmp.value.options);
-        this.historyService.addHistory(`structure:${cmp.value.id}`, diff, isAction);
-      } else {
-        const diff = getDiff(watch, cmp.value.general);
-        this.historyService.addHistory("body", diff, isAction);
-      }
-    } else {
-      console.warn("You must define [ipEmailBuilderHistoryHost] as [ipEmailBuilderHistoryHost]=\"this | toHistoryOptions\" to work properly.");
-    }
-  }
-}
-```
+* `isAction`: A boolean flag to specify if the change is an action (i.e., undo or redo).
 
 ### Usage
 
-To use the `EmailBuilderHistoryHostDirective` in your Angular application, you need to add it to the root settings element of the email builder:
+To use the `EmailBuilderHistoryHostDirective`, add the directive to the element that should be treated as the root settings element for the history.&#x20;
+
+Bind the `ipEmailBuilderHistoryHost` input property to an object that defines the context for the history host element.
+
+Here's an example of using the `EmailBuilderHistoryHostDirective` to track changes made to a block's options.
+
+Usage example:
 
 ```html
-<div ipEmailBuilderHistoryHost [ipEmailBuilderHistoryHost]="{ cmp: cmp, watch: watch }"></div>
+<div ipEmailBuilderHistoryHost [ipEmailBuilderHistoryHost]="{ cmp: block, watch: block.options }">
+  <div class="block" [ipEmailBuilderBlock]="block"></div>
+</div>
 ```
 
-The `cmp` and `watch` properties should be set to the component that the directive is attached to and the options that need to be watched, respectively. These properties can be set in the component's TypeScript file and passed to the directive through the `ipEmailBuilderHistoryHost` input.
+In this example, the `ipEmailBuilderHistoryHost` directive is added to a wrapper `div` element that contains a block component.
+
+The `ipEmailBuilderHistoryHost` input property is bound to an object that specifies the `block` component as the host class and the `block.options` object as the elements to watch for changes.&#x20;
+
+Any changes made to the `block.options` object will be detected by the directive and tracked by the `AIPEmailBuilderHistoryService`.

@@ -47,5 +47,5 @@ new TextBlock().toObject({
 In this example, we've customized the color, font, line height, and padding of the Text Block, and provided some text content to display.&#x20;
 
 {% hint style="info" %}
-Note that the `toObject()` method is called on the instance of `TextBlock` to convert the block into an object that can be used in an email template.
+**Note**: The `toObject()`method is called on the instance of `TextBlock` to convert the block into an object that can be used in an email template.
 {% endhint %}

@@ -25,4 +25,4 @@ new SpacerBlock().toObject({
 });
 ```
 
-In this example, we've set the height of the spacer block to 20 pixels.
+In this example, we've set the `height` of the `spacerBlock` to 20 pixels.

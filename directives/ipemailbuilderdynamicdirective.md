@@ -8,54 +8,52 @@ description: >-
 
 ### Selector
 
-```csharp
-[ipEmailBuilderDynamicBlockDirective]
-```
+The selector for this directive is:&#x20;
 
-### Inputs
+`[ipEmailBuilderDynamicBlockDirective]`
 
-**`ipEmailBuilderDynamicBlockDirective`**
+### Properties
 
-A dynamic block with its options. The options must include a `type` property that matches a block type from the `IP_EMAIL_BUILDER_BLOCKS_DATA` injection token.
+#### `context: IPEmailBuilderDynamicDirectiveContext`
 
-### Exported Members
+This property is an object that defines the default context for the dynamic block.
 
-**`instance`**
+#### `blocksData: IIPEmailBuilderBlockData[]`
 
-The instance of the dynamically created `AIPEmailBuilderBlock` object.
+This property is an array of `IIPEmailBuilderBlockData` objects that define the available blocks.
+
+#### `viewContainerRef: ViewContainerRef`
+
+This property is a reference to the view container of the host element.
+
+#### `templateRef: TemplateRef<IPEmailBuilderDynamicDirectiveContext>`
+
+This property is a reference to the template that will be used to create the dynamic block.
+
+#### `differs: KeyValueDiffers`
+
+This property is a reference to the `KeyValueDiffers` service.
+
+#### `cdkDrag: CdkDrag | undefined`
+
+This property is a reference to the `CdkDrag` directive that is attached to the host element.
+
+### Methods
+
+#### `ngDoCheck()`
+
+This method is called whenever the data in the dynamic block is checked.&#x20;
+
+It updates the incoming context with updated details.
 
 ### Usage
 
-Example usage:
+To use this directive, add the `ipEmailBuilderDynamicBlockDirective` attribute to an HTML element that has the `cdkDrag` directive.&#x20;
+
+The value of the attribute should be an `AIPEmailBuilderBlockExtendedOptions` object.
+
+Usage example:
 
 ```html
-<ng-container *ngFor="let block of blocks">
-  <ng-container [ipEmailBuilderDynamicBlockDirective]="block"></ng-container>
-</ng-container>
-```
-
-```typescript
-import { Component } from "@angular/core";
-import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "@wlocalhost/ngx-email-builder";
-import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
-
-@Component({
-  selector: "app-email-builder",
-  templateUrl: "./email-builder.component.html",
-  styleUrls: ["./email-builder.component.scss"]
-})
-export class EmailBuilderComponent {
-  blocks: AIPEmailBuilderBlockExtendedOptions[];
-
-  constructor(
-    @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
-    private readonly blocksData: IIPEmailBuilderBlockData[]
-  ) {
-    // Initialize blocks with default options
-    this.blocks = blocksData.map(block => ({
-      type: block.type,
-      options: block.options
-    }));
-  }
-}
+<div cdkDrag ipEmailBuilderDynamicBlockDirective [options]="blockOptions"></d
 ```

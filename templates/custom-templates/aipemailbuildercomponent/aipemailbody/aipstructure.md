@@ -7,14 +7,6 @@ description: >-
 
 # AIPStructure
 
-### Import
-
-To use the `AIPStructure` component, you need to import it from the `@wlocalhost/ngx-email-builder` library:
-
-```typescript
-import { AIPStructure } from "@wlocalhost/ngx-email-builder";
-```
-
 ### Component Decorator
 
 The `AIPStructure` component is decorated with the `@Component` decorator, which provides configuration metadata for the component. The decorator takes an object with the following properties:
@@ -25,6 +17,8 @@ The `AIPStructure` component is decorated with the `@Component` decorator, which
 * `changeDetection` - an enum value representing the change detection strategy for the component. In this case, it is set to `ChangeDetectionStrategy.OnPush`.
 
 ```typescript
+import { AIPStructure } from "@wlocalhost/ngx-email-builder";
+
 @Component({
   selector: "tail-structure",
   templateUrl: 'structure.component.html',

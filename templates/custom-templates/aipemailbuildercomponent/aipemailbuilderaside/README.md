@@ -8,37 +8,45 @@ description: >-
 
 ### Properties
 
-* `readonly`: An input property that specifies whether the settings portal is in read-only mode.
-* `asideSettingsPortal`: A ViewChild property that provides a reference to the `CdkPortalOutlet` directive where the settings portal should be attached.
-* `blocks`: A property that contains a list of draggable and droppable blocks for use in the settings portal.
-* `structures`: A property that contains a list of draggable and droppable structures for use in the settings portal.
-* `activeSettings$`: A property that contains an Observable for the currently active settings portal.
-* `columnsDropLists`: A property that returns an array of `CdkDropList` objects representing the columns where blocks can be dragged and dropped.
-* `structuresDropLists`: A property that returns an array of `CdkDropList` objects representing the structures where blocks can be dragged and dropped.
+* `readonly: boolean` - A boolean value indicating whether the email builder is in read-only mode.
+* `isOpen: boolean` - A boolean value indicating whether the settings panel is open.
+* `builderUiService: BuilderUiService` - A service that provides access to the current settings and other builder UI state.
+* `currentSettingsPortal$: Observable<any>` - An observable that emits the current settings for the email builder.
 
 ### Methods
 
-* `ngOnInit()`: A method that sets the `CdkPortalOutlet` directive for the settings portal and displays a warning message if the directive is missing from the component's HTML.
+`AIPEmailBuilderAside` does not define any additional methods beyond those of the base `AIPEmailBuilderAside` component.
 
-Usage To use the AIPEmailBuilderAside class, you need to create a new component that extends AIPEmailBuilderAside and implement the necessary methods and properties. In the HTML template for the component, you must include the `CdkPortalOutlet` directive with the `activeSettings$` Observable.
+### Events
+
+`AIPEmailBuilderAside` does not define any additional events beyond those of the base `AIPEmailBuilderAside` component.
 
 ### Usage
 
-Example usage:
+Here's an example:
 
 ```typescript
 import { AIPEmailBuilderAside } from "@wlocalhost/ngx-email-builder";
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { CdkPortalOutlet } from "@angular/cdk/portal";
 
 @Component({
-  selector: "app-email-builder-settings",
-  template: `
-    <ng-container [cdkPortalOutlet]="activeSettings$ | async"></ng-container>
-  `,
+  selector: "my-email-aside",
+  templateUrl: "./email-aside.component.html",
 })
-export class EmailBuilderSettingsComponent extends AIPEmailBuilderAside implements OnInit {
-  @ViewChild(CdkPortalOutlet, { static: true })
-  readonly asideSettingsPortal?: CdkPortalOutlet;
+export class EmailAsideComponent extends AIPEmailBuilderAside implements OnInit {
+  // Define additional properties and methods as needed.
 }
 ```
+
+Using `my-email-aside` selector in your template:
+
+```html
+<my-email-aside></my-email-aside>
+```
+
+In this example, the `AIPEmailBuilderAside` component is displayed as a standalone component.&#x20;
+
+The component automatically retrieves the current settings from the `builderUiService` provided by the `AIPEmailBuilder` component, and displays them in the settings panel.&#x20;
+
+If the email builder is in read-only mode, the component will display the settings panel as read-only.&#x20;
+
+The `isOpen` property can be used to toggle the visibility of the settings panel, and any changes made to the settings will be emitted through the `currentSettingsPortal$` observable.

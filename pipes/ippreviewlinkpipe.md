@@ -1,37 +1,47 @@
 ---
 description: >-
   The IpPreviewLinkPipe pipe dynamically creates and revokes a URL object link
-  for previewing an email.
+  for previewing an email.  It is useful when you want to create a preview link
+  from an IPEmail object.
 ---
 
 # IpPreviewLinkPipe
 
-It converts the provided `IPEmail` object to HTML and creates a URL object link to preview it.
+## Methods
 
-## **Usage**
+#### transform()
 
-1. Import the `IpPreviewLinkPipe` in your module file:
+This method transforms the `IPEmail` object to a `SafeUrl` object for previewing. It returns an Observable of `SafeUrl` object that can be used for previewing.
 
-```typescript
-import { IpPreviewLinkPipe } from '@wlocalhost/ngx-email-builder';
-```
+**Parameters:**
 
-2. Declare the `IpPreviewLinkPipe` in the `imports` array of your module:
+* `value`: The `IPEmail` object to be previewed.
 
-```typescript
-@NgModule({
-  imports: [
-    // ...
-    IpPreviewLinkPipe
-  ],
-  // ...
-})
-export class AppModule { }
-```
+**Returns:**
 
-3. Use the `IpPreviewLinkPipe` in your component's template:
+* An `Observable<SafeUrl>` that can be used for previewing.
+
+#### ngOnDestroy()
+
+This method revokes the object URL link on component destruction to free memory.
+
+## Usage
+
+Here's an example:
 
 ```html
 <!-- Preview email -->
 <iframe [src]="email | ipPreviewLink" width="100%" height="500"></iframe>
 ```
+
+It uses an `<iframe>` as a container to display the email preview within the current web page.
+
+The `[src]`attribute binds the email variable to the `<iframe>`'s source URL, enabling the preview generation through the `ipPreviewLink` pipe.
+
+Dynamically loading and presenting the corresponding email content is achieved by the `<iframe>`.
+
+To fit the available space, the `<iframe>` has a width of 100% and a fixed height of 500 pixels.
+
+This code allows the display of an email preview in an based on the email variable.&#x20;
+
+The `<iframe>` occupies full width and has a fixed height of 500 pixels.

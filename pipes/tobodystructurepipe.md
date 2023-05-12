@@ -1,12 +1,26 @@
+---
+description: >-
+  ToBodyStructurePipe is a pipe that returns the appropriate TStructureTypes
+  based on the given IStructure.
+---
+
 # ToBodyStructurePipe
 
-This pipe is used to return the right `TStructureTypes` based on the provided `IStructure`.&#x20;
+## Methods
 
-It is most commonly used for `[cdkDragData]` inside the structure list.
+#### transform()
+
+The `transform()` method takes an `IStructure` object as input and returns its type (`TStructureTypes`).
+
+**Parameters:**
+
+* `structure`: The `IStructure` object to transform.
+
+**Returns:**
+
+* The type of the structure (`TStructureTypes`).
 
 ## Usage
-
-In your component's HTML template, you can use the `toBodyStructure` pipe as follows:
 
 ```html
 <ng-container *ngFor="let structure of structures">

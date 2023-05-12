@@ -7,14 +7,6 @@ description: >-
 
 # AIPTemplateList
 
-### Import
-
-To use the `AIPTemplateList` component, you need to import it from the `@wlocalhost/ngx-email-builder` library:
-
-```typescript
-import { AIPTemplateList } from "@wlocalhost/ngx-email-builder";
-```
-
 ### Component Decorator
 
 The `AIPTemplateList` component is decorated with the `@Component` decorator, which provides configuration metadata for the component. The decorator takes an object with the following properties:
@@ -24,14 +16,15 @@ The `AIPTemplateList` component is decorated with the `@Component` decorator, wh
 * `styleUrls` - an array of strings representing the URLs to the component style files.
 * `changeDetection` - an enum value representing the change detection strategy for the component. In this case, it is set to `ChangeDetectionStrategy.OnPush`.
 
-```typescript
-@Component({
-  selector: "tail-template-list",
+<pre class="language-typescript"><code class="lang-typescript">import { AIPTemplateList } from "@wlocalhost/ngx-email-builder";
+<strong>
+</strong><strong>@Component({
+</strong>  selector: "tail-template-list",
   templateUrl: "./template-list.component.html",
   styleUrls: ["./template-list.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-```
+</code></pre>
 
 ### Class Definition
 

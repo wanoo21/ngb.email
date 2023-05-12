@@ -103,5 +103,5 @@ We've then customized the appearance of the block using the available options, i
 Finally, we've passed the array of social networks to the `toObject()` method of the Social Block.
 
 {% hint style="info" %}
-Note that the `ISocialNetwork` interface extends the `ILink` interface, which provides the `href` and `target` properties for the link.
+**Note**: The `ISocialNetwork` interface extends the `ILink` interface, which provides the `href` and `target` properties for the link.
 {% endhint %}

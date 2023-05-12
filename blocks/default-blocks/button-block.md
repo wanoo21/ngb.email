@@ -24,7 +24,7 @@ The Button Block is a block that allows you to add a button to your email. It su
 
 ## Usage
 
-To use the Button Block in your email, you can create a new instance of the ButtonBlock class and customize its options. Here's an example:
+To use the Button Block in your email, you can create a new instance of the `ButtonBlock` class and customize its options. Here's an example:
 
 ```typescript
 import { ButtonBlock } from '@wlocalhost/ngx-email-builder';
@@ -73,5 +73,5 @@ new ButtonBlock().toObject({
 In this example, we've customized the background color, border, text color, font, alignment, line height, link, and padding of the Button Block, and provided some text content to display on the button.
 
 {% hint style="info" %}
-The `align` option only affects the horizontal alignment of the button. Vertical alignment is determined by the container in which the button is placed.
+**Note**: The `align` option only affects the horizontal alignment of the button. Vertical alignment is determined by the container in which the button is placed.
 {% endhint %}

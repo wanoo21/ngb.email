@@ -78,8 +78,21 @@ export class MyComponent {
 }
 ```
 
-In the example above, `MyComponent` injects `AIPEmailBuilderHistoryService` and uses its `addHistory()`, `undo()`, `redo()`, and `clear()` methods to manage the undo/redo history of the email builder.&#x20;
+This example demonstrates how to use the `AIPEmailBuilderHistoryService` in your Angular application:
 
-The `hasUndo`, `hasRedo`, and `hasChanges` properties are used to determine whether the undo/redo actions are available and whether there are changes made to the history.
+1. Import the `AIPEmailBuilderHistoryService` and inject it into your component or service using Angular's dependency injection mechanism.
+2. To add an entry to the undo/redo history, call the `addHistory()` method on the `historyService`, passing in the entry's ID and the difference (`rdiffResult`) between the previous state and the current state.
+3. To undo the last action, check if the hasUndo property is true and then call the undo() method on the historyService.
+4. To redo the last undone action, check if the `hasRedo` property is `true` and then call the `redo()` method on the `historyService`.
+5. To clear the undo/redo history, call the `clear()` method on the `historyService`.
+6. To react to commits made to the undo manager, subscribe to the `commitPush$` observable and handle the commit changes within the subscription.
 
-The `onAddBlock()`, `onUndo()`, `onRedo()`, and `onClear()` methods are triggered by some event (e.g., button click) in the component's template.
+Make sure to replace `'path/to/email-builder-history.service'`, with the actual paths to the `AIPEmailBuilderHistoryService` files.
+
+By following these steps, you can effectively use the `AIPEmailBuilderHistoryService` in your Angular application to manage undo/redo functionality, clear the history, and react to commit changes in the undo manager.
+
+{% hint style="info" %}
+**Note**: There are two concrete implementations of the `AIPEmailBuilderHistoryService`: `ProEmailBuilderHistoryService` for the Pro version and `FreeEmailBuilderHistoryService` for the Free version.&#x20;
+
+The appropriate implementation will be provided automatically based on your configuration.
+{% endhint %}

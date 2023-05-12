@@ -15,7 +15,7 @@ The Divider Block is a block that allows you to create a horizontal line to sepa
 
 ## Usage
 
-To use the Divider Block in your email, you can create a new instance of the DividerBlock class and customize its options. Here's an example:
+To use the Divider Block in your email, you can create a new instance of the `DividerBlock` class and customize its options. Here's an example:
 
 ```typescript
 import { DividerBlock } from "@wlocalhost/ngx-email-builder";
@@ -33,4 +33,4 @@ new DividerBlock().toObject({
 });
 ```
 
-In this example, we've customized the border and padding of the Divider Block to create a thin gray line with 20 pixels of padding at the top and bottom.
+In this example, we've customized the `border` and `padding` of the `DividerBlock` to create a thin gray line with 20 pixels of `padding` at the `top` and `bottom`.

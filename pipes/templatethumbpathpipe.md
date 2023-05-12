@@ -1,22 +1,28 @@
 ---
 description: >-
-  The TemplateThumbPathPipe is an Angular pipe that returns the full path to a
-  template thumbnail image based on the provided template name and image type.
+  TemplateThumbPathPipe is a pipe that returns the thumbnail image path for a
+  given email template. This is particularly useful when you need to dynamically
+  generate paths for template thumbnail images.
 ---
 
 # TemplateThumbPathPipe
 
-It is typically used in the UI of the email builder app to display a preview image of each template option available to the user.
+## Methods
 
-Here are some key features of the `TemplateThumbPathPipe`:
+#### transform()
 
-* **Name:** The name of the pipe is `templateThumbPath`.
-* **Input:** The pipe takes two inputs: the `template` name (required) and the `type` of image (optional, default is `"jpg"`).
-* **Output:** The output is a string that represents the full path to the thumbnail image.
-* **Usage:** The pipe can be used in HTML templates like this: `{{ templateName | templateThumbPath: "png" }}`.
-* **Dependency:** The pipe injects the `IPEmailBuilderConfig` service from the email builder configuration module.
+The `transform()` method returns the thumbnail image path for a given email template.
 
-Here is an example of how to use `TemplateThumbPathPipe` in an HTML template:
+**Parameters:**
+
+* `template`: The name of the email template.
+* `type`: The file type of the thumbnail image (default is "jpg").
+
+**Returns:**
+
+* The path of the thumbnail image for the given email template.
+
+## Usage
 
 ```html
 <img [src]="templateName | templateThumbPath: 'png'" alt="Template thumbnail">

@@ -31,7 +31,7 @@ To use this component, create a class that extends `AIPEmailBuilderComponent` an
 
 ### Usage
 
-Example usage:
+Here's an example:
 
 ```typescript
 import { Component } from "@angular/core";

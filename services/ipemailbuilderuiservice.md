@@ -28,7 +28,7 @@ IPEmailBuilderUiService provides UI utilities for ngx-email-builder, with method
 
 * portalOutletHasAttached(): boolean: Checks if the settings portal outlet has attached.
 
-**Returns:**`true` if the outlet has attached, `false` otherwise.
+**Returns:** `true` if the outlet has attached, `false` otherwise.
 
 ## Usage
 
@@ -72,12 +72,49 @@ export class EmailBuilderComponent implements OnInit {
     }
   }
 }
+import { IPEmailBuilderUiService } from 'path/to/your/ngx-email-builder/ui/service';
+
+constructor(private emailBuilderUiService: IPEmailBuilderUiService) {}
+
+// Attach a settings portal
+this.emailBuilderUiService.attachSettingsPortal(yourSettingsPortalInstance);
+
+// Set the default settings portal
+this.emailBuilderUiService.setDefaultSettingsPortal(yourDefaultSettingsPortalInstance);
+
+// Set the settings portal outlet
+this.emailBuilderUiService.setSettingsPortalOutlet(yourSettingsPortalOutletInstance);
+
+// Check if the settings portal outlet has attached
+const hasAttached = this.emailBuilderUiService.portalOutletHasAttached();
+
+// Subscribe to the currentSettingsPortal$ observable
+this.emailBuilderUiService.currentSettingsPortal$.subscribe((currentSettingsPortal) => {
+  // Your logic here
+});
 ```
 
-In the above example, we use the `IPEmailBuilderUiService` to manage the settings portal for the email builder UI.
+1. Import the IPEmailBuilderUiService and inject it into your component or service using Angular's dependency injection mechanism.
+2. Inside your component, define the necessary HTML templates for your settings portal and settings portal outlet. The template should include the `ng-template` tag with a reference variable `settingsPortal` to hold the content of the settings portal. The `cdkPortalOutlet` directive is used to dynamically render the current settings portal inside the `<ng-container>`.
+3. Implement the `OnInit` interface in your component and define the necessary logic inside the `ngOnInit` lifecycle hook.
+4. Inside the `ngOnInit` method, perform the following tasks using the IPEmailBuilderUiService:
 
-We create a ng-template with the `#settingsPortal` identifier to be used as the settings portal. Then, we attach this portal to the service using the `attachSettingsPortal()` method.
+* Attach the settings portal by passing a `CdkPortal` instance created from the `settingsPortal` DOM element using the `attachSettingsPortal()` method of the IPEmailBuilderUiService.
+* Set the default settings portal by passing a `CdkPortal` instance created from the `defaultSettingsPortal` DOM element using the `setDefaultSettingsPortal()` method of the IPEmailBuilderUiService.
+* Set the settings portal outlet by passing a `CdkPortalOutlet` instance created from the `settingsPortalOutlet` DOM element using the `setSettingsPortalOutlet()` method of the IPEmailBuilderUiService.
 
-We also set the default settings portal using the `setDefaultSettingsPortal()` method, and the settings portal outlet using the `setSettingsPortalOutlet()` method.
+You can also use the IPEmailBuilderUiService in other parts of your application. Here are some actions you can perform using its methods:
 
-Finally, we use the `currentSettingsPortal$` observable to bind the current settings portal to the `cdkPortalOutlet` directive in the email builder UI.
+* Attach a settings portal by passing your settings portal instance to the `attachSettingsPortal()` method.
+* Set the default settings portal by passing your default settings portal instance to the `setDefaultSettingsPortal()` method.
+* Set the settings portal outlet by passing your settings portal outlet instance to the `setSettingsPortalOutlet()` method.
+* Check if the settings portal outlet has been attached by calling the `portalOutletHasAttached()` method. This method returns a boolean value indicating whether the portal outlet has an attached portal.
+* Subscribe to the `currentSettingsPortal$` observable to get the currently attached settings portal. Inside the subscription, you can add your custom logic to handle the settings portal as needed. Remember to unsubscribe from the observable when you're done using it to prevent memory leaks.
+
+By following these steps, you can effectively use the IPEmailBuilderUiService in your Angular application to manage the settings portal and settings portal outlet for the email builder.
+
+{% hint style="info" %}
+**Note**: There are two concrete implementations of the `IPEmailBuilderUiService`: `ProIPEmailBuilderUiService` the Pro version and `FreeIPEmailBuilderUiService` for the Free version.&#x20;
+
+The appropriate implementation will be provided automatically based on your configuration.
+{% endhint %}

@@ -11,6 +11,7 @@
 
 * [Structure](blocks/structure.md)
 * [AIPEmailBuilderBlock](blocks/aipemailbuilderblock.md)
+* [Custom block](blocks/custom-block.md)
 * [Default Blocks](blocks/default-blocks/README.md)
   * [Text Block](blocks/default-blocks/text-block.md)
   * [Image Block](blocks/default-blocks/image-block.md)
@@ -20,7 +21,6 @@
   * [Spacer Block](blocks/default-blocks/spacer-block.md)
   * [Navigation Block](blocks/default-blocks/navigation-block.md)
   * [HTML](blocks/default-blocks/html.md)
-* [Custom block](blocks/custom-block.md)
 
 ## ✈ Services
 

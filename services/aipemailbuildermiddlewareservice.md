@@ -130,10 +130,20 @@ export class MyComponent {
 }
 ```
 
-This is an example of how to use the `AIPEmailBuilderMiddlewareService` in an Angular component. The `AIPEmailBuilderMiddlewareService` is a base class that provides middleware functions for the email builder.
+This example demonstrates how to use the `AIPEmailBuilderMiddlewareService` in your Angular application:
 
-The component injects `AIPEmailBuilderMiddlewareService` and uses its `delete()`, `can('duplicate', ...)`, and `can('edit', ...)` methods to delete a structure, duplicate a block, and edit a block, respectively. These methods are triggered by some event (e.g. button click) in the component's template.
+1. Import the AIPEmailBuilderMiddlewareService and inject it into your component or service using Angular's dependency injection.
+2. To get the list of blocks, structures, categories, or category templates, call the corresponding methods (`blocksList()`, `structuresList()`, `categoryList()`, `categoryTemplates()`) on the middlewareService, passing in the required data. These methods return an observable which you can subscribe to and add your custom logic inside the subscription.
+3. To get the path to the thumbnail for a specific category and template, call the `templateThumbnail()` method, passing in the category and template name.
+4. To prompt the user with a confirmation dialog for deleting an entity, call the `delete()` method, passing in the entity. This method returns a promise that resolves to true if the user confirms deletion, false otherwise.
+5. To display an alert with a given message, call the `alert()` method.
+6. To prompt the user with a confirmation dialog, call the `confirm()` method, passing in the message. This method returns a promise that resolves to true if the user confirms, false otherwise.
+7. To check if a user can perform a specific action on a given entity, call the `can()` method, passing in the action and entity. This method returns a boolean indicating if the action is allowed or not.
 
-For the `delete()` method, the component calls it with a structure as an argument, which prompts the user with a confirmation dialog to delete the structure. The `then()` function is used to handle the user's confirmation or cancellation of the deletion.
+Make sure to replace `'path/to/email-builder-middleware.service'`, `'path/to/structure'`, and `'path/to/core/Block'` with the actual paths to the AIPEmailBuilderMiddlewareService, IStructure, and AIPEmailBuilderBlockExtendedOptions files, respectively.
 
-For the `can('duplicate', ...)` and `can('edit', ...)` methods, the component calls them with a block as an argument to check if the user is allowed to perform the corresponding action on the block. If the user is allowed, the component performs the action; otherwise, an alert is displayed to inform the user that they are not allowed to perform the action.
+{% hint style="info" %}
+**Note**: There are two concrete implementations of the `AIPEmailBuilderMiddlewareService`: `ProIPEmailBuilderMiddlewareService` for the Pro version and `FreeIPEmailBuilderMiddlewareService` for the Free version.&#x20;
+
+The appropriate implementation will be provided automatically based on your configuration.
+{% endhint %}

@@ -58,5 +58,5 @@ new ImageBlock().toObject({
 In this example, we've customized the border, width, height, link, alignment, title, and padding of the Image Block.
 
 {% hint style="info" %}
-Note that the `src` and `alt` options are required, and the `width` and `height` options should be specified to ensure that the image is displayed correctly.
+**Note**: The `src` and `alt` options are required, and the `width` and `height` options should be specified to ensure that the image is displayed correctly.
 {% endhint %}

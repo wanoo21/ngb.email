@@ -1,41 +1,29 @@
 ---
 description: >-
-  The IpCanPipe is a pipe that allows you to check whether an end user can or
-  cannot perform an action based on the can method of the
-  AIPEmailBuilderMiddlewareService.
+  The IpCanPipe is a pipe that checks if the end user can or cannot perform an
+  action based on the AIPEmailBuilderMiddlewareService.can method.
 ---
 
 # IpCanPipe
 
-This pipe is commonly used in the email builder application to determine whether a user has permission to perform an action on a specific email component.
+## Methods
 
-To use this pipe, simply pass the `entity` and `action` as arguments to the `transform` method.
+#### transform()
 
-The `entity` argument is the entity that you want to perform an action on, while the `action` argument is the name of the action that you want to perform.
+This method checks if the end user can or cannot perform an action based on the middleware's `can` method.
 
-The `entity` argument can be one of three types: `AIPEmailBuilderBlock`, `IStructure`, or `IPEmail`.&#x20;
+**Parameters**:
 
-* The [`AIPEmailBuilderBlock`](../blocks/aipemailbuilderblock.md) type represents the data for an email builder block component.&#x20;
-* The [`IStructure`](../blocks/structure.md) type represents the data for an email builder structure component.&#x20;
-* The `IPEmail` type represents the data for an email.
+* `entity` — The email builder entity object. It can be of type `AIPEmailBuilderBlockExtendedOptions`, `IStructure`, or `IPEmail`.
+* `action` — The action to be performed. It can be of type `middlewareBlockActions`, `middlewareStructureActions`, or `middlewareEmailActions`.
 
-The `action` argument can be one of three types as well:
+**Returns**:
 
-```typescript
-type middlewareBlockActions = "delete" | "duplicate" | "edit";
-type middlewareStructureActions = middlewareBlockActions | "save";
-type middlewareEmailActions = "preview" | "save";
-```
+* A boolean value that indicates whether the user can perform the specified action on the given entity.
 
-* The `middlewareStructureActions` type represents the actions that can be performed on an [email builder structure](../blocks/structure.md) component.&#x20;
-* The `middlewareBlockActions` type represents the actions that can be performed on an email [builder block](../blocks/aipemailbuilderblock.md) component.&#x20;
-* The `middlewareEmailActions` type represents the actions that can be performed on an email.
+## **Usage**
 
-This pipe returns a boolean value indicating whether the end-user has permission to perform the specified action on the email component entity.&#x20;
-
-**If the end-user has permission to perform the action, the pipe returns `true`. Otherwise, it returns `false`.**
-
-Here is an example usage of the `IpCanPipe` in a template:
+Here's an example:
 
 ```html
 <div *ngIf="block | ipCan: 'delete'">

@@ -6,39 +6,32 @@ description: >-
 
 # IPEmailBuilderSettingsDirective
 
+### Selector
+
+The selector for this directive is:
+
+`[ipEmailBuilderSettings]`
+
 ### Properties
 
-#### `selector`
+* None
 
-The selector for the directive is `[ipEmailBuilderSettings]`.
+### Methods
 
-#### `exportAs`
-
-The directive can be exported as `ipSettings`.
-
-### Extends
-
-This directive extends the `CdkPortal` from `@angular/cdk/portal`.
+* None
 
 ### Usage
 
-Example usage:
+Import the `IPEmailBuilderSettingsDirective` in your component and add it to the component's HTML template.
 
-```typescript
-import { Component } from "@angular/core";
-import { IPEmailBuilderSettingsDirective } from "./ipemail-builder-settings.directive";
+Usage example:
 
-@Component({
-  selector: "app-my-component",
-  template: `
-    <div [ipEmailBuilderSettings]="mySettings">
-      <!-- Content here -->
-    </div>
-  `
-})
-export class MyComponent {
-  mySettings = {}; // your settings object here
-}
+```html
+<ng-container *cdkPortalHost="emailBuilderSettingsPortal">
+  <div ipEmailBuilderSettings></div>
+</ng-container>
 ```
 
-Then use the `ipEmailBuilderSettings` directive to attach your settings object to the main settings portal.
+{% hint style="info" %}
+Note: The `emailBuilderSettingsPortal` is a portal that should be defined in your component.
+{% endhint %}

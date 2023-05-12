@@ -77,5 +77,5 @@ new NavigationBlock().toObject({
 In this example, we've customized the alignment, hamburger menu display, color, font, line height, letter spacing, padding, link target, text decoration, and navigation menu items of the Navigation Block.
 
 {% hint style="info" %}
-Note that the `label` and `href` properties of each element in the `elements` array are required.
+**Note**: that the `label` and `href` properties of each element in the `elements` array are required.
 {% endhint %}

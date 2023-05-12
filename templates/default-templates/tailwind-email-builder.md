@@ -63,7 +63,7 @@ bootstrapApplication(AppComponent, {
 });
 ```
 
-### Use the Builder in Your Application
+### Use it in your application
 
 ```html
 <tail-email-builder [(value)]="email"></tail-email-builder>
