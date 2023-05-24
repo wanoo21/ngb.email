@@ -1,0 +1,36 @@
+<bulma-color [(value)]="value.color"></bulma-color>
+<bulma-image-upload [(value)]="value.url"></bulma-image-upload>
+<p bulmaHint variant="red-500" i18n="@@value_image_outlook_support">
+  Background image has limited support in some Outlook versions.
+</p>
+
+<ng-container *ngIf="value.url.length">
+  <h3 class="title is-3 pt-2">Background image repeat</h3>
+  <div class="columns is-multiline is-variable is-1">
+    <div class="column is-one-quarter" *ngFor="let repeat of repeatKeys">
+      <button class="button is-small" [ngClass]="{'is-active': value.repeat === repeat}" (click)="value.repeat = repeat">
+        {{getRepeatLabel(repeat)}}
+      </button>
+    </div>
+  </div>
+  <h3 class="title is-3 pt-2">Background image size</h3>
+  <div class="columns is-multiline is-variable is-1">
+    <div class="column is-one-fifth">
+      <button class="button is-small" [ngClass]="{'is-active': value.size.auto}" (click)="value.size.auto = !value.size.auto">
+        Auto
+      </button>
+    </div>
+    <div class="column is-one-fifth" *ngFor="let unit of value.size.units">
+      <button class="button is-small"
+              [ngClass]="{'is-active': value.size.unit === unit && !value.size.auto}"
+              (click)="value.size.unit = unit"
+              [disabled]="value.size.auto"
+      >
+        {{getUnitLabel(unit)}}
+      </button>
+    </div>
+  </div>
+  <div class="mt-1" *ngIf="['%', 'px'].includes(value.size.unit) && !value.size.auto">
+    <input class="input" type="number" [(ngModel)]="value.size.value">
+  </div>
+</ng-container>

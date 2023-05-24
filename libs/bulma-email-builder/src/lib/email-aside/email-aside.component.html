@@ -1,0 +1,58 @@
+<ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
+  <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
+    <h2 bulmaH2 i18n="@@blocks_list">Blocks</h2>
+    <div class="columns is-multiline" cdkDropList [cdkDropListConnectedTo]="columnsDropLists" [cdkDropListSortingDisabled]="true">
+      <ng-container *ngFor="let block of [blocks] | applyMiddleware: 'blocksList' | async">
+        <div class="column is-half">
+          <div bulmaPanel class="p-4 has-text-centered cursor-move" cdkDrag [cdkDragData]="block | toBodyBlock">
+            {{ block.title | uppercase }}
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <h2 bulmaH2 i18n="@@structude_list">Structures</h2>
+
+    <div class="columns is-multiline" cdkDropList [cdkDropListConnectedTo]="structuresDropLists" [cdkDropListSortingDisabled]="true">
+      <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
+        <div class="column is-half">
+          <div class="box p-1 is-shadowless is-flex has-background-white cursor-move" cdkDrag [cdkDragData]="structure | toBodyStructure">
+            <div *ngFor="let col of structure.options.columns; let index = index" class="box is-shadowless m-1 is-paddingless has-background-grey-lighter"
+              [ngClass]="{'is-one-third is-flex-shrink-2': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
+              style="height: 36px; width: 100%;">
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+  </cdk-step>
+  <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">
+    <p bulmaHint i18n="@@not_implemented">Not implemented yet</p>
+  </cdk-step>
+  <cdk-step label="Settings" i18n-label="@@ip_aside_stepper:Settings">
+    <ng-container [cdkPortalOutlet]="currentSettings$ | async"></ng-container>
+  </cdk-step>
+</ng-container>
+
+<div class="stepper is-flex" role="tablist">
+  <ng-container *ngFor="let step of stepper.steps; let index = index">
+    <button (click)="step.select()" [ngClass]="{
+              'has-background-white': index === 1,
+              'has-background-white-ter': step === stepper.selected,
+              'has-no-border': step === stepper.selected,
+              'mr-3': index === 2
+            }" [style.border]="step === stepper.selected ? 'none' : ''"
+      class="step has-text-weight-semibold has-background-white button is-fullwidth"
+      [class.is-active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
+      {{ step.label | uppercase }}
+    </button>
+  </ng-container>
+</div>
+
+<div class="mr-3" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
+  <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
+</div>
+
+<div *ngIf="readonly"></div>
+
+

@@ -1,0 +1,28 @@
+:host {
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e5e7eb;
+  position: relative;
+
+  .w-33 {
+    width: calc(100% / 3) !important;
+  }
+
+  .stepper {
+    .step {
+      &.active {
+        @apply bg-gray-100 shadow-inner border-b-0;
+      }
+    }
+  }
+}
+
+.has-no-border {
+  border: none !important;
+}
+
+.cursor-move {
+  cursor: move;
+}
+

@@ -1,0 +1,13 @@
+
+  <div class="is-flex columns">
+    <button bulmaBtn class="mt-3 ml-3" (click)="toggleAuto()" [class.active]="isAuto" *ngIf="hasAuto" i18n="@@width_height_auto">Auto</button>
+    <div class="column pr-1">
+      <input bulmaInput type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
+    </div>
+    <div class="column pl-1">
+      <select bulmaInput [(ngModel)]="value.unit" [disabled]="isAuto">
+        <option *ngFor="let unit of units" [value]="unit">{{getUnitLabel(unit)}}</option>
+      </select>
+    </div>
+  </div>
+

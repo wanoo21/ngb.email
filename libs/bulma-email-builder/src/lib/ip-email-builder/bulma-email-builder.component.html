@@ -1,1 +1,61 @@
-<p>ip-email-builder works!</p>
+<div class="columns is-flex is-fullheight">
+  <div class="column is-9 builder-container p-0" [ngSwitch]="screen | async">
+    <div
+      class="shadow-sm border border-b py-3 px-4 is-flex has-align-items-center is-justify-content-space-between">
+      <ng-container *ngIf="value | ipCan: 'preview'">
+        <button class="button mt-3 ml-2" (click)="preview()" *ngSwitchDefault>Preview</button>
+        <button class="button mt-3 ml-2" (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
+      </ng-container>
+      <!--      <button bulmaBtn (click)="convert()">Save</button>-->
+
+      <!--      <div class="ms-auto">-->
+      <!--        <button bulmaBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
+      <!--        <button bulmaBtn ipEmailBuilderHistoryAction="redo">Redo</button>-->
+      <!--      </div>-->
+    </div>
+
+    <ng-container *ngSwitchCase="'preview'">
+      <div class="position-relative d-flex justify-content-center is-full-height"
+        *ngIf="value | ipPreviewLink | async as link; else loading">
+        <iframe [src]="link" class="preview overflow-x-auto is-fullheight"
+          [style.width]="previewDeviceWidth$ | async"></iframe>
+        <div class="icon position-absolute is-flex is-flex-column is-justify-content-space-between">
+          <div class="icon-item is-border is-rounded is-cursor-pointer is-border-light is-p-2"
+            [class.is-active]="previewDevice === 'desktop'" [class.is-mb-1]="previewDevice === 'desktop'"
+            (click)="changePreviewDevice('desktop')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+            </svg>
+          </div>
+          <div class="icon-item is-border is-rounded is-cursor-pointer is-border-light is-p-2" style="rotate: -90deg"
+            [class.is-active]="previewDevice === 'tablet'" (click)="changePreviewDevice('tablet')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-15a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 4.5v15a2.25 2.25 0 002.25 2.25z" />
+            </svg>
+          </div>
+          <div class="icon-item is-border is-rounded is-cursor-pointer is-border-light is-p-2"
+            [class.is-mt-1]="previewDevice === 'mobile'" [class.is-active]="previewDevice === 'mobile'"
+            (click)="changePreviewDevice('mobile')">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+              stroke="currentColor" class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <ng-template #loading>
+        <button class="button ml-4 is-small is-loading" style="border: none" i18n="@@template_loading">Loading, please wait ...</button>
+      </ng-template>
+    </ng-container>
+
+    <bulma-email-body *ngSwitchDefault class="overflow-x-auto column is-full m-auto"
+      [(value)]="value"></bulma-email-body>
+  </div>
+  <bulma-email-aside [readonly]="(screen | async) !== null"
+    class="column is-one-quarter select-text p-2 pb-4 pt-0"></bulma-email-aside>
+</div>

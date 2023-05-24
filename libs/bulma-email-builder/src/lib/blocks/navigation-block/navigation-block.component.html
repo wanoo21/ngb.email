@@ -1,0 +1,65 @@
+<ul>
+  <li *ngFor="let link of options.elements">
+    <a [href]="link.href" [ngStyle]="linkItemsStyles">
+      {{link.label}}
+    </a>
+  </li>
+</ul>
+
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <h2 bulmaH2 i18n="@@add_link">Add Link</h2>
+  <div bulmaPanel>
+    <button class="is-fullwidth button" bulmaBtn (click)="addNewLink()" i18n="add_new_link">Add New Link</button>
+    <ng-container *ngFor="let link of options.elements; let index = index; let last = last">
+      <div class="columns is-variable is-1">
+        <div class="column">
+          <label [bulmaLabel]="item" i18n="@@link_label">Link label</label>
+          <input bulmaInput #item="input" [(ngModel)]="link.label" toHistoryOptions type="text" />
+        </div>
+        <div class="column is-2">
+          <button class="is-fullwidth" (click)="delete(index)" bulmaBtn i18n="@@delete">Delete</button>
+        </div>
+      </div>
+      <div class="column mt-2">
+        <label [bulmaLabel]="item" i18n="@@link_label">Link href</label>
+        <input bulmaInput #item="input" [(ngModel)]="link.href" toHistoryOptions type="text" />
+      </div>
+      <hr class="mt-3 has-background-grey-lighter" *ngIf="!last">
+    </ng-container>
+  </div>
+  <h2 bulmaH2 i18n="@@font">Font</h2>
+  <div bulmaPanel>
+    <h3 bulmaH3 i18n="@@text_color">Color</h3>
+    <bulma-color [(value)]="options.color"></bulma-color>
+    <bulma-font [(value)]="options.font"></bulma-font>
+    <bulma-line-height class="pt-2" [(value)]="options.lineHeight"></bulma-line-height>
+    <div class="column" style="padding-top: .5rem;">
+      <label [bulmaLabel]="i" i18n="@@letter_spacing">Letter Spacing</label>
+      <input bulmaInput #i="input" type="number" [(ngModel)]="options.letterSpacing" ipHistoryModel>
+    </div>
+    <div class="column" style="padding-top: .5rem;">
+      <label [bulmaLabel]="s" i18n="@@text_decoration">Text Decoration</label>
+      <div class="select is-fullwidth">
+        <select bulmaInput #s="input" [(ngModel)]="options.textDecoration" ipHistoryModel>
+          <option *ngFor="let key of textDecorationKeys" [value]="key">
+            {{getTextDecorationLabel(key)}}
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <h2 bulmaH2 i18n="@@padding">Padding</h2>
+  <div bulmaPanel>
+    <bulma-padding [(value)]="options.padding"></bulma-padding>
+  </div>
+  <h2 bulmaH2 i18n="@@align">Align</h2>
+  <div bulmaPanel class="columns is-variable is-vcentered" style="display: grid; grid-template-columns: 2fr 1fr;">
+    <bulma-align class="column" style="grid-column: span 2;" [(value)]="options.align"></bulma-align>
+    <button bulmaBtn class="button" style="height: 75%; padding: .5rem 1rem;"
+            (click)="options.hamburger = !options.hamburger"
+            [style.box-shadow]="options.hamburger ? '0 2px 2px 3px #f3f3f3 !important' : ''"
+            i18n="@@enable_hamburger">
+      Enable Hamburger
+    </button>
+  </div>
+</ng-container>
