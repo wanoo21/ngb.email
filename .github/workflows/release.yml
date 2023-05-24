@@ -12,7 +12,6 @@ jobs:
       - uses: actions/checkout@master
         with:
           fetch-depth: 0
-          token: ${{ secrets.NGX_GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
