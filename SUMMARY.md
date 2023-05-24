@@ -6,6 +6,8 @@
 
 * [Installation](getting-started/installation.md)
 * [Configuration](getting-started/configuration.md)
+* [MJML Integration](getting-started/mjml-integration.md)
+* [Angular i18n Support](getting-started/angular-i18n-support.md)
 
 ## 🏗 Blocks
 
