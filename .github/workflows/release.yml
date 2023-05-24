@@ -36,6 +36,7 @@ jobs:
           npm whoami
           npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push --skipCommit
         env:
+          GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
@@ -45,4 +46,5 @@ jobs:
           npm whoami
           npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push --skipCommit
         env:
+          GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
