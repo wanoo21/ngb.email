@@ -69,13 +69,11 @@
     <div class="columns is-variable is-1">
       <div class="column is-flex is-flex-direction-column">
         <label [bulmaLabel]="s" i18n="@@social_block_mode">Mode</label>
-        <div class="select is-fullwidth">
-          <select bulmaInput #s="input" [(ngModel)]="options.mode">
-            <option *ngFor="let mode of modeKeys" [value]="mode">
-              {{getModeLabel(mode)}}
-            </option>
-          </select>
-        </div>
+        <select bulmaInput #s="input" [(ngModel)]="options.mode">
+          <option *ngFor="let mode of modeKeys" [value]="mode">
+            {{getModeLabel(mode)}}
+          </option>
+        </select>
       </div>
       <div class="column is-flex is-flex-direction-column">
         <label [bulmaLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
