@@ -2,7 +2,7 @@
   <div [ngStyle]="index | ipColumnStyles: value.options" cdkDropList [ipEmailBuilderColumn]="column">
     <div class="relative group" cdkDrag *ngFor="let block of column">
       <div class="is-flex is-justify-content-end" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
-        <button class="button mr-1 is-dark is-small" (click)="duplicateBlock($event, ins, column)" *ngIf="ins | ipCan: 'duplicate'">
+        <button class="button mr-1 has-text-dark is-small" (click)="duplicateBlock($event, ins, column)" *ngIf="ins | ipCan: 'duplicate'">
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
@@ -10,7 +10,7 @@
             </svg>
           </span>
         </button>
-        <button class="button mr-1 is-small is-primary cursor-move" cdkDragHandle>
+        <button class="button mr-1 is-small has-text-dark cursor-move" cdkDragHandle>
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
@@ -19,7 +19,7 @@
             </svg>
           </span>
         </button>
-        <button class="button is-small is-danger has-text-white" (click)="removeBlock($event, ins, column)" *ngIf="ins | ipCan: 'delete'">
+        <button class="button is-small has-text-danger" (click)="removeBlock($event, ins, column)" *ngIf="ins | ipCan: 'delete'">
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
               <path fill-rule="evenodd"
@@ -34,7 +34,7 @@
 </ng-container>
 
 <div class="m-3">
-  <button class="button is-small is-info mr-1" (click)="edit()" *ngIf="value | ipCan: 'edit'">
+  <button class="button is-small has-text-dark mr-1" (click)="edit()" *ngIf="value | ipCan: 'edit'">
     <span class="icon">
       <svg _ngcontent-tgd-c8="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-3 w-3">
         <path _ngcontent-tgd-c8=""
@@ -42,7 +42,7 @@
         </path>
       </svg> </span>
   </button>
-  <button class="button is-small is-primary cursor-move" cdkDragHandle>
+  <button class="button is-small has-text-dark cursor-move" cdkDragHandle>
     <span class="icon">
       <svg _ngcontent-tgd-c8="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-3 w-3">
         <path _ngcontent-tgd-c8="" fill-rule="evenodd"
@@ -71,7 +71,7 @@
           clip-rule="evenodd" />
       </svg>
     </button>
-    <button class="has-text-grey-light" bulmaBtn ipTooltip="Save as new module" i18n-ipTooltip="@@structure_save_as_module"
+    <button class="has-text-success" bulmaBtn ipTooltip="Save as new module" i18n-ipTooltip="@@structure_save_as_module"
       *ngIf="value | ipCan: 'save'">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
         <path
