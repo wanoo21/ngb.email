@@ -20,7 +20,7 @@
 
 <ng-container *ngIf="value.width">
   <h3 bulmaH3 i18n="@@border_style" class="pt-2">Border style</h3>
-  <div class="is-flex">
+  <!-- <div class="is-flex">
     <div class="buttons">
       <div class="level">
         <div class="level-item is-fullwidth">
@@ -31,5 +31,24 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+  <!-- <div class="is-flex columns">
+    <div class="column buttons">
+      <button bulmaBtn class="is-fullwidth" *ngFor="let style of styleLabels" [class.active]="value.style === style"
+        (click)="value.style = style">
+        {{getStyleLabel(style)}}
+      </button>
+    </div>
+  </div> -->
+
+  <div class="is-flex">
+    <div class="buttons is-fullwidth is-flex-grow-1">
+      <button bulmaBtn class="is-flex-grow-1 is-flex-shrink-0" *ngFor="let style of styleLabels" [class.active]="value.style === style"
+        (click)="value.style = style">
+        {{getStyleLabel(style)}}
+      </button>
+    </div>
   </div>
+
 </ng-container>
