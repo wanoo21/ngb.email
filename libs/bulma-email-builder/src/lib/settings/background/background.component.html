@@ -5,23 +5,23 @@
 </p>
 
 <ng-container *ngIf="value.url.length">
-  <h3 class="title is-3 pt-2">Background image repeat</h3>
-  <div class="columns is-multiline is-variable is-1">
+  <h3 bulmaH3 class="pt-2">Background image repeat</h3>
+  <div class="columns is-multiline is-variable is-1 mb-0">
     <div class="column is-one-quarter" *ngFor="let repeat of repeatKeys">
-      <button class="button is-small" [ngClass]="{'is-active': value.repeat === repeat}" (click)="value.repeat = repeat">
+      <button class="button is-small is-fullwidth" [ngClass]="{'is-active': value.repeat === repeat}" (click)="value.repeat = repeat">
         {{getRepeatLabel(repeat)}}
       </button>
     </div>
   </div>
-  <h3 class="title is-3 pt-2">Background image size</h3>
+  <h3 bulmaH3>Background image size</h3>
   <div class="columns is-multiline is-variable is-1">
     <div class="column is-one-fifth">
-      <button class="button is-small" [ngClass]="{'is-active': value.size.auto}" (click)="value.size.auto = !value.size.auto">
+      <button class="button is-small is-fullwidth" [ngClass]="{'is-active': value.size.auto}" (click)="value.size.auto = !value.size.auto">
         Auto
       </button>
     </div>
     <div class="column is-one-fifth" *ngFor="let unit of value.size.units">
-      <button class="button is-small"
+      <button class="button is-small is-fullwidth"
               [ngClass]="{'is-active': value.size.unit === unit && !value.size.auto}"
               (click)="value.size.unit = unit"
               [disabled]="value.size.auto"

@@ -14,10 +14,10 @@
   </p>
 </div>
 
-<div class="field is-flex is-horizontal pt-2 columns">
+<div class="pt-2 columns is-variable is-1">
   <div class="column">
     <label [bulmaLabel]="fs" i18n="@@font_size">Size</label>
-    <input bulmaInput #fs="input" [(ngModel)]="value.size" type="number" />
+    <input bulmaInput #fs="input" [(ngModel)]="value.size" type="number"/>
   </div>
   <div class="column">
     <label [bulmaLabel]="w" i18n="@@font_weight">Weight</label>

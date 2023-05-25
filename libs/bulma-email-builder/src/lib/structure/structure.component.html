@@ -1,7 +1,7 @@
 <ng-container *ngFor="let column of value.elements; let index = index">
   <div [ngStyle]="index | ipColumnStyles: value.options" cdkDropList [ipEmailBuilderColumn]="column">
     <div class="relative group" cdkDrag *ngFor="let block of column">
-      <div class="is-flex is-justify-content-end" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
+      <div class="is-flex is-justify-content-center" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
         <button class="button mr-1 has-text-dark is-small" (click)="duplicateBlock($event, ins, column)" *ngIf="ins | ipCan: 'duplicate'">
           <span class="icon">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
@@ -33,7 +33,7 @@
   </div>
 </ng-container>
 
-<div class="m-3">
+<div class="m-1">
   <button class="button is-small has-text-dark mr-1" (click)="edit()" *ngIf="value | ipCan: 'edit'">
     <span class="icon">
       <svg _ngcontent-tgd-c8="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-3 w-3">
@@ -89,7 +89,7 @@
   <bulma-margin bulmaPanel [(value)]="value.options.margin"></bulma-margin>
   <h2 bulmaH2 i18n="@@layout">Layout</h2>
   <div bulmaPanel>
-    <div class="is-flex columns mb-0">
+    <div class="columns is-variable is-1 mb-0">
       <div class="column">
         <label [bulmaLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
         <input bulmaInput #vertical="input" type="number" [(ngModel)]="value.options.gaps[0]">
@@ -100,12 +100,12 @@
       </div>
     </div>
 
-    <div class="buttons is-flex columns">
-      <button class="is-fullwidth m-3 column" bulmaBtn [class.active]="value.options.disableResponsive"
+    <div class="columns buttons is-variable p-1 is-1">
+      <button class="is-fullwidth mr-1 column" bulmaBtn [class.active]="value.options.disableResponsive"
         (click)="value.options.disableResponsive = !value.options.disableResponsive" i18n="@@disable_responsive">
         Disable responsive
       </button>
-      <button class="is-fullwidth m-3 column" bulmaBtn [class.active]="value.options.fullWidth"
+      <button class="is-fullwidth ml-1 column" bulmaBtn [class.active]="value.options.fullWidth"
         (click)="value.options.fullWidth = !value.options.fullWidth" i18n="@@full_width_structure">
         Full width structure
       </button>

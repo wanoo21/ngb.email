@@ -1,7 +1,7 @@
 <bulma-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></bulma-color>
 
-<div class="is-flex columns" *ngIf="value.sizes; else width">
-  <div class="column  " *ngFor="let key of borderKeys">
+<div class="columns is-variable is-1" *ngIf="value.sizes; else width">
+  <div class="column" *ngFor="let key of borderKeys">
     <label [bulmaLabel]="i">{{getBorderLabels(key)}}</label>
     <input type="number" min="0" #i="input" bulmaInput [(ngModel)]="value.sizes[key]">
   </div>
@@ -20,28 +20,6 @@
 
 <ng-container *ngIf="value.width">
   <h3 bulmaH3 i18n="@@border_style" class="pt-2">Border style</h3>
-  <!-- <div class="is-flex">
-    <div class="buttons">
-      <div class="level">
-        <div class="level-item is-fullwidth">
-          <button bulmaBtn *ngFor="let style of styleLabels" [class.active]="value.style === style"
-            (click)="value.style = style">
-            {{getStyleLabel(style)}}
-          </button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <div class="is-flex columns">
-    <div class="column buttons">
-      <button bulmaBtn class="is-fullwidth" *ngFor="let style of styleLabels" [class.active]="value.style === style"
-        (click)="value.style = style">
-        {{getStyleLabel(style)}}
-      </button>
-    </div>
-  </div> -->
-
   <div class="is-flex">
     <div class="buttons is-fullwidth is-flex-grow-1">
       <button bulmaBtn class="is-flex-grow-1 is-flex-shrink-0" *ngFor="let style of styleLabels" [class.active]="value.style === style"

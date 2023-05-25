@@ -2,6 +2,7 @@
   display: block;
 
   .network {
-    @apply flex items-center;
+    display: flex;
+    align-items: center;
   }
 }
