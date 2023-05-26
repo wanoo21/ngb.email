@@ -1,17 +1,82 @@
 :host {
   display: block;
 
-  .btn {
-    transition: ease-in-out 0.3s;
-  }
   .group-hover {
     transition: ease-in-out 0.3s;
     transform: translate(0, 19px);
   }
+
   .group:hover .group-hover {
     transform: translate(0, 0);
   }
-  .group:hover .btn {
+
+  .group:hover {
     opacity: 1 !important;
+  }
+
+  .is-overflow-hidden {
+    overflow: hidden;
+  }
+
+  .is-absolute {
+    position: absolute;
+  }
+
+  .is-relative {
+    position: relative;
+  }
+
+  .has-bottom-0 {
+    bottom: 0;
+  }
+
+  .is-width-100 {
+    width: 100%;
+  }
+
+  .is-height-100 {
+    height: 100%;
+  }
+
+  .has-opacity-0 {
+    opacity: 0;
+  }
+
+  .h-60 {
+    height: 60%;
+  }
+
+  .is-object-fit-cover {
+    object-fit: cover;
+  }
+
+  .has-border {
+    border: 1px solid lightgray;
+  }
+
+  .has-object-position-center-top {
+    object-position: center top;
+  }
+
+  .has-object-position-bottom {
+    object-position: bottom;
+  }
+
+  .my-element-1 {
+    transform: translateY(1.25rem);
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .my-element-1:hover {
+    transform: translateY(0);
+  }
+
+  .my-element-2 {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  .parent-element:hover .my-element-2 {
+    opacity: 1;
   }
 }
