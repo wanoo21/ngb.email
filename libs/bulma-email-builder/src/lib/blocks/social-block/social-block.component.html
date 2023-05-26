@@ -18,14 +18,14 @@
   <h2 bulmaH2 i18n="@@social_block_networks">Networks</h2>
   <div bulmaPanel>
     <h3 bulmaH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
-    <div class="columns is-multiline is-1" style="padding-bottom: .5rem;">
+    <div class="columns is-multiline" style="padding-bottom: .5rem;">
       <ng-container *ngFor="let network of supportedNetworks; let i = index">
         <div class="column is-2" *ngIf="i < 5">
           <img class="image is-square has-border px-2 py-2 is-clickable" [src]="network | socialPath" [alt]="network"
             [bulmaTooltip]="network | titlecase" [class]="network" [class.active]="networkIsActive(network)"
             (click)="addOrEditNetwork(network)">
         </div>
-        <div class="column is-1" *ngIf="i >= 5">
+        <div class="column is-2" *ngIf="i >= 5">
           <img class="image is-square has-border px-2 py-2 is-clickable" [src]="network | socialPath" [alt]="network"
             [bulmaTooltip]="network | titlecase" [class]="network" [class.active]="networkIsActive(network)"
             (click)="addOrEditNetwork(network)">
