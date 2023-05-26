@@ -1,6 +1,8 @@
+$email-body-height: 200vh;
+
 :host {
   display: block;
-  height: 200vh;
+  height: $email-body-height;
 
 
   .cdk-drop-list-dragging {
