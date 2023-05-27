@@ -2,8 +2,8 @@
   <div class="column is-7-tablet is-9-desktop is-8-mobile" [ngSwitch]="screen | async">
     <div class="has-border py-3 px-4 is-flex is-align-items-center is-justify-content-space-between">
       <ng-container *ngIf="value | ipCan: 'preview'">
-        <button bulmaBtn class="ml-1 mt-1" (click)="preview()" *ngSwitchDefault>Preview</button>
-        <button bulmaBtn class="ml-1 mt-1" (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
+        <button bulmaBtn (click)="preview()" *ngSwitchDefault>Preview</button>
+        <button bulmaBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
       </ng-container>
       <!--      <button bulmaBtn (click)="convert()">Save</button>-->
 
@@ -14,7 +14,7 @@
     </div>
 
     <ng-container *ngSwitchCase="'preview'">
-      <div class="is-relative is-flex is-justify-content-center is-height-100 pt-2 columns"
+      <div class="is-relative is-flex is-justify-content-center is-height-100 pt-3 columns"
         *ngIf="value | ipPreviewLink | async as link; else loading">
         <iframe [src]="link" class="preview overflow-x-auto is-height-100"
           [style.width]="previewDeviceWidth$ | async"></iframe>
