@@ -1,6 +1,6 @@
 <div class="columns is-multiline is-height-100">
   <div class="column is-7-tablet is-9-desktop is-8-mobile" [ngSwitch]="screen | async">
-    <div class="has-border py-3 px-4 is-flex is-align-items-center is-justify-content-space-between">
+    <div class="has-border py-3 px-3 is-flex is-align-items-center is-justify-content-space-between">
       <ng-container *ngIf="value | ipCan: 'preview'">
         <button bulmaBtn (click)="preview()" *ngSwitchDefault>Preview</button>
         <button bulmaBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
@@ -46,7 +46,7 @@
         </div>
       </div>
       <ng-template #loading>
-        <p class="ml-5" i18n="@@template_loading">Loading, please wait ...</p>
+        <p class="ml-3" i18n="@@template_loading">Loading, please wait ...</p>
       </ng-template>
     </ng-container>
 
