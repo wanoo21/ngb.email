@@ -1,42 +1,16 @@
-<!-- <div class="d-flex p-2 gap-2 flex-wrap" *ngIf="tmplCategories$ | async as categoryList; else load">
-  <ng-container *ngFor="let category of [categoryList] | applyMiddleware: 'categoryList' | async">
-    <button bulmaBtn class="capitalize" [class.active]="category === (selectedCategory$ | async)"
-            (click)="selectCategory(category)">
-      {{category.category}}
-    </button>
-  </ng-container>
-</div>
-
-<div class="d-grid gap-2 p-2" style="grid-template-columns: repeat(3, minmax(0, 1fr))" *ngIf="selectedCategory$ | async as category">
-  <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
-    <div class="position-relative h-60 rounded border overflow-hidden group">
-      <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
-           class="w-100 h-100 object-fit-cover">
-      <div
-        class="position-absolute bottom-0 w-100 bg-white  p-2 group-hover text-center">
-        <h3 bulmaH3>{{template | titlecase}}</h3>
-        <button bulmaBtn class="bulmaBtn opacity-0 mx-auto" i18n="@@use_in_editor"
-                (click)="selectTemplate(category.category, template)">
-          Use in editor
-        </button>
-      </div>
-    </div>
-  </ng-container>
-</div> -->
-
 <div class="columns is-flex is-multiline is-2 p-2" *ngIf="tmplCategories$ | async as categoryList; else load">
   <ng-container *ngFor="let category of [categoryList] | applyMiddleware: 'categoryList' | async">
     <div class="column">
-      <button bulmaBtn class="btn is-capitalized" [class.is-active]="category === (selectedCategory$ | async)" (click)="selectCategory(category)">
+      <button bulmaBtn class="button is-fullwidth is-capitalized" [class.is-active]="category === (selectedCategory$ | async)" (click)="selectCategory(category)">
         {{category.category}}
       </button>
     </div>
   </ng-container>
 </div>
 
-<div class="columns is-multiline is-2 p-2" *ngIf="selectedCategory$ | async as category">
+<div class="columns is-multiline is-justify-content-center is-2 p-2" *ngIf="selectedCategory$ | async as category">
   <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
-    <div class="column is-one-third is-relative h-60 has-border is-overflow-hidden group">
+    <div class="box is-shadowless column is-one-third p-0   is-relative h-custom has-border is-overflow-hidden group">
       <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
         class="is-width-100 is-height-100 is-object-fit-cover has-object-position-center-top has-object-position-bottom">
       <div class="parent-element is-absolute has-bottom-0 is-width-100 has-background-white p-2 my-element-1 has-text-centered">

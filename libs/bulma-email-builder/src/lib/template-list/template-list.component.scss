@@ -42,8 +42,8 @@
     opacity: 0;
   }
 
-  .h-60 {
-    height: 60%;
+  .h-custom {
+    height: 15rem;
   }
 
   .is-object-fit-cover {
@@ -79,4 +79,10 @@
   .parent-element:hover .my-element-2 {
     opacity: 1;
   }
+
+  .box {
+    height: 15rem;  /* adjust as needed */
+    overflow-y: auto;
+  }
+
 }

@@ -1,10 +1,10 @@
 :root {
-  --ip-email-builder-host-height: 200vh;
+  --ip-email-builder-host-height: 100vh;
 }
 
 :host {
   display: block;
-  height: var(--ip-email-builder-host-height, 200vh);
+  height: var(--ip-email-builder-host-height, 100vh);
 
   .active {
     transform: scale(1.2);
@@ -16,8 +16,8 @@
   }
 
   .icon {
-    top: 11px;
-    right: 11px;
+    top: 3rem;
+    right: 3rem;
 
     &-item {
       transition: ease-in-out 0.2s;
