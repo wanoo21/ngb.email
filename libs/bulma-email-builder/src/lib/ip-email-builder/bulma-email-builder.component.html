@@ -51,7 +51,7 @@
       </ng-template>
     </ng-container>
 
-    <bulma-email-body *ngSwitchDefault class="is-overflow-x-auto column is-full m-auto"
+    <bulma-email-body *ngSwitchDefault class="is-overflow-x-auto column is-full m-auto is-height-100"
       [(value)]="value"></bulma-email-body>
   </div>
   <bulma-email-aside [readonly]="(screen | async) !== null"
