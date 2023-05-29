@@ -6,7 +6,7 @@
   display: block;
   height: var(--ip-email-builder-host-height, 100vh);
 
-  .active {
+  .is-active {
     transform: scale(1.2);
     background-color: rgba(236, 239, 245, 0.65) !important;
   }
