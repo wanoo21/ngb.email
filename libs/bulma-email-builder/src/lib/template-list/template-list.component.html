@@ -8,9 +8,24 @@
   </ng-container>
 </div>
 
-<div class="columns is-multiline is-justify-content-center is-2 p-2" *ngIf="selectedCategory$ | async as category">
+<!-- <div class="columns is-multiline is-justify-content-center is-2 p-2" *ngIf="selectedCategory$ | async as category">
   <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
-    <div style="border: 5px solid rgb(241, 241, 241);" class="box is-shadowless column is-one-third p-0 is-relative h-custom has-border is-overflow-hidden group">
+    <div class="box is-shadowless column is-one-third p-0 is-relative h-custom has-border is-overflow-hidden group">
+      <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
+        class="is-width-100 is-height-100 is-object-fit-cover has-object-position-center-top has-object-position-bottom">
+      <div class="parent-element is-absolute has-bottom-0 is-width-100 has-background-white p-2 my-element-1 has-text-centered">
+        <h3 bulmaH3>{{template | titlecase}}</h3>
+        <button bulmaBtn class="btn has-opacity-0 my-element-2 mx-auto" i18n="@@use_in_editor" (click)="selectTemplate(category.category, template)">
+          Use in editor
+        </button>
+      </div>
+    </div>
+  </ng-container>
+</div> -->
+
+<div class="columns is-justify-content-center is-2 p-2 is-gapless" style="width: 100%" *ngIf="selectedCategory$ | async as category">
+  <ng-container *ngFor="let template of [category] | applyMiddleware: 'categoryTemplates' | async">
+    <div class="box is-shadowless column is-one-third p-0 is-relative h-custom has-border is-overflow-hidden group m-1">
       <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
         class="is-width-100 is-height-100 is-object-fit-cover has-object-position-center-top has-object-position-bottom">
       <div class="parent-element is-absolute has-bottom-0 is-width-100 has-background-white p-2 my-element-1 has-text-centered">
