@@ -1,6 +1,7 @@
 
 :host {
   display: block;
+  position: relative;
 }
 
 .column.empty {
@@ -85,7 +86,7 @@
   background-color: rgba(219, 234, 254, 0.5);
   transition: background-color 0.3s ease-in-out;
   padding: 10px;
-  z-index: 10; 
+  z-index: 10;
 }
 
 .group {
@@ -96,6 +97,23 @@
   padding: 10px;
 }
 
-.button {
-  pointer-events: auto;
+.has-two-buttons {
+  position: absolute;
+  right: 0;
 }
+
+:host:not(.hovering) .has-two-buttons {
+  display: none;
+}
+
+:host.hovering .has-two-buttons {
+  display: block;
+  opacity: 1;
+}
+
+
+
+
+
+
+
