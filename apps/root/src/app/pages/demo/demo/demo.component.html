@@ -1,4 +1,4 @@
-<div class="text-white bg-black bg-opacity-75">
+<div class="text-white bg-black bg-opacity-75 pt-36">
   <div class="mat-toolbar-row">
     <div class="flex flex-col">
       <h1 class="mat-h1" style="margin-bottom: 0">{{skinService.title$ | async}}</h1>
@@ -6,12 +6,12 @@
     </div>
     <span class="ml-auto"></span>
     <div class="flex gap-2">
-      <button mat-button routerLink="/demo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      <button routerLink="/demo" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         Primeng
       </button>
-      <button mat-button routerLink="/demo/tail" routerLinkActive="active">Tailwind</button>
-      <button mat-button routerLink="/demo/material" routerLinkActive="active">Material</button>
-      <button mat-button routerLink="/demo/bootstrap" routerLinkActive="active">Bootstrap</button>
+      <button routerLink="/demo/tail" routerLinkActive="active">Tailwind</button>
+      <button routerLink="/demo/material" routerLinkActive="active">Material</button>
+      <button routerLink="/demo/bootstrap" routerLinkActive="active">Bootstrap</button>
     </div>
   </div>
 
@@ -33,8 +33,7 @@
 <!--    </div>-->
     <span class="ml-auto"></span>
     <div class="flex gap-2">
-      <a href="https://store.wlocalhost.org/l/ngb-14" target="_blank" mat-flat-button color="accent">Subscribe now</a>
-      <mat-divider vertical></mat-divider>
+      <a href="https://store.wlocalhost.org/l/ngb-14" target="_blank">Subscribe now</a>
       <ins
         class="text-xs bg-stone-800 text-gray-100 px-3 py-1.5 rounded border-1 font-light no-underline select-all self-center"
         [cdkCopyToClipboard]="skinService.npmName" (cdkCopyToClipboardCopied)="npmLinkCopied($event)">

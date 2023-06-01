@@ -1,10 +1,10 @@
 <wlocalhost-inner-page [markForCheck]="currentArticle$ | async">
   <div class="grid grid-cols-3 gap-4">
-    <mat-nav-list class="col-span-1">
-      <mat-list-item *ngFor="let link of links">
-        <a matLine routerLink="./" routerLinkActive="active" [queryParams]="{q: link.markdownKey}">{{ link.header }}</a>
-      </mat-list-item>
-    </mat-nav-list>
+    <div class="col-span-1">
+      <div *ngFor="let link of links">
+        <a routerLink="./" routerLinkActive="active" [queryParams]="{q: link.markdownKey}">{{ link.header }}</a>
+      </div>
+    </div>
 
     <div class="col-span-2 mat-typography" [innerHTML]="currentArticle$ | markdown | async | sanitize"></div>
   </div>

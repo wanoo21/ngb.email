@@ -116,7 +116,17 @@
           "buildTarget": "tailwind-demo-app:build:production"
         }
       }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run tailwind-demo-app:build:production",
+          "firebase deploy --only hosting:tailwind"
+        ],
+        "parallel": false
+      }
     }
   },
-  "tags": []
+  "tags": ["scope:tailwind-demo-app", "type:app"]
 }

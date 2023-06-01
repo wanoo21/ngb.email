@@ -39,5 +39,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:bootstrap-email-builder", "type:lib"]
 }

@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CommonModule } from "@angular/common";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 
 import { AppComponent } from "./app.component";
 import { RemoteEntryModule } from "./remote-entry/entry.module";
@@ -12,7 +12,8 @@ import { RemoteEntryModule } from "./remote-entry/entry.module";
     CommonModule,
     BrowserModule,
     BrowserAnimationsModule,
-    RemoteEntryModule
+    RemoteEntryModule,
+    NgOptimizedImage
   ],
   providers: [],
   bootstrap: [AppComponent]

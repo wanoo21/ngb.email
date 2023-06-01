@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { MatSnackBar } from "@angular/material/snack-bar";
 
 import { SkinService } from "../skin.service";
 
@@ -10,10 +9,10 @@ import { SkinService } from "../skin.service";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DemoComponent {
-  constructor(readonly skinService: SkinService, readonly matSnackBar: MatSnackBar) {
+  constructor(readonly skinService: SkinService) {
   }
 
   npmLinkCopied(success: boolean): void {
-    success && this.matSnackBar.open("Copied to clipboard!", "Thanks", { duration: 3000 });
+    // success && this.matSnackBar.open("Copied to clipboard!", "Thanks", { duration: 3000 });
   }
 }
