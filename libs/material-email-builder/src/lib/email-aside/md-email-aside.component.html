@@ -11,18 +11,20 @@
       </ng-container>
     </div>
     <h2 mdH2 i18n="@@structude_list" class="px-2">Structures</h2>
+
     <div class="px-2 pb-2 select-none" gdColumns="1fr 1fr" gdGap="0.5rem" cdkDropList
          [cdkDropListConnectedTo]="structuresDropLists"
          [cdkDropListSortingDisabled]="true">
       <ng-container *ngFor="let structure of [structures] | applyMiddleware: 'structuresList' | async">
         <div [attr.aria-label]="structure.type" cdkDrag [cdkDragData]="structure | toBodyStructure" fxLayout
              fxLayoutAlign="start center"
-             fxLayoutGap="0.5rem" class="mat-stroked-button" style="padding: 0.5rem">
+             fxLayoutGap="0.5rem" class="mat-stroked-button" style="padding: 0.5rem; height: 36px; width: 100%;">
           <ng-container *ngFor="let col of structure.options.columns; let index = index">
             <div
               class="mat-chip mat-standard-chip"
               fxFlex="100%"
-              *ngIf="structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1; else simpleChip"></div>
+              *ngIf="structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1; else simpleChip">
+            </div>
             <ng-template #simpleChip>
               <mat-chip fxFlex disableRipple class="mat-chip mat-standard-chip"></mat-chip>
             </ng-template>
@@ -30,6 +32,7 @@
         </div>
       </ng-container>
     </div>
+
   </mat-tab>
   <mat-tab label="Modules" i18n-label="@@ip_aside_stepper_modules">
     <mat-hint>Not implemented yet</mat-hint>
