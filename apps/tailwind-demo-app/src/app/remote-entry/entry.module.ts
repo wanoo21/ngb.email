@@ -14,8 +14,7 @@ import RemoteEntryComponent from "./entry.component";
         <div class="flex flex-1">
           <a href="https://ngb.email" class="-m-1.5 p-1.5">
             <span class="sr-only">Tailwind Email Template Builder</span>
-            <img ngSrc="//ngb.email/images/07e4537b7af79f452bd8156d40a9082b.png" alt="ngb email builder logo" width="60"
-                 height="60"
+            <img ngSrc="//ngb.email/logo.png" alt="ngb email builder logo" width="60" height="60"
                  class="d-inline-block">
           </a>
         </div>

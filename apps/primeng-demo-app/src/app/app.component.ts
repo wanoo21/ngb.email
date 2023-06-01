@@ -5,8 +5,7 @@ import { Component } from "@angular/core";
   template: `
     <nav class="flex flex-row px-4 py-2 align-items-center bg-black-alpha-90">
       <a class="no-underline text-white-alpha-90" href="https://ngb.email">
-        <img ngSrc="//ngb.email/images/07e4537b7af79f452bd8156d40a9082b.png" alt="ngb email builder logo" width="60"
-             height="60">
+        <img ngSrc="//ngb.email/logo.png" alt="ngb email builder logo" width="60" height="60">
       </a>
       <div class="ml-auto flex flex-row gap-2 align-items-center">
         <ul class="flex flex-row gap-2 list-none">

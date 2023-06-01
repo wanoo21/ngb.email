@@ -12,9 +12,7 @@ import RemoteEntryComponent from "./entry.component";
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand" href="https://ngb.email">
-          <img ngSrc="//ngb.email/images/07e4537b7af79f452bd8156d40a9082b.png" alt="ngb email builder logo" width="60"
-               height="60"
-               class="d-inline-block">
+          <img ngSrc="//ngb.email/logo.png" alt="ngb email builder logo" width="60" height="60" class="d-inline-block">
           Bootstrap Email Template Builder
         </a>
         <div class="collapse navbar-collapse">
