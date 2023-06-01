@@ -4,13 +4,28 @@
 
 :host {
   display: block;
+  height: var(--ip-email-builder-host-height, 100vh);
+  //--bs-white-rgb: 255, 255, 255;
+  //--bs-border-radius: 3px;
+  //--bs-border-style: solid;
+  //--bs-border-color: #e5e7eb;
+  //--bs-light-rgb: 229, 231, 235;
+  //--bs-secondary-rgb: 108, 117, 125;
+  //--bs-dark-rgb: 53, 59, 64;
+  //--bs-border-width: 1px;
+  //--bs-primary-rgb: 13, 110, 253;
+  //--bs-success-rgb: 25, 135, 84;
+  //--bs-info-rgb: 13, 202, 240;
+  //--bs-warning-rgb: 255, 193, 7;
+  //--bs-danger-rgb: 220, 53, 69;
+
   .active {
     transform: scale(1.2);
     background-color: rgba(236, 239, 245, 0.65) !important;
   }
 
   .preview {
-    transition: ease-in-out 0.3s
+    transition: ease-in-out 0.3s;
   }
 
   .icon {
@@ -27,23 +42,6 @@
       }
     }
   }
-  .builder-container {
-    height: calc(100% - 73px);
-  }
-  height: var(--ip-email-builder-host-height, 100vh);
-  --bs-white-rgb: 255, 255, 255;
-  --bs-border-radius: 3px;
-  --bs-border-style: solid;
-  --bs-border-color: #e5e7eb;
-  --bs-light-rgb: 229,231,235;
-  --bs-secondary-rgb: 108,117,125;
-  --bs-dark-rgb: 53,59,64;
-  --bs-border-width: 1px;
-  --bs-primary-rgb: 13, 110, 253;
-  --bs-success-rgb: 25, 135, 84;
-  --bs-info-rgb: 13, 202, 240;
-  --bs-warning-rgb: 255, 193, 7;
-  --bs-danger-rgb: 220, 53, 69;
 }
 
 ::ng-deep {

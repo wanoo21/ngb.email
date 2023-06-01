@@ -1,7 +1,8 @@
 :host {
   display: block;
-  height: 100%;
-
+  height: calc(100% - 65px);
+  overflow-x: auto;
+  padding-bottom: 1rem;
 
   .cdk-drop-list-dragging {
     .empty-message {
@@ -30,15 +31,19 @@
   .h-60 {
     height: 15rem;
   }
+
   .h-3 {
     height: 0.75rem;
   }
+
   .w-3 {
     width: 0.75rem;
   }
+
   .h-4 {
     height: 1rem;
   }
+
   .w-4 {
     height: 1rem;
   }
