@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewEncapsulation } from "@angular/core";
+import { AbstractControl, FormControl, FormGroup } from "@angular/forms";
 import { TextBlock } from "@wlocalhost/ngx-email-builder";
+import { Validators, Editor, Toolbar } from 'ngx-editor';
 
 @Component({
   selector: "tail-text-block",
@@ -8,5 +10,31 @@ import { TextBlock } from "@wlocalhost/ngx-email-builder";
   encapsulation: ViewEncapsulation.ShadowDom,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TextBlockComponent extends TextBlock {
+export class TextBlockComponent extends TextBlock implements OnInit, OnDestroy {
+  editor!: Editor;
+  toolbar: Toolbar = [
+    ["bold", "italic"],
+    ["underline", "strike"],
+    ["code", "blockquote"],
+    ["ordered_list", "bullet_list"],
+    [{ heading: ["h1", "h2", "h3", "h4", "h5", "h6"] }],
+    ["link", "image"],
+    ["text_color", "background_color"],
+    ["align_left", "align_center", "align_right", "align_justify"]
+  ];
+
+  form = new FormGroup({
+    editorContent: new FormControl("Hello world!", Validators.required())
+  });
+
+  get doc(): AbstractControl | null {
+    return this.form.get("editorContent");
+  }
+  override ngOnInit(): void {
+    this.editor = new Editor();
+  }
+
+  override ngOnDestroy(): void {
+    this.editor.destroy();
+  }
 }
