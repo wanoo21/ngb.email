@@ -39,6 +39,7 @@ import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
 import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
+import { NgxEditorModule } from 'ngx-editor';
 
 @NgModule({
   imports: [
@@ -48,7 +49,8 @@ import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
     CdkStepperModule,
     DragDropModule,
     TextFieldModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    [NgxEditorModule]
   ],
   declarations: [
     TailEmailBuilderComponent,
