@@ -2,7 +2,7 @@
 
 <div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div tailPanel class="mt-4">
-    <div class="NgxEditor__Wrapper" style="overflow: hidden; word-wrap: break-word;">
+    <div class="NgxEditor__Wrapper overflow-hidden break-words">
       <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
       <ngx-editor [editor]="editor" [(ngModel)]="innerText" ></ngx-editor>
     </div>
