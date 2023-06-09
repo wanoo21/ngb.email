@@ -1,9 +1,9 @@
 <div class="left-editor">
+  <ngx-editor-menu [editor]="editorLeft" [toolbar]="toolbar"></ngx-editor-menu>
   <ngx-editor [editor]="editorLeft" [(ngModel)]="innerText"></ngx-editor>
   <ngx-editor-floating-menu [editor]="editorLeft"></ngx-editor-floating-menu>
 </div>
 
-<!-- Right Editor (inside email builder settings) -->
 <div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div tailPanel class="mt-4">
       <div class="NgxEditor__Wrapper overflow-hidden break-words">
