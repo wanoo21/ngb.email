@@ -11,7 +11,9 @@ import { Validators, Editor, Toolbar } from 'ngx-editor';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TextBlockComponent extends TextBlock implements OnInit, OnDestroy {
-  editor!: Editor;
+  editorLeft!: Editor;
+  editorRight!: Editor;
+  override innerText = '';
   toolbar: Toolbar = [
     ["bold", "italic"],
     ["underline", "strike"],
@@ -31,10 +33,21 @@ export class TextBlockComponent extends TextBlock implements OnInit, OnDestroy {
     return this.form.get("editorContent");
   }
   override ngOnInit(): void {
-    this.editor = new Editor();
+    this.editorLeft = new Editor({
+      history: true,
+      keyboardShortcuts: true,
+      inputRules: true,
+  });
+
+  this.editorRight = new Editor({
+      history: true,
+      keyboardShortcuts: true,
+      inputRules: true,
+  });
   }
 
   override ngOnDestroy(): void {
-    this.editor.destroy();
+    this.editorLeft.destroy();
+    this.editorRight.destroy();
   }
 }
