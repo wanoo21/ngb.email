@@ -1,13 +1,14 @@
 <div class="email-builder">
   <ngx-editor [editor]="emailBuilderEditor" [(ngModel)]="innerText"></ngx-editor>
-  <ngx-editor-floating-menu [editor]="emailBuilderEditor"></ngx-editor-floating-menu>
 </div>
 
 <div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div tailPanel class="mt-4">
       <div class="NgxEditor__Wrapper break-words">
-          <ngx-editor-menu [editor]="emailBuilderEditor" [toolbar]="toolbar"></ngx-editor-menu>
           <ngx-editor [editor]="emailAsideEditor" [(ngModel)]="innerText"></ngx-editor>
+          <ngx-editor-floating-menu [editor]="emailAsideEditor">
+            <ngx-editor-menu [editor]="emailAsideEditor" [toolbar]="toolbar"></ngx-editor-menu>
+          </ngx-editor-floating-menu>
       </div>
   </div>
 
