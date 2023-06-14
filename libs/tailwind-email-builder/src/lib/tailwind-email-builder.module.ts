@@ -38,8 +38,7 @@ import { LinkComponent } from "./settings/link/link.component";
 import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
-import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
-import { NgxEditorModule } from 'ngx-editor';
+import { HtmlBlockComponent } from "./blocks/html-block/html-block.component";
 
 @NgModule({
   imports: [
@@ -49,8 +48,7 @@ import { NgxEditorModule } from 'ngx-editor';
     CdkStepperModule,
     DragDropModule,
     TextFieldModule,
-    ReactiveFormsModule,
-    [NgxEditorModule]
+    ReactiveFormsModule
   ],
   declarations: [
     TailEmailBuilderComponent,
@@ -81,7 +79,7 @@ import { NgxEditorModule } from 'ngx-editor';
     HtmlBlockComponent
   ],
   exports: [
-    TailEmailBuilderComponent,
+    TailEmailBuilderComponent
     // NgxEmailBuilderModule,
   ],
   providers: [

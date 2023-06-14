@@ -1,25 +1,17 @@
-<div class="email-builder">
-  <ngx-editor [editor]="emailBuilderEditor" [(ngModel)]="innerText"></ngx-editor>
-  <ngx-editor-floating-menu [editor]="emailBuilderEditor"></ngx-editor-floating-menu>
-</div>
+<ng-container [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <ngx-editor *ipEmailBuilderTextEditor="let editor" [editor]="editor" [(ngModel)]="innerText"></ngx-editor>
 
-<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <div tailPanel class="mt-4">
-      <div class="NgxEditor__Wrapper break-words">
-          <ngx-editor-menu [editor]="emailBuilderEditor" [toolbar]="toolbar"></ngx-editor-menu>
-          <ngx-editor [editor]="emailAsideEditor" [(ngModel)]="innerText"></ngx-editor>
-      </div>
+  <div *ipEmailBuilderSettings>
+    <h2 tailH2 i18n="@@font">Font</h2>
+    <div tailPanel>
+      <h3 tailH3 i18n="@@text_color">Color</h3>
+      <tail-color [(value)]="options.color"></tail-color>
+      <tail-font class="pt-2" [(value)]="options.font"></tail-font>
+      <tail-line-height class="pt-2" [(value)]="options.lineHeight"></tail-line-height>
+    </div>
+    <h2 tailH2 i18n="@@padding">Padding</h2>
+    <div tailPanel>
+      <tail-padding [(value)]="options.padding"></tail-padding>
+    </div>
   </div>
-
-  <h2 tailH2 i18n="@@font">Font</h2>
-  <div tailPanel>
-    <h3 tailH3 i18n="@@text_color">Color</h3>
-    <tail-color [(value)]="options.color"></tail-color>
-    <tail-font class="pt-2" [(value)]="options.font"></tail-font>
-    <tail-line-height class="pt-2" [(value)]="options.lineHeight"></tail-line-height>
-  </div>
-  <h2 tailH2 i18n="@@padding">Padding</h2>
-  <div tailPanel>
-    <tail-padding [(value)]="options.padding"></tail-padding>
-  </div>
-</div>
+</ng-container>
