@@ -30,7 +30,7 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> {
     },
     lineHeight: {
       value: 16,
-      unit: "px"
+      unit: "none"
     },
     padding: {
       top: 10,
@@ -65,6 +65,7 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> {
   }
 
   override toObject(options?: Partial<ITextBlockOptions>, innerText = this.innerText) {
+    console.log(innerText);
     return { ...super.toObject(options), innerText };
   }
 }

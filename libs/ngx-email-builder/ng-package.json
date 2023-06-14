@@ -1,6 +1,9 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
   "dest": "../../dist/libs/ngx-email-builder",
+  "assets": [
+    "src/assets"
+  ],
   "lib": {
     "entryFile": "src/index.ts"
   }

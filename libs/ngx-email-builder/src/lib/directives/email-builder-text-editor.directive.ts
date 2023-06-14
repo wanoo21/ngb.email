@@ -55,12 +55,11 @@ export class IPEmailBuilderTextEditorMenuDirective implements OnInit, OnDestroy 
       $implicit: editor,
       // TODO: Add toolbar to AIPEmailBuilderMiddlewareService.
       toolbar: [
-        ["bold", "italic"],
-        ["underline", "strike"],
+        ["bold", "italic", "underline", "strike"],
         ["code", "blockquote"],
         ["ordered_list", "bullet_list"],
         [{ heading: ["h1", "h2", "h3", "h4", "h5", "h6"] }],
-        ["link", "image"],
+        ["link"],
         ["text_color", "background_color"],
         ["align_left", "align_center", "align_right", "align_justify"],
         ["horizontal_rule", "format_clear"]
@@ -96,7 +95,13 @@ export class IPEmailBuilderTextEditorDirective implements OnInit, OnDestroy {
 
   // TODO: Add more settings.
   #editor = new Editor({
-    history: true
+    history: true,
+    inputRules: true,
+    keyboardShortcuts: true,
+    attributes: {
+      class: "ip-email-builder-text-editor",
+      style: "padding: 0"
+    }
   });
 
   static ngTemplateContextGuard(dir: IPEmailBuilderTextEditorDirective, ctx: unknown): ctx is IPEmailBuilderTextEditorDirectiveContext {
@@ -104,7 +109,15 @@ export class IPEmailBuilderTextEditorDirective implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.containerRef.createEmbeddedView<IPEmailBuilderTextEditorDirectiveContext>(this.templateRef, { $implicit: this.#editor });
+    const view = this.containerRef.createEmbeddedView<IPEmailBuilderTextEditorDirectiveContext>(this.templateRef, { $implicit: this.#editor });
+    // Remove default styles.
+    const editor = view.rootNodes[0] as HTMLElement;
+    if (editor.tagName !== "NGX-EDITOR") {
+      throw new Error("The root node must be NGX-EDITOR.");
+    } else {
+      editor.style.position = "relative";
+      editor.querySelector(".NgxEditor")?.classList.remove("NgxEditor");
+    }
   }
 
   /**
