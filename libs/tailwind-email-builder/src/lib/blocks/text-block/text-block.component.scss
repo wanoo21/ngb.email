@@ -1,26 +1,8 @@
 :host {
   display: block;
-
-  ::ng-deep .NgxEditor {
-    background: transparent;
-    border: none;
-    padding: 0;
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    color: inherit;
-  }
 }
 
-
-//p, ol, ul, pre, blockquote, h1, h2, h3, h4, h5, h6 {
-//  margin: 0;
-//  padding: 0;
-//}
-
-//.email-builder ngx-editor, ngx-editor-menu{
-//  position: relative;
-//  z-index: 10;
-//}
-
+p, ol, ul, pre, blockquote, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
