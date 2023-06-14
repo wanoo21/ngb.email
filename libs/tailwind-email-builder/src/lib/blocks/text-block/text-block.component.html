@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-<div class="email-builder">
-  <ngx-editor [editor]="emailBuilderEditor" [(ngModel)]="innerText"></ngx-editor>
-</div>
-
-<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <div tailPanel class="mt-4">
-      <div class="NgxEditor__Wrapper break-words">
-          <ngx-editor [editor]="emailAsideEditor" [(ngModel)]="innerText"></ngx-editor>
-          <ngx-editor-floating-menu [editor]="emailAsideEditor">
-            <ngx-editor-menu [editor]="emailAsideEditor" [toolbar]="toolbar"></ngx-editor-menu>
-          </ngx-editor-floating-menu>
-      </div>
-=======
 <ng-container [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <ngx-editor *ipEmailBuilderTextEditor="let editor" [editor]="editor" [(ngModel)]="innerText" ipHistoryModel></ngx-editor>
 
@@ -27,6 +13,5 @@
     <div tailPanel>
       <tail-padding [(value)]="options.padding"></tail-padding>
     </div>
->>>>>>> d16b1a117116863b27df09064cc41bf6f81afca7
   </div>
 </ng-container>
