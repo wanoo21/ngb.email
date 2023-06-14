@@ -38,8 +38,12 @@ import { LinkComponent } from "./settings/link/link.component";
 import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
+<<<<<<< HEAD
 import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
 import { NgxEditorModule } from 'ngx-editor';
+=======
+import { HtmlBlockComponent } from "./blocks/html-block/html-block.component";
+>>>>>>> d16b1a117116863b27df09064cc41bf6f81afca7
 
 @NgModule({
   imports: [
@@ -81,7 +85,7 @@ import { NgxEditorModule } from 'ngx-editor';
     HtmlBlockComponent
   ],
   exports: [
-    TailEmailBuilderComponent,
+    TailEmailBuilderComponent
     // NgxEmailBuilderModule,
   ],
   providers: [

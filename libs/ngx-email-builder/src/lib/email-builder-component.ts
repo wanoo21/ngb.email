@@ -3,7 +3,12 @@ import { BehaviorSubject, map } from "rxjs";
 import { Directionality } from "@angular/cdk/bidi";
 import { getDiff } from "recursive-diff";
 
-import { AIPEmailBuilderHistoryService, AIPEmailBuilderMiddlewareService, AIPEmailBuilderService } from "./services";
+import {
+  AIPEmailBuilderHistoryService,
+  AIPEmailBuilderMiddlewareService,
+  AIPEmailBuilderService,
+  IPEmailBuilderUiService
+} from "./services";
 import { IPEmail } from "./body/body";
 import { IMjmlServerResponse } from "./interfaces";
 
@@ -34,6 +39,10 @@ export abstract class AIPEmailBuilderComponent {
    * The email builder service for converting IPEmail objects to MJML.
    */
   readonly emailBuilderService = inject(AIPEmailBuilderService);
+  /**
+   * The email builder UI service for top toolbar actions.
+   */
+  readonly emailBuilderUiService = inject(IPEmailBuilderUiService);
   /**
    * The middleware service for checking user permissions.
    */

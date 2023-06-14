@@ -16,7 +16,7 @@ export * from "./lib/blocks/divider-block/divider.block";
 export * from "./lib/blocks/social-block/social.block";
 export * from "./lib/blocks/spacer-block/spacer.block";
 export * from "./lib/blocks/navigation-block/navigation.block";
-export * from "./lib/blocks/html-block/html-block"
+export * from "./lib/blocks/html-block/html-block";
 
 // Core services & classes
 export * from "./lib/public-tokens";
@@ -70,3 +70,4 @@ export * from "./lib/directives/email-builder-structures.directive";
 export * from "./lib/directives/email-builder-column.directive";
 export * from "./lib/directives/email-builder-history-model.directive";
 export * from "./lib/directives/email-builder-history-host.directive";
+export * from "./lib/directives/email-builder-text-editor.directive";

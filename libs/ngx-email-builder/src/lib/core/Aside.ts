@@ -28,7 +28,7 @@ export abstract class AIPEmailBuilderAside implements OnInit {
   readonly structures = (["cols_1", "cols_2", "cols_12", "cols_21", "cols_3", "cols_4", "cols_5", "cols_6"] as TStructureTypes[]).map(type => new Structure(type));
   readonly builderUiService = inject(IPEmailBuilderUiService);
   // Current active portal settings.
-  readonly activeSettings$ = this.builderUiService.currentSettingsPortal$;
+  // readonly activeSettings$ = this.builderUiService.currentSettingsPortal$;
 
   // Columns list where DnD blocks can be dragged.
   get columnsDropLists(): CdkDropList<AIPEmailBuilderBlockExtendedOptions[]>[] {

@@ -1,0 +1,26 @@
+.NgxEditor__MenuBar {
+  justify-content: center;
+
+  & > * {
+    cursor: pointer;
+  }
+
+  label, button, input {
+    font-size: 0.7rem!important;
+  }
+
+  button, input {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 0.2rem 0.5rem;
+
+    &:hover {
+      background-color: #eee;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}

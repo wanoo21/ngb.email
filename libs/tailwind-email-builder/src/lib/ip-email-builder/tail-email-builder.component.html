@@ -18,7 +18,8 @@
         <iframe [src]="link" class="preview overflow-x-auto h-full"
                 [style.width]="previewDeviceWidth$ | async"></iframe>
         <div class="icon absolute flex flex-col">
-          <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2" [class.mb-1]="previewDevice === 'desktop'"
+          <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2"
+               [class.mb-1]="previewDevice === 'desktop'"
                [class.active]="previewDevice === 'desktop'"
                (click)="changePreviewDevice('desktop')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -36,7 +37,8 @@
                     d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-15a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 4.5v15a2.25 2.25 0 002.25 2.25z" />
             </svg>
           </div>
-          <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2" [class.mt-1]="previewDevice === 'mobile'"
+          <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2"
+               [class.mt-1]="previewDevice === 'mobile'"
                [class.active]="previewDevice === 'mobile'" (click)="changePreviewDevice('mobile')">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-6 h-6">
@@ -51,6 +53,8 @@
       </ng-template>
     </ng-container>
 
+    <ngx-editor-menu *ipEmailBuilderTextEditorMenu="let editor; let toolbar = toolbar" [editor]="editor"
+                     [toolbar]="toolbar"></ngx-editor-menu>
     <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"></tail-email-body>
   </div>
   <tail-email-aside [readonly]="(screen | async) !== null"

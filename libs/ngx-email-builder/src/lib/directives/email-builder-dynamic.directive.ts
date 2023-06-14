@@ -38,6 +38,8 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
   #instance!: AIPEmailBuilderBlock | undefined;
   #comingContext!: AIPEmailBuilderBlockExtendedOptions;
 
+  #isPreviousBlockEdited = false;
+
   /**
    * @param blocksData A list of all available blocks with their factories.
    * @param viewContainerRef Reference to the view container.
@@ -91,6 +93,7 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
    */
   ngDoCheck(): void {
     if (this.#keyValueDiffers && this.#instance?.isCurrentlyEditing) {
+      this.#isPreviousBlockEdited = true;
       if (this.cdkDrag) {
         this.cdkDrag.data = this.#instance.toObject();
       }
@@ -103,6 +106,9 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
           Object.assign(this.#comingContext, { [key]: currentValue });
         });
       }
+    } else if (this.#isPreviousBlockEdited && !this.#instance?.isCurrentlyEditing) {
+      this.#isPreviousBlockEdited = false;
+      this.#instance?.unedited();
     }
   }
 }

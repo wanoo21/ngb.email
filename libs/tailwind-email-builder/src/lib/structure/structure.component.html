@@ -1,7 +1,13 @@
 <ng-container *ngFor="let column of value.elements; let index = index">
   <div [ngStyle]="index | ipColumnStyles: value.options" cdkDropList [ipEmailBuilderColumn]="column">
     <div class="relative group" cdkDrag *ngFor="let block of column">
-      <div class="overflow" *ipEmailBuilderDynamicBlockDirective="block; let ins" (click)="ins.edit()">
+      <div class="overflow" *ipEmailBuilderDynamicBlockDirective="block; let ins">
+        <button class="tool-button" (click)="ins.edit()" *ngIf="ins | ipCan: 'edit'">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
+            <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
+          </svg>
+        </button>
         <button class="tool-button" (click)="duplicateBlock($event, ins, column)" *ngIf="ins | ipCan: 'duplicate'">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 20 20" fill="currentColor">
             <path d="M7 9a2 2 0 012-2h6a2 2 0 012 2v6a2 2 0 01-2 2H9a2 2 0 01-2-2V9z" />
