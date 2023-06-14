@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
-import { CdkPortal, CdkPortalOutlet } from "@angular/cdk/portal";
+import { CdkPortal, CdkPortalOutlet, Portal } from "@angular/cdk/portal";
 import { BehaviorSubject, map } from "rxjs";
 import { CdkDropList } from "@angular/cdk/drag-drop";
+import { Editor } from "ngx-editor";
 
 import { IPEmailBuilderSettingsDirective } from "../../directives/email-builder-settings.directive";
 import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
@@ -27,13 +28,15 @@ export class IPEmailBuilderUiService {
 
   /**
    * A behavior subject for the currently attached settings portal.
+   * @private
    */
-  #attachSettingsPortal$ = new BehaviorSubject<CdkPortal | null>(null);
+  #attachSettingsPortal$ = new BehaviorSubject<Portal<any> | null>(null);
 
   /**
    * The default settings portal for the email builder UI.
+   * @private
    */
-  #defaultSettingsPortal: IPEmailBuilderSettingsDirective | null | undefined;
+  #defaultSettingsPortal: IPEmailBuilderSettingsDirective | null = null;
 
   /**
    * An observable for the currently attached settings portal.
@@ -44,8 +47,31 @@ export class IPEmailBuilderUiService {
 
   /**
    * The settings portal outlet for the email builder UI.
+   * @private
    */
   #settingsPortalOutlet: CdkPortalOutlet | undefined;
+
+
+  /**
+   * A behavior subject for the currently attached editor.
+   * @private
+   */
+  #currentEditor$ = new BehaviorSubject<Editor | null>(null);
+
+  /**
+   * An observable for the currently attached editor.
+   */
+  currentEditor$ = this.#currentEditor$.pipe(
+    map((editor) => editor)
+  );
+
+  /**
+   * Attaches an editor to the email builder UI.
+   * @param editor
+   */
+  attachEditor(editor: Editor | null): void {
+    this.#currentEditor$.next(editor);
+  }
 
   /**
    * Attaches a settings portal to the email builder UI.

@@ -92,6 +92,12 @@ export abstract class AIPEmailBuilderBlock<T extends Record<string, any> = Recor
     });
   }
 
+  /**
+   * This method is called when the settings component is closed.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  unedited(): void {}
+
   override ngOnDestroy() {
     super.ngOnDestroy();
     this.#googleFontLink.remove();

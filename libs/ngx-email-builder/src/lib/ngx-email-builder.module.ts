@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { PortalModule } from "@angular/cdk/portal";
 import { FormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { NgxEditorModule } from "ngx-editor";
 
 import "@angular/localize/init";
 
@@ -26,6 +27,10 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens"
 import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
 import { IPEmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
 import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
+import {
+  IPEmailBuilderTextEditorDirective,
+  IPEmailBuilderTextEditorMenuDirective
+} from "./directives/email-builder-text-editor.directive";
 
 // https://github.com/jscutlery/semver
 
@@ -34,6 +39,9 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
     IPEmailBuilderStructuresDirective,
+    IPEmailBuilderTextEditorDirective,
+    IPEmailBuilderTextEditorMenuDirective,
+    IPEmailBuilderHistoryHostDirective,
     SocialPathPipe,
     ToBodyBlockPipe,
     ToBodyStructurePipe,
@@ -44,20 +52,23 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     IpCanPipe,
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
-    IPHistoryModelDirective,
-    IPEmailBuilderHistoryHostDirective
+    IPHistoryModelDirective
   ],
   imports: [
     CommonModule,
     PortalModule,
     FormsModule,
     HttpClientModule,
-    TemplateThumbPathPipe
+    TemplateThumbPathPipe,
+    NgxEditorModule
   ],
   exports: [
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
     IPEmailBuilderStructuresDirective,
+    IPEmailBuilderTextEditorDirective,
+    IPEmailBuilderTextEditorMenuDirective,
+    IPEmailBuilderHistoryHostDirective,
     PortalModule,
     FormsModule,
     SocialPathPipe,
@@ -72,8 +83,8 @@ import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
     IPHistoryModelDirective,
-    IPEmailBuilderHistoryHostDirective,
-    TemplateThumbPathPipe
+    TemplateThumbPathPipe,
+    NgxEditorModule
   ],
   providers: [
     {

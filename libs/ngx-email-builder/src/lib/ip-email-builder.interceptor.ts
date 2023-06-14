@@ -16,7 +16,8 @@ export class IpEmailBuilderInterceptor implements HttpInterceptor {
       // const notify = this.userInterface.notify('Loading, please wait ...', null, null);
       return next.handle(request.clone({
           setParams: {
-            l: isFreeVersion ? "reg" : "pro"
+            l: isFreeVersion ? "reg" : "pro",
+            v: "2"
           },
           setHeaders: {
             "Content-Type": "application/json",
