@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'free-builder',
+  displayName: 'free-builder-app',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/free-builder',
+  coverageDirectory: '../../coverage/apps/free-builder-app',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',

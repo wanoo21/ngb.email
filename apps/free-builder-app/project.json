@@ -1,28 +1,28 @@
 {
-  "name": "free-builder",
+  "name": "free-builder-app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "sourceRoot": "apps/free-builder/src",
+  "sourceRoot": "apps/free-builder-app/src",
   "prefix": "ngb",
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/free-builder",
-        "index": "apps/free-builder/src/index.html",
-        "main": "apps/free-builder/src/main.ts",
+        "outputPath": "dist/apps/free-builder-app",
+        "index": "apps/free-builder-app/src/index.html",
+        "main": "apps/free-builder-app/src/main.ts",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/free-builder/tsconfig.app.json",
+        "tsConfig": "apps/free-builder-app/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
-          "apps/free-builder/src/favicon.ico",
-          "apps/free-builder/src/assets"
+          "apps/free-builder-app/src/favicon.ico",
+          "apps/free-builder-app/src/assets"
         ],
-        "styles": ["apps/free-builder/src/styles.scss"],
+        "styles": ["apps/free-builder-app/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
-          "path": "apps/free-builder/webpack.config.js"
+          "path": "apps/free-builder-app/webpack.config.js"
         }
       },
       "configurations": {
@@ -41,7 +41,7 @@
           ],
           "outputHashing": "all",
           "customWebpackConfig": {
-            "path": "apps/free-builder/webpack.prod.config.js"
+            "path": "apps/free-builder-app/webpack.prod.config.js"
           }
         },
         "development": {
@@ -59,10 +59,10 @@
       "executor": "@nrwl/angular:module-federation-dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "free-builder:build:production"
+          "browserTarget": "free-builder-app:build:production"
         },
         "development": {
-          "browserTarget": "free-builder:build:development"
+          "browserTarget": "free-builder-app:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -74,7 +74,7 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "free-builder:build"
+        "browserTarget": "free-builder-app:build"
       }
     },
     "lint": {
@@ -82,8 +82,8 @@
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
-          "apps/free-builder/**/*.ts",
-          "apps/free-builder/**/*.html"
+          "apps/free-builder-app/**/*.ts",
+          "apps/free-builder-app/**/*.html"
         ]
       }
     },
@@ -91,7 +91,7 @@
       "executor": "@nrwl/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
       "options": {
-        "jestConfig": "apps/free-builder/jest.config.ts",
+        "jestConfig": "apps/free-builder-app/jest.config.ts",
         "passWithNoTests": true
       },
       "configurations": {
