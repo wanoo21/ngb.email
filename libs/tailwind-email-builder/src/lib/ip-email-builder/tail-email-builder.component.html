@@ -5,7 +5,7 @@
         <button tailBtn (click)="preview()" *ngSwitchDefault>Preview</button>
         <button tailBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
       </ng-container>
-      <!--      <button tailBtn (click)="convert()">Save</button>-->
+      <ng-content select=".top-actions"></ng-content>
 
       <!--      <div class="ms-auto">-->
       <!--        <button tailBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
