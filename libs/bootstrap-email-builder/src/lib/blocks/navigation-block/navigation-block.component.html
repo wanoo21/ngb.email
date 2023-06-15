@@ -1,15 +1,32 @@
 <ul>
   <li *ngFor="let link of options.elements">
-    <a [href]="link.href" [style.color]="options.color" [style.font-family]="options.font"
-       [style.line-height]="options.lineHeight" [style.letter-spacing]="options.letterSpacing"
-       [style.text-decoration]="options.textDecoration" [style.padding]="options.padding"
-       [style.text-align]="options.align">
+    <a [href]="link.href" [ngStyle]="linkItemsStyles">
       {{link.label}}
     </a>
   </li>
 </ul>
 
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <h2 btH2 i18n="@@add_link">Add Link</h2>
+  <div btPanel>
+    <button class="w-100 button" btBtn (click)="addNewLink()" i18n="add_new_link">Add New Link</button>
+    <ng-container *ngFor="let link of options.elements; let index = index; let last = last">
+      <div class="d-flex w-100 align-items-end gap-2 mt-2">
+        <div class="d-flex flex-column flex-grow-1">
+          <label [btLabel]="item" i18n="@@link_label">Link label</label>
+          <input btInput #item="input" [(ngModel)]="link.label" toHistoryOptions type="text" />
+        </div>
+        <div class="d-flex flex-grow-2">
+          <button class="w-full" (click)="delete(index)" btBtn i18n="@@delete">Delete</button>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-1 mt-2">
+        <label [btLabel]="item" i18n="@@link_label">Link href</label>
+        <input btInput #item="input" [(ngModel)]="link.href" toHistoryOptions type="text" />
+      </div>
+      <hr class="mt-3 border border-secondary" *ngIf="!last">
+    </ng-container>
+  </div>
   <h2 btH2 i18n="@@font">Font</h2>
   <div btPanel>
     <h3 btH3 i18n="@@text_color">Color</h3>

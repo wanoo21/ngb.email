@@ -1,15 +1,38 @@
 <ul>
   <li *ngFor="let link of options.elements">
-    <a [href]="link.href" [style.color]="options.color" [style.font-family]="options.font"
-       [style.line-height]="options.lineHeight" [style.letter-spacing]="options.letterSpacing"
-       [style.text-decoration]="options.textDecoration" [style.padding]="options.padding"
-       [style.text-align]="options.align">
+    <a [href]="link.href" [ngStyle]="linkItemsStyles">
       {{link.label}}
     </a>
   </li>
 </ul>
 
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+ <h2 mdH2 i18n="@@add_link" style="margin: 11px 0">Add Link</h2>
+  <div mdPanel fxLayout="column">
+   <div fxFlex>
+     <button class="mb-3" mat-raised-button mdBtn  (click)="addNewLink()" fxFlex i18n="add_new_link">Add New Link</button>
+   </div>
+    <ng-container *ngFor="let link of options.elements; let index = index; let last = last">
+      <div fxLayout fxLayoutAlign="start start" fxLayoutGap="0.5rem" style="margin-top: 23px">
+        <div fxFlex="80">
+          <mat-form-field appearance="fill" fxFlex>
+            <mat-label [mdLabel]="item" i18n="@@link_label">Link label</mat-label>
+            <input matInput mdInput #item="input" [(ngModel)]="link.label" toHistoryOptions type="text" />
+          </mat-form-field>
+        </div>
+        <div fxFlex="20" fxLayoutAlign="center center">
+          <button fxFlex="90" mat-raised-button (click)="delete(index)" mdBtn i18n="@@delete" style="height: 60px">Delete</button>
+        </div>
+      </div>
+      <div class="d-flex flex-column flex-1 mt-2">
+       <mat-form-field appearance="fill"  fxFlex>
+         <mat-label [mdLabel]="item" i18n="@@link_label">Link href</mat-label>
+         <input matInput mdInput #item="input" [(ngModel)]="link.href" toHistoryOptions type="text" />
+       </mat-form-field>
+      </div>
+      <hr fxFlexFill style="border: 1px solid #e0e0e0"  *ngIf="!last">
+    </ng-container>
+  </div>
   <h2 mdH2 i18n="@@font">Font</h2>
   <div mdPanel>
     <h3 mdH3 i18n="@@text_color">Color</h3>

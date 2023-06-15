@@ -90,6 +90,13 @@ export type TFontStyle = "italic" | "normal" | "oblique";
  * @default inherit
  */
 export type TFontWeight = number;
+
+export interface ISizes {
+  top: number;
+  right: number;
+  left: number;
+  bottom: number;
+}
 /**
  * Builder background-repeat types.
  * @default no-repeat
@@ -99,6 +106,7 @@ export type TBackgroundRepeat =
   | "repeat"
   | "repeat-x"
   | "repeat-y";
+
 
 /**
  * Builder border styles interface.
@@ -111,6 +119,8 @@ export interface IBorder {
    * @default solid
    */
   style: "solid" | "dotted" | "dashed" | "double" | "groove";
+
+  sizes?: ISizes;
   /**
    * Border width
    */
@@ -118,7 +128,7 @@ export interface IBorder {
   /**
    * Border radius
    */
-  radius: number;
+  radius?: number;
 }
 
 /**

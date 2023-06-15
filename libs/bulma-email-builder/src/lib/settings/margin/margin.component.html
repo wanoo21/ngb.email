@@ -1,0 +1,6 @@
+<div class="columns is-variable is-1">
+  <div class="column" *ngFor="let key of marginKeys">
+    <label [bulmaLabel]="i">{{getMarginLabel(key)}}</label>
+    <input bulmaInput #i="input" type="number" [(ngModel)]="value[key]">
+  </div>
+</div>

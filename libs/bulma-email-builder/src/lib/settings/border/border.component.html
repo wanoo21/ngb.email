@@ -1,0 +1,32 @@
+<bulma-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></bulma-color>
+
+<div class="columns is-variable is-1" *ngIf="value.sizes; else width">
+  <div class="column" *ngFor="let key of borderKeys">
+    <label [bulmaLabel]="i">{{getBorderLabels(key)}}</label>
+    <input type="number" min="0" #i="input" bulmaInput [(ngModel)]="value.sizes[key]">
+  </div>
+</div>
+
+<ng-template #width>
+  <label [bulmaLabel]="i" i18n="@@border_width">Border Width</label>
+  <input type="number" #i="input" bulmaInput [(ngModel)]="ngValue.width" min="0" placeholder="Width"
+    i18n-placeholder="@@border_width">
+</ng-template>
+<h3 class="mt-2" i18n="@@border_radius" bulmaH3 *ngIf="hasOwn('radius')">Border Radius</h3>
+<div class="is-flex">
+  <input type="number" bulmaInput [(ngModel)]="ngValue.radius" *ngIf="hasOwn('radius')" placeholder="Radius" min="0"
+    i18n-placeholder="@@border_radius">
+</div>
+
+<ng-container *ngIf="value.width">
+  <h3 bulmaH3 i18n="@@border_style" class="pt-2">Border style</h3>
+  <div class="is-flex">
+    <div class="buttons is-fullwidth is-flex-grow-1">
+      <button bulmaBtn class="is-flex-grow-1 is-flex-shrink-0" *ngFor="let style of styleLabels" [class.active]="value.style === style"
+        (click)="value.style = style">
+        {{getStyleLabel(style)}}
+      </button>
+    </div>
+  </div>
+
+</ng-container>

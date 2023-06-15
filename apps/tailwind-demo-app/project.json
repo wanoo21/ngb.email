@@ -1,0 +1,132 @@
+{
+  "name": "tailwind-demo-app",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/tailwind-demo-app/src",
+  "prefix": "wlocalhost",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/tailwind-demo-app",
+        "index": "apps/tailwind-demo-app/src/index.html",
+        "main": "apps/tailwind-demo-app/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/tailwind-demo-app/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/tailwind-demo-app/src/favicon.ico",
+          "apps/tailwind-demo-app/src/assets"
+        ],
+        "styles": ["apps/tailwind-demo-app/src/styles.scss"],
+        "scripts": [],
+        "customWebpackConfig": {
+          "path": "apps/tailwind-demo-app/webpack.config.js"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all",
+          "customWebpackConfig": {
+            "path": "apps/tailwind-demo-app/webpack.prod.config.js"
+          }
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@nrwl/angular:webpack-dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "tailwind-demo-app:build:production"
+        },
+        "development": {
+          "browserTarget": "tailwind-demo-app:build:development"
+        }
+      },
+      "defaultConfiguration": "development",
+      "options": {
+        "port": 4201,
+        "publicHost": "http://localhost:4201"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "tailwind-demo-app:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/tailwind-demo-app/**/*.ts",
+          "apps/tailwind-demo-app/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/tailwind-demo-app/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "serve-static": {
+      "executor": "@nrwl/web:file-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "tailwind-demo-app:build",
+        "port": 4201
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "tailwind-demo-app:build:development"
+        },
+        "production": {
+          "buildTarget": "tailwind-demo-app:build:production"
+        }
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "nx run tailwind-demo-app:build:production",
+          "firebase deploy --only hosting:tailwind"
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "tags": ["scope:tailwind-demo-app", "type:app"]
+}

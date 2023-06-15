@@ -7,11 +7,23 @@
  */
 import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight } from "../interfaces";
 
-export function createBorder(border: Partial<IBorder>, rule = "border"): { [p: string]: string; borderRadius: string } {
-  const { color = "#000000", style = "solid", width = 4, radius = 0 } = border;
+export function createBorder(border: IBorder, rule = "border"): { [p: string]: string; borderRadius: string } {
+  const { color = "#000000", style = "solid", radius = 0, sizes, width } = border;
+  const styles = {borderRadius: `${radius}px`}
+  if (sizes) {
+    const {top, right, left, bottom} = sizes;
+    return {
+      [`border-top`]: `${top}px ${style} ${color}`,
+      [`border-right`]: `${right}px ${style} ${color}`,
+      [`border-left`]: `${left}px ${style} ${color}`,
+      [`border-bottom`]: `${bottom}px ${style} ${color}`,
+      ...styles
+    }
+  }
+
   return {
     [rule]: `${width}px ${style} ${color}`,
-    borderRadius: `${radius}px`
+    ...styles
   };
 }
 

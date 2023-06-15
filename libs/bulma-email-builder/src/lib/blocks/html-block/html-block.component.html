@@ -1,0 +1,7 @@
+<div [innerHTML]="innerHTML"></div>
+
+<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <div bulmaPanel class="mt-4">
+    <textarea bulmaInput [(ngModel)]="innerHTML" ipHistoryModel cdkTextareaAutosize cdkAutosizeMinRows="23"></textarea>
+  </div>
+</div>

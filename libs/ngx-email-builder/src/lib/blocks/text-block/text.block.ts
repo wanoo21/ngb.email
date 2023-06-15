@@ -1,8 +1,9 @@
-import { Directive, OnDestroy } from "@angular/core";
+import { Directive, ViewChild } from "@angular/core";
 
 import { IFont, ILineHeight, IPadding, TIPEmailBuilderStyles } from "../../interfaces";
 import { AIPEmailBuilderBlock } from "../../core/Block";
 import { createFont, createLineHeight, createPadding } from "../../tools/utils";
+import { IPEmailBuilderTextEditorDirective } from "../../directives/email-builder-text-editor.directive";
 
 /**
  * Builder {@link TextBlock} options interface.
@@ -15,7 +16,7 @@ export interface ITextBlockOptions {
 }
 
 @Directive()
-export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> implements OnDestroy {
+export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> {
   override type = "text";
   innerText = "TEXT";
   options: ITextBlockOptions = {
@@ -29,7 +30,7 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> implement
     },
     lineHeight: {
       value: 16,
-      unit: "px"
+      unit: "none"
     },
     padding: {
       top: 10,
@@ -38,6 +39,8 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> implement
       left: 25
     }
   };
+
+  @ViewChild(IPEmailBuilderTextEditorDirective, { static: true }) textEditor!: IPEmailBuilderTextEditorDirective;
 
   get hostStyles(): TIPEmailBuilderStyles {
     const { color, font, lineHeight, padding } = this.options;
@@ -51,7 +54,18 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> implement
     };
   }
 
+  override edit() {
+    this.textEditor.open();
+    super.edit();
+  }
+
+  override unedited() {
+    this.textEditor.close();
+    super.unedited();
+  }
+
   override toObject(options?: Partial<ITextBlockOptions>, innerText = this.innerText) {
+    console.log(innerText);
     return { ...super.toObject(options), innerText };
   }
 }

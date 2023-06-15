@@ -22,6 +22,7 @@ export type TTextDecoration = "underline" | "overline" | "none";
 @Directive()
 export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOptions> {
   override type = "navigation";
+  active = false;
 
   options: INavigationBlockOptions = {
     align: "center",
@@ -48,7 +49,7 @@ export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOption
     target: "_blank",
     textDecoration: "none",
     elements: [
-      { href: "", label: "Home" }
+      { href: "https://", label: "Home" }
     ]
   };
 
@@ -79,9 +80,31 @@ export class NavigationBlock extends AIPEmailBuilderBlock<INavigationBlockOption
     };
   }
 
+  get linkItemsStyles(): TIPEmailBuilderStyles {
+    const { color, font, lineHeight, padding, align, letterSpacing, textDecoration } = this.options;
+    return {
+      color,
+      ...createFont(font),
+      ...createLineHeight(lineHeight),
+      "letter-spacing": `${letterSpacing}px`,
+      "text-decoration": textDecoration,
+      "text-align": align,
+      padding,
+    }
+  }
+
   // Get the label for a decoration option
   getTextDecorationLabel(key: TTextDecoration): string {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     return this.#textDecoration.get(key)!;
+  }
+
+  addNewLink(): void {
+    this.options.elements.push({label: 'Link', href: 'https://'})
+    this.active = !this.active;
+  }
+
+  delete(index: number): void {
+    this.options.elements.splice(index, 1)
   }
 }

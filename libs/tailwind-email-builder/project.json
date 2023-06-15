@@ -65,5 +65,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:tailwind-email-builder", "type:lib"]
 }

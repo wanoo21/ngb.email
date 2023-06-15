@@ -40,6 +40,7 @@ import { WidthHeightComponent } from './settings/width-height/width-height.compo
 import { TemplateListComponent } from './template-list/template-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavigationBlockComponent } from './blocks/navigation-block/navigation-block.component';
+import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
 
 @NgModule({
   imports: [
@@ -77,6 +78,7 @@ import { NavigationBlockComponent } from './blocks/navigation-block/navigation-b
     WidthHeightComponent,
     TemplateListComponent,
     NavigationBlockComponent,
+    HtmlBlockComponent,
   ],
   exports: [BtEmailBuilderComponent, NgxEmailBuilderModule],
   providers: [
@@ -105,6 +107,10 @@ import { NavigationBlockComponent } from './blocks/navigation-block/navigation-b
       NavigationBlockComponent,
       $localize`:@@block_navigation_title:Navigation`
     ),
+    ...addDefaultBlock(
+      HtmlBlockComponent,
+      $localize`:@@block_html_title:Html`
+    )
   ],
 })
 export class BootstrapEmailBuilderModule {

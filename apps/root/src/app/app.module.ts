@@ -2,7 +2,7 @@ import { inject, NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { CommonModule } from "@angular/common";
+import { CommonModule, NgOptimizedImage } from "@angular/common";
 import { AIPEmailBuilderRestService, NgxEmailBuilderModule } from "@wlocalhost/ngx-email-builder";
 
 import { AppComponent } from "./app.component";
@@ -15,7 +15,7 @@ import { SharedModule } from "./shared/shared.module";
     BrowserModule,
     BrowserAnimationsModule,
     NgxEmailBuilderModule.forRoot({
-      xApiKey: "VXm3apHyRp3Tgmq1Z0Fj36tgaWcfMsO550aoKley",
+      xApiKey: "VXm3apHyRp3Tgmq1Z0Fj36tgaWcfMsO550aoKley"
     }),
     RouterModule.forRoot(
       [
@@ -57,9 +57,9 @@ import { SharedModule } from "./shared/shared.module";
       ],
       { initialNavigation: "enabledBlocking" }
     ),
-    SharedModule
+    SharedModule,
+    NgOptimizedImage
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {

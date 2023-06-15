@@ -1,0 +1,7 @@
+<div [innerHTML]="innerHTML"></div>
+
+<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <div tailPanel class="mt-4">
+    <textarea tailInput [(ngModel)]="innerHTML" ipHistoryModel cdkTextareaAutosize cdkAutosizeMinRows="23"></textarea>
+  </div>
+</div>

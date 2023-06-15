@@ -23,9 +23,9 @@
   </div>
   <h2 btH2 i18n="@@button_block_attributes">Attributes</h2>
   <div btPanel>
-    <div class="grid grid-cols-3 gap-2">
-      <bt-align [(value)]="options.align" class="col-span-2"></bt-align>
-      <button btBtn (click)="options.fullWidth = !options.fullWidth" [class.active]="options.fullWidth"
+    <div class="d-flex gap-2 align-items-end">
+      <bt-align [(value)]="options.align" class="w-75"></bt-align>
+      <button class="w-25 h-75" btBtn (click)="options.fullWidth = !options.fullWidth" [class.active]="options.fullWidth"
               i18n="@@button_block_full_width">
         Full Width
       </button>

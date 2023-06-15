@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "wl": {
+      "implementation": "./src/generators/wl",
+      "schema": "./src/generators/wl/schema.json",
+      "description": "Generator wl"
+    }
+  }
+}

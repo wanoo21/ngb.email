@@ -51,6 +51,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatLegacySlideToggleModule as MatSlideToggleModule } from '@angular/material/legacy-slide-toggle';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NavigationBlockComponent } from './blocks/navigation-block/navigation-block.component';
+import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
 
 @NgModule({
   imports: [
@@ -100,6 +101,7 @@ import { NavigationBlockComponent } from './blocks/navigation-block/navigation-b
     WidthHeightComponent,
     MdTemplateListComponent,
     NavigationBlockComponent,
+    HtmlBlockComponent,
   ],
   exports: [MdEmailBuilderComponent, NgxEmailBuilderModule],
   providers: [
@@ -128,6 +130,10 @@ import { NavigationBlockComponent } from './blocks/navigation-block/navigation-b
       NavigationBlockComponent,
       $localize`:@@block_navigation_title:Navigation`
     ),
+    ...addDefaultBlock(
+      HtmlBlockComponent,
+      $localize`:@@block_html_title:Html`
+    )
   ],
 })
 export class MaterialEmailBuilderModule {

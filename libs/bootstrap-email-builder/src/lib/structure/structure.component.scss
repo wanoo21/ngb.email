@@ -8,34 +8,76 @@
 }
 
 .column.empty {
-  @apply grid place-content-center h-24 min-h-fit;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 6rem;
+  min-height: fit-content;
 
   &:not(.cdk-drop-list-dragging) {
-    @apply bg-gray-200 rounded border-2 border-gray-300 #{!important};
+    background-color: #edf2f7;
+    border-radius: 0.25rem;
+    border-width: 2px;
+    border-color: #cbd5e0 !important;
   }
 }
 
+
 .tool-button {
-  @apply  bg-gray-400 text-white hover:bg-gray-500 transition-colors;
+  background-color: #cbd5e0;
+  color: #ffffff;
   border-radius: 50%;
   border: none;
+
+  &:hover {
+    background-color: #6b7280;
+  }
+
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
 }
 
+
 .overflow {
-  @apply shadow-sm absolute inset-0 bg-blue-100/50 flex flex-wrap items-center justify-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(219, 234, 254, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  opacity: 0;
+  gap: 0.5rem;
   row-gap: 0;
+
+  &:hover {
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+  }
 }
 
 .cdk-drop-list-dragging {
-  @apply ring-pink-700 ring-2 ring-offset-2 ring-opacity-60 h-10 min-h-fit;
+  box-shadow: 0 0 0 2px #d53f8c;
+  height: 2.5rem;
+  min-height: fit-content;
 }
 
 .cdk-drop-list-receiving {
-  @apply ring-pink-500 ring-2 ring-offset-2 ring-opacity-40 h-10 min-h-fit;
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.4);
+  height: 2.5rem;
+  min-height: fit-content;
 }
 
 .cdk-drag-placeholder {
-  @apply h-10 bg-gray-200 rounded border border-gray-300 cursor-move;
+  height: 2.5rem;
+  background-color: #edf2f7;
+  border-radius: 0.25rem;
+  border: 1px solid #e2e8f0;
+  cursor: move;
 }
 
 .cdk-drag-preview {
@@ -45,7 +87,7 @@
   0 8px 10px 1px rgba(0, 0, 0, 0.14),
   0 3px 14px 2px rgba(0, 0, 0, 0.12);
   background-color: white;
-  @apply h-2;
+  height: 0.5rem;
 }
 
 //

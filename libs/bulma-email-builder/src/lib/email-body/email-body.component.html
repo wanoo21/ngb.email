@@ -1,0 +1,58 @@
+<ng-container [ngSwitch]="contentPart$ | async">
+  <div cdkDropList [ipEmailBuilderStructures]="value.structures" *ngSwitchDefault>
+    <ng-container *ngIf="value.structures.length; else emptyBody">
+      <ng-container *ngFor="let structure of value.structures">
+        <bulma-structure (clone)="duplicateStructure($event)"
+                        (delete)="deleteStructure($event)" [value]="structure"
+                        [bodyWidth]="value.general.width" class="group position-relative" cdkDrag></bulma-structure>
+      </ng-container>
+    </ng-container>
+  </div>
+  <bulma-template-list *ngSwitchCase="'templates'" class="w-50 h-100"
+                      (selected)="changeValue($event)"></bulma-template-list>
+</ng-container>
+
+<ng-template #emptyBody>
+  <div class="has-background-white has-text-centered has-text-grey py-3" [style.width.px]="value.general.width.value">
+      <p class="text-base text-secondary" i18n="@@empty_body_message">
+        Start by Drag and Drop some structures or select a template from list.
+      </p>
+      <div>
+        <button class="mt-3 is-normal" bulmaBtn i18n="@@choose_template_bulmaBtn" (click)="showTemplateList($event)">Select Template</button>
+      </div>
+    </div>
+</ng-template>
+
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <div bulmaPanel class="mt-4">
+    <div class="form-group">
+      <label [bulmaLabel]="i" i18n="@@template_name">Template name</label>
+      <input bulmaInput #i="input" type="text" ipHistoryModel [(ngModel)]="value.general.name">
+    </div>
+      <label [bulmaLabel]="t" i18n="@@template_preview_text">Preview text</label>
+      <textarea bulmaInput #t="input" style="min-height: 40px;"></textarea>
+      <p bulmaHint i18n="@@template_preview_text_hint" class="has-text-grey-light">This text is displayed in the inbox of the recipient.</p>
+  </div>
+
+  <h2 bulmaH2 i18n="@@background">Background</h2>
+  <div bulmaPanel>
+    <bulma-color [(value)]="value.general.background.color"></bulma-color>
+  </div>
+
+  <h2 bulmaH2 i18n="@@template_attributes">Attributes</h2>
+  <div bulmaPanel>
+    <h3 bulmaH3 i18n="@@width">Width</h3>
+    <bulma-width-height [(value)]="value.general.width!"></bulma-width-height>
+    <label [bulmaLabel]="s" i18n="@@direction">Direction</label>
+    <select bulmaInput #s="input" [(ngModel)]="value.general.direction">
+      <option *ngFor="let dir of directionKeys" [value]="dir">
+        {{getDirectionLabel(dir)}}
+      </option>
+    </select>
+  </div>
+
+  <h2 bulmaH2 i18n="@@padding">Padding</h2>
+  <div bulmaPanel>
+    <bulma-padding [(value)]="value.general.padding"></bulma-padding>
+  </div>
+</ng-container>

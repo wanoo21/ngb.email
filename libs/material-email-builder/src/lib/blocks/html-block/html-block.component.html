@@ -1,0 +1,9 @@
+<div [innerHTML]="innerHTML"></div>
+
+<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <div mdPanel class="mt-4">
+    <mat-form-field appearance="fill" fxFlex="96">
+      <textarea mdInput matInput  [(ngModel)]="innerHTML" ipHistoryModel cdkTextareaAutosize cdkAutosizeMinRows="23"></textarea>
+    </mat-form-field>
+  </div>
+</div>

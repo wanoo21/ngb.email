@@ -1,0 +1,14 @@
+<div class="is-flex columns">
+  <div class="column is-three-quarters pr-1">
+    <label [bulmaLabel]="l" i18n="@@link">Link</label>
+    <input type="text" bulmaInput #l="input" [(ngModel)]="value.href" placeholder="https://..." i18n-placeholder="@@link_placeholder">
+  </div>
+  <div class="column is-one-quarter pl-1">
+    <label [bulmaLabel]="t" i18n="@@link_target">Target</label>
+    <select bulmaInput #t="input" class="appearance-none" [(ngModel)]="value.target">
+      <option *ngFor="let target of targets" [value]="target">
+        {{getTargetLabel(target)}}
+      </option>
+    </select>
+  </div>
+</div>

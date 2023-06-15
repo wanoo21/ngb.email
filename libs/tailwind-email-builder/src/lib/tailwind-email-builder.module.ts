@@ -38,6 +38,7 @@ import { LinkComponent } from "./settings/link/link.component";
 import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
+import { HtmlBlockComponent } from "./blocks/html-block/html-block.component";
 
 @NgModule({
   imports: [
@@ -74,11 +75,12 @@ import { TemplateListComponent } from "./template-list/template-list.component";
     LinkComponent,
     AlignComponent,
     WidthHeightComponent,
-    TemplateListComponent
+    TemplateListComponent,
+    HtmlBlockComponent
   ],
   exports: [
-    TailEmailBuilderComponent,
-    NgxEmailBuilderModule,
+    TailEmailBuilderComponent
+    // NgxEmailBuilderModule,
   ],
   providers: [
     ...addDefaultBlock(TextBlockComponent, $localize`:@@block_text_title:Text`),
@@ -87,7 +89,8 @@ import { TemplateListComponent } from "./template-list/template-list.component";
     ...addDefaultBlock(DividerBlockComponent, $localize`:@@block_divider_title:Divider`),
     ...addDefaultBlock(SocialBlockComponent, $localize`:@@block_social_title:Social`),
     ...addDefaultBlock(SpacerBlockComponent, $localize`:@@block_spacer_title:Spacer`),
-    ...addDefaultBlock(NavigationBlockComponent, $localize`:@@block_navigation_title:Navigation`)
+    ...addDefaultBlock(NavigationBlockComponent, $localize`:@@block_navigation_title:Navigation`),
+    ...addDefaultBlock(HtmlBlockComponent, $localize`:block_html_title: Html`)
   ]
 })
 export class TailwindEmailBuilderModule {

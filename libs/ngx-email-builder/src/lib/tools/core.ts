@@ -17,6 +17,7 @@ import { DividerBlock } from "../blocks/divider-block/divider.block";
 import { SocialBlock } from "../blocks/social-block/social.block";
 import { SpacerBlock } from "../blocks/spacer-block/spacer.block";
 import { NavigationBlock } from "../blocks/navigation-block/navigation.block";
+import { HtmlBlock } from "../blocks/html-block/html-block";
 
 export function withConfig(config: IIPEmailBuilderConfig = {}): Provider[] {
   return [
@@ -42,7 +43,7 @@ export function addNewIPEmailBuilderBlock(block: Type<AIPEmailBuilderBlock>, typ
   ];
 }
 
-export function addDefaultBlock(block: Type<TextBlock | ImageBlock | ButtonBlock | DividerBlock | SocialBlock | SpacerBlock | NavigationBlock>, title: string) {
+export function addDefaultBlock(block: Type<TextBlock | ImageBlock | ButtonBlock | DividerBlock | SocialBlock | SpacerBlock | NavigationBlock | HtmlBlock>, title: string) {
   let type = "";
   if (block.prototype instanceof TextBlock) {
     type = "text";
@@ -58,6 +59,7 @@ export function addDefaultBlock(block: Type<TextBlock | ImageBlock | ButtonBlock
     type = "spacer";
   } else if (block.prototype instanceof NavigationBlock) {
     type = "navigation";
-  }
-  return addNewIPEmailBuilderBlock(block, type, title);
+  } else if (block.prototype instanceof HtmlBlock) {
+    type = "html";
+  } return addNewIPEmailBuilderBlock(block, type, title);
 }

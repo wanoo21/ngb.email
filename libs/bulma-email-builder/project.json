@@ -1,0 +1,50 @@
+{
+  "name": "bulma-email-builder",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/bulma-email-builder/src",
+  "prefix": "bulma",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "outputs": ["{workspaceRoot}/dist/{projectRoot}"],
+      "options": {
+        "project": "libs/bulma-email-builder/ng-package.json"
+      },
+      "configurations": {
+        "production": {
+          "tsConfig": "libs/bulma-email-builder/tsconfig.lib.prod.json"
+        },
+        "development": {
+          "tsConfig": "libs/bulma-email-builder/tsconfig.lib.json"
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/bulma-email-builder/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/bulma-email-builder/**/*.ts",
+          "libs/bulma-email-builder/**/*.html"
+        ]
+      }
+    }
+  }
+}
