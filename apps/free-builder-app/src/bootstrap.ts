@@ -13,9 +13,8 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideHttpClient(),
     provideRouter(appRoutes, withEnabledBlockingInitialNavigation()),
-    ...withConfig({
-      licenseKey: 'F15451BC-52F242C3-8686CAC7-63FCE883',
-      convertorPath: 'https://api.emailjs.com/api/v1.0/email/convert',
-    }),
+    // ...withConfig({
+    //   licenseKey: 'F15451BC-52F242C3-8686CAC7-63FCE883',
+    // }),
   ],
 }).catch((err) => console.error(err));
