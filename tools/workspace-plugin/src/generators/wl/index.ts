@@ -1,4 +1,4 @@
-import { formatFiles, Tree } from '@nrwl/devkit';
+import { formatFiles, Tree } from '@nx/devkit';
 import { npmPackageGenerator } from '@nx/workspace/generators';
 import { chain, externalSchematic } from '@angular-devkit/schematics';
 

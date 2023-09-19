@@ -6,10 +6,11 @@
   "prefix": "bt",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
+      "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/bootstrap-email-builder"],
       "options": {
-        "project": "libs/bootstrap-email-builder/ng-package.json"
+        "project": "libs/bootstrap-email-builder/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
@@ -22,7 +23,7 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/bootstrap-email-builder"],
       "options": {
         "jestConfig": "libs/bootstrap-email-builder/jest.config.ts",
@@ -30,7 +31,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/bootstrap-email-builder/**/*.ts",

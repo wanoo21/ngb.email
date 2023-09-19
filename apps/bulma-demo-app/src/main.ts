@@ -1,4 +1,4 @@
-import { setRemoteDefinitions } from '@nrwl/angular/mf';
+import { setRemoteDefinitions } from '@nx/angular/mf';
 
 fetch('/assets/module-federation.manifest.json')
   .then((res) => res.json())
