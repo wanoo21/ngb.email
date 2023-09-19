@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from "@angular/core";
 import { AIPEmailBuilderAside } from "@wlocalhost/ngx-email-builder";
 import { tap } from "rxjs";
-import { MatTabGroup } from "@angular/material/tabs";
+import { MatLegacyTabGroup as MatTabGroup } from "@angular/material/legacy-tabs";
 
 @Component({
   selector: "md-email-aside",

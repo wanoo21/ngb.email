@@ -1,0 +1,12 @@
+<div class="is-variable is-1 columns">
+  <div class="column">
+    <label [bulmaLabel]="i" i18n="@@line_height">Line Height</label>
+    <input bulmaInput #i="input" type="number" [(ngModel)]="value.value">
+  </div>
+  <div class="column">
+    <label [bulmaLabel]="u" i18n="@@line_height_unit">Unit</label>
+    <select bulmaInput #u="input" [(ngModel)]="value.unit" class="appearance-none">
+      <option *ngFor="let unit of units" [value]="unit">{{getUnitLabel(unit)}}</option>
+    </select>
+  </div>
+</div>

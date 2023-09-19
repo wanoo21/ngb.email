@@ -1,16 +1,16 @@
 {
+  "name": "tailwind-email-builder",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/tailwind-email-builder/src",
   "prefix": "tail",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": [
-        "dist/libs/tailwind-email-builder"
-      ],
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/tailwind-email-builder"],
       "options": {
-        "project": "libs/tailwind-email-builder/ng-package.json"
+        "project": "libs/tailwind-email-builder/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
@@ -23,17 +23,15 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/tailwind-email-builder"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/tailwind-email-builder"],
       "options": {
         "jestConfig": "libs/tailwind-email-builder/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/tailwind-email-builder/**/*.ts",
@@ -68,5 +66,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:tailwind-email-builder", "type:lib"]
 }

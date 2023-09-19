@@ -6,6 +6,10 @@ import { AIPEmailBuilderRestService } from "../email-builder-rest-service/email-
 import { IMjmlServerResponse } from "../../interfaces";
 import { IPEmail } from "../../body/body";
 
+/**
+ * The AIPEmailBuilderService is an abstract service that provides conversion of IPEmail object to ready-to-use MJML and HTML.
+ * It also includes an array of standard fonts used in email building.
+ */
 @Injectable({
   providedIn: "root",
   useFactory: (factory: IPEmailBuilderConfig) => {
@@ -39,13 +43,29 @@ export abstract class AIPEmailBuilderService {
     "Lucida Console, Monaco, monospace"
   ];
 
+  /**
+   * Convert IPEmail object to ready-to-use MJML and HTML
+   *
+   * @param value IPEmail object
+   * @returns Promise with MJML and Template
+   * @example
+   * ```ts
+   * const {mjml, html} = await this.emailBuilderService.convert(email);
+   * ```
+   */
   convert(value: IPEmail): Promise<IMjmlServerResponse> {
     return lastValueFrom(this.restService.convert(value));
   }
 }
 
+/**
+ * The ProIPEmailBuilderService is a concrete implementation of the AIPEmailBuilderService for the Pro version.
+ */
 class ProIPEmailBuilderService extends AIPEmailBuilderService {
 }
 
+/**
+ * The FreeIPEmailBuilderService is a concrete implementation of the AIPEmailBuilderService for the Free version.
+ */
 class FreeIPEmailBuilderService extends AIPEmailBuilderService {
 }

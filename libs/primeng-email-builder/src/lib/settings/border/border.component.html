@@ -1,13 +1,27 @@
-<prime-color [(value)]="value.color" *ngIf="hasOwn('color')"></prime-color>
+<prime-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></prime-color>
+
+
+
+<div class="grid mt-2" *ngIf="value.sizes; else width">
+  <div class="flex flex-column col-6" *ngFor="let key of borderKeys">
+    <label [primeLabel]="i">{{getBorderLabels(key)}}</label>
+    <input type="number" min="0" #i="input" primeInput pInputText [(ngModel)]="value.sizes[key]">
+  </div>
+</div>
+
+<ng-template #width>
+  <div class="flex flex-column gap-2 mt-2">
+    <label i18n="@@border_width" [primeLabel]="i">Border Width</label>
+    <input type="number" #i="input" primeInput pInputText [(ngModel)]="value.width"  placeholder="Width"
+       min="0"    i18n-placeholder="@@border_width">
+  </div>
+</ng-template>
 
 <div class="grid mt-2">
-  <div class="col-6" *ngIf="hasOwn('width')">
-    <input type="number" class="w-full" pInputText primeInput [(ngModel)]="ngValue.width" placeholder="Width"
-           i18n-placeholder="@@border_width">
-  </div>
-  <div class="col-6" *ngIf="hasOwn('radius')">
-    <input type="number" class="w-full" pInputText primeInput [(ngModel)]="ngValue.radius" placeholder="Radius"
-           i18n-placeholder="@@border_radius">
+  <div class="col-12" *ngIf="hasOwn('radius')">
+    <label i18n="@@border_radius" [primeLabel]="i">Border Radius</label>
+    <input type="number" #i="input" class="w-full" pInputText primeInput [(ngModel)]="ngValue.radius" placeholder="Radius"
+      min="0"     i18n-placeholder="@@border_radius">
   </div>
 </div>
 

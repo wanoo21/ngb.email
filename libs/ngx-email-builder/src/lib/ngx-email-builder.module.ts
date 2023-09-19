@@ -3,6 +3,7 @@ import { CommonModule } from "@angular/common";
 import { PortalModule } from "@angular/cdk/portal";
 import { FormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { NgxEditorModule } from "ngx-editor";
 
 import "@angular/localize/init";
 
@@ -24,8 +25,12 @@ import { IIPEmailBuilderConfig } from "./public-tokens";
 import { withConfig } from "./tools/core";
 import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens";
 import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
-import { EmailBuilderHistoryHostDirective } from './directives/email-builder-history-host.directive';
-
+import { IPEmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
+import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
+import {
+  IPEmailBuilderTextEditorDirective,
+  IPEmailBuilderTextEditorMenuDirective
+} from "./directives/email-builder-text-editor.directive";
 
 // https://github.com/jscutlery/semver
 
@@ -34,6 +39,9 @@ import { EmailBuilderHistoryHostDirective } from './directives/email-builder-his
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
     IPEmailBuilderStructuresDirective,
+    IPEmailBuilderTextEditorDirective,
+    IPEmailBuilderTextEditorMenuDirective,
+    IPEmailBuilderHistoryHostDirective,
     SocialPathPipe,
     ToBodyBlockPipe,
     ToBodyStructurePipe,
@@ -44,14 +52,23 @@ import { EmailBuilderHistoryHostDirective } from './directives/email-builder-his
     IpCanPipe,
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
-    IPHistoryModelDirective,
-    EmailBuilderHistoryHostDirective
+    IPHistoryModelDirective
   ],
-  imports: [CommonModule, PortalModule, FormsModule, HttpClientModule],
+  imports: [
+    CommonModule,
+    PortalModule,
+    FormsModule,
+    HttpClientModule,
+    TemplateThumbPathPipe,
+    NgxEditorModule
+  ],
   exports: [
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderSettingsDirective,
     IPEmailBuilderStructuresDirective,
+    IPEmailBuilderTextEditorDirective,
+    IPEmailBuilderTextEditorMenuDirective,
+    IPEmailBuilderHistoryHostDirective,
     PortalModule,
     FormsModule,
     SocialPathPipe,
@@ -66,21 +83,31 @@ import { EmailBuilderHistoryHostDirective } from './directives/email-builder-his
     IPEmailBuilderColumnDirective,
     ColumnStylesPipe,
     IPHistoryModelDirective,
-    EmailBuilderHistoryHostDirective
+    TemplateThumbPathPipe,
+    NgxEditorModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: IpEmailBuilderInterceptor, multi: true }
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: IpEmailBuilderInterceptor,
+      multi: true
+    }
   ]
 })
 export class NgxEmailBuilderModule {
-  static forRoot(config?: IIPEmailBuilderConfig): ModuleWithProviders<NgxEmailBuilderModule> {
+  static forRoot(
+    config?: IIPEmailBuilderConfig
+  ): ModuleWithProviders<NgxEmailBuilderModule> {
     return {
       ngModule: NgxEmailBuilderModule,
       providers: [
         {
-          provide: APP_INITIALIZER, useFactory: (config: IPEmailBuilderConfig) => {
+          provide: APP_INITIALIZER,
+          useFactory: (config: IPEmailBuilderConfig) => {
             return () => config.fetchLicense();
-          }, deps: [IP_EMAIL_BUILDER_CONFIG], multi: true
+          },
+          deps: [IP_EMAIL_BUILDER_CONFIG],
+          multi: true
         },
         ...withConfig(config)
       ]

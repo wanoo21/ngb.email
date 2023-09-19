@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 
-import { SkinsService } from "./services/skins.service";
-
 @Component({
   selector: "wlocalhost-root",
   templateUrl: "./app.component.html",
@@ -9,6 +7,4 @@ import { SkinsService } from "./services/skins.service";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
-  constructor(readonly skinService: SkinsService) {
-  }
 }

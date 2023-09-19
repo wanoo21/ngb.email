@@ -9,9 +9,13 @@
   <div primePanel>
     <prime-font [(value)]="options.font"></prime-font>
   </div>
+  <h2 primeH2 i18n="@@button_color">Color</h2>
+  <div primePanel>
+    <prime-color [(value)]="options.color" allowTransparent="false"></prime-color>
+  </div>
   <h2 primeH2 i18n="@@button_block_background_color">Background color</h2>
   <div primePanel>
-    <prime-color [(value)]="options.backgroundColor"></prime-color>
+    <prime-color [(value)]="options.backgroundColor" allowTransparent="false"></prime-color>
   </div>
   <h2 primeH2 i18n="@@border">Border</h2>
   <div primePanel>

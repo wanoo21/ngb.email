@@ -6,6 +6,7 @@ export * from "./lib/services/email-builder-service/email-builder.service";
 export * from "./lib/services/email-builder-storage-service/email-builder-storage.service";
 export * from "./lib/services/email-builder-middleware-service/email-builder-middleware.service";
 export * from "./lib/services/email-builder-rest-service/email-builder-rest.service";
+export * from "./lib/services/email-builder-history-service/email-builder-history.service";
 
 // Default blocks blocks
 export * from "./lib/blocks/text-block/text.block";
@@ -14,6 +15,8 @@ export * from "./lib/blocks/button-block/button.block";
 export * from "./lib/blocks/divider-block/divider.block";
 export * from "./lib/blocks/social-block/social.block";
 export * from "./lib/blocks/spacer-block/spacer.block";
+export * from "./lib/blocks/navigation-block/navigation.block";
+export * from "./lib/blocks/html-block/html-block";
 
 // Core services & classes
 export * from "./lib/public-tokens";
@@ -53,6 +56,7 @@ export * from "./lib/pipes/apply-middleware.pipe";
 export * from "./lib/pipes/can.pipe";
 export * from "./lib/pipes/preview-link.pipe";
 export * from "./lib/pipes/social-path.pipe";
+export * from "./lib/pipes/template-thumb-path.pipe";
 export * from "./lib/pipes/to-body-block.pipe";
 export * from "./lib/pipes/to-body-structure.pipe";
 export * from "./lib/pipes/to-watch-options.pipe";
@@ -66,3 +70,4 @@ export * from "./lib/directives/email-builder-structures.directive";
 export * from "./lib/directives/email-builder-column.directive";
 export * from "./lib/directives/email-builder-history-model.directive";
 export * from "./lib/directives/email-builder-history-host.directive";
+export * from "./lib/directives/email-builder-text-editor.directive";

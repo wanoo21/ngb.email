@@ -9,6 +9,10 @@
   <div tailPanel>
     <tail-font [(value)]="options.font"></tail-font>
   </div>
+  <h2 tailH2 i18n="@@button_color">Color</h2>
+  <div tailPanel>
+    <tail-color [(value)]="options.color" allowTransparent="false"></tail-color>
+  </div>
   <h2 tailH2 i18n="@@button_block_background_color">Background color</h2>
   <div tailPanel>
     <tail-color [(value)]="options.backgroundColor"></tail-color>

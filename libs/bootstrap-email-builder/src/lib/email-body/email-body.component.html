@@ -1,0 +1,64 @@
+<ng-container [ngSwitch]="contentPart$ | async">
+  <div cdkDropList [ipEmailBuilderStructures]="value.structures" *ngSwitchDefault class="pb-2">
+    <ng-container *ngIf="value.structures.length; else emptyBody">
+      <ng-container *ngFor="let structure of value.structures">
+        <bt-structure (clone)="duplicateStructure($event)"
+                        (delete)="deleteStructure($event)" [value]="structure"
+                        [bodyWidth]="value.general.width" class="group position-relative" cdkDrag></bt-structure>
+      </ng-container>
+    </ng-container>
+  </div>
+  <bt-template-list *ngSwitchCase="'templates'" class="w-50 h-100" (selected)="changeValue($event)"></bt-template-list>
+</ng-container>
+
+<ng-template #emptyBody>
+  <div class="bg-white rounded border-1 py-3" [style.width.px]="value.general.width.value">
+    <div class="empty-message d-flex  flex-column p-2 gap-10 align-items-center">
+      <p class="text-base text-secondary" i18n="@@empty_body_message">
+        Start by Drag and Drop some structures or select a template from list.
+      </p>
+      <div>
+        <button btBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
+  <div btPanel class="mt-4">
+    <div class="form-group">
+      <label [btLabel]="i" i18n="@@template_name" class="fw-normal">Template name</label>
+      <input class="form-control" btInput #i="input" type="text" ipHistoryModel [(ngModel)]="value.general.name">
+    </div>
+    <div class="form-group mt-2">
+      <label [btLabel]="t" i18n="@@template_preview_text" class="fw-normal">Preview text</label>
+      <textarea class="form-control" rows="6" style="resize: none" btInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2" ipHistoryModel
+                [(ngModel)]="value.general.previewText"></textarea>
+      <p btHint i18n="@@template_preview_text_hint" class="fw-light">This text is displayed in the inbox of the recipient.</p>
+    </div>
+  </div>
+
+  <h2 class="" btH2 i18n="@@background">Background</h2>
+  <div btPanel>
+    <bt-color [(value)]="value.general.background.color"></bt-color>
+  </div>
+
+  <h2 btH2 i18n="@@template_attributes">Attributes</h2>
+  <div btPanel>
+    <h3 btH3 i18n="@@width">Width</h3>
+    <bt-width-height [(value)]="value.general.width!"></bt-width-height>
+    <div class="d-flex flex-column mt-2">
+      <label [btLabel]="s" i18n="@@direction">Direction</label>
+      <select btInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
+        <option *ngFor="let dir of directionKeys" [value]="dir">
+          {{getDirectionLabel(dir)}}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <h2 btH2 i18n="@@padding">Padding</h2>
+  <div btPanel>
+    <bt-padding [(value)]="value.general.padding"></bt-padding>
+  </div>
+</ng-container>

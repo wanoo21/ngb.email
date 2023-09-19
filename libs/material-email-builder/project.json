@@ -1,13 +1,16 @@
 {
+  "name": "material-email-builder",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/material-email-builder/src",
   "prefix": "md",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:package",
-      "outputs": ["dist/libs/material-email-builder"],
+      "executor": "@nx/angular:package",
+      "outputs": ["{workspaceRoot}/dist/libs/material-email-builder"],
       "options": {
-        "project": "libs/material-email-builder/ng-package.json"
+        "project": "libs/material-email-builder/ng-package.json",
+        "updateBuildableProjectDepsInPackageJson": true
       },
       "configurations": {
         "production": {
@@ -20,15 +23,15 @@
       "defaultConfiguration": "production"
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/material-email-builder"],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/libs/material-email-builder"],
       "options": {
         "jestConfig": "libs/material-email-builder/jest.config.ts",
         "passWithNoTests": true
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/material-email-builder/**/*.ts",
@@ -61,5 +64,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["scope:material-email-builder", "type:lib"]
 }

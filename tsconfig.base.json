@@ -10,20 +10,18 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "esnext",
-    "lib": [
-      "es2017",
-      "dom"
-    ],
+    "lib": ["es2017", "dom"],
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@wlocalhost/bulma-email-builder": [
+        "libs/bulma-email-builder/src/index.ts"
+      ],
       "@wlocalhost/ngx-bootstrap-email-builder": [
         "libs/bootstrap-email-builder/src/index.ts"
       ],
-      "@wlocalhost/ngx-email-builder": [
-        "libs/ngx-email-builder/src/index.ts"
-      ],
+      "@wlocalhost/ngx-email-builder": ["libs/ngx-email-builder/src/index.ts"],
       "@wlocalhost/ngx-md-email-builder": [
         "libs/material-email-builder/src/index.ts"
       ],
@@ -32,11 +30,9 @@
       ],
       "@wlocalhost/ngx-tailwind-email-builder": [
         "libs/tailwind-email-builder/src/index.ts"
-      ]
+      ],
+      "@wlocalhost/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp"
-  ]
+  "exclude": ["node_modules", "tmp"]
 }

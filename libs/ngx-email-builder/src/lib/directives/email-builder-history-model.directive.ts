@@ -2,13 +2,14 @@ import { Directive, OnDestroy, OnInit, Self } from "@angular/core";
 import { NgControl } from "@angular/forms";
 import { debounceTime, distinctUntilChanged, filter, Subject, takeUntil } from "rxjs";
 
-import { EmailBuilderHistoryHostDirective } from "./email-builder-history-host.directive";
+import { IPEmailBuilderHistoryHostDirective } from "./email-builder-history-host.directive";
 
 /**
- * A simple directive that trigger "detectChanges" on root {@link EmailBuilderHistoryHostDirective} element once the formControl value has changed.
- * Use only when if you want to add a record of this form element value onto history manager.
+ * A directive that triggers the "detectChanges" method on the root {@link IPEmailBuilderHistoryHostDirective}
+ * element whenever the value of the form control changes. This directive should be used only if you want to
+ * add a record of the value of this form element to the history manager.
  *
- * It requires ngModel, formControl or any other directives that extends an {@link NgControl} class.
+ * This directive requires ngModel, formControl or any other directives that extend the {@link NgControl} class.
  * @exportAs ipHistoryModel
  */
 @Directive({
@@ -20,7 +21,7 @@ export class IPHistoryModelDirective implements OnInit, OnDestroy {
 
   constructor(
     @Self() readonly ngControl?: NgControl,
-    readonly historyHostDirective?: EmailBuilderHistoryHostDirective
+    readonly historyHostDirective?: IPEmailBuilderHistoryHostDirective
   ) {
   }
 

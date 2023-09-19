@@ -1,13 +1,13 @@
 {
+  "name": "root",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/root/src",
   "prefix": "wlocalhost",
   "targets": {
     "build": {
-      "executor": "@nrwl/angular:webpack-browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "executor": "@nx/angular:webpack-browser",
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/root",
         "index": "apps/root/src/index.html",
@@ -15,18 +15,13 @@
         "polyfills": "apps/root/src/polyfills.ts",
         "tsConfig": "apps/root/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": [
-          "apps/root/src/favicon.ico",
-          "apps/root/src/assets"
-        ],
-        "styles": [
-          "apps/root/src/styles.scss",
-          "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-        ],
+        "assets": ["apps/root/src/favicon.ico", "apps/root/src/assets"],
+        "styles": ["apps/root/src/styles.scss"],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/root/webpack.config.js"
-        }
+        },
+        "allowedCommonJsDependencies": ["recursive-diff"]
       },
       "configurations": {
         "production": {
@@ -65,7 +60,7 @@
       "defaultConfiguration": "production"
     },
     "serve": {
-      "executor": "@nrwl/angular:module-federation-dev-server",
+      "executor": "@nx/angular:module-federation-dev-server",
       "configurations": {
         "production": {
           "browserTarget": "root:build:production"
@@ -87,24 +82,20 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
-        "lintFilePatterns": [
-          "apps/root/**/*.ts",
-          "apps/root/**/*.html"
-        ]
+        "lintFilePatterns": ["apps/root/**/*.ts", "apps/root/**/*.html"]
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/root"
-      ],
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/apps/root"],
       "options": {
         "jestConfig": "apps/root/jest.config.ts",
         "passWithNoTests": true
       }
     }
   },
-  "tags": []
+  "tags": [],
+  "implicitDependencies": ["tailwind-demo-app"]
 }

@@ -1,3 +1,5 @@
+name: Release
+
 on:
   - workflow_dispatch
 
@@ -10,7 +12,6 @@ jobs:
       - uses: actions/checkout@master
         with:
           fetch-depth: 0
-          token: ${{ secrets.NGX_GITHUB_TOKEN }}
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
@@ -33,9 +34,9 @@ jobs:
         shell: bash
         run: |
           npm whoami
-          npx nx affected --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push --skipCommit
+          npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push --skipCommit
         env:
-          GITHUB_TOKEN: ${{ secrets.NGX_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Release
@@ -43,7 +44,7 @@ jobs:
         shell: bash
         run: |
           npm whoami
-          npx nx affected --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push --skipCommit
+          npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push --skipCommit
         env:
-          GITHUB_TOKEN: ${{ secrets.NGX_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -29,6 +29,12 @@ export class ButtonBlock extends AIPEmailBuilderBlock<IButtonBlockOptions> {
     border: {
       color: "#414141",
       style: "solid",
+      sizes: {
+        top: 0,
+        right: 0,
+        left: 0,
+        bottom: 0,
+      },
       width: 0,
       radius: 3
     },
@@ -95,5 +101,9 @@ export class ButtonBlock extends AIPEmailBuilderBlock<IButtonBlockOptions> {
       ...createBorder(border),
       ...createLineHeight(lineHeight)
     };
+  }
+
+  override toObject(options?: Partial<IButtonBlockOptions>, innerText = this.innerText) {
+    return { ...super.toObject(options), innerText };
   }
 }

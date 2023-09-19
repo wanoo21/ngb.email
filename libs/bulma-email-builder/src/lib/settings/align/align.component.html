@@ -1,0 +1,13 @@
+    <ng-container *ngIf="mode === 'horizontal'">
+        <label [bulmaLabel]="s" i18n="@@horizontal_align">Horizontal Align</label>
+        <select #s="input" bulmaInput [(ngModel)]="value" [disabled]="disabled">
+          <option *ngFor="let option of horizontalLabels" [value]="option">{{getHorizontalAlignLabel(option)}}</option>
+        </select>
+    </ng-container>
+    <ng-container *ngIf="mode === 'vertical'">
+      <label [bulmaLabel]="s" i18n="@@vertical_align">Vertical Align</label>
+      <select #s="input" bulmaInput [(ngModel)]="value" [disabled]="disabled">
+        <option *ngFor="let option of verticalLabels" [value]="option">{{getVerticalAlignLabel(option)}}</option>
+      </select>
+    </ng-container>
+

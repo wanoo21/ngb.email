@@ -7,11 +7,23 @@
  */
 import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight } from "../interfaces";
 
-export function createBorder(border: Partial<IBorder>, rule = "border"): { [p: string]: string; borderRadius: string } {
-  const { color = "#000000", style = "solid", width = 4, radius = 0 } = border;
+export function createBorder(border: IBorder, rule = "border"): { [p: string]: string; borderRadius: string } {
+  const { color = "#000000", style = "solid", radius = 0, sizes, width } = border;
+  const styles = {borderRadius: `${radius}px`}
+  if (sizes) {
+    const {top, right, left, bottom} = sizes;
+    return {
+      [`border-top`]: `${top}px ${style} ${color}`,
+      [`border-right`]: `${right}px ${style} ${color}`,
+      [`border-left`]: `${left}px ${style} ${color}`,
+      [`border-bottom`]: `${bottom}px ${style} ${color}`,
+      ...styles
+    }
+  }
+
   return {
     [rule]: `${width}px ${style} ${color}`,
-    borderRadius: `${radius}px`
+    ...styles
   };
 }
 
@@ -147,4 +159,35 @@ export function debounce<T = void>(callback: (...args: any[]) => T, delay = 1000
  */
 export function randomString(from = 10, to = 5): string {
   return btoa(String(Math.random())).substr(from, to).toLowerCase();
+}
+
+/**
+ * Create cookie
+ * @param name
+ * @param value
+ * @param days
+ */
+export function addToStore(name: string, value: string | number, days = 7) {
+  let expires = "";
+  if (days) {
+    const date = new Date();
+    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+    expires = "; expires=" + date.toUTCString();
+  }
+  document.cookie = `${name}=${value}${expires}; path=/;`;
+}
+
+/**
+ * Read cookie
+ * @param name
+ */
+export function getFromStore(name: string): string | null {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
 }

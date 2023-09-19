@@ -1,8 +1,8 @@
-import { EmailBuilderHistoryHostDirective } from './email-builder-history-host.directive';
+import { IPEmailBuilderHistoryHostDirective } from './email-builder-history-host.directive';
 
 describe('EmailBuilderHistoryHostDirective', () => {
   it('should create an instance', () => {
-    const directive = new EmailBuilderHistoryHostDirective();
+    const directive = new IPEmailBuilderHistoryHostDirective();
     expect(directive).toBeTruthy();
   });
 });

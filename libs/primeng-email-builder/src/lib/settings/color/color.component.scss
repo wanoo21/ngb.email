@@ -1,3 +1,12 @@
 :host {
   display: block;
+
+  ::ng-deep {
+    .p-colorpicker-preview {
+      height: 100%;
+    }
+    .p-colorpicker-panel {
+      left: -145px !important;
+    }
+  }
 }

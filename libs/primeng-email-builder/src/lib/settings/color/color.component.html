@@ -1,7 +1,7 @@
 <div class="flex gap-2">
-  <p-colorPicker class="w-1 pt-1" [ngModel]="value" [disabled]="disabled"
-                 (onChange)="valueChange.emit($event.value)"></p-colorPicker>
   <input type="text" [disabled]="disabled" primeInput pInputText #i="input" [value]="value"
          (input)="valueChange.next(i.el.value)"
          placeholder="Color" i18n-placeholder="@@color" class="w-11">
+  <p-colorPicker class="w-1" [ngModel]="value" [disabled]="disabled"
+                 (onChange)="valueChange.emit($event.value)"></p-colorPicker>
 </div>

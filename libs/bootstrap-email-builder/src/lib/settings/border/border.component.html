@@ -1,0 +1,31 @@
+<bt-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></bt-color>
+
+<div class="d-flex gap-2 mt-2" *ngIf="value.sizes; else width">
+  <div class="flex flex-col" *ngFor="let key of borderKeys">
+    <label [btLabel]="i">{{getBorderLabels(key)}}</label>
+    <input type="number" min="0" #i="input" btInput [(ngModel)]="value.sizes[key]">
+  </div>
+</div>
+
+<ng-template #width>
+  <div class="d-flex flex-column">
+    <label [btLabel]="i" i18n="@@border_width">Border Width</label>
+  <input type="number" #i="input"  btInput [(ngModel)]="ngValue.width" min="0" placeholder="Width"
+         i18n-placeholder="@@border_width">
+  </div>
+</ng-template>
+<h3 class="mt-2" i18n="@@border_radius" btH3  *ngIf="hasOwn('radius')">Border Radius</h3>
+<div class="d-flex gap-2 mt-2">
+  <input type="number" btInput [(ngModel)]="ngValue.radius" *ngIf="hasOwn('radius')" placeholder="Radius" min="0"
+         i18n-placeholder="@@border_radius">
+</div>
+
+<ng-container *ngIf="value.width">
+  <h3 btH3 i18n="@@border_style" class="pt-2">Border style</h3>
+  <div class="d-flex justify-content-between gap-2">
+    <button btBtn size="sm" *ngFor="let style of styleLabels" [class.active]="value.style === style"
+            (click)="value.style = style">
+      {{getStyleLabel(style)}}
+    </button>
+  </div>
+</ng-container>

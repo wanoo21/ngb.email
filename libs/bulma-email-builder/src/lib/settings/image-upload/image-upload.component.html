@@ -1,0 +1,11 @@
+<div class="is-flex columns">
+  <div class="column is-three-quarters pr-0 pt-0">
+    <label [bulmaLabel]="i" i18n="@@image_source">Image source</label>
+    <input type="url" #i="input" bulmaInput [(ngModel)]="value" placeholder="https://...">
+  </div>
+  <div class="column is-one-quarter">
+    <figure style="border: 1px solid grey" class="image is-16by9">
+      <img [src]="i.el.value" alt="" *ngIf="i.el.value.length">
+    </figure>
+  </div>
+</div>
