@@ -75,15 +75,25 @@
 }
 
 .cdk-drop-list-dragging {
-  @apply ring-pink-700 ring-2 ring-offset-2 ring-opacity-60 h-10 min-h-fit;
+  box-shadow: 0 0 0 2px #97266D inset;
+  opacity: .6;
+  height: 2.5rem;
+  min-height: fit-content;
 }
 
 .cdk-drop-list-receiving {
-  @apply ring-pink-500 ring-2 ring-offset-2 ring-opacity-40 h-10 min-h-fit;
+  box-shadow: 0 0 0 2px #F472B6 inset;
+  opacity: .4;
+  height: 2.5rem;
+  min-height: fit-content;
 }
 
 .cdk-drag-placeholder {
-  @apply h-10 bg-gray-200 rounded border border-gray-300 cursor-move;
+  height: 2.5rem;
+  background-color: #E5E7EB;
+  border-radius: 0.25rem;
+  border: 1px solid #D1D5DB;
+  cursor: move;
 }
 
 .cdk-drag-preview {
@@ -93,7 +103,7 @@
   0 8px 10px 1px rgba(0, 0, 0, 0.14),
   0 3px 14px 2px rgba(0, 0, 0, 0.12);
   background-color: white;
-  @apply h-2;
+  height: 0.5rem;
 }
 
 //
