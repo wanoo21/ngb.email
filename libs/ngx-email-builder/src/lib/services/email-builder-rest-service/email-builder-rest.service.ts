@@ -14,12 +14,7 @@ import { AIPEmailBuilderHistoryService } from "../email-builder-history-service/
   providedIn: "root",
   useFactory: (factory: IPEmailBuilderConfig) => {
     const [, , , useExisting] = factory.providers || [];
-    if (factory.isFreeVersion) {
-      if (useExisting) {
-        console.warn("It seems you try to rewrite AIPEmailBuilderRestService, but this is not allowed in free version.");
-      }
-      return new FreeIPEmailBuilderRestService();
-    } else if (!factory.isFreeVersion && useExisting) {
+    if (useExisting) {
       return inject(useExisting);
     }
     return new ProIPEmailBuilderRestService();
@@ -27,7 +22,6 @@ import { AIPEmailBuilderHistoryService } from "../email-builder-history-service/
   deps: [IP_EMAIL_BUILDER_CONFIG]
 })
 export abstract class AIPEmailBuilderRestService {
-
   /**
    * Injected HTTP client.
    */
@@ -87,10 +81,4 @@ export abstract class AIPEmailBuilderRestService {
  * A concrete implementation of AIPEmailBuilderRestService for the Pro version.
  */
 class ProIPEmailBuilderRestService extends AIPEmailBuilderRestService {
-}
-
-/**
- * A concrete implementation of AIPEmailBuilderRestService for the free version.
- */
-class FreeIPEmailBuilderRestService extends AIPEmailBuilderRestService {
 }

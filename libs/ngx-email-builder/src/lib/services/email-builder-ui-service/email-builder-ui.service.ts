@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { CdkPortal, CdkPortalOutlet, Portal } from "@angular/cdk/portal";
+import { CdkPortalOutlet, Portal } from "@angular/cdk/portal";
 import { BehaviorSubject, map } from "rxjs";
 import { CdkDropList } from "@angular/cdk/drag-drop";
 import { Editor } from "ngx-editor";

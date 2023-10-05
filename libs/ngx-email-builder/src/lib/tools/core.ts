@@ -1,5 +1,4 @@
-import { inject, Provider, Type } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Provider, Type } from "@angular/core";
 
 import { IIPEmailBuilderConfig } from "../public-tokens";
 import {
@@ -19,13 +18,12 @@ import { SpacerBlock } from "../blocks/spacer-block/spacer.block";
 import { NavigationBlock } from "../blocks/navigation-block/navigation.block";
 import { HtmlBlock } from "../blocks/html-block/html-block";
 
-export function withConfig(config: IIPEmailBuilderConfig = {}): Provider[] {
+export function withConfig(config?: Partial<IIPEmailBuilderConfig>): Provider[] {
   return [
     {
       provide: IP_EMAIL_BUILDER_CONFIG,
       useFactory: () => {
-        const httpClient = inject(HttpClient);
-        return new IPEmailBuilderConfig(config, httpClient);
+        return new IPEmailBuilderConfig(config);
       }
     }
   ];
@@ -61,5 +59,6 @@ export function addDefaultBlock(block: Type<TextBlock | ImageBlock | ButtonBlock
     type = "navigation";
   } else if (block.prototype instanceof HtmlBlock) {
     type = "html";
-  } return addNewIPEmailBuilderBlock(block, type, title);
+  }
+  return addNewIPEmailBuilderBlock(block, type, title);
 }

@@ -18,12 +18,7 @@ export type middlewareEmailActions = "preview" | "save";
   providedIn: "root",
   useFactory: (factory: IPEmailBuilderConfig) => {
     const [, , useExisting] = factory.providers || [];
-    if (factory.isFreeVersion) {
-      if (useExisting) {
-        console.warn("It seems you try to rewrite AIPEmailBuilderMiddlewareService, but this is not allowed in free version.");
-      }
-      return new FreeIPEmailBuilderMiddlewareService();
-    } else if (!factory.isFreeVersion && useExisting) {
+    if (useExisting) {
       return inject(useExisting);
     }
     return new ProIPEmailBuilderMiddlewareService();
@@ -35,7 +30,7 @@ export abstract class AIPEmailBuilderMiddlewareService {
    * The path to the templates thumbnails.
    * @type {string}
    */
-  readonly templatesThumbsPath = inject(IP_EMAIL_BUILDER_CONFIG).templatesThumbsPath;
+  readonly templatesThumbsPath: string = inject(IP_EMAIL_BUILDER_CONFIG).templatesThumbsPath;
 
   /**
    * Returns the list of blocks.
@@ -87,6 +82,7 @@ export abstract class AIPEmailBuilderMiddlewareService {
   templateThumbnail(category: IUserTemplateCategory, template: string): string {
     return `${this.templatesThumbsPath}/${category}-${template}.jpg`;
   }
+
   /**
    * Prompts the user with a confirmation dialog to delete an entity.
    *
@@ -137,11 +133,5 @@ export abstract class AIPEmailBuilderMiddlewareService {
  * An implementation of the `AIPEmailBuilderMiddlewareService` for the Pro version of the email builder.
  */
 class ProIPEmailBuilderMiddlewareService extends AIPEmailBuilderMiddlewareService {
-}
-
-/**
- * An implementation of the `AIPEmailBuilderMiddlewareService` for the free version of the email builder.
- */
-class FreeIPEmailBuilderMiddlewareService extends AIPEmailBuilderMiddlewareService {
 }
 
