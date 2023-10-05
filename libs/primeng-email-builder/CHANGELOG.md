@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.4-beta.1](https://github.com/wanoo21/ngb.email/compare/primeng-email-builder-0.0.4-beta.0...primeng-email-builder-0.0.4-beta.1) (2023-10-05)
+
+
+
 ## [0.0.4-beta.0](https://github.com/wanoo21/ngb.email/compare/primeng-email-builder-0.0.3...primeng-email-builder-0.0.4-beta.0) (2023-10-05)
 
 
