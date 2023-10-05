@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.3](https://github.com/wanoo21/ngb.email/compare/material-email-builder-0.1.3-beta.3...material-email-builder-0.1.3) (2023-10-05)
+
+
+
 ## [0.1.3-beta.3](https://github.com/wanoo21/ngb.email/compare/material-email-builder-0.1.3-beta.2...material-email-builder-0.1.3-beta.3) (2023-10-05)
 
 
