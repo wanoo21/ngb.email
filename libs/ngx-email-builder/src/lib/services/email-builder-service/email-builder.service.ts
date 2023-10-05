@@ -14,12 +14,7 @@ import { IPEmail } from "../../body/body";
   providedIn: "root",
   useFactory: (factory: IPEmailBuilderConfig) => {
     const [useExisting] = factory.providers || [];
-    if (factory.isFreeVersion) {
-      if (useExisting) {
-        console.warn("It seems you try to rewrite AIPEmailBuilderService, but this is not allowed in free version.");
-      }
-      return new FreeIPEmailBuilderService();
-    } else if (!factory.isFreeVersion && useExisting) {
+    if (useExisting) {
       return inject(useExisting);
     }
     return new ProIPEmailBuilderService();
@@ -62,10 +57,4 @@ export abstract class AIPEmailBuilderService {
  * The ProIPEmailBuilderService is a concrete implementation of the AIPEmailBuilderService for the Pro version.
  */
 class ProIPEmailBuilderService extends AIPEmailBuilderService {
-}
-
-/**
- * The FreeIPEmailBuilderService is a concrete implementation of the AIPEmailBuilderService for the Free version.
- */
-class FreeIPEmailBuilderService extends AIPEmailBuilderService {
 }

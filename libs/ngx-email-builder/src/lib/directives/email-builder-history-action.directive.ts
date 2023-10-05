@@ -23,7 +23,8 @@ export class IPEmailBuilderHistoryActionDirective {
   constructor(
     readonly historyService: AIPEmailBuilderHistoryService,
     @Inject(IP_EMAIL_BUILDER_CONFIG) readonly factory: IPEmailBuilderConfig
-  ) {}
+  ) {
+  }
 
   private _enableKeybinding = true;
 
@@ -52,11 +53,11 @@ export class IPEmailBuilderHistoryActionDirective {
    * Binds 'undo' and 'redo' actions to 'Ctrl+Z', 'Ctrl+Y' & 'Ctrl+Shift+Z' hot keys.
    */
   @HostListener("document:keydown", ["$event"]) keyDown(e: KeyboardEvent) {
-    if (!this.factory.isFreeVersion && this._enableKeybinding) {
-      const Y = 89, Z = 90;
-      if (e.keyCode === Z && e.ctrlKey && !e.shiftKey && this.ipEmailBuilderHistoryAction === "undo") {
+    if (this._enableKeybinding) {
+      const Y = "y", Z = "z";
+      if (e.key === Z && e.ctrlKey && !e.shiftKey && this.ipEmailBuilderHistoryAction === "undo") {
         this.historyService.undo();
-      } else if ((e.keyCode === Z && e.ctrlKey && e.shiftKey || e.keyCode === Y && e.ctrlKey) && this.ipEmailBuilderHistoryAction === "redo") {
+      } else if ((e.key === Z && e.ctrlKey && e.shiftKey || e.key === Y && e.ctrlKey) && this.ipEmailBuilderHistoryAction === "redo") {
         this.historyService.redo();
       }
     }

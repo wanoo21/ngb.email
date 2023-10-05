@@ -65,7 +65,6 @@ export class TextBlock extends AIPEmailBuilderBlock<ITextBlockOptions> {
   }
 
   override toObject(options?: Partial<ITextBlockOptions>, innerText = this.innerText) {
-    console.log(innerText);
     return { ...super.toObject(options), innerText };
   }
 }

@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, ModuleWithProviders, NgModule } from "@angular/core";
+import { ModuleWithProviders, NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { PortalModule } from "@angular/cdk/portal";
 import { FormsModule } from "@angular/forms";
@@ -23,7 +23,6 @@ import { IpPreviewLinkPipe } from "./pipes/preview-link.pipe";
 import { IpCanPipe } from "./pipes/can.pipe";
 import { IIPEmailBuilderConfig } from "./public-tokens";
 import { withConfig } from "./tools/core";
-import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "./private-tokens";
 import { ColumnStylesPipe } from "./pipes/column-styles.pipe";
 import { IPEmailBuilderHistoryHostDirective } from "./directives/email-builder-history-host.directive";
 import { TemplateThumbPathPipe } from "./pipes/template-thumb-path.pipe";
@@ -96,19 +95,11 @@ import {
 })
 export class NgxEmailBuilderModule {
   static forRoot(
-    config?: IIPEmailBuilderConfig
+    config?: Partial<IIPEmailBuilderConfig>
   ): ModuleWithProviders<NgxEmailBuilderModule> {
     return {
       ngModule: NgxEmailBuilderModule,
       providers: [
-        {
-          provide: APP_INITIALIZER,
-          useFactory: (config: IPEmailBuilderConfig) => {
-            return () => config.fetchLicense();
-          },
-          deps: [IP_EMAIL_BUILDER_CONFIG],
-          multi: true
-        },
         ...withConfig(config)
       ]
     };

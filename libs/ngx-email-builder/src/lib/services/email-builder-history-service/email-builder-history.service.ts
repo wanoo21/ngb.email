@@ -17,12 +17,7 @@ import { IJSUndoManagerCommit, JSUndoManager } from "../../tools/undo-manager";
   providedIn: "root",
   useFactory: (factory: IPEmailBuilderConfig) => {
     const [, , , , useExisting] = factory.providers || [];
-    if (factory.isFreeVersion) {
-      if (useExisting) {
-        console.warn("It seems you try to rewrite AIPEmailBuilderHistoryService, but this is not allowed in free version.");
-      }
-      return new FreeEmailBuilderHistoryService();
-    } else if (!factory.isFreeVersion && useExisting) {
+    if (useExisting) {
       return inject(useExisting);
     }
     return new ProEmailBuilderHistoryService();
@@ -105,9 +100,5 @@ export abstract class AIPEmailBuilderHistoryService {
 /**
  * The service used to manage the undo/redo history of the builder for the Pro version.
  */
-class ProEmailBuilderHistoryService extends AIPEmailBuilderHistoryService {}
-
-/**
- * The service used to manage the undo/redo history of the builder for the Free version.
- */
-class FreeEmailBuilderHistoryService extends AIPEmailBuilderHistoryService {}
+class ProEmailBuilderHistoryService extends AIPEmailBuilderHistoryService {
+}
