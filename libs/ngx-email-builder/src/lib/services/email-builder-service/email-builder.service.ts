@@ -1,7 +1,5 @@
 import { inject, Injectable } from "@angular/core";
 import { lastValueFrom } from "rxjs";
-
-import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
 import { AIPEmailBuilderRestService } from "../email-builder-rest-service/email-builder-rest.service";
 import { IMjmlServerResponse } from "../../interfaces";
 import { IPEmail } from "../../body/body";
@@ -12,18 +10,21 @@ import { IPEmail } from "../../body/body";
  */
 @Injectable({
   providedIn: "root",
-  useFactory: (factory: IPEmailBuilderConfig) => {
-    const [useExisting] = factory.providers || [];
-    if (useExisting) {
-      return inject(useExisting);
-    }
-    return new ProIPEmailBuilderService();
-  },
-  deps: [IP_EMAIL_BUILDER_CONFIG]
+  useFactory: () => inject(DefaultIPEmailBuilderService)
 })
 export abstract class AIPEmailBuilderService {
+  readonly standardFonts: string[] = [];
+
+  abstract convert(value: IPEmail): Promise<IMjmlServerResponse>;
+}
+
+/**
+ * The ProIPEmailBuilderService is a concrete implementation of the AIPEmailBuilderService for the Pro version.
+ */
+@Injectable({ providedIn: "root" })
+export class DefaultIPEmailBuilderService implements AIPEmailBuilderService {
   readonly restService = inject(AIPEmailBuilderRestService);
-  standardFonts = [
+  readonly standardFonts = [
     "Palatino Linotype, Book Antiqua, Palatino, serif",
     "Times New Roman, Times, serif",
     "Arial, Helvetica, sans-serif",
@@ -49,12 +50,6 @@ export abstract class AIPEmailBuilderService {
    * ```
    */
   convert(value: IPEmail): Promise<IMjmlServerResponse> {
-    return lastValueFrom(this.restService.convert(value));
+    return lastValueFrom(this.restService.convert(value), { defaultValue: { mjml: "", html: "", errors: [] } });
   }
-}
-
-/**
- * The ProIPEmailBuilderService is a concrete implementation of the AIPEmailBuilderService for the Pro version.
- */
-class ProIPEmailBuilderService extends AIPEmailBuilderService {
 }
