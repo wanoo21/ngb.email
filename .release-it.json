@@ -44,7 +44,7 @@
     "releaseName": "Release ${version}"
   },
   "hooks": {
-    "before:bump": "pnpm exec nx affected build --base=main",
+    "before:bump": "pnpm exec nx affected -t build",
     "after:bump": ["git checkout -- package.json"]
   }
 }
