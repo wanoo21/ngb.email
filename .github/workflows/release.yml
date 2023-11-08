@@ -34,28 +34,15 @@ jobs:
       - name: Install all dependencies
         run: pnpm install
 
-  release:
-    name: Release
-    needs: check
-    if: github.ref_name == 'main'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Publish package
+      - name: Release
+        if: github.ref_name == 'main'
         run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-
-  pre-release:
-    name: Pre-release
-    needs: check
-    if: github.ref_name == 'beta'
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Publish package
+      - name: Pre Release
+        if: github.ref_name == 'beta'
         run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta
         env:
           GH_TOKEN: ${{ github.token }}
