@@ -29,8 +29,6 @@ jobs:
           scope: '@wlocalhost'
           always-auth: true
           cache: 'pnpm'
-          cache-dependencies: true
-          cache-key: '${{ runner.os }}-node-${{ hashFiles(\'/pnpm-lock.yaml\') }}'
 
       - name: Setup Git
         run: |
