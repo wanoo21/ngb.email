@@ -41,7 +41,7 @@ jobs:
         run: pnpm install
 
       - name: Release
-        if: github.ref_name == 'main'
+        if: github.event.inputs.BRANCH == 'main'
         shell: bash
         run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --base=origin/main~1 --head=origin/main
         env:
@@ -49,7 +49,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Pre Release
-        if: github.ref_name == 'beta'
+        if: github.event.inputs.BRANCH == 'beta'
         shell: bash
         run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta --base=origin/beta~1 --head=origin/beta
         env:
