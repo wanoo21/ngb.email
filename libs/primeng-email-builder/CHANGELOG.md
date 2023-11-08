@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.0.4](https://github.com/wanoo21/ngb.email/compare/primeng-email-builder-0.0.4-beta.1...primeng-email-builder-0.0.4) (2023-11-08)
+
+### Dependency Updates
+
+* `ngx-email-builder` updated to version `0.1.2`
+
+
 ## [0.0.4-beta.1](https://github.com/wanoo21/ngb.email/compare/primeng-email-builder-0.0.4-beta.0...primeng-email-builder-0.0.4-beta.1) (2023-10-05)
 
 

@@ -2,6 +2,13 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.4](https://github.com/wanoo21/ngb.email/compare/material-email-builder-0.1.3...material-email-builder-0.1.4) (2023-11-08)
+
+### Dependency Updates
+
+* `ngx-email-builder` updated to version `0.1.2`
+
+
 ## [0.1.3](https://github.com/wanoo21/ngb.email/compare/material-email-builder-0.1.3-beta.3...material-email-builder-0.1.3) (2023-10-05)
 
 

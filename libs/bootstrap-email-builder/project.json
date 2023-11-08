@@ -38,6 +38,12 @@
           "libs/bootstrap-email-builder/**/*.html"
         ]
       }
+    },
+    "version": {
+      "executor": "@jscutlery/semver:version",
+      "options": {
+        "preset": "angular"
+      }
     }
   },
   "tags": ["scope:bootstrap-email-builder", "type:lib"]

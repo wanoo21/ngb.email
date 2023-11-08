@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      BRANCH:
+        description: 'Branch to release'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - 'beta'
+          - 'main'
+
+jobs:
+  check:
+    name: Check release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@wlocalhost'
+          always-auth: true
+          cache: 'pnpm'
+      - name: Install all dependencies
+        run: pnpm install
+
+  release:
+    name: Release
+    needs: check
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Publish package
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
+  pre-release:
+    name: Pre-release
+    needs: check
+    if: github.ref_name == 'beta'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Publish package
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta
+        env:
+          GH_TOKEN: ${{ github.token }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
