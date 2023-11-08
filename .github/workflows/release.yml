@@ -50,7 +50,7 @@ jobs:
       - name: Pre Release
         if: github.ref_name == 'beta'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta --base=beta --head=main
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
