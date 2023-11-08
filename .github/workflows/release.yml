@@ -18,9 +18,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          fetch-depth: 0
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -31,18 +29,21 @@ jobs:
           scope: '@wlocalhost'
           always-auth: true
           cache: 'pnpm'
+          cache-dependencies: true
+          cache-key: '${{ runner.os }}-node-${{ hashFiles(\'/pnpm-lock.yaml\') }}'
+
       - name: Setup Git
         run: |
             git config user.name "GitHub Bot"
             git config user.email "support@wlocalhost.org"
-            git branch -a
+
       - name: Install all dependencies
         run: pnpm install
 
       - name: Release
         if: github.ref_name == 'main'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --base=main~1 --head=main
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --base=origin/main~1 --head=origin/main
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -50,7 +51,7 @@ jobs:
       - name: Pre Release
         if: github.ref_name == 'beta'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta --base=beta --head=main
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta --base=origin/beta --head=origin/main
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
