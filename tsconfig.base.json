@@ -30,8 +30,7 @@
       ],
       "@wlocalhost/ngx-tailwind-email-builder": [
         "libs/tailwind-email-builder/src/index.ts"
-      ],
-      "@wlocalhost/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]

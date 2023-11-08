@@ -1,7 +1,0 @@
-{
-  "$schema": "https://json-schema.org/schema",
-  "cli": "nx",
-  "$id": "wl",
-  "type": "object",
-  "required": []
-}

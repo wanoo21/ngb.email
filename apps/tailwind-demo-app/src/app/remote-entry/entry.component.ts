@@ -5,7 +5,10 @@ import { IPEmail, Structure, TextBlock } from "@wlocalhost/ngx-email-builder";
 @Component({
   standalone: true,
   selector: "wlocalhost-tailwind-demo-app-entry",
-  imports: [TailwindEmailBuilderModule],
+  imports: [
+    TailwindEmailBuilderModule
+  ],
+  providers: [],
   template: `
     <tail-email-builder [(value)]="email"></tail-email-builder>
   `
