@@ -19,7 +19,6 @@ jobs:
       init-commands: |
         NX_VERBOSE_LOGGING=true pnpm exec nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
 
-
       parallel-commands: |
         pnpm exec nx-cloud record -- pnpm exec nx format:check
       parallel-commands-on-agents: |
