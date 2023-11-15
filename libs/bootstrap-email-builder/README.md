@@ -28,7 +28,6 @@ import { BootstrapEmailBuilderModule } from "@wlocalhost/ngx-bootstrap-email-bui
 @NgModule({
   imports: [
     BootstrapEmailBuilderModule.forRoot({
-      licenseKey: "your-license-key", // use your own license key for paid versions
       convertorPath: "https://your-custom-path.com", // use your own converter
       historyRecordLimit: 10 // save 10 history records
     })
