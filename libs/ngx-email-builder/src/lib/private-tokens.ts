@@ -10,8 +10,7 @@ export class IPEmailBuilderConfig {
     socialIconsPath: "https://www.mailjet.com/images/theme/v1/icons/ico-social",
     convertorPath: "https://ngb-api.wlocalhost.org/v1",
     templatesThumbsPath: "https://ngb-templates.s3.amazonaws.com",
-    historyRecordLimit: 10,
-    providers: []
+    historyRecordLimit: 10
   };
 
   constructor(config?: Partial<IIPEmailBuilderConfig>) {
@@ -40,10 +39,6 @@ export class IPEmailBuilderConfig {
 
   get convertorPath(): string {
     return this.defConfig.convertorPath;
-  }
-
-  get providers(): IIPEmailBuilderConfig["providers"] {
-    return this.defConfig.providers;
   }
 }
 

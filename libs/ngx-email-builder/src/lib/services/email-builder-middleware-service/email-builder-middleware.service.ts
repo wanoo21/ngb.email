@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 
-import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
+import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_CONFIG } from "../../private-tokens";
 import { IStructure } from "../../structure/structure";
 import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
 import { IUserTemplateCategory } from "../../interfaces";
@@ -16,16 +16,36 @@ export type middlewareEmailActions = "preview" | "save";
  */
 @Injectable({
   providedIn: "root",
-  useFactory: (factory: IPEmailBuilderConfig) => {
-    const [, , useExisting] = factory.providers || [];
-    if (useExisting) {
-      return inject(useExisting);
-    }
-    return new ProIPEmailBuilderMiddlewareService();
-  },
-  deps: [IP_EMAIL_BUILDER_CONFIG]
+  useFactory: () => inject(DefaultIPEmailBuilderMiddlewareService)
 })
 export abstract class AIPEmailBuilderMiddlewareService {
+  abstract blocksList(blocks: IIPEmailBuilderBlockData[]): Observable<IIPEmailBuilderBlockData[]>;
+
+  abstract structuresList(structures: IStructure[]): Observable<IStructure[]>;
+
+  abstract categoryList(categories: IUserTemplateCategory[]): Observable<IUserTemplateCategory[]>;
+
+  abstract categoryTemplates(category: IUserTemplateCategory): Observable<IUserTemplateCategory["templates"]>;
+
+  abstract templateThumbnail(category: IUserTemplateCategory, template: string): string;
+
+  abstract delete(entity: IStructure | AIPEmailBuilderBlockExtendedOptions): Promise<boolean>;
+
+  abstract alert(message: string): void;
+
+  abstract confirm(message: string): Promise<boolean>;
+
+  abstract can(action: middlewareBlockActions, entity: AIPEmailBuilderBlockExtendedOptions): boolean
+  abstract can(action: middlewareStructureActions, entity: IStructure): boolean
+  abstract can(action: middlewareEmailActions, entity: IPEmail): boolean
+  abstract can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean
+}
+
+/**
+ * An implementation of the `AIPEmailBuilderMiddlewareService` for the Pro version of the email builder.
+ */
+@Injectable({ providedIn: "root" })
+export class DefaultIPEmailBuilderMiddlewareService implements AIPEmailBuilderMiddlewareService {
   /**
    * The path to the templates thumbnails.
    * @type {string}
@@ -127,11 +147,5 @@ export abstract class AIPEmailBuilderMiddlewareService {
   can(action: middlewareStructureActions | middlewareBlockActions | middlewareEmailActions, entity: AIPEmailBuilderBlockExtendedOptions | IStructure | IPEmail): boolean {
     return true;
   }
-}
-
-/**
- * An implementation of the `AIPEmailBuilderMiddlewareService` for the Pro version of the email builder.
- */
-class ProIPEmailBuilderMiddlewareService extends AIPEmailBuilderMiddlewareService {
 }
 

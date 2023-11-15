@@ -4,9 +4,9 @@
 
 import { inject, Injectable } from "@angular/core";
 import { rdiffResult } from "recursive-diff";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
-import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
+import { IP_EMAIL_BUILDER_CONFIG } from "../../private-tokens";
 import { IJSUndoManagerCommit, JSUndoManager } from "../../tools/undo-manager";
 
 /**
@@ -15,16 +15,28 @@ import { IJSUndoManagerCommit, JSUndoManager } from "../../tools/undo-manager";
  */
 @Injectable({
   providedIn: "root",
-  useFactory: (factory: IPEmailBuilderConfig) => {
-    const [, , , , useExisting] = factory.providers || [];
-    if (useExisting) {
-      return inject(useExisting);
-    }
-    return new ProEmailBuilderHistoryService();
-  },
-  deps: [IP_EMAIL_BUILDER_CONFIG]
+  useFactory: () => inject(DefaultEmailBuilderHistoryService)
 })
 export abstract class AIPEmailBuilderHistoryService {
+  abstract readonly commitPush$: Observable<IJSUndoManagerCommit>;
+  abstract readonly hasUndo: boolean;
+  abstract readonly hasRedo: boolean;
+  abstract readonly hasChanges: boolean;
+
+  abstract addHistory(id: string, diff: rdiffResult[], dirty?: boolean): void;
+
+  abstract redo(): void;
+
+  abstract undo(): void;
+
+  abstract clear(): void;
+}
+
+/**
+ * The service used to manage the undo/redo history of the builder for the Pro version.
+ */
+@Injectable({ providedIn: "root" })
+export class DefaultEmailBuilderHistoryService implements AIPEmailBuilderHistoryService {
   /**
    * The configuration object for the email builder.
    */
@@ -95,10 +107,4 @@ export abstract class AIPEmailBuilderHistoryService {
   clear(): void {
     this.#manager.reset();
   }
-}
-
-/**
- * The service used to manage the undo/redo history of the builder for the Pro version.
- */
-class ProEmailBuilderHistoryService extends AIPEmailBuilderHistoryService {
 }

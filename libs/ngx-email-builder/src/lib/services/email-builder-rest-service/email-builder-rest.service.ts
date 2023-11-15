@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Observable, tap } from "rxjs";
 
-import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../../private-tokens";
+import { IP_EMAIL_BUILDER_CONFIG } from "../../private-tokens";
 import { IIPEmail, IPEmail } from "../../body/body";
 import { IMjmlServerResponse, IUserTemplateCategory } from "../../interfaces";
 import { AIPEmailBuilderHistoryService } from "../email-builder-history-service/email-builder-history.service";
@@ -12,18 +12,35 @@ import { AIPEmailBuilderHistoryService } from "../email-builder-history-service/
  */
 @Injectable({
   providedIn: "root",
-  useFactory: (factory: IPEmailBuilderConfig) => {
-    const [, , , useExisting] = factory.providers || [];
-    if (useExisting) {
-      return inject(useExisting);
-    }
-    return new ProIPEmailBuilderRestService();
-  },
-  deps: [IP_EMAIL_BUILDER_CONFIG]
+  useFactory: () => inject(DefaultIPEmailBuilderRestService)
 })
 export abstract class AIPEmailBuilderRestService {
   /**
-   * Injected HTTP client.
+   * Converts the given email to MJML.
+   *
+   * @param email The email to be converted.
+   */
+  abstract convert(email: IPEmail): Observable<IMjmlServerResponse>;
+
+  /**
+   * Gets the categories of email templates.
+   */
+  abstract tmplCategories$(): Observable<IUserTemplateCategory[]>;
+
+  /**
+   * Gets the email template.
+   */
+  abstract tmplCategories$(): Observable<IUserTemplateCategory[]>;
+  abstract tmplCategories$(category?: string, template?: string): Observable<IIPEmail>;
+}
+
+/**
+ * A concrete implementation of AIPEmailBuilderRestService for the Pro version.
+ */
+@Injectable({ providedIn: "root" })
+export class DefaultIPEmailBuilderRestService implements AIPEmailBuilderRestService {
+  /**
+   * Injected an HTTP client.
    */
   readonly http = inject(HttpClient);
 
@@ -37,12 +54,6 @@ export abstract class AIPEmailBuilderRestService {
    */
   readonly #convertorPath = inject(IP_EMAIL_BUILDER_CONFIG).convertorPath;
 
-  /**
-   * Converts the given email to MJML.
-   *
-   * @param email The email to be converted.
-   * @returns An observable that resolves to the server's response.
-   */
   convert(email: IPEmail): Observable<IMjmlServerResponse> {
     return this.http.post<IMjmlServerResponse>(this.#convertorPath, email).pipe(
       tap(() => {
@@ -52,22 +63,9 @@ export abstract class AIPEmailBuilderRestService {
     );
   }
 
-  /**
-   * Gets the categories of email templates.
-   *
-   * @returns An observable that resolves to the list of categories.
-   */
+
   tmplCategories$(): Observable<IUserTemplateCategory[]>;
-
-  /**
-   * Gets the email template.
-   *
-   * @param category The category of the template.
-   * @param template The name of the template.
-   * @returns An observable that resolves to the email template.
-   */
   tmplCategories$(category?: string, template?: string): Observable<IIPEmail>;
-
   tmplCategories$(category?: string, template?: string): Observable<IIPEmail | IUserTemplateCategory[]> {
     let params = {};
     if (category && template) {
@@ -75,10 +73,4 @@ export abstract class AIPEmailBuilderRestService {
     }
     return this.http.get<IIPEmail | IUserTemplateCategory[]>(`${this.#convertorPath}/templates`, { params });
   }
-}
-
-/**
- * A concrete implementation of AIPEmailBuilderRestService for the Pro version.
- */
-class ProIPEmailBuilderRestService extends AIPEmailBuilderRestService {
 }

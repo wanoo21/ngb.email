@@ -1,50 +1,52 @@
 name: Release
 
 on:
-  - workflow_dispatch
+  workflow_dispatch:
+    inputs:
+      BRANCH:
+        description: 'Branch to release'
+        required: true
+        default: 'beta'
+        type: choice
+        options:
+          - 'beta'
+          - 'main'
 
 jobs:
-  release:
-    name: Release
+  check:
+    name: Check release
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - uses: actions/setup-node@v3
+      - uses: pnpm/action-setup@v2
         with:
-          node-version: '16.x'
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
           scope: '@wlocalhost'
           always-auth: true
+          cache: 'pnpm'
 
-      - name: Setup Git
-        run: |
-          git config user.name "GitHub Bot"
-          git config user.email "support@wlocalhost.org"
-          git branch -a
+      - name: Install all dependencies
+        run: pnpm install
 
-      - name: Install deps
-        run: |
-          npm ci
-
-      - name: Prerelease
-        if: github.ref_name == 'beta'
+      - name: Release
+        if: github.event.inputs.BRANCH == 'main'
         shell: bash
-        run: |
-          npm whoami
-          npx nx run-many --all --base=beta --baseBranch=beta --exclude=bootstrap-email-builder --target=version --releaseAs=prerelease --preid=beta --trackDeps --push --skipCommit
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --base=origin/main~1
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Release
-        if: github.ref_name == 'main'
+      - name: Pre Release
+        if: github.event.inputs.BRANCH == 'beta'
         shell: bash
-        run: |
-          npm whoami
-          npx nx run-many --all --base=main --exclude=bootstrap-email-builder --target=version --trackDeps --push --skipCommit
+        run: pnpm nx affected -t version --trackDeps --push --skipCommit --dryRun --preid=beta --base=origin/beta
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

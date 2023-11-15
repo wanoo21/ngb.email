@@ -6,22 +6,29 @@ on:
       - main
   pull_request:
 
+env:
+  NX_VERBOSE_LOGGING: true
+
 jobs:
   main:
     name: Nx Cloud - Main Job
-    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.5
+    uses: nrwl/ci/.github/workflows/nx-cloud-main.yml@v0.13.0
     with:
+      main-branch-name: main
       number-of-agents: 3
+      init-commands: |
+        NX_VERBOSE_LOGGING=true pnpm exec nx-cloud start-ci-run --stop-agents-after="build" --agent-count=3
+
       parallel-commands: |
-        npx nx-cloud record -- npx nx workspace-lint
-        npx nx-cloud record -- npx nx format:check
+        pnpm exec nx-cloud record -- pnpm exec nx format:check
       parallel-commands-on-agents: |
-        npx nx affected --target=lint --parallel=3
-        npx nx affected --target=test --parallel=3 --ci --code-coverage
-        npx nx affected --target=build --parallel=3
+        pnpm exec nx affected --target=lint --parallel=3
+        pnpm exec nx affected --target=test --parallel=3 --ci --code-coverage
+        # pnpm exec nx affected --target=e2e --parallel=3 --ci
+        pnpm exec nx affected --target=build --parallel=3 --exclude="*-demo-app"
 
   agents:
     name: Nx Cloud - Agents
-    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.5
+    uses: nrwl/ci/.github/workflows/nx-cloud-agents.yml@v0.13.0
     with:
       number-of-agents: 3

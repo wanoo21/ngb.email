@@ -108,6 +108,5 @@ export class IPEmailBuilderUiService {
   portalOutletHasAttached(): boolean {
     return !!this.#settingsPortalOutlet?.hasAttached();
   }
-
 }
 
