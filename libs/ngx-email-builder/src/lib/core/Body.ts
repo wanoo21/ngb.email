@@ -43,6 +43,17 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPVa
   }
 
   /**
+   * Get the direction label by direction key.
+   *
+   * @param dir The direction key
+   * @returns The direction label
+   */
+  getDirectionLabel(dir: TDirection): string {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    return this.#directionLabels.get(dir)!;
+  }
+
+  /**
    * Get the host styles binding.
    *
    * @returns The host styles binding
@@ -68,17 +79,6 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPVa
   @HostBinding("attr.dir")
   get dir(): string {
     return this.value.general.direction;
-  }
-
-  /**
-   * Get the direction label by direction key.
-   *
-   * @param dir The direction key
-   * @returns The direction label
-   */
-  getDirectionLabel(dir: TDirection): string {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return this.#directionLabels.get(dir)!;
   }
 
   /**
