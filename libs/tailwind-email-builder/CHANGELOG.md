@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.9](https://github.com/wanoo21/ngb.email/compare/tailwind-email-builder-0.1.8...tailwind-email-builder-0.1.9) (2023-12-18)
+
+
+
 # 0.1.0 (2023-12-18)
 
 
