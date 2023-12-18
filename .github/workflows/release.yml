@@ -43,7 +43,7 @@ jobs:
       - name: Release
         if: github.event.inputs.BRANCH == 'main'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --skipCommit --base=origin/main~1
+        run: pnpm nx affected -t version --trackDeps --push --base=origin/main~1 --syncVersions --exclude='*-demo-app'
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -51,7 +51,7 @@ jobs:
       - name: Pre Release
         if: github.event.inputs.BRANCH == 'beta'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --skipCommit --preid=beta --base=origin/beta
+        run: pnpm nx affected -t version --trackDeps --push --preid=beta --base=origin/beta --syncVersions --exclude='*-demo-app'
         env:
           GH_TOKEN: ${{ github.token }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
