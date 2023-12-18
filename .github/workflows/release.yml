@@ -32,6 +32,11 @@ jobs:
           always-auth: true
           cache: 'pnpm'
 
+      - name: Set git user
+        run: |
+          git config --global user.email "noreply@ngb.email"
+          git config --global user.name "NGB Email Release Bot"
+
       - name: Install all dependencies
         run: pnpm install
 
