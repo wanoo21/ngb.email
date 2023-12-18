@@ -2,6 +2,10 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+## [0.1.4](https://github.com/wanoo21/ngb.email/compare/ngx-email-builder-0.1.3...ngx-email-builder-0.1.4) (2023-12-18)
+
+
+
 ## [0.1.2](https://github.com/wanoo21/ngb.email/compare/ngx-email-builder-0.1.1...ngx-email-builder-0.1.2) (2023-11-08)
 
 
