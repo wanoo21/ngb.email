@@ -5,8 +5,6 @@ import { FormsModule } from "@angular/forms";
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { NgxEditorModule } from "ngx-editor";
 
-import "@angular/localize/init";
-
 import { IPEmailBuilderDynamicDirective } from "./directives/email-builder-dynamic.directive";
 import { IPEmailBuilderSettingsDirective } from "./directives/email-builder-settings.directive";
 import { IPEmailBuilderStructuresDirective } from "./directives/email-builder-structures.directive";

@@ -17,18 +17,6 @@ It is designed to be easy to use, with a focus on flexibility and customization.
 - **Open source** - Free and open source.
 - **MIT License** - Free for personal and commercial use.
 
-## Theme Installation
-
-Installation depends on what theme you want to use. Go to the theme folder and follow the instructions.
-
-- Instructions for [Bootstrap Theme.](/libs/bootstrap-email-builder/README.md)
-- Instructions for [TailwindCSS Theme.](/libs/tailwind-email-builder/README.md)
-- Instructions for [Material Theme.](/libs/material-email-builder/README.md)
-- Instructions for [Bulma Theme.](/libs/bulma-email-builder/README.md)
-- Instructions for [PrimeNG Theme.](/libs/primeng-email-builder/README.md)
-
-To create your own theme, follow the instructions from one of the themes above.
-
 ## Contributing
 
 Contributions are welcome, feel free to submit a pull request.

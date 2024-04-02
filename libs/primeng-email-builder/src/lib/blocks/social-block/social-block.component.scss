@@ -1,9 +1,0 @@
-@import 'primeflex/primeflex.scss';
-
-:host {
-  display: block;
-
-  .network {
-    @include styleclass('flex align-items-center');
-  }
-}
