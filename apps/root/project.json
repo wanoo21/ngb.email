@@ -21,9 +21,7 @@
         "scripts": [],
         "server": "apps/root/src/main.server.ts",
         "prerender": false,
-        "ssr": {
-          "entry": "apps/root/server.ts"
-        }
+        "ssr": false
       },
       "configurations": {
         "production": {
