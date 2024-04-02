@@ -1,9 +1,0 @@
-<div class="d-flex ">
-  <div class="d-flex flex-column w-75">
-    <label [btLabel]="i" i18n="@@image_source">Image source</label>
-    <input type="url" #i="input" btInput [(ngModel)]="value" placeholder="https://...">
-  </div>
-  <div class="w-25 rounded border overflow-hidden bg-white ms-2">
-    <img [src]="i.el.value" alt="" class="w-100 h-100 object-fit-cover" *ngIf="i.el.value.length">
-  </div>
-</div>

@@ -10,6 +10,7 @@ import { CdkStepperModule } from "@angular/cdk/stepper";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { TextFieldModule } from "@angular/cdk/text-field";
 import { ReactiveFormsModule } from "@angular/forms";
+import { NgxEditorModule } from 'ngx-editor';
 
 import { TailEmailBuilderComponent } from "./ip-email-builder/tail-email-builder.component";
 import { StructureComponent } from "./structure/structure.component";
@@ -39,9 +40,6 @@ import { AlignComponent } from "./settings/align/align.component";
 import { WidthHeightComponent } from "./settings/width-height/width-height.component";
 import { TemplateListComponent } from "./template-list/template-list.component";
 import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
-import { NgxEditorModule } from 'ngx-editor';
-
-
 
 @NgModule({
   imports: [
@@ -52,7 +50,7 @@ import { NgxEditorModule } from 'ngx-editor';
     DragDropModule,
     TextFieldModule,
     ReactiveFormsModule,
-    [NgxEditorModule]
+    NgxEditorModule
   ],
   declarations: [
     TailEmailBuilderComponent,
@@ -94,7 +92,7 @@ import { NgxEditorModule } from 'ngx-editor';
     ...addDefaultBlock(SocialBlockComponent, $localize`:@@block_social_title:Social`),
     ...addDefaultBlock(SpacerBlockComponent, $localize`:@@block_spacer_title:Spacer`),
     ...addDefaultBlock(NavigationBlockComponent, $localize`:@@block_navigation_title:Navigation`),
-    ...addDefaultBlock(HtmlBlockComponent, $localize`:block_html_title: Html`)
+    ...addDefaultBlock(HtmlBlockComponent, $localize`:@@block_html_title:Html`)
   ]
 })
 export class TailwindEmailBuilderModule {

@@ -9,8 +9,7 @@
       "executor": "@nx/angular:package",
       "outputs": ["{workspaceRoot}/dist/libs/tailwind-email-builder"],
       "options": {
-        "project": "libs/tailwind-email-builder/ng-package.json",
-        "updateBuildableProjectDepsInPackageJson": true
+        "project": "libs/tailwind-email-builder/ng-package.json"
       },
       "configurations": {
         "production": {
