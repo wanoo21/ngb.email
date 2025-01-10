@@ -10,13 +10,12 @@ import { CdkStepperModule } from "@angular/cdk/stepper";
 import { DragDropModule } from "@angular/cdk/drag-drop";
 import { TextFieldModule } from "@angular/cdk/text-field";
 import { ReactiveFormsModule } from "@angular/forms";
-import { NgxEditorModule } from 'ngx-editor';
 
 import { TailEmailBuilderComponent } from "./ip-email-builder/tail-email-builder.component";
 import { StructureComponent } from "./structure/structure.component";
 import { EmailBodyComponent } from "./email-body/email-body.component";
 import { EmailAsideComponent } from "./email-aside/email-aside.component";
-import { IpFormUIModule } from "./directives/form/form-input.directive";
+
 import { TooltipComponent, TooltipDirective } from "./directives/tooltip/tooltip.directive";
 import { BackgroundComponent } from "./settings/background/background.component";
 import { ColorComponent } from "./settings/color/color.component";
@@ -42,58 +41,54 @@ import { TemplateListComponent } from "./template-list/template-list.component";
 import { HtmlBlockComponent } from './blocks/html-block/html-block.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    NgxEmailBuilderModule,
-    IpFormUIModule,
-    CdkStepperModule,
-    DragDropModule,
-    TextFieldModule,
-    ReactiveFormsModule,
-    NgxEditorModule
-  ],
-  declarations: [
-    TailEmailBuilderComponent,
-    StructureComponent,
-    EmailBodyComponent,
-    EmailAsideComponent,
-    TooltipDirective,
-    TooltipComponent,
-    BackgroundComponent,
-    ColorComponent,
-    ImageUploadComponent,
-    BorderComponent,
-    PaddingComponent,
-    MarginComponent,
-    TextBlockComponent,
-    ButtonBlockComponent,
-    DividerBlockComponent,
-    ImageBlockComponent,
-    SocialBlockComponent,
-    SpacerBlockComponent,
-    NavigationBlockComponent,
-    FontComponent,
-    LineHeightComponent,
-    LinkComponent,
-    AlignComponent,
-    WidthHeightComponent,
-    TemplateListComponent,
-    HtmlBlockComponent
-  ],
-  exports: [
-    TailEmailBuilderComponent
-    // NgxEmailBuilderModule,
-  ],
-  providers: [
-    ...addDefaultBlock(TextBlockComponent, $localize`:@@block_text_title:Text`),
-    ...addDefaultBlock(ButtonBlockComponent, $localize`:@@block_button_title:Button`),
-    ...addDefaultBlock(ImageBlockComponent, $localize`:@@block_image_title:Image`),
-    ...addDefaultBlock(DividerBlockComponent, $localize`:@@block_divider_title:Divider`),
-    ...addDefaultBlock(SocialBlockComponent, $localize`:@@block_social_title:Social`),
-    ...addDefaultBlock(SpacerBlockComponent, $localize`:@@block_spacer_title:Spacer`),
-    ...addDefaultBlock(NavigationBlockComponent, $localize`:@@block_navigation_title:Navigation`),
-    ...addDefaultBlock(HtmlBlockComponent, $localize`:@@block_html_title:Html`)
-  ]
+    imports: [
+        CommonModule,
+        NgxEmailBuilderModule,
+        CdkStepperModule,
+        DragDropModule,
+        TextFieldModule,
+        ReactiveFormsModule,
+        TailEmailBuilderComponent,
+        StructureComponent,
+        EmailBodyComponent,
+        EmailAsideComponent,
+        TooltipDirective,
+        TooltipComponent,
+        BackgroundComponent,
+        ColorComponent,
+        ImageUploadComponent,
+        BorderComponent,
+        PaddingComponent,
+        MarginComponent,
+        TextBlockComponent,
+        ButtonBlockComponent,
+        DividerBlockComponent,
+        ImageBlockComponent,
+        SocialBlockComponent,
+        SpacerBlockComponent,
+        NavigationBlockComponent,
+        FontComponent,
+        LineHeightComponent,
+        LinkComponent,
+        AlignComponent,
+        WidthHeightComponent,
+        TemplateListComponent,
+        HtmlBlockComponent,
+    ],
+    exports: [
+        TailEmailBuilderComponent
+        // NgxEmailBuilderModule,
+    ],
+    providers: [
+        ...addDefaultBlock(TextBlockComponent, $localize `:@@block_text_title:Text`),
+        ...addDefaultBlock(ButtonBlockComponent, $localize `:@@block_button_title:Button`),
+        ...addDefaultBlock(ImageBlockComponent, $localize `:@@block_image_title:Image`),
+        ...addDefaultBlock(DividerBlockComponent, $localize `:@@block_divider_title:Divider`),
+        ...addDefaultBlock(SocialBlockComponent, $localize `:@@block_social_title:Social`),
+        ...addDefaultBlock(SpacerBlockComponent, $localize `:@@block_spacer_title:Spacer`),
+        ...addDefaultBlock(NavigationBlockComponent, $localize `:@@block_navigation_title:Navigation`),
+        ...addDefaultBlock(HtmlBlockComponent, $localize `:@@block_html_title:Html`)
+    ]
 })
 export class TailwindEmailBuilderModule {
   static forRoot(

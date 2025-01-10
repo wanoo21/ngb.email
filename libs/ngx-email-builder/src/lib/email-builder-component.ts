@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostListener, inject, Input, Output } from "@angular/core";
+import { Directive, HostListener, inject, Input, output } from "@angular/core";
 import { BehaviorSubject, map } from "rxjs";
 import { Directionality } from "@angular/cdk/bidi";
 import { getDiff } from "recursive-diff";
@@ -22,11 +22,11 @@ export abstract class AIPEmailBuilderComponent {
   /**
    * Event emitter for when the IPEmail object changes.
    */
-  @Output() valueChange = new EventEmitter<IPEmail>();
+  readonly valueChange = output<IPEmail>();
   /**
    * Event emitter for after the IPEmail object is saved.
    */
-  @Output() afterSave = new EventEmitter<IMjmlServerResponse>();
+  readonly afterSave = output<IMjmlServerResponse>();
   /**
    * History service for tracking changes made to the IPEmail object.
    */
@@ -86,12 +86,14 @@ export abstract class AIPEmailBuilderComponent {
     return this._value;
   }
 
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input()
   set value(value: IPEmail) {
     const diff = getDiff(this._value, value);
     this._value = value;
     if (diff.length) {
-      this.valueChange.next(value);
+      this.valueChange.emit(value);
     }
   }
 
@@ -105,7 +107,7 @@ export abstract class AIPEmailBuilderComponent {
       this.middlewareService.alert($localize`:@@convert_empty_body:Add some structures before save.`);
     } else {
       const res = await this.emailBuilderService.convert(this.value);
-      this.afterSave.next(res);
+      this.afterSave.emit(res);
     }
   }
 

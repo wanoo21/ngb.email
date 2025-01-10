@@ -16,10 +16,12 @@ import { cloneDeep } from "../tools/utils";
   exportAs: "ipColumn"
 })
 export class IPEmailBuilderColumnDirective extends AbstractEmailBuilderDropList implements DoCheck {
-  data!: any[];
+  data!: unknown[];
   /**
    * An array of block data.
    */
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input() set ipEmailBuilderColumn(blocks: AIPEmailBuilderBlockExtendedOptions[]) {
     this.data = blocks;
   }

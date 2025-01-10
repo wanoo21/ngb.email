@@ -24,6 +24,8 @@ export class IPEmailBuilderStructuresDirective extends AbstractEmailBuilderDropL
   /**
    * The list of structures to be connected to the drop list.
    */
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input() set ipEmailBuilderStructures(structures: IStructure[]) {
     this.data = structures;
   }

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Directive, DoCheck, HostBinding, inject, OnDestroy, ViewChild } from "@angular/core";
+import { ChangeDetectorRef, Directive, DoCheck, HostBinding, inject, OnDestroy, viewChild } from "@angular/core";
 import { Subject } from "rxjs";
 
 import { AIPEmailBuilderHistoryService, IPEmailBuilderUiService } from "../services";
@@ -16,13 +16,12 @@ export abstract class WithSettings implements DoCheck, OnDestroy {
   readonly historyService = inject(AIPEmailBuilderHistoryService);
   readonly changeDetectorRef = inject(ChangeDetectorRef);
   // Settings portal is used to attach the settings component to the builder.
-  @ViewChild(IPEmailBuilderSettingsDirective, { static: true })
-  readonly settingsPortal!: IPEmailBuilderSettingsDirective;
+  readonly settingsPortal = viewChild.required(IPEmailBuilderSettingsDirective);
   readonly destroyed = new Subject();
 
   @HostBinding("class.is-editing")
   get isCurrentlyEditing(): boolean {
-    return !!this.settingsPortal?.isAttached;
+    return !!this.settingsPortal()?.isAttached;
   }
 
   /**
@@ -36,7 +35,7 @@ export abstract class WithSettings implements DoCheck, OnDestroy {
    * Attaches the settings portal to the builder.
    */
   edit(): void {
-    this.builderUiService.attachSettingsPortal(this.settingsPortal);
+    this.builderUiService.attachSettingsPortal(this.settingsPortal());
   }
 
   /**

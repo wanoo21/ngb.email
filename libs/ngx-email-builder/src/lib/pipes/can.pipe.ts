@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform, inject } from "@angular/core";
 
 import { IPEmail } from "../body/body";
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
@@ -19,12 +19,17 @@ import { IStructure } from "../structure/structure";
   name: "ipCan"
 })
 export class IpCanPipe implements PipeTransform {
+  readonly middleware = inject(AIPEmailBuilderMiddlewareService);
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
 
   /**
    * Constructor for IpCanPipe.
    * @param middleware - the email builder middleware service to check user permission
    */
-  constructor(readonly middleware: AIPEmailBuilderMiddlewareService) {
+  constructor() {
   }
 
   /**

@@ -1,27 +1,31 @@
-<ng-container [ngSwitch]="contentPart$ | async">
-  <div cdkDropList [ipEmailBuilderStructures]="value.structures" *ngSwitchDefault>
-    <ng-container *ngIf="value.structures.length; else emptyBody">
-      <ng-container *ngFor="let structure of value.structures">
-        <tail-structure (clone)="duplicateStructure($event)"
-                        (delete)="deleteStructure($event)" [value]="structure"
-                        [bodyWidth]="value.general.width" class="group relative" cdkDrag></tail-structure>
-      </ng-container>
-    </ng-container>
-  </div>
-  <tail-template-list *ngSwitchCase="'templates'" class="w-1/2 h-full"
-                      (selected)="changeValue($event)"></tail-template-list>
-</ng-container>
 
-<ng-template #emptyBody>
-  <div class="bg-white rounded border-1" [style.width.px]="value.general.width.value">
-    <div class="empty-message flex flex-col p-2 gap-10 justify-center items-center h-72">
-      <p class="text-base text-gray-500" i18n="@@empty_body_message">
+@switch (contentPart$ | async) {
+  @default {
+    <div cdkDropList [ipEmailBuilderStructures]="value.structures">
+      @if (value.structures.length) {
+        @for (structure of value.structures; track structure) {
+          <tail-structure (clone)="duplicateStructure($event)"
+            (delete)="deleteStructure($event)" [value]="structure"
+          [bodyWidth]="value.general.width" class="group relative" cdkDrag></tail-structure>
+        }
+      } @else {
+        <div class="bg-white rounded border-1" [style.width.px]="value.general.width.value">
+          <div class="empty-message flex flex-col p-2 gap-10 justify-center items-center h-72">
+            <p class="text-base text-gray-500" i18n="@@empty_body_message">
         Start by Drag and Drop some structures or select a template from list.
       </p>
-      <button tailBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+            <button tailBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+          </div>
+        </div>
+      }
     </div>
-  </div>
-</ng-template>
+  }
+  @case ('templates') {
+    <tail-template-list class="w-1/2 h-full"
+    (selected)="changeValue($event)"></tail-template-list>
+  }
+}
+
 
 <ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
   <div tailPanel class="mt-4">
@@ -32,7 +36,7 @@
     <div class="flex flex-col mt-2">
       <label [tailLabel]="t" i18n="@@template_preview_text">Preview text</label>
       <textarea tailInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2" ipHistoryModel
-                [(ngModel)]="value.general.previewText"></textarea>
+      [(ngModel)]="value.general.previewText"></textarea>
       <p tailHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
     </div>
   </div>
@@ -49,9 +53,11 @@
     <div class="flex flex-col mt-2">
       <label [tailLabel]="s" i18n="@@direction">Direction</label>
       <select tailInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
-        <option *ngFor="let dir of directionKeys" [value]="dir">
-          {{getDirectionLabel(dir)}}
-        </option>
+        @for (dir of directionKeys; track dir) {
+          <option [value]="dir">
+            {{getDirectionLabel(dir)}}
+          </option>
+        }
       </select>
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from "@angular/core";
+import { Directive, HostBinding, HostListener, Input, OnInit, output } from "@angular/core";
 import { BehaviorSubject, filter, takeUntil } from "rxjs";
 import { applyDiff } from "recursive-diff";
 
@@ -15,8 +15,10 @@ import { IIPValueChanged } from "./ValueChanged";
  */
 @Directive()
 export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPValueChanged<IPEmail> {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() value!: IPEmail;
-  @Output() valueChange = new EventEmitter<IPEmail>();
+  readonly valueChange = output<IPEmail>();
   contentPart$ = new BehaviorSubject<null | "templates">(null);
 
   #directionLabels = new Map<TDirection, string>([
@@ -115,7 +117,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPVa
    * It also provides methods to show/hide template list and change value.
    */
   ngOnInit() {
-    this.builderUiService.setDefaultSettingsPortal(this.settingsPortal);
+    this.builderUiService.setDefaultSettingsPortal(this.settingsPortal());
     this.edit();
     this.historyService.commitPush$.pipe(
       filter(({ id }) => {
@@ -125,7 +127,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPVa
       takeUntil(this.destroyed)
     ).subscribe(({ diff }) => {
       mergeObjects(this.value.general, applyDiff(this.value.general, diff));
-      this.valueChange.next(this.value);
+      this.valueChange.emit(this.value);
       this.changeDetectorRef.markForCheck();
     });
   }
@@ -149,12 +151,12 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPVa
    */
   changeValue(template: IPEmail): void {
     this.value = template;
-    this.valueChange.next(template);
+    this.valueChange.emit(template);
     this.contentPart$.next(null);
   }
 
   /**
-   * Overrides markForCheck method of Angular's ChangeDetectorRef class to return a boolean value.
+   * Overrides markForCheck method of Angular ChangeDetectorRef class to return a boolean value.
    *
    * @returns true if the portal outlet is attached to the component, false otherwise.
    */

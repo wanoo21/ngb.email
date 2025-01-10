@@ -4,6 +4,8 @@
     <input type="url" #i="input" tailInput [(ngModel)]="value" placeholder="https://...">
   </div>
   <div class="col-span-1 rounded border overflow-hidden bg-white">
-    <img [src]="i.el.value" alt="" class="w-full h-full" *ngIf="i.el.value.length">
+    @if (i.el.value.length) {
+      <img [src]="i.el.value" alt="" class="w-full h-full">
+    }
   </div>
 </div>

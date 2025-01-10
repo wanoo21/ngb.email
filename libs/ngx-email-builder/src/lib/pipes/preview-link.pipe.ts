@@ -1,4 +1,4 @@
-import { OnDestroy, Pipe, PipeTransform } from "@angular/core";
+import { OnDestroy, Pipe, PipeTransform, inject } from "@angular/core";
 import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
 import { map, Observable } from "rxjs";
 
@@ -14,17 +14,20 @@ import { AIPEmailBuilderRestService } from "../services";
   name: "ipPreviewLink"
 })
 export class IpPreviewLinkPipe implements PipeTransform, OnDestroy {
+  readonly domSanitizer = inject(DomSanitizer);
+  readonly restService = inject(AIPEmailBuilderRestService);
+
   #resourceUrl!: string;
+
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
 
   /**
    * Creates an instance of IpPreviewLinkPipe.
    * @param domSanitizer - Instance of DomSanitizer used to create a SafeUrl object from a URL.
    * @param restService - Instance of AIPEmailBuilderRestService used to convert IPEmail object to HTML.
    */
-  constructor(
-    readonly domSanitizer: DomSanitizer,
-    readonly restService: AIPEmailBuilderRestService
-  ) {}
+  constructor() {}
 
   /**
    * Transforms the IPEmail object to a SafeUrl object for previewing.

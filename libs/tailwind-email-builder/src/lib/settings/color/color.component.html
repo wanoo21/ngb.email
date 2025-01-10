@@ -1,7 +1,7 @@
 <div class="grid grid-cols-5 gap-2">
   <div class="col-span-4">
-    <input type="text" [disabled]="disabled" tailInput #i="input" ipHistoryModel [(ngModel)]="value"
-           (ngModelChange)="valueChange.next(i.el.value)"
+    <input type="text" [disabled]="disabled()" tailInput #i="input" ipHistoryModel [(ngModel)]="value"
+           (ngModelChange)="valueChange.emit(i.el.value)"
            placeholder="Color" i18n-placeholder="@@color">
   </div>
  <div class="rounded" [style.background-color]="value" style="overflow: hidden">

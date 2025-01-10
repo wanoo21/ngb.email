@@ -9,16 +9,16 @@ import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeig
 
 export function createBorder(border: IBorder, rule = "border"): { [p: string]: string; borderRadius: string } {
   const { color = "#000000", style = "solid", radius = 0, sizes, width } = border;
-  const styles = {borderRadius: `${radius}px`}
+  const styles = { borderRadius: `${radius}px` };
   if (sizes) {
-    const {top, right, left, bottom} = sizes;
+    const { top, right, left, bottom } = sizes;
     return {
       [`border-top`]: `${top}px ${style} ${color}`,
       [`border-right`]: `${right}px ${style} ${color}`,
       [`border-left`]: `${left}px ${style} ${color}`,
       [`border-bottom`]: `${bottom}px ${style} ${color}`,
       ...styles
-    }
+    };
   }
 
   return {
@@ -54,7 +54,12 @@ export function createMargin(margin: IMargin): { margin: string } {
  * Create CSS font styles based on {@link IFont} object.
  * @param font Font object.
  */
-export function createFont(font: IFont): { fontFamily: string; fontSize: string; fontStyle: string; fontWeight: number } {
+export function createFont(font: IFont): {
+  fontFamily: string;
+  fontSize: string;
+  fontStyle: string;
+  fontWeight: number
+} {
   const { family = "", size = 13, style = "normal", weight = 400 } = font;
   return {
     fontFamily: family,
@@ -135,7 +140,7 @@ export function defaultsDeep<T extends Record<string, any>>(to: T = {} as T, ...
  * @param obj Object to be cloned.
  */
 export function cloneDeep<T>(obj = {}): T {
-  return JSON.parse(JSON.stringify(obj));
+  return structuredClone(obj) as unknown as T;
 }
 
 /**

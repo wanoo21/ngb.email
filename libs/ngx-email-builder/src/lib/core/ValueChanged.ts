@@ -1,13 +1,12 @@
 import {
   Directive,
   DoCheck,
-  EventEmitter,
   inject,
   Input,
   KeyValueDiffer,
   KeyValueDiffers,
   OnInit,
-  Output
+  output
 } from "@angular/core";
 
 export interface IIPValueChanged<T> {
@@ -17,8 +16,10 @@ export interface IIPValueChanged<T> {
 
 @Directive()
 export abstract class AIPValueChanged<T extends Record<string, any> | string | number | undefined> implements IIPValueChanged<T>, DoCheck, OnInit {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() value!: T;
-  @Output() valueChange = new EventEmitter<T>();
+  readonly valueChange = output<T>();
   readonly differs = inject(KeyValueDiffers);
   #valueDiffer!: KeyValueDiffer<keyof T, any>;
 
@@ -29,7 +30,7 @@ export abstract class AIPValueChanged<T extends Record<string, any> | string | n
   ngDoCheck(): void {
     const changes = this.#valueDiffer.diff(this.#toWatch);
     if (changes) {
-      this.valueChange.next(this.value);
+      this.valueChange.emit(this.value);
     }
   }
 

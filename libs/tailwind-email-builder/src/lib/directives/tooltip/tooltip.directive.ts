@@ -1,4 +1,4 @@
-import { Component, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit } from "@angular/core";
+import { Component, Directive, ElementRef, HostListener, Input, OnDestroy, OnInit, inject, input } from "@angular/core";
 import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
 
@@ -7,6 +7,8 @@ import { ComponentPortal } from "@angular/cdk/portal";
     <div class="bg-gray-900/75 text-white rounded py-1 px-2 text-xs shadow-sm">{{title}}</div>`
 })
 export class TooltipComponent {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() title = "";
 }
 
@@ -14,21 +16,24 @@ export class TooltipComponent {
   selector: "[tailTooltip]"
 })
 export class TooltipDirective implements OnInit, OnDestroy {
-  @Input() tailTooltip!: string;
+  readonly overlayPositionBuilder = inject(OverlayPositionBuilder);
+  readonly overlay = inject(Overlay);
+  readonly elementRef = inject(ElementRef);
+
+  readonly tailTooltip = input.required<string>();
   private overlayRef!: OverlayRef;
 
-  constructor(
-    readonly overlayPositionBuilder: OverlayPositionBuilder,
-    readonly overlay: Overlay,
-    readonly elementRef: ElementRef
-  ) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+  constructor() {
   }
 
   @HostListener("mouseenter")
   show() {
     const tooltipCmp = new ComponentPortal(TooltipComponent);
     const tooltipRef = this.overlayRef.attach(tooltipCmp);
-    tooltipRef.instance.title = this.tailTooltip;
+    tooltipRef.instance.title = this.tailTooltip();
   }
 
   @HostListener("mouseout")

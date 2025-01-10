@@ -7,10 +7,10 @@
       </ng-container>
       <ng-content select=".top-actions"></ng-content>
 
-      <!--      <div class="ms-auto">-->
-      <!--        <button tailBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
-      <!--        <button tailBtn ipEmailBuilderHistoryAction="redo">Redo</button>-->
-      <!--      </div>-->
+<!--      <div class="ms-auto flex gap-2">-->
+<!--        <button tailBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
+<!--        <button tailBtn ipEmailBuilderHistoryAction="redo">Redo</button>-->
+<!--      </div>-->
     </div>
 
     <ng-container *ngSwitchCase="'preview'">
@@ -53,8 +53,6 @@
       </ng-template>
     </ng-container>
 
-    <ngx-editor-menu *ipEmailBuilderTextEditorMenu="let editor; let toolbar = toolbar" [editor]="editor"
-                     [toolbar]="toolbar"></ngx-editor-menu>
     <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"></tail-email-body>
   </div>
   <tail-email-aside [readonly]="(screen | async) !== null"

@@ -1,14 +1,15 @@
 import {
   Directive,
-  EventEmitter,
   HostBinding,
   HostListener,
   inject,
   Input,
   OnInit,
-  Output,
   QueryList,
-  ViewChildren
+  ViewChildren,
+  input,
+  output,
+  viewChildren
 } from "@angular/core";
 import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
 import { filter, takeUntil } from "rxjs";
@@ -26,18 +27,19 @@ import { AIPEmailBuilderMiddlewareService } from "../services";
 
 @Directive()
 export abstract class AIPStructure extends WithSettings implements IIPValueChanged<Structure>, OnInit {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() value!: Structure;
-  @Output() valueChange = new EventEmitter<Structure>();
+  readonly valueChange = output<Structure>();
   // Body general width
-  @Input() bodyWidth!: IPEmail["general"]["width"];
+  readonly bodyWidth = input.required<IPEmail["general"]["width"]>();
   // All blocks
-  @ViewChildren(IPEmailBuilderDynamicDirective)
-  readonly blocks!: QueryList<IPEmailBuilderDynamicDirective>;
+  readonly blocks = viewChildren(IPEmailBuilderDynamicDirective);
   // Column to edit
   editColumnIndex = 0;
   // Clone & Delete Output
-  @Output() private clone = new EventEmitter<Structure>();
-  @Output() private delete = new EventEmitter<Structure>();
+  private readonly clone = output<Structure>();
+  private readonly delete = output<Structure>();
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
   #verticalLabels = new Map<TVerticalAlign, string>([
@@ -49,10 +51,12 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
   #cdkDrag = inject(CdkDrag);
 
   // Attach child handle to host drag
+  // TODO: Skipped for migration because:
+  //  Accessor queries cannot be migrated as they are too complex.
   @ViewChildren(CdkDragHandle)
   set dragHandle(handles: QueryList<CdkDragHandle>) {
     this.#cdkDrag.data = this.value;
-    this.#cdkDrag._handles = handles;
+    this.#cdkDrag._addHandle(handles.first);
   }
 
   @HostBinding("style")
@@ -76,7 +80,7 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
 
   @HostBinding("style.width")
   get width(): string {
-    return this.value.options.fullWidth ? "100%" : createWidthHeight(this.bodyWidth);
+    return this.value.options.fullWidth ? "100%" : createWidthHeight(this.bodyWidth());
   }
 
   get columnsSize(): number[] {
@@ -97,13 +101,13 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
   }
 
   duplicateSelf(): void {
-    this.clone.next(this.value);
+    this.clone.emit(this.value);
   }
 
   async removeSelf(): Promise<void> {
     const isYes = await this.#middlewareService.delete(this.value);
     if (isYes) {
-      this.delete.next(this.value);
+      this.delete.emit(this.value);
       this.detachSettingsPortal();
     }
   }
@@ -139,13 +143,13 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
       takeUntil(this.destroyed)
     ).subscribe(({ diff }) => {
       mergeObjects(this.value.options, applyDiff(this.value.options, diff));
-      this.valueChange.next(this.value);
+      this.valueChange.emit(this.value);
       this.changeDetectorRef.markForCheck();
     });
   }
 
   override markForCheck(): boolean {
-    const mustCheckNow = this.blocks?.some(({ context }) => context.$implicit.isCurrentlyEditing);
+    const mustCheckNow = this.blocks()?.some(({ context }) => context.$implicit.isCurrentlyEditing);
     if (mustCheckNow || this.#hasLastEditedBlock) {
       this.#hasLastEditedBlock = mustCheckNow;
       return true;

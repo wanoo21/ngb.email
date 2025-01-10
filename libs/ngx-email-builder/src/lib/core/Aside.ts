@@ -1,4 +1,4 @@
-import { Directive, inject, Input, OnInit, ViewChild } from "@angular/core";
+import { Directive, inject, OnInit, input, viewChild } from "@angular/core";
 import { CdkPortalOutlet } from "@angular/cdk/portal";
 import { CdkDropList } from "@angular/cdk/drag-drop";
 
@@ -18,17 +18,16 @@ import { AIPEmailBuilderBlockExtendedOptions } from "./Block";
 @Directive()
 export abstract class AIPEmailBuilderAside implements OnInit {
   // Mark all settings as readonly.
-  @Input() readonly = false;
+  readonly readonly = input(false);
   // Portal Outlet where settings portal must be attached.
-  @ViewChild(CdkPortalOutlet, { static: true })
-  readonly asideSettingsPortal?: CdkPortalOutlet;
+  readonly asideSettingsPortal = viewChild(CdkPortalOutlet);
   // A list of DnD blocks.
   readonly blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
   // A list of DnD structures.
   readonly structures = (["cols_1", "cols_2", "cols_12", "cols_21", "cols_3", "cols_4", "cols_5", "cols_6"] as TStructureTypes[]).map(type => new Structure(type));
   readonly builderUiService = inject(IPEmailBuilderUiService);
   // Current active portal settings.
-  // readonly activeSettings$ = this.builderUiService.currentSettingsPortal$;
+  readonly activeSettings$ = this.builderUiService.currentSettingsPortal$;
 
   // Columns list where DnD blocks can be dragged.
   get columnsDropLists(): CdkDropList<AIPEmailBuilderBlockExtendedOptions[]>[] {
@@ -41,8 +40,9 @@ export abstract class AIPEmailBuilderAside implements OnInit {
   }
 
   ngOnInit() {
-    if (this.asideSettingsPortal) {
-      this.builderUiService.setSettingsPortalOutlet(this.asideSettingsPortal);
+    const asideSettingsPortal = this.asideSettingsPortal();
+    if (asideSettingsPortal) {
+      this.builderUiService.setSettingsPortalOutlet(asideSettingsPortal);
     } else {
       console.warn(`You must add [cdkPortalOutlet]="activeSettings$ | async" to aside component HTML.`);
     }

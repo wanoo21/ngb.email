@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform, inject } from "@angular/core";
 
 import { AIPEmailBuilderMiddlewareService } from "../services";
 
@@ -13,8 +13,13 @@ import { AIPEmailBuilderMiddlewareService } from "../services";
   name: "applyMiddleware"
 })
 export class ApplyMiddlewarePipe<K extends keyof Pick<AIPEmailBuilderMiddlewareService, "blocksList" | "structuresList" | "categoryList" | "categoryTemplates" | "templateThumbnail">> implements PipeTransform {
+  readonly middleware = inject(AIPEmailBuilderMiddlewareService);
 
-  constructor(readonly middleware: AIPEmailBuilderMiddlewareService) {
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
+
+  constructor() {
   }
 
   /**

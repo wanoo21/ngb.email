@@ -1,13 +1,15 @@
-import { Directive, Input } from "@angular/core";
+import { Directive, Input, input } from "@angular/core";
 
 import { AIPValueChanged } from "../core/ValueChanged";
 import { TAlign, TVerticalAlign } from "../interfaces";
 
 @Directive()
 export abstract class AIPAlign extends AIPValueChanged<any> {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() override value!: TAlign | TVerticalAlign;
-  @Input() mode: "vertical" | "horizontal" = "horizontal";
-  @Input() disabled = false;
+  readonly mode = input<"vertical" | "horizontal">("horizontal");
+  readonly disabled = input(false);
   #horizontalLabels = new Map<TAlign, string>([
     ["left", $localize`:@@horizontal_left_align:Left`],
     ["center", $localize`:@@horizontal_center_align:Center`],

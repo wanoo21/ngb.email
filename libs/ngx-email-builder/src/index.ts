@@ -70,4 +70,3 @@ export * from "./lib/directives/email-builder-structures.directive";
 export * from "./lib/directives/email-builder-column.directive";
 export * from "./lib/directives/email-builder-history-model.directive";
 export * from "./lib/directives/email-builder-history-host.directive";
-export * from "./lib/directives/email-builder-text-editor.directive";

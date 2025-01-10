@@ -1,4 +1,4 @@
-import { Inject, Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform, inject } from "@angular/core";
 
 import { AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
@@ -14,18 +14,23 @@ import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../priva
   name: "toBodyBlock"
 })
 export class ToBodyBlockPipe implements PipeTransform {
+  readonly blocksData = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
+
 
   /**
    * An array of `AIPEmailBuilderBlockExtendedOptions` objects.
    */
   blocks: AIPEmailBuilderBlockExtendedOptions[];
 
+  /** Inserted by Angular inject() migration for backwards compatibility */
+  constructor(...args: unknown[]);
+
   /**
    * Constructs a new instance of `ToBodyBlockPipe`.
    *
    * @param blocksData - An array of `IIPEmailBuilderBlockData` objects.
    */
-  constructor(@Inject(IP_EMAIL_BUILDER_BLOCKS_DATA) readonly blocksData: IIPEmailBuilderBlockData[]) {
+  constructor() {
     this.blocks = this.blocksData.map(({ block }) => new block().toObject());
   }
 

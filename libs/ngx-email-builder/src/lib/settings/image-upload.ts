@@ -11,6 +11,8 @@ export abstract class AIPImageUpload extends AIPValueChanged<string> {
     return this._isBackgroundImage;
   }
 
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input()
   set isBackgroundImage(value: BooleanInput) {
     this._isBackgroundImage = coerceBooleanProperty(value);

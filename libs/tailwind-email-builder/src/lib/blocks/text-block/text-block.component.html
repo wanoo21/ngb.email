@@ -1,8 +1,10 @@
 <ng-container [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-    <ngx-editor *ipEmailBuilderTextEditor="let editor" [editor]="editor" [(ngModel)]="innerText"
-                ipHistoryModel></ngx-editor>
+  <div [innerHTML]="innerText"></div>
 
   <div *ipEmailBuilderSettings>
+    <div tailPanel class="mt-4">
+      <textarea tailInput [(ngModel)]="innerText" ipHistoryModel cdkTextareaAutosize cdkAutosizeMinRows="4"></textarea>
+    </div>
     <h2 tailH2 i18n="@@font">Font</h2>
     <div tailPanel>
       <h3 tailH3 i18n="@@text_color">Color</h3>

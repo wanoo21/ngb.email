@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, inject, Input, NgModule, OnInit, Renderer2 } from "@angular/core";
+import { AfterViewInit, Directive, ElementRef, inject, OnInit, Renderer2, input } from "@angular/core";
 import { randomString } from "@wlocalhost/ngx-email-builder";
 
 @Directive()
@@ -40,11 +40,12 @@ export class FormInputDirective extends AddClassList<HTMLInputElement> implement
 })
 export class FormLabelDirective extends AddClassList<HTMLLabelElement> implements AfterViewInit {
   classList = `text-xs font-medium text-gray-400 mb-1`;
-  @Input() tailLabel?: FormInputDirective;
+  readonly tailLabel = input<FormInputDirective>();
 
   ngAfterViewInit(): void {
-    if (this.tailLabel && !this.el.getAttribute("for")) {
-      this.renderer2.setAttribute(this.el, "for", this.tailLabel.el.id);
+    const tailLabel = this.tailLabel();
+    if (tailLabel && !this.el.getAttribute("for")) {
+      this.renderer2.setAttribute(this.el, "for", tailLabel.el.id);
     }
   }
 }
@@ -54,10 +55,10 @@ export class FormLabelDirective extends AddClassList<HTMLLabelElement> implement
   exportAs: "btn"
 })
 export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements OnInit {
-  @Input() size = "sm";
+  readonly size = input("sm");
 
   get classList(): string {
-    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size} flex gap-1 items-center justify-center`;
+    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size()} flex gap-1 items-center justify-center`;
   }
 
   override ngOnInit() {
@@ -92,10 +93,10 @@ export class FormH3Directive extends AddClassList {
   exportAs: "hint"
 })
 export class FormHintDirective extends AddClassList {
-  @Input() variant = "gray-400";
+  readonly variant = input("gray-400");
 
   get classList(): string {
-    return `text-xs text-${this.variant} font-light mt-1`;
+    return `text-xs text-${this.variant()} font-light mt-1`;
   }
 }
 
@@ -109,9 +110,4 @@ export class FormPanelDirective extends AddClassList {
   }
 }
 
-@NgModule({
-  declarations: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective],
-  exports: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective]
-})
-export class IpFormUIModule {
-}
+

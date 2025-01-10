@@ -20,8 +20,8 @@
         "styles": ["apps/root/src/styles.scss"],
         "scripts": [],
         "server": "apps/root/src/main.server.ts",
-        "prerender": false,
-        "ssr": false
+        "prerender": true,
+        "ssr": true
       },
       "configurations": {
         "production": {
