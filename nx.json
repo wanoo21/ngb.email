@@ -1,11 +1,8 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "wlocalhost",
-  "affected": {
-    "defaultBase": "main"
-  },
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "pnpm"
   },
   "tasksRunnerOptions": {
     "default": {
@@ -63,5 +60,7 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
     "production": ["default", "!{projectRoot}/src/test-setup.[jt]s"]
-  }
+  },
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }
