@@ -5,7 +5,8 @@ import { AIPColor } from "@wlocalhost/ngx-email-builder";
   selector: "tail-color",
   templateUrl: "./color.component.html",
   styleUrls: ["./color.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class ColorComponent extends AIPColor {
 }

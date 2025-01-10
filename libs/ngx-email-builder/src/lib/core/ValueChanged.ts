@@ -6,12 +6,13 @@ import {
   KeyValueDiffer,
   KeyValueDiffers,
   OnInit,
-  output
+  output,
+  OutputEmitterRef
 } from "@angular/core";
 
 export interface IIPValueChanged<T> {
   value: T;
-  valueChange: EventEmitter<T>;
+  valueChange: OutputEmitterRef<T>;
 }
 
 @Directive()

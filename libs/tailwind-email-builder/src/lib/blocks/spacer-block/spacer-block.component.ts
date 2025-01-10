@@ -5,7 +5,8 @@ import { SpacerBlock } from "@wlocalhost/ngx-email-builder";
   selector: "tail-spacer-block",
   templateUrl: "./spacer-block.component.html",
   styleUrls: ["./spacer-block.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class SpacerBlockComponent extends SpacerBlock {
 }

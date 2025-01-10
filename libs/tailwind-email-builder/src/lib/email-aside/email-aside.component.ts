@@ -10,7 +10,8 @@ import { tap } from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
     "class.relative": "readonly"
-  }
+  },
+  standalone: false
 })
 export class EmailAsideComponent extends AIPEmailBuilderAside implements OnInit {
   readonly stepper = viewChild.required(CdkStepper);

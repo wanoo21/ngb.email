@@ -5,7 +5,8 @@ import { AIPEmailBuilderComponent } from "@wlocalhost/ngx-email-builder";
   selector: "tail-email-builder",
   templateUrl: "./tail-email-builder.component.html",
   styleUrls: ["./tail-email-builder.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class TailEmailBuilderComponent extends AIPEmailBuilderComponent {
 }

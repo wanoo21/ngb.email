@@ -6,7 +6,8 @@ import { TextBlock } from "@wlocalhost/ngx-email-builder";
   templateUrl: "text-block.component.html",
   styleUrls: ["text-block.component.scss"],
   encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class TextBlockComponent extends TextBlock {
 }

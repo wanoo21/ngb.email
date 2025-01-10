@@ -21,17 +21,6 @@ import { IStructure } from "../structure/structure";
 export class IpCanPipe implements PipeTransform {
   readonly middleware = inject(AIPEmailBuilderMiddlewareService);
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-
-  /**
-   * Constructor for IpCanPipe.
-   * @param middleware - the email builder middleware service to check user permission
-   */
-  constructor() {
-  }
-
   /**
    * Check if the end user can or cannot perform an action based on the middleware's can method.
    * @param entity - the email builder entity object

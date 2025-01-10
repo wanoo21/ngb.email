@@ -3,6 +3,7 @@ import { Overlay, OverlayPositionBuilder, OverlayRef } from "@angular/cdk/overla
 import { ComponentPortal } from "@angular/cdk/portal";
 
 @Component({
+  standalone: false,
   template: `
     <div class="bg-gray-900/75 text-white rounded py-1 px-2 text-xs shadow-sm">{{title}}</div>`
 })
@@ -13,7 +14,8 @@ export class TooltipComponent {
 }
 
 @Directive({
-  selector: "[tailTooltip]"
+  selector: "[tailTooltip]",
+  standalone: false
 })
 export class TooltipDirective implements OnInit, OnDestroy {
   readonly overlayPositionBuilder = inject(OverlayPositionBuilder);
@@ -22,12 +24,6 @@ export class TooltipDirective implements OnInit, OnDestroy {
 
   readonly tailTooltip = input.required<string>();
   private overlayRef!: OverlayRef;
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {
-  }
 
   @HostListener("mouseenter")
   show() {

@@ -8,7 +8,6 @@ import { TailwindEmailBuilderModule } from "@wlocalhost/ngx-tailwind-email-build
   selector: "app-root",
   template: `
     <tail-email-builder />`,
-  styles: ``
 })
 export class AppComponent {
 }

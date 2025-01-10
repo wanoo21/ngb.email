@@ -6,6 +6,7 @@ import { AIPStructure } from "@wlocalhost/ngx-email-builder";
   templateUrl: 'structure.component.html',
   styleUrls: ['structure.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class StructureComponent extends AIPStructure {
 }

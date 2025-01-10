@@ -6,7 +6,8 @@ import { SocialBlock } from "@wlocalhost/ngx-email-builder";
   templateUrl: "social-block.component.html",
   styleUrls: ["social-block.component.scss"],
   encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class SocialBlockComponent extends SocialBlock {
 }

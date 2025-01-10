@@ -1,9 +1,10 @@
 @if (tmplCategories$ | async; as categoryList) {
   <div class="flex p-2 gap-2 flex-wrap">
-    @for (category of [categoryList] | applyMiddleware: 'categoryList' | async; track category) {
+    @let list = [categoryList] | applyMiddleware: 'categoryList' | async ;
+    @for (category of list; track category.category) {
       <button tailBtn class="capitalize" [class.active]="category === (selectedCategory$ | async)"
-        (click)="selectCategory(category)">
-        {{category.category}}
+              (click)="selectCategory(category)">
+        {{ category.category }}
       </button>
     }
   </div>
@@ -13,27 +14,22 @@
 
 @if (selectedCategory$ | async; as category) {
   <div class="grid grid-cols-3 gap-2 p-2">
-    <!--  <ng-container *ngIf="[category] | applyMiddleware: 'categoryTemplates' | async as templates; else emptyBodyMessage">-->
-    @for (template of [category] | applyMiddleware: 'categoryTemplates' | async; track template) {
+    @let templates = [category] | applyMiddleware: 'categoryTemplates' | async ;
+    @for (template of templates; track template) {
       <div class="relative h-60 rounded border overflow-hidden group">
         <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
-          class="w-full h-full object-cover object-[center_top] group-hover:object-bottom">
+             class="w-full h-full object-cover object-[center_top] group-hover:object-bottom">
         <div
           class="absolute bottom-0 w-full bg-white translate-y-5 p-2 group-hover:translate-y-0 transition-transform text-center">
-          <h3 tailH3>{{template | titlecase}}</h3>
+          <h3 tailH3>{{ template | titlecase }}</h3>
           <button tailBtn class="opacity-0 group-hover:opacity-100 transition-opacity mx-auto" i18n="@@use_in_editor"
-            (click)="selectTemplate(category.category, template)">
-          Use in editor
-        </button>
+                  (click)="selectTemplate(category.category, template)">
+            Use in editor
+          </button>
         </div>
       </div>
     }
-  <!--  </ng-container>-->
-</div>
-}
-
-
-
-<ng-template #emptyBodyMessage>
+  </div>
+} @else {
   <p i18n="@@empty_template_list">No templates in this category</p>
-</ng-template>
+}

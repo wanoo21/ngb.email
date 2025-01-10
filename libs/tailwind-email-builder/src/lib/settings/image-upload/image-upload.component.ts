@@ -5,7 +5,8 @@ import { AIPImageUpload } from "@wlocalhost/ngx-email-builder";
   selector: "tail-image-upload",
   templateUrl: "./image-upload.component.html",
   styleUrls: ["./image-upload.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class ImageUploadComponent extends AIPImageUpload {
 }

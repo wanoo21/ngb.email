@@ -6,7 +6,8 @@ import { ButtonBlock } from "@wlocalhost/ngx-email-builder";
   templateUrl: "button-block.component.html",
   styleUrls: ["button-block.component.scss"],
   encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class ButtonBlockComponent extends ButtonBlock {
 }

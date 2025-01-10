@@ -10,17 +10,11 @@ import { AIPEmailBuilderMiddlewareService } from "../services";
  * @template M - the type of the middleware method to use.
  */
 @Pipe({
-  name: "applyMiddleware"
+  name: "applyMiddleware",
+  standalone: true
 })
 export class ApplyMiddlewarePipe<K extends keyof Pick<AIPEmailBuilderMiddlewareService, "blocksList" | "structuresList" | "categoryList" | "categoryTemplates" | "templateThumbnail">> implements PipeTransform {
   readonly middleware = inject(AIPEmailBuilderMiddlewareService);
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-
-  constructor() {
-  }
 
   /**
    * Applies the middleware method to the given value.

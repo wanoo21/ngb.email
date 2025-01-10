@@ -6,7 +6,8 @@ import { DividerBlock } from "@wlocalhost/ngx-email-builder";
   templateUrl: 'divider-block.component.html',
   styleUrls: ['divider-block.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class DividerBlockComponent extends DividerBlock {
 }

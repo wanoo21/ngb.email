@@ -13,14 +13,14 @@
         "outputPath": "dist/apps/root",
         "index": "apps/root/src/index.html",
         "browser": "apps/root/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": ["zone.js", "@angular/localize/init"],
         "tsConfig": "apps/root/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": ["apps/root/src/favicon.ico", "apps/root/src/assets"],
         "styles": ["apps/root/src/styles.scss"],
         "scripts": [],
         "server": "apps/root/src/main.server.ts",
-        "prerender": true,
+        "prerender": false,
         "ssr": true
       },
       "configurations": {

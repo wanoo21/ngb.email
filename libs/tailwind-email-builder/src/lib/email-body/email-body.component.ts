@@ -5,7 +5,8 @@ import { AIPEmailBody } from "@wlocalhost/ngx-email-builder";
   selector: "tail-email-body",
   templateUrl: "./email-body.component.html",
   styleUrls: ["./email-body.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class EmailBodyComponent extends AIPEmailBody {
 }

@@ -38,8 +38,8 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
   // Column to edit
   editColumnIndex = 0;
   // Clone & Delete Output
-  private readonly clone = output<Structure>();
-  private readonly delete = output<Structure>();
+  readonly clone = output<Structure>();
+  readonly delete = output<Structure>();
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
   #verticalLabels = new Map<TVerticalAlign, string>([

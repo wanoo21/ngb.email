@@ -21,6 +21,7 @@ export * from "./lib/blocks/html-block/html-block";
 // Core services & classes
 export * from "./lib/public-tokens";
 export * from "./lib/tools/core";
+export * from "./lib/tools/config";
 export * from "./lib/tools/utils";
 export * from "./lib/core/Block";
 export * from "./lib/core/ValueChanged";

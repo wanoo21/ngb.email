@@ -4,15 +4,6 @@
   "cli": {
     "packageManager": "pnpm"
   },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "YmUyNjMxMGYtNTQ2NC00MDE1LTllOWMtMTUyYTAzYTdlNzRlfHJlYWQtd3JpdGU="
-      }
-    }
-  },
   "generators": {
     "@nx/angular:application": {
       "style": "scss",
