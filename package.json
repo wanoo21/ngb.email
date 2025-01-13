@@ -9,6 +9,7 @@
     "test": "nx test",
     "prepare": "husky install",
     "preinstall": "npx -y only-allow pnpm",
+    "serve:ssr": "pnpm build && node dist/apps/root/server/server.mjs",
     "npm": "pnpm"
   },
   "private": true,

@@ -11,6 +11,7 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/root",
+        "outputMode": "server",
         "index": "apps/root/src/index.html",
         "browser": "apps/root/src/main.ts",
         "polyfills": ["zone.js", "@angular/localize/init"],
@@ -20,8 +21,9 @@
         "styles": ["apps/root/src/styles.scss"],
         "scripts": [],
         "server": "apps/root/src/main.server.ts",
-        "prerender": false,
-        "ssr": true
+        "ssr": {
+          "entry": "apps/root/server.ts"
+        }
       },
       "configurations": {
         "production": {
