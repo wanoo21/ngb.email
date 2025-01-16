@@ -7,20 +7,25 @@ import {
 import express from "express";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { json, urlencoded } from "body-parser";
+import { convertIPEmail } from "@wlocalhost/ngx-email-builder-convertor";
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
+  server.disable("etag").disable("x-powered-by");
+  server.use(json({ limit: "1mb" }));
+  server.use(urlencoded({ limit: "1mb", extended: true }));
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
   const browserDistFolder = resolve(serverDistFolder, "../browser");
   const appEngine = new AngularNodeAppEngine();
 
   // Example Express Rest API endpoints
-  server.use("/api/**", (req, res) => {
-    res.json({ message: "Your API is working!" });
+  server.post("/api/convert", (req, res) => {
+    const output = convertIPEmail(req.body, false);
+    res.json(output);
   });
 
-  // Serve static files from /browser
   server.get(
     "*.*",
     express.static(browserDistFolder, {
@@ -55,7 +60,7 @@ const server = app();
 if (isMainModule(import.meta.url)) {
   const port = process.env["PORT"] || 4000;
   server.listen(port, () => {
-    console.log(`Node Express server listening on http://localhost:\${port}`);
+    console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
 

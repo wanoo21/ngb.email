@@ -17,7 +17,20 @@
         "polyfills": ["zone.js", "@angular/localize/init"],
         "tsConfig": "apps/root/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/root/src/favicon.ico", "apps/root/src/assets"],
+        "assets": [
+          "apps/root/src/favicon.ico",
+          "apps/root/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/@wlocalhost/ngx-email-builder-convertor/templates/",
+            "output": "/templates/"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@wlocalhost/ngx-email-builder-convertor/thumbnails/",
+            "output": "/thumbnails/"
+          }
+        ],
         "styles": ["apps/root/src/styles.scss"],
         "scripts": [],
         "server": "apps/root/src/main.server.ts",

@@ -3,23 +3,25 @@
  */
 export interface IIPEmailBuilderConfig {
   /**
-   * The API key for the convertor.
-   */
-  xApiKey: string;
-  /**
-   * Use custom social icons' path, only for paid versions.
+   * Use custom social icons' path
    *
    * @default https://www.mailjet.com/images/theme/v1/icons/ico-social
    */
   socialIconsPath: string;
   /**
-   * Custom convertor path, only for paid versions.
+   * Custom convertor path
    *
    * @default https://ngb-api.wlocalhost.org
    */
   convertorPath: string;
+
   /**
-   * Use different templates thumbs path, only for paid versions.
+   * Path to get all templates
+   */
+  templatesPath: string;
+
+  /**
+   * Use different templates thumbs path
    *
    * @default https://ngb-templates.s3.amazonaws.com
    */
