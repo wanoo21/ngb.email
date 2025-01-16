@@ -13,6 +13,7 @@ import { IPEmailBuilderDynamicDirective } from "./directives/email-builder-dynam
 import { IPEmailBuilderStructuresDirective } from "./directives/email-builder-structures.directive";
 import { SocialPathPipe } from "./pipes/social-path.pipe";
 import { IpPreviewLinkPipe } from "./pipes/preview-link.pipe";
+import { IPHistoryModelDirective } from "./directives/email-builder-history-model.directive";
 
 // https://github.com/jscutlery/semver
 
@@ -31,7 +32,8 @@ import { IpPreviewLinkPipe } from "./pipes/preview-link.pipe";
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderStructuresDirective,
     SocialPathPipe,
-    IpPreviewLinkPipe
+    IpPreviewLinkPipe,
+    IPHistoryModelDirective
   ],
   exports: [
     ApplyMiddlewarePipe,
@@ -47,7 +49,8 @@ import { IpPreviewLinkPipe } from "./pipes/preview-link.pipe";
     IPEmailBuilderDynamicDirective,
     IPEmailBuilderStructuresDirective,
     SocialPathPipe,
-    IpPreviewLinkPipe
+    IpPreviewLinkPipe,
+    IPHistoryModelDirective
   ]
 })
 export class NgxEmailBuilderModule {
