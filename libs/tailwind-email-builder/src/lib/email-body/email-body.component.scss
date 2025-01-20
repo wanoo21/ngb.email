@@ -6,4 +6,8 @@
       display: none;
     }
   }
+
+  ::ng-deep .cdk-drag-placeholder {
+    width: 100%;
+  }
 }

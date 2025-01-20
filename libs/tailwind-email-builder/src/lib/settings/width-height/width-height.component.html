@@ -1,6 +1,6 @@
 <div class="flex gap-2">
   @if (hasAuto) {
-    <button tailBtn (click)="toggleAuto()" [class.active]="isAuto" i18n="@@width_height_auto">Auto</button>
+    <button tailBtn (click)="toggleAuto()" [class.bg-gray-100]="isAuto" i18n="@@width_height_auto">Auto</button>
   }
   <input tailInput type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
   <select tailInput class="appearance-none" [(ngModel)]="value.unit" [disabled]="isAuto">

@@ -2,24 +2,23 @@
   <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
     <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
     <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
-      [cdkDropListSortingDisabled]="true">
+         [cdkDropListSortingDisabled]="true">
       @for (block of [blocks] | applyMiddleware: 'blocksList' | async; track block) {
         <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
-          cdkDrag [cdkDragData]="block | toBodyBlock">
+             cdkDrag [cdkDragData]="block | toBodyBlock">
           {{ block.title }}
         </div>
       }
     </div>
     <h2 tailH2 i18n="@@structude_list">Structures</h2>
     <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
-      [cdkDropListSortingDisabled]="true">
-      @for (structure of [structures] | applyMiddleware: 'structuresList' | async; track structure) {
+         [cdkDropListSortingDisabled]="true">
+      @for (structure of [structures] | applyMiddleware: 'structuresList' | async; track structure.type) {
         <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
-          [cdkDragData]="structure | toBodyStructure">
-          @for (col of structure.options.columns; track col; let index = $index) {
-            <div class="bg-gray-200 h-9 w-full rounded"
-              [ngClass]="{'w-1/3 flex-shrink-0': structure.type === 'cols_21' && index === 0 || structure.type === 'cols_12' && index === 1}"
-            ></div>
+             [cdkDragData]="structure | toBodyStructure">
+          @for (col of structure.options.columns; track $index) {
+            @let smallCol = structure.type === 'cols_21' && $index === 0 || structure.type === 'cols_12' && $index === 1;
+            <div class="bg-gray-200 h-9 rounded" [ngClass]="{'w-5/12': smallCol, 'w-full': !smallCol}"></div>
           }
         </div>
       }
@@ -33,11 +32,11 @@
   </cdk-step>
 </ng-container>
 
-<div class="stepper grid grid-cols-3 " role="tablist">
+<div class="stepper grid grid-cols-3" role="tablist">
   @for (step of stepper.steps; track step) {
     <button (click)="step.select()"
-      class="step bg-white py-5 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
-      [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
+            class="step bg-white py-5 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
+            [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
       {{ step.label }}
     </button>
   }

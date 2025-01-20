@@ -58,10 +58,8 @@ export class FormLabelDirective extends AddClassList<HTMLLabelElement> implement
   standalone: false
 })
 export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements OnInit {
-  readonly size = input("sm");
-
   get classList(): string {
-    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-${this.size()} flex gap-1 items-center justify-center`;
+    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-sm flex gap-1 items-center justify-center`;
   }
 
   override ngOnInit() {

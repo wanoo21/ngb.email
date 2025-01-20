@@ -9,7 +9,7 @@ import { tap } from "rxjs";
   styleUrls: ["./email-aside.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush,
   host: {
-    "class.relative": "readonly"
+    "[class.relative]": "readonly()"
   },
   standalone: false
 })

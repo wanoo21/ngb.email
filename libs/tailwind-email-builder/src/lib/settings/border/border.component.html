@@ -39,7 +39,7 @@
   <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
   <div class="grid grid-cols-5 gap-2">
     @for (style of styleLabels; track style) {
-      <button tailBtn size="xs" [class.active]="value.style === style"
+      <button tailBtn size="xs" [class.bg-gray-100]="value.style === style"
         (click)="value.style = style">
         {{getStyleLabel(style)}}
       </button>
