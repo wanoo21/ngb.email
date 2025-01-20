@@ -22,8 +22,7 @@ export function app(): express.Express {
 
   // Example Express Rest API endpoints
   server.post("/api/convert", (req, res) => {
-    const output = convertIPEmail(req.body, false);
-    res.json(output);
+    res.json(convertIPEmail(req.body, false));
   });
 
   server.get(
