@@ -16,7 +16,7 @@ import { IIPOptionsHistoryContext } from "../directives/email-builder-history-ho
  * @implements {PipeTransform}
  */
 @Pipe({
-  name: "toHistoryOptions"
+  name: "toHistoryOptions",
 })
 export class ToHistoryOptionsPipe implements PipeTransform {
   /**

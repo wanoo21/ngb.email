@@ -65,11 +65,7 @@ export abstract class AIPEmailBody extends WithSettings implements OnInit, IIPVa
     const { padding, background } = this.value.general;
     return {
       ...createPadding(padding),
-      background: createBackground(background),
-      display: "flex",
-      justifyContent: "start",
-      alignItems: "center",
-      flexDirection: "column"
+      background: createBackground(background)
     };
   }
 

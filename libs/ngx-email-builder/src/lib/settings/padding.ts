@@ -6,10 +6,10 @@ import { AIPValueChanged } from "../core/ValueChanged";
 @Directive()
 export abstract class AIPPadding extends AIPValueChanged<IPadding> {
   readonly #paddingLabels = new Map<keyof IPadding, string>([
-    ["top", $localize`:@@padding_top:Padding Top`],
-    ["right", $localize`:@@padding_right:Padding Right`],
-    ["bottom", $localize`:@@padding_bottom:Padding Bottom`],
-    ["left", $localize`:@@padding_left:Padding Left`]
+    ["top", $localize`:@@padding_top:Top`],
+    ["right", $localize`:@@padding_right:Right`],
+    ["bottom", $localize`:@@padding_bottom:Bottom`],
+    ["left", $localize`:@@padding_left:Left`]
   ]);
 
   get paddingKeys() {

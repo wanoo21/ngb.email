@@ -1,7 +1,16 @@
-import { Directive, DoCheck, Input, KeyValueDiffer, KeyValueDiffers, TemplateRef, ViewContainerRef, inject } from "@angular/core";
+import {
+  Directive,
+  DoCheck,
+  inject,
+  Input,
+  KeyValueDiffer,
+  KeyValueDiffers,
+  TemplateRef,
+  ViewContainerRef
+} from "@angular/core";
 import { CdkDrag } from "@angular/cdk/drag-drop";
 
-import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
+import { IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 
 /**
@@ -31,6 +40,7 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
 
   readonly context = new IPEmailBuilderDynamicDirectiveContext();
   #keyValueDiffers: KeyValueDiffer<any, any> | undefined;
+  #optionsDiffers: KeyValueDiffer<any, any> | undefined;
   #instance!: AIPEmailBuilderBlock | undefined;
   #comingContext!: AIPEmailBuilderBlockExtendedOptions;
 
@@ -55,6 +65,7 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { options, type, ...rest } = this.#instance.toObject();
       this.#keyValueDiffers = this.differs.find(rest).create();
+      this.#optionsDiffers = this.differs.find(options).create();
       this.context.$implicit = this.#instance;
       this.viewContainerRef.createEmbeddedView(this.templateRef, this.context);
     } else {
@@ -83,10 +94,13 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { options, type, ...rest } = this.#instance.toObject();
       const diff = this.#keyValueDiffers.diff(rest);
+      const optionsDiff = this.#optionsDiffers?.diff(options);
       if (diff) {
         diff.forEachItem(({ currentValue, key }) => {
           Object.assign(this.#comingContext, { [key]: currentValue });
         });
+      }
+      if (optionsDiff || diff) {
         this.#instance.changeDetectorRef.markForCheck();
       }
     } else if (this.#isPreviousBlockEdited && !this.#instance?.isCurrentlyEditing) {

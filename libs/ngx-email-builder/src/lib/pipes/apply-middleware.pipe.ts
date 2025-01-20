@@ -11,7 +11,6 @@ import { AIPEmailBuilderMiddlewareService } from "../services";
  */
 @Pipe({
   name: "applyMiddleware",
-  standalone: true
 })
 export class ApplyMiddlewarePipe<K extends keyof Pick<AIPEmailBuilderMiddlewareService, "blocksList" | "structuresList" | "categoryList" | "categoryTemplates" | "templateThumbnail">> implements PipeTransform {
   readonly middleware = inject(AIPEmailBuilderMiddlewareService);

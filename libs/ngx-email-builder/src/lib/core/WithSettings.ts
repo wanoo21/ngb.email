@@ -21,7 +21,7 @@ export abstract class WithSettings implements DoCheck, OnDestroy {
 
   @HostBinding("class.is-editing")
   get isCurrentlyEditing(): boolean {
-    return !!this.settingsPortal()?.isAttached;
+    return this.settingsPortal().isAttached;
   }
 
   /**

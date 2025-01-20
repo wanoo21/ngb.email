@@ -22,12 +22,6 @@ export class IPHistoryModelDirective implements OnInit, OnDestroy {
 
   readonly #destroyed = new Subject();
 
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  constructor() {
-  }
-
   ngOnInit() {
     if (this.ngControl && this.historyHostDirective) {
       this.ngControl.valueChanges?.pipe(
