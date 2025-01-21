@@ -6,10 +6,10 @@ import { IBlockState } from "./interfaces";
 
 export class IPEmailBuilderConfig {
   protected defConfig: IIPEmailBuilderConfig = {
-    xApiKey: "t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz",
     socialIconsPath: "https://www.mailjet.com/images/theme/v1/icons/ico-social",
     convertorPath: "https://ngb-api.wlocalhost.org/v1",
     templatesThumbsPath: "https://ngb-templates.s3.amazonaws.com",
+    templatesPath: "https://ngb-api.wlocalhost.org/v1/templates",
     historyRecordLimit: 10
   };
 
@@ -25,12 +25,8 @@ export class IPEmailBuilderConfig {
     return this.defConfig.templatesThumbsPath;
   }
 
-  get xApiKey(): NonNullable<IIPEmailBuilderConfig["xApiKey"]> {
-    return this.defConfig.xApiKey;
-  }
-
-  get isFreeApiKey(): boolean {
-    return this.defConfig.xApiKey === "t7HdQfZjGp6R96fOV4P8v18ggf6LLTQZ1puUI2tz";
+  get templatesPath(): NonNullable<IIPEmailBuilderConfig["templatesPath"]> {
+    return this.defConfig.templatesPath;
   }
 
   get historyRecordLimit(): number {

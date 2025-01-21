@@ -11,17 +11,32 @@
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/root",
+        "outputMode": "server",
         "index": "apps/root/src/index.html",
         "browser": "apps/root/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": ["zone.js", "@angular/localize/init"],
         "tsConfig": "apps/root/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/root/src/favicon.ico", "apps/root/src/assets"],
+        "assets": [
+          "apps/root/src/favicon.ico",
+          "apps/root/src/assets",
+          {
+            "glob": "**/*",
+            "input": "node_modules/@wlocalhost/ngx-email-builder-convertor/templates/",
+            "output": "/templates/"
+          },
+          {
+            "glob": "**/*",
+            "input": "node_modules/@wlocalhost/ngx-email-builder-convertor/thumbnails/",
+            "output": "/thumbnails/"
+          }
+        ],
         "styles": ["apps/root/src/styles.scss"],
         "scripts": [],
         "server": "apps/root/src/main.server.ts",
-        "prerender": false,
-        "ssr": false
+        "ssr": {
+          "entry": "apps/root/server.ts"
+        }
       },
       "configurations": {
         "production": {

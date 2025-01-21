@@ -5,7 +5,8 @@ import { AIPTemplateList } from "@wlocalhost/ngx-email-builder";
   selector: "tail-template-list",
   templateUrl: "./template-list.component.html",
   styleUrls: ["./template-list.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class TemplateListComponent extends AIPTemplateList {
 }

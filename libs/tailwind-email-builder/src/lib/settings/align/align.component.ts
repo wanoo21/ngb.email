@@ -5,7 +5,8 @@ import { AIPAlign } from "@wlocalhost/ngx-email-builder";
   selector: "tail-align",
   templateUrl: "./align.component.html",
   styleUrls: ["./align.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class AlignComponent extends AIPAlign {
 }

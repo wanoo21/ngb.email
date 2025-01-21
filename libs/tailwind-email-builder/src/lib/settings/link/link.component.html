@@ -6,9 +6,11 @@
   <div class="flex flex-col col-span-1">
     <label [tailLabel]="t" i18n="@@link_target">Target</label>
     <select tailInput #t="input" class="appearance-none" [(ngModel)]="value.target">
-      <option *ngFor="let target of targets" [value]="target">
-        {{getTargetLabel(target)}}
-      </option>
+      @for (target of targets; track target) {
+        <option [value]="target">
+          {{getTargetLabel(target)}}
+        </option>
+      }
     </select>
   </div>
 </div>

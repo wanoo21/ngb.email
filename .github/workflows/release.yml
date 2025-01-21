@@ -18,9 +18,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.NGX_GITHUB_TOKEN }}
       - uses: pnpm/action-setup@v2
         with:
           version: 8
@@ -43,15 +44,15 @@ jobs:
       - name: Release
         if: github.event.inputs.BRANCH == 'main'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --base=origin/main~1 --syncVersions --exclude='*-demo-app'
+        run: pnpm nx run ngx-email-builder:version --push --trackDeps --skipCommit --baseBranch=main~1 --allowEmptyRelease
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.NGX_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Pre Release
         if: github.event.inputs.BRANCH == 'beta'
         shell: bash
-        run: pnpm nx affected -t version --trackDeps --push --preid=beta --base=origin/beta --syncVersions --exclude='*-demo-app'
+        run: pnpm nx run ngx-email-builder:version --push --trackDeps --skipCommit --baseBranch=beta --releaseAs=prerelease --preid=beta --allowEmptyRelease
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.NGX_GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

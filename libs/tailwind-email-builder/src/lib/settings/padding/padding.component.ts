@@ -5,7 +5,8 @@ import { AIPPadding } from "@wlocalhost/ngx-email-builder";
   selector: "tail-padding",
   templateUrl: "./padding.component.html",
   styleUrls: ["./padding.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class PaddingComponent extends AIPPadding {
 }

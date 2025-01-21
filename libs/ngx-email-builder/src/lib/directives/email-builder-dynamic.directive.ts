@@ -1,8 +1,7 @@
 import {
   Directive,
   DoCheck,
-  Host,
-  Inject,
+  inject,
   Input,
   KeyValueDiffer,
   KeyValueDiffers,
@@ -11,7 +10,7 @@ import {
 } from "@angular/core";
 import { CdkDrag } from "@angular/cdk/drag-drop";
 
-import { IIPEmailBuilderBlockData, IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
+import { IP_EMAIL_BUILDER_BLOCKS_DATA } from "../private-tokens";
 import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "../core/Block";
 
 /**
@@ -33,34 +32,27 @@ class IPEmailBuilderDynamicDirectiveContext {
   exportAs: "instance"
 })
 export class IPEmailBuilderDynamicDirective implements DoCheck {
+  readonly blocksData = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
+  readonly viewContainerRef = inject(ViewContainerRef);
+  readonly templateRef = inject<TemplateRef<IPEmailBuilderDynamicDirectiveContext>>(TemplateRef);
+  readonly differs = inject(KeyValueDiffers);
+  readonly cdkDrag? = inject(CdkDrag, { host: true });
+
   readonly context = new IPEmailBuilderDynamicDirectiveContext();
   #keyValueDiffers: KeyValueDiffer<any, any> | undefined;
+  #optionsDiffers: KeyValueDiffer<any, any> | undefined;
   #instance!: AIPEmailBuilderBlock | undefined;
   #comingContext!: AIPEmailBuilderBlockExtendedOptions;
 
   #isPreviousBlockEdited = false;
 
   /**
-   * @param blocksData A list of all available blocks with their factories.
-   * @param viewContainerRef Reference to the view container.
-   * @param templateRef Reference to the template.
-   * @param differs KeyValueDiffers factory.
-   * @param cdkDrag Optional directive on the host element.
-   */
-  constructor(
-    @Inject(IP_EMAIL_BUILDER_BLOCKS_DATA)
-    readonly blocksData: IIPEmailBuilderBlockData[],
-    readonly viewContainerRef: ViewContainerRef,
-    readonly templateRef: TemplateRef<IPEmailBuilderDynamicDirectiveContext>,
-    readonly differs: KeyValueDiffers,
-    @Host() readonly cdkDrag?: CdkDrag
-  ) {}
-
-  /**
    * Setter for the dynamic block's context.
    * Creates a new instance of the block and attaches it to the view.
    * @throws {TypeError} If no such block was found.
    */
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input()
   set ipEmailBuilderDynamicBlockDirective(context: AIPEmailBuilderBlockExtendedOptions) {
     this.#comingContext = context;
@@ -73,6 +65,7 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { options, type, ...rest } = this.#instance.toObject();
       this.#keyValueDiffers = this.differs.find(rest).create();
+      this.#optionsDiffers = this.differs.find(options).create();
       this.context.$implicit = this.#instance;
       this.viewContainerRef.createEmbeddedView(this.templateRef, this.context);
     } else {
@@ -101,10 +94,14 @@ export class IPEmailBuilderDynamicDirective implements DoCheck {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { options, type, ...rest } = this.#instance.toObject();
       const diff = this.#keyValueDiffers.diff(rest);
+      const optionsDiff = this.#optionsDiffers?.diff(options);
       if (diff) {
         diff.forEachItem(({ currentValue, key }) => {
           Object.assign(this.#comingContext, { [key]: currentValue });
         });
+      }
+      if (optionsDiff || diff) {
+        this.#instance.changeDetectorRef.markForCheck();
       }
     } else if (this.#isPreviousBlockEdited && !this.#instance?.isCurrentlyEditing) {
       this.#isPreviousBlockEdited = false;

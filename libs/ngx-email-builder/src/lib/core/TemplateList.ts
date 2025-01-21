@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, inject, Output } from "@angular/core";
+import { Directive, inject, output } from "@angular/core";
 import { ReplaySubject, take, tap } from "rxjs";
 
 import { IIPEmail } from "../body/body";
@@ -7,7 +7,7 @@ import { IUserTemplateCategory } from "../interfaces";
 
 @Directive()
 export abstract class AIPTemplateList {
-  @Output() selected = new EventEmitter<IIPEmail>();
+  readonly selected = output<IIPEmail>();
   selectedCategory$ = new ReplaySubject<IUserTemplateCategory>();
 
   readonly restService = inject(AIPEmailBuilderRestService);
@@ -21,7 +21,7 @@ export abstract class AIPTemplateList {
 
   selectTemplate(category: string, template: string): void {
     this.restService.tmplCategories$(category, template).pipe(take(1)).subscribe(template => {
-      this.selected.next(template);
+      this.selected.emit(template);
     });
   }
 }

@@ -14,10 +14,10 @@
   @apply p-1 bg-gray-400 text-white hover:bg-gray-500 rounded-full transition-colors;
 }
 
-//.overflow {
-//  @apply shadow-sm absolute inset-0 bg-blue-100/50 flex flex-wrap items-center justify-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
-//  row-gap: 0;
-//}
+.overflow {
+  @apply shadow-sm absolute inset-0 bg-blue-100/50 flex flex-wrap items-center justify-center gap-2 px-2 opacity-0 group-hover:opacity-100 transition-opacity;
+  row-gap: 0;
+}
 
 .cdk-drop-list-dragging {
   @apply ring-pink-700 ring-2 ring-offset-2 ring-opacity-60 h-10 min-h-fit;

@@ -1,4 +1,4 @@
-import { Directive, inject, Input, OnInit } from "@angular/core";
+import { Directive, inject, OnInit, input } from "@angular/core";
 import { getDiff } from "recursive-diff";
 
 import { AIPEmailBuilderHistoryService } from "../services";
@@ -36,7 +36,7 @@ export class IPEmailBuilderHistoryHostDirective implements OnInit {
   /**
    * The history context.
    */
-  @Input() ipEmailBuilderHistoryHost?: IIPOptionsHistoryContext;
+  readonly ipEmailBuilderHistoryHost = input<IIPOptionsHistoryContext>();
 
   /**
    * The history service.
@@ -52,8 +52,9 @@ export class IPEmailBuilderHistoryHostDirective implements OnInit {
    * @param isAction A boolean indicating if the change is an action.
    */
   detectChanges(isAction: boolean): void {
-    if (this.ipEmailBuilderHistoryHost) {
-      const { cmp, watch } = this.ipEmailBuilderHistoryHost;
+    const ipEmailBuilderHistoryHost = this.ipEmailBuilderHistoryHost();
+    if (ipEmailBuilderHistoryHost) {
+      const { cmp, watch } = ipEmailBuilderHistoryHost;
       if (cmp instanceof AIPEmailBuilderBlock) {
         const diff = getDiff(watch, cmp.toObject());
         this.historyService.addHistory(`block:${cmp.id}`, diff, isAction);

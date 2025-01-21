@@ -5,7 +5,8 @@ import { AIPBorder } from "@wlocalhost/ngx-email-builder";
   selector: "tail-border",
   templateUrl: "./border.component.html",
   styleUrls: ["./border.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class BorderComponent extends AIPBorder {
 }

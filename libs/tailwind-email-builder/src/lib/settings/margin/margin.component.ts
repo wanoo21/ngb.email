@@ -5,7 +5,8 @@ import { AIPMargin } from "@wlocalhost/ngx-email-builder";
   selector: "tail-margin",
   templateUrl: "./margin.component.html",
   styleUrls: ["./margin.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class MarginComponent extends AIPMargin {
 

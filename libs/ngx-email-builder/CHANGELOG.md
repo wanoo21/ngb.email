@@ -2,6 +2,9 @@
 
 This file was generated using [@jscutlery/semver](https://github.com/jscutlery/semver).
 
+
+# [0.2.0](https://github.com/wanoo21/ngb.email/compare/ngx-email-builder-0.1.4...ngx-email-builder-0.2.0) (2025-01-21)
+
 ## [0.1.5](https://github.com/wanoo21/ngb.email/compare/ngx-email-builder-0.1.4...ngx-email-builder-0.1.5) (2023-12-18)
 
 
@@ -11,6 +14,8 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ### Bug Fixes
 
+* **ngx-email-builder:** multiple fixes related to change detection ([055ecd5](https://github.com/wanoo21/ngb.email/commit/055ecd574aa235b666c7f1f5f33dbba9f35e07da))
+* **ngx-email-builder:** README.md file updated ([0b99715](https://github.com/wanoo21/ngb.email/commit/0b9971563f07ae6eda0e206adaadd8f083aff887))
 * **ngx-email-builder:** aside private service ([899f7f3](https://github.com/wanoo21/ngb.email/commit/899f7f33d949a4f948e162416d4cf4442c93a35f))
 * **ngx-email-builder:** drag & drop block options instance ([1fa374d](https://github.com/wanoo21/ngb.email/commit/1fa374dcfd99012a31e8c35b82286e95c2188a96))
 * **ngx-email-builder:** emit valueChange if there are new changes ([2be745f](https://github.com/wanoo21/ngb.email/commit/2be745f85b8e2f7c0debc6eb6cce503a7b95ed4d))
@@ -23,6 +28,9 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 ### Features
 
+* @wlocalhost/ngx-email-builder-convertor as part of application ([1201a5a](https://github.com/wanoo21/ngb.email/commit/1201a5ae994f2581b3ef1c65cbc6a58bee86cc70))
+* new templatesPath option and no more xApiKey, since the application is free ([cf475f2](https://github.com/wanoo21/ngb.email/commit/cf475f278f5ae6dcac527feda24fea284170eb44))
+* refactor all libs ([a9aebc5](https://github.com/wanoo21/ngb.email/commit/a9aebc54a510d910e876a49f4cd07301a85ddbbd))
 * More middleware actions ([8814ca7](https://github.com/wanoo21/ngb.email/commit/8814ca78fab32aca9f6953ed7ae5ed2e59e6f13e))
 * **ngx-email-builder:** add html-block ([ca7c7c5](https://github.com/wanoo21/ngb.email/commit/ca7c7c52662311c6880cf6f5d5762c14381e02f4))
 * **ngx-email-builder:** add preview devices ([fb7232b](https://github.com/wanoo21/ngb.email/commit/fb7232bf058ee5219a8ce4877b41eb1a353316c9))
@@ -41,7 +49,6 @@ This file was generated using [@jscutlery/semver](https://github.com/jscutlery/s
 
 * **ngx-email-builder:** better check license ([4622632](https://github.com/wanoo21/ngb.email/commit/46226320e8fad9a73284e35bffdcac0433106199))
 * **ngx-email-builder:** No AbsComponent deps ([026d1f3](https://github.com/wanoo21/ngb.email/commit/026d1f32d5344e7e4b3acdfafbe8ca8a2f7920da))
-
 
 
 ## [0.1.4](https://github.com/wanoo21/ngb.email/compare/ngx-email-builder-0.1.3...ngx-email-builder-0.1.4) (2023-12-18)

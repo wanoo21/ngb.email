@@ -52,10 +52,10 @@ export class DefaultIPEmailBuilderRestService implements AIPEmailBuilderRestServ
   /**
    * The path to the email convertor.
    */
-  readonly #convertorPath = inject(IP_EMAIL_BUILDER_CONFIG).convertorPath;
+  readonly #config = inject(IP_EMAIL_BUILDER_CONFIG);
 
   convert(email: IPEmail): Observable<IMjmlServerResponse> {
-    return this.http.post<IMjmlServerResponse>(this.#convertorPath, email).pipe(
+    return this.http.post<IMjmlServerResponse>(this.#config.convertorPath, email).pipe(
       tap(() => {
         // Clear all history records after successfully converted
         this.historyService.clear();
@@ -67,10 +67,11 @@ export class DefaultIPEmailBuilderRestService implements AIPEmailBuilderRestServ
   tmplCategories$(): Observable<IUserTemplateCategory[]>;
   tmplCategories$(category?: string, template?: string): Observable<IIPEmail>;
   tmplCategories$(category?: string, template?: string): Observable<IIPEmail | IUserTemplateCategory[]> {
-    let params = {};
+    const root = this.#config.templatesPath;
     if (category && template) {
-      params = { category, template };
+      return this.http.get<IIPEmail>(`${root}/${category}/${template}/index.json`);
+      // link = `${link}/${category}/${template}.json`;
     }
-    return this.http.get<IIPEmail | IUserTemplateCategory[]>(`${this.#convertorPath}/templates`, { params });
+    return this.http.get<IIPEmail | IUserTemplateCategory[]>(`${root}/templates.json`);
   }
 }

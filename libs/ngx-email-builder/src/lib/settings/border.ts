@@ -5,6 +5,8 @@ import {IBorder, IPadding, ISizes} from "../interfaces";
 
 @Directive()
 export abstract class AIPBorder extends AIPValueChanged<any> {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() override value!: IBorder | Omit<IBorder, "radius">;
   readonly #styleLabels = new Map<IBorder["style"], string>([
     ["solid", $localize`:@@border_style_solid:Solid`],

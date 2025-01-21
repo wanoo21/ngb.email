@@ -100,7 +100,7 @@ export class DefaultIPEmailBuilderMiddlewareService implements AIPEmailBuilderMi
    * @returns {string} The path to the thumbnail.
    */
   templateThumbnail(category: IUserTemplateCategory, template: string): string {
-    return `${this.templatesThumbsPath}/${category}-${template}.jpg`;
+    return `${this.templatesThumbsPath}/${category}/${template}/${template}.jpg`;
   }
 
   /**

@@ -9,7 +9,7 @@
       "@angular/localize",
     ],
     "target": "ES2022",
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
   },
   "exclude": ["src/test-setup.ts", "**/*.spec.ts", "**/*.test.ts"],
   "include": ["**/*.ts", "../../node_modules/@angular/localize/init/index.d.ts"]

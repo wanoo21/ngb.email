@@ -1,12 +1,14 @@
-import { Directive, Input } from "@angular/core";
+import { Directive, Input, input } from "@angular/core";
 
 import { AIPValueChanged } from "../core/ValueChanged";
 import { IWidthHeight, TUnits } from "../interfaces";
 
 @Directive()
 export abstract class AIPWidthHeight extends AIPValueChanged<any> {
+  // TODO: Skipped for migration because:
+  //  Your application code writes to the input. This prevents migration.
   @Input() override value!: IWidthHeight | Omit<IWidthHeight, "auto">;
-  @Input() label = $localize`:@@width:Width`;
+  readonly label = input($localize `:@@width:Width`);
   readonly #unitsLabels: Map<TUnits, string> = new Map([
     ["%", $localize`:@@unit_percent:Percent`],
     ["px", $localize`:@@unit_pixels:Pixels`],

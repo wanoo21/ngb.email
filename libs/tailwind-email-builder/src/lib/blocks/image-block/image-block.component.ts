@@ -6,7 +6,8 @@ import { ImageBlock } from "@wlocalhost/ngx-email-builder";
   templateUrl: 'image-block.component.html',
   styleUrls: ['image-block.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class ImageBlockComponent extends ImageBlock {
 }

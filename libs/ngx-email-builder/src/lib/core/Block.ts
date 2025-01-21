@@ -95,8 +95,9 @@ export abstract class AIPEmailBuilderBlock<T extends Record<string, any> = Recor
   /**
    * This method is called when the settings component is closed.
    */
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  unedited(): void {}
+  unedited(): void {
+    this.changeDetectorRef.markForCheck();
+  }
 
   override ngOnDestroy() {
     super.ngOnDestroy();

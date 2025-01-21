@@ -1,4 +1,4 @@
-import { Directive, OnDestroy, OnInit, Self } from "@angular/core";
+import { Directive, OnDestroy, OnInit, inject } from "@angular/core";
 import { NgControl } from "@angular/forms";
 import { debounceTime, distinctUntilChanged, filter, Subject, takeUntil } from "rxjs";
 
@@ -17,13 +17,10 @@ import { IPEmailBuilderHistoryHostDirective } from "./email-builder-history-host
   exportAs: "ipHistoryModel"
 })
 export class IPHistoryModelDirective implements OnInit, OnDestroy {
-  readonly #destroyed = new Subject();
+  readonly ngControl? = inject(NgControl, { self: true });
+  readonly historyHostDirective? = inject(IPEmailBuilderHistoryHostDirective);
 
-  constructor(
-    @Self() readonly ngControl?: NgControl,
-    readonly historyHostDirective?: IPEmailBuilderHistoryHostDirective
-  ) {
-  }
+  readonly #destroyed = new Subject();
 
   ngOnInit() {
     if (this.ngControl && this.historyHostDirective) {

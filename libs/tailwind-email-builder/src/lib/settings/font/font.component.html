@@ -4,14 +4,22 @@
   <p tailHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
 </div>
 <div class="flex flex-col pt-2">
-  <label [tailLabel]="s" *ngIf="!googleFont" i18n="@@standard_font">Standard Font</label>
-  <label [tailLabel]="s" *ngIf="googleFont" i18n="@@fallback_font">Fallback Font</label>
+  @if (!googleFont) {
+    <label [tailLabel]="s" i18n="@@standard_font">Standard Font</label>
+  }
+  @if (googleFont) {
+    <label [tailLabel]="s" i18n="@@fallback_font">Fallback Font</label>
+  }
   <select tailInput #s="input" [(ngModel)]="family" class="appearance-none">
-    <option *ngFor="let font of standardFonts" [value]="font">{{font}}</option>
+    @for (font of standardFonts; track font) {
+      <option [value]="font">{{font}}</option>
+    }
   </select>
-  <p tailHint *ngIf="googleFont" i18n="@@fallback_font_description">
+  @if (googleFont) {
+    <p tailHint i18n="@@fallback_font_description">
     Fallback font is used in case custom font is not supported.
   </p>
+  }
 </div>
 
 <div class="grid grid-cols-3 gap-2 pt-2">
@@ -22,13 +30,17 @@
   <div class="flex flex-col">
     <label [tailLabel]="w" i18n="@@font_weight">Weight</label>
     <select tailInput #w="input" [(ngModel)]="weight" class="appearance-none">
-      <option *ngFor="let weight of weights" [value]="weight">{{weight}}</option>
+      @for (weight of weights; track weight) {
+        <option [value]="weight">{{weight}}</option>
+      }
     </select>
   </div>
   <div class="flex flex-col">
     <label [tailLabel]="fst" i18n="@@font_style">Style</label>
     <select tailInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
-      <option *ngFor="let style of styles" [value]="style">{{getStyleLabel(style)}}</option>
+      @for (style of styles; track style) {
+        <option [value]="style">{{getStyleLabel(style)}}</option>
+      }
     </select>
   </div>
 </div>

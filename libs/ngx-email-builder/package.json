@@ -1,6 +1,6 @@
 {
   "name": "@wlocalhost/ngx-email-builder",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "schematics": "./schematics/collection.json",
   "peerDependencies": {},
   "dependencies": {

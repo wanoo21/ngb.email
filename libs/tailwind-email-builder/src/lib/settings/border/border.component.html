@@ -1,32 +1,48 @@
-<tail-color [(value)]="value.color" *ngIf="hasOwn('color')" allowTransparent="false"></tail-color>
+@if (hasOwn('color')) {
+  <tail-color [(value)]="value.color" allowTransparent="false"></tail-color>
+}
 
-<div class="grid grid-cols-4 gap-2 mt-2" *ngIf="value.sizes; else width">
-  <div class="flex flex-col" *ngFor="let key of borderKeys">
-    <label [tailLabel]="i">{{getBorderLabels(key)}}</label>
-    <input type="number" #i="input" tailInput [(ngModel)]="value.sizes[key]">
+@if (value.sizes) {
+  <div class="grid grid-cols-4 gap-2 mt-2">
+    @for (key of borderKeys; track key) {
+      <div class="flex flex-col">
+        <label [tailLabel]="i">{{getBorderLabels(key)}}</label>
+        <input type="number" #i="input" tailInput [(ngModel)]="value.sizes[key]">
+      </div>
+    }
   </div>
-</div>
+} @else {
+  <div class="flex flex-col gap-2 mt-2">
+    <label [tailLabel]="i" i18n="@@border_width">Border Width</label>
+    <input type="number" #i="input" tailInput [(ngModel)]="value.width"  placeholder="Width"
+      i18n-placeholder="@@border_width">
+  </div>
+}
 
 <ng-template #width>
   <div class="flex flex-col gap-2 mt-2">
     <label [tailLabel]="i" i18n="@@border_width">Border Width</label>
     <input type="number" #i="input" tailInput [(ngModel)]="value.width"  placeholder="Width"
-           i18n-placeholder="@@border_width">
+      i18n-placeholder="@@border_width">
   </div>
 </ng-template>
 
 <div class="flex flex-col mt-2">
-  <h3 tailH3 i18n="@@border_radius" *ngIf="hasOwn('radius')">Border Radius</h3>
+  @if (hasOwn('radius')) {
+    <h3 tailH3 i18n="@@border_radius">Border Radius</h3>
+  }
   <input type="number" tailInput [(ngModel)]="ngValue.radius"  placeholder="Radius"
-         i18n-placeholder="@@border_radius">
+    i18n-placeholder="@@border_radius">
 </div>
 
-<ng-container *ngIf="value.width">
+@if (value.width) {
   <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
   <div class="grid grid-cols-5 gap-2">
-    <button tailBtn size="xs" *ngFor="let style of styleLabels" [class.active]="value.style === style"
-            (click)="value.style = style">
-      {{getStyleLabel(style)}}
-    </button>
+    @for (style of styleLabels; track style) {
+      <button tailBtn size="xs" [class.bg-gray-100]="value.style === style"
+        (click)="value.style = style">
+        {{getStyleLabel(style)}}
+      </button>
+    }
   </div>
-</ng-container>
+}

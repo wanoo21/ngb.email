@@ -19,11 +19,13 @@ export class IPEmailBuilderStructuresDirective extends AbstractEmailBuilderDropL
   /**
    * The minimum height of the drop list, as a percentage of its parent's height.
    */
-  // @HostBinding("style.minHeight.%") readonly minHeight = 100;
+  @HostBinding("style.minHeight.%") readonly minHeight = 100;
 
   /**
    * The list of structures to be connected to the drop list.
    */
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input() set ipEmailBuilderStructures(structures: IStructure[]) {
     this.data = structures;
   }

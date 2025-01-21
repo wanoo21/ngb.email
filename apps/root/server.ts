@@ -1,61 +1,69 @@
-import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
-import express from 'express';
-import { fileURLToPath } from 'node:url';
-import { dirname, join, resolve } from 'node:path';
-import bootstrap from './src/main.server';
+import {
+  AngularNodeAppEngine,
+  createNodeRequestHandler,
+  isMainModule,
+  writeResponseToNodeResponse
+} from "@angular/ssr/node";
+import express from "express";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
+import { json, urlencoded } from "body-parser";
+import { convertIPEmail } from "@wlocalhost/ngx-email-builder-convertor";
 
 // The Express app is exported so that it can be used by serverless Functions.
 export function app(): express.Express {
   const server = express();
+  server.disable("etag").disable("x-powered-by");
+  server.use(json({ limit: "1mb" }));
+  server.use(urlencoded({ limit: "1mb", extended: true }));
   const serverDistFolder = dirname(fileURLToPath(import.meta.url));
-  const browserDistFolder = resolve(serverDistFolder, '../browser');
-  const indexHtml = join(serverDistFolder, 'index.server.html');
-
-  const commonEngine = new CommonEngine();
-
-  server.set('view engine', 'html');
-  server.set('views', browserDistFolder);
+  const browserDistFolder = resolve(serverDistFolder, "../browser");
+  const appEngine = new AngularNodeAppEngine();
 
   // Example Express Rest API endpoints
-  server.get('/api/**', (req, res) => {
-    res.status(404).send('data requests are not supported');
+  server.post("/api/convert", (req, res) => {
+    res.json(convertIPEmail(req.body, false));
   });
-  // Serve static files from /browser
+
   server.get(
-    '*.*',
+    "*.*",
     express.static(browserDistFolder, {
-      maxAge: '1y',
+      maxAge: "1y"
     })
   );
 
-  // All regular routes use the Angular engine
-  server.get('*', (req, res, next) => {
-    const { protocol, originalUrl, baseUrl, headers } = req;
+  server.get("/404", (req, res, next) => {
+    res.send("Express is serving this server only error");
+  });
 
-    commonEngine
-      .render({
-        bootstrap,
-        documentFilePath: indexHtml,
-        url: `${protocol}://${headers.host}${originalUrl}`,
-        publicPath: browserDistFolder,
-        providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
-      })
-      .then((html) => res.send(html))
-      .catch((err) => next(err));
+  // All regular routes use the Angular engine
+  server.use("*", async (req, res, next) => {
+    // const { protocol, originalUrl, baseUrl, headers } = req;
+
+    try {
+      const response = await appEngine.handle(req, { server: "express" });
+      if (response) {
+        await writeResponseToNodeResponse(response, res);
+      } else {
+        next();
+      }
+    } catch (err) {
+      next(err);
+    }
   });
 
   return server;
 }
 
-function run(): void {
-  const port = process.env['PORT'] || 4000;
-
-  // Start up the Node server
-  const server = app();
+const server = app();
+if (isMainModule(import.meta.url)) {
+  const port = process.env["PORT"] || 4000;
   server.listen(port, () => {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
 
-run();
+console.warn("Node Express server started");
+
+// This exposes the RequestHandler
+export const reqHandler = createNodeRequestHandler(server);

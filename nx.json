@@ -1,20 +1,8 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "npmScope": "wlocalhost",
-  "affected": {
-    "defaultBase": "main"
-  },
   "cli": {
-    "packageManager": "npm"
-  },
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
-        "accessToken": "YmUyNjMxMGYtNTQ2NC00MDE1LTllOWMtMTUyYTAzYTdlNzRlfHJlYWQtd3JpdGU="
-      }
-    }
+    "packageManager": "pnpm"
   },
   "generators": {
     "@nx/angular:application": {
@@ -63,5 +51,7 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "sharedGlobals": [],
     "production": ["default", "!{projectRoot}/src/test-setup.[jt]s"]
-  }
+  },
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }

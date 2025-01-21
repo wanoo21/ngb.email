@@ -6,7 +6,8 @@ import {HtmlBlock} from "@wlocalhost/ngx-email-builder";
   templateUrl: './html-block.component.html',
   styleUrls: ['./html-block.component.css'],
   encapsulation: ViewEncapsulation.ShadowDom,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false
 })
 export class HtmlBlockComponent extends HtmlBlock{
 

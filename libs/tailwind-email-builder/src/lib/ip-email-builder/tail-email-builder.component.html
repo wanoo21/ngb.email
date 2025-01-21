@@ -1,62 +1,61 @@
 <div class="grid grid-cols-12 grid-rows-1 h-full">
   <div class="col-span-7 md:col-span-9 sm:col-span-8 flex flex-col" [ngSwitch]="screen | async">
     <div class="bg-white shadow-sm border border-b py-3 px-4 w-full flex gap-2 flex-shrink-0">
-      <ng-container *ngIf="value | ipCan: 'preview'">
+      @if (value | ipCan: 'preview') {
         <button tailBtn (click)="preview()" *ngSwitchDefault>Preview</button>
         <button tailBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
-      </ng-container>
-      <ng-content select=".top-actions"></ng-content>
+      }
+      <ng-content select=".top-actions"/>
 
-      <!--      <div class="ms-auto">-->
+      <!--      <div class="ms-auto flex gap-2">-->
       <!--        <button tailBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
       <!--        <button tailBtn ipEmailBuilderHistoryAction="redo">Redo</button>-->
       <!--      </div>-->
     </div>
 
     <ng-container *ngSwitchCase="'preview'">
-      <div class="relative flex justify-center h-full" *ngIf="value | ipPreviewLink | async as link; else loading">
-        <iframe [src]="link" class="preview overflow-x-auto h-full"
-                [style.width]="previewDeviceWidth$ | async"></iframe>
-        <div class="icon absolute flex flex-col">
-          <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2"
-               [class.mb-1]="previewDevice === 'desktop'"
-               [class.active]="previewDevice === 'desktop'"
-               (click)="changePreviewDevice('desktop')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
-            </svg>
-          </div>
-          <div class="icon-item border rounded border-solid cursor-pointer border-gray-300 p-2 mt-2 mb-2"
-               style="rotate: -90deg" [class.active]="previewDevice === 'tablet'"
-               (click)="changePreviewDevice('tablet')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-15a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 4.5v15a2.25 2.25 0 002.25 2.25z" />
-            </svg>
-          </div>
-          <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2"
-               [class.mt-1]="previewDevice === 'mobile'"
-               [class.active]="previewDevice === 'mobile'" (click)="changePreviewDevice('mobile')">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                 stroke="currentColor" class="w-6 h-6">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
-            </svg>
+      @if (value | ipPreviewLink | async; as link) {
+        <div class="relative flex justify-center h-full">
+          <iframe [src]="link" class="preview overflow-x-auto h-full"
+                  [style.width]="previewDeviceWidth$ | async"></iframe>
+          <div class="icon absolute flex flex-col">
+            <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2"
+                 [class.mb-1]="previewDevice === 'desktop'"
+                 [class.active]="previewDevice === 'desktop'"
+                 (click)="changePreviewDevice('desktop')">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25" />
+              </svg>
+            </div>
+            <div class="icon-item border rounded border-solid cursor-pointer border-gray-300 p-2 mt-2 mb-2"
+                 style="rotate: -90deg" [class.active]="previewDevice === 'tablet'"
+                 (click)="changePreviewDevice('tablet')">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10.5 19.5h3m-6.75 2.25h10.5a2.25 2.25 0 002.25-2.25v-15a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 4.5v15a2.25 2.25 0 002.25 2.25z" />
+              </svg>
+            </div>
+            <div class="icon-item border rounded cursor-pointer border-solid border-gray-300 p-2"
+                 [class.mt-1]="previewDevice === 'mobile'"
+                 [class.active]="previewDevice === 'mobile'" (click)="changePreviewDevice('mobile')">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                   stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+              </svg>
+            </div>
           </div>
         </div>
-      </div>
-      <ng-template #loading>
+      } @else {
         <p i18n="@@template_loading">Loading, please wait ...</p>
-      </ng-template>
+      }
     </ng-container>
 
-    <ngx-editor-menu *ipEmailBuilderTextEditorMenu="let editor; let toolbar = toolbar" [editor]="editor"
-                     [toolbar]="toolbar"></ngx-editor-menu>
-    <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"></tail-email-body>
+    <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"/>
   </div>
   <tail-email-aside [readonly]="(screen | async) !== null"
-                    class="col-span-5 md:col-span-3 sm:col-span-4 select-text"></tail-email-aside>
+                    class="col-span-5 md:col-span-3 sm:col-span-4 select-text"/>
 </div>
