@@ -44,7 +44,7 @@ the [configuration options](https://docs.ngb.email/getting-started/configuration
 
 ```html
 
-<tail-email-builder [(value)]="email"></tail-email-builder>
+<tail-email-builder [(value)]="email" />
 ```
 
 Where `email` is an `IPEmail` class:
