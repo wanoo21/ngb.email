@@ -12,6 +12,9 @@ on:
           - 'beta'
           - 'main'
 
+permissions:
+  actions: write
+
 jobs:
   check:
     name: Check release
