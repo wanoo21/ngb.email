@@ -3,7 +3,7 @@
     <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
     <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
          [cdkDropListSortingDisabled]="true">
-      @for (block of [blocks] | applyMiddleware: 'blocksList' | async; track block) {
+      @for (block of [blocks] | applyMiddleware: 'blocksList' | async; track block.type) {
         <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
              cdkDrag [cdkDragData]="block | toBodyBlock">
           {{ block.title }}
