@@ -2,7 +2,7 @@
   @default {
     <div cdkDropList [ipEmailBuilderStructures]="value.structures" class="flex flex-col items-center">
       @if (value.structures.length) {
-        @for (structure of value.structures; track structure) {
+        @for (structure of value.structures; track structure.id) {
           <tail-structure (clone)="duplicateStructure($event)"
                           (delete)="deleteStructure($event)" [value]="structure"
                           [bodyWidth]="value.general.width" class="group relative" cdkDrag />
