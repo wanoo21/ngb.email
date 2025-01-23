@@ -38,14 +38,39 @@ import { lastValueFrom } from 'rxjs';
         <button tailBtn cdkMenuItem [cdkMenuTriggerFor]="exportMenu">
           Export Email
         </button>
+        <label tailBtn cdkMenuItem class="cursor-pointer">
+          Import JSON
+          <input type="file" (input)="importJSON($event)" class="hidden" />
+        </label>
       </div>
     </tail-email-builder>
 
     <ng-template #exportMenu>
       <div class="flex bg-white shadow-lg p-4 rounded gap-4" cdkMenu>
-        <button class="hover:bg-gray-200" tailBtn (click)="exportEmail('HTML')" cdkMenuItem>HTML</button>
-        <button class="hover:bg-gray-200" tailBtn (click)="exportEmail('MJML')" cdkMenuItem>MJML</button>
-        <button class="hover:bg-gray-200" tailBtn (click)="exportEmail('JSON')" cdkMenuItem>JSON</button>
+        <button
+          class="hover:bg-gray-200"
+          tailBtn
+          (click)="exportEmail('HTML')"
+          cdkMenuItem
+        >
+          HTML
+        </button>
+        <button
+          class="hover:bg-gray-200"
+          tailBtn
+          (click)="exportEmail('MJML')"
+          cdkMenuItem
+        >
+          MJML
+        </button>
+        <button
+          class="hover:bg-gray-200"
+          tailBtn
+          (click)="exportEmail('JSON')"
+          cdkMenuItem
+        >
+          JSON
+        </button>
       </div>
     </ng-template>
   `,
@@ -86,21 +111,54 @@ export class AppComponent {
     ])
   );
 
+  /**
+   * An example of how to export the email to a file
+   *
+   * @param type
+   */
   async exportEmail(type: 'HTML' | 'MJML' | 'JSON') {
-    let exportedFile = JSON.stringify(this.email(), null, 2);
-    if (type !== 'JSON') {
-      const { html, mjml } = await lastValueFrom(
-        this.restService.convert(this.email())
-      );
-      exportedFile = type === 'HTML' ? html : mjml;
+    try {
+      let exportedFile = JSON.stringify(this.email(), null, 2);
+      if (type !== 'JSON') {
+        const { html, mjml } = await lastValueFrom(
+          this.restService.convert(this.email())
+        );
+        exportedFile = type === 'HTML' ? html : mjml;
+      }
+      const blob = new Blob([exportedFile], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `email.${type.toLowerCase()}`;
+      a.click();
+      URL.revokeObjectURL(url);
+      a.remove();
+    } catch (error) {
+      console.error(error);
     }
-    const blob = new Blob([exportedFile], { type: 'text/plain' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `email.${type.toLowerCase()}`;
-    a.click();
-    URL.revokeObjectURL(url);
-    a.remove();
+  }
+
+  /**
+   * An example of how to import a JSON file to the email
+   * TODO: Add support for new `model` API, now `set` method is raising some issues with DnD
+   *
+   * @param event
+   */
+  importJSON(event: Event) {
+    try {
+      const file = (event.target as HTMLInputElement).files?.[0];
+      if (!file || !file.type.includes('json')) {
+        return;
+      }
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.email.set(JSON.parse(reader.result as string));
+      };
+      reader.readAsText(file);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      (event.target as HTMLInputElement).value = '';
+    }
   }
 }
