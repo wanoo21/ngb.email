@@ -1,8 +1,10 @@
-import { ChangeDetectorRef, Directive, DoCheck, HostBinding, inject, OnDestroy, viewChild } from "@angular/core";
-import { Subject } from "rxjs";
+import { ChangeDetectorRef, Directive, DoCheck, HostBinding, inject, OnDestroy, viewChild } from '@angular/core';
+import { Subject } from 'rxjs';
 
-import { AIPEmailBuilderHistoryService, IPEmailBuilderUiService } from "../services";
-import { IPEmailBuilderSettingsDirective } from "../directives/email-builder-settings.directive";
+import { AIPEmailBuilderHistoryService, IPEmailBuilderUiService } from '../services';
+import { IPEmailBuilderSettingsDirective } from '../directives/email-builder-settings.directive';
+import { NgForm } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 /**
  * An abstract class that provides a common interface for components that contain settings.
@@ -10,7 +12,11 @@ import { IPEmailBuilderSettingsDirective } from "../directives/email-builder-set
  *
  * @internal
  */
-@Directive()
+@Directive({
+  host: {
+    '[class.is-editing]': 'isCurrentlyEditing',
+  }
+})
 export abstract class WithSettings implements DoCheck, OnDestroy {
   readonly builderUiService = inject(IPEmailBuilderUiService);
   readonly historyService = inject(AIPEmailBuilderHistoryService);
@@ -18,8 +24,9 @@ export abstract class WithSettings implements DoCheck, OnDestroy {
   // Settings portal is used to attach the settings component to the builder.
   readonly settingsPortal = viewChild.required(IPEmailBuilderSettingsDirective);
   readonly destroyed = new Subject();
+  readonly form = viewChild(NgForm);
+  readonly takeUntilDestroyed = takeUntilDestroyed()
 
-  @HostBinding("class.is-editing")
   get isCurrentlyEditing(): boolean {
     return this.settingsPortal().isAttached;
   }
@@ -52,7 +59,7 @@ export abstract class WithSettings implements DoCheck, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.destroyed.next("");
+    this.destroyed.next('');
     this.destroyed.complete();
   }
 }

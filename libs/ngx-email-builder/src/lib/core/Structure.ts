@@ -1,125 +1,146 @@
 import {
+  computed,
   Directive,
-  HostBinding,
-  HostListener,
   inject,
-  Input,
-  OnInit,
-  QueryList,
-  ViewChildren,
   input,
-  output,
-  viewChildren
-} from "@angular/core";
-import { CdkDrag, CdkDragHandle } from "@angular/cdk/drag-drop";
-import { filter, takeUntil } from "rxjs";
-import { applyDiff } from "recursive-diff";
+  QueryList,
+  viewChildren,
+  ViewChildren,
+} from '@angular/core';
+import { CdkDrag, CdkDragHandle } from '@angular/cdk/drag-drop';
+import { IPEmailBuilderDynamicDirective } from '../directives/email-builder-dynamic.directive';
+import { TVerticalAlign } from '../interfaces';
+import {
+  cloneDeep,
+  createBorder,
+  createMargin,
+  createPadding,
+  createWidthHeight,
+} from '../tools/utils';
+import {
+  AIPEmailBuilderBlock,
+  AIPEmailBuilderBlockExtendedOptions,
+} from './Block';
+import { WithSettings } from './WithSettings';
+import { AIPEmailBuilderMiddlewareService } from '../services';
+import { injectIIPEmail } from '../state';
 
-import { Structure } from "../structure/structure";
-import { IPEmailBuilderDynamicDirective } from "../directives/email-builder-dynamic.directive";
-import { TIPEmailBuilderStyles, TVerticalAlign } from "../interfaces";
-import { cloneDeep, createBorder, createMargin, createPadding, createWidthHeight, mergeObjects } from "../tools/utils";
-import { AIPEmailBuilderBlock, AIPEmailBuilderBlockExtendedOptions } from "./Block";
-import { IPEmail } from "../body/body";
-import { WithSettings } from "./WithSettings";
-import { IIPValueChanged } from "./ValueChanged";
-import { AIPEmailBuilderMiddlewareService } from "../services";
+const verticalLabels = new Map<TVerticalAlign, string>([
+  ['top', $localize`:@@vertical_align_top:Top`],
+  ['middle', $localize`:@@vertical_align_middle:Middle`],
+  ['bottom', $localize`:@@vertical_align_bottom:Bottom`],
+]);
 
-@Directive()
-export abstract class AIPStructure extends WithSettings implements IIPValueChanged<Structure>, OnInit {
-  // TODO: Skipped for migration because:
-  //  Your application code writes to the input. This prevents migration.
-  @Input() value!: Structure;
-  readonly valueChange = output<Structure>();
-  // Body general width
-  readonly bodyWidth = input.required<IPEmail["general"]["width"]>();
+@Directive({
+  host: {
+    '[style]': 'bodyStyles()',
+    '[style.width]': 'width()',
+    '(click)': '$event.stopPropagation()',
+  },
+})
+export abstract class AIPStructure extends WithSettings {
+  readonly index = input.required<number>();
+  readonly currentEmail = injectIIPEmail();
+  readonly currentStructure = computed(
+    () => this.currentEmail.value().structures[this.index()]
+  );
   // All blocks
   readonly blocks = viewChildren(IPEmailBuilderDynamicDirective);
   // Column to edit
   editColumnIndex = 0;
-  // Clone & Delete Output
-  readonly clone = output<Structure>();
-  readonly delete = output<Structure>();
   // Allow change detection to run last time in case no more inside editing blocks
   #hasLastEditedBlock = false;
-  #verticalLabels = new Map<TVerticalAlign, string>([
-    ["top", $localize`:@@vertical_align_top:Top`],
-    ["middle", $localize`:@@vertical_align_middle:Middle`],
-    ["bottom", $localize`:@@vertical_align_bottom:Bottom`]
-  ]);
   #middlewareService = inject(AIPEmailBuilderMiddlewareService);
   #cdkDrag = inject(CdkDrag);
 
   // Attach child handle to host drag
-  // TODO: Skipped for migration because:
-  //  Accessor queries cannot be migrated as they are too complex.
   @ViewChildren(CdkDragHandle)
   set dragHandle(handles: QueryList<CdkDragHandle>) {
-    this.#cdkDrag.data = this.value;
+    this.#cdkDrag.data = this.currentStructure();
     this.#cdkDrag._addHandle(handles.first);
   }
 
-  @HostBinding("style")
-  get bodyStyles(): TIPEmailBuilderStyles {
-    const { padding, background, border, margin, columnsWidth } = this.value.options;
+  readonly bodyStyles = computed(() => {
+    const { padding, background, border, margin, columnsWidth } =
+      this.currentStructure().options;
     return {
-      display: "grid",
+      display: 'grid',
       ...createPadding(padding),
       ...(background.url ? { backgroundImage: `url(${background.url})` } : {}),
       backgroundRepeat: background.repeat,
       backgroundColor: background.color,
       backgroundSize: createWidthHeight(background.size),
-      backgroundPosition: "top center",
+      backgroundPosition: 'top center',
       ...createBorder(border),
       ...createMargin(margin),
-      maxWidth: "100%",
-      gridTemplateColumns: columnsWidth.map(fr => `${fr}fr`).join(" ")
+      maxWidth: '100%',
+      gridTemplateColumns: columnsWidth.map((fr) => `${fr}fr`).join(' '),
       // gap: gaps.map(gap => `${gap}px`).join(" ")
     };
-  }
+  });
 
-  @HostBinding("style.width")
-  get width(): string {
-    return this.value.options.fullWidth ? "100%" : createWidthHeight(this.bodyWidth());
-  }
+  readonly width = computed(() =>
+    this.currentStructure().options.fullWidth
+      ? '100%'
+      : createWidthHeight(this.currentEmail.value().general.width)
+  );
+  readonly columnsSize = computed(() =>
+    this.currentStructure().options.columns.map((_, index) => index)
+  );
+  readonly verticalOptions = [...verticalLabels.keys()].map((value) => ({
+    value,
+    label: verticalLabels.get(value),
+  }));
 
-  get columnsSize(): number[] {
-    return this.value.options.columns.map((_, index) => index);
-  }
+  // @HostBinding("style.width")
+  // get width(): string {
+  //   return this.value.options.fullWidth ? "100%" : createWidthHeight(this.bodyWidth());
+  // }
 
-  get verticalLabels(): TVerticalAlign[] {
-    return [...this.#verticalLabels.keys()];
-  }
+  // get columnsSize(): number[] {
+  //   return this.value.options.columns.map((_, index) => index);
+  // }
 
-  getVerticalAlignLabel(key: TVerticalAlign): string {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    return this.#verticalLabels.get(key)!;
-  }
+  // get verticalLabels(): TVerticalAlign[] {
+  //   return [...this.#verticalLabels.keys()];
+  // }
 
-  @HostListener("click", ["$event"]) onClick(ev: Event) {
-    ev.stopPropagation();
-  }
+  // getVerticalAlignLabel(key: TVerticalAlign): string {
+  //   return verticalLabels.get(key) as string;
+  // }
+
+  // @HostListener("click", ["$event"]) onClick(ev: Event) {
+  //   ev.stopPropagation();
+  // }
 
   duplicateSelf(): void {
-    this.clone.emit(this.value);
+    this.currentEmail.structures.duplicate(this.index());
   }
 
   async removeSelf(): Promise<void> {
-    const isYes = await this.#middlewareService.delete(this.value);
+    const isYes = await this.#middlewareService.delete(this.currentStructure());
     if (isYes) {
-      this.delete.emit(this.value);
+      this.currentEmail.structures.remove(this.index());
       this.detachSettingsPortal();
     }
   }
 
-  duplicateBlock($event: MouseEvent, block: AIPEmailBuilderBlock, column: AIPEmailBuilderBlockExtendedOptions[]): void {
+  duplicateBlock(
+    $event: MouseEvent,
+    block: AIPEmailBuilderBlock,
+    column: AIPEmailBuilderBlockExtendedOptions[]
+  ): void {
     $event.preventDefault();
     $event.stopPropagation();
     const indexOf = column.indexOf(block);
     column.splice(indexOf, 0, cloneDeep(block.toObject()));
   }
 
-  async removeBlock($event: MouseEvent, block: AIPEmailBuilderBlock, column: AIPEmailBuilderBlockExtendedOptions[]): Promise<void> {
+  async removeBlock(
+    $event: MouseEvent,
+    block: AIPEmailBuilderBlock,
+    column: AIPEmailBuilderBlockExtendedOptions[]
+  ): Promise<void> {
     $event.preventDefault();
     $event.stopPropagation();
     const isYes = await this.#middlewareService.delete(block);
@@ -134,22 +155,10 @@ export abstract class AIPStructure extends WithSettings implements IIPValueChang
     this.editColumnIndex = index;
   }
 
-  ngOnInit(): void {
-    this.historyService.commitPush$.pipe(
-      filter(({ id }) => {
-        const [type, changeId] = id.split(":");
-        return type === "structure" && changeId === this.value.id;
-      }),
-      takeUntil(this.destroyed)
-    ).subscribe(({ diff }) => {
-      mergeObjects(this.value.options, applyDiff(this.value.options, diff));
-      this.valueChange.emit(this.value);
-      this.changeDetectorRef.markForCheck();
-    });
-  }
-
   override markForCheck(): boolean {
-    const mustCheckNow = this.blocks()?.some(({ context }) => context.$implicit.isCurrentlyEditing);
+    const mustCheckNow = this.blocks()?.some(
+      ({ context }) => context.$implicit.isCurrentlyEditing
+    );
     if (mustCheckNow || this.#hasLastEditedBlock) {
       this.#hasLastEditedBlock = mustCheckNow;
       return true;
