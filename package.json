@@ -39,8 +39,7 @@
     "@wlocalhost/ngx-email-builder-convertor": "^3.6.1",
     "body-parser": "^1.20.3",
     "express": "4.21.2",
-    "ngxtension": "^4.2.1",
-    "recursive-diff": "^1.0.9"
+    "ngxtension": "^4.2.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "19.0.7",
