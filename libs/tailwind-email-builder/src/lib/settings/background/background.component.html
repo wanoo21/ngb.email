@@ -1,40 +1,40 @@
-<tail-color [(value)]="value.color"></tail-color>
-<tail-image-upload class="pt-2" [(value)]="value.url"></tail-image-upload>
-<p tailHint variant="red-500" i18n="@@value_image_outlook_support">
-  Background image has limited support in some Outlook versions.
-</p>
+<ng-container ngModelGroup="background" #modelGroup="ngModelGroup">
+  <tail-color />
+  <tail-image-upload class="pt-2" isBackgroundImage />
+  <p tailHint variant="red-500" i18n="@@value_image_outlook_support">
+    Background image has limited support in some Outlook versions.
+  </p>
 
-@if (value.url.length) {
-  <h3 tailH3 i18n="@@value_image_repeat" class="pt-2">Background image repeat</h3>
-  <div class="grid grid-cols-4 gap-2">
-    @for (repeat of repeatKeys; track repeat) {
-      <button tailBtn size="xs"
-        [class.active]="value.repeat === repeat"
-        (click)="value.repeat = repeat"
-        >
-        {{getRepeatLabel(repeat)}}
-      </button>
-    }
-  </div>
-  <h3 tailH3 i18n="@@value_image_size" class="pt-2">Background image size</h3>
-  <div class="grid grid-cols-5 gap-2">
-    <button tailBtn size="xs" [class.active]="value.size.auto"
-      (click)="value.size.auto = !value.size.auto" i18n="@@value_image_size_auto">
-      Auto
-    </button>
-    @for (unit of value.size.units; track unit) {
-      <button tailBtn size="xs"
-        [class.active]="value.size.unit === unit && !value.size.auto"
-        (click)="value.size.unit = unit"
-        [disabled]="value.size.auto"
-        >
-        {{getUnitLabel(unit)}}
-      </button>
-    }
-  </div>
-  @if (['%', 'px'].includes(value.size.unit) && !value.size.auto) {
-    <div class="mt-1">
-      <input type="number" tailInput [(ngModel)]="value.size.value">
+  @let formGroup = modelGroup.valueChanges | async;
+  @if (formGroup?.url.length) {
+    <h3 tailH3 i18n="@@value_image_repeat" class="pt-2">Background image repeat</h3>
+    <div class="grid grid-cols-4 gap-2">
+      @for (repeat of repeatOptions; track repeat.value) {
+        <label tailBtn size="xs">
+          <input type="radio" name="repeat" [value]="repeat.value" ngModel hidden>
+          {{ repeat.label }}
+        </label>
+      }
     </div>
+    <ng-container ngModelGroup="size">
+      <h3 tailH3 i18n="@@value_image_size" class="pt-2">Background image size</h3>
+      <div class="grid grid-cols-5 gap-2">
+        <label tailBtn size="xs">
+          <input type="checkbox" name="auto" hidden ngModel>
+          <ng-container i18n="@@value_image_size_auto">Auto</ng-container>
+        </label>
+        @for (unit of unitsOptions; track unit.value) {
+          <label tailBtn size="xs">
+            <input type="radio" name="unit" [value]="unit.value" ngModel [disabled]="formGroup.size.auto" hidden>
+            {{ unit.label }}
+          </label>
+        }
+      </div>
+      @if (['%', 'px'].includes(formGroup.size.unit) && !formGroup.size.auto) {
+        <div class="mt-1">
+          <input type="number" tailInput name="value" ngModel>
+        </div>
+      }
+    </ng-container>
   }
-}
+</ng-container>
