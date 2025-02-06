@@ -1,20 +1,23 @@
 import { WritableSignal } from '@angular/core';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
 
-import { DeepPartial, TStructureTypes } from '../interfaces';
+import { DeepPartial, IIPEmail, TStructureTypes } from '../interfaces';
 import { IStructureOptions, Structure } from '../structure/structure';
-import { IIPEmail } from './tokens';
-import { defaultsDeep } from '../tools/utils';
+import { defaultsDeep, randomString } from '../tools/utils';
 
 export function addStructure(state: WritableSignal<IIPEmail>) {
   return (
     type: TStructureTypes = 'cols_1',
-    options?: DeepPartial<IStructureOptions>
+    options?: DeepPartial<IStructureOptions>,
+    atIndex = 0
   ) => {
     const newStructure = new Structure(type, [], options);
     state.update((prev) => {
+      const structures = structuredClone(prev.structures);
+      structures.splice(atIndex, 0, { ...newStructure });
       return {
         ...prev,
-        structures: [...prev.structures, newStructure],
+        structures,
       };
     });
     return state().structures.indexOf(newStructure);
@@ -34,19 +37,18 @@ export function removeStructure(state: WritableSignal<IIPEmail>) {
 
 export function duplicateStructure(state: WritableSignal<IIPEmail>) {
   return (index: number) => {
-    const structure = structuredClone(state().structures[index]);
     state.update((prev) => {
+      const structures = structuredClone(prev.structures);
+      const structure = structuredClone({
+        ...structures[index],
+        id: randomString(),
+      });
+      structures.splice(index + 1, 0, structure);
       return {
         ...prev,
-        structures: [
-          ...prev.structures.slice(0, index),
-          structure,
-          ...prev.structures.slice(index),
-        ],
+        structures
       };
     });
-
-    return state().structures.indexOf(structure);
   };
 }
 
@@ -74,6 +76,27 @@ export function updateStructure(state: WritableSignal<IIPEmail>) {
           }
           return structure;
         }),
+      };
+    });
+  };
+}
+
+export function getStructure(state: WritableSignal<IIPEmail>) {
+  return (index: number) => {
+    return state().structures[index];
+  };
+}
+
+export function moveStructure(state: WritableSignal<IIPEmail>) {
+  return (fromIndex: number, toIndex: number) => {
+    state.update((prev) => {
+      const structures = [...prev.structures];
+      // const [removed] = structures.splice(fromIndex, 1);
+      // structures.splice(toIndex, 0, removed);
+      moveItemInArray(structures, fromIndex, toIndex);
+      return {
+        ...prev,
+        structures,
       };
     });
   };

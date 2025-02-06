@@ -1,6 +1,7 @@
-import { DeepPartial, defaultsDeep } from '@wlocalhost/ngx-email-builder';
-import { IIPEmail } from './tokens';
 import { WritableSignal } from '@angular/core';
+
+import { DeepPartial, IIPEmail } from '../interfaces';
+import { defaultsDeep } from '../tools/utils';
 
 export function generalOptions(state: WritableSignal<IIPEmail>) {
   return (options: DeepPartial<IIPEmail['general']>) => {

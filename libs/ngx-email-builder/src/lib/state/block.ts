@@ -1,14 +1,68 @@
 import { WritableSignal } from '@angular/core';
+import { transferArrayItem } from '@angular/cdk/drag-drop';
 
-import { IIPEmail } from './tokens';
-import {
-  AIPEmailBuilderBlockExtendedOptions,
-  DeepPartial,
-  defaultsDeep,
-} from '@wlocalhost/ngx-email-builder';
+import { DeepPartial, IIPEmail } from '../interfaces';
+import { defaultsDeep, randomString } from '../tools/utils';
+import { TIPEmailBuilderBlock } from '../core/Block';
 
-export function addBlock(state: WritableSignal<IIPEmail>, type: string) {
-  return () => {};
+export function addBlock(
+  state: WritableSignal<IIPEmail>,
+  block: TIPEmailBuilderBlock | { type: string }
+) {
+  return (structureIndex: number, columnIndex: number, atIndex: number) => {
+    state.update((prev) => {
+      return {
+        ...prev,
+        structures: prev.structures.map((structure, i) => {
+          if (i === structureIndex) {
+            return {
+              ...structure,
+              elements: structure.elements.map((column, j) => {
+                if (j === columnIndex) {
+                  const newColumn = structuredClone(column);
+                  newColumn.splice(atIndex, 0, {
+                    ...block,
+                    id: randomString(),
+                  });
+                  return newColumn;
+                }
+                return column;
+              }),
+            };
+          }
+          return structure;
+        }),
+      };
+    });
+  };
+}
+
+type moveData = {
+  structureIndex: number;
+  columnIndex: number;
+  index: number;
+  toStructureIndex: number;
+  toColumnIndex: number;
+  toIndex: number;
+};
+
+export function moveBlock(state: WritableSignal<IIPEmail>) {
+  return (data: moveData) => {
+    state.update((prev) => {
+      const structures = structuredClone(prev.structures);
+      console.log(structures);
+      const fromColumn =
+        structures[data.structureIndex].elements[data.columnIndex];
+      const toColumn =
+        structures[data.toStructureIndex].elements[data.toColumnIndex];
+      transferArrayItem(fromColumn, toColumn, data.index, data.toIndex);
+
+      return {
+        ...prev,
+        structures,
+      };
+    });
+  };
 }
 
 export function removeBlock(state: WritableSignal<IIPEmail>) {
@@ -69,7 +123,7 @@ export function updateBlock(state: WritableSignal<IIPEmail>) {
     structureIndex: number,
     columnIndex: number,
     index: number,
-    options: DeepPartial<AIPEmailBuilderBlockExtendedOptions['options']>
+    options: DeepPartial<TIPEmailBuilderBlock['options']>
   ) => {
     state.update((prev) => {
       return {
@@ -85,9 +139,9 @@ export function updateBlock(state: WritableSignal<IIPEmail>) {
                       return {
                         ...block,
                         options: defaultsDeep(
-                          block.options,
-                          options
-                        ) as AIPEmailBuilderBlockExtendedOptions['options'],
+                          block.options || {},
+                          options || {}
+                        ),
                       };
                     }
                     return block;

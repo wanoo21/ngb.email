@@ -1,32 +1,8 @@
 import { inject, InjectionToken, signal } from '@angular/core';
 import { Directionality } from '@angular/cdk/bidi';
 
-import { IBackground, IPadding, IWidthHeight, TDirection } from '../interfaces';
-import { IStructure } from '../structure/structure';
-
-/**
- * Builder general options interface.
- */
-export interface IGeneralOptions {
-  width: IWidthHeight & { auto?: boolean };
-  background: Pick<IBackground, 'color'>;
-  padding: IPadding;
-  direction: TDirection;
-  name: string;
-  previewText: string;
-  global: {
-    // fonts?: string[];
-    // padding?: IPadding;
-  };
-}
-
-/**
- * Main builder Email Object interface.
- */
-export interface IIPEmail {
-  general: IGeneralOptions;
-  structures: IStructure[];
-}
+import { IIPEmail } from '../interfaces';
+import { randomString } from '@wlocalhost/ngx-email-builder';
 
 export const AIP_EMAIL_BUILDER = new InjectionToken('AIP_EMAIL_BUILDER', {
   providedIn: 'root',
@@ -72,3 +48,11 @@ export const AIP_EMAIL_BUILDER = new InjectionToken('AIP_EMAIL_BUILDER', {
     );
   },
 });
+
+export const AIP_EMAIL_BUILDER_RESET_STATE = new InjectionToken(
+  'AIP_EMAIL_BUILDER_RESET_STATE',
+  {
+    providedIn: 'root',
+    factory: () => signal(randomString()),
+  }
+);
