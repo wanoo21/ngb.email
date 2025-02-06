@@ -1,13 +1,13 @@
-<div class="grid grid-cols-3 gap-2">
+<div class="grid grid-cols-3 gap-2" ngModelGroup="lineHeight">
   <div class="flex flex-col col-span-1">
     <label [tailLabel]="i" i18n="@@line_height">Line Height</label>
-    <input tailInput #i="input" type="number" [(ngModel)]="value.value">
+    <input tailInput #i="input" type="number" name="value" ngModel>
   </div>
   <div class="flex flex-col col-span-2">
     <label [tailLabel]="u" i18n="@@line_height_unit">Unit</label>
-    <select tailInput #u="input" [(ngModel)]="value.unit" class="appearance-none">
-      @for (unit of units(); track unit) {
-        <option [value]="unit">{{getUnitLabel(unit)}}</option>
+    <select tailInput #u="input" name="unit" ngModel class="appearance-none">
+      @for (unit of uniOptions(); track unit.value) {
+        <option [value]="unit.value">{{ unit.label }}</option>
       }
     </select>
   </div>
