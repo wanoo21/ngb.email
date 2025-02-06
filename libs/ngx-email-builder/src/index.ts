@@ -7,14 +7,13 @@ export * from './lib/services/email-builder-middleware-service/email-builder-mid
 export * from './lib/services/email-builder-rest-service/email-builder-rest.service';
 
 // Default blocks blocks
-export * from './lib/blocks/text-block/text.block';
-export * from './lib/blocks/image-block/image.block';
-export * from './lib/blocks/button-block/button.block';
-export * from './lib/blocks/divider-block/divider.block';
-export * from './lib/blocks/social-block/social.block';
-export * from './lib/blocks/spacer-block/spacer.block';
-export * from './lib/blocks/navigation-block/navigation.block';
-export * from './lib/blocks/html-block/html-block';
+export * from './lib/blocks/text.block';
+export * from './lib/blocks/image.block';
+export * from './lib/blocks/button.block';
+export * from './lib/blocks/divider.block';
+export * from './lib/blocks/social.block';
+export * from './lib/blocks/spacer.block';
+export * from './lib/blocks/navigation.block';
 
 // Core services & classes
 export * from './lib/public-tokens';
@@ -43,9 +42,6 @@ export * from './lib/pipes/can.pipe';
 export * from './lib/pipes/preview-link.pipe';
 export * from './lib/pipes/social-path.pipe';
 export * from './lib/pipes/template-thumb-path.pipe';
-export * from './lib/pipes/to-body-block.pipe';
-export * from './lib/pipes/to-body-structure.pipe';
-export * from './lib/pipes/to-watch-options.pipe';
 export * from './lib/pipes/column-styles.pipe';
 
 // Directives
