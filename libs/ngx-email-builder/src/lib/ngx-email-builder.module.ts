@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ColumnStylesPipe } from './pipes/column-styles.pipe';
-import { IPEmailBuilderSettingsDirective } from './directives/email-builder-settings.directive';
-import { IPEmailBuilderColumnDirective } from './directives/email-builder-column.directive';
-import { IPEmailBuilderDynamicDirective } from './directives/email-builder-dynamic.directive';
-import { IPEmailBuilderStructuresDirective } from './directives/email-builder-structures.directive';
-import { SocialPathPipe } from './pipes/social-path.pipe';
-import { IpPreviewLinkPipe } from './pipes/preview-link.pipe';
-
-// https://github.com/jscutlery/semver
+import { ColumnStylesPipe, IpPreviewLinkPipe, SocialPathPipe } from './pipes';
+import {
+  IPEmailBuilderColumnDirective,
+  IPEmailBuilderDynamicDirective,
+  IPEmailBuilderSettingsDirective,
+  IPEmailBuilderStructuresDirective,
+} from './directives';
 
 @NgModule({
   imports: [

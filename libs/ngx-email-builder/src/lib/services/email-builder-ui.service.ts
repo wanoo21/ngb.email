@@ -1,24 +1,30 @@
-import { Injectable } from "@angular/core";
-import { CdkPortalOutlet, Portal } from "@angular/cdk/portal";
-import { BehaviorSubject, map } from "rxjs";
-import { CdkDropList } from "@angular/cdk/drag-drop";
+import { Injectable, signal } from '@angular/core';
+import { CdkPortalOutlet, Portal } from '@angular/cdk/portal';
+import { BehaviorSubject, map } from 'rxjs';
+import { CdkDropList } from '@angular/cdk/drag-drop';
 
-import { IPEmailBuilderSettingsDirective } from "../../directives/email-builder-settings.directive";
-import { AIPEmailBuilderBlockExtendedOptions } from "../../core/Block";
-import { IStructure } from "../../structure/structure";
+import { IPEmailBuilderSettingsDirective } from '../directives/email-builder-settings.directive';
+import type { IStructure } from '../structure/structure';
+import { randomString } from '../tools/utils';
+import type { TColumnDropData } from '../directives/email-builder-column.directive';
 
 /**
  * This service provides utilities for the UI of the ngx-email-builder library.
  */
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class IPEmailBuilderUiService {
-
+  readonly #onEditRef = signal<string | null>(null);
+  /**
+   * Emit a new random string when the settings portal is attached.
+   * Each new edit action will trigger a new random string.
+   */
+  readonly onEditRef = this.#onEditRef.asReadonly();
   /**
    * A set of drop lists for columns in the email builder UI.
    */
-  columnsDropLists = new Set<CdkDropList<AIPEmailBuilderBlockExtendedOptions[]>>();
+  columnsDropLists = new Set<CdkDropList<TColumnDropData>>();
 
   /**
    * A set of drop lists for structures in the email builder UI.
@@ -57,6 +63,7 @@ export class IPEmailBuilderUiService {
    */
   attachSettingsPortal(portal: IPEmailBuilderSettingsDirective | null): void {
     this.#attachSettingsPortal$.next(portal);
+    this.#onEditRef.set(randomString());
   }
 
   /**
@@ -86,4 +93,3 @@ export class IPEmailBuilderUiService {
     return !!this.#settingsPortalOutlet?.hasAttached();
   }
 }
-
