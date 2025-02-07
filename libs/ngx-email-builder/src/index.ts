@@ -6,15 +6,6 @@ export * from './lib/services/email-builder-service/email-builder.service';
 export * from './lib/services/email-builder-middleware-service/email-builder-middleware.service';
 export * from './lib/services/email-builder-rest-service/email-builder-rest.service';
 
-// Default blocks blocks
-export * from './lib/blocks/text.block';
-export * from './lib/blocks/image.block';
-export * from './lib/blocks/button.block';
-export * from './lib/blocks/divider.block';
-export * from './lib/blocks/social.block';
-export * from './lib/blocks/spacer.block';
-export * from './lib/blocks/navigation.block';
-
 // Core services & classes
 export * from './lib/public-tokens';
 export * from './lib/tools/core';

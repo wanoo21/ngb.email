@@ -50,7 +50,6 @@ export function moveBlock(state: WritableSignal<IIPEmail>) {
   return (data: moveData) => {
     state.update((prev) => {
       const structures = structuredClone(prev.structures);
-      console.log(structures);
       const fromColumn =
         structures[data.structureIndex].elements[data.columnIndex];
       const toColumn =
@@ -100,7 +99,7 @@ export function duplicateBlock(state: WritableSignal<IIPEmail>) {
               ...structure,
               elements: structure.elements.map((column, j) => {
                 if (j === columnIndex) {
-                  const block = structuredClone(column[index]);
+                  const block = structuredClone({...column[index], id: randomString()});
                   return [
                     ...column.slice(0, index),
                     block,
