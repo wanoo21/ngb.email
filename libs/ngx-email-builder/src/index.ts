@@ -1,4 +1,3 @@
-export * from './lib/email-builder-component';
 export * from './lib/ngx-email-builder.module';
 
 // User services
