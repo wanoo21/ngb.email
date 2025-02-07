@@ -12,7 +12,6 @@ export * from './lib/tools/core';
 export * from './lib/tools/config';
 export * from './lib/tools/utils';
 export * from './lib/core/Block';
-export * from './lib/core/ValueChanged';
 export * from './lib/interfaces';
 
 // Email Aside & Template List
@@ -28,8 +27,6 @@ export * from './lib/structure/structure';
 export * from './lib/core/Structure';
 
 // Pipes
-export * from './lib/pipes/apply-middleware.pipe';
-export * from './lib/pipes/can.pipe';
 export * from './lib/pipes/preview-link.pipe';
 export * from './lib/pipes/social-path.pipe';
 export * from './lib/pipes/template-thumb-path.pipe';
@@ -40,4 +37,3 @@ export * from './lib/directives/email-builder-dynamic.directive';
 export * from './lib/directives/email-builder-settings.directive';
 export * from './lib/directives/email-builder-structures.directive';
 export * from './lib/directives/email-builder-column.directive';
-export * from './lib/directives/email-builder-history-host.directive';
