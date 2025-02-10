@@ -1,15 +1,16 @@
-import { inject, Pipe, PipeTransform } from "@angular/core";
-import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../private-tokens";
+import { inject, Pipe, PipeTransform } from '@angular/core';
+
+import { IP_EMAIL_BUILDER_CONFIG, IPConfig } from '../config/config';
 
 /**
  * Return the path of the thumbnail image for a given email template.
  */
 @Pipe({
-  name: "templateThumbPath",
-  standalone: true
+  name: 'templateThumbPath',
+  standalone: true,
 })
 export class TemplateThumbPathPipe implements PipeTransform {
-  readonly config = inject<IPEmailBuilderConfig>(IP_EMAIL_BUILDER_CONFIG);
+  readonly config = inject<IPConfig>(IP_EMAIL_BUILDER_CONFIG);
 
   /**
    * @param template - The name of the email template
@@ -21,8 +22,7 @@ export class TemplateThumbPathPipe implements PipeTransform {
    * <img [src]="template | templateThumbPath:'png'" alt="Template Thumbnail">
    * ```
    */
-  transform(template: string, type = "jpg"): string {
+  transform(template: string, type = 'jpg'): string {
     return `${this.config.templatesThumbsPath}/${template}.${type}`;
   }
 }
-

@@ -5,12 +5,10 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
-    "types": [
-      "@angular/localize",
-    ],
+    "types": ["@angular/localize"],
     "target": "ES2022",
     "useDefineForClassFields": false
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts", "**/*.test.ts"],
+  "exclude": ["test-setup.ts", "**/*.spec.ts", "**/*.test.ts"],
   "include": ["**/*.ts"]
 }

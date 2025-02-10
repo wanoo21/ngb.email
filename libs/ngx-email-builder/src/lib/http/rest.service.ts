@@ -2,8 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { IP_EMAIL_BUILDER_CONFIG } from '../private-tokens';
-import { IIPEmail, IMjmlServerResponse, IUserTemplateCategory } from '../interfaces';
+import { IIPEmail, IUserTemplateCategory } from '../interfaces';
+import { IP_EMAIL_BUILDER_CONFIG } from '../config/config';
+import { IMjmlServerResponse } from './interfaces';
 
 /**
  * The AIPEmailBuilderRestService is an abstract service that provides an API to interact with the email builder convertor.

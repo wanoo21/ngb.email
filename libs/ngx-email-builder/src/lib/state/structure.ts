@@ -1,8 +1,9 @@
 import { WritableSignal } from '@angular/core';
 import { moveItemInArray } from '@angular/cdk/drag-drop';
 
-import { DeepPartial, IIPEmail, TStructureTypes } from '../interfaces';
-import { IStructureOptions, Structure } from '../structure/structure';
+import { DeepPartial, IIPEmail } from '../interfaces';
+import { Structure } from '../ui/structure/structure';
+import { IStructureOptions, TStructureTypes } from '../ui/structure/interfaces';
 import { defaultsDeep, randomString } from '../tools/utils';
 
 export function addStructure(state: WritableSignal<IIPEmail>) {
@@ -46,7 +47,7 @@ export function duplicateStructure(state: WritableSignal<IIPEmail>) {
       structures.splice(index + 1, 0, structure);
       return {
         ...prev,
-        structures
+        structures,
       };
     });
   };

@@ -1,6 +1,5 @@
-import { inject, Pipe, PipeTransform } from "@angular/core";
-
-import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../private-tokens";
+import { inject, Pipe, PipeTransform } from '@angular/core';
+import { IP_EMAIL_BUILDER_CONFIG, IPConfig } from '../config/config';
 
 /**
  * Returns a full network path based on the network name and configuration.
@@ -13,13 +12,12 @@ import { IP_EMAIL_BUILDER_CONFIG, IPEmailBuilderConfig } from "../private-tokens
  * ```
  */
 @Pipe({
-  name: "socialPath"
+  name: 'socialPath',
 })
 export class SocialPathPipe implements PipeTransform {
-  readonly config = inject<IPEmailBuilderConfig>(IP_EMAIL_BUILDER_CONFIG);
+  readonly config = inject<IPConfig>(IP_EMAIL_BUILDER_CONFIG);
 
   transform(network: string): string {
     return `${this.config.socialIconsPath}/${network}.png`;
   }
 }
-

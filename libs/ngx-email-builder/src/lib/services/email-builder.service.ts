@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
-import { AIPEmailBuilderRestService } from './email-builder-rest.service';
-import { IIPEmail, IMjmlServerResponse } from '../interfaces';
+import { AIPEmailBuilderRestService, IMjmlServerResponse } from '../http';
+import { IIPEmail } from '../interfaces';
 
 /**
  * The AIPEmailBuilderService is an abstract service that provides conversion of IPEmail object to ready-to-use MJML and HTML.

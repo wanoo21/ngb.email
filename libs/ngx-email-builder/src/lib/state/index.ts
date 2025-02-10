@@ -6,23 +6,26 @@ import {
 } from '@angular/core';
 
 import { AIP_EMAIL_BUILDER, AIP_EMAIL_BUILDER_RESET_STATE } from './tokens';
-import { AIPEmailBuilderRestService } from '../services';
+import { AIPEmailBuilderRestService } from '../http';
 import {
   addStructure,
   duplicateStructure,
-  getStructure, moveStructure,
+  getStructure,
+  moveStructure,
   removeStructure,
-  updateStructure
+  updateStructure,
 } from './structure';
 import { generalOptions } from './email-options';
-import { addBlock, duplicateBlock, moveBlock, removeBlock, updateBlock } from './block';
+import {
+  addBlock,
+  duplicateBlock,
+  moveBlock,
+  removeBlock,
+  updateBlock,
+} from './block';
 import { IIPEmail } from '../interfaces';
 import { randomString } from '../tools/utils';
-import { TIPEmailBuilderBlock } from '../core/Block';
-import { IP_EMAIL_BUILDER_BLOCKS_DATA } from '../private-tokens';
-
-
-type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+import { IP_EMAIL_BUILDER_BLOCKS_DATA, TIPEmailBuilderBlock } from '../config/blocks';
 
 export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
   !injector && assertInInjectionContext(injectIIPEmail);
@@ -51,11 +54,21 @@ export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
         move: moveStructure(state),
       },
       blocks: {
-        add: (structureIndex: number, columnIndex: number, atIndex: number, block: TIPEmailBuilderBlock & Record<PropertyKey, any>) => {
-          if (!blocks.some(({ type }) => type === block.type)) {
+        add: (
+          structureIndex: number,
+          columnIndex: number,
+          atIndex: number,
+          block: Omit<TIPEmailBuilderBlock, 'id' | 'options'>
+        ) => {
+          const foundBlock = blocks.find(({ type }) => type === block.type);
+          if (!foundBlock) {
             throw new Error(`Block type "${block.type}" is not registered.`);
           }
-          return addBlock(state, block)(structureIndex, columnIndex, atIndex);
+          return addBlock(state, { ...block, ...foundBlock.context })(
+            structureIndex,
+            columnIndex,
+            atIndex
+          );
         },
         remove: removeBlock(state),
         duplicate: duplicateBlock(state),

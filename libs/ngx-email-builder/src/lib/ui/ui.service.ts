@@ -3,10 +3,11 @@ import { CdkPortalOutlet, Portal } from '@angular/cdk/portal';
 import { BehaviorSubject, map } from 'rxjs';
 import { CdkDropList } from '@angular/cdk/drag-drop';
 
-import { IPEmailBuilderSettingsDirective } from '../directives/email-builder-settings.directive';
-import type { IStructure } from '../structure/structure';
+import type { IStructure } from './structure/interfaces';
 import { randomString } from '../tools/utils';
-import type { TColumnDropData } from '../directives/email-builder-column.directive';
+import type { TColumnDropData } from './column/column-drop.directive';
+import type { IPEmailBuilderSettingsDirective } from './settings/settings.directive';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 /**
  * This service provides utilities for the UI of the ngx-email-builder library.
@@ -46,9 +47,9 @@ export class IPEmailBuilderUiService {
   /**
    * An observable for the currently attached settings portal.
    */
-  currentSettingsPortal$ = this.#attachSettingsPortal$.pipe(
+  currentSettingsPortal = toSignal(this.#attachSettingsPortal$.pipe(
     map((portal) => portal || this.#defaultSettingsPortal)
-  );
+  ));
 
   /**
    * The settings portal outlet for the email builder UI.

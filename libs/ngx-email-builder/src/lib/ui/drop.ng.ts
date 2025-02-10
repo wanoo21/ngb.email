@@ -1,8 +1,8 @@
-import { AfterViewInit, Directive, Host, HostBinding, OnDestroy } from "@angular/core";
-import { Subscription } from "rxjs";
-import { CdkDragDrop, CdkDropList } from "@angular/cdk/drag-drop";
+import { AfterViewInit, Directive, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 
-import { IPEmailBuilderUiService } from "../services";
+import { IPEmailBuilderUiService } from './ui.service';
 
 /**
  * Abstract class that implements a drop list for email builder blocks or structures
@@ -10,11 +10,13 @@ import { IPEmailBuilderUiService } from "../services";
  * @internal
  */
 @Directive()
-export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnDestroy {
+export abstract class DropNg
+  implements AfterViewInit, OnDestroy
+{
   /**
    * The data to be displayed in the drop list
    */
-  abstract data: any[];
+  data?: any;
 
   /**
    * The collection of drop lists
@@ -34,14 +36,8 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
    */
   constructor(
     readonly builderUiService: IPEmailBuilderUiService,
-    @Host() readonly dropList?: CdkDropList
-  ) {
-  }
-
-  @HostBinding("class.empty")
-  get hasEmptyData(): boolean {
-    return !this.data.length;
-  }
+    readonly dropList: CdkDropList
+  ) {}
 
   /**
    * Adds the data to the `CdkDropList` instance after the view has been initialized.
@@ -50,10 +46,12 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
     if (this.dropList) {
       this.dropList.data = this.data;
       this.dropList.autoScrollDisabled = false;
-      this.#subscription.add(this.dropList.dropped.subscribe(event => this.dropListDropped(event)));
+      this.#subscription.add(
+        this.dropList.dropped.subscribe((event) => this.dropListDropped(event))
+      );
       this.dropListCollection.add(this.dropList);
     } else {
-      console.warn("You must add [cdkDropList] directive to host element.");
+      console.warn('You must add [cdkDropList] directive to host element.');
     }
   }
 
@@ -62,7 +60,7 @@ export abstract class AbstractEmailBuilderDropList implements AfterViewInit, OnD
    *
    * @param drop The `CdkDragDrop` event
    */
-  abstract dropListDropped(drop: CdkDragDrop<any[]>): void;
+  abstract dropListDropped(drop: CdkDragDrop<any>): void;
 
   /**
    * Unsubscribes from the drop list's events and removes the instance.

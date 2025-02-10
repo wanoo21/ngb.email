@@ -3,11 +3,11 @@ import { transferArrayItem } from '@angular/cdk/drag-drop';
 
 import { DeepPartial, IIPEmail } from '../interfaces';
 import { defaultsDeep, randomString } from '../tools/utils';
-import { TIPEmailBuilderBlock } from '../core/Block';
+import { AIPBlockContext, TIPEmailBuilderBlock } from '../config/blocks';
 
 export function addBlock(
   state: WritableSignal<IIPEmail>,
-  block: TIPEmailBuilderBlock | { type: string }
+  block: TIPEmailBuilderBlock
 ) {
   return (structureIndex: number, columnIndex: number, atIndex: number) => {
     state.update((prev) => {
@@ -99,7 +99,10 @@ export function duplicateBlock(state: WritableSignal<IIPEmail>) {
               ...structure,
               elements: structure.elements.map((column, j) => {
                 if (j === columnIndex) {
-                  const block = structuredClone({...column[index], id: randomString()});
+                  const block = structuredClone({
+                    ...column[index],
+                    id: randomString(),
+                  });
                   return [
                     ...column.slice(0, index),
                     block,
@@ -122,7 +125,7 @@ export function updateBlock(state: WritableSignal<IIPEmail>) {
     structureIndex: number,
     columnIndex: number,
     index: number,
-    options: DeepPartial<TIPEmailBuilderBlock['options']>
+    ctx: DeepPartial<AIPBlockContext<unknown>>
   ) => {
     state.update((prev) => {
       return {
@@ -135,13 +138,15 @@ export function updateBlock(state: WritableSignal<IIPEmail>) {
                 if (j === columnIndex) {
                   return column.map((block, k) => {
                     if (k === index) {
-                      return {
-                        ...block,
-                        options: defaultsDeep(
-                          block.options || {},
-                          options || {}
-                        ),
-                      };
+                      console.log(block);
+                      return defaultsDeep(block, ctx as TIPEmailBuilderBlock);
+                      // return {
+                      //   ...block,
+                      //   options: defaultsDeep(
+                      //     block.options || {},
+                      //     options || {}
+                      //   ),
+                      // };
                     }
                     return block;
                   });
