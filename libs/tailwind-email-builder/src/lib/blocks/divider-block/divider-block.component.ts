@@ -1,13 +1,74 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from "@angular/core";
-import { DividerBlock } from "@wlocalhost/ngx-email-builder";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  effect,
+  model,
+  ViewEncapsulation,
+} from '@angular/core';
+import {
+  addIPEmailBuilderBlock,
+  AIPEmailBuilderBlock,
+  createBorder,
+  createPadding,
+  IBorder,
+  IPadding,
+  IPEmailBuilderSettingsDirective,
+} from '@wlocalhost/ngx-email-builder';
+import { FormsModule } from '@angular/forms';
+import { NgStyle } from '@angular/common';
+import { DividerSettingsComponent } from './divider-settings.component';
+
+export interface IDividerBlockOptions {
+  border: Omit<IBorder, 'radius'>;
+  padding: IPadding;
+}
 
 @Component({
-  selector: "tail-divider-block",
+  selector: 'tail-divider-block',
   templateUrl: 'divider-block.component.html',
   styleUrls: ['divider-block.component.scss'],
   encapsulation: ViewEncapsulation.ShadowDom,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  imports: [
+    FormsModule,
+    IPEmailBuilderSettingsDirective,
+    NgStyle,
+    DividerSettingsComponent,
+  ],
 })
-export class DividerBlockComponent extends DividerBlock {
+export class DividerBlockComponent extends AIPEmailBuilderBlock<IDividerBlockOptions> {
+  readonly options = model.required<IDividerBlockOptions>();
+
+  readonly hostStyles = computed(() => createPadding(this.options().padding));
+  readonly borderStyles = computed(() =>
+    createBorder(this.options().border, 'borderTop')
+  );
+
+  #effect = effect(() => {
+    this.updateMyContext({ options: this.options() });
+  });
 }
+
+export const DividerBlock = addIPEmailBuilderBlock<IDividerBlockOptions>(
+  $localize`:@@block_divider_title:Divider`,
+  {
+    type: 'divider',
+    component: DividerBlockComponent,
+    context: {
+      options: {
+        border: {
+          color: '#000000',
+          style: 'solid',
+          width: 4,
+        },
+        padding: {
+          top: 10,
+          right: 25,
+          bottom: 10,
+          left: 25,
+        },
+      },
+    },
+  }
+);

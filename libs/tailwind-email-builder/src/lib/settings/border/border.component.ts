@@ -1,17 +1,16 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { IBorder, ISizes } from '@wlocalhost/ngx-email-builder';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { NgModelGroup, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { formViewProvider } from '../../directives/form-providers';
 import { ColorComponent } from '../color/color.component';
-import { FormLabelDirective, FormInputDirective, FormH3Directive, FormBtnDirective } from '../../directives/form/form-input.directive';
-import { AsyncPipe } from '@angular/common';
+import {
+  FormBtnDirective,
+  FormH3Directive,
+  FormInputDirective,
+  FormLabelDirective,
+} from '../../directives/form/form-input.directive';
 
 const styleLabels = new Map<IBorder['style'], string>([
   ['solid', $localize`:@@border_style_solid:Solid`],
@@ -29,21 +28,20 @@ const borderLabels = new Map<keyof ISizes, string>([
 ]);
 
 @Component({
-    selector: 'tail-border',
-    templateUrl: './border.component.html',
-    styleUrls: ['./border.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [formViewProvider()],
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        ColorComponent,
-        FormLabelDirective,
-        FormInputDirective,
-        FormH3Directive,
-        FormBtnDirective,
-        AsyncPipe,
-    ],
+  selector: 'tail-border',
+  templateUrl: './border.component.html',
+  styleUrls: ['./border.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [formViewProvider()],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    ColorComponent,
+    FormLabelDirective,
+    FormInputDirective,
+    FormH3Directive,
+    FormBtnDirective,
+  ],
 })
 export class BorderComponent {
   readonly hidePositions = input(false, { transform: coerceBooleanProperty });
