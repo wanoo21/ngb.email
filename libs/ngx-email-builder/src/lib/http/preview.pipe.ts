@@ -1,9 +1,9 @@
-import { OnDestroy, Pipe, PipeTransform, inject } from "@angular/core";
-import { DomSanitizer, SafeUrl } from "@angular/platform-browser";
-import { map, Observable } from "rxjs";
+import { inject, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { map, Observable } from 'rxjs';
 
-import { IPEmail } from "../body/body";
-import { AIPEmailBuilderRestService } from "../services";
+import { AIPEmailBuilderRestService } from './rest.service';
+import { IIPEmail } from '../interfaces';
 
 /**
  * Dynamically creates and revokes an object URL link for previewing an email.
@@ -11,23 +11,12 @@ import { AIPEmailBuilderRestService } from "../services";
  * The pipe transforms the IPEmail object into a SafeUrl object for previewing.
  */
 @Pipe({
-  name: "ipPreviewLink"
+  name: 'ipPreviewLink',
 })
 export class IpPreviewLinkPipe implements PipeTransform, OnDestroy {
   readonly domSanitizer = inject(DomSanitizer);
   readonly restService = inject(AIPEmailBuilderRestService);
-
   #resourceUrl!: string;
-
-  /** Inserted by Angular inject() migration for backwards compatibility */
-  constructor(...args: unknown[]);
-
-  /**
-   * Creates an instance of IpPreviewLinkPipe.
-   * @param domSanitizer - Instance of DomSanitizer used to create a SafeUrl object from a URL.
-   * @param restService - Instance of AIPEmailBuilderRestService used to convert IPEmail object to HTML.
-   */
-  constructor() {}
 
   /**
    * Transforms the IPEmail object to a SafeUrl object for previewing.
@@ -38,11 +27,15 @@ export class IpPreviewLinkPipe implements PipeTransform, OnDestroy {
    * <iframe [src]="email | ipPreviewLink" width="100%" height="600px"></iframe>
    * ```
    */
-  transform(value: IPEmail): Observable<SafeUrl> {
+  transform(value: IIPEmail): Observable<SafeUrl> {
     return this.restService.convert(value).pipe(
       map(({ html, errors }) => {
-        this.#resourceUrl = URL.createObjectURL(new Blob([html], { type: "text/html" }));
-        return this.domSanitizer.bypassSecurityTrustResourceUrl(this.#resourceUrl);
+        this.#resourceUrl = URL.createObjectURL(
+          new Blob([html], { type: 'text/html' })
+        );
+        return this.domSanitizer.bypassSecurityTrustResourceUrl(
+          this.#resourceUrl
+        );
       })
     );
   }

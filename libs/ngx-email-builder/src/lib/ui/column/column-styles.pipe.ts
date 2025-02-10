@@ -1,8 +1,8 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
-import { TIPEmailBuilderStyles } from "../interfaces";
-import { IStructureOptions } from "../structure/structure";
-import { createBorder } from "../tools/utils";
+import { TIPEmailBuilderStyles } from "../../interfaces";
+import { IStructureOptions } from "../structure/interfaces";
+import { createBorder } from "../../tools/utils";
 
 /**
  * The ColumnStylesPipe is a pipe that calculates the styles for an email builder column based on its index and the structure options.

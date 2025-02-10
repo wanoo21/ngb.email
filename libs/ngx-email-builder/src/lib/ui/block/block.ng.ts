@@ -1,16 +1,10 @@
-import { Directive, InputSignal, Signal } from '@angular/core';
-import { WithSettings } from './WithSettings';
-import { TIPEmailBuilderStyles } from '../interfaces';
+import { Directive, inject, input, Signal } from '@angular/core';
 
-export type TIPEmailBuilderBlock<T = Record<PropertyKey, any>> = {
-  readonly type: string;
-  readonly id?: string;
-  options?: T;
-};
-
-export interface AIPBlockContext<T> extends Record<PropertyKey, unknown> {
-  options: T;
-}
+import { SettingsNg } from '../settings/settings.ng';
+import { DeepPartial, TIPEmailBuilderStyles } from '../../interfaces';
+import { injectIIPEmail } from '../../state';
+import { AIPBlockContext } from '../../config/blocks';
+import { IPEmailBuilderColumnDirective } from '../column/column-drop.directive';
 
 /**
  * The abstract class for a builder block component.
@@ -22,9 +16,17 @@ export interface AIPBlockContext<T> extends Record<PropertyKey, unknown> {
     '[style]': 'hostStyles()',
   },
 })
-export abstract class AIPEmailBuilderBlock<T> extends WithSettings {
-  abstract readonly options: InputSignal<T>;
+export abstract class AIPEmailBuilderBlock<T> extends SettingsNg {
+  readonly myIndex = input.required<number>();
+  abstract readonly options: Signal<T>;
   abstract readonly hostStyles: Signal<TIPEmailBuilderStyles>;
+  readonly coordinates = inject(IPEmailBuilderColumnDirective).data;
+  readonly currentEmail = injectIIPEmail();
+
+  updateMyContext(ctx: DeepPartial<AIPBlockContext<T>>) {
+    const { row, col } = this.coordinates;
+    this.currentEmail.blocks.update(row, col, this.myIndex(), ctx);
+  }
 
   // readonly #builderService = inject(AIPEmailBuilderService);
   // readonly #renderer2 = inject(Renderer2);
