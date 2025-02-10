@@ -1,10 +1,12 @@
 <div class="grid grid-cols-5 gap-2">
   <div class="col-span-4">
     <input type="text" tailInput
-           placeholder="Color" i18n-placeholder="@@color" name="color" #color [(ngModel)]="color.value">
+           placeholder="Color" i18n-placeholder="@@color" name="color" #color=ngModel [(ngModel)]="color.model" />
   </div>
   <label class="rounded border overflow-hidden" [style.background-color]="color.value">
-    <input class="opacity-0 size-full" type="color" name="color" [(ngModel)]="color.value">
+    @defer (on idle) {
+      <input class="opacity-0 size-full" type="color" [(ngModel)]="color.model" [ngModelOptions]="{standalone: true}" />
+    }
   </label>
 </div>
 @if (allowTransparent()) {

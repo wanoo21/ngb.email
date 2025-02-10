@@ -1,4 +1,4 @@
-<ng-container ngModelGroup="border" #modelGroup="ngModelGroup">
+<ng-container ngModelGroup="border">
   @if (!hideColorInput()) {
     <tail-color allowTransparent="false" />
   }
@@ -28,16 +28,13 @@
     </div>
   }
 
-  @let formGroup = modelGroup.valueChanges | async;
-  @if (formGroup?.width) {
-    <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
-    <div class="grid grid-cols-5 gap-2">
-      @for (style of styleOptions; track style.value) {
-        <label tailBtn size="xs">
-          <input type="radio" [value]="style.value" name="style" ngModel hidden />
-          {{ style.label }}
-        </label>
-      }
-    </div>
-  }
+  <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
+  <div class="grid grid-cols-5 gap-2">
+    @for (style of styleOptions; track style.value) {
+      <label tailBtn size="xs">
+        <input type="radio" [value]="style.value" name="style" ngModel hidden />
+        {{ style.label }}
+      </label>
+    }
+  </div>
 </ng-container>
