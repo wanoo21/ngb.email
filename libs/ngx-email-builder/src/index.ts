@@ -1,10 +1,10 @@
-export * from './lib/services';
 export * from './lib/pipes';
 
 export * from './lib/config/config';
 export * from './lib/config/blocks';
 
 export * from "./lib/http";
+export * from "./lib/font";
 
 export * from "./lib/actions/actions.service";
 
