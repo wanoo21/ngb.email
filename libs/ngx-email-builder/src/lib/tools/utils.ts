@@ -1,12 +1,4 @@
-import {
-  IBackground,
-  IBorder,
-  IFont,
-  ILineHeight,
-  IMargin,
-  IPadding,
-  IWidthHeight,
-} from '../ui/settings/interfaces';
+import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight } from '../ui/settings/interfaces';
 
 /**
  * Create CSS border styles based on {@link IBorder} object.
@@ -80,9 +72,16 @@ export function createFont(font: IFont): {
   fontStyle: string;
   fontWeight: number;
 } {
-  const { family = '', size = 13, style = 'normal', weight = 400 } = font;
+  const {
+    family = '',
+    size = 13,
+    style = 'normal',
+    weight = 400,
+    fallback,
+  } = font;
+  const fontFamily = family.length ? family : fallback;
   return {
-    fontFamily: family,
+    fontFamily,
     fontSize: `${size}px`,
     fontStyle: style,
     fontWeight: weight,
