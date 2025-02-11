@@ -2,8 +2,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   computed,
-  effect,
   model,
+  OnInit,
   ViewEncapsulation,
 } from '@angular/core';
 import {
@@ -37,7 +37,10 @@ export interface IDividerBlockOptions {
     DividerSettingsComponent,
   ],
 })
-export class DividerBlockComponent extends AIPEmailBuilderBlock<IDividerBlockOptions> {
+export class DividerBlockComponent
+  extends AIPEmailBuilderBlock<IDividerBlockOptions>
+  implements OnInit
+{
   readonly options = model.required<IDividerBlockOptions>();
 
   readonly hostStyles = computed(() => createPadding(this.options().padding));
@@ -45,9 +48,11 @@ export class DividerBlockComponent extends AIPEmailBuilderBlock<IDividerBlockOpt
     createBorder(this.options().border, 'borderTop')
   );
 
-  #effect = effect(() => {
-    this.updateMyContext({ options: this.options() });
-  });
+  ngOnInit() {
+    this.options.subscribe((options) => {
+      this.updateMyContext({ options });
+    });
+  }
 }
 
 export const DividerBlock = addIPEmailBuilderBlock<IDividerBlockOptions>(

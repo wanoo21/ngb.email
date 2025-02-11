@@ -5,10 +5,13 @@ import {
   input,
 } from '@angular/core';
 import { TLineHeight } from '@wlocalhost/ngx-email-builder';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { formViewProvider } from '../../directives/form-providers';
-import { FormLabelDirective, FormInputDirective } from '../../directives/form/form-input.directive';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import {
+  FormInputDirective,
+  FormLabelDirective,
+} from '../../directives/form/form-input.directive';
 
 const unitsLabels = new Map<TLineHeight, string>([
   ['%', $localize`:@@unit_percent:Percent`],
@@ -17,17 +20,17 @@ const unitsLabels = new Map<TLineHeight, string>([
 ]);
 
 @Component({
-    selector: 'tail-line-height',
-    templateUrl: './line-height.component.html',
-    styleUrls: ['./line-height.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [formViewProvider()],
-    imports: [
-        FormLabelDirective,
-        ReactiveFormsModule,
-        FormInputDirective,
-        FormsModule,
-    ],
+  selector: 'tail-line-height',
+  templateUrl: './line-height.component.html',
+  styleUrls: ['./line-height.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [formViewProvider()],
+  imports: [
+    FormLabelDirective,
+    ReactiveFormsModule,
+    FormInputDirective,
+    FormsModule,
+  ],
 })
 export class LineHeightComponent {
   readonly units = input<TLineHeight[]>(['%', 'px', 'none']);

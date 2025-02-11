@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TLinkTarget } from '@wlocalhost/ngx-email-builder';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { formViewProvider } from '../../directives/form-providers';
-import { FormLabelDirective, FormInputDirective } from '../../directives/form/form-input.directive';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UIFormModule } from '../../directives/form/form-input.directive';
 
 const targetLabels = new Map<TLinkTarget, string>([
   ['_blank', $localize`:@@link_target_blank:Blank`],
@@ -13,17 +13,12 @@ const targetLabels = new Map<TLinkTarget, string>([
 ]);
 
 @Component({
-    selector: 'tail-link',
-    templateUrl: './link.component.html',
-    styleUrls: ['./link.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [formViewProvider()],
-    imports: [
-        FormLabelDirective,
-        ReactiveFormsModule,
-        FormInputDirective,
-        FormsModule,
-    ],
+  selector: 'tail-link',
+  templateUrl: './link.component.html',
+  styleUrls: ['./link.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [formViewProvider()],
+  imports: [UIFormModule, ReactiveFormsModule, FormsModule],
 })
 export class LinkComponent {
   readonly targetOptions = [...targetLabels.keys()].map((value) => ({

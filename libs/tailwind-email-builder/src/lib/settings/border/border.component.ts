@@ -21,10 +21,10 @@ const styleLabels = new Map<IBorder['style'], string>([
 ]);
 
 const borderLabels = new Map<keyof ISizes, string>([
-  ['top', $localize`:@@border_top:Border Top`],
-  ['right', $localize`:@@border_right:Border Right`],
-  ['left', $localize`:@@border_left:Border Left`],
-  ['bottom', $localize`:@@border_bottom:Border Bottom`],
+  ['top', $localize`:@@border_top:Top`],
+  ['right', $localize`:@@border_right:Right`],
+  ['left', $localize`:@@border_left:Left`],
+  ['bottom', $localize`:@@border_bottom:Bottom`],
 ]);
 
 @Component({
