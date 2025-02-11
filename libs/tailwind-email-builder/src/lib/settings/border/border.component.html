@@ -4,7 +4,7 @@
   }
 
   @if (!hidePositions()) {
-    <div class="grid grid-cols-4 gap-2 mt-2">
+    <div class="grid grid-cols-4 gap-2 mt-2" ngModelGroup="sizes">
       @for (option of borderOptions; track option.value) {
         <div class="flex flex-col">
           <label [tailLabel]="i">{{ option.label }}</label>
