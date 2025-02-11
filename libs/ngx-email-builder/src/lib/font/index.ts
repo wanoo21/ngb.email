@@ -1,8 +1,8 @@
 import { assertInInjectionContext, DestroyRef, inject, Injector, runInInjectionContext } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 import { IPDefinedFonts } from './interface';
-import { IP_EMAIL_FONTS } from './token';
-import { DOCUMENT } from '@angular/common';
+import { defaultFonts, IP_EMAIL_FONTS } from './token';
 import { fontParserFactory } from './parser';
 
 /**
@@ -10,10 +10,10 @@ import { fontParserFactory } from './parser';
  *
  * @param config - Custom fonts configuration
  */
-export function withIPFonts(config: IPDefinedFonts) {
+export function withIPFonts(config: Partial<IPDefinedFonts>) {
   return {
     provide: IP_EMAIL_FONTS,
-    useValue: config,
+    useValue: { ...defaultFonts, ...config },
   };
 }
 
