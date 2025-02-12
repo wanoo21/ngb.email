@@ -38,7 +38,7 @@ import { LineHeightComponent } from '../../settings/line-height/line-height.comp
       </div>
       <h2 tailH2 i18n="@@button_block_background_color">Background color</h2>
       <div tailPanel>
-        <tail-color modelGroupName="backgroundColor" />
+        <tail-color ngModelName="backgroundColor" />
       </div>
       <h2 tailH2 i18n="@@border">Border</h2>
       <div tailPanel>

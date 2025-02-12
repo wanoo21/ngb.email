@@ -39,6 +39,6 @@ export abstract class AIPEmailBody extends SettingsNg implements OnInit {
   readonly dir = computed(() => this.currentEmail.value().general.direction);
 
   ngOnInit(): void {
-    this.builderUiService.setDefaultSettingsPortal(this.settingsPortal());
+    this.uiService.setDefaultSettingsPortal(this.settingsPortal());
   }
 }

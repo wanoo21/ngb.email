@@ -22,6 +22,6 @@ import {
   ],
 })
 export class ColorComponent {
-  readonly modelGroupName = input<string>('color');
+  readonly ngModelName = input<string>('color');
   readonly allowTransparent = input(true, { transform: coerceBooleanProperty });
 }
