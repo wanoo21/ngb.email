@@ -6,6 +6,8 @@
     </label>
   }
   <input tailInput type="number" name="value" ngModel>
+  <!-- Add supported units to settings -->
+  <input type="hidden" name="units" ngModel>
   <select tailInput class="appearance-none" name="unit" ngModel>
     @for (unit of options(); track unit.value) {
       <option [value]="unit.value">

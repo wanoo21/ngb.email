@@ -6,10 +6,10 @@ import {
 } from '@angular/core';
 import { TUnits } from '@wlocalhost/ngx-email-builder';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { formViewProvider } from '../../directives/form-providers';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormBtnDirective, FormInputDirective } from '../../directives/form/form-input.directive';
+import { UIFormModule } from '../../directives/form/form-input.directive';
 
 const unitsLabels: Map<TUnits, string> = new Map([
   ['%', $localize`:@@unit_percent:Percent`],
@@ -19,17 +19,12 @@ const unitsLabels: Map<TUnits, string> = new Map([
 ]);
 
 @Component({
-    selector: 'tail-width-height',
-    templateUrl: './width-height.component.html',
-    styleUrls: ['./width-height.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [formViewProvider()],
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        FormBtnDirective,
-        FormInputDirective,
-    ],
+  selector: 'tail-width-height',
+  templateUrl: './width-height.component.html',
+  styleUrls: ['./width-height.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [formViewProvider()],
+  imports: [ReactiveFormsModule, FormsModule, UIFormModule],
 })
 export class WidthHeightComponent {
   readonly modelGroupName = input<'width' | 'height'>('width');
