@@ -1,4 +1,4 @@
-import { computed, Directive, inject, viewChild } from '@angular/core';
+import { computed, DestroyRef, Directive, inject, viewChild } from '@angular/core';
 
 import { IPEmailBuilderUiService } from '../ui.service';
 import { IPEmailBuilderSettingsDirective } from './settings.directive';
@@ -15,24 +15,26 @@ import { IPEmailBuilderSettingsDirective } from './settings.directive';
   },
 })
 export abstract class SettingsNg {
-  readonly builderUiService = inject(IPEmailBuilderUiService);
+  readonly uiService = inject(IPEmailBuilderUiService);
   readonly settingsPortal = viewChild.required(IPEmailBuilderSettingsDirective);
   readonly isEditing = computed(
-    () =>
-      this.builderUiService.currentSettingsPortal() === this.settingsPortal()
+    () => this.uiService.currentSettingsPortal() === this.settingsPortal()
   );
+  readonly #destroyRef = inject(DestroyRef).onDestroy(() => {
+    this.detachSettingsPortal();
+  });
 
   /**
    * Detaches the settings portal from the builder.
    */
   detachSettingsPortal(): void {
-    this.builderUiService.attachSettingsPortal(null);
+    this.uiService.attachSettingsPortal(null);
   }
 
   /**
    * Attaches the settings portal to the builder.
    */
   edit(): void {
-    this.builderUiService.attachSettingsPortal(this.settingsPortal());
+    this.uiService.attachSettingsPortal(this.settingsPortal());
   }
 }
