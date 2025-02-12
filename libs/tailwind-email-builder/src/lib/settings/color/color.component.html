@@ -1,7 +1,7 @@
 <div class="grid grid-cols-5 gap-2">
   <div class="col-span-4">
     <input type="text" tailInput
-           placeholder="Color" i18n-placeholder="@@color" [name]="modelGroupName()" #color=ngModel [(ngModel)]="color.model" />
+           placeholder="Color" i18n-placeholder="@@color" [name]="ngModelName()" #color=ngModel [(ngModel)]="color.model" />
   </div>
   <label class="rounded border overflow-hidden" [style.background-color]="color.value">
     @defer (on idle) {

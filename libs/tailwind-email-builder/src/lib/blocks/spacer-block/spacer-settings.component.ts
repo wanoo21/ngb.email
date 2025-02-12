@@ -19,7 +19,7 @@ import { UIFormModule } from '../../directives/form/form-input.directive';
   template: `
     <h2 tailH2 i18n="@@spacer_block_size">Size</h2>
     <div tailPanel>
-      <tail-width-height modelGroupName="height" [units]="options().height.units" />
+      <tail-width-height ngModelName="height" [units]="options().height.units" />
     </div>`,
   styles: `
     :host {
@@ -40,7 +40,7 @@ export class SpacerSettingsComponent implements AfterViewInit {
       form.valueChanges
         .pipe(debounceTime(300), this.takeUntilDestroyed)
         .subscribe((options) => {
-          this.options.update(prev => ({ ...prev, ...options }));
+          this.options.set(options);
         });
     });
   }

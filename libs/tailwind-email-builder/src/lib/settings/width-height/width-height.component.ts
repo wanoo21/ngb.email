@@ -27,7 +27,7 @@ const unitsLabels: Map<TUnits, string> = new Map([
   imports: [ReactiveFormsModule, FormsModule, UIFormModule],
 })
 export class WidthHeightComponent {
-  readonly modelGroupName = input<'width' | 'height'>('width');
+  readonly ngModelName = input<'width' | 'height'>('width');
   readonly units = input<TUnits[]>(['%', 'px']);
   readonly showAutoToggle = input(false, { transform: coerceBooleanProperty });
   readonly options = computed(() =>

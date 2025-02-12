@@ -52,11 +52,11 @@ export class FormLabelDirective implements AfterViewInit {
   exportAs: 'btn',
   host: {
     class:
-      'btn rounded shadow-sm bg-white border px-2 py-1.5 text-sm flex gap-1 items-center justify-center',
+      'rounded shadow-sm bg-white border px-2 py-1.5 text-sm [&:has(:checked)]:bg-gray-100 cursor-pointer',
   },
 })
 export class FormBtnDirective implements OnInit {
-  readonly el = inject<ElementRef<HTMLButtonElement>>(ElementRef).nativeElement;
+  readonly el = inject(ElementRef).nativeElement;
 
   ngOnInit(): void {
     if (!this.el.hasAttribute('type')) {
