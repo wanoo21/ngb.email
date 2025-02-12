@@ -8,7 +8,7 @@ export type TIPEmailBuilderBlock<T = Record<PropertyKey, any>> = {
 };
 
 export interface AIPBlockContext<T> extends Record<PropertyKey, unknown> {
-  options: T;
+  options?: T;
 }
 
 export type TIPInjectedBlock<T> = {

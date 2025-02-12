@@ -1,4 +1,4 @@
-import { EnvironmentProviders, InjectionToken, makeEnvironmentProviders } from '@angular/core';
+import { EnvironmentProviders, InjectionToken, makeEnvironmentProviders, Provider } from '@angular/core';
 
 export interface IPConfig {
   /**
@@ -74,13 +74,14 @@ export function withConfig(config?: Partial<IPConfig>): EnvironmentProviders {
   return provideNgxEmailBuilderConfig(config);
 }
 
-export function provideNgxEmailBuilderConfig(config?: Partial<IPConfig>): EnvironmentProviders {
+export function provideNgxEmailBuilderConfig(config?: Partial<IPConfig>, ...providers: Provider[]): EnvironmentProviders {
   return makeEnvironmentProviders([
     {
       provide: IP_EMAIL_BUILDER_CONFIG,
       useFactory: () => {
         return new IPEmailBuilderConfig(config);
       }
-    }
+    },
+    ...providers
   ]);
 }

@@ -138,15 +138,7 @@ export function updateBlock(state: WritableSignal<IIPEmail>) {
                 if (j === columnIndex) {
                   return column.map((block, k) => {
                     if (k === index) {
-                      console.log(block);
                       return defaultsDeep(block, ctx as TIPEmailBuilderBlock);
-                      // return {
-                      //   ...block,
-                      //   options: defaultsDeep(
-                      //     block.options || {},
-                      //     options || {}
-                      //   ),
-                      // };
                     }
                     return block;
                   });
