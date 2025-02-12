@@ -1,6 +1,4 @@
-<div *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 tailH2 i18n="@@spacer_block_size">Size</h2>
-  <div tailPanel>
-    <tail-width-height [(value)]="options.height!"></tail-width-height>
-  </div>
-</div>
+<ng-container ngForm>
+  <!--  Empty block, it's only a space -->
+  <tail-spacer-settings *ipEmailBuilderSettings [(options)]="options" />
+</ng-container>
