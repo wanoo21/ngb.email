@@ -1,49 +1,44 @@
-<ng-container cdkStepper #stepper="cdkStepper" selectedIndex="0" orientation="horizontal">
-  <cdk-step label="Content" i18n-label="@@ip_aside_stepper:Content">
-    <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
-         [cdkDropListSortingDisabled]="true">
-      @for (block of [blocks] | applyMiddleware: 'blocksList' | async; track block.type) {
-        <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
-             cdkDrag [cdkDragData]="block | toBodyBlock">
-          {{ block.title }}
-        </div>
-      }
-    </div>
-    <h2 tailH2 i18n="@@structude_list">Structures</h2>
-    <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
-         [cdkDropListSortingDisabled]="true">
-      @for (structure of [structures] | applyMiddleware: 'structuresList' | async; track structure.type) {
-        <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
-             [cdkDragData]="structure | toBodyStructure">
-          @for (col of structure.options.columns; track $index) {
-            @let smallCol = structure.type === 'cols_21' && $index === 0 || structure.type === 'cols_12' && $index === 1;
-            <div class="bg-gray-200 h-9 rounded" [ngClass]="{'w-5/12': smallCol, 'w-full': !smallCol}"></div>
-          }
-        </div>
-      }
-    </div>
-  </cdk-step>
-  <cdk-step label="Modules" i18n-label="@@ip_aside_stepper:Modules">
-    <p tailHint>Not implemented yet</p>
-  </cdk-step>
-  <cdk-step label="Settings" i18n-label="@@ip_aside_stepper:Settings">
-    <ng-template [cdkPortalOutlet]="currentSettings$ | async"></ng-template>
-  </cdk-step>
-</ng-container>
-
-<div class="stepper grid grid-cols-3" role="tablist">
-  @for (step of stepper.steps; track step) {
-    <button (click)="step.select()"
+<div class="stepper grid grid-cols-2" role="tablist">
+  @for (step of steps; track step.key) {
+    <button (click)="selectedStep.set($index)"
             class="step bg-white py-5 uppercase text-sm transition-colors font-normal select-none text-gray-800 border-b shadow-sm"
-            [class.active]="step === stepper.selected" role="tab" [attr.aria-selected]="step === stepper.selected">
+            [class.active]="selectedStep() === $index" role="tab" [attr.aria-selected]="selectedStep() === $index">
       {{ step.label }}
     </button>
   }
 </div>
 
-<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" [attr.aria-expanded]="!!stepper.selected">
-  <ng-container [ngTemplateOutlet]="stepper.selected ? stepper.selected.content : null"></ng-container>
+<div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" aria-expanded="true">
+  @switch (selectedStep()) {
+    @case (1) {
+      <ng-template [cdkPortalOutlet]="builderUiService.currentSettingsPortal()" />
+    }
+    @default {
+      <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
+      <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="columnsDropLists"
+           [cdkDropListSortingDisabled]="true">
+        @for (block of blocks; track block.type) {
+          <div class="border rounded border-gray-200 bg-white text-sm uppercase text-center p-4 cursor-move select-none"
+               cdkDrag [cdkDragData]="block">
+            {{ block.title }}
+          </div>
+        }
+      </div>
+      <h2 tailH2 i18n="@@structude_list">Structures</h2>
+      <div class="grid gap-2 grid-cols-2" cdkDropList [cdkDropListConnectedTo]="structuresDropLists"
+           [cdkDropListSortingDisabled]="true">
+        @for (structure of structures; track structure) {
+          <div class="border rounded border-gray-200 bg-white cursor-move select-none flex gap-2 p-2" cdkDrag
+               [cdkDragData]="structure.type">
+            @for (col of structure.options.columns; track $index) {
+              @let smallCol = structure.type === 'cols_21' && $index === 0 || structure.type === 'cols_12' && $index === 1;
+              <div class="bg-gray-200 h-9 rounded" [ngClass]="{'w-5/12': smallCol, 'w-full': !smallCol}"></div>
+            }
+          </div>
+        }
+      </div>
+    }
+  }
 </div>
 
 @if (readonly()) {
