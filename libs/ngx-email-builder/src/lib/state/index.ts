@@ -6,7 +6,6 @@ import {
 } from '@angular/core';
 
 import { AIP_EMAIL_BUILDER, AIP_EMAIL_BUILDER_RESET_STATE } from './tokens';
-import { AIPEmailBuilderRestService } from '../http';
 import {
   addStructure,
   duplicateStructure,
@@ -25,7 +24,11 @@ import {
 } from './block';
 import { IIPEmail } from '../interfaces';
 import { randomString } from '../tools/utils';
-import { IP_EMAIL_BUILDER_BLOCKS_DATA, TIPEmailBuilderBlock } from '../config/blocks';
+import {
+  IP_EMAIL_BUILDER_BLOCKS_DATA,
+  TIPEmailBuilderBlock,
+} from '../config/blocks';
+import { IPEmailRestService } from '../http/rest.service';
 
 export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
   !injector && assertInInjectionContext(injectIIPEmail);
@@ -35,7 +38,7 @@ export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
     const state = inject(AIP_EMAIL_BUILDER);
     const resetState = inject(AIP_EMAIL_BUILDER_RESET_STATE);
     const blocks = inject(IP_EMAIL_BUILDER_BLOCKS_DATA);
-    const restService = inject(AIPEmailBuilderRestService);
+    const restService = inject(IPEmailRestService);
 
     return {
       value: state.asReadonly(),

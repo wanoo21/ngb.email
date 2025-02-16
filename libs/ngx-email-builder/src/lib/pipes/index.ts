@@ -1,2 +1,0 @@
-export * from './social-path.pipe';
-export * from './template-thumb-path.pipe';

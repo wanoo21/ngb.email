@@ -2,7 +2,7 @@ import { inject, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { map, Observable } from 'rxjs';
 
-import { AIPEmailBuilderRestService } from './rest.service';
+import { IPEmailRestService } from './rest.service';
 import { IIPEmail } from '../interfaces';
 
 /**
@@ -15,7 +15,7 @@ import { IIPEmail } from '../interfaces';
 })
 export class IpPreviewLinkPipe implements PipeTransform, OnDestroy {
   readonly domSanitizer = inject(DomSanitizer);
-  readonly restService = inject(AIPEmailBuilderRestService);
+  readonly restService = inject(IPEmailRestService);
   #resourceUrl!: string;
 
   /**

@@ -21,7 +21,7 @@ export function addStructure(state: WritableSignal<IIPEmail>) {
         structures,
       };
     });
-    return state().structures.indexOf(newStructure);
+    return atIndex;
   };
 }
 
