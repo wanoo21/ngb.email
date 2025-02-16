@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import {
   AIPStructure,
   ColumnStylesPipe,
-  IpCanPipe,
   IPEmailBuilderColumnDirective,
   IPEmailBuilderDynamicDirective,
   IPEmailBuilderSettingsDirective,
@@ -12,10 +11,7 @@ import { CdkDrag, CdkDragHandle, CdkDropList } from '@angular/cdk/drag-drop';
 import { NgStyle } from '@angular/common';
 
 import { StructureSettingsComponent } from './structure-settings/structure-settings.component';
-import {
-  FormBtnDirective,
-  FormH2Directive,
-} from '../directives/form/form-input.directive';
+import { UIFormModule } from '../directives/form/form-input.directive';
 import { TooltipDirective } from '../directives/tooltip/tooltip.directive';
 
 @Component({
@@ -34,11 +30,12 @@ import { TooltipDirective } from '../directives/tooltip/tooltip.directive';
     CdkDragHandle,
     IPEmailBuilderSettingsDirective,
     StructureSettingsComponent,
-    FormH2Directive,
-    FormBtnDirective,
+    UIFormModule,
     TooltipDirective,
     ColumnStylesPipe,
-    IpCanPipe,
   ],
+  host: {
+    '(click)': '$event.stopPropagation()', // Prevents the click event from bubbling up to the parent
+  }
 })
 export class StructureComponent extends AIPStructure {}
