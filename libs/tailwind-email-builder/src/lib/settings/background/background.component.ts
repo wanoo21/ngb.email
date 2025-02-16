@@ -2,10 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TBackgroundRepeat, TUnits } from '@wlocalhost/ngx-email-builder';
 
 import { formViewProvider } from '../../directives/form-providers';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ColorComponent } from '../color/color.component';
 import { ImageUploadComponent } from '../image-upload/image-upload.component';
-import { FormHintDirective, FormH3Directive, FormBtnDirective, FormInputDirective } from '../../directives/form/form-input.directive';
+import { UIFormModule } from '../../directives/form/form-input.directive';
 import { AsyncPipe } from '@angular/common';
 
 const repeatLabels = new Map<TBackgroundRepeat, string>([
@@ -22,22 +22,19 @@ const unitLabels = new Map<TUnits, string>([
 ]);
 
 @Component({
-    selector: 'tail-background',
-    templateUrl: './background.component.html',
-    styleUrls: ['./background.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [formViewProvider()],
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        ColorComponent,
-        ImageUploadComponent,
-        FormHintDirective,
-        FormH3Directive,
-        FormBtnDirective,
-        FormInputDirective,
-        AsyncPipe,
-    ],
+  selector: 'tail-background',
+  templateUrl: './background.component.html',
+  styleUrls: ['./background.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [formViewProvider()],
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    ColorComponent,
+    ImageUploadComponent,
+    UIFormModule,
+    AsyncPipe,
+  ],
 })
 export class BackgroundComponent {
   readonly unitsOptions = [...unitLabels.keys()].map((value) => ({
