@@ -1,5 +1,5 @@
 import { inject, Pipe, PipeTransform } from '@angular/core';
-import { IP_EMAIL_BUILDER_CONFIG, IPConfig } from '../config/config';
+import { IP_EMAIL_BUILDER_CONFIG } from '../config/config';
 
 /**
  * Returns a full network path based on the network name and configuration.
@@ -15,7 +15,7 @@ import { IP_EMAIL_BUILDER_CONFIG, IPConfig } from '../config/config';
   name: 'socialPath',
 })
 export class SocialPathPipe implements PipeTransform {
-  readonly config = inject<IPConfig>(IP_EMAIL_BUILDER_CONFIG);
+  readonly config = inject(IP_EMAIL_BUILDER_CONFIG);
 
   transform(network: string): string {
     return `${this.config.socialIconsPath}/${network}.png`;

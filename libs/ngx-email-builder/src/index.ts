@@ -1,5 +1,3 @@
-export * from './lib/pipes';
-
 export * from './lib/config/config';
 export * from './lib/config/blocks';
 
@@ -29,3 +27,4 @@ export * from './lib/ui/settings/interfaces';
 
 export * from './lib/ui/column/column-drop.directive';
 export * from './lib/ui/column/column-styles.pipe';
+export * from './lib/ui/social-path.pipe';
