@@ -8,7 +8,7 @@ import {
   AIPEmailBody,
   IIPEmail,
   IPEmailBuilderSettingsDirective,
-  IPEmailBuilderStructuresDirective,
+  IPStructuresDropDirective,
 } from '@wlocalhost/ngx-email-builder';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkDrag, CdkDropList } from '@angular/cdk/drag-drop';
@@ -28,7 +28,7 @@ import { EmailBodySettingsComponent } from './email-body-settings/email-body-set
     FormsModule,
     TemplateListComponent,
     CdkDropList,
-    IPEmailBuilderStructuresDirective,
+    IPStructuresDropDirective,
     StructureComponent,
     CdkDrag,
     FormBtnDirective,
@@ -42,11 +42,6 @@ import { EmailBodySettingsComponent } from './email-body-settings/email-body-set
 export class EmailBodyComponent extends AIPEmailBody {
   readonly generalOptions = computed(() => this.currentEmail.value().general);
   readonly contentPart = signal<null | 'templates'>(null);
-
-  showTemplateList($event: Event): void {
-    $event.preventDefault();
-    this.contentPart.set('templates');
-  }
 
   setNewEmailFromTemplate(template: IIPEmail): void {
     this.currentEmail.set(template);
