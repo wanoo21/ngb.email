@@ -71,15 +71,14 @@ export abstract class AIPStructure extends SettingsNg {
       : createWidthHeight(this.currentEmail.value().general.width)
   );
 
-  duplicateSelf(): void {
+  duplicateMe(): void {
     this.currentEmail.structures.duplicate(this.index());
   }
 
-  async removeSelf(): Promise<void> {
+  async removeMe(): Promise<void> {
     const isYes = await this.#middlewareService.delete(this.currentStructure());
     if (isYes) {
       this.currentEmail.structures.remove(this.index());
-      this.detachSettingsPortal();
     }
   }
 }

@@ -52,7 +52,7 @@ export class FormLabelDirective implements AfterViewInit {
   exportAs: 'btn',
   host: {
     class:
-      'rounded shadow-sm bg-white border px-2 py-1.5 text-sm [&:has(:checked)]:bg-gray-100 cursor-pointer',
+      'rounded shadow-sm bg-white border px-2 py-1.5 text-sm [&:has(:checked)]:bg-gray-100 cursor-pointer text-center',
   },
 })
 export class FormBtnDirective implements OnInit {
