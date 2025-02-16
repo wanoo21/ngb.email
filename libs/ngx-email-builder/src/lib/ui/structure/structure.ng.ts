@@ -82,30 +82,4 @@ export abstract class AIPStructure extends SettingsNg {
       this.detachSettingsPortal();
     }
   }
-
-  // duplicateBlock(
-  //   $event: MouseEvent,
-  //   block: AIPEmailBuilderBlock,
-  //   column: AIPEmailBuilderBlock[]
-  // ): void {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   const indexOf = column.indexOf(block);
-  //   column.splice(indexOf, 0, cloneDeep(block.toObject()));
-  // }
-  //
-  // async removeBlock(
-  //   $event: MouseEvent,
-  //   block: AIPEmailBuilderBlock,
-  //   column: AIPEmailBuilderBlock[]
-  // ): Promise<void> {
-  //   $event.preventDefault();
-  //   $event.stopPropagation();
-  //   const isYes = await this.#middlewareService.delete(block);
-  //   if (isYes) {
-  //     const indexOf = column.indexOf(block);
-  //     column.splice(indexOf, 1);
-  //     this.detachSettingsPortal();
-  //   }
-  // }
 }

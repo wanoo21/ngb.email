@@ -5,6 +5,7 @@ import { DeepPartial, TIPEmailBuilderStyles } from '../../interfaces';
 import { injectIIPEmail } from '../../state';
 import { AIPBlockContext } from '../../config/blocks';
 import { IPEmailBuilderColumnDirective } from '../column/column-drop.directive';
+import { IPActionsService } from '../../actions/actions.service';
 
 /**
  * The abstract class for a builder block component.
@@ -22,9 +23,32 @@ export abstract class AIPEmailBuilderBlock<T> extends SettingsNg {
   abstract readonly hostStyles: Signal<TIPEmailBuilderStyles>;
   readonly #coordinates = inject(IPEmailBuilderColumnDirective).data;
   readonly #currentEmail = injectIIPEmail();
+  readonly #middlewareService = inject(IPActionsService);
 
+  /**
+   * Updates the block's context in the current email.
+   */
   updateMyContext(ctx: DeepPartial<AIPBlockContext<T>>) {
     const { row, col } = this.#coordinates;
     this.#currentEmail.blocks.update(row, col, this.myIndex(), ctx);
+  }
+
+  /**
+   * Duplicates the block.
+   */
+  duplicateMe() {
+    const { row, col } = this.#coordinates;
+    this.#currentEmail.blocks.duplicate(row, col, this.myIndex());
+  }
+
+  /**
+   * Deletes the block.
+   */
+  async removeMe() {
+    const confirm = await this.#middlewareService.delete(this);
+    if (confirm) {
+      const { row, col } = this.#coordinates;
+      this.#currentEmail.blocks.remove(row, col, this.myIndex());
+    }
   }
 }
