@@ -12,10 +12,10 @@ import {
 import { debounceTime, filter } from 'rxjs';
 import { FormsModule, NgForm, ReactiveFormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 
 import { formViewProvider } from '../../directives/form-providers';
 import { UIFormModule } from '../../directives/form/form-input.directive';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { ColorComponent } from '../../settings/color/color.component';
 import { WidthHeightComponent } from '../../settings/width-height/width-height.component';
 import { PaddingComponent } from '../../settings/padding/padding.component';
@@ -67,7 +67,6 @@ export class EmailBodySettingsComponent implements AfterViewInit {
           this.takeUntilDestroyed
         )
         .subscribe((value) => {
-          console.log(value);
           this.currentEmail.options(value);
         });
     });
