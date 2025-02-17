@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TAlign, TVerticalAlign } from '@wlocalhost/ngx-email-builder';
-
-import { formViewProvider } from '../../directives/form-providers';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormInputDirective, FormLabelDirective } from '@wlocalhost/ngx-tailwind-email-builder';
+
+import { UIFormModule } from '../../directives/form/form-input.directive';
+import { formViewProvider } from '../../directives/form-providers';
 
 const horizontalLabels = new Map<TAlign, string>([
   ['left', $localize`:@@horizontal_left_align:Left`],
@@ -22,12 +22,7 @@ const verticalLabels = new Map<TVerticalAlign, string>([
   styleUrls: ['./align.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   viewProviders: [formViewProvider()],
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    FormInputDirective,
-    FormLabelDirective,
-  ],
+  imports: [ReactiveFormsModule, FormsModule, UIFormModule],
 })
 export class AlignComponent {
   readonly mode = input<'vertical' | 'horizontal'>('horizontal');

@@ -2,7 +2,7 @@ import { inject, InjectionToken, signal } from '@angular/core';
 import { Directionality } from '@angular/cdk/bidi';
 
 import { IIPEmail } from '../interfaces';
-import { randomString } from '@wlocalhost/ngx-email-builder';
+import { randomString } from '../tools/utils';
 
 export const AIP_EMAIL_BUILDER = new InjectionToken('AIP_EMAIL_BUILDER', {
   providedIn: 'root',
