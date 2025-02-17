@@ -22,13 +22,14 @@ import {
   removeBlock,
   updateBlock,
 } from './block';
-import { IIPEmail } from '../interfaces';
-import { randomString } from '../tools/utils';
+import { IIPEmail, PartialBy } from '../interfaces';
+import { defaultsDeep, randomString } from '../tools/utils';
 import {
   IP_EMAIL_BUILDER_BLOCKS_DATA,
-  TIPEmailBuilderBlock,
+  TIPInjectedBlock,
 } from '../config/blocks';
 import { IPEmailRestService } from '../http/rest.service';
+import { setState } from './state';
 
 export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
   !injector && assertInInjectionContext(injectIIPEmail);
@@ -43,7 +44,7 @@ export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
     return {
       value: state.asReadonly(),
       set: (newState: IIPEmail) => {
-        state.set(structuredClone(newState));
+        setState(state, newState);
         resetState.set(randomString());
       },
       onSet: resetState.asReadonly(),
@@ -61,13 +62,19 @@ export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
           structureIndex: number,
           columnIndex: number,
           atIndex: number,
-          block: Omit<TIPEmailBuilderBlock, 'id' | 'options'>
+          block: PartialBy<
+            Omit<TIPInjectedBlock<never>, 'component'>,
+            'context'
+          >
         ) => {
           const foundBlock = blocks.find(({ type }) => type === block.type);
           if (!foundBlock) {
             throw new Error(`Block type "${block.type}" is not registered.`);
           }
-          return addBlock(state, { ...block, ...foundBlock.context })(
+          const context = defaultsDeep(foundBlock.context, {
+            ...block.context,
+          });
+          return addBlock(state, { type: foundBlock.type, ...context })(
             structureIndex,
             columnIndex,
             atIndex

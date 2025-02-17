@@ -39,3 +39,4 @@ export type DeepPartial<T> = {
 };
 
 export type TIPEmailBuilderStyles = Record<string, string | number>;
+export type PartialBy<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>
