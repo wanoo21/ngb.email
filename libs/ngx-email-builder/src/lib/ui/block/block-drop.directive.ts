@@ -1,4 +1,4 @@
-import { afterNextRender, Directive, inject, input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
+import { Directive, inject, input, OnInit, TemplateRef, ViewContainerRef } from '@angular/core';
 import { AIPEmailBuilderBlock } from './block.ng';
 import { IP_EMAIL_BUILDER_BLOCKS, TIPEmailBuilderBlock, TIPInjectedBlock } from '../../config/blocks';
 
@@ -57,7 +57,10 @@ export class IPEmailBuilderDynamicDirective implements OnInit {
     const viewContainerRef = this.viewContainerRef.createComponent(component);
     viewContainerRef.setInput('myIndex', this.ipColumnBlockIndex());
     for (const [key, value] of Object.entries(restContext)) {
-      viewContainerRef.setInput(key, value);
+      // @ts-expect-error - I don't see another way to check if the key exists on the instance.
+      if (viewContainerRef.instance[key] !== undefined) {
+        viewContainerRef.setInput(key, value);
+      }
     }
     const context = new IPEmailBuilderDynamicDirectiveContext();
     context.$implicit = viewContainerRef.instance;
