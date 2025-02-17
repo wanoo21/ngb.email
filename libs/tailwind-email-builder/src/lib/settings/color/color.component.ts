@@ -1,12 +1,27 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { AIPColor } from "@wlocalhost/ngx-email-builder";
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { coerceBooleanProperty } from '@angular/cdk/coercion';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { formViewProvider } from '../../directives/form-providers';
+import {
+  FormHintDirective,
+  FormInputDirective,
+} from '../../directives/form/form-input.directive';
 
 @Component({
-  selector: "tail-color",
-  templateUrl: "./color.component.html",
-  styleUrls: ["./color.component.scss"],
+  selector: 'tail-color',
+  templateUrl: './color.component.html',
+  styleUrls: ['./color.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false
+  viewProviders: [formViewProvider()],
+  imports: [
+    ReactiveFormsModule,
+    FormInputDirective,
+    FormsModule,
+    FormHintDirective,
+  ],
 })
-export class ColorComponent extends AIPColor {
+export class ColorComponent {
+  readonly ngModelName = input<string>('color');
+  readonly allowTransparent = input(true, { transform: coerceBooleanProperty });
 }

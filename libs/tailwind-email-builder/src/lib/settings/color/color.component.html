@@ -1,11 +1,14 @@
 <div class="grid grid-cols-5 gap-2">
   <div class="col-span-4">
-    <input type="text" [disabled]="disabled()" tailInput #i="input" ipHistoryModel [(ngModel)]="value"
-           (ngModelChange)="valueChange.emit(i.el.value)"
-           placeholder="Color" i18n-placeholder="@@color">
+    <input type="text" tailInput
+           placeholder="Color" i18n-placeholder="@@color" [name]="ngModelName()" #color=ngModel [(ngModel)]="color.model" />
   </div>
- <div class="rounded" [style.background-color]="value" style="overflow: hidden">
-   <input class="col-span-1 h-full rounded border py-0" type="color" [(ngModel)]="value" style="width: 119%; margin-left: -6px; margin-top: -6px; height: 150%">
- </div>
+  <label class="rounded border overflow-hidden" [style.background-color]="color.value">
+    @defer (on idle) {
+      <input class="opacity-0 size-full" type="color" [(ngModel)]="color.model" [ngModelOptions]="{standalone: true}" />
+    }
+  </label>
 </div>
-<p tailHint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</p>
+@if (allowTransparent()) {
+  <p tailHint i18n="@@leave_empty_for_transparent">Leave empty to make it transparent</p>
+}

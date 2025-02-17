@@ -1,12 +1,17 @@
-<div class="flex gap-2">
-  @if (hasAuto) {
-    <button tailBtn (click)="toggleAuto()" [class.bg-gray-100]="isAuto" i18n="@@width_height_auto">Auto</button>
+<div class="flex gap-2" [ngModelGroup]="ngModelName()">
+  @if (showAutoToggle()) {
+    <label tailBtn>
+      <input type="checkbox" name="auto" hidden ngModel>
+      <ng-container i18n="@@width_height_auto">Auto</ng-container>
+    </label>
   }
-  <input tailInput type="number" [(ngModel)]="value.value" [disabled]="disableValueField">
-  <select tailInput class="appearance-none" [(ngModel)]="value.unit" [disabled]="isAuto">
-    @for (unit of units; track unit) {
-      <option [value]="unit">
-        {{getUnitLabel(unit)}}
+  <input tailInput type="number" name="value" ngModel>
+  <!-- Add supported units to settings -->
+  <input type="hidden" name="units" ngModel>
+  <select tailInput class="appearance-none" name="unit" ngModel>
+    @for (unit of options(); track unit.value) {
+      <option [value]="unit.value">
+        {{ unit.label }}
       </option>
     }
   </select>

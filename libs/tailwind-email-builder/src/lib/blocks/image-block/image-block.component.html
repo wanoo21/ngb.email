@@ -1,36 +1,4 @@
-<img [src]="src" [title]="options.title" [alt]="options.title" [ngStyle]="imageStyles" />
-
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 tailH2 i18n="@@image_block_image">Image</h2>
-  <div tailPanel>
-    <tail-image-upload [(value)]="src"></tail-image-upload>
-  </div>
-  <h2 tailH2 i18n="@@image_block_attributes">Attributes</h2>
-  <div tailPanel>
-    <div class="grid grid-cols-3 gap-2">
-      <div class="flex flex-col col-span-2">
-        <label [tailLabel]="a" i18n="@@image_block_alternative">Alternative text</label>
-        <input type="text" tailInput #a="input" [(ngModel)]="options.title">
-        <p tailHint i18n="@@image_block_alternative_description">Alternative text to show in case image was blocked.</p>
-      </div>
-      <tail-align [(value)]="options.align"></tail-align>
-    </div>
-    <tail-link class="pt-2" [(value)]="options.link"></tail-link>
-    <p tailHint i18n="@@image_block_link_description">Link to redirect to on click</p>
-  </div>
-  <h2 tailH2 i18n="@@image_block_sizes">Sizes</h2>
-  <div tailPanel>
-    <h3 tailH3 i18n="@@width">Width</h3>
-    <tail-width-height [(value)]="options.width"></tail-width-height>
-    <h3 tailH3 class="pt-2" i18n="@@height">Height</h3>
-    <tail-width-height [(value)]="options.height"></tail-width-height>
-  </div>
-  <h2 tailH2 i18n="@@border">Border</h2>
-  <div tailPanel>
-    <tail-border [(value)]="options.border"></tail-border>
-  </div>
-  <h2 tailH2 i18n="@@padding">Padding</h2>
-  <div tailPanel>
-    <tail-padding [(value)]="options.padding"></tail-padding>
-  </div>
+<ng-container ngForm>
+  <img [src]="src()" [alt]="options().title" [ngStyle]="imageStyles()" />
+  <tail-image-settings *ipEmailBuilderSettings [(src)]="src" [(options)]="options" />
 </ng-container>

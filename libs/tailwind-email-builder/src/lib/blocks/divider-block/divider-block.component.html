@@ -1,12 +1,4 @@
-<div [ngStyle]="borderStyles"></div>
-
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <h2 tailH2 i18n="@@divider_color">Divider Color</h2>
-  <div tailPanel>
-    <tail-border [(value)]="options.border"></tail-border>
-  </div>
-  <h2 tailH2 i18n="@@padding">Padding</h2>
-  <div tailPanel>
-    <tail-padding [(value)]="options.padding"></tail-padding>
-  </div>
+<ng-container ngForm>
+  <div [ngStyle]="borderStyles()"></div>
+  <tail-divider-settings *ipEmailBuilderSettings ngModelGroup="options" [(options)]="options" />
 </ng-container>

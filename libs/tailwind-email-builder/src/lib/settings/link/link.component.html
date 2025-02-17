@@ -1,14 +1,15 @@
-<div class="grid grid-cols-3 gap-2">
+<div class="grid grid-cols-3 gap-2" ngModelGroup="link">
   <div class="flex flex-col col-span-2">
     <label [tailLabel]="l" i18n="@@link">Link</label>
-    <input type="text" tailInput #l="input" [(ngModel)]="value.href" placeholder="https://..." i18n-placeholder="@@link_placeholder">
+    <input type="text" tailInput #l="input" name="href" ngModel placeholder="https://..."
+           i18n-placeholder="@@link_placeholder">
   </div>
   <div class="flex flex-col col-span-1">
     <label [tailLabel]="t" i18n="@@link_target">Target</label>
-    <select tailInput #t="input" class="appearance-none" [(ngModel)]="value.target">
-      @for (target of targets; track target) {
-        <option [value]="target">
-          {{getTargetLabel(target)}}
+    <select tailInput #t="input" class="appearance-none" name="target" ngModel>
+      @for (target of targetOptions; track target.value) {
+        <option [value]="target.value">
+          {{ target.label }}
         </option>
       }
     </select>

@@ -1,48 +1,40 @@
-@if (hasOwn('color')) {
-  <tail-color [(value)]="value.color" allowTransparent="false"></tail-color>
-}
-
-@if (value.sizes) {
-  <div class="grid grid-cols-4 gap-2 mt-2">
-    @for (key of borderKeys; track key) {
-      <div class="flex flex-col">
-        <label [tailLabel]="i">{{getBorderLabels(key)}}</label>
-        <input type="number" #i="input" tailInput [(ngModel)]="value.sizes[key]">
-      </div>
-    }
-  </div>
-} @else {
-  <div class="flex flex-col gap-2 mt-2">
-    <label [tailLabel]="i" i18n="@@border_width">Border Width</label>
-    <input type="number" #i="input" tailInput [(ngModel)]="value.width"  placeholder="Width"
-      i18n-placeholder="@@border_width">
-  </div>
-}
-
-<ng-template #width>
-  <div class="flex flex-col gap-2 mt-2">
-    <label [tailLabel]="i" i18n="@@border_width">Border Width</label>
-    <input type="number" #i="input" tailInput [(ngModel)]="value.width"  placeholder="Width"
-      i18n-placeholder="@@border_width">
-  </div>
-</ng-template>
-
-<div class="flex flex-col mt-2">
-  @if (hasOwn('radius')) {
-    <h3 tailH3 i18n="@@border_radius">Border Radius</h3>
+<ng-container ngModelGroup="border">
+  @if (!hideColorInput()) {
+    <tail-color allowTransparent="false" />
   }
-  <input type="number" tailInput [(ngModel)]="ngValue.radius"  placeholder="Radius"
-    i18n-placeholder="@@border_radius">
-</div>
 
-@if (value.width) {
+  @if (!hidePositions()) {
+    <div class="grid grid-cols-4 gap-2 mt-2" ngModelGroup="sizes">
+      @for (option of borderOptions; track option.value) {
+        <div class="flex flex-col">
+          <label [tailLabel]="i">{{ option.label }}</label>
+          <input type="number" #i="input" tailInput ngModel [name]="option.value" />
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="flex flex-col gap-2 mt-2">
+      <label [tailLabel]="i" i18n="@@border_width">Border Width</label>
+      <input type="number" #i="input" tailInput ngModel name="width" placeholder="Width"
+             i18n-placeholder="@@border_width">
+    </div>
+  }
+
+  @if (!hideRadiusInput()) {
+    <div class="flex flex-col mt-2">
+      <h3 tailH3 i18n="@@border_radius">Border Radius</h3>
+      <input type="number" tailInput ngModel name="radius" placeholder="Radius"
+             i18n-placeholder="@@border_radius">
+    </div>
+  }
+
   <h3 tailH3 i18n="@@border_style" class="pt-2">Border style</h3>
   <div class="grid grid-cols-5 gap-2">
-    @for (style of styleLabels; track style) {
-      <button tailBtn size="xs" [class.bg-gray-100]="value.style === style"
-        (click)="value.style = style">
-        {{getStyleLabel(style)}}
-      </button>
+    @for (style of styleOptions; track style.value) {
+      <label tailBtn size="xs">
+        <input type="radio" [value]="style.value" name="style" ngModel hidden />
+        {{ style.label }}
+      </label>
     }
   </div>
-}
+</ng-container>

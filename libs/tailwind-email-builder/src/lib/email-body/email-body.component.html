@@ -1,66 +1,27 @@
-@switch (contentPart$ | async) {
-  @default {
-    <div cdkDropList [ipEmailBuilderStructures]="value.structures" class="flex flex-col items-center">
-      @if (value.structures.length) {
-        @for (structure of value.structures; track structure.id) {
-          <tail-structure (clone)="duplicateStructure($event)"
-                          (delete)="deleteStructure($event)" [value]="structure"
-                          [bodyWidth]="value.general.width" class="group relative" cdkDrag />
-        }
-      } @else {
-        <div class="bg-white rounded border-1" [style.width.px]="value.general.width.value">
-          <div class="empty-message flex flex-col p-2 gap-10 justify-center items-center h-72">
-            <p class="text-base text-gray-500" i18n="@@empty_body_message">
-              Start by Drag and Drop some structures or select a template from list.
-            </p>
-            <button tailBtn i18n="@@choose_template_btn" (click)="showTemplateList($event)">Select Template</button>
+<ng-container ngForm>
+  @switch (contentPart()) {
+    @default {
+      <div cdkDropList ipStructuresDrop class="flex flex-col items-center">
+        @if (structures().length) {
+          @for (structure of structures(); track structure.id) {
+            <tail-structure [index]="$index" class="group relative" cdkDrag />
+          }
+        } @else {
+          <div class="bg-white rounded border-1" [style.width.px]="generalOptions().width.value">
+            <div class="empty-message flex flex-col p-2 gap-10 justify-center items-center h-72">
+              <p class="text-base text-gray-500" i18n="@@empty_body_message">
+                Start by Drag and Drop some structures or select a template from list.
+              </p>
+              <button tailBtn i18n="@@choose_template_btn" (click)="contentPart.set('templates')">Select Template</button>
+            </div>
           </div>
-        </div>
-      }
-    </div>
-  }
-  @case ('templates') {
-    <tail-template-list (selected)="changeValue($event)" />
-  }
-}
-
-<ng-container *ipEmailBuilderSettings [ipEmailBuilderHistoryHost]="this | toHistoryOptions">
-  <div tailPanel class="mt-4">
-    <div class="flex flex-col">
-      <label [tailLabel]="i" i18n="@@template_name">Template name</label>
-      <input tailInput #i="input" type="text" ipHistoryModel [(ngModel)]="value.general.name">
-    </div>
-    <div class="flex flex-col mt-2">
-      <label [tailLabel]="t" i18n="@@template_preview_text">Preview text</label>
-      <textarea tailInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2" ipHistoryModel
-                [(ngModel)]="value.general.previewText"></textarea>
-      <p tailHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
-    </div>
-  </div>
-
-  <h2 tailH2 i18n="@@background">Background</h2>
-  <div tailPanel>
-    <tail-color [(value)]="value.general.background.color"></tail-color>
-  </div>
-
-  <h2 tailH2 i18n="@@template_attributes">Attributes</h2>
-  <div tailPanel>
-    <h3 tailH3 i18n="@@width">Width</h3>
-    <tail-width-height [(value)]="value.general.width!"></tail-width-height>
-    <div class="flex flex-col mt-2">
-      <label [tailLabel]="s" i18n="@@direction">Direction</label>
-      <select tailInput #s="input" [(ngModel)]="value.general.direction" class="appearance-none">
-        @for (dir of directionKeys; track dir) {
-          <option [value]="dir">
-            {{ getDirectionLabel(dir) }}
-          </option>
         }
-      </select>
-    </div>
-  </div>
+      </div>
+    }
+    @case ('templates') {
+      <tail-template-list (selected)="setNewEmailFromTemplate($event)" />
+    }
+  }
 
-  <h2 tailH2 i18n="@@padding">Padding</h2>
-  <div tailPanel>
-    <tail-padding [(value)]="value.general.padding"/>
-  </div>
+  <tail-email-body-settings *ipEmailBuilderSettings />
 </ng-container>

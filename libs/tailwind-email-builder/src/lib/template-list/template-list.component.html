@@ -1,9 +1,8 @@
-@if (tmplCategories$ | async; as categoryList) {
+@if (categories$ | async; as categoryList) {
   <div class="flex p-2 gap-2 flex-wrap">
-    @let list = [categoryList] | applyMiddleware: 'categoryList' | async ;
-    @for (category of list; track category.category) {
-      <button tailBtn class="capitalize" [class.bg-gray-100]="category === (selectedCategory$ | async)"
-              (click)="selectCategory(category)">
+    @for (category of categoryList; track category.category) {
+      <button tailBtn class="capitalize" [class.bg-gray-100]="category === selectedCategory()"
+              (click)="selectedCategory.set(category)">
         {{ category.category }}
       </button>
     }
@@ -12,13 +11,12 @@
   <p i18n="@@loading_templates">Loading, please wait ...</p>
 }
 
-@if (selectedCategory$ | async; as category) {
+@if (selectedCategory(); as category) {
   <div class="grid grid-cols-3 gap-2 p-2">
-    @let templates = [category] | applyMiddleware: 'categoryTemplates' | async ;
-    @for (template of templates; track $index) {
+    @for (template of category.templates; track template) {
       <div class="relative h-60 rounded border overflow-hidden group">
-        <img [src]="[category.category, template] | applyMiddleware: 'templateThumbnail'" [alt]="template"
-             class="w-full h-full object-cover object-[center_top] group-hover:object-bottom">
+        <img [ngSrc]="'/thumbnails/' + category.category + '/' + template + '/' + template + '.jpg'" [alt]="template"
+             class="object-cover object-[center_top] group-hover:object-bottom" fill="cover">
         <div
           class="absolute bottom-0 w-full bg-white translate-y-5 p-2 group-hover:translate-y-0 transition-transform text-center">
           <h3 tailH3>{{ template | titlecase }}</h3>

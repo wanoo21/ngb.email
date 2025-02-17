@@ -1,17 +1,17 @@
 <div class="flex flex-col col-span-1">
   @if (mode() === 'horizontal') {
     <label [tailLabel]="s" i18n="@@horizontal_align">Horizontal Align</label>
-    <select #s="input" tailInput [(ngModel)]="value" class="appearance-none" [disabled]="disabled()">
-      @for (option of horizontalLabels; track option) {
-        <option [value]="option">{{getHorizontalAlignLabel(option)}}</option>
+    <select #s="input" tailInput name="align" ngModel class="appearance-none" [disabled]="disabled()">
+      @for (option of horizontalOptions; track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
       }
     </select>
   }
   @if (mode() === 'vertical') {
     <label [tailLabel]="s" i18n="@@vertical_align">Vertical Align</label>
-    <select #s="input" tailInput [(ngModel)]="value" class="appearance-none" [disabled]="disabled()">
-      @for (option of verticalLabels; track option) {
-        <option [value]="option">{{getVerticalAlignLabel(option)}}</option>
+    <select #s="input" tailInput name="align" ngModel class="appearance-none" [disabled]="disabled()">
+      @for (option of verticalOptions; track option.value) {
+        <option [value]="option.value">{{ option.label }}</option>
       }
     </select>
   }

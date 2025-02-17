@@ -1,20 +1,13 @@
 <div class="grid grid-cols-12 grid-rows-1 h-full">
   <div class="col-span-7 md:col-span-9 sm:col-span-8 flex flex-col" [ngSwitch]="screen | async">
     <div class="bg-white shadow-sm border border-b py-3 px-4 w-full flex gap-2 flex-shrink-0">
-      @if (value | ipCan: 'preview') {
-        <button tailBtn (click)="preview()" *ngSwitchDefault>Preview</button>
-        <button tailBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
-      }
-      <ng-content select=".top-actions"/>
-
-      <!--      <div class="ms-auto flex gap-2">-->
-      <!--        <button tailBtn ipEmailBuilderHistoryAction="undo">Prev</button>-->
-      <!--        <button tailBtn ipEmailBuilderHistoryAction="redo">Redo</button>-->
-      <!--      </div>-->
+      <button tailBtn (click)="preview()" *ngSwitchDefault>Preview</button>
+      <button tailBtn (click)="screen.next(null)" *ngSwitchCase="'preview'">Close Preview</button>
+      <ng-content select=".top-actions" />
     </div>
 
     <ng-container *ngSwitchCase="'preview'">
-      @if (value | ipPreviewLink | async; as link) {
+      @if (currentEmail.value() | ipPreviewLink | async; as link) {
         <div class="relative flex justify-center h-full">
           <iframe [src]="link" class="preview overflow-x-auto h-full"
                   [style.width]="previewDeviceWidth$ | async"></iframe>
@@ -54,8 +47,8 @@
       }
     </ng-container>
 
-    <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" [(value)]="value"/>
+    <tail-email-body *ngSwitchDefault class="overflow-x-auto flex-1" />
   </div>
   <tail-email-aside [readonly]="(screen | async) !== null"
-                    class="col-span-5 md:col-span-3 sm:col-span-4 select-text"/>
+                    class="col-span-5 md:col-span-3 sm:col-span-4 select-text" />
 </div>
