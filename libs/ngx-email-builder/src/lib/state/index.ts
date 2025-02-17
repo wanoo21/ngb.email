@@ -71,9 +71,10 @@ export function injectIIPEmail({ injector }: { injector?: Injector } = {}) {
           if (!foundBlock) {
             throw new Error(`Block type "${block.type}" is not registered.`);
           }
-          const context = defaultsDeep(foundBlock.context, {
-            ...block.context,
-          });
+          const context = defaultsDeep(
+            { ...foundBlock.context },
+            { ...block.context }
+          );
           return addBlock(state, { type: foundBlock.type, ...context })(
             structureIndex,
             columnIndex,
