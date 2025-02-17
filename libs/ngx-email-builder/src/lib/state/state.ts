@@ -1,5 +1,7 @@
-import { IIPEmail, randomString } from '@wlocalhost/ngx-email-builder';
 import { WritableSignal } from '@angular/core';
+
+import { IIPEmail } from '../interfaces';
+import { randomString } from '../tools/utils';
 
 export function setState(state: WritableSignal<IIPEmail>, newState: IIPEmail) {
   try {

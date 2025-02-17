@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { TAlign, TVerticalAlign } from '@wlocalhost/ngx-email-builder';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { formViewProvider } from '../../directives/form-providers';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { FormInputDirective, FormLabelDirective } from '@wlocalhost/ngx-tailwind-email-builder';
+import { FormInputDirective, FormLabelDirective } from '../../directives/form/form-input.directive';
 
 const horizontalLabels = new Map<TAlign, string>([
   ['left', $localize`:@@horizontal_left_align:Left`],
