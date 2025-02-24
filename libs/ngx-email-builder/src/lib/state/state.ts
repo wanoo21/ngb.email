@@ -20,7 +20,7 @@ export function setState(state: WritableSignal<IIPEmail>, newState: IIPEmail) {
         }),
       })),
     };
-    state.set(structuredClone(newStateWithUniqueIds));
+    state.set(Object.freeze(structuredClone(newStateWithUniqueIds)));
   } catch (error) {
     console.error('Error setting state', error);
   }

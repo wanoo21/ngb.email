@@ -9,7 +9,7 @@ export const AIP_EMAIL_BUILDER = new InjectionToken('AIP_EMAIL_BUILDER', {
   factory: () => {
     const { value: direction } = inject(Directionality);
 
-    return signal<IIPEmail>(
+    return signal<Readonly<IIPEmail>>(
       {
         structures: [],
         general: {
