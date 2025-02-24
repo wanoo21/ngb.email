@@ -2,8 +2,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { IMargin } from '@wlocalhost/ngx-email-builder';
 
 import { formViewProvider } from '../../directives/form-providers';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { FormLabelDirective, FormInputDirective } from '../../directives/form/form-input.directive';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UIFormModule } from '../../directives/form/form-input.directive';
 
 const marginLabels = new Map<keyof IMargin, string>([
   ['top', $localize`:@@margin_top:Top`],
@@ -11,17 +11,12 @@ const marginLabels = new Map<keyof IMargin, string>([
 ]);
 
 @Component({
-    selector: 'tail-margin',
-    templateUrl: './margin.component.html',
-    styleUrls: ['./margin.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    viewProviders: [formViewProvider()],
-    imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        FormLabelDirective,
-        FormInputDirective,
-    ],
+  selector: 'tail-margin',
+  templateUrl: './margin.component.html',
+  styleUrls: ['./margin.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  viewProviders: [formViewProvider()],
+  imports: [ReactiveFormsModule, FormsModule, UIFormModule],
 })
 export class MarginComponent {
   readonly marginOptions = [...marginLabels.keys()].map((value) => ({

@@ -1,4 +1,4 @@
-import { EnvironmentProviders, InjectionToken, makeEnvironmentProviders, Type } from '@angular/core';
+import { InjectionToken, Provider, Type } from '@angular/core';
 import { AIPEmailBuilderBlock } from '../ui/block/block.ng';
 
 export type TIPEmailBuilderBlock<T = Record<PropertyKey, any>> = {
@@ -40,13 +40,13 @@ export const IP_EMAIL_BUILDER_BLOCKS_DATA = new InjectionToken<
 export function addIPEmailBuilderBlock<T>(
   title: string,
   block: TIPInjectedBlock<T>
-): EnvironmentProviders {
-  return makeEnvironmentProviders([
+): Provider[] {
+  return [
     { provide: IP_EMAIL_BUILDER_BLOCKS, useValue: block, multi: true },
     {
       provide: IP_EMAIL_BUILDER_BLOCKS_DATA,
       useValue: { type: block.type, title, context: block.context },
       multi: true,
     },
-  ]);
+  ];
 }
