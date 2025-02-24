@@ -1,0 +1,39 @@
+<div tailPanel class="mt-4">
+  <div class="flex flex-col">
+    <label [tailLabel]="i" i18n="@@template_name">Template name</label>
+    <input tailInput #i="input" type="text" name="name" ngModel>
+  </div>
+  <div class="flex flex-col mt-2">
+    <label [tailLabel]="t" i18n="@@template_preview_text">Preview text</label>
+    <textarea tailInput #t="input" cdkTextareaAutosize cdkAutosizeMinRows="2" name="previewText" ngModel></textarea>
+    <p tailHint i18n="@@template_preview_text_hint">This text is displayed in the inbox of the recipient.</p>
+  </div>
+</div>
+
+<h2 tailH2 i18n="@@background">Background</h2>
+<div tailPanel ngModelGroup="background">
+  <tail-color />
+</div>
+
+<h2 tailH2 i18n="@@template_attributes">Attributes</h2>
+<div tailPanel>
+  <h3 tailH3 i18n="@@width">Width</h3>
+  <tail-width-height [units]="currentEmail.value().general.width.units" />
+
+  <div class="flex flex-col mt-2">
+    <label [tailLabel]="s" i18n="@@direction">Direction</label>
+    <select tailInput #s="input" name="direction" ngModel
+            class="appearance-none">
+      @for (dir of directionOptions; track dir.value) {
+        <option [value]="dir.value">
+          {{ dir.label }}
+        </option>
+      }
+    </select>
+  </div>
+</div>
+
+<h2 tailH2 i18n="@@padding">Padding</h2>
+<div tailPanel>
+  <tail-padding />
+</div>

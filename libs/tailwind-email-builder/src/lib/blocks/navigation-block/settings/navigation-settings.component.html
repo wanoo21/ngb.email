@@ -1,0 +1,64 @@
+<h2 tailH2 i18n="@@add_link">Add Link</h2>
+
+<div tailPanel>
+  <button class="w-full button" tailBtn (click)="addNewLink()" i18n="add_new_link">Add New Link</button>
+  @for (el of options().elements; track $index) {
+    <div class="flex w-full align-items-center gap-2 mt-2">
+      <div class="flex flex-col flex-1">
+        <label [tailLabel]="link" i18n="@@link_label">Link label</label>
+        <input tailInput #link="input" required [value]="el.label"
+               (input)="updateElement($index, 'label', link.el.value)" type="text" />
+      </div>
+      <div class="flex flex-2 align-items-end" style="align-items: end">
+        <div style="height: min-content">
+          <button class="w-full" (click)="delete($index)" tailBtn i18n="@@delete">Delete</button>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col flex-1 mt-2">
+      <label [tailLabel]="href" i18n="@@link_label">Link href</label>
+      <input tailInput #href="input" required [value]="el.href"
+             (input)="updateElement($index, 'href', href.el.value)" type="url" />
+    </div>
+    @if (!$last) {
+      <hr class="mt-3 border">
+    }
+  }
+</div>
+<h2 tailH2 i18n="@@font">Font</h2>
+<div tailPanel>
+  <h3 tailH3 i18n="@@text_color">Color</h3>
+  <tail-color />
+  <tail-font class="pt-2" />
+  <tail-line-height class="pt-2" />
+  <div class="flex gap-2 pt-2">
+    <div class="flex flex-col w-full">
+      <label [tailLabel]="i" i18n="@@letter_spacing">Letter Spacing</label>
+      <input tailInput #i="input" type="number" name="letterSpacing" ngModel />
+    </div>
+    <div class="flex flex-col w-full">
+      <label [tailLabel]="s" i18n="@@text_decoration">Text Decoration</label>
+      <select class="appearance-none" tailInput #s="input" name="textDecoration" ngModel>
+        @for (option of decorationOptions; track option.key) {
+          <option [value]="option.key">
+            {{ option.label }}
+          </option>
+        }
+      </select>
+    </div>
+  </div>
+</div>
+<h2 tailH2 i18n="@@padding">Padding</h2>
+<div tailPanel>
+  <tail-padding />
+</div>
+<h2 tailH2 i18n="@@align">Align</h2>
+<div tailPanel class="grid grid-cols-3 gap-2">
+  <tail-align class="col-span-2" />
+  <label tailBtn>
+    <input type="checkbox" hidden name="hamburger" ngModel />
+    <ng-container i18n="@@enable_hamburger">
+      Enable Hamburger
+    </ng-container>
+  </label>
+</div>

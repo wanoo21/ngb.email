@@ -1,0 +1,65 @@
+<ng-content />
+<h2 tailH2 i18n="@@background">Background</h2>
+<tail-background tailPanel />
+<h2 tailH2 i18n="@@border">Border</h2>
+<tail-border tailPanel hidePositions="true" />
+<h2 tailH2 i18n="@@padding">Padding</h2>
+<tail-padding tailPanel />
+<h2 tailH2 i18n="@@margin">Margin</h2>
+<tail-margin tailPanel />
+<h2 tailH2 i18n="@@layout">Layout</h2>
+<div tailPanel>
+  <ng-container ngModelGroup="gaps">
+    <div class="grid grid-cols-2 gap-2">
+      <div class="flex flex-col">
+        <label [tailLabel]="vertical" i18n="@@structure_vertical_gap">Vertical Gap</label>
+        <input tailInput #vertical="input" type="number" name="vertical" ngModel>
+      </div>
+      <div class="flex flex-col">
+        <label [tailLabel]="horizontal" i18n="@@structure_horizontal_gap">Horizontal Gap</label>
+        <input tailInput #horizontal="input" type="number" name="horizontal" ngModel>
+      </div>
+    </div>
+  </ng-container>
+
+  <div class="grid grid-cols-2 gap-2 pt-2">
+    <label tailBtn>
+      <input type="checkbox" name="disableResponsive" ngModel hidden>
+      <ng-container i18n="@@disable_responsive">Disable Responsive</ng-container>
+    </label>
+    <label tailBtn>
+      <input type="checkbox" name="fullWidth" ngModel hidden>
+      <ng-container i18n="@@full_width_structure">Full width structure</ng-container>
+    </label>
+  </div>
+</div>
+
+<h2 tailH2 i18n="@@structure_columns_styles">Columns styles</h2>
+<div tailPanel>
+  <div class="grid grid-cols-6 gap-2">
+    @for (index of columnsSize(); track index) {
+      <label tailBtn (click)="editColumn(index)">
+        <input type="radio" [checked]="editColumnIndex() === index" hidden>
+        {{ index + 1 }}
+      </label>
+    }
+  </div>
+
+  <div class="flex flex-col pt-2" ngForm #columnForm="ngForm">
+    <ng-container ngModelGroup="background">
+      <h3 tailH3 i18n="@@background_color">Background Color</h3>
+      <tail-color />
+    </ng-container>
+    <h3 tailH3 class="pt-1" i18n="@@border">Border</h3>
+    <tail-border hidePositions />
+    <h3 tailH3 class="pt-1" i18n="@@vertical_align">Vertical Align</h3>
+    <div class="grid grid-cols-3 gap-2">
+      @for (align of verticalOptions; track align.value) {
+        <label tailBtn>
+          <input type="radio" name="verticalAlign" ngModel [value]="align.value" hidden>
+          {{ align.label }}
+        </label>
+      }
+    </div>
+  </div>
+</div>

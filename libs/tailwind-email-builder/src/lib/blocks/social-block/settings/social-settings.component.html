@@ -1,0 +1,93 @@
+<h2 tailH2 i18n="@@social_block_networks">Networks</h2>
+<div tailPanel>
+  <h3 tailH3 i18n="@@social_block_add_networks">Click on any icon to add, edit or remove.</h3>
+  <div class="grid grid-cols-7 gap-2 pb-2">
+    @for (network of supportedNetworks; track network) {
+      <img class="flex-1 border px-2 py-1.5 cursor-pointer active:shadow-inner"
+           [src]="network | socialPath"
+           [alt]="network" [tailTooltip]="network | titlecase" [class]="network"
+           [class.active]="networkIsActive(network)"
+           (click)="addOrEditNetwork(network)">
+    }
+  </div>
+  <div [class.hidden]="!currentEditingNetwork()" [formGroup]="editNetworkForm">
+    <h3 tailH3 class="uppercase">{{ currentEditingNetwork()?.name }}</h3>
+    <div class="grid grid-rows-2 gap-2">
+      <input type="hidden" formControlName="name" required>
+      <div class="flex flex-col">
+        <label [tailLabel]="l" i18n="@@social_block_network_label">Label</label>
+        <div class="flex gap-2">
+          <input #l="input" tailInput type="text" class="flex-1" formControlName="label" required>
+          <button
+            class="rounded bg-red-500 shadow-sm text-white px-2 py-1.5 active:shadow-inner opacity-90 hover:opacity-100 transition-opacity"
+            tailTooltip="Delete"
+            (click)="deleteCurrentNetwork()"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 pointer-events-none" fill="none"
+                 viewBox="0 0 24 24"
+                 stroke="currentColor"
+                 stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="grid grid-cols-3 gap-2">
+        <div class="flex flex-col col-span-2">
+          <label [tailLabel]="l" i18n="@@link">Link</label>
+          <input type="url" tailInput #l="input" formControlName="href" placeholder="https://..."
+                 i18n-placeholder="@@link_placeholder" required>
+        </div>
+        <div class="flex flex-col col-span-1">
+          <label [tailLabel]="t" i18n="@@link_target">Target</label>
+          <select tailInput #t="input" class="appearance-none" formControlName="target">
+            @for (target of targetOptions; track target.value) {
+              <option [value]="target.value">
+                {{ target.label }}
+              </option>
+            }
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<h2 tailH2 i18n="@@font">Font</h2>
+<div tailPanel>
+  <tail-font />
+  <tail-line-height class="mt-2" />
+</div>
+
+<h2 tailH2 i18n="@@social_block_styles">Styles</h2>
+<div tailPanel>
+  <div class="grid grid-cols-3 gap-2">
+    <div class="flex flex-col">
+      <label [tailLabel]="s" i18n="@@social_block_mode">Mode</label>
+      <select tailInput #s="input" class="appearance-none" name="mode" ngModel>
+        @for (mode of modeOptions; track mode.value) {
+          <option [value]="mode.value">
+            {{ mode.label }}
+          </option>
+        }
+      </select>
+    </div>
+    <div class="flex flex-col" ngModelGroup="iconSize">
+      <label [tailLabel]="i" i18n="@@social_block_icon_size">Icon Size</label>
+      <input tailInput #i="input" class="appearance-none" type="number" name="value" ngModel>
+      <!--  Keep the unit in the options if later we'll add support for percentage  -->
+      <input type="hidden" name="unit" ngModel>
+    </div>
+    <tail-align />
+  </div>
+</div>
+
+<h2 tailH2 i18n="@@inner_padding">Inner Padding</h2>
+<div tailPanel>
+  <tail-padding modelGroupName="innerPadding" />
+</div>
+
+<h2 tailH2 i18n="@@padding">Padding</h2>
+<div tailPanel>
+  <tail-padding />
+</div>

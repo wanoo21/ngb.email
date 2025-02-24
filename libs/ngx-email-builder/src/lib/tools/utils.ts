@@ -1,3 +1,5 @@
+import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight } from '../ui/settings/interfaces';
+
 /**
  * Create CSS border styles based on {@link IBorder} object.
  * @param border Border object.
@@ -5,10 +7,17 @@
  *
  * @return CSS Border styles.
  */
-import { IBackground, IBorder, IFont, ILineHeight, IMargin, IPadding, IWidthHeight } from "../interfaces";
-
-export function createBorder(border: IBorder, rule = "border"): { [p: string]: string; borderRadius: string } {
-  const { color = "#000000", style = "solid", radius = 0, sizes, width } = border;
+export function createBorder(
+  border: IBorder,
+  rule = 'border'
+): { [p: string]: string; borderRadius: string } {
+  const {
+    color = '#000000',
+    style = 'solid',
+    radius = 0,
+    sizes,
+    width,
+  } = border;
   const styles = { borderRadius: `${radius}px` };
   if (sizes) {
     const { top, right, left, bottom } = sizes;
@@ -17,13 +26,13 @@ export function createBorder(border: IBorder, rule = "border"): { [p: string]: s
       [`border-right`]: `${right}px ${style} ${color}`,
       [`border-left`]: `${left}px ${style} ${color}`,
       [`border-bottom`]: `${bottom}px ${style} ${color}`,
-      ...styles
+      ...styles,
     };
   }
 
   return {
     [rule]: `${width}px ${style} ${color}`,
-    ...styles
+    ...styles,
   };
 }
 
@@ -32,10 +41,13 @@ export function createBorder(border: IBorder, rule = "border"): { [p: string]: s
  * @param padding Padding object.
  * @param rule Most likely you won't need it, but for some cases, it can be changed. Default is: `padding`.
  */
-export function createPadding(padding: IPadding, rule = "padding"): Record<string, string> {
+export function createPadding(
+  padding: IPadding,
+  rule = 'padding'
+): Record<string, string> {
   const { top = 10, right = 25, bottom = 10, left = 25 } = padding;
   return {
-    [rule]: `${top}px ${right}px ${bottom}px ${left}px`
+    [rule]: `${top}px ${right}px ${bottom}px ${left}px`,
   };
 }
 
@@ -46,7 +58,7 @@ export function createPadding(padding: IPadding, rule = "padding"): Record<strin
 export function createMargin(margin: IMargin): { margin: string } {
   const { top = 0, bottom = 0 } = margin;
   return {
-    margin: `${top}px 0 ${bottom}px`
+    margin: `${top}px 0 ${bottom}px`,
   };
 }
 
@@ -58,14 +70,21 @@ export function createFont(font: IFont): {
   fontFamily: string;
   fontSize: string;
   fontStyle: string;
-  fontWeight: number
+  fontWeight: number;
 } {
-  const { family = "", size = 13, style = "normal", weight = 400 } = font;
+  const {
+    family = '',
+    size = 13,
+    style = 'normal',
+    weight = 400,
+    fallback,
+  } = font;
+  const fontFamily = family.length ? family : fallback;
   return {
-    fontFamily: family,
+    fontFamily,
     fontSize: `${size}px`,
     fontStyle: style,
-    fontWeight: weight
+    fontWeight: weight,
   };
 }
 
@@ -73,10 +92,12 @@ export function createFont(font: IFont): {
  * Create CSS line-height styles based on {@link ILineHeight} object.
  * @param lineHeight Line-height object.
  */
-export function createLineHeight(lineHeight: ILineHeight): { lineHeight: string } {
-  const { value = 22, unit = "px" } = lineHeight;
+export function createLineHeight(lineHeight: ILineHeight): {
+  lineHeight: string;
+} {
+  const { value = 22, unit = 'px' } = lineHeight;
   return {
-    lineHeight: unit !== "none" ? `${value}${unit}` : "normal"
+    lineHeight: unit !== 'none' ? `${value}${unit}` : 'normal',
   };
 }
 
@@ -85,7 +106,7 @@ export function createLineHeight(lineHeight: ILineHeight): { lineHeight: string 
  * @param background Background object.
  */
 export function createBackground(background: Partial<IBackground>): string {
-  const { url = "", color = "white", repeat = "no-repeat" } = background;
+  const { url = '', color = 'white', repeat = 'no-repeat' } = background;
   return `${color} ${url && `url(${url})`} ${repeat} top center`;
 }
 
@@ -94,53 +115,34 @@ export function createBackground(background: Partial<IBackground>): string {
  * @param widthHeight Width or Height object.
  */
 export function createWidthHeight(widthHeight: Partial<IWidthHeight>): string {
-  const { value = 100, unit = "%", auto = false } = widthHeight;
-  return (auto && "auto") || (["%", "px"].indexOf(unit) > -1 && `${value}${unit}`) || unit;
+  const { value = 100, unit = '%', auto = false } = widthHeight;
+  return (
+    (auto && 'auto') ||
+    (['%', 'px'].indexOf(unit) > -1 && `${value}${unit}`) ||
+    unit
+  );
 }
-
-/**
- * Deep merge objects
- * @param current
- * @param updates
- */
-export function mergeObjects(current: Record<string, any>, updates: Record<string, any>) {
-  for (const key of Object.keys(updates)) {
-    // eslint-disable-next-line no-prototype-builtins
-    if (!current.hasOwnProperty(key) || typeof updates[key] !== "object") current[key] = updates[key];
-    else mergeObjects(current[key], updates[key]);
-  }
-  return current;
-}
-
 
 /**
  * An alternative lodash defaultsDeep function. Use it on your own risk.
  * @param to The object with default properties
  * @param sources An array of objects with default properties
  */
-export function defaultsDeep<T extends Record<string, any>>(to: T = {} as T, ...sources: T[]): T {
+export function defaultsDeep<T extends Record<PropertyKey, any>>(
+  to: T,
+  ...sources: T[]
+): T {
   for (const source of sources) {
     for (const key in source) {
-      // eslint-disable-next-line no-prototype-builtins
-      if (to.hasOwnProperty(key)) {
-        continue;
-      }
-      if (!Array.isArray(source[key]) && typeof source[key] === "object") {
+      if (!to[key]) to[key] = source[key];
+      if (!Array.isArray(source[key]) && typeof source[key] === 'object') {
         to[key] = defaultsDeep(to[key], source[key]);
       } else {
         to[key] = source[key];
       }
     }
   }
-  return to as unknown as T;
-}
-
-/**
- * An alternative lodash cloneDeep function. Use it on your own risk.
- * @param obj Object to be cloned.
- */
-export function cloneDeep<T>(obj = {}): T {
-  return structuredClone(obj) as unknown as T;
+  return to;
 }
 
 /**
@@ -148,7 +150,10 @@ export function cloneDeep<T>(obj = {}): T {
  * @param callback
  * @param delay
  */
-export function debounce<T = void>(callback: (...args: any[]) => T, delay = 1000) {
+export function debounce<T = void>(
+  callback: (...args: any[]) => T,
+  delay = 1000
+) {
   let timeoutId: number | undefined;
   return (...args: any[]): T | void => {
     clearTimeout(timeoutId);
@@ -164,35 +169,4 @@ export function debounce<T = void>(callback: (...args: any[]) => T, delay = 1000
  */
 export function randomString(from = 10, to = 5): string {
   return btoa(String(Math.random())).substr(from, to).toLowerCase();
-}
-
-/**
- * Create cookie
- * @param name
- * @param value
- * @param days
- */
-export function addToStore(name: string, value: string | number, days = 7) {
-  let expires = "";
-  if (days) {
-    const date = new Date();
-    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-    expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = `${name}=${value}${expires}; path=/;`;
-}
-
-/**
- * Read cookie
- * @param name
- */
-export function getFromStore(name: string): string | null {
-  const nameEQ = name + "=";
-  const ca = document.cookie.split(";");
-  for (let i = 0; i < ca.length; i++) {
-    let c = ca[i];
-    while (c.charAt(0) === " ") c = c.substring(1, c.length);
-    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
-  }
-  return null;
 }

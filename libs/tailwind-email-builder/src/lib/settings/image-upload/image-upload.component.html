@@ -1,11 +1,4 @@
-<div class="grid grid-cols-5 gap-2">
-  <div class="col-span-4 flex flex-col">
-    <label [tailLabel]="i" i18n="@@image_source">Image source</label>
-    <input type="url" #i="input" tailInput [(ngModel)]="value" placeholder="https://...">
-  </div>
-  <div class="col-span-1 rounded border overflow-hidden bg-white">
-    @if (i.el.value.length) {
-      <img [src]="i.el.value" alt="" class="w-full h-full">
-    }
-  </div>
+<div class="flex flex-col">
+  <label [tailLabel]="i" i18n="@@image_source">Image source</label>
+  <input type="url" #i="input" tailInput [name]="ngModelName()" ngModel placeholder="https://...">
 </div>

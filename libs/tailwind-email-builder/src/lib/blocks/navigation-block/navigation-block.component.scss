@@ -1,14 +1,10 @@
 :host {
   display: block;
+
   ul {
     margin: 0;
-    list-style: none;
     padding: 0;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .button:active {
-    border: 1px solid #3f729b !important;
+    list-style: none;
+    display: inline-flex;
   }
 }

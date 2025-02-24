@@ -1,8 +1,8 @@
-<div class="grid grid-cols-2 gap-2">
-  @for (key of marginKeys; track key) {
+<div class="grid grid-cols-2 gap-2" ngModelGroup="margin">
+  @for (option of marginOptions; track option.value) {
     <div class="flex flex-col">
-      <label [tailLabel]="i">{{getMarginLabel(key)}}</label>
-      <input tailInput #i="input" type="number" [(ngModel)]="value[key]">
+      <label [tailLabel]="i">{{ option.label }}</label>
+      <input tailInput #i="input" type="number" [name]="option.value" ngModel />
     </div>
   }
 </div>

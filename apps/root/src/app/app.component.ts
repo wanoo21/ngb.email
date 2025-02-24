@@ -1,23 +1,11 @@
-import { Component, inject, model } from '@angular/core';
+import { Component, effect, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import {
-  IpFormUIModule,
   TailwindEmailBuilderModule,
+  UIFormModule,
 } from '@wlocalhost/ngx-tailwind-email-builder';
-import {
-  AIPEmailBuilderRestService,
-  ButtonBlock,
-  DividerBlock,
-  IPEmail,
-  Structure,
-  TextBlock,
-} from '@wlocalhost/ngx-email-builder';
-import {
-  CdkMenu,
-  CdkMenuBar,
-  CdkMenuItem,
-  CdkMenuTrigger,
-} from '@angular/cdk/menu';
+import { injectIIPEmail } from '@wlocalhost/ngx-email-builder';
+import { CdkMenu, CdkMenuBar, CdkMenuItem, CdkMenuTrigger } from '@angular/cdk/menu';
 import { lastValueFrom } from 'rxjs';
 
 @Component({
@@ -25,15 +13,15 @@ import { lastValueFrom } from 'rxjs';
   imports: [
     RouterModule,
     TailwindEmailBuilderModule,
-    IpFormUIModule,
+    UIFormModule,
     CdkMenuBar,
+    CdkMenu,
     CdkMenuItem,
     CdkMenuTrigger,
-    CdkMenu,
   ],
   selector: 'app-root',
   template: `
-    <tail-email-builder [(value)]="email">
+    <tail-email-builder>
       <div class="top-actions flex gap-2" cdkMenuBar>
         <button tailBtn cdkMenuItem [cdkMenuTriggerFor]="exportMenu">
           Export Email
@@ -75,41 +63,29 @@ import { lastValueFrom } from 'rxjs';
     </ng-template>
   `,
 })
-export class AppComponent {
-  readonly restService = inject(AIPEmailBuilderRestService);
-  readonly email = model(
-    new IPEmail([
-      new Structure('cols_1', [
-        [
-          new DividerBlock().toObject({
-            border: { width: 20, color: '#5e5d5d', style: 'double' },
-          }),
-          new TextBlock().toObject(
-            {
-              // @ts-expect-error TODO: fix this
-              font: {
-                family: 'Roboto:wght@400',
-                size: 40,
-                style: 'normal',
-                weight: 400,
-              },
-            },
-            'This is a sample email, you can edit it as you like.'
-          ),
-          new DividerBlock().toObject({ padding: { top: 40, bottom: 40 } }),
-          new ButtonBlock().toObject(
-            {
-              link: {
-                href: 'https://example.com',
-                target: '_blank',
-              },
-            },
-            'Click on me'
-          ),
-        ],
-      ]),
-    ])
-  );
+export class AppComponent implements OnInit {
+  readonly currentEmail = injectIIPEmail();
+
+  #effect = effect(() => {
+    const email = this.currentEmail.value();
+    console.log(email);
+  });
+
+  ngOnInit() {
+    this.currentEmail.options({
+      name: 'Test Email',
+      previewText: 'This is a preview text',
+    });
+    const structure = this.currentEmail.structures.add('cols_1');
+    this.currentEmail.blocks.add(structure, 0, 0, {
+      type: 'text',
+      context: { innerText: "I'm coming from SSR." },
+    });
+    this.currentEmail.blocks.add(structure, 0, 1, {
+      type: 'social',
+      context: { networks: [{ name: 'twitter', link: 'dsomething' }] },
+    });
+  }
 
   /**
    * An example of how to export the email to a file
@@ -118,11 +94,9 @@ export class AppComponent {
    */
   async exportEmail(type: 'HTML' | 'MJML' | 'JSON') {
     try {
-      let exportedFile = JSON.stringify(this.email(), null, 2);
+      let exportedFile = JSON.stringify(this.currentEmail.value(), null, 2);
       if (type !== 'JSON') {
-        const { html, mjml } = await lastValueFrom(
-          this.restService.convert(this.email())
-        );
+        const { html, mjml } = await lastValueFrom(this.currentEmail.convert());
         exportedFile = type === 'HTML' ? html : mjml;
       }
       const blob = new Blob([exportedFile], { type: 'text/plain' });
@@ -152,7 +126,7 @@ export class AppComponent {
       }
       const reader = new FileReader();
       reader.onload = () => {
-        this.email.set(JSON.parse(reader.result as string));
+        this.currentEmail.set(JSON.parse(reader.result as string));
       };
       reader.readAsText(file);
     } catch (error) {

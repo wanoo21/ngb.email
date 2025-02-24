@@ -56,9 +56,6 @@ dependencies:
   ngxtension:
     specifier: ^4.2.1
     version: 4.2.1(@angular/common@19.0.6)(@angular/core@19.0.6)(@swc-node/register@1.9.2)(@swc/core@1.5.7)(rxjs@7.8.1)
-  recursive-diff:
-    specifier: ^1.0.9
-    version: 1.0.9
 
 devDependencies:
   '@angular-devkit/build-angular':
@@ -15256,10 +15253,6 @@ packages:
   /readdirp@4.1.1:
     resolution: {integrity: sha512-h80JrZu/MHUZCyHu5ciuoI0+WxsCxzxJTILn6Fs8rxSnFPh+UVHYfeIxK1nVGugMqkfC4vJcBOYbkfkwYK0+gw==}
     engines: {node: '>= 14.18.0'}
-
-  /recursive-diff@1.0.9:
-    resolution: {integrity: sha512-5mqpskzvXDo5Vy29Vj8tH30a0+XBmY11aqWGoN/uB94UHRwndX2EuPvH+WtbqOYkrwAF718/lDo6U4CB1qSSqQ==}
-    dev: false
 
   /redent@3.0.0:
     resolution: {integrity: sha512-6tDA8g98We0zd0GvVeMT9arEOnTw9qM03L9cJXaCjrip1OO764RDBLBfrB4cwzNGDj5OA5ioymC9GkizgWJDUg==}

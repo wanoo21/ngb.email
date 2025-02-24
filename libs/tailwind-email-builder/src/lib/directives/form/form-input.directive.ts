@@ -1,123 +1,127 @@
-import { AfterViewInit, Directive, ElementRef, inject, input, NgModule, OnInit, Renderer2 } from "@angular/core";
-import { randomString } from "@wlocalhost/ngx-email-builder";
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  inject,
+  input,
+  NgModule,
+  OnInit,
+  Renderer2,
+} from '@angular/core';
+import { randomString } from '@wlocalhost/ngx-email-builder';
 
-@Directive()
-abstract class AddClassList<T = HTMLElement> implements OnInit {
-  abstract classList: string;
+@Directive({
+  selector: '[tailInput]',
+  exportAs: 'input',
+  host: {
+    class:
+      'rounded bg-white border px-2 py-1 w-full text-black-700/75 text-sm outline-1 placeholder-shown:border-gray-200 read-only:bg-gray-100 disabled:opacity-75',
+  },
+})
+export class FormInputDirective implements OnInit {
   readonly renderer2 = inject(Renderer2);
-  private readonly elementRef = inject<ElementRef<T>>(ElementRef);
-
-  /**
-   * Directive's HTMLElement
-   */
-  get el(): T {
-    return this.elementRef.nativeElement;
-  }
+  readonly el = inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement;
 
   ngOnInit(): void {
-    this.classList.split(" ").forEach(className => {
-      this.renderer2.addClass(this.el, className);
-    });
+    this.renderer2.setAttribute(this.el, 'id', randomString());
   }
 }
 
 @Directive({
-  selector: "[tailInput]",
-  exportAs: "input",
-  standalone: false
+  selector: '[tailLabel]',
+  exportAs: 'label',
+  host: {
+    class: 'text-xs font-medium text-gray-400 mb-1',
+  },
 })
-export class FormInputDirective extends AddClassList<HTMLInputElement> implements OnInit {
-  classList = `rounded bg-white border px-2 py-1 w-full text-black-700/75 text-sm outline-1 placeholder-shown:border-gray-200 read-only:bg-gray-100 disabled:opacity-75`;
-
-  override ngOnInit() {
-    super.ngOnInit();
-    this.renderer2.setAttribute(this.el, "id", randomString());
-  }
-}
-
-@Directive({
-  selector: "[tailLabel]",
-  exportAs: "label",
-  standalone: false
-})
-export class FormLabelDirective extends AddClassList<HTMLLabelElement> implements AfterViewInit {
-  classList = `text-xs font-medium text-gray-400 mb-1`;
+export class FormLabelDirective implements AfterViewInit {
   readonly tailLabel = input<FormInputDirective>();
+  readonly renderer2 = inject(Renderer2);
+  readonly el = inject<ElementRef<HTMLInputElement>>(ElementRef).nativeElement;
 
   ngAfterViewInit(): void {
     const tailLabel = this.tailLabel();
-    if (tailLabel && !this.el.getAttribute("for")) {
-      this.renderer2.setAttribute(this.el, "for", tailLabel.el.id);
+    if (tailLabel && !this.el.getAttribute('for')) {
+      this.renderer2.setAttribute(this.el, 'for', tailLabel.el.id);
     }
   }
 }
 
 @Directive({
-  selector: "[tailBtn]",
-  exportAs: "btn",
-  standalone: false
+  selector: '[tailBtn]',
+  exportAs: 'btn',
+  host: {
+    class:
+      'rounded shadow-sm bg-white border px-2 py-1.5 text-sm [&:has(:checked)]:bg-gray-100 cursor-pointer text-center',
+  },
 })
-export class FormBtnDirective extends AddClassList<HTMLButtonElement> implements OnInit {
-  get classList(): string {
-    return `btn rounded shadow-sm bg-white border px-2 py-1.5 text-sm flex gap-1 items-center justify-center`;
-  }
+export class FormBtnDirective implements OnInit {
+  readonly el = inject(ElementRef).nativeElement;
 
-  override ngOnInit() {
-    super.ngOnInit();
-    if (!this.el.hasAttribute("type")) {
-      this.el.type = "button";
+  ngOnInit(): void {
+    if (!this.el.hasAttribute('type')) {
+      this.el.type = 'button';
     }
-    // this.el.querySelectorAll("svg").forEach(svg => {
-    //   svg.style.pointerEvents = "none";
+    // this.el.querySelectorAll('svg').forEach((svg) => {
+    //   svg.style.pointerEvents = 'none';
     // });
   }
 }
 
 @Directive({
-  selector: "[tailH2]",
-  exportAs: "h2",
-  standalone: false
+  selector: '[tailH2]',
+  exportAs: 'h2',
+  host: {
+    class: `font-semibold text-sm mt-4 mb-2 text-gray-800 uppercase select-none`,
+  },
 })
-export class FormH2Directive extends AddClassList {
-  classList = `font-semibold text-sm mt-4 mb-2 text-gray-800 uppercase select-none`;
-}
+export class FormH2Directive {}
 
 @Directive({
-  selector: "[tailH3]",
-  exportAs: "h3",
-  standalone: false
+  selector: '[tailH3]',
+  exportAs: 'h3',
+  host: {
+    class: `text-xs font-medium text-gray-400 mb-1`,
+  },
 })
-export class FormH3Directive extends AddClassList {
-  classList = `text-xs font-medium text-gray-400 mb-1`;
-}
+export class FormH3Directive {}
 
 @Directive({
-  selector: "[tailHint]",
-  exportAs: "hint",
-  standalone: false
+  selector: '[tailHint]',
+  exportAs: 'hint',
+  host: {
+    class: `text-xs text-gray-400 font-light mt-1`,
+  },
 })
-export class FormHintDirective extends AddClassList {
-  readonly variant = input("gray-400");
-
-  get classList(): string {
-    return `text-xs text-${this.variant()} font-light mt-1`;
-  }
-}
+export class FormHintDirective {}
 
 @Directive({
-  selector: "[tailPanel]",
-  exportAs: "panel",
-  standalone: false
+  selector: '[tailPanel]',
+  exportAs: 'panel',
+  host: {
+    class: `p-2 rounded bg-white border`,
+  },
 })
-export class FormPanelDirective extends AddClassList {
-  get classList(): string {
-    return `p-2 rounded bg-white border`;
-  }
-}
+export class FormPanelDirective {}
 
 @NgModule({
-  declarations: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective],
-  exports: [FormInputDirective, FormBtnDirective, FormH2Directive, FormHintDirective, FormLabelDirective, FormH3Directive, FormPanelDirective]
+  imports: [
+    FormInputDirective,
+    FormBtnDirective,
+    FormH2Directive,
+    FormHintDirective,
+    FormLabelDirective,
+    FormH3Directive,
+    FormPanelDirective,
+  ],
+  exports: [
+    FormInputDirective,
+    FormBtnDirective,
+    FormH2Directive,
+    FormHintDirective,
+    FormLabelDirective,
+    FormH3Directive,
+    FormPanelDirective,
+  ],
 })
-export class IpFormUIModule {
-}
+export class UIFormModule {}

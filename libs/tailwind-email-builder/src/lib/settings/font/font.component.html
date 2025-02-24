@@ -1,46 +1,42 @@
-<div class="flex flex-col">
-  <label [tailLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
-  <input tailInput #i="input" [(ngModel)]="googleFont" placeholder="Roboto:wght@300;400;700" />
-  <p tailHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
-</div>
-<div class="flex flex-col pt-2">
-  @if (!googleFont) {
-    <label [tailLabel]="s" i18n="@@standard_font">Standard Font</label>
-  }
-  @if (googleFont) {
-    <label [tailLabel]="s" i18n="@@fallback_font">Fallback Font</label>
-  }
-  <select tailInput #s="input" [(ngModel)]="family" class="appearance-none">
-    @for (font of standardFonts; track font) {
-      <option [value]="font">{{font}}</option>
-    }
-  </select>
-  @if (googleFont) {
-    <p tailHint i18n="@@fallback_font_description">
-    Fallback font is used in case custom font is not supported.
-  </p>
-  }
-</div>
+<ng-container ngModelGroup="font">
+  <div class="flex flex-col">
+    <label [tailLabel]="i" i18n="@@custom_google_font">Custom Google Font</label>
+    <input tailInput #i="input" name="family" ngModel placeholder="Roboto" />
+    <p tailHint i18n="@@empty_google_font">Leave empty to use standard fonts.</p>
+  </div>
 
-<div class="grid grid-cols-3 gap-2 pt-2">
-  <div class="flex flex-col">
-    <label [tailLabel]="fs" i18n="@@font_size">Size</label>
-    <input tailInput #fs="input" [(ngModel)]="value.size" type="number" />
-  </div>
-  <div class="flex flex-col">
-    <label [tailLabel]="w" i18n="@@font_weight">Weight</label>
-    <select tailInput #w="input" [(ngModel)]="weight" class="appearance-none">
-      @for (weight of weights; track weight) {
-        <option [value]="weight">{{weight}}</option>
+  <div class="flex flex-col pt-2">
+    <label [tailLabel]="s" i18n="@@fallback_font">Fallback Font</label>
+    <select tailInput #s="input" name="fallback" ngModel class="appearance-none">
+      @for (font of fonts.webSafeFonts; track font) {
+        <option [value]="font">{{ font }}</option>
       }
     </select>
+    <p tailHint i18n="@@fallback_font_description">
+      Fallback font is used in case custom font is not supported.
+    </p>
   </div>
-  <div class="flex flex-col">
-    <label [tailLabel]="fst" i18n="@@font_style">Style</label>
-    <select tailInput #fst="input" [(ngModel)]="value.style" class="appearance-none">
-      @for (style of styles; track style) {
-        <option [value]="style">{{getStyleLabel(style)}}</option>
-      }
-    </select>
+
+  <div class="grid grid-cols-3 gap-2 pt-2">
+    <div class="flex flex-col">
+      <label [tailLabel]="fs" i18n="@@font_size">Size</label>
+      <input tailInput #fs="input" name="size" ngModel type="number" />
+    </div>
+    <div class="flex flex-col">
+      <label [tailLabel]="w" i18n="@@font_weight">Weight</label>
+      <select tailInput #w="input" name="weight" ngModel class="appearance-none">
+        @for (weight of fonts.weights; track weight) {
+          <option [value]="weight">{{ weight }}</option>
+        }
+      </select>
+    </div>
+    <div class="flex flex-col">
+      <label [tailLabel]="fst" i18n="@@font_style">Style</label>
+      <select tailInput #fst="input" name="style" ngModel class="appearance-none">
+        @for (style of styleOptions; track style.value) {
+          <option [value]="style.value">{{ style.label }}</option>
+        }
+      </select>
+    </div>
   </div>
-</div>
+</ng-container>
