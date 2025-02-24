@@ -1,13 +1,13 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { CdkPortalOutlet, Portal } from '@angular/cdk/portal';
 import { BehaviorSubject, map } from 'rxjs';
 import { CdkDropList } from '@angular/cdk/drag-drop';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 import type { IStructure } from './structure/interfaces';
 import { randomString } from '../tools/utils';
 import type { TColumnDropData } from './column/column-drop.directive';
 import type { IPEmailBuilderSettingsDirective } from './settings/settings.directive';
-import { toSignal } from '@angular/core/rxjs-interop';
 
 /**
  * This service provides utilities for the UI of the ngx-email-builder library.
@@ -47,9 +47,11 @@ export class IPEmailBuilderUiService {
   /**
    * An observable for the currently attached settings portal.
    */
-  currentSettingsPortal = toSignal(this.#attachSettingsPortal$.pipe(
-    map((portal) => portal || this.#defaultSettingsPortal)
-  ));
+  currentSettingsPortal = toSignal(
+    this.#attachSettingsPortal$.pipe(
+      map((portal) => portal || this.#defaultSettingsPortal)
+    )
+  );
 
   /**
    * The settings portal outlet for the email builder UI.
@@ -90,7 +92,5 @@ export class IPEmailBuilderUiService {
    *
    * @returns True if the outlet has attached, false otherwise.
    */
-  portalOutletHasAttached(): boolean {
-    return !!this.#settingsPortalOutlet?.hasAttached();
-  }
+  portalOutletHasAttached = computed(() => !!this.#onEditRef());
 }
