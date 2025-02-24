@@ -11,7 +11,13 @@
 <div class="px-2 flex-1 max-h-full overflow-x-auto pb-10" role="tabpanel" aria-expanded="true">
   @switch (selectedStep()) {
     @case (1) {
-      <ng-template [cdkPortalOutlet]="builderUiService.currentSettingsPortal()" />
+      @if (builderUiService.portalOutletHasAttached()) {
+        <ng-template [cdkPortalOutlet]="builderUiService.currentSettingsPortal()" />
+      } @else {
+        <p i18n="@@select_block" class="py-4 text-center">
+          Click on a block, structure or column to edit its content.
+        </p>
+      }
     }
     @default {
       <h2 tailH2 i18n="@@blocks_list">Blocks</h2>
